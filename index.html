@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PPT Master Prompt System</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0a0a0f;
+  --surface:#12121a;
+  --surface2:#1a1a26;
+  --border:#2a2a3a;
+  --text:#e8e8f0;
+  --text2:#9090a8;
+  --accent:#4f6fff;
+  --accent2:#7b5cff;
+  --accent-glow:rgba(79,111,255,.15);
+  --green:#34d399;
+  --orange:#fb923c;
+  --pink:#f472b6;
+  --radius:16px;
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Noto Sans KR','Outfit',sans-serif;
+  line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ── Hero ── */
+.hero{
+  min-height:100vh;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;
+  position:relative;overflow:hidden;
+  padding:2rem;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 60% 50% at 50% 0%,rgba(79,111,255,.12),transparent),
+    radial-gradient(ellipse 40% 40% at 80% 80%,rgba(123,92,255,.08),transparent),
+    radial-gradient(ellipse 30% 30% at 10% 70%,rgba(244,114,182,.06),transparent);
+  pointer-events:none;
+}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--accent-glow);border:1px solid rgba(79,111,255,.25);
+  padding:8px 20px;border-radius:100px;font-size:.8rem;color:var(--accent);
+  letter-spacing:.05em;text-transform:uppercase;font-weight:600;
+  margin-bottom:2rem;
+  animation:fadeUp .8s ease both;
+}
+.hero-badge span{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+
+.hero h1{
+  font-family:'Outfit',sans-serif;
+  font-size:clamp(2.8rem,7vw,5.5rem);
+  font-weight:900;
+  letter-spacing:-.03em;
+  line-height:1.1;
+  background:linear-gradient(135deg,#fff 0%,#c0c8f0 40%,var(--accent) 70%,var(--accent2) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  margin-bottom:1.5rem;
+  animation:fadeUp .8s .15s ease both;
+}
+.hero p{
+  font-size:1.15rem;color:var(--text2);max-width:560px;
+  animation:fadeUp .8s .3s ease both;
+  font-weight:300;
+}
+.hero-scroll{
+  margin-top:3rem;
+  animation:fadeUp .8s .5s ease both,float 3s ease-in-out infinite;
+}
+.hero-scroll svg{width:28px;height:28px;stroke:var(--text2)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(10px)}}
+
+/* ── Nav dots ── */
+.nav-rail{
+  position:fixed;right:24px;top:50%;transform:translateY(-50%);
+  display:flex;flex-direction:column;gap:12px;z-index:100;
+}
+.nav-rail a{
+  width:10px;height:10px;border-radius:50%;
+  background:var(--border);transition:.3s;
+}
+.nav-rail a:hover,.nav-rail a.active{background:var(--accent);box-shadow:0 0 12px var(--accent)}
+
+/* ── Sections ── */
+.section{
+  max-width:960px;margin:0 auto;
+  padding:6rem 2rem;
+}
+.section-label{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:.75rem;text-transform:uppercase;letter-spacing:.12em;
+  color:var(--accent);font-weight:600;margin-bottom:1rem;
+}
+.section-label i{
+  width:20px;height:2px;background:var(--accent);border-radius:2px;
+}
+.section h2{
+  font-family:'Outfit',sans-serif;
+  font-size:clamp(1.8rem,4vw,2.8rem);
+  font-weight:800;letter-spacing:-.02em;
+  margin-bottom:.6rem;
+}
+.section .desc{color:var(--text2);font-size:1rem;margin-bottom:3rem;font-weight:300}
+
+/* ── Step cards ── */
+.step-card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  margin-bottom:2rem;
+  overflow:hidden;
+  transition:border-color .3s;
+}
+.step-card:hover{border-color:rgba(79,111,255,.4)}
+.step-header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.2rem 1.6rem;
+  border-bottom:1px solid var(--border);
+  background:var(--surface2);
+}
+.step-tag{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:.85rem;font-weight:700;
+  color:var(--text);
+}
+.step-tag .num{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:28px;height:28px;border-radius:8px;
+  font-family:'Outfit',sans-serif;font-size:.8rem;font-weight:800;
+  color:#fff;
+}
+.step-tag .num.c1{background:var(--accent)}
+.step-tag .num.c2{background:var(--accent2)}
+.step-tag .num.c3{background:var(--pink)}
+
+.copy-btn{
+  display:inline-flex;align-items:center;gap:6px;
+  background:transparent;border:1px solid var(--border);
+  color:var(--text2);padding:6px 14px;border-radius:8px;
+  font-size:.78rem;cursor:pointer;transition:.25s;
+  font-family:'Noto Sans KR',sans-serif;
+}
+.copy-btn:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-glow)}
+.copy-btn.copied{border-color:var(--green);color:var(--green);background:rgba(52,211,153,.1)}
+.copy-btn svg{width:14px;height:14px}
+
+.step-body{padding:1.6rem;position:relative}
+.step-body pre{
+  font-family:'JetBrains Mono','Noto Sans KR',monospace;
+  font-size:.82rem;
+  line-height:1.85;
+  color:var(--text);
+  white-space:pre-wrap;
+  word-break:break-word;
+  overflow-x:auto;
+}
+
+/* ── Syntax highlights in pre ── */
+.step-body pre .hl-key{color:var(--accent)}
+.step-body pre .hl-val{color:var(--green)}
+.step-body pre .hl-comment{color:var(--text2);font-style:italic}
+.step-body pre .hl-section{color:var(--orange);font-weight:700}
+.step-body pre .hl-warn{color:var(--pink);font-weight:700}
+
+/* ── Flow diagram ── */
+.flow{
+  display:flex;align-items:center;justify-content:center;gap:0;
+  padding:4rem 2rem;flex-wrap:wrap;
+}
+.flow-step{
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+  padding:1.5rem 2rem;
+  background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+  min-width:180px;text-align:center;
+  transition:.3s;
+}
+.flow-step:hover{border-color:var(--accent);transform:translateY(-4px)}
+.flow-step .fs-num{
+  font-family:'Outfit',sans-serif;font-size:2rem;font-weight:900;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.flow-step .fs-label{font-size:.85rem;font-weight:600}
+.flow-step .fs-desc{font-size:.72rem;color:var(--text2)}
+.flow-arrow{
+  font-size:1.5rem;color:var(--border);padding:0 .5rem;
+  font-family:'Outfit',sans-serif;
+}
+
+/* ── Tips ── */
+.tips-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.2rem}
+.tip{
+  padding:1.4rem;background:var(--surface);
+  border:1px solid var(--border);border-radius:var(--radius);
+  transition:.3s;
+}
+.tip:hover{border-color:var(--accent);transform:translateY(-2px)}
+.tip-icon{font-size:1.6rem;margin-bottom:.6rem}
+.tip h4{font-size:.95rem;font-weight:700;margin-bottom:.4rem}
+.tip p{font-size:.8rem;color:var(--text2);font-weight:300}
+
+/* ── Footer ── */
+footer{
+  text-align:center;padding:4rem 2rem;
+  border-top:1px solid var(--border);
+  color:var(--text2);font-size:.8rem;
+}
+
+/* ── Responsive ── */
+@media(max-width:640px){
+  .flow{flex-direction:column}
+  .flow-arrow{transform:rotate(90deg)}
+  .nav-rail{display:none}
+  .step-header{flex-direction:column;gap:10px;align-items:flex-start}
+}
+
+/* ── Toast ── */
+.toast{
+  position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(100px);
+  background:var(--green);color:#000;
+  padding:10px 24px;border-radius:10px;font-size:.85rem;font-weight:600;
+  opacity:0;transition:.4s;z-index:999;pointer-events:none;
+}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+</style>
+</head>
+<body>
+
+<div class="toast" id="toast">✓ 클립보드에 복사됨</div>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-badge"><span></span>Prompt Engineering Toolkit</div>
+  <h1>PPT Master<br>Prompt System</h1>
+  <p>McKinsey · BCG · Bain 수준의 전략 프레젠테이션을 AI로 구현하기 위한 3단계 프롬프트 시스템</p>
+  <div class="hero-scroll">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+  </div>
+</section>
+
+<!-- Flow -->
+<div class="flow">
+  <div class="flow-step">
+    <div class="fs-num">01</div>
+    <div class="fs-label">구성안 생성</div>
+    <div class="fs-desc">40장 Master Script</div>
+  </div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-step">
+    <div class="fs-num">02</div>
+    <div class="fs-label">렌더링 시스템</div>
+    <div class="fs-desc">디자인 시스템 설정</div>
+  </div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-step">
+    <div class="fs-num">03</div>
+    <div class="fs-label">PPT 렌더링</div>
+    <div class="fs-desc">최종 슬라이드 출력</div>
+  </div>
+</div>
+
+<!-- Step 1 -->
+<section class="section" id="step1">
+  <div class="section-label"><i></i>STEP 01</div>
+  <h2>PPT 구성안 Text 출력</h2>
+  <p class="desc">소스 문서를 분석하여 40장 분량의 Master Script Report를 생성하는 프롬프트</p>
+
+  <div class="step-card">
+    <div class="step-header">
+      <div class="step-tag"><span class="num c1">1</span>Content Architecture Prompt</div>
+      <button class="copy-btn" onclick="copyBlock(this,'block1')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+        복사
+      </button>
+    </div>
+    <div class="step-body">
+      <pre id="block1"># Role: Chief Content Architect
+Task: Analyze ALL uploaded sources and generate a consistent 40-page [Master Script Report].
+
+## [Variables: Please Fill Below]
+- Target Audience: &lt;&lt; 의사결정 임원 &gt;&gt;
+- Presentation Objective: &lt;&lt; 신사업에 진입해야 하는가? 진입 한다면 어떻게?  돈을 벌 수 있나? &gt;&gt;
+
+## Instruction Guidelines
+1. 소스 문서의 핵심 팩트와 데이터를 통합하여 논리적 흐름(서론-본론-결론)을 구축
+1-1 신사업 기업 Dynamics
+1-2 신사업의 KSF
+1-3 신사업 진입 장벽
+1-4 수익성?
+2. 지정된 [Target Audience]의 수준과 관심사에 맞춘 전문적인 용어와 설득력 있는 문체 사용
+3. McKinsey, BCG, Bain의 문제해결 Framework, Issue Tree, 5 Whys, MECE 활용
+4. Why 왜 해야하는가, What 무엇을 해야 하는가?, How 어떻게 해야하는가? Where 타겟 시장과 우리 위치는 어디인가?
+5. Devil's Advocate을 전체 구조를 챌린지 하고, 논리를 보완하여 전체를 다시 구성
+5-1 Outdated Data 삭제와 권위있는 Source를 활용하여, 논리를 탄탄하게 다시 구성
+
+## Output Format (Strictly Follow)
+슬라이드 번호: (1~40)
+제목: (해당 페이지의 핵심 헤드라인)
+화면 텍스트: (핵심 데이터 및 키워드 10줄 이상 요약), 정량 Data, 숫자, 통계는 Footer에 Source 출력 (발표 기관과 발표 날짜 포함)
+Footer: 상단 숫자, 통계에 대한 Source와 발표 날짜</pre>
+    </div>
+  </div>
+</section>
+
+<!-- Step 2-1 -->
+<section class="section" id="step2">
+  <div class="section-label"><i></i>STEP 02-1</div>
+  <h2>슬라이드 렌더링 시스템</h2>
+  <p class="desc">Visual Identity, Typography, Layout 규칙 및 실행 스크립트를 포함한 디자인 시스템 프롬프트</p>
+
+  <div class="step-card">
+    <div class="step-header">
+      <div class="step-tag"><span class="num c2">2-1</span>Adaptive Design System Prompt</div>
+      <button class="copy-btn" onclick="copyBlock(this,'block2')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+        복사
+      </button>
+    </div>
+    <div class="step-body">
+      <pre id="block2">[Adaptive Presentation Design System]
+1. Visual Identity
+- Background: 무조건 아무것도 없는 완전한 흰색 단색 배경(Solid White, #FFFFFF). 배경에 격자 무늬(Grid), 워터마크, 배경 이미지 등은 절대 표출 금지
+- Theme: Top-tier Consulting Firm Style (McKinsey, BCG, Bain)
+- Palette: BG[#FFFFFF], Text[#111111], Accent[#1428A0]
+- Font: 모든 텍스트는 반드시 'SamsungOneKorean700' 또는 'SamsungOneKorean500' 폰트만 사용 (모든 장표에서 폰트 종류와 크기가 달라지면 안 되며 일관성 유지)
+- Graphics: Sharp rectangles, blue gradients for shapes, thin grey vertical/horizontal dividers, strict margins. Bottom area graphics must be schematized and explicitly display data/numbers
+
+2. Typography & Writing Rules (글자 크기 및 문체 일관성 엄수)
+- 장표마다 글자 크기가 달라지면 안됨, 아래 규칙을 모든 장표에 일관되게 유지할 것
+- Main Title: 상단 중앙 정렬, 30pt
+- Subtitle: 14pt
+- Body Content (소제목 아래 본문): 10pt
+- Footer: 출처(Data sources)와 발표/발간 날짜는 반드시 슬라이드 가장 밑바닥에 9pt로 표기
+- Writing Style (매우 중요):
+  ▶ 길이 제한: 상세 내용 및 불릿 포인트(·)는 무조건 2줄 이내로 간결하게 요약해서 출력
+  ▶ 개조식 작성: 서술형 문장 금지. "가능합니다" -> "가능", "진행했습니다" -> "진행"과 같이 명사형 또는 간단한 요약형(개조식) 문구로 작성
+  ▶ 마침표 삭제: 모든 문장의 끝에는 마침표(.) 절대 사용 금지
+
+3. Dynamic Layout Rules (논리적 흐름에 맞춰 A, B, C 중 택 1)
+- Type A(Hierarchy): Focus on text structure. Top-center aligned main titles(30pt), solid blue subtitle bars(14pt), bulleted body(10pt)
+- Type B(Data/Metrics): Maximize chart area. Schematized bottom diagrams explicitly displaying data/metrics. Clean headers, high-contrast metric callouts using Accent color
+- Type C(Split View): Mid-line vertical divider. Left side for context/lists(10pt), right side for process steps, visual comparisons, or schematized data
+
+4. Execution
+Strictly follow the slide count and content boundaries. Construct the presentation strictly following the logical flow and structured layout styles of McKinsey, BCG, and Bain. Assign Layout A, B, or C to logical sections ensuring maximum contrast and visual hierarchy.
+
+
+## EXECUTION_SCRIPT_RUN()
+WARNING: Merging 40 slides into a single API call causes a FATAL_MEMORY_CRASH. You MUST execute the two functions below sequentially and independently.
+
+FUNCTION_01_CALL_STUDIO() {
+  target_data: "Source Script Slides 1 to 20"
+  deck_type: "presentation"
+  length: "dynamic"
+  user_steering_prompt: "
+    1. Apply [Global Design System] exactly.
+    2. Match Source content 1:1.
+    3. RULE: DO NOT generate any ending/thank you slide at slide 20. End with body content.
+  "
+}
+
+// WAIT FOR FUNCTION_01 TO INITIATE, THEN IMMEDIATELY EXECUTE FUNCTION_02
+
+FUNCTION_02_CALL_STUDIO() {
+  target_data: "Source Script Slides 21 to 40"
+  deck_type: "presentation"
+  length: "dynamic"
+  user_steering_prompt: "
+    1. Apply [Global Design System] exactly.
+    2. Match Source content 1:1.
+    3. RULE: DO NOT generate a cover or title slide. Start immediately with slide 21 body content. Place the ONLY ending conclusion slide at slide 40.
+  "
+}</pre>
+    </div>
+  </div>
+</section>
+
+<!-- Step 2-2 -->
+<section class="section" id="step3">
+  <div class="section-label"><i></i>STEP 02-2</div>
+  <h2>PPT 렌더링 프롬프트</h2>
+  <p class="desc">최종 슬라이드 출력을 위한 상세 실행 프롬프트 — 디자인 시스템 + 컨설팅 원칙 + 출력 템플릿 통합</p>
+
+  <div class="step-card">
+    <div class="step-header">
+      <div class="step-tag"><span class="num c3">2-2</span>Full Rendering Prompt</div>
+      <button class="copy-btn" onclick="copyBlock(this,'block3')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+        복사
+      </button>
+    </div>
+    <div class="step-body">
+      <pre id="block3">당신은 글로벌 탑티어 컨설팅 펌(McKinsey, BCG, Bain)의 수석 프레젠테이션 디자이너이자 전략 컨설턴트입니다.
+업로드된 소스 자료를 바탕으로 총 40장 분량의 최고 수준 프레젠테이션 기획안을 작성해야 합니다.
+
+시스템 함수나 코딩 명령어 없이, 아래의 [Adaptive Presentation Design System]과 [출력 템플릿]을 엄격히 적용하여 1장부터 40장까지 전체 슬라이드 구성안을 중간에 끊거나 생략 없이 한 번에 쭉 출력해 주세요.
+
+[Adaptive Presentation Design System]
+1. Visual Identity
+- Background: 무조건 아무것도 없는 완전한 흰색 단색 배경(Solid White, #FFFFFF). 배경에 격자 무늬(Grid), 워터마크, 배경 이미지 등은 절대 표출 금지
+- Theme: Top-tier Consulting Firm Style (McKinsey, BCG, Bain)
+- Palette: BG[#FFFFFF], Text[#111111], Accent[#1428A0]
+- Font: 모든 텍스트는 반드시 'SamsungOneKorean700' 또는 'SamsungOneKorean500' 폰트만 사용 (모든 장표에서 폰트 종류와 크기가 달라지면 안 되며 일관성 유지)
+- Graphics: Sharp rectangles, blue gradients for shapes, thin grey vertical/horizontal dividers, strict margins. Bottom area graphics must be schematized and explicitly display data/numbers
+
+2. Typography & Writing Rules (글자 크기 및 문체 일관성 엄수)
+- 장표마다 글자 크기가 달라지면 안됨, 아래 규칙을 모든 장표에 일관되게 유지할 것
+- Main Title: 상단 중앙 정렬, 30pt
+- Subtitle: 14pt
+- Body Content (소제목 아래 본문): 10pt
+- Footer: 출처(Data sources)와 발표/발간 날짜는 반드시 슬라이드 가장 밑바닥에 9pt로 표기
+- Writing Style (매우 중요):
+  ▶ 길이 제한: 상세 내용 및 불릿 포인트(·)는 무조건 2줄 이내로 간결하게 요약해서 출력
+  ▶ 개조식 작성: 서술형 문장 금지. "가능합니다" -> "가능", "진행했습니다" -> "진행"과 같이 명사형 또는 간단한 요약형(개조식) 문구로 작성
+  ▶ 마침표 삭제: 모든 문장의 끝에는 마침표(.) 절대 사용 금지
+
+3. Dynamic Layout Rules (논리적 흐름에 맞춰 A, B, C 중 택 1)
+- Type A(Hierarchy): Focus on text structure. Top-center aligned main titles(30pt), solid blue subtitle bars(14pt), bulleted body(10pt)
+- Type B(Data/Metrics): Maximize chart area. Schematized bottom diagrams explicitly displaying data/metrics. Clean headers, high-contrast metric callouts using Accent color
+- Type C(Split View): Mid-line vertical divider. Left side for context/lists(10pt), right side for process steps, visual comparisons, or schematized data
+
+4. Execution
+Strictly follow the slide count and content boundaries. Construct the presentation strictly following the logical flow and structured layout styles of McKinsey, BCG, and Bain. Assign Layout A, B, or C to logical sections ensuring maximum contrast and visual hierarchy.
+
+
+[컨설팅 보고서 작성 원칙]
+1. 논리 구조: MECE(상호배제와 전체포괄) 원칙에 입각하여 단순 요약이 아닌 컨설팅 보고서처럼 상세하고 논리적으로 탄탄하게 전개
+2. 데이터 최신화 및 백업: 기존 소스의 오래된 데이터는 배제하고, 권위 있는 글로벌 증권사, 언론사, 시장조사기관의 최신 데이터로 보완/업데이트하여 논리 백업
+3. 정량 데이터 명시: 숫자와 정량 데이터는 반드시 구체적인 소스와 발표 날짜를 포함하여 하단 Footer에 표기
+
+[출력 템플릿]
+(마크다운 특수 기호 '*'를 배제하고, 아래 양식을 1장부터 40장까지 동일하게 반복할 것)
+--------------------------------------------------
+[Slide 번호]
+▶ Layout: Type A / B / C 중 택 1
+▶ Main Title (30pt): 슬라이드 핵심 메시지 요약
+▶ Subtitle (14pt): 소제목 내용
+▶ Body Content (10pt):
+   - 본문 내용 1 (컨설팅 보고서 수준의 논리 전개, 2줄 이내 요약, 개조식, 마침표 생략)
+   - 본문 내용 2 (소스 데이터 매칭 및 최신 데이터 백업, 2줄 이내 요약, 개조식, 마침표 생략)
+▶ Bottom Graphic/Data: 하단 도식화 형태 및 구체적인 최신 데이터/숫자 묘사
+▶ Footer (9pt): Source: 권위 있는 데이터 출처 및 발표 날짜
+--------------------------------------------------
+
+[Execution Rules: 중요 실행 규칙]
+1. 업로드된 소스 데이터와 1:1로 매칭하여 누락 없이 반영
+2. 1장부터 40장까지 분할하지 말고 단일 답변으로 한 번에 끝까지 출력 (표지나 목차 없이 슬라이드 1 본문부터 즉시 시작)
+3. 최종 결론(Conclusion) 및 엔딩 슬라이드는 오직 마지막 40번째 장에만 배치 (중간 슬라이드에서 결론이나 인사말 생성 금지)</pre>
+    </div>
+  </div>
+</section>
+
+<!-- Tips -->
+<section class="section">
+  <div class="section-label"><i></i>TIPS</div>
+  <h2>활용 팁</h2>
+  <p class="desc">프롬프트 시스템을 최대한 활용하기 위한 가이드</p>
+  <div class="tips-grid">
+    <div class="tip">
+      <div class="tip-icon">📎</div>
+      <h4>소스 업로드</h4>
+      <p>분석할 문서, 리포트, 데이터를 함께 업로드하면 AI가 자동으로 통합 분석</p>
+    </div>
+    <div class="tip">
+      <div class="tip-icon">🎯</div>
+      <h4>변수 커스터마이징</h4>
+      <p>Target Audience와 Objective를 프로젝트에 맞게 수정하여 사용</p>
+    </div>
+    <div class="tip">
+      <div class="tip-icon">⚡</div>
+      <h4>순차 실행</h4>
+      <p>1단계 → 2-1단계 → 2-2단계 순서대로 실행해야 최적 결과 확보</p>
+    </div>
+    <div class="tip">
+      <div class="tip-icon">🔄</div>
+      <h4>분할 렌더링</h4>
+      <p>40장을 20장씩 나눠 실행하면 메모리 오류 없이 안정적 출력 가능</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  PPT Master Prompt System — Built for strategic excellence
+</footer>
+
+<script>
+function copyBlock(btn, id) {
+  const el = document.getElementById(id);
+  const text = el.textContent;
+  navigator.clipboard.writeText(text).then(() => {
+    btn.classList.add('copied');
+    btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> 복사됨';
+    const toast = document.getElementById('toast');
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 2000);
+    setTimeout(() => {
+      btn.classList.remove('copied');
+      btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> 복사';
+    }, 3000);
+  });
+}
+</script>
+</body>
+</html>
