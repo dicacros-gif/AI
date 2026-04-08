@@ -332,7 +332,7 @@ Outdated 내용은 삭제하고, 최신 내용 위주로 출력
     <!-- STEP 2-1 -->
     <div class="pipeline-card step-21">
       <div class="pipeline-step">🚀 STEP 2-1</div>
-      <h3>슬라이드 렌더링 시스템</h3>
+      <h3>슬라이드 Rendering 시스템 프롬프트</h3>
       <p>채팅창에 하단 내용 붙여넣기 — Adaptive Presentation Design System + EXECUTION SCRIPT</p>
       <div class="prompt-block"><div class="prompt-header" onclick="togglePrompt(this)"><div class="prompt-title-area"><div class="prompt-title">2-1단계: 렌더링 시스템 프롬프트</div></div><button class="copy-btn" onclick="event.stopPropagation();copyPrompt(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>복사</button><svg class="prompt-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
       <div class="prompt-body"><div class="prompt-body-inner"><div class="prompt-code" id="s21c"></div></div></div></div>
@@ -343,9 +343,9 @@ Outdated 내용은 삭제하고, 최신 내용 위주로 출력
     <!-- STEP 2-2 -->
     <div class="pipeline-card step-22" style="opacity:0.7">
       <div class="pipeline-step">📝 STEP 2-2 <span class="optional-badge">OPTIONAL</span></div>
-      <h3>PPT 렌더링 프롬프트 <span class="optional-badge">안해도 되는 옵션</span></h3>
+      <h3>슬라이드 Rendering  일반 프롬프트 <span class="optional-badge">안해도 되는 옵션, 2-1 안되면 실행 </span></h3>
       <p>(오른쪽 Menu) 슬라이드 자료 → 만들려는 슬라이드 자료에 대한 설명</p>
-      <div class="prompt-block"><div class="prompt-header" onclick="togglePrompt(this)"><div class="prompt-title-area"><div class="prompt-title">2-2단계: PPT 렌더링 프롬프트 (선택)</div></div><button class="copy-btn" onclick="event.stopPropagation();copyPrompt(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>복사</button><svg class="prompt-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
+      <div class="prompt-block"><div class="prompt-header" onclick="togglePrompt(this)"><div class="prompt-title-area"><div class="prompt-title">2-2단계: 일반 프롬프트 (선택)</div></div><button class="copy-btn" onclick="event.stopPropagation();copyPrompt(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>복사</button><svg class="prompt-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
       <div class="prompt-body"><div class="prompt-body-inner"><div class="prompt-code" id="s22c"></div></div></div></div>
     </div>
 
@@ -402,53 +402,44 @@ Task: Analyze ALL uploaded sources and generate a consistent 40-page [Master Scr
 제목: (해당 페이지의 핵심 헤드라인)
 화면 텍스트: (핵심 데이터 및 키워드를 압축한 개조식 요약 문구). 정량 Data, 숫자, 통계는 Fact 위주로 화면 텍스트에 자연스럽게 명시할 것.
 Footer: Source: 상단 숫자/통계에 대한 발표 기관과 발표 날짜 (예: '26.2월). (권위 있는 외부기관만 표시, 없으면 출력 금지, 내부자료 표기 금지)`,
-s21:`[Adaptive Presentation Design System]
+s21:`[Adaptive Presentation Design System & SYSTEM OVERRIDES]
+(※ 렌더링 AI를 통제하는 최우선 강제 규칙. 어떠한 예외도 허용하지 않음)
 
-1. Visual Identity
-- Background (최우선 절대 원칙 - SYSTEM OVERRIDE): 어떠한 예외 상황(특정 내용 강조, 다크 모드, 차트 등)에서도 배경색 변경이나 반전 절대 금지. 40장 모든 장표의 배경은 무조건 아무것도 없는 100% 순백색 단색(Solid White, #FFFFFF)으로 강제 고정. 배경에 옅은 색상, 그라데이션, 격자 무늬(Grid), 워터마크, 배경 이미지는 일절 표출 금지. (SYSTEM COMMAND: FORCE WHITE BACKGROUND. DISABLE_DARK_MODE, DISABLE_GRID_PATTERN, NO WATERMARK).
-- Theme: Top-tier Consulting Firm Style (McKinsey, BCG, Bain)
-- Box & Shape Colors (강제 지정): 본문 내용을 담는 모든 도형과 박스(Box)의 색상은 반드시 지정된 푸른색(Accent: #1428A0) 단색 또는 푸른색이 포함된 그라데이션(Blue Gradient)만을 사용할 것. (검정색, 회색 등 임의 색상 사용 절대 금지).
-- Font(최우선 절대 원칙): 모든 텍스트는 반드시 'SamsungOneKorean700' 폰트만 사용. (모든 장표에서 폰트 종류와 크기가 달라지면 안 되며 일관성 유지).
+1. Visual Identity & Background (FORCE OVERRIDES)
+- BG: PURE WHITE (#FFFFFF) ONLY. (다크모드, 격자 무늬(Grid), 워터마크, 배경 이미지, 옅은 색상/그라데이션 임의 적용 절대 금지. SYSTEM COMMAND: DISABLE_DARK_MODE, DISABLE_GRID_PATTERN, NO_WATERMARK)
+- Colors: 본문 도형 및 박스는 푸른색(#1428A0) 단색 또는 블루 그라데이션만 사용 (검정/회색 임의 사용 금지).
+- Font: 'SamsungOneKorean700' 100% 강제 적용 (장표 간 폰트/크기 일관성 엄수).
 
-2. Typography & Writing Rules (최우선 절대 원칙 : 글자 크기 및 문체 일관성 엄수)
-- 장표마다 글자 크기가 달라지면 안됨, 아래 규칙을 모든 장표에 일관되게 유지할 것.
-- Main Title (정렬 강제): 무조건 상단 가운데 정렬(Top-Center Aligned), 30pt. (왼쪽 정렬 절대 금지. SYSTEM COMMAND: FORCE_CENTER_ALIGNMENT_FOR_MAIN_TITLE).
-- Subtitle: 14pt.
-- Body Content (소제목 아래 본문): 10pt.
-- Footer (정렬 위치 강제 고정): Data sources, 발표 날짜는 반드시 슬라이드 하단 왼쪽에 7pt로 표기. (우측/중앙 정렬 절대 금지. 권위있는 외부기관만 표시, 없으면 출력금지, 텍스트 겉에 박스 테두리 금지).
-  ▶ Footer 출력 양식 :  Source : 기관명, 리포트 제목 ('26.2월) (월 뒤에 '기준', '업데이트 기준' 등 불필요한 단어 출력 금지).
-- Writing Style (매우 중요):
-  ▶ 길이 제한: 상세 내용 및 불릿 포인트(·)는 무조건 2줄 이내로 간결하게 요약해서 출력.
-  ▶ 개조식 작성: 서술형 문장 금지. "가능합니다" -> "가능", "진행했습니다" -> "진행"과 같이 명사형 또는 간단한 요약형(개조식) 문구로 작성.
-  ▶ 마침표 삭제: 모든 문장의 끝에는 마침표(.) 절대 사용 금지.
-  ▶ Executive Summary, BLUF, Pyramid, Issue Tree, Devil's Advocate, MECE 등 컨설팅 용어는 출력하지 말고, 바로 핵심 내용만 출력.
+2. Typography & Writing Rules
+- Main Title: 30pt, 무조건 상단 가운데 정렬 (좌측 정렬 절대 금지. COMMAND: FORCE_CENTER_ALIGNMENT).
+- Subtitle: 14pt / Body Content: 10pt.
+- Footer: 7pt, 슬라이드 맨 아래 왼쪽(좌측 하단) 고정. (우측/중앙 정렬, 박스 테두리 절대 금지).
+  ▶ 양식: Source : 기관명, 리포트 제목 ('26.2월) (※외부기관만 표기. '기준' 등 불필요 단어 삭제).
+- Writing Style:
+  ▶ 불릿(·) 및 본문 상세 내용은 무조건 2줄 이내 간결 요약.
+  ▶ 서술형 금지. 명사형 개조식 작성 (예: "가능합니다" -> "가능"). 
+  ▶ 마침표(.) 절대 사용 금지.
+  ▶ MECE, BLUF, Issue Tree 등 컨설팅 용어는 텍스트로 노출하지 말고 핵심 내용만 도출.
 
-3. Dynamic Layout Rules (텍스트 전용 장표 절대 금지 / 무조건 도식화 강제)
-- Rule (NO TEXT-ONLY SLIDES): 글만 나열된 페이지는 어떤 경우에도 생성 금지. 무조건 내용이 많이 들어가는 스플릿 뷰(2단 분할)나 3단 뷰 형태의 시각적 도식화(Schematization)를 거칠 것.
-- Type A (3-Column View / 다중 박스): 텍스트를 위에서 아래로 나열하지 말고, 가로를 3개 영역으로 쪼개어 3개의 푸른색 박스 안에 핵심 논거를 병렬로 꽉 차게 배치하는 컨설팅 도식화.
-- Type B (Split View / 2단 분할): 중앙 수직 구분선을 기준으로, 왼쪽은 핵심 컨텍스트를 담고, 오른쪽은 세부 프로세스나 시각적 데이터를 풍부하게 나열하는 2단 구조.
-- Type C (Data / Flow): 프로세스나 인과 관계를 거대한 화살표와 푸른색 블록(Block) 단위로 구조화하여 나타내는 시각적 레이아웃.
-
-4. Execution
-Strictly follow the slide count and content boundaries. Construct the presentation strictly following the logical flow and structured layout styles of McKinsey, BCG, and Bain. Assign Layout A, B, or C to logical sections ensuring maximum contrast and visual hierarchy.
+3. Dynamic Layout Rules (텍스트 전용 장표 생성 불가 / 도식화 강제)
+※ Rule: 글만 나열된 페이지는 절대 금지. 스플릿 뷰(2단) 또는 3단 뷰 형태의 시각적 도식화 필수.
+- Type A (3-Column View): 가로 3영역 분할, 3개의 푸른색 박스 안에 논거를 병렬로 꽉 차게 배치.
+- Type B (Split View): 중앙 수직선 기준 2단 분할 (좌측: 컨텍스트, 우측: 프로세스/시각적 데이터).
+- Type C (Data/Flow): 프로세스/인과관계를 거대한 화살표와 푸른색 블록 단위로 구조화.
 
 ## EXECUTION_SCRIPT_RUN()
-WARNING: Merging 40 slides into a single API call causes a FATAL_MEMORY_CRASH. You MUST execute the two functions below sequentially and independently.
+WARNING: Merging 40 slides into a single API call causes a FATAL_MEMORY_CRASH. Execute sequentially.
 
 FUNCTION_01_CALL_STUDIO() {
   target_data: "Source Script Slides 1 to 20"
   deck_type: "presentation"
   length: "dynamic"
   user_steering_prompt: "
-    1. Apply [Global Design System] exactly.
-    2. SYSTEM OVERRIDE - BACKGROUND: MUST BE PURE WHITE (#FFFFFF) ONLY. GRIDS=OFF, DARK_MODE=OFF.
-    3. SYSTEM OVERRIDE - TITLE: FORCE CENTER ALIGNMENT FOR MAIN TITLE. NO LEFT ALIGNMENT.
-    4. SYSTEM OVERRIDE - LAYOUT: NO TEXT-ONLY SLIDES. MUST USE SCHEMATIC SPLIT-VIEWS OR 3-COLUMN BOX LAYOUTS.
-    5. SYSTEM OVERRIDE - COLORS: ALL SHAPES/BOXES MUST USE PURE BLUE (#1428A0) OR BLUE GRADIENTS.
-    6. SYSTEM OVERRIDE - FOOTER: MUST BE BOTTOM-LEFT ALIGNED.
-    7. Match Source content 1:1. RULE: DO NOT generate any ending/thank you slide at slide 20. End with body content.
+    1. Apply [Adaptive Presentation Design System & SYSTEM OVERRIDES] exactly.
+    2. Match Source content 1:1.
+    3. RULE: DO NOT generate any ending/thank you slide at slide 20. End with body content.
   "
-} 슬라이드 1부터 20까지 제작을 먼저 시작. 
+}
 
 // WAIT FOR FUNCTION_01 TO INITIATE, THEN IMMEDIATELY EXECUTE FUNCTION_02
 
@@ -457,20 +448,14 @@ FUNCTION_02_CALL_STUDIO() {
   deck_type: "presentation"
   length: "dynamic"
   user_steering_prompt: "
-    1. Apply [Global Design System] exactly.
-    2. SYSTEM OVERRIDE - BACKGROUND: MUST BE PURE WHITE (#FFFFFF) ONLY. GRIDS=OFF, DARK_MODE=OFF.
-    3. SYSTEM OVERRIDE - TITLE: FORCE CENTER ALIGNMENT FOR MAIN TITLE. NO LEFT ALIGNMENT.
-    4. SYSTEM OVERRIDE - LAYOUT: NO TEXT-ONLY SLIDES. MUST USE SCHEMATIC SPLIT-VIEWS OR 3-COLUMN BOX LAYOUTS.
-    5. SYSTEM OVERRIDE - COLORS: ALL SHAPES/BOXES MUST USE PURE BLUE (#1428A0) OR BLUE GRADIENTS.
-    6. SYSTEM OVERRIDE - FOOTER: MUST BE BOTTOM-LEFT ALIGNED.
-    7. Match Source content 1:1. RULE: DO NOT generate a cover or title slide. Start immediately with slide 21 body content. Place the ONLY ending conclusion slide at slide 40.
+    1. Apply [Adaptive Presentation Design System & SYSTEM OVERRIDES] exactly.
+    2. Match Source content 1:1.
+    3. RULE: DO NOT generate a cover or title slide. Start slide 21 body immediately. Place ONLY ONE conclusion at slide 40.
   "
-} 그 이후, 슬라이드 21부터 40까지 나머지 제작 시작.
-
-`,
+}`,
 s22:`
-당신은 글로벌 탑티어 컨설팅 펌(McKinsey, BCG, Bain)의 수석 프레젠테이션 디자이너이자 전략 컨설턴트입니다. 
-업로드된 소스 자료를 바탕으로 총 40장 분량의 최고 수준 프레젠테이션 기획안을 작성해야 합니다.
+당신은 글로벌 탑티어 컨설팅 펌(McKinsey, BCG, Bain) 수석 프레젠테이션 디자이너이자 전략 컨설턴트입니다. 
+소스 자료를 바탕으로 총 40장 분량의 최고 수준 프레젠테이션 기획안을 작성해야 합니다.
 
 시스템 함수나 코딩 명령어 없이, 아래의 [Adaptive Presentation Design System]과 [출력 템플릿]을 엄격히 적용하여 1장부터 40장까지 전체 슬라이드 구성안을 중간에 끊거나 생략 없이 한 번에 쭉 출력해 주세요.
 
