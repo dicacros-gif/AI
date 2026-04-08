@@ -368,8 +368,8 @@ s1:`
 # Role: Chief Slide Analyst
 Task: Analyze ALL uploaded sources and generate a consistent 30-page [Master Script Report].
 [시스템 지침]
-※ AI 모델의 1회 출력 토큰 제한을 고려하여, 스스로 내용을 축약하거나 30장 부근에서 임의로 결론을 짓지 마십시오.
 ※ 출력을 시작하기 전 목차의 논리적 흐름을 검토하고, 반드시 아래 제공된 [목차별 슬라이드 강제 배분표]에 맞춰 슬라이드 1번부터 30번까지 정확히 분량을 할당하여 꽉 채워 작성하십시오.
+※ 목차의 논리적 흐름을 다시 검토하고, 순서를 다시 정리하고, 논리의 오류를 보완하여 출력 시작
 
 ## [Variables: Please Fill Below]
 
@@ -380,7 +380,7 @@ Task: Analyze ALL uploaded sources and generate a consistent 30-page [Master Scr
 ## Instruction Guidelines
 * 데이터 신뢰성: 정량 Data, 숫자는 할루시네이션(거짓 생성) 절대 금지. 모르는 데이터와 없는 데이터로 장표를 만들면 안 됨. 숫자 Data는 철저히 Fact 위주로 구성.
 * 톤앤매너: 지정된 [Target Audience]의 수준과 관심사에 맞춘 전문적인 용어와 설득력 있고 단호한 문체 사용.
-* 프레임워크: McKinsey, BCG, Bain의 문제해결 Framework (Minto Pyramid, Issue Tree, 5 Whys, MECE) 적용. 단, 각 슬라이드의 핵심 논거는 3가지로 압축하여 전개.
+* 프레임워크: McKinsey, BCG, Bain의 문제해결 Framework (Minto Pyramid, Issue Tree, 5 Whys, MECE) 적용. 단, 각 슬라이드의 각 주장의 핵심 논거는 3가지로 압축하여 전개.
 * 용어 노출 금지: Executive Summary, BLUF, Pyramid, Issue Tree, Devil's Advocate, MECE 등 컨설팅 기법 용어 자체는 텍스트에 출력하지 말고, 해당 논리 구조만 적용하여 핵심 내용만 출력할 것.
 * 데이터 최신화: 소스 문서의 Outdated Data는 삭제하고, 권위 있는 외부 기관의 Up-to-date 최신 Source를 활용하여 논리를 탄탄하게 재구성할 것.
 
@@ -396,7 +396,6 @@ Task: Analyze ALL uploaded sources and generate a consistent 30-page [Master Scr
 9 Where 타겟 시장과 우리 위치는 어디인가?
 * Devil's Advocate을 전체 구조를 챌린지 하고, 논리를 보완하여 전체를 다시 구성
 * Outdated Data 삭제와 권위있는 up to date Source를 활용하여, 논리를 탄탄하게 다시 구성
-* 목차의 논리적 흐름을 검토하고, 순서를 다시 정리하고, 출력 시작
 
 ## Output Format (Strictly Follow)
 슬라이드 번호: (1~30)
