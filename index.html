@@ -408,33 +408,33 @@ Task: Analyze ALL uploaded sources and generate a consistent 30-page [Master Scr
 화면 텍스트: (핵심 데이터 및 키워드 압축한 개조식 문구 10줄 이상 요약), 정량 Data, 숫자, 통계는  Fact 위주로 화면 텍스트에 자연스럽게 명시할 것.
 Footer: Source: 상단 숫자/통계에 대한 발표 기관과 발표 날짜 (예: '26.2월). (권위 있는 외부기관만 표시, 없으면 출력 금지, 내부자료 표기 금지)
 `,
-s21:`[Adaptive PPT]
-※ 렌더링 AI의 임의 변형을 막는 최상위 강제 규칙. 예외 허용 금지
+s21:`[Adaptive PPT]※AI의 임의 변형 막는 최상위 강제 규칙. 예외 허용 금지
 1. Visual Identity & Background (FORCE OVERRIDES)
-- BG(최우선 절대 원칙): PURE WHITE (#FFFFFF) ONLY. (다크모드, 격자 무늬(Grid), 워터마크, 배경 이미지 렌더링 절대 금지. 배경색 변경이나 반전 절대 금지. 30장 모든 장표의 배경은 아무것도 없는 100% 단색(#FFFFFF)강제 고정. COMMAND: FORCE_WHITE_BACKGROUND).
-- 모든 도형과 도식화는 McKinsey, BCG, Bain 스타일의 컨설팅 프레임워크(가치사슬, 매트릭스, Logical 프로세스 등) 형태 렌더링할 것. 도형 색상은 #1428A0 또는 Blue Gradient 지정. (중요하지 않은 도형은 회색 일부 사용, 강조할 내용의 도형은 다른색 허용).
+- BG(최우선 절대 원칙): PURE WHITE (#FFFFFF) ONLY. (다크모드, 격자 무늬(Grid), 워터마크, 배경 이미지 렌더링 절대 금지. 배경색 변경/반전 절대 금지. 30장 모든 장표 배경은 아무것도 없는 100% 단색(#FFFFFF)강제 고정. COMMAND: FORCE_WHITE_BACKGROUND).
+- 모든 도형과 도식화는 McKinsey, BCG, Bain 스타일 컨설팅 프레임워크(가치사슬, 매트릭스, Logical 프로세스 등) 형태 렌더링할 것. 도형 색상은 #1428A0 또는 Blue Gradient 지정. (중요하지 않은 도형은 회색 사용, 강조 내용의 도형은 다른색 허용).
 - Palette: BG[#FFFFFF], Text[#111111], 도형색[#1428A0]
-- Font: 'SamsungOneKorean700' 고정. (Font 크기가 제멋대로 작아지는 Auto-fit 현상을 막기 위해 본문 글자 수를 요약형으로 통제).
+- Font: 'SamsungOneKorean700' 고정. (Font 크기가 작아지는 Auto-fit을 막기 위해 글자 수 요약).
 - Graphics: Sharp rectangles, blue gradients for shapes, thin grey vertical/horizontal dividers, strict margins. Bottom area graphics must be schematized and explicitly display data/numbers.
-2. Typography & Writing Rules (텍스트 초압축 및 정렬 강제)
+2. Typography & Writing Rules (텍스트 압축 및 정렬 강제)
 - Main Title: 30pt, 무조건 상단 가운데 정렬 (좌측 정렬 금지. COMMAND: FORCE_CENTER_ALIGNMENT).
 - Subtitle: 14pt / Body Content: 10pt.
-- Footer: 7pt, 슬라이드 맨 아래 왼쪽(좌측 하단) 고정. 외부기관 소스만 출력, internal/내용 없으면 출력 금지, 할루시네이션 금지(우측/중앙 정렬, 박스 테두리 금지). 
+- Footer: 7pt, 슬라이드 맨 아래 왼쪽(좌측 하단) 고정. 외부기관 소스만 출력, internal/한국 소스 출력 금지/내용 없으면 출력 금지, 할루시네이션 금지(우측/중앙 정렬, 박스 테두리 금지). 
   ▶ 양식: Source : 기관명, 리포트 제목 ('26.2월)
 - Writing Style:
-  ▶ 글자 수 제한 (매우 중요): 폰트 축소 방지를 위해 상세 내용 및 불릿은 무조건 '1~2줄 이내의 초압축 키워드'로 작성. 서술형 문장 금지. 명사형 개조식 작성. 마침표(.) 금지. 컨설팅 스타일의 다양한 도형과 도식화를 사용하여 문자 입력
+  ▶ 글자 수 제한(매우 중요): 폰트 축소 방지를 위해 상세 내용 및 불릿은 '1~2줄 이내의 압축 키워드' 작성. 서술형 문장 금지. 명사형 개조식 작성. 마침표(.) 금지. 컨설팅 스타일의 다양한 도형과 도식화 사용하여 문자 입력
   ▶ (중요) Executive Summary, BLUF, Pyramid, Issue Tree, Devil's Advocate, MECE 등 컨설팅 용어는 출력하지 말고, 바로 핵심 내용 출력
 3. Dynamic Layout Rules (텍스트 전용 장표 금지/도식화 강제)
-※ Rule (NO TEXT-ONLY SLIDES): 글만 나열된 페이지 불가. 본문을 2~4개의 프레임워크 영역으로 쪼갤 것.
-※ Rule (NESTED FRAMEWORK): Type A 또는 B를 기본 뼈대(Macro) 화면을 분할하여, 분할된 영역 내부에 Type C, D, E 컨설팅 framework, 도식화(Micro)를 각각 꽉 차게 중첩하여 슬라이드 렌더링.
-※ 분할된 영역은 MECE에 따라 중복된 논점이 섞이면 안됨
+※ Rule (NO TEXT-ONLY SLIDES): 글만 나열된 페이지 불가. 본문 2~4개의 프레임워크 영역으로 쪼갤 것.
+※ Rule (NESTED FRAMEWORK): Type A 또는 B를 기본 뼈대(Macro) 화면을 분할하여, 분할된 영역 내부에 Type C, D, E 컨설팅 framework, 도식화(Micro)를 각각 꽉 차게 중첩.
+※ 분할된 영역은 MECE하게, 중복 논점 금지
 [Macro 분할 뼈대-기본 적용]
-- Type A (3-Column View): 가로/세로 3영역 분할, 3개의 블루 그라데이션 박스 안에 논거를 병렬로 꽉 차게 배치.
+- Type A (3-Column View): 가로/세로 3영역 분할, 3개의 블루 그라데이션 박스 안에 논거를 병렬로 배치.
 - Type B (Split View / Matrix): 중앙 수직선 기준 2단 분할 또는 2x2 매트릭스 형태의 구조.
 [Micro 세부 도식화 - 분할 영역 내부에 개별 적용]
-- Type C (Data/Flow): 프로세스나 인과관계를 거대한 화살표와 평면 블록 단위로 구조화.
+- Type C (Data/Flow): 프로세스/인과관계를 거대한 화살표와 평면 블록 단위로 구조화.
 - Type D (Hierarchy): Focus on text structure. Top-center aligned main titles, solid blue subtitle bars, bulleted body.
 - Type E (Metrics): logical chart area. Schematized bottom diagrams explicitly displaying data/metrics. Clean headers, metric callouts using Accent color.
+※MACRO A/B, MICRO C/D/E 단어 출력 금지
 4. Execution
 Strictly follow the slide count and content boundaries. Construct the presentation strictly following the logical flow and structured layout styles of McKinsey, BCG, and Bain. Assign Layout A or B, and then use C, D, E to logical sections in each logical frame ensuring maximum contrast and visual hierarchy.
 ## EXECUTION_SCRIPT_RUN()
