@@ -408,34 +408,33 @@ Task: Analyze ALL uploaded sources and generate a consistent 30-page [Master Scr
 화면 텍스트: (핵심 데이터 및 키워드 압축한 개조식 문구 10줄 이상 요약), 정량 Data, 숫자, 통계는  Fact 위주로 화면 텍스트에 자연스럽게 명시할 것.
 Footer: Source: 상단 숫자/통계에 대한 발표 기관과 발표 날짜 (예: '26.2월). (권위 있는 외부기관만 표시, 없으면 출력 금지, 내부자료 표기 금지)
 `,
-s21:`[Adaptive PPT]※AI의 임의 변형 막는 최상위 강제 규칙. 예외 허용 금지
-1. Visual Identity & Background (FORCE OVERRIDES)
-- BG(최우선 절대 원칙): PURE WHITE (#FFFFFF) ONLY. (다크모드, 격자 무늬(Grid), 워터마크, 배경 이미지 렌더링 절대 금지. 배경색 변경/반전 절대 금지. 30장 모든 장표 배경은 아무것도 없는 100% 단색(#FFFFFF)강제 고정. COMMAND: FORCE_WHITE_BACKGROUND).
-- 모든 도형과 도식화는 McKinsey, BCG, Bain 스타일 컨설팅 프레임워크(가치사슬, 매트릭스, Logical 프로세스 등) 형태 렌더링할 것. 도형 색상은 #1428A0 또는 Blue Gradient 지정. (중요하지 않은 도형은 회색 사용, 강조 내용의 도형은 다른색 허용).
-- Palette: BG[#FFFFFF], Text[#111111], 도형색[#1428A0]
-- Font: 'SamsungOneKorean700' 고정. (Font 크기가 작아지는 Auto-fit을 막기 위해 글자 수 요약).
-- Graphics: Sharp rectangles, blue gradients for shapes, thin grey vertical/horizontal dividers, strict margins. Bottom area graphics must be schematized and explicitly display data/numbers.
-2. Typography & Writing Rules (텍스트 압축 및 정렬 강제)
-- Main Title: 30pt, 무조건 상단 가운데 정렬 (좌측 정렬 금지. COMMAND: FORCE_CENTER_ALIGNMENT).
-- Subtitle: 14pt / Body Content: 10pt.
-- Footer: 7pt, 슬라이드 맨 아래 왼쪽(좌측 하단) 고정. 외부기관 소스만 출력, internal/한국 소스 출력 금지/내용 없으면 출력 금지, 할루시네이션 금지(우측/중앙 정렬, 박스 테두리 금지). 
-  ▶ 양식: Source : 기관명, 리포트 제목 ('26.2월)
-- Writing Style:
-  ▶ 글자 수 제한(매우 중요): 폰트 축소 방지를 위해 상세 내용 및 불릿은 '1~2줄 이내의 압축 키워드' 작성. 서술형 문장 금지. 명사형 개조식 작성. 마침표(.) 금지. 컨설팅 스타일의 다양한 도형과 도식화 사용하여 문자 입력
-  ▶ (중요) Executive Summary, BLUF, Pyramid, Issue Tree, Devil's Advocate, MECE 등 컨설팅 용어는 출력하지 말고, 바로 핵심 내용 출력
-3. Dynamic Layout Rules (텍스트 전용 장표 금지/도식화 강제)
-※ Rule (NO TEXT-ONLY SLIDES): 글만 나열된 페이지 불가. 본문 2~4개의 프레임워크 영역으로 쪼갤 것.
-※ Rule (NESTED FRAMEWORK): Type A 또는 B를 기본 뼈대(Macro) 화면을 분할하여, 분할된 영역 내부에 Type C, D, E 컨설팅 framework, 도식화(Micro)를 각각 꽉 차게 중첩.
-※ 분할된 영역은 MECE하게, 중복 논점 금지
-[Macro 분할 뼈대-기본 적용]
-- Type A (3-Column View): 가로/세로 3영역 분할, 3개의 블루 그라데이션 박스 안에 논거를 병렬로 배치.
-- Type B (Split View / Matrix): 중앙 수직선 기준 2단 분할 또는 2x2 매트릭스 형태의 구조.
-[Micro 세부 도식화 - 분할 영역 내부에 개별 적용]
-- Type C (Data/Flow): 프로세스/인과관계를 거대한 화살표와 평면 블록 단위로 구조화.
-- Type D (Hierarchy): Focus on text structure. Top-center aligned main titles, solid blue subtitle bars, bulleted body.
-- Type E (Metrics): logical chart area. Schematized bottom diagrams explicitly displaying data/metrics. Clean headers, metric callouts using Accent color.
-※MACRO A/B, MICRO C/D/E 단어 출력 금지
-4. Execution
+s21:`[Adaptive PPT]※임의 변형 막는 최상위 강제 규칙
+1. Visual(FORCE OVERRIDES)
+-BG(최우선 원칙): PURE WHITE(#FFFFFF) ONLY.(다크모드, 격자 무늬(Grid), 워터마크, 배경 이미지 렌더링 금지. 배경색 변경/반전 금지. 모든 장표 배경은 아무것도 없는 100% 단색(#FFFFFF)강제 고정.COMMAND: FORCE_WHITE_BACKGROUND).
+-모든 도형과 도식화는 McKinsey, BCG, Bain 컨설팅 프레임워크(가치사슬, 매트릭스, Logical 프로세스 등)형태 렌더링. 도형 색상 #1428A0 또는 Blue Gradient.(중요하지 않은 도형은 회색 사용, 강조 내용/중요 도형은 다른색 허용).
+-Palette: BG[#FFFFFF],Text[#111111],도형색[#1428A0]
+-Font: 'SamsungOneKorean700' 고정.(Font 크기 작아지는 Auto-fit 방지위해 글자 요약).
+-Graphics: Sharp rectangles, blue gradients for shapes, thin grey vertical/horizontal dividers, strict margins. Bottom area graphics must be schematized and explicitly display data/numbers.
+2. Writing Rules(텍스트 압축 및 정렬 강제)
+-Main Title: 30pt, 무조건 상단 가운데 정렬(좌측 정렬 금지. COMMAND: FORCE_CENTER_ALIGNMENT).
+-Subtitle: 14pt/Body Content: 10pt.
+-Footer: 7pt, 슬라이드 맨 아래 왼쪽(좌측 하단) 고정. 외부기관 소스만 출력, internal/한국 소스 출력 금지/내용 없으면 출력 금지, 할루시네이션 금지(우측/중앙 정렬, 박스 테두리 금지). 
+▶양식: Source : 기관명, 리포트 제목('26.2월)
+-Writing Style:
+▶글자수 제한(중요): 폰트 축소 방지를 위해 상세 내용 및 불릿은 '1~2줄 이내의 압축 키워드' 작성. 서술형 문장 금지. 명사형 개조식 작성. 마침표(.) 금지. 컨설팅 스타일 다양한 도형과 도식화 사용하여 문자 입력
+▶(강제 출력 금지어: 화면 노출 금지): MACRO, MICRO, Type A/B/C/D/E, Column, Hierarchy, Matrix, Flow, Metrics 및 Executive Summary, BLUF, Pyramid, Issue Tree, Devil's Advocate, MECE 등 레이아웃 지시어/컨설팅 용어는 텍스트(제목, 소제목, 본문 헤더 등) 출력 금지. 핵심 내용만 텍스트 렌더링.
+3.Dynamic Layout Rules(텍스트 전용 장표 금지/도식화 강제)
+※Rule(NO TEXT-ONLY SLIDES): 글만 나열된 페이지 불가. 본문 2~4개 프레임워크 영역으로 분할.
+※Rule(NESTED FRAMEWORK): Type A/B를 기본 뼈대(화면 분할)로 하여, 분할 영역 내부에 Type C, D, E 컨설팅 framework, 도식화 각각 꽉 차게 중첩.
+※분할된 영역은 MECE하게, 중복 논점 금지
+[화면 분할 뼈대-기본 적용]
+-Type A(3단 분할):가로/세로 3영역 분할, 3개 블루 그라데이션 박스 안에 논거를 병렬 배치.
+-Type B(2단 분할/매트릭스):중앙 수직선 기준 2단 분할 또는 2x2 매트릭스 형태 구조.
+[세부 도식화-분할 영역 내부 개별 적용]
+-Type C(흐름/인과): 프로세스/인과관계를 화살표와 블록 단위 구조화.
+-Type D(계층 구조): Focus on text structure. Top-center aligned main titles, solid blue subtitle bars, bulleted body.
+-Type E(데이터/지표): logical chart area. Schematized bottom diagrams explicitly displaying data/metrics. Clean headers, metric callouts using Accent color.
+4.Execution
 Strictly follow the slide count and content boundaries. Construct the presentation strictly following the logical flow and structured layout styles of McKinsey, BCG, and Bain. Assign Layout A or B, and then use C, D, E to logical sections in each logical frame ensuring maximum contrast and visual hierarchy.
 ## EXECUTION_SCRIPT_RUN()
 WARNING: Merging 30 slides into a single API call causes a FATAL_MEMORY_CRASH. Execute sequentially.
@@ -445,29 +444,25 @@ FUNCTION_01_CALL_STUDIO() {
   length: "dynamic"
   action: "GENERATE_PPT_DIRECTLY_NO_TEXT_DRAFT"
   user_steering_prompt: "
-    1. GENERATE PPT DIRECTLY. DO NOT OUTPUT TEXT OUTLINES OR DRAFTS.
-    2. Apply [Adaptive PPT] exactly. FORCE_PURE_WHITE_BG=TRUE.
-    3. FORCE_CENTER_TITLE=TRUE (NO LEFT ALIGN).
-    4. FORCE_NESTED_LAYOUTS: MACRO(A,B) + MICRO(C,D,E) INSIDE EACH SECTION.
-    5. FOOTER MUST BE BOTTOM-LEFT ALIGNED.
-    6. Match Source 1:1. NO ending slide at slide 15. End with body content.
-  "
-}
-// WAIT FOR FUNCTION_01 TO INITIATE, THEN IMMEDIATELY EXECUTE FUNCTION_02
+1. GENERATE PPT DIRECTLY. DO NOT OUTPUT TEXT OUTLINES OR DRAFTS.
+2. Apply [Adaptive PPT] exactly. FORCE_PURE_WHITE_BG=TRUE.
+3. FORCE_CENTER_TITLE=TRUE (NO LEFT ALIGN).
+4. FORCE_NESTED_LAYOUTS: SPLIT SCREEN AND APPLY SCHEMAS INSIDE EACH SECTION.
+5. CRITICAL RULE: DO NOT RENDER SYSTEM WORDS (MACRO, MICRO, TYPE A/B/C/D/E, COLUMN, HIERARCHY, METRICS, FLOW, MECE) ON SLIDES. USE ACTUAL CONTENT ONLY FOR HEADERS.
+6 Match Source 1:1. NO ending slide at slide 15. End with body content. "}
+EXECUTE FUNCTION_02
 FUNCTION_02_CALL_STUDIO() {
-  target_data: "Source Script Slides 16 to 30"
-  deck_type: "presentation"
-  length: "dynamic"
-  action: "GENERATE_PPT_DIRECTLY_NO_TEXT_DRAFT"
-  user_steering_prompt: "
-    1. GENERATE PPT DIRECTLY. DO NOT OUTPUT TEXT OUTLINES OR DRAFTS.
-    2. Apply [Adaptive PPT] exactly. FORCE_PURE_WHITE_BG=TRUE.
-    3. FORCE_CENTER_TITLE=TRUE (NO LEFT ALIGN).
-    4. FORCE_NESTED_LAYOUTS: MACRO(A,B) + MICRO(C,D,E) INSIDE EACH SECTION. 
-    5. FOOTER MUST BE BOTTOM-LEFT ALIGNED.
-    6. NO cover/title slide. Start slide 16 immediately. Place ONLY ONE conclusion at slide 30.
-  "
-}`,
+target_data: "Source Script Slides 16 to 30"
+deck_type: "presentation"
+length: "dynamic"
+action: "GENERATE_PPT_DIRECTLY_NO_TEXT_DRAFT"
+user_steering_prompt: "
+1. GENERATE PPT DIRECTLY. DO NOT OUTPUT TEXT OUTLINES OR DRAFTS.
+2. Apply [Adaptive PPT] exactly. FORCE_PURE_WHITE_BG=TRUE.
+3. FORCE_CENTER_TITLE=TRUE (NO LEFT ALIGN).
+4. FORCE_NESTED_LAYOUTS: SPLIT SCREEN AND APPLY SCHEMAS INSIDE EACH SECTION.
+5. CRITICAL RULE: DO NOT RENDER SYSTEM WORDS (MACRO, MICRO, TYPE A/B/C/D/E, COLUMN, HIERARCHY, METRICS, FLOW, MECE) ON SLIDES. USE ACTUAL CONTENT ONLY FOR HEADERS.
+6. NO cover/title slide. Start slide 16 immediately. Place ONLY ONE conclusion at slide 30. "}`,
 s22:`
 당신은 글로벌 탑티어 컨설팅 펌(McKinsey, BCG, Bain) 수석 프레젠테이션 디자이너이자 전략 컨설턴트입니다. 
 소스 자료를 바탕으로 30장 분량의 최고 수준 프레젠테이션 기획안을 작성해야 합니다.
