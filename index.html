@@ -322,7 +322,7 @@ Outdated 내용은 삭제하고, 최신 내용 위주로 출력
     <div class="pipeline-card step-1">
       <div class="pipeline-step">🎯 STEP 1</div>
       <h3>PPT 구성안 Text 출력</h3>
-      <p>노트북 LM에서 40장 Master Script Report 생성</p>
+      <p>노트북 LM에서 30장 Master Script Report 생성</p>
       <div class="red-note"><span class="label">⚠️ Red 텍스트 수정 필요</span>- Target Audience: <span class="red-text">&lt;&lt; 의사결정 임원 &gt;&gt;</span><br>- Presentation Objective: <span class="red-text">&lt;&lt; 신사업에 진입해야 하는가? 진입 한다면 어떻게? &gt;&gt;</span></div>
       <div class="prompt-block" style="margin-top:16px"><div class="prompt-header" onclick="togglePrompt(this)"><div class="prompt-title-area"><div class="prompt-title">1단계: Master Script Report 프롬프트</div></div><button class="copy-btn" onclick="event.stopPropagation();copyPrompt(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>복사</button><svg class="prompt-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
       <div class="prompt-body"><div class="prompt-body-inner"><div class="prompt-code" id="s1c"></div></div></div></div>
@@ -418,11 +418,11 @@ s21:`[Adaptive PPT]
 2. Typography & Writing Rules (텍스트 초압축 및 정렬 강제)
 - Main Title: 30pt, 무조건 상단 가운데 정렬 (좌측 정렬 절대 금지. COMMAND: FORCE_CENTER_ALIGNMENT).
 - Subtitle: 14pt / Body Content: 10pt.
-- Footer: 7pt, 슬라이드 맨 아래 왼쪽(좌측 하단) 고정. (우측/중앙 정렬, 박스 테두리 절대 금지). 
+- Footer: 7pt, 슬라이드 맨 아래 왼쪽(좌측 하단) 고정. 내용 없으면 출력 금지, 할루시네이션 금지(우측/중앙 정렬, 박스 테두리 절대 금지). 
   ▶ 양식: Source : 기관명, 리포트 제목 ('26.2월)
 - Writing Style:
   ▶ 글자 수 제한 (매우 중요): 폰트 축소 방지를 위해 상세 내용 및 불릿은 무조건 '1~2줄 이내의 초압축 키워드'로 작성. 서술형 문장 절대 금지. 명사형 개조식 작성. 마침표(.) 금지. 컨설팅 스타일의 다양한 도형과 도식화를 사용하여 문자 입력
-  ▶ Executive Summary, BLUF, Pyramid, Issue Tree, Devil's Advocate, MECE 등 컨설팅 용어는 출력하지 말고, 바로 핵심 내용만 출력
+  ▶ (중요) Executive Summary, BLUF, Pyramid, Issue Tree, Devil's Advocate, MECE 등 컨설팅 용어는 출력하지 말고, 바로 핵심 내용만 출력
 
 3. Dynamic Layout Rules (텍스트 전용 장표 절대 금지 / 무조건 도식화 강제)
 ※ Rule (NO TEXT-ONLY SLIDES): 글만 나열된 페이지는 어떤 경우에도 생성 불가. 무조건 본문을 2~4개의 프레임워크 영역으로 쪼갤 것.
