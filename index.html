@@ -408,7 +408,7 @@ Task: Analyze ALL uploaded sources and generate a consistent 30-page [Master Scr
 화면 텍스트: (핵심 데이터 및 키워드 압축한 개조식 문구 10줄 이상 요약), 정량 Data, 숫자, 통계는  Fact 위주로 화면 텍스트에 자연스럽게 명시할 것.
 Footer: Source: 상단 숫자/통계에 대한 발표 기관과 발표 날짜 (예: '26.2월). (권위 있는 외부기관만 표시, 없으면 출력 금지, 내부자료 표기 금지)
 `,
-s21:`[Adaptive PPT]※임의 변형 막는 최상위 강제 규칙
+s21:`[PPT]※임의 변형 막는 최상위 강제 규칙
 1. Visual(FORCE OVERRIDES)
 -BG(최우선 원칙): PURE WHITE(#FFFFFF) ONLY.(다크모드, 격자 무늬(Grid), 워터마크, 배경 이미지 렌더링 금지. 배경색 변경/반전 금지. 모든 장표 배경은 아무것도 없는 100% 단색(#FFFFFF)강제 고정.COMMAND: FORCE_WHITE_BACKGROUND).
 -모든 도형과 도식화는 McKinsey, BCG, Bain 컨설팅 프레임워크(가치사슬, 매트릭스, Logical 프로세스 등)형태 렌더링. 도형 색상 #1428A0 또는 Blue Gradient.(중요하지 않은 도형은 회색 사용, 강조 내용/중요 도형은 다른색 허용).
@@ -416,7 +416,7 @@ s21:`[Adaptive PPT]※임의 변형 막는 최상위 강제 규칙
 -Font: 'SamsungOneKorean700' 고정.(Font 크기 작아지는 Auto-fit 방지위해 글자 요약).
 -Graphics: Sharp rectangles, blue gradients for shapes, thin grey vertical/horizontal dividers, strict margins. Bottom area graphics must be schematized and explicitly display data/numbers.
 2. Writing Rules(텍스트 압축 및 정렬 강제)
--Main Title: 30pt, 무조건 상단 가운데 정렬(좌측 정렬 금지. COMMAND: FORCE_CENTER_ALIGNMENT).
+-Main Title: 28pt, 무조건 상단 가운데 정렬(좌측 정렬 금지. COMMAND: FORCE_CENTER_ALIGNMENT).
 -Subtitle: 14pt/Body Content: 10pt.
 -Footer: 7pt, 슬라이드 맨 아래 왼쪽(좌측 하단) 고정. 외부기관 소스만 출력, internal/한국 소스 출력 금지/내용 없으면 출력 금지, 할루시네이션 금지(우측/중앙 정렬, 박스 테두리 금지). 
 ▶양식: Source : 기관명, 리포트 제목('26.2월)
@@ -445,7 +445,7 @@ FUNCTION_01_CALL_STUDIO() {
   action: "GENERATE_PPT_DIRECTLY_NO_TEXT_DRAFT"
   user_steering_prompt: "
 1. GENERATE PPT DIRECTLY. DO NOT OUTPUT TEXT OUTLINES OR DRAFTS.
-2. Apply [Adaptive PPT] exactly. FORCE_PURE_WHITE_BG=TRUE.
+2. Apply [PPT] exactly. FORCE_PURE_WHITE_BG=TRUE.
 3. FORCE_CENTER_TITLE=TRUE (NO LEFT ALIGN).
 4. FORCE_NESTED_LAYOUTS: SPLIT SCREEN AND APPLY SCHEMAS INSIDE EACH SECTION.
 5. CRITICAL RULE: DO NOT RENDER SYSTEM WORDS (MACRO, MICRO, TYPE A/B/C/D/E, COLUMN, HIERARCHY, METRICS, FLOW, MECE) ON SLIDES. USE ACTUAL CONTENT ONLY FOR HEADERS.
@@ -479,7 +479,7 @@ s22:`
 
 2. Typography & Writing Rules (최우선 절대 원칙 : 글자 크기 및 문체 일관성 엄수)
 - 장표마다 글자 크기가 달라지면 안됨, 아래 규칙을 모든 장표에 일관되게 유지할 것.
-- Main Title: 상단 중앙 정렬, 30pt.
+- Main Title: 상단 중앙 정렬, 28pt.
 - Subtitle: 14pt.
 - Body Content (소제목 아래 본문): 10pt.
 - Footer: 출처(Data sources)와 발표/발간 날짜는 반드시 슬라이드 가장 밑바닥 왼쪽에 7pt로 표기. (권위있는 외부기관만 표시, 없으면 출력금지)
@@ -489,7 +489,7 @@ s22:`
   ▶ 마침표 삭제: 모든 문장의 끝에는 마침표(.) 절대 사용 금지.
 
 3. Dynamic Layout Rules (논리적 흐름에 맞춰 A, B, C 중 택 1)
-- Type A(Hierarchy): Focus on text structure. Top-center aligned main titles(30pt), solid blue subtitle bars(14pt), bulleted body(10pt).
+- Type A(Hierarchy): Focus on text structure. Top-center aligned main titles(28pt), solid blue subtitle bars(14pt), bulleted body(10pt).
 - Type B(Data/Metrics): Maximize chart area. Schematized bottom diagrams explicitly displaying data/metrics. Clean headers, high-contrast metric callouts using Accent color.
 - Type C(Split View): Mid-line vertical divider. Left side for context/lists(10pt), right side for process steps, visual comparisons, or schematized data.
 
@@ -507,7 +507,7 @@ Strictly follow the slide count and content boundaries. Construct the presentati
 --------------------------------------------------
 [Slide 번호]
 ▶ Layout: Type A / B / C 중 택 1
-▶ Main Title (30pt): 슬라이드 핵심 메시지 요약
+▶ Main Title (28pt): 슬라이드 핵심 메시지 요약
 ▶ Subtitle (14pt): 소제목 내용
 ▶ Body Content (10pt):
    - 본문 내용 1 (컨설팅 보고서 수준의 논리 전개, 2줄 이내 요약, 개조식, 마침표 생략)
