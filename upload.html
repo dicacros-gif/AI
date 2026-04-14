@@ -1,9 +1,9 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title> 업로드</title>
+    <title>AI 업로드</title>
     <style>
       :root {
         --bg: #f4f7ff;
@@ -154,6 +154,8 @@
         fileName: "index.html",
         token: "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",
       };
+      const GH_API_VERSION = "2022-11-28";
+      const GH_AUTH_HEADER = `token ${GITHUB_CONFIG.token}`;
 
       const FILE_NAME_TARGET = `${GITHUB_CONFIG.fileName}`;
 
@@ -217,7 +219,8 @@
           {
             headers: {
               Accept: "application/vnd.github+json",
-              Authorization: `Bearer ${GITHUB_CONFIG.token}`,
+              "X-GitHub-Api-Version": GH_API_VERSION,
+              Authorization: GH_AUTH_HEADER,
             },
           }
         );
@@ -234,9 +237,27 @@
       function friendlyUploadError(err) {
         const msg = String(err.message || "");
         if (msg.includes("401") || msg.includes("Bad credentials")) {
-          return "토큰이 유효하지 않거나 권한이 없습니다. (401 Bad credentials)\n현재 사용 중인 토큰을 확인해 주세요.";
+          return "토큰이 유효하지 않거나 권한이 없습니다. (401 Bad credentials)\n현재 사용 중인 토큰을 확인하고 'repo' 또는 fine-grained의 Contents:Write 권한이 있는지 확인해 주세요.";
         }
         return msg;
+      }
+
+      async function validateToken() {
+        const res = await fetch("https://api.github.com/user", {
+          headers: {
+            Accept: "application/vnd.github+json",
+            "X-GitHub-Api-Version": GH_API_VERSION,
+            Authorization: GH_AUTH_HEADER,
+          },
+        });
+        if (!res.ok) {
+          const text = await res.text();
+          if (res.status === 401) {
+            throw new Error(`기존 파일 확인 실패: 401 (Bad credentials) (${text})`);
+          }
+          throw new Error(`토큰 확인 실패: ${res.status} ${res.statusText} (${text})`);
+        }
+        return res.json();
       }
 
       async function uploadFile() {
@@ -263,6 +284,7 @@
         setStatus("업로드 중입니다...");
 
         try {
+          await validateToken();
           const content = await readFileAsBase64(file);
           const sha = await getSha(targetPath);
 
@@ -281,7 +303,8 @@
               method: "PUT",
               headers: {
                 Accept: "application/vnd.github+json",
-                Authorization: `Bearer ${GITHUB_CONFIG.token}`,
+                "X-GitHub-Api-Version": GH_API_VERSION,
+                Authorization: GH_AUTH_HEADER,
                 "Content-Type": "application/json",
               },
               body: JSON.stringify(payload),
