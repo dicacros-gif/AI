@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Global AI Startup Watch (Non-Unicorn) - 2026-04-15</title>
+    <style>
+      :root {
+        --bg: #f4f7ff;
+        --text: #0f172a;
+        --muted: #334155;
+        --line: #cbd5e1;
+        --card: #ffffff;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: Inter, "Noto Sans KR", system-ui, -apple-system, Segoe UI, Arial, sans-serif;
+        color: var(--text);
+        background: linear-gradient(180deg, #f8fbff 0%, #ecf2ff 100%);
+      }
+      main { width: min(1280px, calc(100% - 2rem)); margin: 1rem auto 2.5rem; }
+      h1 { font-size: 1.45rem; margin: 0.8rem 0 0.4rem; }
+      p { color: var(--muted); margin: 0 0 0.9rem; }
+      .meta { color: #475569; font-size: 0.92rem; }
+      .card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 1rem; overflow: auto; box-shadow: 0 12px 30px rgba(15,23,42,0.06); }
+      table { width: 100%; border-collapse: collapse; min-width: 1140px; font-size: 0.9rem; }
+      th, td { border: 1px solid var(--line); padding: 0.62rem; vertical-align: top; text-align: left; }
+      th { background: #eef2ff; font-weight: 700; }
+      thead th { position: sticky; top: 0; z-index: 1; }
+      .pill { display: inline-block; padding: 0.15rem 0.55rem; border-radius: 999px; background: #dbeafe; color: #1d4ed8; font-size: 0.75rem; margin-right: 0.2rem; }
+      .warn { color: #b45309; font-weight: 700; }
+      a { color: #1d4ed8; }
+      .ok { color: #065f46; }
+      .bad { color: #9f1239; }
+      ul { margin: 0.4rem 0 0 1.1rem; }
+      footer { margin-top: 0.7rem; color: #64748b; font-size: 0.84rem; line-height: 1.5; }
+      @media (max-width: 768px) {
+        main { width: calc(100% - 1rem); }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>유니콘 미만 글로벌 AI 스타트업 모니터링</h1>
+      <p class="meta">작성: 2026-04-14 기준(UTC 22:00 갱신), 대상: 한국/중국 제외, 유니콘 미만, 모바일 AI 및 휴대폰 AI/광고 AI 후보 포함</p>
+      <p class="meta">밸류에이션은 공개된 수치가 있는 경우에만 반영. 미공개 항목은 <span class="warn">공개 미공개</span>.</p>
+      <div class="card">
+        <table>
+          <thead>
+            <tr>
+              <th>기업</th>
+              <th>설립년도</th>
+              <th>본사</th>
+              <th>공동창업자 / CEO</th>
+              <th>학교/전공/주요경력</th>
+              <th>직원수</th>
+              <th>밸류에이션(PitchBook/공개)</th>
+              <th>매출(최근)·예상</th>
+              <th>MAU/가입자</th>
+              <th>영업이익(적/흑자)</th>
+              <th>비즈니스모델</th>
+              <th>정량 인사이트</th>
+              <th>핵심 코멘트</th>
+              <th>출처</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Inferact</td>
+              <td>2025</td>
+              <td>San Francisco, CA</td>
+              <td>Simon Mo(창립자), Woosuk Kwon(CTO), Kaichao You(Chief Scientist) 외</td>
+              <td>Woosuk Kwon: UC Berkeley Ph.D(Computer Science), 전 Google DeepMind 연구원. Kaichao You: Tsinghua Ph.D. (Software). Simon Mo: UC Berkeley 커뮤니티/연구 기여 이력</td>
+              <td>공개 미공개(채용 페이지에서 다수 채용 공고 상시)</td>
+              <td><span class="ok">$800M</span> (Seed, 2026)</td>
+              <td>공개 미공개</td>
+              <td>공개 미공개</td>
+              <td>공개 미공개</td>
+              <td>LLM 추론 인프라(vLLM 기반) 상용화 + 고성능 배포/서비스 최적화. vLLM OSS 기여 기반 엔터프라이즈형 라이센싱/유지비용 절감 가치 제안</td>
+              <td>추론 비용 절감 = 모델 운영 단가 하락 경로로 인한 고마진 확장 잠재력 큼. vLLM 사용자사례(클라우드/쇼핑 앱) 보유</td>
+              <td>AI 파이프라인에서 추론비용이 전체 스택비의 큰 비중을 차지하는 만큼, 가격 민감도가 높아 성장성이 크다고 판단</td>
+              <td>TechCrunch(2026), vLLM 프로젝트 페이지, <a href="https://inferact.ai/">inferact.ai</a></td>
+            </tr>
+            <tr>
+              <td>Micro1</td>
+              <td>2022</td>
+              <td>Palo Alto / SF Bay Area, CA</td>
+              <td>Ali Ansari(Founder & CEO)</td>
+              <td>Ali Ansari: Stanford University(강화학습 중심) 교육 표기, AI 기반 데이터운영·채용 플랫폼 운영 경험</td>
+              <td>51-200 (LinkedIn 기준 추정)</td>
+              <td><span class="ok">$500M</span> (2025 Sep 시리즈A 발표)</td>
+              <td>2025년 말 기준 <span class="ok">ARR $100M 달성</span> (직전 $7M)</td>
+              <td>공개 미공개(전문가 커뮤니티 네트워크 보유)</td>
+              <td>공개 미공개</td>
+              <td>기업 AI 학습용 인적 데이터 운영·라벨링·전문가 매칭 플랫폼</td>
+              <td>ARR: 7M → 100M(단 4개월 내 급증)로 고성장 구간</td>
+              <td>AI 학습/강화학습 데이터 수요 확대와 함께 ‘Human-in-the-loop’ 기반 수요 지속성 높음</td>
+              <td>TechCrunch(2025), CBInsights 프로필</td>
+            </tr>
+            <tr>
+              <td>RadixArk</td>
+              <td>2025</td>
+              <td>San Francisco, CA</td>
+              <td>Ying Sheng(CEO, 공동창업), Banghua Zhu(CTO로 보도됨)</td>
+              <td>Ying Sheng: 전 xAI 엔지니어, 전 Databricks 연구과학자. (출처 인터뷰 기반), 연설/강연 이력 다수</td>
+              <td>공개 미공개</td>
+              <td><span class="ok">약 $400M</span> (2026 Jan 보도)</td>
+              <td>공개 미공개</td>
+              <td>공개 미공개</td>
+              <td>공개 미공개</td>
+              <td>SGLang 기반 AI 추론/훈련 인프라 및 RL 프레임워크 상용화 + 일부 유료 호스팅/라이선스 구성</td>
+              <td>Inference 레이어 수요 증가 시, 운영비용·성능 개선을 통한 즉시 현금흐름 개선 여지</td>
+              <td>오픈소스 기반을 유지하며 상용 계층을 늘리는 구조. 가격 탄력성 논리 상 대규모 채택 시 효율성이 높음</td>
+              <td>TechCrunch(2026), RadixArk 공식 홈페이지, LinkedIn 보도</td>
+            </tr>
+            <tr>
+              <td>Pomo</td>
+              <td>공개 미공개</td>
+              <td>Palo Alto, CA</td>
+              <td>Praneet Dutta(공동창업자, CEO), Joe Cheuk(공동창업자)</td>
+              <td>Praneet: Google DeepMind applied genAI/RL 리더 경험, Joe: Databricks/Meta/Google Cloud 엔지니어 경력</td>
+              <td>6명(보도자료 기준)</td>
+              <td>공개 미공개(Seed 라운드 $4.5M)</td>
+              <td>공개 미공개(구독형 $58/월 시작)</td>
+              <td>공개 미공개</td>
+              <td>공개 미공개</td>
+              <td>광고·마케팅 인텔리전스 SaaS, Google Ads/Meta/TikTok/CRM 연동, 캠페인 자동 제안</td>
+              <td>휴대폰·태블릿 기반 광고 운영자도 동일 워크플로 적용 가능, 소규모 팀의 운영시간 단축이 핵심 효용</td>
+              <td>브랜드 운영 효율성이 주요 세일즈 포인트. 광고 집행 자동화가 모바일 광고 집행 환경에서 체감효율 증가</td>
+              <td>BusinessInsider(2026), 웹뉴스 보도</td>
+            </tr>
+            <tr>
+              <td>Telli</td>
+              <td>공개 미공개(2025년 프리시드 공개)</td>
+              <td>Berlin, Germany</td>
+              <td>Seb Hapte-Selassie, Philipp Baumanns, Finn zur Mühlen</td>
+              <td>창업진 상세 학력은 공개 미공개 / YC Alum, AI voice-agent 제품 운영</td>
+              <td>6명(보도자료 기준)</td>
+              <td>공개 미공개(프리시드)</td>
+              <td>공개 미공개(월별 운영이익성 미공개)</td>
+              <td>월간 통화 자동화 처리량: <span class="ok">약 100만건 처리</span> 규모 언급</td>
+              <td>공개 미공개</td>
+              <td>휴대폰·음성 AI 에이전트(예약, 콜백, 단순 문의 처리) + 인적 전환형 하이브리드 운영</td>
+              <td>매출 성장률 <span class="ok">+50% MoM</span> 구간 보고, 6인팀 운영임에도 고성장</td>
+              <td>대규모 고객센터/예약 전용 AI 음성 업무에서 모바일 수요(전화 채널)와 비용효과가 직접적</td>
+              <td>TechCrunch(2025), 앱/보도문</td>
+            </tr>
+            <tr>
+              <td>Hyper (Voice AI)</td>
+              <td>2023</td>
+              <td>Toronto, Canada / 미국지사</td>
+              <td>Ben Sanders(Founder & CEO), Damian McCabe(공동창업자)</td>
+              <td>Ben Sanders: 공공안전·정부 연계 AI 프로젝트 경험, 911 처리·공공서비스 운영 파트너십 가동</td>
+              <td>공개 미공개</td>
+              <td>공개 미공개</td>
+              <td>Seed Round $6.3M 기반으로 매출 공개 미공개</td>
+              <td>휴대폰 통화 채널 중심(응급/비응급 민원 처리)</td>
+              <td>공개 미공개</td>
+              <td>비응급 통화 트리 미세분류·라우팅·응답 AI + 인력 절감형 음성 오토메이션</td>
+              <td>공공기관 PoC/실서비스 진입이 가능할수록 채택 속도 상승; 정책 수요 의존성 높음</td>
+              <td>공개 미공개 항목은 추적 데이터가 확정되지 않아 제외</td>
+              <td>TechCrunch(2025), Wikipedia / 보도자료</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <footer>
+        <ul>
+          <li>요청 조건 반영: 한국/중국 제외, 유니콘 미만, 모바일 AI/휴대폰 AI/모바일 광고 성격 포함, 최신 공개 데이터 우선 정리</li>
+          <li>현재 항목은 공개 소스 기반의 가이드 성격 수치이며, 일부 항목(직원수/실적/수익성)은 회사 공개자료 미포함으로 <span class="warn">공개 미공개</span> 처리</li>
+          <li>매일 아침 KST 07:00 정시 적재는 GitHub Actions(0 22 * * *)로 수행되며, 결과는 같은 날짜 폴더의 index.html로 적재됩니다.</li>
+        </ul>
+      </footer>
+    </main>
+  </body>
+</html>
