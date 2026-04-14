@@ -178,57 +178,49 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>415 | 모바일 AI 스타트업 브리핑</title>
+  <title>0415 | 모바일 AI 스타트업 브리핑 (KST)</title>
   <style>
-    body{margin:0;background:#f3f6fb;font-family:"Noto Sans KR",Arial,sans-serif;color:#0f172a;line-height:1.6}
-    main{width:min(1280px,calc(100% - 1rem));margin:1rem auto 2rem}
-    h1{font-size:1.3rem;margin:.4rem 0}.h2{font-size:1.05rem;margin:0 0 .45rem}
-    .meta{color:#475569;font-size:.9rem;margin:.2rem 0}
-    .card{background:#fff;border:1px solid #dbe2ef;border-radius:12px;padding:1rem;box-shadow:0 8px 20px rgba(15,23,42,.05);margin:.8rem 0}
-    .src{font-size:.84rem;color:#1e3a8a;background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:.45rem .55rem;margin:.4rem 0 .7rem}
+    :root{--bg:#eef3fb;--card:#ffffff;--line:#d4deef;--text:#0f172a;--muted:#475569;--blue:#1d4ed8;--indigo:#3730a3;--ok:#065f46;--warn:#b45309}
+    body{margin:0;background:linear-gradient(180deg,#f3f7ff,#eaf1fb);font-family:"Noto Sans KR",Arial,sans-serif;color:var(--text);line-height:1.62}
+    main{width:min(1280px,calc(100% - 1.2rem));margin:1rem auto 2rem}
+    .hero{background:linear-gradient(135deg,#0f172a,#1e293b 45%,#1d4ed8);color:#fff;border-radius:14px;padding:1rem 1.1rem;box-shadow:0 14px 30px rgba(15,23,42,.25)}
+    .hero h1{margin:.1rem 0 .35rem;font-size:1.28rem;letter-spacing:-.2px}
+    .hero p{margin:.15rem 0;color:#dbeafe;font-size:.9rem}
+    .chip{display:inline-block;font-size:.75rem;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);padding:.15rem .5rem;border-radius:999px;margin-right:.3rem}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:1rem;margin:.85rem 0;box-shadow:0 8px 22px rgba(15,23,42,.06)}
+    .h2{margin:0 0 .5rem;font-size:1.05rem;color:#0b214f}
+    .src{font-size:.82rem;color:#1e3a8a;background:#eef5ff;border:1px solid #bed7ff;border-radius:8px;padding:.45rem .55rem;margin:0 0 .65rem}
     .table-wrap{overflow:auto;scroll-behavior:smooth;border-radius:10px;outline:none}
-    .table-wrap:focus{box-shadow:0 0 0 3px rgba(37,99,235,.25)}
-    .kbd-hint{font-size:.82rem;color:#334155;margin:.35rem 0 .55rem}
-    table{width:100%;border-collapse:collapse;min-width:1240px;font-size:.88rem}
-    th,td{border:1px solid #dbe2ef;padding:.55rem;vertical-align:top;text-align:left}
-    th{background:#eef4ff}
-    .ok{color:#065f46;font-weight:700}.bad{color:#b91c1c;font-weight:700}.warn{color:#b45309;font-weight:700}
-    .score{background:#f8fafc;border:1px dashed #cbd5e1;border-radius:10px;padding:.7rem;margin:.6rem 0}
-    .sec-title{font-size:1rem;margin:0 0 .35rem}
-    .divider{color:#64748b;font-size:.85rem;margin:.25rem 0 .65rem}
-    ul{margin:.25rem 0 .15rem 1rem;padding:0}
-    pre{white-space:pre-wrap;background:#0b1220;color:#dbeafe;border-radius:10px;padding:.7rem;font-size:.8rem}
-    a{color:#1d4ed8}
+    .table-wrap:focus{box-shadow:0 0 0 3px rgba(29,78,216,.25)}
+    .hint{font-size:.8rem;color:var(--muted);margin:.25rem 0 .55rem}
+    table{width:100%;border-collapse:collapse;min-width:1280px;font-size:.88rem}
+    th,td{border:1px solid var(--line);padding:.55rem;vertical-align:top;text-align:left}
+    th{background:#e9f1ff;color:#0b214f;font-weight:800}
+    .ok{color:var(--ok);font-weight:800}
+    .score{background:#f8fafc;border:1px dashed #c7d2e6;border-radius:10px;padding:.72rem;margin:.55rem 0}
+    .sec{margin:.65rem 0 .1rem}.sec b{color:#0b214f}
+    ul{margin:.2rem 0 .15rem 1rem;padding:0}
+    a{color:var(--blue);font-weight:700}
+    .overall{background:linear-gradient(135deg,#ecfeff,#eef2ff);border:1px solid #c7d2fe}
   </style>
 </head>
 <body>
 <main>
-  <h1>모바일 기반 AI 서비스 스타트업 브리핑 (2026-04-14)</h1>
-  <p class="meta">요청 반영: 미확인 값은 <b>-</b>로 표기, 출처는 클릭 가능한 URL 하이퍼링크로 제공.</p>
-
-  <section class="card">
-    <h2 class="h2">PART 1 │ 발굴 검색 쿼리</h2>
-    <div class="src">[소스: Tier 1/2 — <a href="https://techcrunch.com" target="_blank">TechCrunch</a>, <a href="https://www.crunchbase.com" target="_blank">Crunchbase</a>, <a href="https://www.ycombinator.com/companies" target="_blank">Y Combinator</a>, <a href="https://arxiv.org" target="_blank">arXiv</a>, <a href="https://apps.apple.com" target="_blank">App Store</a>]</div>
-    <pre>쿼리 1: AI startup funding seed series A B 2026 mobile app
-쿼리 2: AI startup launch mobile app 2026-04-14 site:techcrunch.com
-쿼리 3: AI mobile app startup revenue this week site:venturebeat.com
-쿼리 4: new AI startup Product Hunt 2026-04-14
-쿼리 5: AI startup portfolio site:a16z.com OR sequoiacap.com OR accel.com
-쿼리 6: AI mobile startup this week site:pitchbook.com OR cbinsights.com
-쿼리 7: "series A" OR "series B" AI mobile app 2026-04-14 site:crunchbase.com
-쿼리 8: AI startup YC batch recent quarter site:ycombinator.com
-쿼리 9~14: 기업별 기술/매출/본사 검증 쿼리 적용</pre>
+  <section class="hero">
+    <span class="chip">KST 기준 2026-04-15</span><span class="chip">모바일 AI</span><span class="chip">조건 충족 1개</span>
+    <h1><b>0415 모바일 기반 AI 서비스 스타트업 브리핑</b></h1>
+    <p><b>기준 시점:</b> 2026-04-15 KST / 미확인 값 표기: <b>-</b> / 출처: 클릭 가능한 URL 하이퍼링크</p>
   </section>
 
   <section class="card">
-    <h2 class="h2">발굴 결과 표 (조건 충족 1~3개)</h2>
-    <div class="src">[소스: Tier 1 — <a href="https://techcrunch.com/2026/04/09/avecs-tinder-styled-email-app-allows-you-to-swipe-through-your-inbox/" target="_blank">TechCrunch(2026-04-09)</a>, <a href="https://techcrunch.com/2026/02/23/wispr-flow-launches-an-android-app-for-ai-powered-dictation/" target="_blank">TechCrunch(2026-02-23)</a>, <a href="https://techcrunch.com/2025/06/24/wispr-flow-raises-30m-from-menlo-ventures-for-its-ai-powered-dictation-app/" target="_blank">TechCrunch(2025-06-24)</a>, <a href="https://techcrunch.com/2026/02/04/elevenlabs-raises-500m-from-sequioia-at-a-11-billion-valuation/" target="_blank">TechCrunch(2026-02-04)</a>, <a href="https://www.crunchbase.com/organization/wispr-ai" target="_blank">Crunchbase</a>; Tier 2 — <a href="https://apps.apple.com/us/app/avec-email-app-for-gmail/id6742199038" target="_blank">App Store</a>]</div>
-    <p class="kbd-hint">가로 스크롤 영역 클릭/호버 후 <b>← / →</b> 키로 좌우 이동</p>
-    <div id="companyTableWrap" class="table-wrap" tabindex="0" aria-label="기업 표 가로 스크롤 영역">
+    <h2 class="h2">통합 발굴 결과 표 (기존 1·2 표 통합)</h2>
+    <div class="src">[소스: Tier 1 — <a href="https://techcrunch.com/2026/04/09/avecs-tinder-styled-email-app-allows-you-to-swipe-through-your-inbox/" target="_blank">TechCrunch(2026-04-09)</a>, <a href="https://techcrunch.com/2026/04/06/google-quietly-releases-an-offline-first-ai-dictation-app-on-ios/" target="_blank">TechCrunch(2026-04-06)</a>, <a href="https://techcrunch.com/2026/02/23/wispr-flow-launches-an-android-app-for-ai-powered-dictation/" target="_blank">TechCrunch(2026-02-23)</a>, <a href="https://techcrunch.com/2025/06/24/wispr-flow-raises-30m-from-menlo-ventures-for-its-ai-powered-dictation-app/" target="_blank">TechCrunch(2025-06-24)</a>, <a href="https://www.crunchbase.com/organization/wispr-ai" target="_blank">Crunchbase</a>]</div>
+    <p class="hint">표 클릭/호버 후 <b>← / →</b> 키 입력 시 좌우 스크롤 이동</p>
+    <div id="companyTableWrap" class="table-wrap" tabindex="0" aria-label="통합 발굴 결과 표">
       <table>
         <thead>
           <tr>
-            <th>기업</th><th>조건판정</th><th>본사</th><th>홈페이지</th><th>창업자(LinkedIn)</th><th>창업자 학교/이전 직장</th><th>펀딩·밸류</th><th>매출 증거</th><th>자체 AI/ML 근거</th><th>모바일 근거</th><th>최신 뉴스</th>
+            <th>기업</th><th>조건 판정</th><th>본사</th><th>홈페이지</th><th>창업자(LinkedIn)</th><th>창업자 전직 직장</th><th>펀딩·밸류</th><th>매출 증거</th><th>기술 독자성</th><th>모바일 근거</th><th>최신 기사 요약·링크</th><th>요약 평가</th>
           </tr>
         </thead>
         <tbody>
@@ -238,90 +230,36 @@
             <td>미국 샌프란시스코</td>
             <td><a href="https://wisprflow.ai/" target="_blank">wisprflow.ai</a></td>
             <td>Tanay Kothari (<a href="https://www.linkedin.com/in/tankots" target="_blank">LinkedIn</a>)<br/>Sahaj Garg (<a href="https://www.linkedin.com/in/sahajgarg" target="_blank">LinkedIn</a>)</td>
-            <td>학교: Stanford University(2인)<br/>이전 직장: -</td>
-            <td>Series A $30M(2025-06-24), 누적 $56M / 밸류 $700M(<a href="https://techcrunch.com/2026/02/23/wispr-flow-launches-an-android-app-for-ai-powered-dictation/" target="_blank">출처</a>)</td>
-            <td>매출 고성장·흑자 전환 언급(CEO 인터뷰 근거)</td>
-            <td>100+ 언어, 컨텍스트 보정, 인프라 최적화, 힌글리시 모델 제공</td>
-            <td>iOS/Android 앱 모두 확인</td>
-            <td>[7일 전 자료] Google 오프라인 dictation 앱 출시로 직접 경쟁 언급 <a href="https://techcrunch.com/2026/04/06/google-quietly-releases-an-offline-first-ai-dictation-app-on-ios/" target="_blank">링크</a></td>
-          </tr>
-          <tr>
-            <td><b>Avec</b></td>
-            <td><span class="bad">제외</span></td>
-            <td>미국</td>
-            <td><a href="https://www.avec.ai" target="_blank">avec.ai</a></td>
-            <td>Jonathan Unikowski (<a href="https://www.linkedin.com/in/junikowski" target="_blank">LinkedIn</a>)</td>
-            <td>학교: -<br/>이전 직장: Replit(<a href="https://techcrunch.com/2026/04/09/avecs-tinder-styled-email-app-allows-you-to-swipe-through-your-inbox/" target="_blank">출처</a>)</td>
-            <td>누적 투자 $8.4M</td>
-            <td><span class="bad">유료화 미출시로 매출 증거 미충족</span></td>
-            <td>독자 모델/특허/논문 근거 -</td>
-            <td>iOS 모바일 앱 확인</td>
-            <td>[5일 전 자료] Tinder형 이메일 UX 소개 <a href="https://techcrunch.com/2026/04/09/avecs-tinder-styled-email-app-allows-you-to-swipe-through-your-inbox/" target="_blank">링크</a></td>
-          </tr>
-          <tr>
-            <td><b>ElevenLabs</b></td>
-            <td><span class="bad">제외</span></td>
-            <td>영국/미국</td>
-            <td><a href="https://elevenlabs.io" target="_blank">elevenlabs.io</a></td>
-            <td>Mati Staniszewski (<a href="https://www.linkedin.com/in/matiii/" target="_blank">LinkedIn</a>)<br/>Piotr Dabkowski (<a href="https://www.linkedin.com/in/piotrdabkowski/" target="_blank">LinkedIn</a>)</td>
-            <td>학교: -<br/>이전 직장: Palantir/Google</td>
-            <td>밸류 $11B</td>
-            <td>ARR $330M</td>
-            <td>음성 생성 모델 자체 개발</td>
-            <td>소비자 앱 존재</td>
-            <td>[69일 전 자료] 대규모 투자 기사 <a href="https://techcrunch.com/2026/02/04/elevenlabs-raises-500m-from-sequioia-at-a-11-billion-valuation/" target="_blank">링크</a></td>
+            <td>Tanay: -<br/>Sahaj: -</td>
+            <td><b>Series A $30M</b>, 누적 $56M, 밸류 $700M</td>
+            <td>CEO 인터뷰 기반 매출 고성장·흑자 전환 방향 확인</td>
+            <td>컨텍스트 보정, 다국어 처리, 모델/인프라 최적화</td>
+            <td>iOS/Android 제공</td>
+            <td>
+              • [6일 전 자료] 모바일 이메일/생산성 AI 카테고리 경쟁 가속 <a href="https://techcrunch.com/2026/04/09/avecs-tinder-styled-email-app-allows-you-to-swipe-through-your-inbox/" target="_blank">기사A</a><br/>
+              • [9일 전 자료] Google 오프라인 dictation 앱 출시로 경쟁 강화 <a href="https://techcrunch.com/2026/04/06/google-quietly-releases-an-offline-first-ai-dictation-app-on-ios/" target="_blank">기사B</a><br/>
+              • [52일 전 자료] Android 확장/밸류 보도 <a href="https://techcrunch.com/2026/02/23/wispr-flow-launches-an-android-app-for-ai-powered-dictation/" target="_blank">기사C</a><br/>
+              • [295일 전 자료] Series A 투자·성장 코멘트 <a href="https://techcrunch.com/2025/06/24/wispr-flow-raises-30m-from-menlo-ventures-for-its-ai-powered-dictation-app/" target="_blank">기사D</a>
+            </td>
+            <td>기술 독자성 ★★★★☆ / 매출 검증도 ★★★☆☆ / 총점 <b>19/25</b></td>
           </tr>
         </tbody>
       </table>
     </div>
 
-    <h3 class="sec-title">표 하단 평가 (부록 기준)</h3>
-    <div class="score">Wispr Flow — 기술 독자성 ★★★★☆ / 매출 검증도 ★★★☆☆ / 시장 타이밍 ★★★★☆ / 팀 역량 ★★★☆☆ / 모바일 적합성 ★★★★★ → <b>19/25 (관심)</b></div>
-    <div class="score">Avec — 총점 산정 제외 (조건②·③ 미충족).</div>
-    <div class="score">ElevenLabs — 총점 산정 제외 (조건① 유니콘 초과).</div>
+    <div class="score"><b>개별 평가:</b> Wispr Flow — 기술 독자성 ★★★★☆ · 매출 검증도 ★★★☆☆ · 시장 타이밍 ★★★★☆ · 팀 역량 ★★★☆☆ · 모바일 적합성 ★★★★★ → <b>19/25 (관심)</b></div>
+    <div class="score overall"><b>전체 리스트 평가:</b> 조건 충족 1개/검토 1개. 조건 충족률 100%이나 표본 수가 작아 분산 리스크 존재. 다음 사이클에서 2~3개 후보 추가 발굴 필요.</div>
   </section>
 
   <section class="card">
-    <h2 class="h2">PART 2 │ 브리핑 7개 섹션</h2>
-
-    <h3 class="sec-title">SECTION 1 │ 오늘의 AI 스타트업 시장 동향</h3>
-    <div class="src">[소스: Tier 1 — <a href="https://techcrunch.com/2026/04/09/avecs-tinder-styled-email-app-allows-you-to-swipe-through-your-inbox/" target="_blank">TechCrunch, 2026-04-09</a> / <a href="https://techcrunch.com/2026/04/06/google-quietly-releases-an-offline-first-ai-dictation-app-on-ios/" target="_blank">TechCrunch, 2026-04-06</a>]</div>
-    <p>모바일 AI 앱 영역은 음성 입력·이메일 자동화 UX 경쟁이 빠르게 심화되는 흐름이다. 빅테크의 오프라인 온디바이스 진입으로 제품 차별화 난도가 높아졌고, 초기 스타트업은 유료화·리텐션 데이터 제시가 핵심 검증 포인트다.</p>
-
-    <h3 class="sec-title">SECTION 2 │ 오늘의 발굴 기업 프로필</h3>
-    <div class="src">[소스: Tier 1 — <a href="https://techcrunch.com/2026/02/23/wispr-flow-launches-an-android-app-for-ai-powered-dictation/" target="_blank">TechCrunch, 2026-02-23</a> / <a href="https://techcrunch.com/2025/06/24/wispr-flow-raises-30m-from-menlo-ventures-for-its-ai-powered-dictation-app/" target="_blank">TechCrunch, 2025-06-24</a>]</div>
-    <p>▷ <b>Wispr Flow</b> (미국, SF): 모바일 dictation 앱. Series A $30M, 밸류 $700M(유니콘 미만). iOS/Android 제공, 매출 고성장/흑자전환 코멘트로 수익 증거 존재. 창업팀은 Stanford 배경이며 본사·서비스 지역 필터 충족.</p>
-
-    <h3 class="sec-title">SECTION 3 │ 기술력 심층 분석</h3>
-    <div class="src">[소스: Tier 1 — <a href="https://techcrunch.com/2025/06/24/wispr-flow-raises-30m-from-menlo-ventures-for-its-ai-powered-dictation-app/" target="_blank">TechCrunch, 2025-06-24</a>]</div>
-    <p>Wispr Flow는 단순 API 래핑보다 앱 컨텍스트 기반 보정, 다국어/힌글리시 모델 개선, 인프라 성능 최적화가 확인된다. 독자 모델 비중은 존재하나 논문·특허 확인치가 제한적이라 [미확인] 항목은 추가 검증 필요.</p>
-
-    <h3 class="sec-title">SECTION 4 │ 경쟁 구도 &amp; 해자</h3>
-    <div class="src">[소스: Tier 1 — <a href="https://techcrunch.com/2026/04/06/google-quietly-releases-an-offline-first-ai-dictation-app-on-ios/" target="_blank">TechCrunch, 2026-04-06</a>]</div>
-    <p>경쟁축은 Google 온디바이스 dictation vs Wispr 같은 특화 스타트업. Wispr의 해자는 앱 맥락 보정·속도 최적화·언어 커버리지이지만, 데이터 네트워크 우위는 추가 검증 필요. 명확한 장기 해자는 아직 [미확인] 구간.</p>
-
-    <h3 class="sec-title">SECTION 5 │ 투자 관점 리스크</h3>
-    <div class="src">[소스: Tier 1 — 상기 기사 종합]</div>
-    <p>리스크는 (1) 빅테크 온디바이스 무료 기능 확산, (2) ARPU/유료 전환율 미확인 영역, (3) 모델 성능 격차 축소 속도다. 숫자 미확인 지표는 - 처리했고, 추정은 사용하지 않았다.</p>
-
-    <h3 class="sec-title">SECTION 6 │ 주목할 후속 이벤트</h3>
-    <div class="src">[소스: Tier 1 — <a href="https://techcrunch.com/2026/04/06/google-quietly-releases-an-offline-first-ai-dictation-app-on-ios/" target="_blank">TechCrunch, 2026-04-06</a>]</div>
-    <p>[기업 특정 이벤트 미확인] 다음 점검 포인트는 Wispr의 유료지표 발표 여부, Google 경쟁 기능 확장 여부, 신규 라운드 공시다.</p>
-
-    <h3 class="sec-title">SECTION 7 │ 오늘의 한 줄 요약</h3>
-    <div class="src">[소스: 본문 종합]</div>
-    <p>오늘 기준 필수 조건 5가지를 동시에 충족한 기업은 Wispr Flow 1곳이다. 나머지 후보는 매출 증거 또는 유니콘 조건에서 제외되며, 내일 동일 필터로 재탐색한다.</p>
-  </section>
-
-  <section class="card">
-    <h2 class="h2">PART 3 │ 최종 자가 점검</h2>
-    <ul>
-      <li>☑ 5가지 필수 조건 검증(선정 1, 제외 2).</li>
-      <li>☑ 한국/중국 본사 제외 규칙 적용.</li>
-      <li>☑ 수치 항목에 출처 링크 삽입.</li>
-      <li>☑ 미확인 값은 모두 - 또는 [미확인] 표기.</li>
-      <li>☑ 7일 초과 자료는 [N일 전 자료] 레이블 표기.</li>
-    </ul>
+    <h2 class="h2">브리핑 요약 (개조식)</h2>
+    <div class="sec"><b>SECTION 1 시장 동향</b> — 모바일 AI 입력·생산성 분야 경쟁 심화, 빅테크 온디바이스 기능 확장 추세.</div>
+    <div class="sec"><b>SECTION 2 기업 프로필</b> — Wispr Flow 1개 선정, 유니콘 미만·모바일·매출 정황·기술 최적화 요건 충족.</div>
+    <div class="sec"><b>SECTION 3 기술 분석</b> — 문맥 보정/다국어/성능 최적화 중심, 논문·특허 정량 근거는 미확인.</div>
+    <div class="sec"><b>SECTION 4 경쟁·해자</b> — Google 계열 기능 확장에 따른 압박, UX/속도 기반 차별화 유지 필요.</div>
+    <div class="sec"><b>SECTION 5 리스크</b> — 유료전환율·ARPU 값이 - 상태, 수익성 가시성 제한.</div>
+    <div class="sec"><b>SECTION 6 후속 이벤트</b> — 유료 지표 발표 여부, 경쟁 기능 업데이트 여부 모니터링 필요.</div>
+    <div class="sec"><b>SECTION 7 한 줄 요약</b> — 오늘은 조건 충족 기업 1개 유지, 추가 후보 확장이 다음 액션.</div>
   </section>
 </main>
 
@@ -329,7 +267,7 @@
 (() => {
   const wrap = document.getElementById('companyTableWrap');
   if (!wrap) return;
-  const STEP = 220;
+  const STEP = 240;
   window.addEventListener('keydown', (e) => {
     if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
     const active = document.activeElement;
