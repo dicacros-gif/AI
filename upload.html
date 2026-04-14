@@ -1,9 +1,9 @@
 ﻿<!doctype html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>GitHub 자동 업로드</title>
+    <title> 업로드</title>
     <style>
       :root {
         --bg: #f4f7ff;
@@ -16,9 +16,7 @@
         --ok: #059669;
         --shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
       }
-      * {
-        box-sizing: border-box;
-      }
+      * { box-sizing: border-box; }
       body {
         margin: 0;
         font-family: "Noto Sans KR", "Apple SD Gothic Neo", Arial, sans-serif;
@@ -38,20 +36,12 @@
         font-size: 1.9rem;
         letter-spacing: -0.03em;
       }
-      .subtitle {
-        margin: 0.5rem 0 1.4rem;
-        color: var(--muted);
-      }
       .card {
+        margin-top: 1rem;
         background: var(--panel);
         border-radius: 16px;
         box-shadow: var(--shadow);
         padding: 1.4rem;
-      }
-      .grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        gap: 1rem;
       }
       .field {
         display: flex;
@@ -63,16 +53,6 @@
         font-size: 0.9rem;
         font-weight: 700;
       }
-      .info {
-        color: #334155;
-        background: #f8fafc;
-        border: 1px solid #d8dfec;
-        border-radius: 10px;
-        padding: 0.8rem;
-        font-size: 0.9rem;
-        line-height: 1.45;
-      }
-      input[type="text"],
       input[type="file"],
       input[readonly] {
         width: 100%;
@@ -82,17 +62,10 @@
         font-size: 0.95rem;
         background: #fff;
       }
-      input[readonly] {
-        color: #475569;
-        background: #f8fafc;
-      }
       .hint {
         color: var(--muted);
         font-size: 0.82rem;
         line-height: 1.35;
-      }
-      .actions {
-        margin-top: 0.8rem;
       }
       button {
         border: none;
@@ -104,13 +77,6 @@
         font-weight: 700;
         cursor: pointer;
         width: 100%;
-        transition: transform 0.12s ease, opacity 0.12s ease;
-      }
-      button:hover {
-        opacity: 0.93;
-      }
-      button:active {
-        transform: translateY(1px);
       }
       .status {
         border-radius: 10px;
@@ -119,6 +85,9 @@
         min-height: 56px;
         white-space: pre-wrap;
         font-size: 0.94rem;
+        border: 1px dashed #b6c1d6;
+        background: #f8fafc;
+        color: #334155;
       }
       .status.ok {
         background: #ecfdf5;
@@ -130,19 +99,6 @@
         color: var(--danger);
         border: 1px solid #fecaca;
       }
-      .status.idle {
-        background: #f8fafc;
-        color: #334155;
-        border: 1px dashed #b6c1d6;
-      }
-      .tiny {
-        font-size: 0.82rem;
-        margin: 0.5rem 0 0;
-        color: var(--muted);
-      }
-      a {
-        color: #1d4ed8;
-      }
       .result-list {
         margin: 0.5rem 0 0;
         padding-left: 1.2rem;
@@ -150,6 +106,7 @@
         flex-direction: column;
         gap: 0.35rem;
       }
+      a { color: #1d4ed8; }
       .copy {
         margin-top: 0.75rem;
         display: inline-flex;
@@ -169,26 +126,15 @@
   </head>
   <body>
     <main class="page">
-      <h1 class="title">GitHub 자동 업로드 UI</h1>
-
+      <h1 class="title">GitHub 업로드</h1>
       <section class="card">
-        <div class="grid" style="margin-top:1rem;">
-          <div class="field" style="grid-column: 1 / -1;">
-            <label for="fileInput">업로드할 파일 (index.html)</label>
-            <input id="fileInput" type="file" accept=".html,.htm" />
-            <p class="hint">저장 경로는 <strong>AI/upload.html</strong>입니다.</p>
-          </div>
+        <div class="field">
+          <label for="fileInput">업로드할 파일</label>
+          <input id="fileInput" type="file" accept=".html,.htm" />
+          <p class="hint">선택 파일의 이름과 관계없이 저장 경로는 <strong>AI/MMDD/index.html</strong>입니다.</p>
         </div>
-
-        <div class="actions">
-          <button id="uploadBtn" type="button">현재 날짜 폴더로 업로드</button>
-        </div>
-
-        <div id="status" class="status idle"></div>
-
-        <p class="tiny">
-          동일 경로에 파일이 있으면 최신 업로드로 덮어씁니다.
-        </p>
+        <button id="uploadBtn" type="button">업로드</button>
+        <div id="status" class="status"></div>
         <div id="result" class="result-list"></div>
         <div class="copy">
           <button id="copyPathBtn" type="button" style="display:none;">목표 경로 복사</button>
@@ -200,100 +146,132 @@
     <script>
       const $ = (id) => document.getElementById(id);
 
-      // 기본 설정 (화면에 표시되지 않음)
       const GITHUB_CONFIG = {
         owner: "dicacros-gif",
         repo: "dicacros-gif",
         branch: "main",
         rootFolder: "AI",
-        fileName: "upload.html",
-        // 토큰은 절대 저장소에 커밋하면 노출 위험이 있으므로 정식 서비스에서는 서버 중개 API 권장
+        fileName: "index.html",
         token: "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",
       };
 
-      function encodePath(path) {
-        return path
-          .split("/")
-          .map((seg) => encodeURIComponent(seg))
-          .join("/");
+      const FILE_NAME_TARGET = `${GITHUB_CONFIG.fileName}`;
+
+      function pad2(v) {
+        return String(v).padStart(2, "0");
       }
 
-      function setStatus(message, level = "idle") {
+      function getDateFolder() {
+        const now = new Date();
+        try {
+          const fmt = new Intl.DateTimeFormat("en-US", {
+            timeZone: "Asia/Seoul",
+            month: "2-digit",
+            day: "2-digit",
+          });
+          const p = fmt.formatToParts(now);
+          const mm = p.find((x) => x.type === "month")?.value || pad2(now.getMonth() + 1);
+          const dd = p.find((x) => x.type === "day")?.value || pad2(now.getDate());
+          return `${mm}${dd}`;
+        } catch {
+          return `${pad2(now.getMonth() + 1)}${pad2(now.getDate())}`;
+        }
+      }
+
+      function encodePath(path) {
+        return path.split("/").map((s) => encodeURIComponent(s)).join("/");
+      }
+
+      function setStatus(message, level = "") {
         const el = $("status");
-        el.className = `status ${level}`;
-        el.textContent = message;
+        el.className = `status${level ? ` ${level}` : ""}`;
+        el.textContent = message || "";
       }
 
       function getTargetPath() {
-        return `${GITHUB_CONFIG.rootFolder}/${GITHUB_CONFIG.fileName}`;
+        return `${GITHUB_CONFIG.rootFolder}/${getDateFolder()}/${FILE_NAME_TARGET}`;
       }
 
       function readFileAsBase64(file) {
         return new Promise((resolve, reject) => {
           const reader = new FileReader();
           reader.onload = () => {
-            const result = String(reader.result || "");
-            const parts = result.split(",");
-            if (parts.length < 2) {
-              reject(new Error("파일을 base64로 읽는 데 실패했습니다."));
+            const raw = String(reader.result || "");
+            const idx = raw.indexOf(",");
+            if (idx < 0) {
+              reject(new Error("파일 변환 실패"));
               return;
             }
-            resolve(parts[1].replace(/\r?\n/g, ""));
+            resolve(raw.substring(idx + 1).replace(/\r?\n/g, ""));
           };
           reader.onerror = () => reject(new Error("파일 읽기 실패"));
           reader.readAsDataURL(file);
         });
       }
 
-      async function getExistingSha(path) {
-        const url = `https://api.github.com/repos/${encodeURIComponent(GITHUB_CONFIG.owner)}/${encodeURIComponent(
-          GITHUB_CONFIG.repo
-        )}/contents/${encodePath(path)}?ref=${encodeURIComponent(GITHUB_CONFIG.branch)}`;
-        const res = await fetch(url, {
-          headers: {
-            Accept: "application/vnd.github+json",
-            Authorization: `Bearer ${GITHUB_CONFIG.token}`,
-          },
-        });
+      async function getSha(path) {
+        const res = await fetch(
+          `https://api.github.com/repos/${encodeURIComponent(GITHUB_CONFIG.owner)}/${encodeURIComponent(GITHUB_CONFIG.repo)}/contents/${encodePath(path)}?ref=${encodeURIComponent(
+            GITHUB_CONFIG.branch
+          )}`,
+          {
+            headers: {
+              Accept: "application/vnd.github+json",
+              Authorization: `Bearer ${GITHUB_CONFIG.token}`,
+            },
+          }
+        );
 
-        if (res.status === 404) {
-          return null;
-        }
+        if (res.status === 404) return null;
         if (!res.ok) {
-          const body = await res.text();
-          throw new Error(`기존 파일 확인 실패: ${res.status} ${res.statusText} (${body})`);
+          const text = await res.text();
+          throw new Error(`기존 파일 확인 실패: ${res.status} ${res.statusText} (${text})`);
         }
+        const json = await res.json();
+        return json?.sha || null;
+      }
 
-        const body = await res.json();
-        return body?.sha || null;
+      function friendlyUploadError(err) {
+        const msg = String(err.message || "");
+        if (msg.includes("401") || msg.includes("Bad credentials")) {
+          return "토큰이 유효하지 않거나 권한이 없습니다. (401 Bad credentials)\n현재 사용 중인 토큰을 확인해 주세요.";
+        }
+        return msg;
       }
 
       async function uploadFile() {
         const file = $("fileInput").files?.[0];
-        const resultWrap = $("result");
+        const result = $("result");
         const copyBtn = $("copyPathBtn");
         const copyLabel = $("copyLabel");
 
-        resultWrap.innerHTML = "";
+        result.innerHTML = "";
         copyBtn.style.display = "none";
         copyLabel.textContent = "";
 
-        if (!file) return setStatus("❗️ 업로드할 파일을 선택해주세요.", "err");
-        if (!GITHUB_CONFIG.token) return setStatus("❗️ 서버 토큰이 설정되지 않았습니다.", "err");
+        if (!file) {
+          setStatus("업로드할 파일을 선택해 주세요.", "err");
+          return;
+        }
 
-        setStatus("🚀 업로드를 시작합니다...", "idle");
+        if (!GITHUB_CONFIG.token) {
+          setStatus("GitHub 토큰이 설정되지 않았습니다.", "err");
+          return;
+        }
+
         const targetPath = getTargetPath();
+        setStatus("업로드 중입니다...");
 
         try {
           const content = await readFileAsBase64(file);
-          const sha = await getExistingSha(targetPath);
+          const sha = await getSha(targetPath);
 
-          const putBody = {
-            message: `Upload ${GITHUB_CONFIG.fileName} to ${targetPath}`,
+          const payload = {
+            message: `Upload ${FILE_NAME_TARGET} to ${targetPath}`,
             content,
             branch: GITHUB_CONFIG.branch,
           };
-          if (sha) putBody.sha = sha;
+          if (sha) payload.sha = sha;
 
           const res = await fetch(
             `https://api.github.com/repos/${encodeURIComponent(GITHUB_CONFIG.owner)}/${encodeURIComponent(
@@ -306,42 +284,40 @@
                 Authorization: `Bearer ${GITHUB_CONFIG.token}`,
                 "Content-Type": "application/json",
               },
-              body: JSON.stringify(putBody),
+              body: JSON.stringify(payload),
             }
           );
 
           if (!res.ok) {
-            const err = await res.text();
-            throw new Error(`업로드 실패: ${res.status} ${res.statusText} (${err})`);
+            const text = await res.text();
+            throw new Error(`업로드 실패: ${res.status} ${res.statusText} (${text})`);
           }
 
-          const data = await res.json();
+          const body = await res.json();
           const targetUrl = `https://github.com/${GITHUB_CONFIG.owner}/${GITHUB_CONFIG.repo}/blob/${GITHUB_CONFIG.branch}/${targetPath}`;
-          const rawUrl = `https://raw.githubusercontent.com/${GITHUB_CONFIG.owner}/${GITHUB_CONFIG.repo}/${GITHUB_CONFIG.branch}/${encodePath(
-            targetPath
-          )}`;
+          const rawUrl = `https://raw.githubusercontent.com/${GITHUB_CONFIG.owner}/${GITHUB_CONFIG.repo}/${GITHUB_CONFIG.branch}/${encodePath(targetPath)}`;
 
           const links = [
-            `<a href="${data.content?.html_url || targetUrl}" target="_blank" rel="noopener noreferrer">GitHub 파일 보기</a>`,
-            `<a href="${rawUrl}" target="_blank" rel="noopener noreferrer">raw 파일 주소</a>`,
+            `<a href="${body.content?.html_url || targetUrl}" target="_blank" rel="noopener noreferrer">GitHub에서 확인</a>`,
+            `<a href="${rawUrl}" target="_blank" rel="noopener noreferrer">raw 주소 보기</a>`,
           ];
-          if (data.commit?.html_url) {
-            links.push(`<a href="${data.commit.html_url}" target="_blank" rel="noopener noreferrer">커밋 보기</a>`);
+          if (body.commit?.html_url) {
+            links.push(`<a href="${body.commit.html_url}" target="_blank" rel="noopener noreferrer">커밋 보기</a>`);
           }
 
-          setStatus("✅ 업로드가 완료되었습니다.", "ok");
-          resultWrap.innerHTML = links.map((u) => `<div>${u}</div>`).join("");
+          setStatus("업로드가 완료되었습니다.", "ok");
+          result.innerHTML = links.map((x) => `<div>${x}</div>`).join("");
 
           copyBtn.style.display = "inline-flex";
           copyBtn.dataset.path = targetPath;
           copyLabel.textContent = `복사 대상: ${targetPath}`;
           copyBtn.onclick = () => {
-            const fullPath = `https://github.com/${GITHUB_CONFIG.owner}/${GITHUB_CONFIG.repo}/blob/${GITHUB_CONFIG.branch}/${targetPath}`;
-            navigator.clipboard.writeText(fullPath);
-            setStatus(`✅ 경로를 복사했습니다: ${targetPath}`, "ok");
+            const url = `https://github.com/${GITHUB_CONFIG.owner}/${GITHUB_CONFIG.repo}/blob/${GITHUB_CONFIG.branch}/${targetPath}`;
+            navigator.clipboard.writeText(url);
+            setStatus(`경로를 복사했습니다: ${targetPath}`, "ok");
           };
-        } catch (err) {
-          setStatus(`❌ ${err.message}`, "err");
+        } catch (error) {
+          setStatus(friendlyUploadError(error), "err");
         }
       }
 
