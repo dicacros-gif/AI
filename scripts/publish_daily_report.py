@@ -17,9 +17,13 @@ SCHEDULE_LABELS = [
     "토 — 페이 · 금융 기술 (코인 제외)",
     "일 — 기타 모바일/웹 서비스",
 ]
+SCHEDULE_LINKS = {
+    2: "https://dicacros-gif.github.io/AI/415/index.html",
+}
 DATE_TOKEN_RE = re.compile(r"'26\.\d+\.\d+ \([월화수목금토일]\)")
 TITLE_DATE_RE = re.compile(r"Global AI Startup Watch \(Non-Unicorn\) — '26\.\d+\.\d+ \([월화수목금토일]\)")
 FOOTER_RE = re.compile(r"<footer>.*?</footer>", re.S)
+SCHEDULE_BLOCK_RE = re.compile(r"<div class=\"sector-schedule\">.*?</div>", re.S)
 
 
 def parse_target_date() -> date:
@@ -76,23 +80,29 @@ def find_source_file(root: Path, target: date) -> Path:
     return dated_candidates[-1][1]
 
 
+def render_sector_schedule(today_idx: int) -> str:
+    lines = ['      <div class="sector-schedule">']
+    for idx, label in enumerate(SCHEDULE_LABELS):
+        today = " today" if idx == today_idx else ""
+        chip = f'<span class="sector-day{today}">{label}</span>'
+        if idx in SCHEDULE_LINKS:
+            chip = f'<a class="sector-link" href="{SCHEDULE_LINKS[idx]}" target="_blank">{chip}</a>'
+        lines.append(f"        {chip}")
+    lines.append("      </div>")
+    return "\n".join(lines)
+
+
 def apply_date_updates(html: str, target: date) -> str:
     display = f"'26.{target.month}.{target.day} ({WEEKDAY_KR[target.weekday()]})"
     html = TITLE_DATE_RE.sub(f"Global AI Startup Watch (Non-Unicorn) — {display}", html)
     html = DATE_TOKEN_RE.sub(display, html)
-
-    html = html.replace('class="sector-day today"', 'class="sector-day"')
-    today_label = SCHEDULE_LABELS[target.weekday()]
-    html = html.replace(
-        f'<span class="sector-day">{today_label}</span>',
-        f'<span class="sector-day today">{today_label}</span>',
-        1,
-    )
+    html = SCHEDULE_BLOCK_RE.sub(render_sector_schedule(target.weekday()), html, count=1)
 
     timestamp = datetime.now(SEOUL).strftime("%Y-%m-%d %H:%M KST")
     footer = (
         f"<footer>작성 기준: {display} · 문서 상태: 서버 자동 갱신본 · "
-        f"업데이트 시간: {timestamp} · PitchBook public 우선 확인, Dealroom/Crunchbase/official fallback</footer>"
+        f"업데이트 시간: {timestamp} · GitHub Actions 07:00 KST 자동 커밋·푸시 · "
+        f"PitchBook public 우선 확인, Dealroom/Crunchbase/official fallback</footer>"
     )
     if FOOTER_RE.search(html):
         html = FOOTER_RE.sub(footer, html, count=1)
