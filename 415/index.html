@@ -1,287 +1,785 @@
 <!doctype html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Global AI Startup Watch (Non-Unicorn) - 2026-04-15</title>
-    <style>
-      :root {
-        --bg: #f4f7ff;
-        --text: #0f172a;
-        --muted: #334155;
-        --line: #cbd5e1;
-        --card: #ffffff;
-      }
-      * { box-sizing: border-box; }
-      body {
-        margin: 0;
-        font-family: Inter, "Noto Sans KR", system-ui, -apple-system, Segoe UI, Arial, sans-serif;
-        color: var(--text);
-        background: linear-gradient(180deg, #f8fbff 0%, #ecf2ff 100%);
-      }
-      main { width: min(1280px, calc(100% - 2rem)); margin: 1rem auto 2.5rem; }
-      h1 { font-size: 1.45rem; margin: 0.8rem 0 0.4rem; }
-      p { color: var(--muted); margin: 0 0 0.9rem; }
-      .meta { color: #475569; font-size: 0.92rem; }
-      .card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 1rem; overflow: auto; box-shadow: 0 12px 30px rgba(15,23,42,0.06); }
-      table { width: 100%; border-collapse: collapse; min-width: 1140px; font-size: 0.9rem; }
-      th, td { border: 1px solid var(--line); padding: 0.62rem; vertical-align: top; text-align: left; }
-      th { background: #eef2ff; font-weight: 700; }
-      thead th { position: sticky; top: 0; z-index: 1; }
-      .pill { display: inline-block; padding: 0.15rem 0.55rem; border-radius: 999px; background: #dbeafe; color: #1d4ed8; font-size: 0.75rem; margin-right: 0.2rem; }
-      .warn { color: #b45309; font-weight: 700; }
-      a { color: #1d4ed8; }
-      .ok { color: #065f46; }
-      .bad { color: #9f1239; }
-      ul { margin: 0.4rem 0 0 1.1rem; }
-      footer { margin-top: 0.7rem; color: #64748b; font-size: 0.84rem; line-height: 1.5; }
-      @media (max-width: 768px) {
-        main { width: calc(100% - 1rem); }
-      }
-    </style>
-  </head>
-  <body>
-    <main>
-      <h1>유니콘 미만 글로벌 AI 스타트업 모니터링</h1>
-      <p class="meta">작성: 2026-04-14 기준(UTC 22:00 갱신), 대상: 한국/중국 제외, 유니콘 미만, 모바일 AI 및 휴대폰 AI/광고 AI 후보 포함</p>
-      <p class="meta">밸류에이션은 공개된 수치가 있는 경우에만 반영. 미공개 항목은 <span class="warn">공개 미공개</span>.</p>
-      <div class="card">
-        <table>
-          <thead>
-            <tr>
-              <th>기업</th>
-              <th>설립년도</th>
-              <th>본사</th>
-              <th>공동창업자 / CEO</th>
-              <th>학교/전공/주요경력</th>
-              <th>직원수</th>
-              <th>밸류에이션(PitchBook/공개)</th>
-              <th>매출(최근)·예상</th>
-              <th>MAU/가입자</th>
-              <th>영업이익(적/흑자)</th>
-              <th>비즈니스모델</th>
-              <th>정량 인사이트</th>
-              <th>핵심 코멘트</th>
-              <th>출처</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Inferact</td>
-              <td>2025</td>
-              <td>San Francisco, CA</td>
-              <td>Simon Mo(창립자), Woosuk Kwon(CTO), Kaichao You(Chief Scientist) 외</td>
-              <td>Woosuk Kwon: UC Berkeley Ph.D(Computer Science), 전 Google DeepMind 연구원. Kaichao You: Tsinghua Ph.D. (Software). Simon Mo: UC Berkeley 커뮤니티/연구 기여 이력</td>
-              <td>공개 미공개(채용 페이지에서 다수 채용 공고 상시)</td>
-              <td><span class="ok">$800M</span> (Seed, 2026)</td>
-              <td>공개 미공개</td>
-              <td>공개 미공개</td>
-              <td>공개 미공개</td>
-              <td>LLM 추론 인프라(vLLM 기반) 상용화 + 고성능 배포/서비스 최적화. vLLM OSS 기여 기반 엔터프라이즈형 라이센싱/유지비용 절감 가치 제안</td>
-              <td>추론 비용 절감 = 모델 운영 단가 하락 경로로 인한 고마진 확장 잠재력 큼. vLLM 사용자사례(클라우드/쇼핑 앱) 보유</td>
-              <td>AI 파이프라인에서 추론비용이 전체 스택비의 큰 비중을 차지하는 만큼, 가격 민감도가 높아 성장성이 크다고 판단</td>
-              <td>TechCrunch(2026), vLLM 프로젝트 페이지, <a href="https://inferact.ai/">inferact.ai</a></td>
-            </tr>
-            <tr>
-              <td>Micro1</td>
-              <td>2022</td>
-              <td>Palo Alto / SF Bay Area, CA</td>
-              <td>Ali Ansari(Founder & CEO)</td>
-              <td>Ali Ansari: Stanford University(강화학습 중심) 교육 표기, AI 기반 데이터운영·채용 플랫폼 운영 경험</td>
-              <td>51-200 (LinkedIn 기준 추정)</td>
-              <td><span class="ok">$500M</span> (2025 Sep 시리즈A 발표)</td>
-              <td>2025년 말 기준 <span class="ok">ARR $100M 달성</span> (직전 $7M)</td>
-              <td>공개 미공개(전문가 커뮤니티 네트워크 보유)</td>
-              <td>공개 미공개</td>
-              <td>기업 AI 학습용 인적 데이터 운영·라벨링·전문가 매칭 플랫폼</td>
-              <td>ARR: 7M → 100M(단 4개월 내 급증)로 고성장 구간</td>
-              <td>AI 학습/강화학습 데이터 수요 확대와 함께 ‘Human-in-the-loop’ 기반 수요 지속성 높음</td>
-              <td>TechCrunch(2025), CBInsights 프로필</td>
-            </tr>
-            <tr>
-              <td>RadixArk</td>
-              <td>2025</td>
-              <td>San Francisco, CA</td>
-              <td>Ying Sheng(CEO, 공동창업), Banghua Zhu(CTO로 보도됨)</td>
-              <td>Ying Sheng: 전 xAI 엔지니어, 전 Databricks 연구과학자. (출처 인터뷰 기반), 연설/강연 이력 다수</td>
-              <td>공개 미공개</td>
-              <td><span class="ok">약 $400M</span> (2026 Jan 보도)</td>
-              <td>공개 미공개</td>
-              <td>공개 미공개</td>
-              <td>공개 미공개</td>
-              <td>SGLang 기반 AI 추론/훈련 인프라 및 RL 프레임워크 상용화 + 일부 유료 호스팅/라이선스 구성</td>
-              <td>Inference 레이어 수요 증가 시, 운영비용·성능 개선을 통한 즉시 현금흐름 개선 여지</td>
-              <td>오픈소스 기반을 유지하며 상용 계층을 늘리는 구조. 가격 탄력성 논리 상 대규모 채택 시 효율성이 높음</td>
-              <td>TechCrunch(2026), RadixArk 공식 홈페이지, LinkedIn 보도</td>
-            </tr>
-            <tr>
-              <td>Pomo</td>
-              <td>공개 미공개</td>
-              <td>Palo Alto, CA</td>
-              <td>Praneet Dutta(공동창업자, CEO), Joe Cheuk(공동창업자)</td>
-              <td>Praneet: Google DeepMind applied genAI/RL 리더 경험, Joe: Databricks/Meta/Google Cloud 엔지니어 경력</td>
-              <td>6명(보도자료 기준)</td>
-              <td>공개 미공개(Seed 라운드 $4.5M)</td>
-              <td>공개 미공개(구독형 $58/월 시작)</td>
-              <td>공개 미공개</td>
-              <td>공개 미공개</td>
-              <td>광고·마케팅 인텔리전스 SaaS, Google Ads/Meta/TikTok/CRM 연동, 캠페인 자동 제안</td>
-              <td>휴대폰·태블릿 기반 광고 운영자도 동일 워크플로 적용 가능, 소규모 팀의 운영시간 단축이 핵심 효용</td>
-              <td>브랜드 운영 효율성이 주요 세일즈 포인트. 광고 집행 자동화가 모바일 광고 집행 환경에서 체감효율 증가</td>
-              <td>BusinessInsider(2026), 웹뉴스 보도</td>
-            </tr>
-            <tr>
-              <td>Telli</td>
-              <td>공개 미공개(2025년 프리시드 공개)</td>
-              <td>Berlin, Germany</td>
-              <td>Seb Hapte-Selassie, Philipp Baumanns, Finn zur Mühlen</td>
-              <td>창업진 상세 학력은 공개 미공개 / YC Alum, AI voice-agent 제품 운영</td>
-              <td>6명(보도자료 기준)</td>
-              <td>공개 미공개(프리시드)</td>
-              <td>공개 미공개(월별 운영이익성 미공개)</td>
-              <td>월간 통화 자동화 처리량: <span class="ok">약 100만건 처리</span> 규모 언급</td>
-              <td>공개 미공개</td>
-              <td>휴대폰·음성 AI 에이전트(예약, 콜백, 단순 문의 처리) + 인적 전환형 하이브리드 운영</td>
-              <td>매출 성장률 <span class="ok">+50% MoM</span> 구간 보고, 6인팀 운영임에도 고성장</td>
-              <td>대규모 고객센터/예약 전용 AI 음성 업무에서 모바일 수요(전화 채널)와 비용효과가 직접적</td>
-              <td>TechCrunch(2025), 앱/보도문</td>
-            </tr>
-            <tr>
-              <td>Hyper (Voice AI)</td>
-              <td>2023</td>
-              <td>Toronto, Canada / 미국지사</td>
-              <td>Ben Sanders(Founder & CEO), Damian McCabe(공동창업자)</td>
-              <td>Ben Sanders: 공공안전·정부 연계 AI 프로젝트 경험, 911 처리·공공서비스 운영 파트너십 가동</td>
-              <td>공개 미공개</td>
-              <td>공개 미공개</td>
-              <td>Seed Round $6.3M 기반으로 매출 공개 미공개</td>
-              <td>휴대폰 통화 채널 중심(응급/비응급 민원 처리)</td>
-              <td>공개 미공개</td>
-              <td>비응급 통화 트리 미세분류·라우팅·응답 AI + 인력 절감형 음성 오토메이션</td>
-              <td>공공기관 PoC/실서비스 진입이 가능할수록 채택 속도 상승; 정책 수요 의존성 높음</td>
-              <td>공개 미공개 항목은 추적 데이터가 확정되지 않아 제외</td>
-              <td>TechCrunch(2025), Wikipedia / 보도자료</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <footer>
-        <ul>
-          <li>요청 조건 반영: 한국/중국 제외, 유니콘 미만, 모바일 AI/휴대폰 AI/모바일 광고 성격 포함, 최신 공개 데이터 우선 정리</li>
-          <li>현재 항목은 공개 소스 기반의 가이드 성격 수치이며, 일부 항목(직원수/실적/수익성)은 회사 공개자료 미포함으로 <span class="warn">공개 미공개</span> 처리</li>
-          <li>매일 아침 KST 07:00 정시 적재는 GitHub Actions(0 22 * * *)로 수행되며, 결과는 같은 날짜 폴더의 index.html로 적재됩니다.</li>
-        </ul>
-      </footer>
-    </main>
-  </body>
-</html>
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>0415 | 모바일 AI 스타트업 브리핑 (KST)</title>
+  <title>Global AI Startup Watch (Non-Unicorn) — 2026-04-15</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;700;800&display=swap" rel="stylesheet">
   <style>
-    :root{--bg:#eef3fb;--card:#ffffff;--line:#d4deef;--text:#0f172a;--muted:#475569;--blue:#1d4ed8;--indigo:#3730a3;--ok:#065f46;--warn:#b45309}
-    body{margin:0;background:linear-gradient(180deg,#f3f7ff,#eaf1fb);font-family:"Noto Sans KR",Arial,sans-serif;color:var(--text);line-height:1.62}
-    main{width:min(1280px,calc(100% - 1.2rem));margin:1rem auto 2rem}
-    .hero{background:linear-gradient(135deg,#0f172a,#1e293b 45%,#1d4ed8);color:#fff;border-radius:14px;padding:1rem 1.1rem;box-shadow:0 14px 30px rgba(15,23,42,.25)}
-    .hero h1{margin:.1rem 0 .35rem;font-size:1.28rem;letter-spacing:-.2px}
-    .hero p{margin:.15rem 0;color:#dbeafe;font-size:.9rem}
-    .chip{display:inline-block;font-size:.75rem;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);padding:.15rem .5rem;border-radius:999px;margin-right:.3rem}
-    .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:1rem;margin:.85rem 0;box-shadow:0 8px 22px rgba(15,23,42,.06)}
-    .h2{margin:0 0 .5rem;font-size:1.05rem;color:#0b214f}
-    .src{font-size:.82rem;color:#1e3a8a;background:#eef5ff;border:1px solid #bed7ff;border-radius:8px;padding:.45rem .55rem;margin:0 0 .65rem}
-    .table-wrap{overflow:auto;scroll-behavior:smooth;border-radius:10px;outline:none}
-    .table-wrap:focus{box-shadow:0 0 0 3px rgba(29,78,216,.25)}
-    .hint{font-size:.8rem;color:var(--muted);margin:.25rem 0 .55rem}
-    table{width:100%;border-collapse:collapse;min-width:1280px;font-size:.88rem}
-    th,td{border:1px solid var(--line);padding:.55rem;vertical-align:top;text-align:left}
-    th{background:#e9f1ff;color:#0b214f;font-weight:800}
-    .ok{color:var(--ok);font-weight:800}
-    .score{background:#f8fafc;border:1px dashed #c7d2e6;border-radius:10px;padding:.72rem;margin:.55rem 0}
-    .sec{margin:.65rem 0 .1rem}.sec b{color:#0b214f}
-    ul{margin:.2rem 0 .15rem 1rem;padding:0}
-    a{color:var(--blue);font-weight:700}
-    .overall{background:linear-gradient(135deg,#ecfeff,#eef2ff);border:1px solid #c7d2fe}
+    :root,
+    [data-theme="light"][data-profile="default"] {
+      --bg-page: #f0f4fb;
+      --bg-card: #ffffff;
+      --bg-card-alt: #f8fafd;
+      --bg-header: #e8eefb;
+      --bg-row-alt: #f7f9fe;
+      --text-primary: #0f172a;
+      --text-secondary: #475569;
+      --text-muted: #64748b;
+      --border: #d6dff0;
+      --accent: #2563eb;
+      --accent-light: #dbeafe;
+      --accent-text: #1e40af;
+      --ok: #059669;
+      --ok-bg: #d1fae5;
+      --warn: #d97706;
+      --warn-bg: #fef3c7;
+      --red: #dc2626;
+      --red-bg: #fee2e2;
+      --purple: #7c3aed;
+      --purple-bg: rgba(124,58,237,0.08);
+      --badge-bg: rgba(37,99,235,0.08);
+      --badge-border: rgba(37,99,235,0.18);
+      --hero-from: #0f172a;
+      --hero-to: #1e3a8a;
+      --shadow-card: 0 8px 32px rgba(15,23,42,0.07);
+      --shadow-hero: 0 16px 48px rgba(15,23,42,0.22);
+      --toggle-bg: #e2e8f0;
+      --toggle-knob: #ffffff;
+      --toolbar-bg: rgba(255,255,255,0.85);
+      --star-fill: #f59e0b;
+      --star-empty: #d1d5db;
+      --insight-bg: #fffbeb;
+      --insight-border: #fde68a;
+      --fact-bg: #f0fdf4;
+      --fact-border: #86efac;
+    }
+
+    [data-theme="light"][data-profile="ocean"] {
+      --bg-page: #ecfdf5; --bg-card: #ffffff; --bg-card-alt: #f0fdf8;
+      --bg-header: #d1fae5; --bg-row-alt: #f0fdf4;
+      --accent: #0d9488; --accent-light: #ccfbf1; --accent-text: #0f766e;
+      --badge-bg: rgba(13,148,136,0.08); --badge-border: rgba(13,148,136,0.18);
+      --hero-from: #064e3b; --hero-to: #0d9488;
+    }
+    [data-theme="light"][data-profile="sunset"] {
+      --bg-page: #fef7ee; --bg-card: #ffffff; --bg-card-alt: #fffbf5;
+      --bg-header: #ffedd5; --bg-row-alt: #fff7ed;
+      --accent: #ea580c; --accent-light: #fed7aa; --accent-text: #c2410c;
+      --badge-bg: rgba(234,88,12,0.08); --badge-border: rgba(234,88,12,0.18);
+      --hero-from: #7c2d12; --hero-to: #ea580c;
+    }
+    [data-theme="light"][data-profile="violet"] {
+      --bg-page: #f5f3ff; --bg-card: #ffffff; --bg-card-alt: #faf8ff;
+      --bg-header: #ede9fe; --bg-row-alt: #f5f3ff;
+      --accent: #7c3aed; --accent-light: #ddd6fe; --accent-text: #6d28d9;
+      --badge-bg: rgba(124,58,237,0.08); --badge-border: rgba(124,58,237,0.18);
+      --hero-from: #3b0764; --hero-to: #7c3aed;
+    }
+
+    [data-theme="dark"] {
+      --bg-page: #0b1120; --bg-card: #141c2e; --bg-card-alt: #111827;
+      --bg-header: #1a2540; --bg-row-alt: #111827;
+      --text-primary: #e2e8f0; --text-secondary: #94a3b8; --text-muted: #64748b;
+      --border: #1e293b;
+      --accent: #60a5fa; --accent-light: rgba(96,165,250,0.12); --accent-text: #93c5fd;
+      --ok: #34d399; --ok-bg: rgba(52,211,153,0.12);
+      --warn: #fbbf24; --warn-bg: rgba(251,191,36,0.1);
+      --red: #f87171; --red-bg: rgba(248,113,113,0.1);
+      --purple: #a78bfa; --purple-bg: rgba(167,139,250,0.1);
+      --badge-bg: rgba(96,165,250,0.1); --badge-border: rgba(96,165,250,0.2);
+      --hero-from: #0f172a; --hero-to: #1e3a8a;
+      --shadow-card: 0 8px 32px rgba(0,0,0,0.3);
+      --shadow-hero: 0 16px 48px rgba(0,0,0,0.5);
+      --toggle-bg: #1e293b; --toggle-knob: #334155;
+      --toolbar-bg: rgba(11,17,32,0.9);
+      --star-fill: #fbbf24; --star-empty: #374151;
+      --insight-bg: rgba(251,191,36,0.06); --insight-border: rgba(251,191,36,0.2);
+      --fact-bg: rgba(52,211,153,0.06); --fact-border: rgba(52,211,153,0.2);
+    }
+    [data-theme="dark"][data-profile="ocean"] {
+      --bg-page: #021a14; --bg-card: #0a2620; --bg-card-alt: #071f1a;
+      --bg-header: #0f3a30; --bg-row-alt: #071f1a;
+      --accent: #2dd4bf; --accent-light: rgba(45,212,191,0.12); --accent-text: #5eead4;
+      --hero-from: #022c22; --hero-to: #0d9488;
+    }
+    [data-theme="dark"][data-profile="sunset"] {
+      --bg-page: #1a0f05; --bg-card: #271a0a; --bg-card-alt: #1f1408;
+      --bg-header: #3b2412; --bg-row-alt: #1f1408;
+      --accent: #fb923c; --accent-light: rgba(251,146,60,0.12); --accent-text: #fdba74;
+      --hero-from: #431407; --hero-to: #ea580c;
+    }
+    [data-theme="dark"][data-profile="violet"] {
+      --bg-page: #0d0620; --bg-card: #160e2e; --bg-card-alt: #110a24;
+      --bg-header: #231740; --bg-row-alt: #110a24;
+      --accent: #a78bfa; --accent-light: rgba(167,139,250,0.12); --accent-text: #c4b5fd;
+      --hero-from: #1e0a3e; --hero-to: #7c3aed;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Plus Jakarta Sans', 'Noto Sans KR', system-ui, sans-serif;
+      background: var(--bg-page);
+      color: var(--text-primary);
+      line-height: 1.65;
+      transition: background 0.4s, color 0.3s;
+    }
+
+    .toolbar {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--toolbar-bg);
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      padding: 0.6rem 1.2rem;
+      display: flex; align-items: center; justify-content: flex-end; gap: 0.75rem;
+      transition: background 0.4s, border-color 0.3s;
+    }
+    .toolbar-group { display: flex; align-items: center; gap: 0.5rem; }
+    .toolbar-label { font-size: 0.72rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; }
+    .profile-btn {
+      width: 22px; height: 22px; border-radius: 50%; border: 2px solid transparent;
+      cursor: pointer; transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+    }
+    .profile-btn:hover { transform: scale(1.15); }
+    .profile-btn.active { border-color: var(--text-primary); box-shadow: 0 0 0 2px var(--bg-page), 0 0 0 4px var(--text-muted); }
+    .profile-btn[data-p="default"] { background: linear-gradient(135deg, #2563eb, #3b82f6); }
+    .profile-btn[data-p="ocean"] { background: linear-gradient(135deg, #0d9488, #2dd4bf); }
+    .profile-btn[data-p="sunset"] { background: linear-gradient(135deg, #ea580c, #fb923c); }
+    .profile-btn[data-p="violet"] { background: linear-gradient(135deg, #7c3aed, #a78bfa); }
+    .divider { width: 1px; height: 20px; background: var(--border); margin: 0 0.3rem; }
+    .theme-toggle { display: flex; align-items: center; gap: 0.45rem; cursor: pointer; user-select: none; }
+    .theme-toggle svg { width: 16px; height: 16px; fill: var(--text-muted); transition: fill 0.3s; }
+    .toggle-track { width: 38px; height: 20px; border-radius: 999px; background: var(--toggle-bg); position: relative; transition: background 0.3s; }
+    .toggle-knob { width: 16px; height: 16px; border-radius: 50%; background: var(--toggle-knob); position: absolute; top: 2px; left: 2px; transition: transform 0.3s, background 0.3s; box-shadow: 0 1px 3px rgba(0,0,0,0.15); }
+    [data-theme="dark"] .toggle-knob { transform: translateX(18px); background: #60a5fa; }
+
+    main { width: min(1440px, calc(100% - 2rem)); margin: 0 auto; padding: 1.5rem 0 3rem; }
+
+    .hero {
+      background: linear-gradient(135deg, var(--hero-from), var(--hero-to));
+      border-radius: 16px; padding: 1.6rem 1.8rem 1.4rem;
+      color: #fff; box-shadow: var(--shadow-hero);
+      margin-bottom: 1.4rem; position: relative; overflow: hidden;
+    }
+    .hero::before { content:''; position:absolute; top:-40%; right:-10%; width:300px; height:300px; background:radial-gradient(circle,rgba(255,255,255,0.06) 0%,transparent 70%); border-radius:50%; }
+    .hero h1 { font-size: 1.35rem; font-weight: 800; letter-spacing: -0.3px; margin-bottom: 0.4rem; }
+    .hero p { font-size: 0.85rem; color: rgba(255,255,255,0.75); line-height: 1.55; }
+    .hero-chips { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.6rem; }
+    .chip { font-size: 0.7rem; font-weight: 600; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); padding: 0.18rem 0.6rem; border-radius: 999px; color: rgba(255,255,255,0.9); }
+
+    .card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 14px; box-shadow: var(--shadow-card);
+      overflow: hidden; margin-bottom: 1.2rem;
+      transition: background 0.4s, border-color 0.3s;
+    }
+    .card-header { padding: 1rem 1.4rem 0.8rem; border-bottom: 1px solid var(--border); }
+    .card-header h2 { font-size: 1rem; font-weight: 700; }
+    .card-header p { font-size: 0.78rem; color: var(--text-muted); margin-top: 0.2rem; }
+    .card-body { padding: 1rem 1.4rem; }
+
+    .table-wrap { overflow-x: auto; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; }
+    table { width: 100%; border-collapse: collapse; min-width: 1600px; font-size: 0.8rem; }
+    thead { position: sticky; top: 0; z-index: 2; }
+    th {
+      background: var(--bg-header); color: var(--text-primary); font-weight: 700;
+      padding: 0.7rem 0.6rem; text-align: left; border-bottom: 2px solid var(--border);
+      white-space: nowrap; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.04em;
+      transition: background 0.3s;
+    }
+    td { padding: 0.6rem; border-bottom: 1px solid var(--border); vertical-align: top; transition: background 0.3s, color 0.3s; }
+    tbody tr:nth-child(even) td { background: var(--bg-row-alt); }
+    tbody tr:hover td { background: var(--accent-light); }
+
+    .badge { display: inline-block; font-size: 0.68rem; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 6px; letter-spacing: 0.02em; }
+    .badge-ok { background: var(--ok-bg); color: var(--ok); }
+    .badge-warn { background: var(--warn-bg); color: var(--warn); }
+    .badge-red { background: var(--red-bg); color: var(--red); }
+    .badge-accent { background: var(--badge-bg); color: var(--accent); border: 1px solid var(--badge-border); }
+    .badge-acquired { background: var(--purple-bg); color: var(--purple); border: 1px solid rgba(124,58,237,0.2); }
+
+    .val { color: var(--ok); font-weight: 700; }
+    .val-warn { color: var(--warn); font-weight: 700; }
+    .highlight { background: rgba(251,191,36,0.15); padding: 0.05rem 0.3rem; border-radius: 4px; font-weight: 700; }
+
+    a { color: var(--accent); text-decoration: none; font-weight: 600; transition: opacity 0.2s; }
+    a:hover { opacity: 0.75; text-decoration: underline; }
+
+    .company-link {
+      font-weight: 800; font-size: 0.88rem; color: var(--accent-text);
+      text-decoration: none; border-bottom: 2px solid transparent;
+      transition: border-color 0.2s;
+    }
+    .company-link:hover { border-bottom-color: var(--accent); text-decoration: none; }
+
+    .td-detail { font-size: 0.78rem; line-height: 1.55; }
+
+    .fact-box {
+      background: var(--fact-bg); border: 1px solid var(--fact-border); border-left: 3px solid var(--ok);
+      border-radius: 8px; padding: 0.55rem 0.7rem; margin-top: 0.4rem;
+      font-size: 0.75rem; line-height: 1.5;
+    }
+    .fact-box strong { color: var(--ok); }
+
+    .insight-box {
+      background: var(--insight-bg); border: 1px solid var(--insight-border); border-left: 3px solid var(--warn);
+      border-radius: 8px; padding: 0.55rem 0.7rem; margin-top: 0.4rem;
+      font-size: 0.75rem; line-height: 1.5;
+    }
+    .insight-box strong { color: var(--warn); }
+
+    .rating-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 0.8rem; padding: 0.2rem 0;
+    }
+    .rating-item {
+      background: var(--bg-card-alt); border: 1px solid var(--border);
+      border-radius: 12px; padding: 0.9rem 1rem;
+      transition: background 0.3s, border-color 0.3s, transform 0.15s;
+    }
+    .rating-item:hover { transform: translateY(-2px); border-color: var(--accent); }
+    .rating-company {
+      font-weight: 800; font-size: 0.9rem; color: var(--accent-text);
+      margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.4rem;
+    }
+    .rating-company .total-score {
+      font-size: 0.72rem; font-weight: 700; padding: 0.12rem 0.45rem;
+      border-radius: 6px; margin-left: auto;
+    }
+    .score-high { background: var(--ok-bg); color: var(--ok); }
+    .score-mid { background: var(--warn-bg); color: var(--warn); }
+
+    .rating-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 0.22rem 0; font-size: 0.76rem;
+    }
+    .rating-label { color: var(--text-secondary); }
+    .stars { letter-spacing: 1px; font-size: 0.82rem; }
+    .star-on { color: var(--star-fill); }
+    .star-off { color: var(--star-empty); }
+
+    .insight-section {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 14px; padding: 1.2rem 1.4rem; margin-bottom: 1.2rem;
+      box-shadow: var(--shadow-card); transition: background 0.4s, border-color 0.3s;
+    }
+    .insight-section h2 { font-size: 1rem; font-weight: 700; margin-bottom: 0.7rem; }
+    .pattern {
+      font-size: 0.82rem; line-height: 1.65; color: var(--text-secondary);
+      margin-bottom: 0.5rem; padding-left: 0.8rem; border-left: 3px solid var(--accent);
+    }
+    .monitor-list {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 0.5rem; margin-top: 0.6rem;
+    }
+    .monitor-item {
+      background: var(--bg-card-alt); border: 1px solid var(--border); border-radius: 8px;
+      padding: 0.55rem 0.7rem; font-size: 0.78rem;
+      display: flex; gap: 0.4rem; align-items: flex-start;
+    }
+    .monitor-item .dot { flex-shrink:0; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); margin-top: 6px; }
+
+    .scroll-hint { font-size: 0.72rem; color: var(--text-muted); padding: 0.4rem 1.4rem; display: flex; align-items: center; gap: 0.3rem; }
+    .scroll-hint svg { width: 14px; height: 14px; fill: var(--text-muted); }
+
+    footer { margin-top: 1rem; padding: 0.8rem 1.4rem; font-size: 0.72rem; color: var(--text-muted); text-align: center; }
+
+    @media (max-width: 768px) {
+      main { width: calc(100% - 1rem); padding: 1rem 0 2rem; }
+      .hero { padding: 1.2rem 1rem 1rem; }
+      .hero h1 { font-size: 1.15rem; }
+      .toolbar { padding: 0.5rem 0.8rem; gap: 0.5rem; }
+      .rating-grid { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
-<body>
-<main>
-  <section class="hero">
-    <span class="chip">KST 기준 2026-04-15</span><span class="chip">모바일 AI</span><span class="chip">조건 충족 1개</span>
-    <h1><b>0415 모바일 기반 AI 서비스 스타트업 브리핑</b></h1>
-    <p><b>기준 시점:</b> 2026-04-15 KST / 미확인 값 표기: <b>-</b> / 출처: 클릭 가능한 URL 하이퍼링크</p>
-  </section>
+<body data-theme="light" data-profile="default">
 
-  <section class="card">
-    <h2 class="h2">통합 발굴 결과 표 (기존 1·2 표 통합)</h2>
-    <div class="src">[소스: Tier 1 — <a href="https://techcrunch.com/2026/04/09/avecs-tinder-styled-email-app-allows-you-to-swipe-through-your-inbox/" target="_blank">TechCrunch(2026-04-09)</a>, <a href="https://techcrunch.com/2026/04/06/google-quietly-releases-an-offline-first-ai-dictation-app-on-ios/" target="_blank">TechCrunch(2026-04-06)</a>, <a href="https://techcrunch.com/2026/02/23/wispr-flow-launches-an-android-app-for-ai-powered-dictation/" target="_blank">TechCrunch(2026-02-23)</a>, <a href="https://techcrunch.com/2025/06/24/wispr-flow-raises-30m-from-menlo-ventures-for-its-ai-powered-dictation-app/" target="_blank">TechCrunch(2025-06-24)</a>, <a href="https://www.crunchbase.com/organization/wispr-ai" target="_blank">Crunchbase</a>]</div>
-    <p class="hint">표 클릭/호버 후 <b>← / →</b> 키 입력 시 좌우 스크롤 이동</p>
-    <div id="companyTableWrap" class="table-wrap" tabindex="0" aria-label="통합 발굴 결과 표">
-      <table>
-        <thead>
-          <tr>
-            <th>기업</th><th>조건 판정</th><th>본사</th><th>홈페이지</th><th>창업자(LinkedIn)</th><th>창업자 전직 직장</th><th>펀딩·밸류</th><th>매출 증거</th><th>기술 독자성</th><th>모바일 근거</th><th>최신 기사 요약·링크</th><th>요약 평가</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><b>Wispr Flow</b></td>
-            <td><span class="ok">선정</span></td>
-            <td>미국 샌프란시스코</td>
-            <td><a href="https://wisprflow.ai/" target="_blank">wisprflow.ai</a></td>
-            <td>Tanay Kothari (<a href="https://www.linkedin.com/in/tankots" target="_blank">LinkedIn</a>)<br/>Sahaj Garg (<a href="https://www.linkedin.com/in/sahajgarg" target="_blank">LinkedIn</a>)</td>
-            <td>Tanay: -<br/>Sahaj: -</td>
-            <td><b>Series A $30M</b>, 누적 $56M, 밸류 $700M</td>
-            <td>CEO 인터뷰 기반 매출 고성장·흑자 전환 방향 확인</td>
-            <td>컨텍스트 보정, 다국어 처리, 모델/인프라 최적화</td>
-            <td>iOS/Android 제공</td>
-            <td>
-              • [6일 전 자료] 모바일 이메일/생산성 AI 카테고리 경쟁 가속 <a href="https://techcrunch.com/2026/04/09/avecs-tinder-styled-email-app-allows-you-to-swipe-through-your-inbox/" target="_blank">기사A</a><br/>
-              • [9일 전 자료] Google 오프라인 dictation 앱 출시로 경쟁 강화 <a href="https://techcrunch.com/2026/04/06/google-quietly-releases-an-offline-first-ai-dictation-app-on-ios/" target="_blank">기사B</a><br/>
-              • [52일 전 자료] Android 확장/밸류 보도 <a href="https://techcrunch.com/2026/02/23/wispr-flow-launches-an-android-app-for-ai-powered-dictation/" target="_blank">기사C</a><br/>
-              • [295일 전 자료] Series A 투자·성장 코멘트 <a href="https://techcrunch.com/2025/06/24/wispr-flow-raises-30m-from-menlo-ventures-for-its-ai-powered-dictation-app/" target="_blank">기사D</a>
-            </td>
-            <td>기술 독자성 ★★★★☆ / 매출 검증도 ★★★☆☆ / 총점 <b>19/25</b></td>
-          </tr>
-        </tbody>
-      </table>
+  <div class="toolbar">
+    <div class="toolbar-group">
+      <span class="toolbar-label">컬러</span>
+      <button class="profile-btn active" data-p="default" title="Blue" onclick="setProfile('default')"></button>
+      <button class="profile-btn" data-p="ocean" title="Ocean" onclick="setProfile('ocean')"></button>
+      <button class="profile-btn" data-p="sunset" title="Sunset" onclick="setProfile('sunset')"></button>
+      <button class="profile-btn" data-p="violet" title="Violet" onclick="setProfile('violet')"></button>
+    </div>
+    <div class="divider"></div>
+    <div class="theme-toggle" onclick="toggleTheme()" title="다크 모드 전환">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.515 4.929l1.414-1.414L7.05 5.636 5.636 7.05 3.515 4.93zM16.95 18.364l1.414-1.414 2.121 2.121-1.414 1.414-2.121-2.121zm2.121-14.85 1.414 1.415-2.121 2.121-1.414-1.414 2.121-2.121zM5.636 16.95l1.414 1.414-2.121 2.121-1.414-1.414 2.121-2.121zM23 11v2h-3v-2h3zM4 11v2H1v-2h3z"/></svg>
+      <div class="toggle-track"><div class="toggle-knob"></div></div>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 7a7 7 0 0 0 12 4.9v.1c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2h.1A6.979 6.979 0 0 0 10 7zm-6 5a8 8 0 0 0 15.062 3.762A9 9 0 0 1 8.238 4.938 7.999 7.999 0 0 0 4 12z"/></svg>
+    </div>
+  </div>
+
+  <main>
+    <section class="hero">
+      <div class="hero-chips">
+        <span class="chip">KST 2026-04-15</span>
+        <span class="chip">유니콘 미만</span>
+        <span class="chip">한국/중국 제외</span>
+        <span class="chip">모바일 AI · 광고 AI 포함</span>
+        <span class="chip">Fact-Checked</span>
+      </div>
+      <h1>유니콘 미만 글로벌 AI 스타트업 모니터링</h1>
+      <p>밸류에이션은 공개 수치 기반 반영 · 미확인 항목은 <strong>—</strong> 표기 · 기업명 클릭 → 홈페이지 · 출처 클릭 → 원문</p>
+    </section>
+
+    <!-- ═══ MAIN TABLE ═══ -->
+    <div class="card">
+      <div class="card-header">
+        <h2>통합 스타트업 리스트 (팩트체크 보강판)</h2>
+        <p>AI 추론 인프라 · 데이터 플랫폼 · 음성 AI · 마케팅 AI · 모바일 음성 입력 — 총 7개 기업</p>
+      </div>
+      <div class="scroll-hint">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10.05 4.575a1.575 1.575 0 1 0-3.15 0v5.85h-.177a.473.473 0 0 0-.473.473c0 .842.224 1.67.648 2.398l1.674 3.014A3 3 0 0 0 11.2 18H16.8a3 3 0 0 0 2.625-1.547l1.674-3.014c.424-.728.648-1.556.648-2.398a.473.473 0 0 0-.473-.473h-.177V6.575a1.575 1.575 0 0 0-3.15 0v3.85h-1.05V5.075a1.575 1.575 0 0 0-3.15 0v5.35h-1.05V4.575a1.575 1.575 0 0 0-1.65-1.575z"/></svg>
+        좌우 스크롤 · ← → 키 사용 가능
+      </div>
+      <div class="table-wrap" id="tw" tabindex="0">
+        <table>
+          <thead>
+            <tr>
+              <th style="min-width:120px">기업</th>
+              <th>설립</th>
+              <th>본사</th>
+              <th>창업자 / CEO</th>
+              <th style="min-width:200px">학교 · 전공 · 핵심 경력</th>
+              <th>직원</th>
+              <th>밸류에이션</th>
+              <th style="min-width:160px">펀딩 · 투자자</th>
+              <th style="min-width:180px">매출 · 트랙션</th>
+              <th style="min-width:180px">비즈니스 모델</th>
+              <th style="min-width:220px">팩트체크 · 투자 인사이트</th>
+              <th style="min-width:150px">출처</th>
+            </tr>
+          </thead>
+          <tbody>
+
+            <!-- 1 ── Inferact ── -->
+            <tr>
+              <td><a class="company-link" href="https://inferact.ai/" target="_blank">Inferact</a></td>
+              <td><strong>2025.11</strong></td>
+              <td>SF Bay Area, CA</td>
+              <td class="td-detail"><strong>Simon Mo</strong> (CEO)<br><strong>Woosuk Kwon</strong> (CTO)<br>Kaichao You (Chief Scientist)<br>Roger Wang</td>
+              <td class="td-detail">
+                <strong>Mo:</strong> UC Berkeley Ph.D candidate (CS/AI 시스템)<br>
+                <strong>Kwon:</strong> UC Berkeley Ph.D (CS), <span class="highlight">vLLM 논문 저자</span>, 前 Google DeepMind Research Scientist (2024.03–2025.05)<br>
+                <strong>You:</strong> Tsinghua Ph.D (Software)<br>
+                <strong>Ion Stoica</strong> (Databricks 공동창업자) 참여
+              </td>
+              <td>—</td>
+              <td><span class="badge badge-ok">$800M</span><br><small>Seed, 2026.01</small></td>
+              <td class="td-detail">
+                <span class="val">$150M Seed</span><br>
+                공동 리드: <strong>a16z + Lightspeed</strong><br>
+                Sequoia · Altimeter · Redpoint · Databricks Ventures · UC Berkeley Chancellor's Fund · ZhenFund
+              </td>
+              <td class="td-detail">
+                vLLM: <span class="highlight">40만+ GPU</span>에서 운영<br>
+                500+ 모델 아키텍처 지원<br>
+                2,000+ 기여자 커뮤니티<br>
+                매출: —
+              </td>
+              <td class="td-detail">
+                vLLM 오픈소스 기반 <strong>LLM 추론 인프라 상용화</strong><br>
+                유료 서버리스 버전 출시 예정<br>
+                Kubernetes 기반 관측·복구 기능<br>
+                PyTorch Foundation 관리 하 오픈소스 유지
+              </td>
+              <td class="td-detail">
+                <div class="fact-box"><strong>✅ 팩트 수정:</strong> 투자자 Sequoia·Altimeter·Redpoint 원문 누락 보강. 역대 최대급 Seed 라운드 (Mistral AI $115M 초과). vLLM은 <strong>xAI·Cursor 등</strong> 최대 AI 기업 추론 레이어에 이미 채택.</div>
+                <div class="insight-box"><strong>📌 투자 관점:</strong> 추론 비용 = AI 운영비 핵심 병목. a16z·Lightspeed·Sequoia 동시 참여는 이례적 컨빅션 신호. 사용량 기반 과금 시 ARR 가시성 강함.</div>
+              </td>
+              <td class="td-detail">
+                <a href="https://techcrunch.com/2026/01/22/inference-startup-inferact-lands-150m-to-commercialize-vllm/" target="_blank">TechCrunch (2026.01.22)</a><br>
+                <a href="https://siliconangle.com/2026/01/22/inferact-launches-150m-funding-commercialize-vllm/" target="_blank">SiliconANGLE</a><br>
+                <a href="https://cryptorank.io/news/feed/22a1c-radixark-ai-inference-optimization-valuation" target="_blank">CryptoRank</a>
+              </td>
+            </tr>
+
+            <!-- 2 ── RadixArk ── -->
+            <tr>
+              <td><a class="company-link" href="https://radixark.com/" target="_blank">RadixArk</a></td>
+              <td><strong>2025.08</strong></td>
+              <td>Redwood City, CA</td>
+              <td class="td-detail"><strong>Ying Sheng</strong> (CEO)<br><strong>Banghua Zhu</strong> (CTO)</td>
+              <td class="td-detail">
+                <strong>Sheng:</strong> UC Berkeley + Stanford, <span class="highlight">前 xAI 엔지니어</span> → UCLA 조교수 → RadixArk. LMSYS·Chatbot Arena·SGLang 공동 창설<br>
+                <strong>Zhu:</strong> UC Berkeley Ph.D (Sheng과 동기)<br>
+                UC Berkeley <strong>Ion Stoica 연구실</strong> 출신
+              </td>
+              <td>—</td>
+              <td><span class="badge badge-ok">~$400M</span><br><small>2026.01 보도</small></td>
+              <td class="td-detail">
+                <strong>Accel</strong> 리드<br>
+                Intel CEO <strong>Lip-Bu Tan</strong> 엔젤<br>
+                금액: — (TechCrunch 미확인)
+              </td>
+              <td class="td-detail">
+                <strong>xAI · Cursor</strong> SGLang 채택<br>
+                유료 호스팅 서비스 과금 시작<br>
+                매출: —
+              </td>
+              <td class="td-detail">
+                <strong>SGLang</strong> 오픈소스 AI 추론 엔진<br>
+                <strong>Miles</strong> RL 프레임워크 (훈련까지 커버)<br>
+                오픈소스 + 관리형 호스팅 상용 계층
+              </td>
+              <td class="td-detail">
+                <div class="fact-box"><strong>✅ 팩트 수정:</strong> Sheng 이력 정정 — Databricks 직접 근무는 <strong>미확인</strong> (Ion Stoica 연구실 연계). Zhu CTO Twitter/X로 확인. 정확 경로: xAI → Stanford → UCLA → RadixArk.</div>
+                <div class="insight-box"><strong>📌 투자 관점:</strong> Inferact(vLLM)과 추론 인프라 양대 축. RL 프레임워크 "Miles"로 훈련까지 커버. 오픈소스→호스팅 과금 = Databricks·Confluent 성공 경로와 유사.</div>
+              </td>
+              <td class="td-detail">
+                <a href="https://techcrunch.com/2026/01/21/sources-project-sglang-spins-out-as-radixark-with-400m-valuation-as-inference-market-explodes/" target="_blank">TechCrunch (2026.01.21)</a><br>
+                <a href="https://pitchbook.com/profiles/company/1239883-57" target="_blank">PitchBook</a><br>
+                <a href="https://finance.yahoo.com/news/sources-project-sglang-spins-radixark-232414161.html" target="_blank">Yahoo Finance</a>
+              </td>
+            </tr>
+
+            <!-- 3 ── Micro1 ── -->
+            <tr>
+              <td><a class="company-link" href="https://www.micro1.ai/" target="_blank">Micro1</a></td>
+              <td><strong>2022</strong></td>
+              <td>Palo Alto, CA</td>
+              <td class="td-detail"><strong>Ali Ansari</strong><br>(Founder & CEO, 25세)</td>
+              <td class="td-detail">
+                Stanford (강화학습 중심, 학과 미확인)<br>
+                AI 데이터 운영·채용 플랫폼 연속 창업
+              </td>
+              <td>~518</td>
+              <td>
+                <span class="badge badge-ok">$500M</span> <small>Series A, 2025.09</small><br>
+                <span class="badge badge-warn">$2.5B 논의 중</span> <small>Forbes 2026.02</small>
+              </td>
+              <td class="td-detail">
+                <span class="val">$35M Series A</span> (01 Advisors 리드)<br>
+                누적 <strong>$41.6M</strong> (4개 라운드)<br>
+                LG Tech Ventures · Bain (이사회) 참여
+              </td>
+              <td class="td-detail">
+                ARR 추이:<br>
+                <span class="val-warn">$7M</span> (2025 초) →
+                <span class="val-warn">$50M</span> (2025.09) →
+                <span class="val">$100M+</span> (2025.12) →
+                <span class="val highlight">$200M</span> (2026.02)<br>
+                <strong>Microsoft</strong> 포함 Fortune 100 고객<br>
+                <strong>2M+</strong> 전문가 네트워크 (Harvard·Stanford 교수급)
+              </td>
+              <td class="td-detail">
+                AI 학습 데이터 전문가 매칭·라벨링 (Scale AI 경쟁사)<br>
+                AI 리크루터 <strong>'Zara'</strong> 운영<br>
+                RL 환경 구축 · 로봇 데이터 어노테이션
+              </td>
+              <td class="td-detail">
+                <div class="fact-box"><strong>✅ 팩트 수정:</strong> ARR $100M 돌파 <strong>2025.12</strong> TechCrunch 확인. Series A $35M / 총 $41.6M. $2.5B 밸류는 Forbes 추정 (협상 진행 중).</div>
+                <div class="insight-box"><strong>📌 투자 관점:</strong> 4개월 내 ARR 2× ($50M→$100M)은 RLHF·에이전틱 데이터 수요 폭발 증명. $500M 밸류에서 ARR 멀티플 ~5x. Scale AI 대체 수요 급증 수혜.</div>
+              </td>
+              <td class="td-detail">
+                <a href="https://techcrunch.com/2025/12/04/micro1-a-scale-ai-competitor-touts-crossing-100m-arr/" target="_blank">TechCrunch (ARR)</a><br>
+                <a href="https://techcrunch.com/2025/09/12/micro1-a-competitor-to-scale-ai-raises-funds-at-500m-valuation/" target="_blank">TechCrunch (Series A)</a><br>
+                <a href="https://www.indexbox.io/blog/ali-ansari-from-ebay-sales-to-potential-ai-billionaire-in-2026/" target="_blank">Forbes/IndexBox</a><br>
+                <a href="https://www.cbinsights.com/company/micro1" target="_blank">CBInsights</a>
+              </td>
+            </tr>
+
+            <!-- 4 ── Wispr Flow ── -->
+            <tr>
+              <td><a class="company-link" href="https://wisprflow.ai/" target="_blank">Wispr Flow</a></td>
+              <td><strong>2021</strong></td>
+              <td>San Francisco, CA</td>
+              <td class="td-detail"><strong>Tanay Kothari</strong> (CEO)<br><strong>Sahaj Garg</strong> (공동창업)</td>
+              <td class="td-detail">
+                <strong>Kothari:</strong> <span class="highlight">Stanford CS 학사 + AI 석사</span><br>
+                Andrew Ng 딥러닝 강의 TA, Stanford AI Lab 논문<br>
+                IOI 메달리스트, <strong>Forbes 30 Under 30</strong> (2023)<br>
+                前 FeatherX(AI) → Cerebra Technologies 인수 합류<br>
+                Convert (음악 플랫폼, 250만 MAU) 운영<br>
+                Stanford VC Club 3년 President<br>
+                <strong>Garg:</strong> Stanford 동기, 상세 경력 —
+              </td>
+              <td>~83</td>
+              <td><span class="badge badge-ok">$700M</span><br><small>Series A-II, 2025.11</small></td>
+              <td class="td-detail">
+                누적 <span class="val">~$81M</span><br>
+                Series A $30M (<strong>Menlo Ventures</strong>)<br>
+                + $25M (<strong>Notable Capital</strong>)<br>
+                NEA · 8VC · Neo · Flight Fund
+              </td>
+              <td class="td-detail">
+                매출: <span class="val">$10M</span> (2025.10)<br>
+                MoM <span class="highlight">40% 성장</span><br>
+                Fortune 500 중 <strong>270개사 도입</strong><br>
+                주간 125개 기업 고객 추가<br>
+                <strong>Yapify AI 인수</strong> (2025.12)<br>
+                오류율 ~10% (Whisper 27%, Apple 47%)
+              </td>
+              <td class="td-detail">
+                AI 음성 받아쓰기 (Mac/Win/iOS/Android)<br>
+                컨텍스트 보정 · 다국어 처리<br>
+                자체 ASR 모델 개발 중<br>
+                온디바이스 최적화
+              </td>
+              <td class="td-detail">
+                <div class="fact-box"><strong>✅ 팩트 수정:</strong> 원문 Kothari·Garg 전직 모두 "—"이었으나 <strong>Stanford CS/AI, Forbes 30U30, FeatherX 창업·인수 경력</strong> 보강. 누적 펀딩 $56M → <strong>$81M</strong>으로 수정.</div>
+                <div class="insight-box"><strong>📌 경쟁 리스크:</strong> <a href="https://techcrunch.com/2026/04/06/google-quietly-releases-an-offline-first-ai-dictation-app-on-ios/" target="_blank">Google 오프라인 AI Dictation 앱 출시 (2026.04.06)</a>로 직접 경쟁 가속. UX·다국어·컨텍스트 보정으로 단기 방어 가능하나 ARPU 공개가 밸류 재평가 핵심.</div>
+              </td>
+              <td class="td-detail">
+                <a href="https://techcrunch.com/2025/11/20/as-its-voice-dectation-app-takes-off-wispr-secures-25m-from-notable-capital/" target="_blank">TechCrunch (2025.11)</a><br>
+                <a href="https://wisprflow.ai/media-kit" target="_blank">Media Kit</a><br>
+                <a href="https://www.crunchbase.com/organization/wispr-ai" target="_blank">Crunchbase</a><br>
+                <a href="https://www.moneycontrol.com/news/business/startup/in-search-of-ironman-s-jarvis-why-wisprflow-s-tanay-kothari-wants-voice-to-replace-the-keyboard-13760781.html" target="_blank">Moneycontrol</a>
+              </td>
+            </tr>
+
+            <!-- 5 ── Pomo ── -->
+            <tr>
+              <td><a class="company-link" href="https://usepomo.ai/" target="_blank">Pomo</a></td>
+              <td>2025~</td>
+              <td>Palo Alto, CA</td>
+              <td class="td-detail"><strong>Praneet Dutta</strong> (CEO)<br><strong>Joe Cheuk</strong> (CTO)</td>
+              <td class="td-detail">
+                <strong>Dutta:</strong> <span class="highlight">Google DeepMind</span> Applied GenAI/RL 리더 (Imagen, Gemini 기여)<br>
+                <strong>Cheuk:</strong> Google 前 엔지니어 (Databricks/Meta/Google Cloud 경력은 별도 확인 필요)<br>
+                팀: Google·Meta 초기 엔지니어 포함<br>
+                어드바이저: 前 GM·AmEx 글로벌 마케팅 리더
+              </td>
+              <td>6명</td>
+              <td>—<br><small>Seed 단계</small></td>
+              <td class="td-detail">
+                <span class="val">$4.5M Seed</span> (2026.04.08)<br>
+                <strong>Kindred Ventures</strong> 리드<br>
+                Databricks Ventures · SV Angel · 645 Ventures · Seven Stars · Timeless Partners<br>
+                엔젤: Scott Belsky (Adobe) · Mehdi Ghissassi (DeepMind) · Massimo Mascaro (Google AI)
+              </td>
+              <td class="td-detail">
+                구독형 <strong>$58/월~</strong><br>
+                D2C 브랜드 파일럿 진행 중<br>
+                <strong>Ai4</strong> 컨퍼런스 · 인도 <strong>CII</strong> 파트너십<br>
+                CPG / 웰니스 / 호스피탈리티 타겟
+              </td>
+              <td class="td-detail">
+                에이전틱 마케팅 인텔리전스 SaaS<br>
+                Google Ads/Meta/TikTok/HubSpot 연동<br>
+                24/7 자율 모니터링 → 캠페인 제안 → 실행 자동화<br>
+                Closed-loop 최적화
+              </td>
+              <td class="td-detail">
+                <div class="fact-box"><strong>✅ 팩트 수정:</strong> Cheuk의 "Databricks/Meta/Google Cloud" 경력은 <strong>미확인</strong> — 공식 보도 기준 Google 전직만 확인. Dutta DeepMind 경력 확인.</div>
+                <div class="insight-box"><strong>📌 투자 관점:</strong> 6인 팀 $4.5M Seed는 린 구조. AI 에이전트 광고 자동화 SaaS LTV/CAC 유리. 모바일 광고 집행 채널 직접 연동 → 소규모 DTC 타겟. AI 광고 최적화 시장 2026 $10B+ 추정.</div>
+              </td>
+              <td class="td-detail">
+                <a href="https://www.businesswire.com/news/home/20260408732797/en/" target="_blank">BusinessWire (2026.04)</a><br>
+                <a href="https://theaiinsider.tech/2026/04/09/ex-google-deepmind-and-databricks-engineers-launch-pomo-to-apply-ai-agent-principles-to-decision-dense-marketing-functions/" target="_blank">AI Insider</a><br>
+                <a href="https://hyper.ai/en/stories/e797bba6697850ead9850f9fd07736a5" target="_blank">HyperAI</a>
+              </td>
+            </tr>
+
+            <!-- 6 ── Telli ── -->
+            <tr>
+              <td><a class="company-link" href="https://www.telli.com/" target="_blank">Telli</a></td>
+              <td><strong>2024</strong></td>
+              <td>Berlin, Germany</td>
+              <td class="td-detail"><strong>Finn zur Mühlen</strong> (CEO)<br>Seb Hapte-Selassie<br>Philipp Baumanns</td>
+              <td class="td-detail">
+                <strong>Finn · Philipp:</strong> <span class="highlight">독일 유니콘 Enpal</span> 열펌프 사업부 초기 멤버 (2→150명 규모화)<br>
+                <strong>Seb:</strong> Stanford CS (HCI), Pitch 초기 엔지니어<br>
+                <strong>YC F24</strong> 배치
+              </td>
+              <td>6명</td>
+              <td>—<br><small>Pre-Seed</small></td>
+              <td class="td-detail">
+                <span class="val">€3.1M ($3.6M) Pre-Seed</span><br>
+                <strong>Cherry Ventures + Y Combinator</strong> 공동 리드
+              </td>
+              <td class="td-detail">
+                월간 <span class="highlight">~100만건 통화</span> 처리<br>
+                매출 <span class="val">MoM +50%</span> 성장<br>
+                80%+ 고객: 인바운드/추천<br>
+                독일·영국·미국·남미 서비스
+              </td>
+              <td class="td-detail">
+                AI 음성 에이전트 (예약·리드 검증·콜백·딜 클로징)<br>
+                인적 에이전트 실시간 핸드오프<br>
+                ElevenLabs/Cartesian 음성 클로닝<br>
+                OpenAI/Claude LLM · 30+ 언어
+              </td>
+              <td class="td-detail">
+                <div class="fact-box"><strong>✅ 팩트 수정:</strong> 원문 "창업진 경력 미공개"를 <strong>Enpal 출신</strong>으로 정정 (TechCrunch 인터뷰 확인). 설립연도 2024년, Pre-seed $3.6M 확인.</div>
+                <div class="insight-box"><strong>📌 투자 관점:</strong> 6인팀 100만 콜 + MoM 50%는 수요 검증. 단, ElevenLabs·OpenAI 외부 API 의존도 높아 독자 기술 해자 제한적. 유럽→미주 확장 추적 필요.</div>
+              </td>
+              <td class="td-detail">
+                <a href="https://techcrunch.com/2025/04/15/telli-a-yc-alum-raises-pre-seed-funding-for-its-ai-voice-agents/" target="_blank">TechCrunch (2025.04)</a><br>
+                <a href="https://www.eu-startups.com/2025/04/german-startup-telli-raises-e3-1-million-to-redefine-how-ai-agents-and-humans-collaborate-in-call-operations/" target="_blank">EU-Startups</a><br>
+                <a href="https://technews180.com/funding-news/telli-raises-3-6m-for-ai-voice-call-operations/" target="_blank">TechNews180</a>
+              </td>
+            </tr>
+
+            <!-- 7 ── Hyper ── -->
+            <tr>
+              <td>
+                <a class="company-link" href="https://www.callhyper.com/" target="_blank">Hyper</a>
+                <br><span class="badge badge-acquired">ACQUIRED by Motorola</span>
+              </td>
+              <td><strong>2023</strong></td>
+              <td>Toronto / SF</td>
+              <td class="td-detail"><strong>Ben Sanders</strong> (CEO)<br><strong>Damian McCabe</strong> (CPO)</td>
+              <td class="td-detail">
+                <strong>Sanders:</strong> <span class="highlight">Clearco 공동창업</span>, Presto (드라이브스루 음성 AI, SPAC 상장), Proof (→Daylight 인수)<br>
+                <strong>McCabe:</strong> Connected 창업 (200명→ThoughtWorks 인수), 前 Uber/Instagram/IBM<br>
+                Yukon 설립
+              </td>
+              <td>18명</td>
+              <td><span class="badge badge-acquired">Motorola Solutions 인수</span><br><small>2026.04 발표</small></td>
+              <td class="td-detail">
+                <span class="val">$6.3M Seed</span><br>
+                <strong>Eniac Ventures</strong> 리드<br>
+                Ripple · GreatPoint · VSC · Tusk · K5 Global · OpenAI 엔젤
+              </td>
+              <td class="td-detail">
+                비응급 911 통화 <span class="highlight">최대 75% 자율 처리</span><br>
+                <strong>Toronto Police</strong> 24/7 실서비스<br>
+                <strong>San Diego County Sheriff</strong> 배포<br>
+                30+ 언어 · 100+ 시나리오
+              </td>
+              <td class="td-detail">
+                공공안전 특화 AI 음성 에이전트<br>
+                비응급 911 분류·라우팅·리포트<br>
+                <strong>Motorola Solutions 인수</strong> → Assist 플랫폼 통합<br>
+                B2G 계약 모델
+              </td>
+              <td class="td-detail">
+                <div class="fact-box"><strong>✅ 팩트 수정:</strong> 원문 "PoC 진입 가능성" → <strong>이미 TPS 실서비스 24/7 가동 중</strong> (CBC 2026.01 확인). 원문 출처 "Wikipedia" → TechCrunch/CBC로 정정. <strong>2026.04 Motorola Solutions 인수 완료.</strong></div>
+                <div class="insight-box"><strong>📌 투자 관점:</strong> 설립 ~1.5년 만에 EXIT. B2G 계약은 채택 시 극도로 높은 전환 비용 + 반복 수익. 북미 911 콜센터 25% 공석 — 구조적 수요.</div>
+              </td>
+              <td class="td-detail">
+                <a href="https://betakit.com/motorola-acquires-ai-911-call-screening-startup-hyper/" target="_blank">BetaKit (인수, 2026.04)</a><br>
+                <a href="https://techcrunch.com/2025/07/21/ai-voice-company-hyper-raises-6-3m-to-help-automate-911-calls/" target="_blank">TechCrunch</a><br>
+                <a href="https://www.cbc.ca/news/canada/toronto/tps-ai-non-emergency-calls-9.7057083" target="_blank">CBC News</a><br>
+                <a href="https://www.theglobeandmail.com/business/article-motorola-acquires-canadian-startup-hyper-known-for-ai-tech-that/" target="_blank">Globe and Mail</a>
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
     </div>
 
-    <div class="score"><b>개별 평가:</b> Wispr Flow — 기술 독자성 ★★★★☆ · 매출 검증도 ★★★☆☆ · 시장 타이밍 ★★★★☆ · 팀 역량 ★★★☆☆ · 모바일 적합성 ★★★★★ → <b>19/25 (관심)</b></div>
-    <div class="score overall"><b>전체 리스트 평가:</b> 조건 충족 1개/검토 1개. 조건 충족률 100%이나 표본 수가 작아 분산 리스크 존재. 다음 사이클에서 2~3개 후보 추가 발굴 필요.</div>
-  </section>
+    <!-- ═══ RATING ═══ -->
+    <div class="card">
+      <div class="card-header">
+        <h2>개별 평가표</h2>
+        <p>기술 독자성 · 매출 검증도 · 시장 타이밍 · 팀 역량 · 모바일 적합성 — 각 5점 만점, 총 25점</p>
+      </div>
+      <div class="card-body">
+        <div class="rating-grid">
 
-  <section class="card">
-    <h2 class="h2">브리핑 요약 (개조식)</h2>
-    <div class="sec"><b>SECTION 1 시장 동향</b> — 모바일 AI 입력·생산성 분야 경쟁 심화, 빅테크 온디바이스 기능 확장 추세.</div>
-    <div class="sec"><b>SECTION 2 기업 프로필</b> — Wispr Flow 1개 선정, 유니콘 미만·모바일·매출 정황·기술 최적화 요건 충족.</div>
-    <div class="sec"><b>SECTION 3 기술 분석</b> — 문맥 보정/다국어/성능 최적화 중심, 논문·특허 정량 근거는 미확인.</div>
-    <div class="sec"><b>SECTION 4 경쟁·해자</b> — Google 계열 기능 확장에 따른 압박, UX/속도 기반 차별화 유지 필요.</div>
-    <div class="sec"><b>SECTION 5 리스크</b> — 유료전환율·ARPU 값이 - 상태, 수익성 가시성 제한.</div>
-    <div class="sec"><b>SECTION 6 후속 이벤트</b> — 유료 지표 발표 여부, 경쟁 기능 업데이트 여부 모니터링 필요.</div>
-    <div class="sec"><b>SECTION 7 한 줄 요약</b> — 오늘은 조건 충족 기업 1개 유지, 추가 후보 확장이 다음 액션.</div>
-  </section>
-</main>
+          <div class="rating-item">
+            <div class="rating-company">Hyper <span class="total-score score-high">22/25 · EXIT 완료</span></div>
+            <div class="rating-row"><span class="rating-label">기술 독자성</span><span class="stars"><span class="star-on">★★★★</span><span class="star-off">★</span></span></div>
+            <div class="rating-row"><span class="rating-label">매출 검증도</span><span class="stars"><span class="star-on">★★★★</span><span class="star-off">★</span></span></div>
+            <div class="rating-row"><span class="rating-label">시장 타이밍</span><span class="stars"><span class="star-on">★★★★★</span></span></div>
+            <div class="rating-row"><span class="rating-label">팀 역량</span><span class="stars"><span class="star-on">★★★★★</span></span></div>
+            <div class="rating-row"><span class="rating-label">모바일 적합성</span><span class="stars"><span class="star-on">★★★★</span><span class="star-off">★</span></span></div>
+          </div>
 
-<script>
-(() => {
-  const wrap = document.getElementById('companyTableWrap');
-  if (!wrap) return;
-  const STEP = 240;
-  window.addEventListener('keydown', (e) => {
-    if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
-    const active = document.activeElement;
-    const typing = active && (active.tagName === 'INPUT' || active.tagName === 'TEXTAREA' || active.isContentEditable);
-    if (typing) return;
-    const rect = wrap.getBoundingClientRect();
-    const inView = rect.bottom > 0 && rect.top < window.innerHeight;
-    const isFocused = active === wrap || wrap.contains(active);
-    const isHovered = wrap.matches(':hover');
-    if (!inView || (!isFocused && !isHovered)) return;
-    e.preventDefault();
-    wrap.scrollBy({ left: e.key === 'ArrowRight' ? STEP : -STEP, behavior: 'smooth' });
-  }, { passive: false });
-})();
-</script>
+          <div class="rating-item">
+            <div class="rating-company">Inferact <span class="total-score score-high">21/25 · 최우선</span></div>
+            <div class="rating-row"><span class="rating-label">기술 독자성</span><span class="stars"><span class="star-on">★★★★★</span></span></div>
+            <div class="rating-row"><span class="rating-label">매출 검증도</span><span class="stars"><span class="star-on">★★</span><span class="star-off">★★★</span></span></div>
+            <div class="rating-row"><span class="rating-label">시장 타이밍</span><span class="stars"><span class="star-on">★★★★★</span></span></div>
+            <div class="rating-row"><span class="rating-label">팀 역량</span><span class="stars"><span class="star-on">★★★★★</span></span></div>
+            <div class="rating-row"><span class="rating-label">모바일 적합성</span><span class="stars"><span class="star-on">★★★★</span><span class="star-off">★</span></span></div>
+          </div>
+
+          <div class="rating-item">
+            <div class="rating-company">RadixArk <span class="total-score score-high">20/25 · 최우선</span></div>
+            <div class="rating-row"><span class="rating-label">기술 독자성</span><span class="stars"><span class="star-on">★★★★★</span></span></div>
+            <div class="rating-row"><span class="rating-label">매출 검증도</span><span class="stars"><span class="star-on">★★</span><span class="star-off">★★★</span></span></div>
+            <div class="rating-row"><span class="rating-label">시장 타이밍</span><span class="stars"><span class="star-on">★★★★★</span></span></div>
+            <div class="rating-row"><span class="rating-label">팀 역량</span><span class="stars"><span class="star-on">★★★★</span><span class="star-off">★</span></span></div>
+            <div class="rating-row"><span class="rating-label">모바일 적합성</span><span class="stars"><span class="star-on">★★★★</span><span class="star-off">★</span></span></div>
+          </div>
+
+          <div class="rating-item">
+            <div class="rating-company">Micro1 <span class="total-score score-high">20/25 · 최우선</span></div>
+            <div class="rating-row"><span class="rating-label">기술 독자성</span><span class="stars"><span class="star-on">★★★</span><span class="star-off">★★</span></span></div>
+            <div class="rating-row"><span class="rating-label">매출 검증도</span><span class="stars"><span class="star-on">★★★★★</span></span></div>
+            <div class="rating-row"><span class="rating-label">시장 타이밍</span><span class="stars"><span class="star-on">★★★★★</span></span></div>
+            <div class="rating-row"><span class="rating-label">팀 역량</span><span class="stars"><span class="star-on">★★★</span><span class="star-off">★★</span></span></div>
+            <div class="rating-row"><span class="rating-label">모바일 적합성</span><span class="stars"><span class="star-on">★★★★</span><span class="star-off">★</span></span></div>
+          </div>
+
+          <div class="rating-item">
+            <div class="rating-company">Wispr Flow <span class="total-score score-mid">19/25 · 관심</span></div>
+            <div class="rating-row"><span class="rating-label">기술 독자성</span><span class="stars"><span class="star-on">★★★★</span><span class="star-off">★</span></span></div>
+            <div class="rating-row"><span class="rating-label">매출 검증도</span><span class="stars"><span class="star-on">★★★</span><span class="star-off">★★</span></span></div>
+            <div class="rating-row"><span class="rating-label">시장 타이밍</span><span class="stars"><span class="star-on">★★★★</span><span class="star-off">★</span></span></div>
+            <div class="rating-row"><span class="rating-label">팀 역량</span><span class="stars"><span class="star-on">★★★</span><span class="star-off">★★</span></span></div>
+            <div class="rating-row"><span class="rating-label">모바일 적합성</span><span class="stars"><span class="star-on">★★★★★</span></span></div>
+          </div>
+
+          <div class="rating-item">
+            <div class="rating-company">Telli <span class="total-score score-mid">18/25 · 관심</span></div>
+            <div class="rating-row"><span class="rating-label">기술 독자성</span><span class="stars"><span class="star-on">★★★</span><span class="star-off">★★</span></span></div>
+            <div class="rating-row"><span class="rating-label">매출 검증도</span><span class="stars"><span class="star-on">★★★</span><span class="star-off">★★</span></span></div>
+            <div class="rating-row"><span class="rating-label">시장 타이밍</span><span class="stars"><span class="star-on">★★★★</span><span class="star-off">★</span></span></div>
+            <div class="rating-row"><span class="rating-label">팀 역량</span><span class="stars"><span class="star-on">★★★★</span><span class="star-off">★</span></span></div>
+            <div class="rating-row"><span class="rating-label">모바일 적합성</span><span class="stars"><span class="star-on">★★★★</span><span class="star-off">★</span></span></div>
+          </div>
+
+          <div class="rating-item">
+            <div class="rating-company">Pomo <span class="total-score score-mid">17/25 · 관심</span></div>
+            <div class="rating-row"><span class="rating-label">기술 독자성</span><span class="stars"><span class="star-on">★★★</span><span class="star-off">★★</span></span></div>
+            <div class="rating-row"><span class="rating-label">매출 검증도</span><span class="stars"><span class="star-on">★</span><span class="star-off">★★★★</span></span></div>
+            <div class="rating-row"><span class="rating-label">시장 타이밍</span><span class="stars"><span class="star-on">★★★★</span><span class="star-off">★</span></span></div>
+            <div class="rating-row"><span class="rating-label">팀 역량</span><span class="stars"><span class="star-on">★★★★</span><span class="star-off">★</span></span></div>
+            <div class="rating-row"><span class="rating-label">모바일 적합성</span><span class="stars"><span class="star-on">★★★★★</span></span></div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ INSIGHTS ═══ -->
+    <div class="insight-section">
+      <h2>전체 모니터링 인사이트</h2>
+      <div class="pattern" style="margin-bottom:0.8rem">
+        <strong>공통 패턴 —</strong> Inferact·RadixArk 모두 <strong>UC Berkeley Ion Stoica 연구실</strong> 출신 오픈소스 프로젝트 상업화. 기술 검증 완료 상태에서 출발하는 구조적 우위. AI 추론 인프라는 모델 레이어보다 비용 민감도가 높고, 사용량 기반 과금 시 ARR 가시성 강함.
+      </div>
+      <div class="pattern" style="margin-bottom:0.8rem">
+        <strong>수요 구조 —</strong> Human-in-the-loop 데이터 (Micro1)와 음성 AI (Telli, Hyper)는 AI 규모화 과정에서 구조적으로 필요한 레이어. 수요 지속성 높음.
+      </div>
+      <div class="pattern" style="margin-bottom:1rem">
+        <strong>EXIT 사례 —</strong> Hyper: 설립 1.5년 만에 Motorola Solutions 인수. 공공 인프라 AI + B2G 계약 모델의 성공적 PMF 사례.
+      </div>
+
+      <h2 style="font-size:0.92rem; margin-bottom:0.5rem">📡 모니터링 업데이트 필요 항목</h2>
+      <div class="monitor-list">
+        <div class="monitor-item"><span class="dot"></span><span><strong>Wispr Flow</strong> — ARPU · 유료전환율 공개 여부</span></div>
+        <div class="monitor-item"><span class="dot"></span><span><strong>Micro1</strong> — $200M ARR 이후 Series B · $2.5B 밸류 확정</span></div>
+        <div class="monitor-item"><span class="dot"></span><span><strong>RadixArk</strong> — 펀딩 금액 공식 확인 (TechCrunch 미확인)</span></div>
+        <div class="monitor-item"><span class="dot"></span><span><strong>Pomo</strong> — Google Ads/Meta 연동 성과 · 파일럿 전환율</span></div>
+        <div class="monitor-item"><span class="dot"></span><span><strong>Telli</strong> — 자체 음성 모델 개발 · 시리즈 A 계획</span></div>
+        <div class="monitor-item"><span class="dot"></span><span><strong>Inferact</strong> — 서버리스 vLLM 출시 시점 · 첫 매출 공개</span></div>
+      </div>
+    </div>
+
+    <footer>작성 기준: 2026-04-15 KST · Fact-checked with public sources</footer>
+  </main>
+
+  <script>
+    function toggleTheme() {
+      const b = document.body;
+      b.setAttribute('data-theme', b.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+    }
+    function setProfile(p) {
+      document.body.setAttribute('data-profile', p);
+      document.querySelectorAll('.profile-btn').forEach(b => b.classList.toggle('active', b.dataset.p === p));
+    }
+    (() => {
+      const w = document.getElementById('tw');
+      if (!w) return;
+      window.addEventListener('keydown', e => {
+        if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+        const a = document.activeElement;
+        if (a && (a.tagName === 'INPUT' || a.tagName === 'TEXTAREA' || a.isContentEditable)) return;
+        const r = w.getBoundingClientRect();
+        if (r.bottom <= 0 || r.top >= window.innerHeight) return;
+        e.preventDefault();
+        w.scrollBy({ left: e.key === 'ArrowRight' ? 300 : -300, behavior: 'smooth' });
+      }, { passive: false });
+    })();
+  </script>
 </body>
 </html>
