@@ -19,7 +19,7 @@ SCHEDULE_LABELS = [
 ]
 DATE_TOKEN_RE = re.compile(r"'26\.\d+\.\d+ \([월화수목금토일]\)")
 TITLE_DATE_RE = re.compile(r"Global AI Startup Watch \(Non-Unicorn\) — '26\.\d+\.\d+ \([월화수목금토일]\)")
-FOOTER_DATE_RE = re.compile(r"작성 기준: '26\.\d+\.\d+ \([월화수목금토일]\)")
+FOOTER_RE = re.compile(r"<footer>.*?</footer>", re.S)
 
 
 def parse_target_date() -> date:
@@ -50,6 +50,10 @@ def parse_folder_date(name: str, year: int, target: date) -> date | None:
 
 
 def find_source_file(root: Path, target: date) -> Path:
+    target_file = root / f"{target.month}{target.day}" / "index.html"
+    if target_file.exists():
+        return target_file
+
     previous = root / f"{(target - timedelta(days=1)).month}{(target - timedelta(days=1)).day}" / "index.html"
     if previous.exists():
         return previous
@@ -76,7 +80,6 @@ def apply_date_updates(html: str, target: date) -> str:
     display = f"'26.{target.month}.{target.day} ({WEEKDAY_KR[target.weekday()]})"
     html = TITLE_DATE_RE.sub(f"Global AI Startup Watch (Non-Unicorn) — {display}", html)
     html = DATE_TOKEN_RE.sub(display, html)
-    html = FOOTER_DATE_RE.sub(f"작성 기준: {display}", html)
 
     html = html.replace('class="sector-day today"', 'class="sector-day"')
     today_label = SCHEDULE_LABELS[target.weekday()]
@@ -85,6 +88,16 @@ def apply_date_updates(html: str, target: date) -> str:
         f'<span class="sector-day today">{today_label}</span>',
         1,
     )
+
+    timestamp = datetime.now(SEOUL).strftime("%Y-%m-%d %H:%M KST")
+    footer = (
+        f"<footer>작성 기준: {display} · 문서 상태: 서버 자동 갱신본 · "
+        f"업데이트 시간: {timestamp} · PitchBook public 우선 확인, Dealroom/Crunchbase/official fallback</footer>"
+    )
+    if FOOTER_RE.search(html):
+        html = FOOTER_RE.sub(footer, html, count=1)
+    else:
+        html = html.replace("</main>", f"  {footer}\n  </main>")
     return html
 
 
