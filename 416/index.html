@@ -1,289 +1,590 @@
 <!doctype html>
-<html lang="ko">
+<html lang='ko'>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset='UTF-8' />
+  <meta name='viewport' content='width=device-width, initial-scale=1.0' />
   <title>Global AI Startup Watch (Non-Unicorn) — '26.4.16 (목)</title>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;700;800&display=swap' rel='stylesheet'>
   <style>
-    :root {
-      --bg-page:#f0f4fb; --bg-card:#fff; --bg-alt:#f8fafd; --bg-head:#e8eefb; --bg-row:#f7f9fe;
-      --text:#0f172a; --text-2:#475569; --muted:#64748b; --border:#d6dff0;
-      --accent:#2563eb; --accent-2:#1e40af; --accent-soft:#dbeafe;
+    :root,
+    [data-theme='light'][data-profile='default'] {
+      --bg-page:#f0f4fb; --bg-card:#fff; --bg-card-alt:#f8fafd; --bg-header:#e8eefb; --bg-row-alt:#f7f9fe;
+      --text-primary:#0f172a; --text-secondary:#475569; --text-muted:#64748b; --border:#d6dff0;
+      --accent:#2563eb; --accent-light:#dbeafe; --accent-text:#1e40af;
       --ok:#059669; --ok-bg:#d1fae5; --warn:#d97706; --warn-bg:#fef3c7; --red:#dc2626; --red-bg:#fee2e2;
-      --hero-a:#0f172a; --hero-b:#1e3a8a; --shadow:0 8px 32px rgba(15,23,42,.07); --hero-shadow:0 16px 48px rgba(15,23,42,.22);
-      --toolbar:rgba(255,255,255,.88); --insight:#fffbeb; --insight-b:#fde68a; --fact:#f0fdf4; --fact-b:#86efac;
+      --badge-bg:rgba(37,99,235,.08); --badge-border:rgba(37,99,235,.18);
+      --hero-from:#0f172a; --hero-to:#1e3a8a; --shadow-card:0 8px 32px rgba(15,23,42,.07); --shadow-hero:0 16px 48px rgba(15,23,42,.22);
+      --toggle-bg:#e2e8f0; --toggle-knob:#fff; --toolbar-bg:rgba(255,255,255,.86);
+      --insight-bg:#fffbeb; --insight-border:#fde68a; --fact-bg:#f0fdf4; --fact-border:#86efac; --profile-glow:rgba(37,99,235,.35);
     }
-    [data-theme="light"][data-profile="ocean"] {
-      --bg-page:#ecfdf5; --bg-card:#ffffff; --bg-alt:#f0fdf8; --bg-head:#d1fae5; --bg-row:#f0fdf4;
-      --accent:#0d9488; --accent-2:#0f766e; --accent-soft:#ccfbf1; --toolbar:rgba(255,255,255,.88);
-      --hero-a:#064e3b; --hero-b:#0d9488;
+    [data-theme='light'][data-profile='ocean'] {
+      --bg-page:#ecfdf5; --bg-card:#fff; --bg-card-alt:#f0fdf8; --bg-header:#d1fae5; --bg-row-alt:#f0fdf4;
+      --accent:#0d9488; --accent-light:#ccfbf1; --accent-text:#0f766e; --badge-bg:rgba(13,148,136,.08); --badge-border:rgba(13,148,136,.18);
+      --hero-from:#064e3b; --hero-to:#0d9488; --profile-glow:rgba(13,148,136,.45);
     }
-    [data-theme="light"][data-profile="sunset"] {
-      --bg-page:#fef7ee; --bg-card:#ffffff; --bg-alt:#fffbf5; --bg-head:#ffedd5; --bg-row:#fff7ed;
-      --accent:#ea580c; --accent-2:#c2410c; --accent-soft:#fed7aa; --toolbar:rgba(255,255,255,.88);
-      --hero-a:#7c2d12; --hero-b:#ea580c;
+    [data-theme='light'][data-profile='sunset'] {
+      --bg-page:#fef7ee; --bg-card:#fff; --bg-card-alt:#fffbf5; --bg-header:#ffedd5; --bg-row-alt:#fff7ed;
+      --accent:#ea580c; --accent-light:#fed7aa; --accent-text:#c2410c; --badge-bg:rgba(234,88,12,.08); --badge-border:rgba(234,88,12,.18);
+      --hero-from:#7c2d12; --hero-to:#ea580c; --profile-glow:rgba(234,88,12,.45);
     }
-    [data-theme="light"][data-profile="violet"] {
-      --bg-page:#f5f3ff; --bg-card:#ffffff; --bg-alt:#faf8ff; --bg-head:#ede9fe; --bg-row:#f5f3ff;
-      --accent:#7c3aed; --accent-2:#6d28d9; --accent-soft:#ddd6fe; --toolbar:rgba(255,255,255,.88);
-      --hero-a:#3b0764; --hero-b:#7c3aed;
+    [data-theme='light'][data-profile='violet'] {
+      --bg-page:#f5f3ff; --bg-card:#fff; --bg-card-alt:#faf8ff; --bg-header:#ede9fe; --bg-row-alt:#f5f3ff;
+      --accent:#7c3aed; --accent-light:#ddd6fe; --accent-text:#6d28d9; --badge-bg:rgba(124,58,237,.08); --badge-border:rgba(124,58,237,.18);
+      --hero-from:#3b0764; --hero-to:#7c3aed; --profile-glow:rgba(124,58,237,.45);
     }
-    [data-theme="dark"] {
-      --bg-page:#0b1120; --bg-card:#141c2e; --bg-alt:#111827; --bg-head:#1a2540; --bg-row:#111827;
-      --text:#e2e8f0; --text-2:#94a3b8; --muted:#64748b; --border:#1e293b;
-      --accent:#60a5fa; --accent-2:#93c5fd; --accent-soft:rgba(96,165,250,.12);
+    [data-theme='dark'] {
+      --bg-page:#0b1120; --bg-card:#141c2e; --bg-card-alt:#111827; --bg-header:#1a2540; --bg-row-alt:#111827;
+      --text-primary:#e2e8f0; --text-secondary:#94a3b8; --text-muted:#64748b; --border:#1e293b;
+      --accent:#60a5fa; --accent-light:rgba(96,165,250,.12); --accent-text:#93c5fd;
       --ok:#34d399; --ok-bg:rgba(52,211,153,.12); --warn:#fbbf24; --warn-bg:rgba(251,191,36,.1); --red:#f87171; --red-bg:rgba(248,113,113,.1);
-      --hero-a:#0f172a; --hero-b:#1e3a8a; --toolbar:rgba(11,17,32,.9); --insight:rgba(251,191,36,.06); --insight-b:rgba(251,191,36,.2); --fact:rgba(52,211,153,.06); --fact-b:rgba(52,211,153,.2);
+      --badge-bg:rgba(96,165,250,.1); --badge-border:rgba(96,165,250,.2);
+      --hero-from:#0f172a; --hero-to:#1e3a8a; --shadow-card:0 8px 32px rgba(0,0,0,.3); --shadow-hero:0 16px 48px rgba(0,0,0,.5);
+      --toggle-bg:#1e293b; --toggle-knob:#334155; --toolbar-bg:rgba(11,17,32,.92);
+      --insight-bg:rgba(251,191,36,.06); --insight-border:rgba(251,191,36,.2); --fact-bg:rgba(52,211,153,.06); --fact-border:rgba(52,211,153,.2); --profile-glow:rgba(96,165,250,.45);
     }
-    [data-theme="dark"][data-profile="ocean"] {
-      --bg-page:#021a14; --bg-card:#0a2620; --bg-alt:#071f1a; --bg-head:#0f3a30; --bg-row:#071f1a;
-      --accent:#2dd4bf; --accent-2:#5eead4; --accent-soft:rgba(45,212,191,.12); --hero-a:#022c22; --hero-b:#0d9488;
+    [data-theme='dark'][data-profile='ocean'] {
+      --bg-page:#021a14; --bg-card:#0a2620; --bg-card-alt:#071f1a; --bg-header:#0f3a30; --bg-row-alt:#071f1a;
+      --accent:#2dd4bf; --accent-light:rgba(45,212,191,.12); --accent-text:#5eead4; --hero-from:#022c22; --hero-to:#0d9488; --profile-glow:rgba(45,212,191,.45);
     }
-    [data-theme="dark"][data-profile="sunset"] {
-      --bg-page:#1a0f05; --bg-card:#271a0a; --bg-alt:#1f1408; --bg-head:#3b2412; --bg-row:#1f1408;
-      --accent:#fb923c; --accent-2:#fdba74; --accent-soft:rgba(251,146,60,.12); --hero-a:#431407; --hero-b:#ea580c;
+    [data-theme='dark'][data-profile='sunset'] {
+      --bg-page:#1a0f05; --bg-card:#271a0a; --bg-card-alt:#1f1408; --bg-header:#3b2412; --bg-row-alt:#1f1408;
+      --accent:#fb923c; --accent-light:rgba(251,146,60,.12); --accent-text:#fdba74; --hero-from:#431407; --hero-to:#ea580c; --profile-glow:rgba(251,146,60,.45);
     }
-    [data-theme="dark"][data-profile="violet"] {
-      --bg-page:#0d0620; --bg-card:#160e2e; --bg-alt:#110a24; --bg-head:#231740; --bg-row:#110a24;
-      --accent:#a78bfa; --accent-2:#c4b5fd; --accent-soft:rgba(167,139,250,.12); --hero-a:#1e0a3e; --hero-b:#7c3aed;
+    [data-theme='dark'][data-profile='violet'] {
+      --bg-page:#0d0620; --bg-card:#160e2e; --bg-card-alt:#110a24; --bg-header:#231740; --bg-row-alt:#110a24;
+      --accent:#a78bfa; --accent-light:rgba(167,139,250,.12); --accent-text:#c4b5fd; --hero-from:#1e0a3e; --hero-to:#7c3aed; --profile-glow:rgba(167,139,250,.45);
     }
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    body{font-family:'Plus Jakarta Sans','Noto Sans KR',system-ui,sans-serif;background:var(--bg-page);color:var(--text);line-height:1.65}
-    a{color:var(--accent);text-decoration:none;font-weight:600} a:hover{text-decoration:underline}
-    .toolbar{position:sticky;top:0;z-index:10;display:flex;justify-content:flex-end;align-items:center;gap:.75rem;padding:.6rem 1.2rem;background:var(--toolbar);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
-    .toolbar-group{display:flex;align-items:center;gap:.45rem}.toolbar-label{font-size:.72rem;font-weight:700;color:var(--muted);text-transform:uppercase}
-    .profile-btn{width:22px;height:22px;border-radius:50%;border:2px solid transparent;cursor:pointer}.profile-btn.active{border-color:var(--text)}
-    .profile-btn[data-p="default"]{background:linear-gradient(135deg,#2563eb,#3b82f6)}.profile-btn[data-p="ocean"]{background:linear-gradient(135deg,#0d9488,#2dd4bf)}.profile-btn[data-p="sunset"]{background:linear-gradient(135deg,#ea580c,#fb923c)}.profile-btn[data-p="violet"]{background:linear-gradient(135deg,#7c3aed,#a78bfa)}
-    .divider{width:1px;height:20px;background:var(--border)} .theme-toggle{display:flex;align-items:center;gap:.45rem;cursor:pointer} .theme-toggle svg{width:16px;height:16px;fill:var(--muted)}
-    .toggle-track{width:38px;height:20px;border-radius:999px;background:#e2e8f0;position:relative}.toggle-knob{width:16px;height:16px;border-radius:50%;background:#fff;position:absolute;top:2px;left:2px;transition:transform .3s}[data-theme="dark"] .toggle-track{background:#1e293b}[data-theme="dark"] .toggle-knob{transform:translateX(18px);background:#60a5fa}
+    body{font-family:'Plus Jakarta Sans','Noto Sans KR',system-ui,sans-serif;background:var(--bg-page);color:var(--text-primary);line-height:1.65;transition:background .35s,color .3s}
+    a{color:var(--accent);text-decoration:none;font-weight:600}
+    a:hover{opacity:.78;text-decoration:underline}
+    .toolbar{position:sticky;top:0;z-index:100;background:var(--toolbar-bg);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:.6rem 1.2rem;display:flex;align-items:center;justify-content:flex-end;gap:.75rem}
+    .toolbar-group{display:flex;align-items:center;gap:.45rem}.toolbar-label{font-size:.72rem;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.08em}
+    .profile-btn{width:22px;height:22px;border-radius:50%;border:2px solid transparent;cursor:pointer;transition:transform .25s,border-color .25s,box-shadow .25s}
+    .profile-btn:hover{transform:scale(1.2);box-shadow:0 0 12px var(--profile-glow)}
+    .profile-btn.active{border-color:var(--text-primary);box-shadow:0 0 0 2px var(--bg-page),0 0 0 4px var(--text-muted)}
+    .profile-btn[data-p='default']{background:linear-gradient(135deg,#2563eb,#3b82f6)}
+    .profile-btn[data-p='ocean']{background:linear-gradient(135deg,#0d9488,#2dd4bf)}
+    .profile-btn[data-p='sunset']{background:linear-gradient(135deg,#ea580c,#fb923c)}
+    .profile-btn[data-p='violet']{background:linear-gradient(135deg,#7c3aed,#a78bfa)}
+    .divider{width:1px;height:20px;background:var(--border)}
+    .theme-toggle{display:flex;align-items:center;gap:.45rem;cursor:pointer}
+    .theme-toggle svg{width:16px;height:16px;fill:var(--text-muted)}
+    .toggle-track{width:38px;height:20px;border-radius:999px;background:var(--toggle-bg);position:relative}
+    .toggle-knob{width:16px;height:16px;border-radius:50%;background:var(--toggle-knob);position:absolute;top:2px;left:2px;transition:transform .3s,background .3s}
+    [data-theme='dark'] .toggle-knob{transform:translateX(18px);background:#60a5fa}
     main{width:min(1440px,calc(100% - 2rem));margin:0 auto;padding:1.5rem 0 3rem}
-    .hero{background:linear-gradient(135deg,var(--hero-a),var(--hero-b));color:#fff;border-radius:16px;padding:1.6rem 1.8rem 1.4rem;box-shadow:var(--hero-shadow);margin-bottom:1.4rem;position:relative;overflow:hidden}
+    .hero{background:linear-gradient(135deg,var(--hero-from),var(--hero-to));border-radius:16px;padding:1.6rem 1.8rem 1.4rem;color:#fff;box-shadow:var(--shadow-hero);margin-bottom:1.4rem;position:relative;overflow:hidden}
     .hero::before{content:'';position:absolute;top:-40%;right:-10%;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.06) 0%,transparent 70%)}
-    .hero-chips,.sector-schedule{display:flex;flex-wrap:wrap;gap:.4rem}.hero h1{font-size:1.35rem;font-weight:800;letter-spacing:-.3px;margin:.4rem 0}.hero p{font-size:.85rem;color:rgba(255,255,255,.78)}
-    .chip,.sector-day{font-size:.7rem;font-weight:700;padding:.18rem .6rem;border-radius:999px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);color:rgba(255,255,255,.9)}
-    .sector-schedule{margin-top:.7rem}.sector-day{font-size:.63rem;border-radius:6px;color:rgba(255,255,255,.7)}.sector-day.today{background:rgba(255,255,255,.2);border-color:rgba(255,255,255,.45);color:#fff}.sector-link{display:inline-flex;color:inherit;text-decoration:none}
-    .card,.insight-section{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow);overflow:hidden;margin-bottom:1.2rem}
-    .card-header{padding:1rem 1.4rem .8rem;border-bottom:1px solid var(--border)}.card-header h2,.insight-section h2{font-size:1rem;font-weight:800}.card-header p{font-size:.78rem;color:var(--muted);margin-top:.2rem}
-    .card-body,.insight-section{padding:1rem 1.4rem}.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}.scroll-hint{font-size:.72rem;color:var(--muted);padding:.4rem 1.4rem;display:flex;align-items:center;gap:.3rem}.scroll-hint svg{width:14px;height:14px;fill:var(--muted)}
-    table{width:100%;border-collapse:collapse;min-width:2100px;font-size:.8rem} .eval-table{min-width:850px;font-size:.78rem}.eval-detail-table{min-width:800px;font-size:.74rem;margin-top:.8rem}
-    th{background:var(--bg-head);color:var(--text);padding:.7rem .6rem;text-align:left;border-bottom:2px solid var(--border);font-weight:800;font-size:.72rem;text-transform:uppercase;letter-spacing:.04em;white-space:nowrap}
-    td{padding:.6rem;border-bottom:1px solid var(--border);vertical-align:top} tbody tr:nth-child(even) td{background:var(--bg-row)} tbody tr:hover td{background:var(--accent-soft)}
-    .eval-table th,.eval-table td{text-align:center;padding:.5rem .4rem}.eval-table .col-company{text-align:left;font-weight:700;min-width:95px}.eval-table .col-total{font-weight:800;font-size:.92rem;color:var(--accent-2)}
-    .eval-detail-table th{padding:.45rem .4rem;text-align:left;font-size:.66rem}.eval-detail-table td{padding:.35rem .4rem}.eval-cat{background:var(--accent-soft)!important;color:var(--accent-2);font-weight:800;padding:.5rem .4rem!important;font-size:.72rem}
-    .badge{display:inline-block;font-size:.68rem;font-weight:800;padding:.15rem .5rem;border-radius:6px}.badge-ok{background:var(--ok-bg);color:var(--ok)}.badge-warn{background:var(--warn-bg);color:var(--warn)}.badge-red{background:var(--red-bg);color:var(--red)}.badge-accent{background:rgba(37,99,235,.08);color:var(--accent);border:1px solid rgba(37,99,235,.18)}.badge-rank{background:var(--accent);color:#fff;border-radius:8px;padding:.2rem .55rem;font-size:.72rem}.val{color:var(--ok);font-weight:800}.highlight{background:rgba(251,191,36,.15);padding:.05rem .3rem;border-radius:4px;font-weight:700}
-    .company-link{font-weight:800;font-size:.88rem;color:var(--accent-2)}.td-detail{font-size:.78rem;line-height:1.55}
-    .insight-box,.insight-box2{border-radius:8px;padding:.55rem .7rem;margin-top:.4rem;font-size:.75rem;line-height:1.5}.insight-box{background:var(--insight);border:1px solid var(--insight-b);border-left:3px solid var(--warn)}.insight-box strong{color:var(--warn)}.insight-box2{background:var(--fact);border:1px solid var(--fact-b);border-left:3px solid var(--ok)}.insight-box2 strong{color:var(--ok)}
-    .news-summary{font-size:.7rem;color:var(--text-2);margin:.2rem 0 .4rem;line-height:1.4;padding:.25rem .45rem;background:var(--bg-alt);border-radius:5px;border:1px solid var(--border)}
-    .pattern{font-size:.82rem;line-height:1.65;color:var(--text-2);margin-bottom:.5rem;padding-left:.8rem;border-left:3px solid var(--accent)}
-    .monitor-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:.5rem;margin-top:.6rem}.monitor-item{background:var(--bg-alt);border:1px solid var(--border);border-radius:8px;padding:.55rem .7rem;font-size:.78rem;display:flex;gap:.4rem;align-items:flex-start}.dot{width:6px;height:6px;border-radius:50%;background:var(--accent);margin-top:6px;flex-shrink:0}
-    footer{margin-top:1rem;padding:.8rem 1.4rem;font-size:.72rem;color:var(--muted);text-align:center}
+    .hero h1{font-size:1.35rem;font-weight:800;letter-spacing:-.3px;margin-bottom:.4rem}
+    .hero p{font-size:.85rem;color:rgba(255,255,255,.78)}
+    .hero-chips,.sector-schedule{display:flex;flex-wrap:wrap;gap:.4rem}
+    .chip{font-size:.7rem;font-weight:700;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);padding:.18rem .6rem;border-radius:999px;color:rgba(255,255,255,.92)}
+    .sector-schedule{margin-top:.7rem}.sector-day{font-size:.63rem;font-weight:700;padding:.15rem .5rem;border-radius:6px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.72)}.sector-day.today{background:rgba(255,255,255,.2);border-color:rgba(255,255,255,.45);color:#fff}.sector-link{display:inline-flex;color:inherit;text-decoration:none}
+    .card,.insight-section{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow-card);overflow:hidden;margin-bottom:1.2rem}
+    .card-header{padding:1rem 1.4rem .8rem;border-bottom:1px solid var(--border)}
+    .card-header h2,.insight-section h2{font-size:1rem;font-weight:800}
+    .card-header p{font-size:.78rem;color:var(--text-muted);margin-top:.2rem}
+    .card-body,.insight-section{padding:1rem 1.4rem}
+    .table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}.scroll-hint{font-size:.72rem;color:var(--text-muted);padding:.4rem 1.4rem;display:flex;align-items:center;gap:.3rem}.scroll-hint svg{width:14px;height:14px;fill:var(--text-muted)}
+    table{width:100%;border-collapse:collapse;min-width:2300px;font-size:.8rem}
+    .eval-table{min-width:900px;font-size:.78rem}.memo-table{min-width:1700px;font-size:.76rem}.criteria-table{min-width:800px;font-size:.74rem}
+    th{background:var(--bg-header);color:var(--text-primary);padding:.7rem .6rem;text-align:left;border-bottom:2px solid var(--border);font-weight:800;font-size:.72rem;text-transform:uppercase;letter-spacing:.04em;white-space:nowrap}
+    td{padding:.6rem;border-bottom:1px solid var(--border);vertical-align:top}
+    tbody tr:nth-child(even) td{background:var(--bg-row-alt)}
+    tbody tr:hover td{background:var(--accent-light)}
+    .eval-table th,.eval-table td{text-align:center;padding:.5rem .4rem}.eval-table .col-company{text-align:left;font-weight:700;min-width:95px}.eval-table .col-total{font-weight:800;font-size:.92rem;color:var(--accent-text)}
+    .criteria-table th{padding:.45rem .4rem;text-align:left;font-size:.66rem}.criteria-table td{padding:.35rem .4rem}.criteria-table .eval-cat{background:var(--accent-light)!important;color:var(--accent-text);font-weight:800;padding:.5rem .4rem!important;font-size:.72rem}
+    .badge{display:inline-block;font-size:.68rem;font-weight:800;padding:.15rem .5rem;border-radius:6px}
+    .badge-ok{background:var(--ok-bg);color:var(--ok)}.badge-warn{background:var(--warn-bg);color:var(--warn)}.badge-red{background:var(--red-bg);color:var(--red)}.badge-accent{background:var(--badge-bg);color:var(--accent);border:1px solid var(--badge-border)}.badge-rank{background:var(--accent);color:#fff;font-size:.72rem;font-weight:800;padding:.2rem .55rem;border-radius:8px;display:inline-block}
+    .val{color:var(--ok);font-weight:800}.highlight{background:rgba(251,191,36,.16);padding:.05rem .3rem;border-radius:4px;font-weight:700}
+    .company-link{font-weight:800;font-size:.88rem;color:var(--accent-text);text-decoration:none;border-bottom:2px solid transparent}.company-link:hover{border-bottom-color:var(--accent);text-decoration:none}
+    .td-detail{font-size:.78rem;line-height:1.55}
+    .insight-box,.insight-box2{border-radius:8px;padding:.55rem .7rem;margin-top:.4rem;font-size:.75rem;line-height:1.5}
+    .insight-box{background:var(--insight-bg);border:1px solid var(--insight-border);border-left:3px solid var(--warn)}.insight-box strong{color:var(--warn)}
+    .insight-box2{background:var(--fact-bg);border:1px solid var(--fact-border);border-left:3px solid var(--ok)}.insight-box2 strong{color:var(--ok)}
+    .news-summary{font-size:.7rem;color:var(--text-secondary);margin:.2rem 0 .4rem;line-height:1.4;padding:.25rem .45rem;background:var(--bg-card-alt);border-radius:5px;border:1px solid var(--border)}
+    .pattern{font-size:.82rem;line-height:1.65;color:var(--text-secondary);margin-bottom:.55rem;padding-left:.8rem;border-left:3px solid var(--accent)}
+    .monitor-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:.5rem;margin-top:.6rem}.monitor-item{background:var(--bg-card-alt);border:1px solid var(--border);border-radius:8px;padding:.55rem .7rem;font-size:.78rem;display:flex;gap:.4rem;align-items:flex-start}.dot{width:6px;height:6px;border-radius:50%;background:var(--accent);margin-top:6px;flex-shrink:0}
+    footer{margin-top:1rem;padding:.8rem 1.4rem;font-size:.72rem;color:var(--text-muted);text-align:center}
     @media (max-width:768px){main{width:calc(100% - 1rem);padding:1rem 0 2rem}.hero{padding:1.2rem 1rem 1rem}.hero h1{font-size:1.15rem}.toolbar{padding:.5rem .8rem;gap:.5rem}.sector-day{font-size:.58rem;padding:.1rem .35rem}}
   </style>
 </head>
-<body data-theme="light" data-profile="default">
-  <div class="toolbar">
-    <div class="toolbar-group">
-      <span class="toolbar-label">컬러</span>
-      <button class="profile-btn active" data-p="default" title="Blue" onclick="setProfile('default')"></button>
-      <button class="profile-btn" data-p="ocean" title="Ocean" onclick="setProfile('ocean')"></button>
-      <button class="profile-btn" data-p="sunset" title="Sunset" onclick="setProfile('sunset')"></button>
-      <button class="profile-btn" data-p="violet" title="Violet" onclick="setProfile('violet')"></button>
+<body data-theme='light' data-profile='default'>
+  <div class='toolbar'>
+    <div class='toolbar-group'>
+      <span class='toolbar-label'>컬러</span>
+      <button class='profile-btn active' data-p='default' title='Blue' onclick="setProfile('default')"></button>
+      <button class='profile-btn' data-p='ocean' title='Ocean' onclick="setProfile('ocean')"></button>
+      <button class='profile-btn' data-p='sunset' title='Sunset' onclick="setProfile('sunset')"></button>
+      <button class='profile-btn' data-p='violet' title='Violet' onclick="setProfile('violet')"></button>
     </div>
-    <div class="divider"></div>
-    <div class="theme-toggle" onclick="toggleTheme()" title="다크 모드 전환">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.515 4.929l1.414-1.414L7.05 5.636 5.636 7.05 3.515 4.93zM16.95 18.364l1.414-1.414 2.121 2.121-1.414 1.414-2.121-2.121zm2.121-14.85 1.414 1.415-2.121 2.121-1.414-1.414 2.121-2.121zM5.636 16.95l1.414 1.414-2.121 2.121-1.414-1.414 2.121-2.121zM23 11v2h-3v-2h3zM4 11v2H1v-2h3z"/></svg>
-      <div class="toggle-track"><div class="toggle-knob"></div></div>
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 7a7 7 0 0 0 12 4.9v.1c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2h.1A6.979 6.979 0 0 0 10 7zm-6 5a8 8 0 0 0 15.062 3.762A9 9 0 0 1 8.238 4.938 7.999 7.999 0 0 0 4 12z"/></svg>
+    <div class='divider'></div>
+    <div class='theme-toggle' onclick='toggleTheme()' title='다크 모드 전환'>
+      <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.515 4.929l1.414-1.414L7.05 5.636 5.636 7.05 3.515 4.93zM16.95 18.364l1.414-1.414 2.121 2.121-1.414 1.414-2.121-2.121zm2.121-14.85 1.414 1.415-2.121 2.121-1.414-1.414 2.121-2.121zM5.636 16.95l1.414 1.414-2.121 2.121-1.414-1.414 2.121-2.121zM23 11v2h-3v-2h3zM4 11v2H1v-2h3z'/></svg>
+      <div class='toggle-track'><div class='toggle-knob'></div></div>
+      <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M10 7a7 7 0 0 0 12 4.9v.1c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2h.1A6.979 6.979 0 0 0 10 7zm-6 5a8 8 0 0 0 15.062 3.762A9 9 0 0 1 8.238 4.938 7.999 7.999 0 0 0 4 12z'/></svg>
     </div>
   </div>
+
   <main>
-    <section class="hero">
-      <div class="hero-chips">
-        <span class="chip">'26.4.16 (목)</span>
-        <span class="chip">유니콘 미만</span>
-        <span class="chip">한국/중국 본사 제외</span>
-        <span class="chip">모바일 AI Agent · 휴대폰 AI 기술</span>
+    <section class='hero'>
+      <div class='hero-chips'>
+        <span class='chip'>'26.4.16 (목)</span>
+        <span class='chip'>유니콘 미만</span>
+        <span class='chip'>한국/중국 본사 제외</span>
+        <span class='chip'>모바일 AI Agent · 휴대폰 AI 기술</span>
       </div>
       <h1>유니콘 미만 글로벌 모바일 AI Agent 스타트업 모니터링</h1>
-      <p>PitchBook public 확인을 우선 시도하고, 비공개 항목은 <strong>Dealroom · Crunchbase · 공식 발표</strong>로 폴백했습니다. 미확인 항목은 <strong>—</strong> 표기 · 기업명 클릭 → 홈페이지 · 출처 클릭 → 원문</p>
-      <div class="sector-schedule">
-        <span class="sector-day">월 — 모바일 헬스 · 헬스 서비스 · AI 헬스</span>
-        <span class="sector-day">화 — 모바일 광고 · 광고 AI · 기술/서비스</span>
-        <a class="sector-link" href="https://dicacros-gif.github.io/AI/415/index.html" target="_blank"><span class="sector-day">수 — 멀티모달 AI · 영상 AI 기술/서비스</span></a>
-        <span class="sector-day today">목 — 모바일 AI Agent · 휴대폰 AI 기술</span>
-        <span class="sector-day">금 — 모바일 소셜 · Short Form 서비스</span>
-        <span class="sector-day">토 — 페이 · 금융 기술 (코인 제외)</span>
-        <span class="sector-day">일 — 기타 모바일/웹 서비스</span>
+      <p>· 공개 수치만 반영 · 미확인 항목은 — 표기 · 기업명 클릭 → 홈페이지 · 출처 클릭 → 원문 · 경쟁사명 클릭 → 경쟁사 홈페이지</p>
+      <div class='sector-schedule'>
+        <span class='sector-day'>월 — 모바일 헬스 · 헬스 서비스 · AI 헬스</span>
+        <span class='sector-day'>화 — 모바일 광고 · 광고 AI · 기술/서비스</span>
+        <a class='sector-link' href='https://dicacros-gif.github.io/AI/415/index.html' target='_blank'><span class='sector-day'>수 — 멀티모달 AI · 영상 AI 기술/서비스</span></a>
+        <span class='sector-day today'>목 — 모바일 AI Agent · 휴대폰 AI 기술</span>
+        <span class='sector-day'>금 — 모바일 소셜 · Short Form 서비스</span>
+        <span class='sector-day'>토 — 페이 · 금융 기술 (코인 제외)</span>
+        <span class='sector-day'>일 — 기타 모바일/웹 서비스</span>
       </div>
     </section>
 
-    <div class="card">
-      <div class="card-header">
-        <h2>통합 스타트업 리스트 (100점 평가 기반 순위)</h2>
-        <p>목요일 도메인: 모바일 AI Agent · 휴대폰 AI 기술 · 신규 기업 5곳만 선별 · 미확인 수치는 보수적으로 점수 반영</p>
+    <div class='card'>
+      <div class='card-header'>
+        <h2>통합 스타트업 리스트 8선</h2>
+        <p>· 기존 Top 5 + Portola/Tolan · Mindtrip · Layla 통합 · 목요일 도메인 적합성 우선 정렬 · 공개 수치 보수 반영</p>
       </div>
-      <div class="scroll-hint">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10.05 4.575a1.575 1.575 0 1 0-3.15 0v5.85h-.177a.473.473 0 0 0-.473.473c0 .842.224 1.67.648 2.398l1.674 3.014A3 3 0 0 0 11.2 18H16.8a3 3 0 0 0 2.625-1.547l1.674-3.014c.424-.728.648-1.556.648-2.398a.473.473 0 0 0-.473-.473h-.177V6.575a1.575 1.575 0 0 0-3.15 0v3.85h-1.05V5.075a1.575 1.575 0 0 0-3.15 0v5.35h-1.05V4.575a1.575 1.575 0 0 0-1.65-1.575z"/></svg>
+      <div class='scroll-hint'>
+        <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M10.05 4.575a1.575 1.575 0 1 0-3.15 0v5.85h-.177a.473.473 0 0 0-.473.473c0 .842.224 1.67.648 2.398l1.674 3.014A3 3 0 0 0 11.2 18H16.8a3 3 0 0 0 2.625-1.547l1.674-3.014c.424-.728.648-1.556.648-2.398a.473.473 0 0 0-.473-.473h-.177V6.575a1.575 1.575 0 0 0-3.15 0v3.85h-1.05V5.075a1.575 1.575 0 0 0-3.15 0v5.35h-1.05V4.575a1.575 1.575 0 0 0-1.65-1.575z'/></svg>
         좌우 스크롤 · ← → 키 사용 가능
       </div>
-      <div class="table-wrap" id="tw" tabindex="0">
+      <div class='table-wrap' id='tw' tabindex='0'>
         <table>
           <thead>
             <tr>
-              <th style="min-width:50px">순위</th>
-              <th style="min-width:120px">기업</th>
+              <th style='min-width:50px'>순위</th>
+              <th style='min-width:120px'>기업</th>
               <th>설립</th>
               <th>본사</th>
               <th>창업자 / CEO</th>
-              <th style="min-width:220px">학교 · 전공 · 핵심 경력</th>
+              <th style='min-width:220px'>학교 · 전공 · 핵심 경력</th>
               <th>직원</th>
               <th>밸류에이션</th>
-              <th style="min-width:180px">펀딩 · 투자자</th>
-              <th style="min-width:200px">매출 · 트랙션</th>
-              <th style="min-width:180px">비즈니스 모델</th>
-              <th style="min-width:220px">사업 상세 설명</th>
-              <th style="min-width:240px">인사이트</th>
-              <th style="min-width:260px">출처 · 뉴스 요약</th>
+              <th style='min-width:180px'>펀딩 · 투자자</th>
+              <th style='min-width:220px'>매출 · 트랙션</th>
+              <th style='min-width:180px'>비즈니스 모델</th>
+              <th style='min-width:220px'>사업 상세 설명</th>
+              <th style='min-width:240px'>인사이트</th>
+              <th style='min-width:320px'>출처 · 뉴스 요약 · 경쟁사</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td><span class="badge-rank">1</span></td>
-              <td><a class="company-link" href="https://www.suki.ai/" target="_blank">Suki</a><br><span class="badge badge-accent">B2B Mobile AI</span></td>
+              <td><span class='badge-rank'>1</span></td>
+              <td><a class='company-link' href='https://www.suki.ai/' target='_blank'>Suki</a><br><span class='badge badge-accent'>Clinical AI</span></td>
               <td><strong>2017</strong></td>
               <td>Redwood City, CA</td>
-              <td class="td-detail"><strong>Punit Soni</strong><br>(Founder &amp; CEO)</td>
-              <td class="td-detail"><strong>Wharton MBA</strong><br>전공 공개자료 일부 미확인<br>전 Google/Motorola 모바일 제품 리더<br>전 Flipkart CPO</td>
+              <td class='td-detail'><div>· Punit Soni</div><div>· Founder & CEO</div></td>
+              <td class='td-detail'>
+                <div>· The Wharton School MBA</div>
+                <div>· NIT Kurukshetra 전자통신공학</div>
+                <div>· 전 Google Motorola 제품 리더</div>
+                <div>· 전 Flipkart CPO</div>
+              </td>
               <td>201-500명</td>
-              <td><span class="badge badge-ok">$500M</span><br><small>Dealroom EV</small></td>
-              <td class="td-detail"><span class="val">누적 $168M</span><br><strong>$70M Series D</strong> (2024.10)<br>Venrock · March Capital · First Round · Flare · Zoom Ventures</td>
-              <td class="td-detail"><strong>350+ 건강 시스템·클리닉</strong> 공개 이력<br><strong>170,000 providers</strong> 대상 athenahealth 채널 접근<br><strong>2 patents</strong> · 의사 문서화 시간 최대 <span class="highlight">72% 절감</span></td>
-              <td class="td-detail">의료기관 대상 <strong>B2B SaaS</strong><br>per-user 구독 + 엔터프라이즈 앱 + 파트너 임베딩/API</td>
-              <td class="td-detail"><strong>모바일 음성 기반 임상 AI assistant.</strong> iOS 앱과 EHR 연동을 통해 ambient, dictation, command 세 가지 모드로 임상 노트를 생성한다. 단순 챗봇이 아니라 athenahealth·HealthEdge 같은 워크플로우 안으로 들어가는 임베디드 AI 레이어다.</td>
-              <td class="td-detail">
-                <div class="insight-box"><strong>경쟁구도:</strong> Abridge · Nuance DAX · Ambience와 경쟁. Suki의 강점은 모바일 현장 입력 + EHR 통합 + 특허 2건 조합이다.</div>
-                <div class="insight-box2"><strong>투자 포인트:</strong> healthcare ambient AI는 판매 주기가 길지만, 한 번 깔리면 전환비용이 높다. sub-unicorn 상태에서 M&amp;A/전략투자 후보군이 가장 넓다.</div>
+              <td><span class='badge badge-ok'>$500M</span></td>
+              <td class='td-detail'>
+                <div>· 누적 $168M</div>
+                <div>· 2024.10 Series D $70M</div>
+                <div>· Venrock · March Capital · First Round · Flare · Zoom Ventures</div>
               </td>
-              <td class="td-detail">
-                <a href="https://app.dealroom.co/companies/suki" target="_blank">Dealroom</a>
-                <div class="news-summary">201-500명, EV $500M, Series D $70M과 투자자 구성이 공개되어 있어 valuation과 직원 수 검증에 활용.</div>
-                <a href="https://www.suki.ai/press-releases/suki-selected-by-athenahealth-as-preferred-solution-partner-for-ambient-intelligence/" target="_blank">Suki Press Release (2026.01.26)</a>
-                <div class="news-summary">[80일 전 자료] athenahealth Preferred Partner 지정. 170,000 providers 네트워크에 진입하는 공식 채널 확보.</div>
-                <a href="https://healthedge.com/resources/care-management/healthedge-and-suki-introduce-ambient-clinical-intelligence-for-care-management" target="_blank">HealthEdge (2026.01.28)</a>
-                <div class="news-summary">[78일 전 자료] 130 health plans / 110M members가 쓰는 GuidingCare에 Suki ambient intelligence를 임베드.</div>
+              <td class='td-detail'>
+                <div>· 170,000 providers 대상 athenahealth 채널 접근</div>
+                <div>· 2 patents</div>
+                <div>· 임상 문서화 최대 76% 가속 사례</div>
+                <div>· 350+ health systems · clinics 공개 이력</div>
+              </td>
+              <td class='td-detail'>
+                <div>· 의료기관 대상 B2B SaaS</div>
+                <div>· seat 구독 + 플랫폼 임베드 + 파트너 배포</div>
+                <div>· iOS 현장 입력 + EHR 연동</div>
+              </td>
+              <td class='td-detail'>
+                <div>· 모바일 음성 기반 임상 assistant</div>
+                <div>· ambient · dictation · command 모드 결합</div>
+                <div>· athenahealth · HealthEdge 같은 임상 워크플로 내부 배치</div>
+                <div>· 휴대폰 제조사 관점에서 의료 특화 단말 번들 적합</div>
+              </td>
+              <td class='td-detail'>
+                <div class='insight-box'><strong>경쟁 우위</strong> · 의료 도메인 특화 · 특허 · EHR 통합 · 현장 모바일 UX</div>
+                <div class='insight-box2'><strong>체크 포인트</strong> · 대형 EHR 파트너십 확장 속도 · 공개 ARR 부재로 멀티플 판단 보수</div>
+              </td>
+              <td class='td-detail'>
+                <a href='https://app.dealroom.co/companies/suki' target='_blank'>Dealroom</a>
+                <div class='news-summary'>· 기업가치 $500M · 직원 201-500명 · 공개 투자 이력 확인</div>
+                <a href='https://www.suki.ai/press-releases/suki-selected-by-athenahealth-as-preferred-solution-partner-for-ambient-intelligence/' target='_blank'>Suki Press Release 2026.01.26</a>
+                <div class='news-summary'>· [80일 전 자료] · athenahealth preferred ambient partner · 대형 배포 채널 확보</div>
+                <a href='https://healthedge.com/resources/care-management/healthedge-and-suki-introduce-ambient-clinical-intelligence-for-care-management' target='_blank'>HealthEdge 2026.01.28</a>
+                <div class='news-summary'>· [78일 전 자료] · GuidingCare 통합 · 건강보험 플랜 워크플로 진입</div>
+                <div class='news-summary'>· 경쟁사 · <a href='https://www.abridge.com/' target='_blank'>Abridge</a> — 의사용 ambient 문서화 · <a href='https://www.microsoft.com/en-us/microsoft-cloud/industry/healthcare/dax-copilot' target='_blank'>Nuance DAX</a> — Microsoft 임상 scribe · <a href='https://www.ambiencehealthcare.com/' target='_blank'>Ambience</a> — 문서화 + CDI + coding</div>
               </td>
             </tr>
 
             <tr>
-              <td><span class="badge-rank">2</span></td>
-              <td><a class="company-link" href="https://www.19pine.ai/" target="_blank">Pine AI</a><br><span class="badge badge-accent">Consumer Agent</span></td>
+              <td><span class='badge-rank'>2</span></td>
+              <td><a class='company-link' href='https://www.19pine.ai/' target='_blank'>Pine AI</a><br><span class='badge badge-accent'>Consumer Agent</span></td>
               <td><strong>2024</strong></td>
-              <td>Palo Alto, CA</td>
-              <td class="td-detail"><strong>Stanley Wei</strong> (Co-founder &amp; CEO)<br><strong>Vincent Sun</strong> (Co-founder &amp; CTO)</td>
-              <td class="td-detail"><strong>Wei:</strong> The Wharton School<br>전공 공개자료 미확인<br><strong>Sun:</strong> USTC<br>실시간 커뮤니케이션·보안 엔지니어링 경력</td>
-              <td>1-10명</td>
-              <td>—</td>
-              <td class="td-detail"><span class="val">$25M Series A</span><br>Fortwest Capital 리드<br>2025.12 발표</td>
-              <td class="td-detail">iPhone/iPad 앱 공개<br><span class="highlight">평균 연 $300 절감</span><br><strong>93%</strong> 협상 성공률<br>이슈당 <strong>270분</strong> 절감<br>전화·이메일·소프트웨어 조작 실행형 agent</td>
-              <td class="td-detail">성과기반 <strong>pay-for-results</strong><br>모바일 앱 기반 소비자 agent<br>디지털 chores 자동화</td>
-              <td class="td-detail"><strong>콜센터와 싸우는 소비자용 실행형 AI agent.</strong> Pine은 질문에 답하는 수준을 넘어 실제로 통신비 협상, 구독 해지, 환불 요청, 분쟁 접수를 대신 수행한다. 스마트폰 제조사 입장에선 요금 절감·고객지원 자동화·통신사 번들링 시나리오가 가장 명확하다.</td>
-              <td class="td-detail">
-                <div class="insight-box"><strong>경쟁구도:</strong> Rocket Money, DoNotPay, 통신사 retention desk와 겹친다. Pine은 음성 콜 실행과 앱 내 자동화가 결합된 점이 차별점이다.</div>
-                <div class="insight-box2"><strong>투자 포인트:</strong> 모바일 적합성이 가장 높다. 다만 소비자 CAC와 장기 리텐션 데이터가 비공개라 반복매출 점수는 보수적으로 반영했다.</div>
+              <td>San Francisco, CA</td>
+              <td class='td-detail'><div>· Stanley Wei</div><div>· Vincent Sun</div><div>· CEO / CTO</div></td>
+              <td class='td-detail'>
+                <div>· Stanley Wei — The Wharton School</div>
+                <div>· Vincent Sun — USTC</div>
+                <div>· Stanley Wei — 소비자 마찰 제거형 agent 창업</div>
+                <div>· Vincent Sun — 실시간 통신 · 보안 · 멀티미디어 특허 이력</div>
               </td>
-              <td class="td-detail">
-                <a href="https://apps.apple.com/us/app/pine-ai-your-ai-call-agent/id6746403769" target="_blank">App Store</a>
-                <div class="news-summary">공개 앱 설명에서 평균 연 $300 절감, 협상 성공률 93%, 이슈당 270분 절감, private AI technology와 asymmetric encryption을 명시.</div>
-                <a href="https://www.businesswire.com/news/home/20251203384902/en/Pine-Secures-%2425-Million-in-Series-A-Funding-to-Free-Consumers-of-Digital-Chores-Saving-Time-and-Money-and-Eliminating-Frustration" target="_blank">BusinessWire (2025.12.03)</a>
-                <div class="news-summary">[134일 전 자료] $25M Series A 조달. calls, emails, software interactions를 대신 수행하는 ask-and-it's-done AI 전략 공개.</div>
-                <a href="https://www.crunchbase.com/organization/pine-ai/financial_details" target="_blank">Crunchbase</a>
-                <div class="news-summary">설립 2024년, Palo Alto 본사, headcount 1-10, seed 선행 라운드 이력 확인.</div>
-              </td>
-            </tr>
-
-            <tr>
-              <td><span class="badge-rank">3</span></td>
-              <td><a class="company-link" href="https://www.personal.ai/" target="_blank">Personal AI</a><br><span class="badge badge-accent">Personal SLM</span></td>
-              <td><strong>2020</strong></td>
-              <td>New York City</td>
-              <td class="td-detail"><strong>Suman Kanuganti</strong> (Founder &amp; CEO)<br><strong>Sharon Zhang</strong> (Co-founder)</td>
-              <td class="td-detail"><strong>Suman:</strong> Rady School of Management, Entrepreneurship<br>전 Aira President<br><strong>Sharon:</strong> 전 LinkedIn ML 엔지니어링 리더</td>
               <td>11-50명</td>
-              <td><span class="badge badge-warn">$30M</span><br><small>Dealroom EV</small></td>
-              <td class="td-detail"><strong>5 rounds · 16 investors</strong><br>Comcast NBCUniversal LIFT Labs 참여<br>BDev Ventures 참여<br>총 조달금액 공개치 —</td>
-              <td class="td-detail">App Store <strong>4.4 / 46 ratings</strong><br>월간 웹 방문 <strong>31,910</strong><br><span class="highlight">sub-500ms</span> 응답<br>최대 <strong>40x token economics</strong> 개선 주장<br>매출 공개치 —</td>
-              <td class="td-detail"><strong>구독 + enterprise licensing</strong><br>개인/팀 AI memory platform<br>regulated industry 배포</td>
-              <td class="td-detail"><strong>사용자 고유 기억과 톤을 학습하는 personal language model.</strong> 스마트폰에서 메시지 초안, 기억 회상, 응답 자동화를 수행한다. 2026년에는 NVIDIA AI Grid 기반 memory platform을 공개하며 분산형 small language model 전략을 전면에 내세웠다.</td>
-              <td class="td-detail">
-                <div class="insight-box"><strong>경쟁구도:</strong> Rewind, personal memory layer 스타트업과 경쟁. Personal AI는 private memory graph와 team deployment가 강점이다.</div>
-                <div class="insight-box2"><strong>투자 포인트:</strong> OEM/통신사 입장에선 "내 데이터 위의 AI" 시나리오에 잘 맞는다. 다만 매출과 대형 유료고객 수는 비공개다.</div>
+              <td>—</td>
+              <td class='td-detail'>
+                <div>· 2025.12 Series A $25M</div>
+                <div>· Fortwest Capital 리드</div>
+                <div>· 초기 Seed $5M 공개 이력</div>
               </td>
-              <td class="td-detail">
-                <a href="https://app.dealroom.co/companies/human_ai_labs" target="_blank">Dealroom</a>
-                <div class="news-summary">NYC 본사, 11-50명, EV $30M, B2C/SaaS 태그와 최근 라운드 맥락 확인.</div>
-                <a href="https://www.globenewswire.com/news-release/2026/03/17/3044448/0/en/Personal-AI-Launches-The-Memory-Platform-On-The-NVIDIA-AI-Grid.html" target="_blank">GlobeNewswire (2026.03.17)</a>
-                <div class="news-summary">[29일 전 자료] 분산 Small Language Models, sub-500ms 응답, 최대 40x token economics 개선을 제시.</div>
-                <a href="https://apps.apple.com/us/app/personal-ai/id6449649407" target="_blank">App Store</a>
-                <div class="news-summary">iPhone/iPad 앱, regulated industries용 private trusted digital twin, 4.4점/46 ratings 공개.</div>
+              <td class='td-detail'>
+                <div>· 53,726+ users</div>
+                <div>· 93% negotiation success rate</div>
+                <div>· 평균 270분 절감</div>
+                <div>· 소비자 절감액 $3M+</div>
+                <div>· iOS · Android 배포</div>
+              </td>
+              <td class='td-detail'>
+                <div>· success fee + task fee 혼합</div>
+                <div>· bill negotiation · cancellation · refund</div>
+                <div>· pay-for-results 구조</div>
+              </td>
+              <td class='td-detail'>
+                <div>· 전화 · 이메일 · 웹 조작을 직접 수행하는 실행형 소비자 agent</div>
+                <div>· 요금 협상 · 구독 해지 · 항공/호텔 환불 · 민원 접수 자동화</div>
+                <div>· 스마트폰 제조사 입장에서는 기본 personal agent 시나리오와 궁합 우수</div>
+              </td>
+              <td class='td-detail'>
+                <div class='insight-box'><strong>경쟁 우위</strong> · 단순 답변형이 아닌 action completion · 모바일 사용 빈도 높음 · 성과 과금 구조</div>
+                <div class='insight-box2'><strong>체크 포인트</strong> · valuation 미공개 · 대형 파트너 LOI 공개 전까지 B 점수 보수</div>
+              </td>
+              <td class='td-detail'>
+                <a href='https://www.businesswire.com/news/home/20251203384902/en/Pine-Secures-%2425-Million-in-Series-A-Funding-to-Free-Consumers-of-Digital-Chores-Saving-Time-and-Money-and-Eliminating-Frustration' target='_blank'>BusinessWire 2025.12.03</a>
+                <div class='news-summary'>· [134일 전 자료] · Series A $25M · 디지털 chores agent 확장 자금 확보</div>
+                <a href='https://www.19pine.ai/ai-information-page' target='_blank'>Pine AI Info Page 2025.12.16</a>
+                <div class='news-summary'>· [121일 전 자료] · founder · launch 시점 · agent 정의 · App Store 4.1 공개</div>
+                <a href='https://www.19pine.ai/pricing/' target='_blank'>Pine Pricing</a>
+                <div class='news-summary'>· 평균 $300 절감 · 93% 성공률 · 270분 절감 · 과금 구조 확인</div>
+                <div class='news-summary'>· 경쟁사 · <a href='https://www.rocketmoney.com/' target='_blank'>Rocket Money</a> — 구독 관리 · 재무 절감 앱 · <a href='https://donotpay.com/' target='_blank'>DoNotPay</a> — 소비자 청구·환불 자동화 · <a href='https://www.yutori.com/' target='_blank'>Yutori</a> — 웹 기반 personal AI assistant</div>
               </td>
             </tr>
 
             <tr>
-              <td><span class="badge-rank">4</span></td>
-              <td><a class="company-link" href="https://www.wysa.com/" target="_blank">Wysa</a><br><span class="badge badge-accent">Mental Health Agent</span></td>
-              <td><strong>2015</strong></td>
-              <td>Bengaluru, India</td>
-              <td class="td-detail"><strong>Jo Aggarwal</strong> (Founder &amp; CEO)<br><strong>Ramakant Vempati</strong> (Co-founder &amp; President)</td>
-              <td class="td-detail">학력·전공 공개자료 일부 미확인<br>Apple Entrepreneur Camp 참여<br>AI mental health·hybrid care 분야 연속 창업/운영</td>
+              <td><span class='badge-rank'>3</span></td>
+              <td><a class='company-link' href='https://www.personal.ai/' target='_blank'>Personal AI</a><br><span class='badge badge-accent'>Memory SLM</span></td>
+              <td><strong>2020</strong></td>
+              <td>La Jolla, CA</td>
+              <td class='td-detail'><div>· Suman Kanuganti</div><div>· Sharon Zhang</div><div>· CEO / CTO</div></td>
+              <td class='td-detail'>
+                <div>· Suman — UC San Diego Rady MBA · Missouri MS</div>
+                <div>· Sharon — MIT Biology + EECS</div>
+                <div>· Suman — Aira 창업</div>
+                <div>· Sharon — LinkedIn · Nuance · Kaiser NLP 리더십</div>
+              </td>
               <td>51-200명</td>
-              <td><span class="badge badge-warn">$80-120M</span><br><small>Dealroom EV</small></td>
-              <td class="td-detail"><span class="val">$20M Series B</span> (2022)<br><strong>£5.3M grant</strong> (2026.02)<br>Kae Capital · Pi Ventures · HealthQuad · BII · Wellcome Trust</td>
-              <td class="td-detail"><strong>11M lives covered</strong><br><strong>6M people helped</strong><br><strong>1B AI conversations</strong><br>105개국 · 45+ peer-reviewed publications<br>매출 공개치 <strong>—</strong></td>
-              <td class="td-detail"><strong>B2B2C</strong><br>보험사·고용주·의료기관 계약 + 앱 기반 self-help / coaching</td>
-              <td class="td-detail"><strong>임상 검증을 앞세운 모바일 정신건강 AI agent.</strong> 앱 안에서 대화형 self-help를 제공하고, 필요 시 사람 치료·보험·고용주 프로그램과 연결한다. 단순 companion이 아니라 explainable, defensible support를 강조하며 hybrid care로 확장하고 있다.</td>
-              <td class="td-detail">
-                <div class="insight-box"><strong>경쟁구도:</strong> Woebot, Youper, Headspace Care와 경쟁. Wysa는 45+ 논문, NHS/보험사 배포, FDA Breakthrough designation 이력이 핵심 해자다.</div>
-                <div class="insight-box2"><strong>투자 포인트:</strong> 임상 검증·보험 유통·모바일 대화 데이터가 모두 쌓인 드문 sub-unicorn이다. 반면 정신건강 분야 특성상 안전성·규제 부담은 높다.</div>
+              <td>—</td>
+              <td class='td-detail'>
+                <div>· 총 조달 $14.1M</div>
+                <div>· 2025.12 venture round 공개</div>
+                <div>· Village Global · Differential · Jane Street · BBGV · BDev</div>
               </td>
-              <td class="td-detail">
-                <a href="https://app.dealroom.co/companies/touchkin" target="_blank">Dealroom</a>
-                <div class="news-summary">Bengaluru 본사, 51-200명, EV $80-120M, 2026년 Wellcome Trust grant까지 funding timeline이 공개된다.</div>
-                <a href="https://www.imperial.ac.uk/news/262460/imperial-wysa-partner-develop-mental-health/" target="_blank">Imperial College (2026.02.18)</a>
-                <div class="news-summary">[56일 전 자료] Wysa가 Wellcome 지원 adolescent mental-health 프로젝트 파트너로 참여</div>
-                <a href="https://www.wysa.com/portfolio/page/wysa-as-a-public-health-service" target="_blank">Wysa Public Health Service</a>
-                <div class="news-summary">11M lives covered, 6M people helped, 1B AI conversations, 45+ publications 등 최신 공식 지표를 제공.</div>
-                <a href="https://www.businesswire.com/news/home/20250930798016/en/Wysa-Acquires-Kins-Physical-Therapy-to-Close-Gaps-in-U.S.-Healthcare" target="_blank">BusinessWire (2025.09.30)</a>
-                <div class="news-summary">[197일 전 자료] Kins 인수로 AI mental health에서 physical therapy 결합형 hybrid care 전략을 공식화.</div>
+              <td class='td-detail'>
+                <div>· BDev trial phase double-digit revenue growth</div>
+                <div>· mobile app · desktop app · API 동시 운영</div>
+                <div>· Comcast AI Grid trial</div>
+                <div>· sub-500ms response · up to 40x lower cost 공개</div>
+              </td>
+              <td class='td-detail'>
+                <div>· enterprise platform 구독</div>
+                <div>· memory infrastructure + SLM + developer API</div>
+                <div>· 개인형 mobile AI 확장</div>
+              </td>
+              <td class='td-detail'>
+                <div>· 개인 기억 기반 Small Language Model 플랫폼</div>
+                <div>· 음성 · 메시지 · 이미지 · 위치 데이터를 메모리 스택으로 학습</div>
+                <div>· telco edge와 결합해 초개인화 음성 agent 레이어 지향</div>
+              </td>
+              <td class='td-detail'>
+                <div class='insight-box'><strong>경쟁 우위</strong> · memory architecture · privacy · SLM · telco edge 배치</div>
+                <div class='insight-box2'><strong>체크 포인트</strong> · valuation 비공개 · 소비자 MAU 미공개 · B2B 전환 속도 확인 필요</div>
+              </td>
+              <td class='td-detail'>
+                <a href='https://www.globenewswire.com/news-release/2026/03/17/3257092/0/en/Personal-AI-s-Memory-Based-Small-Language-Models-Deliver-Hyper-Personalized-Experiences-on-Comcast-s-AI-Grid-Powered-by-NVIDIA.html' target='_blank'>GlobeNewswire 2026.03.17</a>
+                <div class='news-summary'>· [30일 전 자료] · Comcast AI Grid trial · sub-500ms · up to 40x lower cost</div>
+                <a href='https://www.globenewswire.com/news-release/2024/09/30/2955153/0/en/BDev-Ventures-Announces-Strategic-Investment-in-Personal-AI.html' target='_blank'>GlobeNewswire 2024.09.30</a>
+                <div class='news-summary'>· 전략 투자 + double-digit revenue growth during trial phase</div>
+                <a href='https://www.personal.ai/privacy-policy' target='_blank'>Personal AI Privacy Notice</a>
+                <div class='news-summary'>· La Jolla 주소 · mobile service · privacy-first 운영 구조 확인</div>
+                <div class='news-summary'>· 경쟁사 · <a href='https://www.rewind.ai/' target='_blank'>Rewind</a> — 개인 업무 메모리 검색 · <a href='https://mem.ai/' target='_blank'>Mem</a> — AI 메모 워크스페이스 · <a href='https://www.glean.com/' target='_blank'>Glean</a> — 기업 지식 검색 assistant</div>
               </td>
             </tr>
 
             <tr>
-              <td><span class="badge-rank">5</span></td>
-              <td><a class="company-link" href="https://www.voizeai.com/" target="_blank">voize</a><br><span class="badge badge-accent">Nursing Voice AI</span></td>
+              <td><span class='badge-rank'>4</span></td>
+              <td><a class='company-link' href='https://www.wysa.com/' target='_blank'>Wysa</a><br><span class='badge badge-accent'>Mental Health Agent</span></td>
+              <td><strong>2016</strong></td>
+              <td>Boston · Reading · Bengaluru</td>
+              <td class='td-detail'><div>· Jo Aggarwal</div><div>· Ramakant Vempati</div><div>· CEO / Co-founder</div></td>
+              <td class='td-detail'>
+                <div>· 학교 · 전공 공개 미확인</div>
+                <div>· Jo — Pearson · Tata · Infosys · Silatech</div>
+                <div>· Ramakant — Goldman Sachs · Tata 이력 공개</div>
+                <div>· 행동건강 · 임상 안전성 중심 창업팀</div>
+              </td>
+              <td>101-250명</td>
+              <td>—</td>
+              <td class='td-detail'>
+                <div>· 2022.07 Series B $20M</div>
+                <div>· HealthQuad · British International Investment</div>
+                <div>· 2026.02 grant $7.24M 공개 데이터 이력</div>
+              </td>
+              <td class='td-detail'>
+                <div>· 2024 revenue $4.68M</div>
+                <div>· 6M users</div>
+                <div>· 11M lives covered</div>
+                <div>· 45+ peer-reviewed publications</div>
+                <div>· 1B AI conversations</div>
+              </td>
+              <td class='td-detail'>
+                <div>· freemium B2C + employer · insurer · provider B2B</div>
+                <div>· digital front door · triage · guided care</div>
+                <div>· mobile app + web</div>
+              </td>
+              <td class='td-detail'>
+                <div>· 정신건강 대화형 agent</div>
+                <div>· rule-based + LLM 혼합</div>
+                <div>· CBT · mindfulness · coaching 경로 결합</div>
+                <div>· Kins · April Health와 연결된 hybrid care 확장</div>
+              </td>
+              <td class='td-detail'>
+                <div class='insight-box'><strong>경쟁 우위</strong> · 모바일 확산 · 임상 연구 45+편 · payer/provider 채널</div>
+                <div class='insight-box2'><strong>체크 포인트</strong> · 본사 단일 표기 대신 공식 오피스 기준 표기 · valuation 미공개</div>
+              </td>
+              <td class='td-detail'>
+                <a href='https://www.wysa.com/' target='_blank'>Wysa Official</a>
+                <div class='news-summary'>· 6M users · 11M lives covered · 45+ publications · 1B conversations</div>
+                <a href='https://techcrunch.com/2022/07/14/wysa-20-million-series-b-funding-expand-therapist-chatbot-wider-mental-health-services/' target='_blank'>TechCrunch 2022.07.14</a>
+                <div class='news-summary'>· Series B $20M · enterprise 매출 비중 80% 언급 · valuation 비공개</div>
+                <a href='https://www.cbinsights.com/company/touchkin/financials' target='_blank'>CB Insights</a>
+                <div class='news-summary'>· 2024 revenue $4.68M · 2026 grant round 이력 공개</div>
+                <div class='news-summary'>· 경쟁사 · <a href='https://woebothealth.com/' target='_blank'>Woebot</a> — 행동건강 대화형 치료 보조 · <a href='https://www.headspace.com/' target='_blank'>Headspace</a> — 명상 · 코칭 · B2B wellbeing · <a href='https://www.springhealth.com/' target='_blank'>Spring Health</a> — employer mental health navigation</div>
+              </td>
+            </tr>
+
+            <tr>
+              <td><span class='badge-rank'>5</span></td>
+              <td><a class='company-link' href='https://en.voize.de/' target='_blank'>voize</a><br><span class='badge badge-accent'>Nursing Voice AI</span></td>
               <td><strong>2020</strong></td>
               <td>Berlin</td>
-              <td class="td-detail"><strong>Fabio Schmidberger</strong> (CEO)<br><strong>Marcel Schmidberger</strong> (COO)<br><strong>Erik Ziegler</strong> (CTO)</td>
-              <td class="td-detail"><strong>Fabio/Erik:</strong> Hasso Plattner Institute<br>Fabio: San Jose State University 교환·실무 이력<br>의료 현장 음성 문서화 특화 팀</td>
-              <td>—</td>
-              <td>—</td>
-              <td class="td-detail"><span class="val">$50M Series A</span><br>Balderton Capital 리드<br>HV Capital · redalpine · Y Combinator</td>
-              <td class="td-detail"><strong>1,100+ 시설</strong><br><strong>75,000+ nurses</strong><br>간호사당 교대당 최대 <span class="highlight">39분 절감</span><br>문서화 시간 <strong>30%</strong> 환원</td>
-              <td class="td-detail"><strong>B2B SaaS</strong><br>시설/사용자 기반 라이선스<br>현장 음성 문서화 자동화</td>
-              <td class="td-detail"><strong>간호 현장용 모바일 voice AI companion.</strong> 간호사가 침상 옆에서 말하면 AI가 기록을 구조화해 남기며, 지역 방언·비원어민 억양도 이해하도록 훈련됐다. 오프라인/저연결 환경에서도 동작하도록 설계되어 스마트폰 현장 활용성이 높다.</td>
-              <td class="td-detail">
-                <div class="insight-box"><strong>경쟁구도:</strong> Abridge, Suki, Nuance DAX는 병원/의사 중심이고, voize는 post-acute nursing workflow에 집중한다. 이 세분화 자체가 해자다.</div>
-                <div class="insight-box2"><strong>투자 포인트:</strong> 간호 인력난이라는 구조적 문제를 숫자로 해결한다. 다만 valuation, 매출 공개치가 없어 점수는 보수적으로 유지했다.</div>
+              <td class='td-detail'><div>· Fabio Schmidberger</div><div>· Erik Ziegler</div><div>· CEO / CTO</div></td>
+              <td class='td-detail'>
+                <div>· 학교 · 전공 공개 미확인</div>
+                <div>· 창업 계기 — 요양 현장 문서화 문제</div>
+                <div>· Erik — on-device ML · mobile inference 엔지니어링 공개</div>
+                <div>· 창업팀 3인 공동경영 구조</div>
               </td>
-              <td class="td-detail">
-                <a href="https://www.voizeai.com/" target="_blank">Official Site</a>
-                <div class="news-summary">bedside voice charting, audit-ready documentation, shift당 최대 39분 절감 등 제품 가치가 공식적으로 제시된다.</div>
-                <a href="https://www.balderton.com/news/voize-raises-50m-series-a-for-ai-powered-documentation-in-care/" target="_blank">Balderton (2025.11.17)</a>
-                <div class="news-summary">[149일 전 자료] $50M Series A · 유럽 간호 문서화 AI 확장 전략</div>
-                <a href="https://www.finsmes.com/2025/11/voize-raises-50m-in-series-a-funding.html" target="_blank">FinSMEs (2025.11.17)</a>
-                <div class="news-summary">[149일 전 자료] 1,100+ 시설 · 75,000+ nurses · in-house proprietary AI models 명시</div>
-                <a href="https://www.hlth.com/daily/voize-50m-series-a-raise?hsLang=en" target="_blank">HLTH (2025.11.18)</a>
-                <div class="news-summary">[148일 전 자료] 미국 확장 준비 · senior-care workflow 특화 포지션 재확인</div>
+              <td>51-200명</td>
+              <td>—</td>
+              <td class='td-detail'>
+                <div>· 2024 Series A $50M</div>
+                <div>· Balderton Capital</div>
+                <div>· HV Capital · redalpine · YC 후속 참여</div>
+              </td>
+              <td class='td-detail'>
+                <div>· 1,500+ care facilities</div>
+                <div>· 100,000+ caregivers 지원</div>
+                <div>· 교대당 최대 39분 절감</div>
+                <div>· on-device inference 공개</div>
+              </td>
+              <td class='td-detail'>
+                <div>· B2B SaaS</div>
+                <div>· 시설 단위 계약 + documentation workflow 임베드</div>
+                <div>· care sector vertical specialization</div>
+              </td>
+              <td class='td-detail'>
+                <div>· 간호 · 요양 특화 음성 문서화 app</div>
+                <div>· dialect · accents · 비원어민 발화 처리</div>
+                <div>· 기존 care record 시스템과 실시간 연동</div>
+                <div>· Wi‑Fi 약한 현장용 on-device mobile inference 강점</div>
+              </td>
+              <td class='td-detail'>
+                <div class='insight-box'><strong>경쟁 우위</strong> · nursing vertical 집중 · on-device · 저연결 환경 최적화</div>
+                <div class='insight-box2'><strong>체크 포인트</strong> · 공개 매출 부재 · 미국 확장 상업 계약 공개가 다음 재평가 포인트</div>
+              </td>
+              <td class='td-detail'>
+                <a href='https://www.voize.de/blog/series-a-funding' target='_blank'>voize Series A</a>
+                <div class='news-summary'>· $50M Series A · Balderton 리드 · 1,100+ 시설 · 75,000+ 간병인 공개 당시 기준</div>
+                <a href='https://www.linkedin.com/company/voize-de/' target='_blank'>LinkedIn</a>
+                <div class='news-summary'>· 1,500+ care facilities · 100,000+ caregivers · 51-200명 · Berlin 본사</div>
+                <a href='https://tech.voize.de/posts/pytorch-lite-multiplatform' target='_blank'>voize Tech Blog</a>
+                <div class='news-summary'>· on-device inference · PyTorch Lite · Android iOS 공통 모바일 추론 스택 공개</div>
+                <div class='news-summary'>· 경쟁사 · <a href='https://www.suki.ai/' target='_blank'>Suki</a> — 임상 ambient assistant · <a href='https://www.abridge.com/' target='_blank'>Abridge</a> — 의사 문서화 자동화 · <a href='https://www.nabla.com/' target='_blank'>Nabla</a> — clinician ambient assistant</div>
+              </td>
+            </tr>
+
+            <tr>
+              <td><span class='badge-rank'>6</span></td>
+              <td><a class='company-link' href='https://www.tolans.com/' target='_blank'>Portola / Tolan</a><br><span class='badge badge-accent'>Voice Companion</span></td>
+              <td><strong>2023</strong></td>
+              <td>San Francisco, CA</td>
+              <td class='td-detail'><div>· Quinten Farmer</div><div>· Evan Goldschmidt</div><div>· Ajay Mehta</div><div>· CEO / CTO / President</div></td>
+              <td class='td-detail'>
+                <div>· Quinten — Columbia CS 수학 이력 · Even 공동창업</div>
+                <div>· Evan — Johns Hopkins CS</div>
+                <div>· Ajay — Columbia GS CS 이력 · FamilyLeaf exit</div>
+                <div>· 전 Even 팀 재결합</div>
+              </td>
+              <td>11-50명</td>
+              <td>—</td>
+              <td class='td-detail'>
+                <div>· Seed $10M + Series A $20M</div>
+                <div>· Khosla Ventures · Lachy Groom · NFDG · Homebrew</div>
+                <div>· 누적 $30M</div>
+              </td>
+              <td class='td-detail'>
+                <div>· 3M+ downloads</div>
+                <div>· 100K+ paid users</div>
+                <div>· $1M+ monthly revenue</div>
+                <div>· 200K+ MAU</div>
+                <div>· App Store 4.8 · 119K ratings</div>
+              </td>
+              <td class='td-detail'>
+                <div>· 구독형 consumer app</div>
+                <div>· weekly · monthly · annual pricing</div>
+                <div>· voice-first companion monetization</div>
+              </td>
+              <td class='td-detail'>
+                <div>· 감정형 AI companion</div>
+                <div>· voice-first 대화 · 사진 공유 · 캐릭터 세계관 결합</div>
+                <div>· memory retrieval · persona tuning · low-latency voice 설계</div>
+                <div>· 휴대폰 제조사 기본 companion layer로 적합</div>
+              </td>
+              <td class='td-detail'>
+                <div class='insight-box'><strong>경쟁 우위</strong> · paid consumer traction · voice latency · memory recall 개선</div>
+                <div class='insight-box2'><strong>체크 포인트</strong> · 정서형 카테고리 규제 · 안전성 · 장기 retention 공개 부족</div>
+              </td>
+              <td class='td-detail'>
+                <a href='https://www.geekwire.com/2025/ai-companionship-app-tolan-raises-20m-to-help-more-people-grow-with-a-virtual-alien-friend/' target='_blank'>GeekWire 2025.07.07</a>
+                <div class='news-summary'>· [283일 전 자료] · Series A $20M · 3M+ downloads · 100K+ paid · $1M+ MRR</div>
+                <a href='https://openai.com/index/tolan' target='_blank'>OpenAI 2026.01.07</a>
+                <div class='news-summary'>· [99일 전 자료] · GPT‑5.1 기반 voice stack · next-day retention 20%+ 개선 · recall miss 30% 감소</div>
+                <a href='https://apps.apple.com/us/app/tolan-alien-best-friend/id6477549878' target='_blank'>App Store</a>
+                <div class='news-summary'>· iPhone only · 4.8 · 119K ratings</div>
+                <div class='news-summary'>· 경쟁사 · <a href='https://character.ai/' target='_blank'>Character.AI</a> — 캐릭터 대화 플랫폼 · <a href='https://replika.com/' target='_blank'>Replika</a> — 정서형 companion · <a href='https://kindroid.ai/' target='_blank'>Kindroid</a> — 개인화 AI partner</div>
+              </td>
+            </tr>
+
+            <tr>
+              <td><span class='badge-rank'>7</span></td>
+              <td><a class='company-link' href='https://mindtrip.ai/' target='_blank'>Mindtrip</a><br><span class='badge badge-accent'>Travel Agent</span></td>
+              <td><strong>2023</strong></td>
+              <td>Palo Alto, CA</td>
+              <td class='td-detail'><div>· Andy Moss</div><div>· Trey Matteson</div><div>· Garrick Toubassi</div><div>· CEO / Founders</div></td>
+              <td class='td-detail'>
+                <div>· Andy — University of Manchester BS</div>
+                <div>· Trey — Brown Math · Computer Science</div>
+                <div>· Garrick — Arizona Computer Engineering</div>
+                <div>· Roadster · Google Gmail · Stripe 출신 결합</div>
+              </td>
+              <td>11-50명</td>
+              <td>—</td>
+              <td class='td-detail'>
+                <div>· 총 공개 조달 $22.5M</div>
+                <div>· Costanoa · Forerunner</div>
+                <div>· 2025.12 Amex · Capital One · United 전략 투자</div>
+              </td>
+              <td class='td-detail'>
+                <div>· App Store 4.8</div>
+                <div>· 44 employees 공개</div>
+                <div>· destination partners 확대</div>
+                <div>· Sabre · PayPal end-to-end booking alliance</div>
+              </td>
+              <td class='td-detail'>
+                <div>· B2C app + tourism board + hotel tools</div>
+                <div>· affiliate · booking · B2B destination software</div>
+                <div>· agentic travel commerce</div>
+              </td>
+              <td class='td-detail'>
+                <div>· location · itinerary · map · booking을 한 흐름으로 묶는 여행 agent</div>
+                <div>· 대화형 입력 뒤 바로 일정 구성 · 지도 · 호텔 · 결제 레일 연결</div>
+                <div>· 항공사 · 카드사 전략 투자로 채널 가치 검증</div>
+              </td>
+              <td class='td-detail'>
+                <div class='insight-box'><strong>경쟁 우위</strong> · travel stack 통합 · 전략 투자자 질 · 관광청 B2B 채널</div>
+                <div class='insight-box2'><strong>체크 포인트</strong> · 소비자 매출 공개 부족 · 여행 카테고리 seasonality 존재</div>
+              </td>
+              <td class='td-detail'>
+                <a href='https://www.businesswire.com/news/home/20251208469469/en/Mindtrip-Unveils-New-AI-Travel-and-Events-Features-Announces-Investments-From-Amex-Ventures-Capital-One-Ventures-and-United-Airlines-Ventures' target='_blank'>BusinessWire 2025.12.08</a>
+                <div class='news-summary'>· [129일 전 자료] · 공개 조달금액 $22.5M · 전략 투자자 공개</div>
+                <a href='https://newsroom.paypal-corp.com/2025-02-12-Sabre-PayPal-and-Mindtrip-Partner-To-Deliver-the-Industrys-First-End-to-End-Agentic-AI-Experience-for-Travel' target='_blank'>PayPal · Sabre 2026.02.12</a>
+                <div class='news-summary'>· [63일 전 자료] · discovery → booking → payment end-to-end agentic travel 발표</div>
+                <a href='https://www.linkedin.com/company/mindtripai' target='_blank'>LinkedIn</a>
+                <div class='news-summary'>· 11-50명 · 44 employees 표기 · 최근 관광청 파트너십 지속</div>
+                <div class='news-summary'>· 경쟁사 · <a href='https://layla.ai/' target='_blank'>Layla</a> — 대화형 여행 agent · <a href='https://www.hopper.com/' target='_blank'>Hopper</a> — 가격 예측 중심 모바일 여행 앱 · <a href='https://www.google.com/travel/' target='_blank'>Google Travel</a> — 검색형 여행 메타플랫폼</div>
+              </td>
+            </tr>
+
+            <tr>
+              <td><span class='badge-rank'>8</span></td>
+              <td><a class='company-link' href='https://layla.ai/' target='_blank'>Layla</a><br><span class='badge badge-accent'>Travel Companion</span></td>
+              <td><strong>2022</strong></td>
+              <td>Berlin</td>
+              <td class='td-detail'><div>· Saad Saeed</div><div>· Jeremy Jauncey</div><div>· Sardar Bali</div><div>· CEO / Co-founders</div></td>
+              <td class='td-detail'>
+                <div>· Saad — Jacobs University EECS 이력 공개 자료 존재</div>
+                <div>· Jeremy — KCL Business Management 이력 공개 자료</div>
+                <div>· Saad — Flink 공동창업</div>
+                <div>· Jeremy — Beautiful Destinations 창업</div>
+              </td>
+              <td>11-50명</td>
+              <td>—</td>
+              <td class='td-detail'>
+                <div>· 2023 seed €3M</div>
+                <div>· firstminute · M13</div>
+                <div>· 2026.03 strategic 7-figure round</div>
+                <div>· United Airlines Ventures · Baidu Capital · INCE Capital</div>
+              </td>
+              <td class='td-detail'>
+                <div>· 5M users</div>
+                <div>· 30M messages</div>
+                <div>· $1B planned trip value</div>
+                <div>· 11-50 employees</div>
+                <div>· iPhone · iPad · web 운영</div>
+              </td>
+              <td class='td-detail'>
+                <div>· affiliate booking</div>
+                <div>· travel inspiration → itinerary → booking monetization</div>
+                <div>· white-label travel agent 확장</div>
+              </td>
+              <td class='td-detail'>
+                <div>· creator 영상 · short-form inspiration을 대화형 계획으로 전환하는 여행 agent</div>
+                <div>· identity-first query 처리</div>
+                <div>· 40% 이상이 목적지 없이 대화 시작</div>
+                <div>· 모바일 멀티모달 agent 관점에서 강한 탐색 UX</div>
+              </td>
+              <td class='td-detail'>
+                <div class='insight-box'><strong>경쟁 우위</strong> · creator graph · short-form travel discovery · white-label 확장</div>
+                <div class='insight-box2'><strong>체크 포인트</strong> · booked revenue 미공개 · trip value는 GMV 성격이라 보수 해석 필요</div>
+              </td>
+              <td class='td-detail'>
+                <a href='https://www.globenewswire.com/fr/news-release/2026/03/13/3255756/0/en/Layla-Surpasses-1-Billion-in-Trips-Planned-as-Global-Investors-Back-Identity-First-Travel-Planning.html' target='_blank'>GlobeNewswire 2026.03.13</a>
+                <div class='news-summary'>· [34일 전 자료] · 5M users · 30M messages · $1B planned trip value · 전략 투자 라운드</div>
+                <a href='https://techcrunch.com/2023/11/29/layla-taps-into-ai-and-creator-content-to-build-a-travel-recommendation-app/' target='_blank'>TechCrunch 2023.11.29</a>
+                <div class='news-summary'>· seed €3M · creator video 기반 추천 엔진 · app + chatbot 런치</div>
+                <a href='https://de.linkedin.com/company/layla-ai' target='_blank'>LinkedIn</a>
+                <div class='news-summary'>· Berlin 본사 · 11-50명 · white-label travel agent 포지션 공개</div>
+                <div class='news-summary'>· 경쟁사 · <a href='https://mindtrip.ai/' target='_blank'>Mindtrip</a> — 일정 · 지도 · 예약 결합 travel agent · <a href='https://www.guidegeek.com/' target='_blank'>GuideGeek</a> — 메시징 기반 여행 도우미 · <a href='https://www.google.com/travel/' target='_blank'>Google Travel</a> — 검색형 여행 메타플랫폼</div>
               </td>
             </tr>
           </tbody>
@@ -291,156 +592,211 @@
       </div>
     </div>
 
-    <div class="card">
-      <div class="card-header">
+    <div class='card'>
+      <div class='card-header'>
         <h2>100점 스타트업 종합 평가표</h2>
-        <p>A. 제조사 파트너십 (20) · B. M&amp;A 가능성 (20) · C. 기술력 (12) · D. 매출·BM (12) · E. 시장 타이밍 (12) · F. 팀 역량 (12) · G. 경쟁력 (12) — 미확인 지표는 낮게 반영</p>
+        <p>· A 제조사 파트너십 20 · B M&A 가능성 20 · C 기술력 12 · D 매출 BM 12 · E 시장 타이밍 12 · F 팀 역량 12 · G 경쟁력 12</p>
       </div>
-      <div class="card-body">
-        <div class="table-wrap">
-          <table class="eval-table">
+      <div class='card-body'>
+        <div class='table-wrap'>
+          <table class='eval-table'>
             <thead>
               <tr>
                 <th>순위</th>
-                <th class="col-company">기업</th>
-                <th>A. 제조사<br>파트너십<br>/20</th>
-                <th>B. M&amp;A<br>가능성<br>/20</th>
-                <th>C. 기술력<br>/12</th>
-                <th>D. 매출<br>BM /12</th>
-                <th>E. 시장<br>타이밍<br>/12</th>
-                <th>F. 팀<br>역량<br>/12</th>
-                <th>G. 경쟁력<br>/12</th>
-                <th class="col-total">합계</th>
+                <th class='col-company'>기업</th>
+                <th>A 제조사<br>/20</th>
+                <th>B M&A<br>/20</th>
+                <th>C 기술력<br>/12</th>
+                <th>D 매출BM<br>/12</th>
+                <th>E 시장<br>/12</th>
+                <th>F 팀<br>/12</th>
+                <th>G 경쟁력<br>/12</th>
+                <th class='col-total'>합계</th>
                 <th>등급</th>
               </tr>
             </thead>
             <tbody>
-              <tr><td><span class="badge-rank">1</span></td><td class="col-company">Suki</td><td>11</td><td>15</td><td>10</td><td>8</td><td>10</td><td>11</td><td>10</td><td class="col-total">75</td><td><span class="badge badge-ok">최우선</span></td></tr>
-              <tr><td><span class="badge-rank">2</span></td><td class="col-company">Pine AI</td><td>17</td><td>13</td><td>8</td><td>5</td><td>11</td><td>7</td><td>10</td><td class="col-total">71</td><td><span class="badge badge-ok">최우선</span></td></tr>
-              <tr><td><span class="badge-rank">3</span></td><td class="col-company">Personal AI</td><td>15</td><td>12</td><td>10</td><td>6</td><td>9</td><td>9</td><td>9</td><td class="col-total">70</td><td><span class="badge badge-ok">최우선</span></td></tr>
-              <tr><td><span class="badge-rank">4</span></td><td class="col-company">Wysa</td><td>14</td><td>12</td><td>10</td><td>9</td><td>8</td><td>9</td><td>6</td><td class="col-total">68</td><td><span class="badge badge-warn">관심</span></td></tr>
-              <tr><td><span class="badge-rank">5</span></td><td class="col-company">voize</td><td>12</td><td>11</td><td>10</td><td>6</td><td>9</td><td>8</td><td>10</td><td class="col-total">66</td><td><span class="badge badge-warn">관심</span></td></tr>
+              <tr><td><span class='badge-rank'>1</span></td><td class='col-company'>Suki</td><td>11</td><td>15</td><td>10</td><td>8</td><td>10</td><td>11</td><td>10</td><td class='col-total'>75</td><td><span class='badge badge-ok'>최우선</span></td></tr>
+              <tr><td><span class='badge-rank'>2</span></td><td class='col-company'>Pine AI</td><td>17</td><td>13</td><td>8</td><td>5</td><td>11</td><td>7</td><td>10</td><td class='col-total'>71</td><td><span class='badge badge-ok'>최우선</span></td></tr>
+              <tr><td><span class='badge-rank'>3</span></td><td class='col-company'>Personal AI</td><td>15</td><td>12</td><td>10</td><td>6</td><td>9</td><td>9</td><td>9</td><td class='col-total'>70</td><td><span class='badge badge-ok'>최우선</span></td></tr>
+              <tr><td><span class='badge-rank'>4</span></td><td class='col-company'>Wysa</td><td>14</td><td>12</td><td>10</td><td>9</td><td>8</td><td>9</td><td>6</td><td class='col-total'>68</td><td><span class='badge badge-warn'>관심</span></td></tr>
+              <tr><td><span class='badge-rank'>5</span></td><td class='col-company'>voize</td><td>12</td><td>11</td><td>10</td><td>6</td><td>9</td><td>8</td><td>10</td><td class='col-total'>66</td><td><span class='badge badge-warn'>관심</span></td></tr>
+              <tr><td><span class='badge-rank'>6</span></td><td class='col-company'>Portola / Tolan</td><td>13</td><td>12</td><td>6</td><td>9</td><td>10</td><td>10</td><td>4</td><td class='col-total'>64</td><td><span class='badge badge-warn'>관심</span></td></tr>
+              <tr><td><span class='badge-rank'>7</span></td><td class='col-company'>Mindtrip</td><td>14</td><td>11</td><td>6</td><td>5</td><td>10</td><td>8</td><td>7</td><td class='col-total'>61</td><td><span class='badge badge-warn'>관심</span></td></tr>
+              <tr><td><span class='badge-rank'>8</span></td><td class='col-company'>Layla</td><td>14</td><td>11</td><td>6</td><td>5</td><td>10</td><td>8</td><td>6</td><td class='col-total'>60</td><td><span class='badge badge-warn'>관심</span></td></tr>
             </tbody>
           </table>
         </div>
       </div>
     </div>
 
-    <div class="card">
-      <div class="card-header">
-        <h2>점수 산출 근거 · 제조사 파트너십 · Inorganic M&amp;A 메모</h2>
-        <p>개조식 메모 · A~G 점수 이유 · 휴대폰 제조사 번들 전략 · 비유기적 인수 활용 포인트</p>
+    <div class='card'>
+      <div class='card-header'>
+        <h2>점수 산출 근거 · 제조사 파트너십 · Inorganic M&A 활용</h2>
+        <p>· 모든 문장 개조식 · 점수 배경 요약 · 휴대폰 제조사 활용안 · 인수 후 활용안</p>
       </div>
-      <div class="card-body">
-        <div class="table-wrap">
-          <table>
+      <div class='card-body'>
+        <div class='table-wrap'>
+          <table class='memo-table'>
             <thead>
               <tr>
-                <th style="min-width:110px">기업</th>
-                <th style="min-width:520px">점수 산출 근거</th>
-                <th style="min-width:360px">휴대폰 제조사 파트너십</th>
-                <th style="min-width:360px">Inorganic M&amp;A 활용</th>
+                <th style='min-width:110px'>기업</th>
+                <th style='min-width:460px'>점수 근거</th>
+                <th style='min-width:340px'>제조사 파트너십 관점</th>
+                <th style='min-width:340px'>Inorganic M&A 활용안</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td><strong>Suki</strong></td>
-                <td class="td-detail">
-                  <div>· A11 — iOS 임상 앱 존재 · 모바일 dictation 현장성 높음 · OEM 직접 PoC 미확인으로 감점</div>
-                  <div>· B15 — 잠재 인수자 다수 · EHR 통합 · 특허 · 임상 워크플로 락인 보유</div>
-                  <div>· C10 — 상용 제품 성숙도 높음 · HealthEdge/athenahealth 연동 검증 · 보안·규제 운영 경험 반영</div>
-                  <div>· D8 — 임상 노트 처리량·도입처 공개 · ARR 미공개 감점</div>
-                  <div>· E10 · F11 · G10 — ambient clinical AI 수요 확대 · Google/Motorola/Flipkart 경영진 강점 · 모바일+임베드 해자</div>
+                <td class='td-detail'>
+                  <div>· A11 — iOS 임상 앱 보유 · 모바일 현장 적합성 높음 · 소비자 대중 앱은 아님</div>
+                  <div>· B15 — EHR · payer · 의료기기 · 엔터프라이즈 SW 인수 후보 다수</div>
+                  <div>· C10 — 특허 · 음성 AI · 임상 통합 검증</div>
+                  <div>· D8 — 대형 배포 채널 존재 · 매출 미공개</div>
+                  <div>· E10 · F11 · G10 — 시장 성장성 · 창업자 질 · 통합 난도 우수</div>
                 </td>
-                <td class="td-detail">
-                  <div>· 의료 특화 단말 기본 앱 번들</div>
-                  <div>· 현장 마이크·녹음 품질 최적화폰과 결합</div>
-                  <div>· B2B healthcare edition 판매 채널에 즉시 탑재</div>
+                <td class='td-detail'>
+                  <div>· 의료 특화 스마트폰 · 태블릿 번들</div>
+                  <div>· 전용 음성 버튼 · HIPAA 보안 단말과 결합</div>
+                  <div>· 병원 BYOD 대체용 enterprise mobility 패키지 가능</div>
                 </td>
-                <td class="td-detail">
-                  <div>· EMR·헬스케어 SaaS·엔터프라이즈 디바이스 벤더가 인수 후보</div>
-                  <div>· 인수 후 음성 문서화 레이어를 자체 앱군 전체로 확장</div>
-                  <div>· 디바이스 ASP 방어보다 반복 ARR 확장 효과가 큼</div>
+                <td class='td-detail'>
+                  <div>· EHR 벤더 · 의료기기 · 엔터프라이즈 단말 벤더 인수 시 시너지 큼</div>
+                  <div>· 모바일 임상 입력 레이어를 제품군 공통 UX로 이식 가능</div>
                 </td>
               </tr>
               <tr>
                 <td><strong>Pine AI</strong></td>
-                <td class="td-detail">
-                  <div>· A17 — 앱스토어 공개 앱 · 모바일 완료 비중 최고 · 제조사 활용 시나리오 명확</div>
-                  <div>· B13 — 통신사·핀테크·구독관리 앱이 인수 후보 · 다만 대형 유료고객/ARR 미공개</div>
-                  <div>· C8 — private AI · 암호화 · 실사용 앱 검증 강점 · 외부 보안 인증·성능 벤치 부족</div>
-                  <div>· D5 — 성공보수 BM 명확 · 절감효과 공개 · 매출 공개치 부재</div>
-                  <div>· E11 · F7 · G10 — 비용절감 시장 타이밍 강함 · 팀 공개 정보 제한 · 실행형 agent 차별화 뚜렷</div>
+                <td class='td-detail'>
+                  <div>· A17 — 모바일 앱 핵심 · 실행형 personal agent · 스마트폰 기본 기능화 적합</div>
+                  <div>· B13 — 인수 후보 다수 존재 · 소비자 MAU 공개 제한으로 일부 감점</div>
+                  <div>· C8 — 실행형 stack · 보안 체계 공개 · 독점 IP 증빙은 제한</div>
+                  <div>· D5 — 절감 성과는 강함 · 매출 수치 미공개</div>
+                  <div>· E11 · F7 · G10 — 시장 타이밍 강함 · 팀 깊이 공개 제한</div>
                 </td>
-                <td class="td-detail">
-                  <div>· 통신요금 절감 agent를 기본앱으로 번들</div>
-                  <div>· eSIM 추천 · 구독 해지 · 환불 지원을 고객지원 앱에 통합</div>
-                  <div>· 제조사 CS 비용 절감 KPI와 직접 연결 가능</div>
+                <td class='td-detail'>
+                  <div>· 스마트폰 기본 assistant · 통화 · 메일 · 브라우저 액션 자동화와 직결</div>
+                  <div>· carrier bill optimization · travel dispute agent 번들 가능</div>
+                  <div>· on-device permission control UX로 차별화 가능</div>
                 </td>
-                <td class="td-detail">
-                  <div>· 통신사·OEM·슈퍼앱·개인금융앱의 비유기적 확장 자산</div>
-                  <div>· 인수 후 retention desk 자동화 · churn 방어 · 번들 서비스 업셀</div>
-                  <div>· 고객지원/결제/구독 데이터와 결합 시 가치 상승</div>
+                <td class='td-detail'>
+                  <div>· OEM · 통신사 · super-app · 핀테크 앱이 인수 시 즉시 활용 가능</div>
+                  <div>· 고객 서비스 절감과 retention 기능을 동시에 확보</div>
                 </td>
               </tr>
               <tr>
                 <td><strong>Personal AI</strong></td>
-                <td class="td-detail">
-                  <div>· A15 — iOS 앱 · 웹 서비스 · 팀 배포 기능 보유 · OEM 직접 제휴 미확인</div>
-                  <div>· B12 — 개인 메모리 그래프·프라이버시 레이어가 매력 자산 · 대형 M&amp;A 사례는 제한적</div>
-                  <div>· C10 — personal SLM memory platform · sub-500ms · 40x economics 주장 반영</div>
-                  <div>· D6 — 구독·엔터프라이즈 모델 존재 · 앱 평점/방문 트래픽 공개 · 매출 미공개</div>
-                  <div>· E9 · F9 · G9 — on-device personal AI 수요 상승 · Aira/LinkedIn 출신 강점 · 개인화 메모리 차별화</div>
+                <td class='td-detail'>
+                  <div>· A15 — mobile app · voice · messaging 적합성 우수</div>
+                  <div>· B12 — telco · cloud · enterprise AI 인수 후보 존재</div>
+                  <div>· C10 — SLM · memory core · security 인증 강점</div>
+                  <div>· D6 — revenue growth 신호 존재 · 공개 ARR 부재</div>
+                  <div>· E9 · F9 · G9 — 팀 수준 높음 · 시장 포지션은 아직 형성 단계</div>
                 </td>
-                <td class="td-detail">
-                  <div>· 스마트폰 기본 AI의 개인 메모리 계층으로 번들</div>
-                  <div>· 연락처·메시지·음성메모를 private vault와 연결</div>
-                  <div>· 클라우드 저장공간·프리미엄 AI 구독 업셀에 적합</div>
+                <td class='td-detail'>
+                  <div>· 제조사 private memory assistant로 적합</div>
+                  <div>· 사진 · 위치 · 메시지 기록을 개인 SLM으로 연결 가능</div>
+                  <div>· 프리미엄 단말 AI identity layer로 차별화 여지</div>
                 </td>
-                <td class="td-detail">
-                  <div>· OEM·통신사·생산성 SaaS가 인수 시 시너지 큼</div>
-                  <div>· 인수 후 기기 전환 시 memory continuity 기능 제공 가능</div>
-                  <div>· personal cloud 락인 강화 자산으로 활용 가능</div>
+                <td class='td-detail'>
+                  <div>· telco · cloud · OS 레벨 assistant 사업자 인수 시 활용도 높음</div>
+                  <div>· device-local memory graph와 결합해 락인 강화 가능</div>
                 </td>
               </tr>
               <tr>
                 <td><strong>Wysa</strong></td>
-                <td class="td-detail">
-                  <div>· A14 — 모바일 앱과 웹 모두 강함 · 보험/고용주 유통 존재 · OEM 실증 미확인</div>
-                  <div>· B12 — 보험사·디지털헬스·웰니스 플랫폼이 인수 후보 · 규제·임상 복잡성 감점</div>
-                  <div>· C10 — 45+ 논문 · 1B 대화 · 인간개입 구조 검증</div>
-                  <div>· D9 — 대규모 사용자·커버드 라이브 지표 공개 · 매출치 자체는 미공개</div>
-                  <div>· E8 · F9 · G6 — 정신건강 수요는 크지만 도입 마찰 높음 · 카테고리 경쟁 밀도 높음</div>
+                <td class='td-detail'>
+                  <div>· A14 — 모바일 앱 중심 · wellness 동선 적합</div>
+                  <div>· B12 — payer · employer benefits · digital health 인수 후보 존재</div>
+                  <div>· C10 — 45+ 연구 · 임상 안전성 · FDA Breakthrough 이력</div>
+                  <div>· D9 — revenue 공개치 2024 $4.68M</div>
+                  <div>· E8 · F9 · G6 — 성장성 양호 · big tech 대체 가능성 감점</div>
                 </td>
-                <td class="td-detail">
-                  <div>· 디지털 웰빙 앱군에 정신건강 agent를 기본 탑재</div>
-                  <div>· 보험·employee benefits 번들과 결합</div>
-                  <div>· 사용시간 관리·수면·스트레스 코칭과 연결 적합</div>
+                <td class='td-detail'>
+                  <div>· 스마트폰 wellbeing suite 기본 탑재 후보</div>
+                  <div>· 보험 · 직원복지 · 청소년 보호 모드와 묶기 용이</div>
+                  <div>· 로컬 언어 확장 시 제조사 지역별 패키지 가능</div>
                 </td>
-                <td class="td-detail">
-                  <div>· 보험사·헬스케어 플랫폼·OEM wellness 사업부의 비유기적 확장 후보</div>
-                  <div>· 인수 후 clinically-validated mental-health module 즉시 확보</div>
-                  <div>· 단, 안전성·책임 범위 통합 설계가 필수</div>
+                <td class='td-detail'>
+                  <div>· 보험사 · 원격진료 · 복지 플랫폼이 인수 시 가입자 engagement 개선</div>
+                  <div>· 단기적으로 cross-sell이 쉬운 자산</div>
                 </td>
               </tr>
               <tr>
                 <td><strong>voize</strong></td>
-                <td class="td-detail">
-                  <div>· A12 — 모바일 현장 음성 UX 강점 · 소비자 앱 확산은 제한 · 제조사 vertical bundle 가능</div>
-                  <div>· B11 — 요양·EHR·엔터프라이즈 디바이스 벤더가 인수 후보 · valuation/ARR 미공개 감점</div>
-                  <div>· C10 — nursing-specific in-house model · offline/low-connectivity 설계 강점</div>
-                  <div>· D6 — 1,100+ 시설 · 75,000+ nurses 배포 검증 · 매출 수치 미공개</div>
-                  <div>· E9 · F8 · G10 — 간호 인력난 테마 강함 · 팀 스케일 이력 공개 제한 · 세분화 해자 강함</div>
+                <td class='td-detail'>
+                  <div>· A12 — 현장 mobile app 필수 · 소비자 범용성은 제한</div>
+                  <div>· B11 — care software · enterprise device 인수 후보 존재</div>
+                  <div>· C10 — on-device inference · vertical speech AI · GDPR 적합</div>
+                  <div>· D6 — 시설 · 사용자 수 강함 · 매출 미공개</div>
+                  <div>· E9 · F8 · G10 — nursing pain point 명확 · vertical moat 선명</div>
                 </td>
-                <td class="td-detail">
-                  <div>· 병원·요양시설용 rugged phone/tablet 번들에 적합</div>
-                  <div>· 오프라인 음성 캡처·현장 문서화를 디바이스 차별점으로 활용</div>
-                  <div>· B2B nursing edition 단말 패키지 구성 가능</div>
+                <td class='td-detail'>
+                  <div>· 요양 · 병원용 rugged device 번들 적합</div>
+                  <div>· 저연결 환경에서도 동작하는 voice UX가 단말 차별점</div>
+                  <div>· enterprise MDM 패키지와 결합 용이</div>
                 </td>
-                <td class="td-detail">
-                  <div>· 엔터프라이즈 단말 벤더·EHR·노인요양 SaaS의 비유기적 확장 후보</div>
-                  <div>· 인수 후 senior care vertical 진입 속도 가속</div>
-                  <div>· 음성 입력 스택을 다른 현장직군으로 확장 가능</div>
+                <td class='td-detail'>
+                  <div>· care record 벤더 · 의료 단말 벤더 인수 시 즉시 가치화 가능</div>
+                  <div>· 현장 음성 문서화 엔진을 다른 frontline vertical로 확장 가능</div>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Portola / Tolan</strong></td>
+                <td class='td-detail'>
+                  <div>· A13 — iPhone 전용 · 대규모 consumer app traction 강점</div>
+                  <div>· B12 — consumer AI · social · device OEM 인수 후보 존재</div>
+                  <div>· C6 — voice stack 우수 · 다만 외부 모델 의존 비중 존재</div>
+                  <div>· D9 — 100K+ paid · $1M+ monthly revenue</div>
+                  <div>· E10 · F10 · G4 — 팀 질 강함 · 정서형 카테고리 경쟁 심화</div>
+                </td>
+                <td class='td-detail'>
+                  <div>· always-available companion agent로 단말 차별화 가능</div>
+                  <div>· 카메라 · 음성 · 알림 · lockscreen 경험과 결합 용이</div>
+                  <div>· teens · Gen Z 포지셔닝에 적합</div>
+                </td>
+                <td class='td-detail'>
+                  <div>· OEM · social platform · character IP 사업자가 인수 시 레버리지 큼</div>
+                  <div>· subscription app + engagement engine를 즉시 확보</div>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Mindtrip</strong></td>
+                <td class='td-detail'>
+                  <div>· A14 — 모바일 여행 동선 적합 · 지도 UX 강점</div>
+                  <div>· B11 — OTA · airline · card issuer 인수 후보 다수</div>
+                  <div>· C6 — orchestration 강점 · 독점 모델 증빙 제한</div>
+                  <div>· D5 — 상업 파트너 강함 · 매출 수치 미공개</div>
+                  <div>· E10 · F8 · G7 — 전략 투자자 질 좋음 · OTA 경쟁 심함</div>
+                </td>
+                <td class='td-detail'>
+                  <div>· travel mode 기본 탑재에 적합</div>
+                  <div>· 지도 · 항공 · 카드 혜택 · wallet와 자연 결합</div>
+                  <div>· 제조사 해외 여행 패키지 번들 가능</div>
+                </td>
+                <td class='td-detail'>
+                  <div>· OTA · airline · payments 기업이 인수 시 end-to-end travel stack 확보</div>
+                  <div>· loyalty · booking funnel 개선에 바로 활용 가능</div>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Layla</strong></td>
+                <td class='td-detail'>
+                  <div>· A14 — app + web · short-form inspiration이 모바일 친화적</div>
+                  <div>· B11 — OTA · creator travel media · airline 인수 후보 존재</div>
+                  <div>· C6 — recommendation engine · creator graph · CV 활용</div>
+                  <div>· D5 — GMV 신호 강함 · booked revenue 미공개</div>
+                  <div>· E10 · F8 · G6 — 여행 발견 전환 흐름 강함 · 경쟁 심화</div>
+                </td>
+                <td class='td-detail'>
+                  <div>· 제조사 travel inspiration hub로 적합</div>
+                  <div>· 카메라 검색 · short-form 추천 · wallet booking 연동 가능</div>
+                  <div>· creator partnership 단말 마케팅 소재로 활용 가능</div>
+                </td>
+                <td class='td-detail'>
+                  <div>· OTA · creator media · card travel ecosystem 인수 시 시너지 높음</div>
+                  <div>· 발견 → 예약 funnel을 하나의 app layer로 통합 가능</div>
                 </td>
               </tr>
             </tbody>
@@ -448,178 +804,86 @@
         </div>
       </div>
     </div>
-    <div class="card">
-      <div class="card-header">
+
+    <div class='card'>
+      <div class='card-header'>
         <h2>평가 항목별 상세 채점 기준</h2>
-        <p>7개 대항목 · 28개 세부지표 · 총 100점 만점</p>
+        <p>· 7개 대항목 · 28개 세부지표 · 총 100점</p>
       </div>
-      <div class="card-body">
-        <div class="table-wrap">
-          <table class="eval-detail-table">
-            <thead><tr><th style="width:35px">No.</th><th style="width:130px">세부지표</th><th style="width:35px">배점</th><th>채점 기준</th></tr></thead>
+      <div class='card-body'>
+        <div class='table-wrap'>
+          <table class='criteria-table'>
+            <thead><tr><th style='width:35px'>No.</th><th style='width:130px'>세부지표</th><th style='width:35px'>배점</th><th>채점 기준</th></tr></thead>
             <tbody>
-              <tr><td colspan="4" class="eval-cat">A. 휴대폰 제조사 파트너십 가능 여부 (20점)</td></tr>
-              <tr><td>1</td><td>자체 앱 보유·운영</td><td>5</td><td>0: 앱 없음 / 2: MVP·beta / 4: 앱스토어 출시+핵심 70%↑ / 5: 출시+MAU 1만↑·D30 ret 20%↑</td></tr>
-              <tr><td>2</td><td>웹 서비스 보유·운영</td><td>3</td><td>0: 없음 / 1: 소개형 / 2: 회원가입 운영 / 3: 핵심 기능·결제+모바일웹 최적화</td></tr>
-              <tr><td>3</td><td>모바일 적합성</td><td>6</td><td>모바일 완료 비중 — 30%↓: 0 / 30~59%: 2 / 60~79%: 4 / 80%↑: 6</td></tr>
-              <tr><td>4</td><td>제조사 활용 시나리오</td><td>3</td><td>0: 없음 / 1: 1개 명확 / 2: 2개↑+KPI / 3: 제조사별 모델·지역·효과 정리</td></tr>
-              <tr><td>5</td><td>실제 제휴 검증</td><td>3</td><td>0: 없음 / 1: 소개·미팅 / 2: PoC·LOI / 3: 파일럿·상업조건 협의</td></tr>
-              <tr><td colspan="4" class="eval-cat">B. M&amp;A 가능성 여부 (20점)</td></tr>
-              <tr><td>1</td><td>잠재 인수자 수</td><td>5</td><td>0: 없음 / 2: 1~2개 / 3: 3~4개 / 5: 5개↑ (시너지 설명 필요)</td></tr>
-              <tr><td>2</td><td>인수 매력 자산 수</td><td>5</td><td>5개 중 충족: ①IP ②독점 데이터 ③유료고객 20↑·MAU 10만↑ ④ARR 3억↑ ⑤규제·라이선스</td></tr>
-              <tr><td>3</td><td>유사 M&amp;A 사례</td><td>4</td><td>5년 내 — 0건: 0 / 1건: 1 / 2~3건: 2 / 4~5건: 3 / 6건↑: 4</td></tr>
-              <tr><td>4</td><td>통합 용이성</td><td>3</td><td>PMI — 12개월↑: 0 / 6~12: 1 / 3~6: 2 / 3개월↓: 3</td></tr>
-              <tr><td>5</td><td>실사 준비도</td><td>3</td><td>①IP 귀속 ②Cap table 단순 ③법률분쟁 없음 — 충족 수</td></tr>
-              <tr><td colspan="4" class="eval-cat">C. 기술력 (12점)</td></tr>
-              <tr><td>1</td><td>IP/기술 소유권</td><td>3</td><td>0: 불명확 / 1: 소스코드 귀속 / 2: 특허출원·독점 데이터 / 3: 특허등록·trade secret</td></tr>
-              <tr><td>2</td><td>제품 성숙도</td><td>3</td><td>0: 아이디어 / 1: MVP / 2: 유료 상용 / 3: 상용+uptime 99.5%↑</td></tr>
-              <tr><td>3</td><td>성능/확장성</td><td>3</td><td>0: 미검증 / 1: 내부 벤치 / 2: 외부 PoC / 3: 경쟁 대비 20%↑</td></tr>
-              <tr><td>4</td><td>보안/컴플라이언스</td><td>3</td><td>0: 없음 / 1: 정책 존재 / 2: 점검·침투테스트 / 3: 인증·실사 통과</td></tr>
-              <tr><td colspan="4" class="eval-cat">D. 매출 및 비즈니스 모델 (12점)</td></tr>
-              <tr><td>1</td><td>매출 규모</td><td>3</td><td>0: 없음 / 1: TTM 1천만~1억 / 2: 1~5억 / 3: 5억↑·ARR 3억↑</td></tr>
-              <tr><td>2</td><td>성장률</td><td>3</td><td>MoM — 음수: 0 / 0~9%: 1 / 10~19%: 2 / 20%↑: 3</td></tr>
-              <tr><td>3</td><td>반복매출/리텐션</td><td>3</td><td>20%↓: 0 / 20~49%: 1 / 50~69%: 2 / 70%↑: 3</td></tr>
-              <tr><td>4</td><td>Unit Economics</td><td>3</td><td>0: 미확인 / 1: GM 20%↑ 1개 / 2: GM 40%+18개월 / 3: GM 60%+12개월</td></tr>
-              <tr><td colspan="4" class="eval-cat">E. 시장 타이밍 (12점)</td></tr>
-              <tr><td>1</td><td>시장 성장률</td><td>3</td><td>CAGR — 5%↓: 0 / 5~9%: 1 / 10~19%: 2 / 20%↑: 3</td></tr>
-              <tr><td>2</td><td>예산 준비도</td><td>3</td><td>예산 비율 — 20%↓: 0 / 20~39%: 1 / 40~69%: 2 / 70%↑: 3</td></tr>
-              <tr><td>3</td><td>도입 마찰</td><td>3</td><td>6개월↑: 0 / 3~6: 1 / 1~3: 2 / 1개월↓: 3</td></tr>
-              <tr><td>4</td><td>외부 모멘텀</td><td>3</td><td>호재 수 — 0: 0 / 1: 1 / 2: 2 / 3↑: 3</td></tr>
-              <tr><td colspan="4" class="eval-cat">F. 팀 역량 (12점)</td></tr>
-              <tr><td>1</td><td>도메인 경력</td><td>3</td><td>2년↓: 0 / 2~4: 1 / 5~9: 2 / 10년↑: 3</td></tr>
-              <tr><td>2</td><td>빅테크/선도사 출신</td><td>3</td><td>0: 없음 / 1: 핵심 1명 / 2: 창업자 1명 / 3: 창업자 2명↑</td></tr>
-              <tr><td>3</td><td>창업/스케일업 이력</td><td>3</td><td>0: 없음 / 1: 이전 창업 / 2: Series A↑ / 3: Exit·IPO</td></tr>
-              <tr><td>4</td><td>팀 완성도</td><td>3</td><td>0: 2개↑ 공백 / 1: 1개 공백 / 2: 3축 충족 / 3: 3축+운영+ret 80%↑</td></tr>
-              <tr><td colspan="4" class="eval-cat">G. 경쟁사 대비 경쟁력 (12점)</td></tr>
-              <tr><td>1</td><td>성능 우위</td><td>3</td><td>10%↓: 0 / 10~19%: 1 / 20~49%: 2 / 50%↑: 3</td></tr>
-              <tr><td>2</td><td>고객 ROI</td><td>3</td><td>24개월↑: 0 / 12~24: 1 / 6~12: 2 / 6개월↓: 3</td></tr>
-              <tr><td>3</td><td>전환비용/락인</td><td>3</td><td>ret 50%↓: 0 / 50~69%: 1 / 70~84%: 2 / 85%↑: 3</td></tr>
-              <tr><td>4</td><td>해자(Moat) 수</td><td>3</td><td>①IP ②독점 데이터 ③유통 ④규제 ⑤네트워크 — 0: 0 / 1: 1 / 2: 2 / 3↑: 3</td></tr>
+              <tr><td colspan='4' class='eval-cat'>A 휴대폰 제조사 파트너십 가능 여부 20점</td></tr>
+              <tr><td>1</td><td>자체 앱 보유 · 운영</td><td>5</td><td>0 앱 없음 / 2 MVP · beta / 4 앱스토어 출시 + 핵심 70%↑ / 5 출시 + MAU 1만↑ · D30 ret 20%↑</td></tr>
+              <tr><td>2</td><td>웹 서비스 보유 · 운영</td><td>3</td><td>0 없음 / 1 소개형 / 2 회원가입 운영 / 3 핵심 기능 · 결제 + 모바일웹 최적화</td></tr>
+              <tr><td>3</td><td>모바일 적합성</td><td>6</td><td>30%↓ 0 / 30~59% 2 / 60~79% 4 / 80%↑ 6</td></tr>
+              <tr><td>4</td><td>제조사 활용 시나리오</td><td>3</td><td>0 없음 / 1 1개 명확 / 2 2개↑ + KPI / 3 제조사별 모델 · 지역 · 효과 정리</td></tr>
+              <tr><td>5</td><td>실제 제휴 검증</td><td>3</td><td>0 없음 / 1 소개 · 미팅 / 2 PoC · LOI / 3 파일럿 · 상업조건 협의</td></tr>
+              <tr><td colspan='4' class='eval-cat'>B M&A 가능성 여부 20점</td></tr>
+              <tr><td>1</td><td>잠재 인수자 수</td><td>5</td><td>0 없음 / 2 1~2개 / 3 3~4개 / 5 5개↑</td></tr>
+              <tr><td>2</td><td>인수 매력 자산 수</td><td>5</td><td>IP · 독점 데이터 · 유료고객/MAU · ARR · 규제·라이선스 충족 수</td></tr>
+              <tr><td>3</td><td>유사 M&A 사례</td><td>4</td><td>0건 0 / 1건 1 / 2~3건 2 / 4~5건 3 / 6건↑ 4</td></tr>
+              <tr><td>4</td><td>통합 용이성</td><td>3</td><td>PMI 12개월↑ 0 / 6~12 1 / 3~6 2 / 3개월↓ 3</td></tr>
+              <tr><td>5</td><td>실사 준비도</td><td>3</td><td>IP 귀속 · cap table 단순 · 법률분쟁 부재 충족 수</td></tr>
+              <tr><td colspan='4' class='eval-cat'>C 기술력 12점</td></tr>
+              <tr><td>1</td><td>IP · 기술 소유권</td><td>3</td><td>0 불명확 / 1 소스코드 귀속 / 2 특허출원 · 독점 데이터 / 3 특허등록 · trade secret</td></tr>
+              <tr><td>2</td><td>제품 성숙도</td><td>3</td><td>0 아이디어 / 1 MVP / 2 유료 상용 / 3 상용 + uptime 99.5%↑</td></tr>
+              <tr><td>3</td><td>성능 · 확장성</td><td>3</td><td>0 미검증 / 1 내부 벤치 / 2 외부 PoC / 3 경쟁 대비 20%↑</td></tr>
+              <tr><td>4</td><td>보안 · 컴플라이언스</td><td>3</td><td>0 없음 / 1 정책 존재 / 2 점검 · 침투테스트 / 3 인증 · 실사 통과</td></tr>
+              <tr><td colspan='4' class='eval-cat'>D 매출 및 비즈니스 모델 12점</td></tr>
+              <tr><td>1</td><td>매출 규모</td><td>3</td><td>0 없음 / 1 TTM 1천만~1억 / 2 1~5억 / 3 5억↑ · ARR 3억↑</td></tr>
+              <tr><td>2</td><td>성장률</td><td>3</td><td>MoM 음수 0 / 0~9% 1 / 10~19% 2 / 20%↑ 3</td></tr>
+              <tr><td>3</td><td>반복매출 · 리텐션</td><td>3</td><td>20%↓ 0 / 20~49% 1 / 50~69% 2 / 70%↑ 3</td></tr>
+              <tr><td>4</td><td>Unit Economics</td><td>3</td><td>0 미확인 / 1 GM 20%↑ / 2 GM 40%+18개월 / 3 GM 60%+12개월</td></tr>
+              <tr><td colspan='4' class='eval-cat'>E 시장 타이밍 12점</td></tr>
+              <tr><td>1</td><td>시장 성장률</td><td>3</td><td>CAGR 5%↓ 0 / 5~9% 1 / 10~19% 2 / 20%↑ 3</td></tr>
+              <tr><td>2</td><td>예산 준비도</td><td>3</td><td>20%↓ 0 / 20~39% 1 / 40~69% 2 / 70%↑ 3</td></tr>
+              <tr><td>3</td><td>도입 마찰</td><td>3</td><td>6개월↑ 0 / 3~6 1 / 1~3 2 / 1개월↓ 3</td></tr>
+              <tr><td>4</td><td>외부 모멘텀</td><td>3</td><td>호재 수 0 / 1 / 2 / 3</td></tr>
+              <tr><td colspan='4' class='eval-cat'>F 팀 역량 12점</td></tr>
+              <tr><td>1</td><td>도메인 경력</td><td>3</td><td>2년↓ 0 / 2~4 1 / 5~9 2 / 10년↑ 3</td></tr>
+              <tr><td>2</td><td>빅테크 · 선도사 출신</td><td>3</td><td>0 없음 / 1 핵심 1명 / 2 창업자 1명 / 3 창업자 2명↑</td></tr>
+              <tr><td>3</td><td>창업 · 스케일업 이력</td><td>3</td><td>0 없음 / 1 이전 창업 / 2 Series A↑ / 3 Exit · IPO</td></tr>
+              <tr><td>4</td><td>팀 완성도</td><td>3</td><td>0 2개↑ 공백 / 1 1개 공백 / 2 3축 충족 / 3 3축 + 운영</td></tr>
+              <tr><td colspan='4' class='eval-cat'>G 경쟁사 대비 경쟁력 12점</td></tr>
+              <tr><td>1</td><td>성능 우위</td><td>3</td><td>10%↓ 0 / 10~19% 1 / 20~49% 2 / 50%↑ 3</td></tr>
+              <tr><td>2</td><td>고객 ROI</td><td>3</td><td>24개월↑ 0 / 12~24 1 / 6~12 2 / 6개월↓ 3</td></tr>
+              <tr><td>3</td><td>전환비용 · 락인</td><td>3</td><td>ret 50%↓ 0 / 50~69% 1 / 70~84% 2 / 85%↑ 3</td></tr>
+              <tr><td>4</td><td>해자 수</td><td>3</td><td>IP · 독점데이터 · 유통 · 규제 · 네트워크 중 충족 수</td></tr>
             </tbody>
           </table>
         </div>
       </div>
     </div>
 
-    <div class="card">
-      <div class="card-header">
-        <h2>추가 모바일 AI Agent · 멀티모달 Agent 모니터링 후보</h2>
-        <p>· 내일 07:00 KST 서버 갱신본에도 유지될 추가 후보 · Top 5 외 watchlist · 모바일/멀티모달 적합성 중심</p>
-      </div>
-      <div class="card-body">
-        <div class="table-wrap">
-          <table>
-            <thead>
-              <tr>
-                <th style="min-width:120px">기업</th>
-                <th style="min-width:180px">포지션</th>
-                <th style="min-width:240px">추가 이유</th>
-                <th style="min-width:260px">최근 신호</th>
-                <th style="min-width:280px">출처</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><a class="company-link" href="https://www.tolans.com/" target="_blank">Portola / Tolan</a></td>
-                <td class="td-detail">
-                  <div>· 모바일 AI companion agent</div>
-                  <div>· 사진 공유 기반 멀티모달 상호작용</div>
-                </td>
-                <td class="td-detail">
-                  <div>· iPhone 중심 배포</div>
-                  <div>· 감정/관계형 agent 카테고리 대표주자</div>
-                  <div>· 구독형 수익과 대규모 앱 트랙션 동시 확인</div>
-                </td>
-                <td class="td-detail">
-                  <div>· 2025.07 Series A $20M</div>
-                  <div>· 3M downloads · 100k+ paid users · $1M+/month revenue</div>
-                  <div>· App Store 4.8 / 135K ratings</div>
-                </td>
-                <td class="td-detail">
-                  <a href="https://www.geekwire.com/2025/ai-companionship-app-tolan-raises-20m-to-help-more-people-grow-with-a-virtual-alien-friend/" target="_blank">GeekWire (2025.07.07)</a>
-                  <div class="news-summary">· 시리즈 A · 다운로드/유료사용자/월매출 공개</div>
-                  <a href="https://www.wired.com/story/tolan-chatbot-ai-companion/" target="_blank">WIRED (2025.07.02)</a>
-                  <div class="news-summary">· [287일 전 자료] · 100K MAU · 2025 매출 가이던스 $12M 언급</div>
-                  <a href="https://apps.apple.com/app/id6477549878" target="_blank">App Store</a>
-                </td>
-              </tr>
-              <tr>
-                <td><a class="company-link" href="https://mindtrip.ai/" target="_blank">Mindtrip</a></td>
-                <td class="td-detail">
-                  <div>· 모바일 AI travel companion</div>
-                  <div>· location / itinerary / map 기반 멀티모달 여행 agent</div>
-                </td>
-                <td class="td-detail">
-                  <div>· iPhone 앱 완성도 높음</div>
-                  <div>· 여행 검색 → 계획 → 실행까지 한 앱에서 처리</div>
-                  <div>· 항공·카드 전략 투자 유치로 채널 가치 확인</div>
-                </td>
-                <td class="td-detail">
-                  <div>· 2025.12 총 조달금액 $22.5M 공개</div>
-                  <div>· United Airlines Ventures · Capital One Ventures 투자</div>
-                  <div>· App Store 4.8 / 385 ratings</div>
-                </td>
-                <td class="td-detail">
-                  <a href="https://www.businesswire.com/news/home/20251208469469/en/Mindtrip-Unveils-New-AI-Travel-and-Events-Features-Announces-Investments-From-Amex-Ventures-Capital-One-Ventures-and-United-Airlines-Ventures" target="_blank">BusinessWire (2025.12.08)</a>
-                  <div class="news-summary">· 총 조달금액 $22.5M · 전략 투자자 공개</div>
-                  <a href="https://www.unitedairlinesventures.com/news/capital-one-ventures-united-airlines-ventures-invest-in-mindtrip" target="_blank">United Airlines Ventures (2025.12.04)</a>
-                  <div class="news-summary">· app launch · B2B hotel tools · 전략 채널 시너지</div>
-                  <a href="https://apps.apple.com/us/app/mindtrip-ai-travel-companion/id6503107567" target="_blank">App Store</a>
-                </td>
-              </tr>
-              <tr>
-                <td><a class="company-link" href="https://layla.ai/" target="_blank">Layla</a></td>
-                <td class="td-detail">
-                  <div>· 모바일 AI travel agent</div>
-                  <div>· creator/video inspiration 기반 멀티모달 계획 agent</div>
-                </td>
-                <td class="td-detail">
-                  <div>· 앱/웹 동시 운영</div>
-                  <div>· 여행 의도 파악 → 항공/호텔/일정까지 연결</div>
-                  <div>· 영상·대화형 탐색이 강해 모바일 멀티모달 후보 적합</div>
-                </td>
-                <td class="td-detail">
-                  <div>· 2026.03 전략적 7-figure round</div>
-                  <div>· 5M users · 30M messages · $1B planned trip value</div>
-                  <div>· App Store iPhone/iPad 앱 운영</div>
-                </td>
-                <td class="td-detail">
-                  <a href="https://www.globenewswire.com/news-release/2026/03/13/3255756/0/en/Layla-Surpasses-1-Billion-in-Trips-Planned-as-Global-Investors-Back-Identity-First-Travel-Planning.html" target="_blank">GlobeNewswire (2026.03.13)</a>
-                  <div class="news-summary">· 5M users · 30M messages · $1B trip value · 7-figure 투자 유치</div>
-                  <a href="https://agent.layla.ai/" target="_blank">Layla Official</a>
-                  <div class="news-summary">· creator/video 기반 여행 영감 → 계획 전환 포지션</div>
-                  <a href="https://apps.apple.com/us/app/layla-ai-travel-agent/id6758730467" target="_blank">App Store</a>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-
-    <div class="insight-section">
+    <div class='insight-section'>
       <h2>전체 모니터링 인사이트</h2>
-      <div class="pattern"><strong>공통 패턴 —</strong> 이번 목요일 도메인 상위권은 모두 <strong>답변형 챗봇보다 실행형 agent</strong>에 가깝다. Pine은 전화·환불·해지를 대신 처리하고, Suki·voize는 현장 음성 입력을 업무결과물로 바꾼다.</div>
-      <div class="pattern"><strong>모바일 적합성 —</strong> Pine, Personal AI, Wysa는 앱이 핵심 접점이고, Suki·voize는 현장 모바일 UX가 제품가치의 중심이다. 휴대폰은 단순 뷰어가 아니라 agent 실행 인터페이스다.</div>
-      <div class="pattern"><strong>해자 구조 —</strong> generic LLM wrapper는 제외했다. 이번 Top 5는 EHR 통합(Suki), private AI + encryption(Pine), personal SLM memory(Personal AI), 45+ publications(Wysa), nursing-specific in-house models(voize)처럼 독자 근거가 있는 업체만 남겼다.</div>
-      <div class="pattern"><strong>평가 보수성 —</strong> valuation·ARR·MAU가 비공개인 기업은 높은 점수를 주지 않았다. 그래서 공개 트랙션이 더 강한 Suki/Wysa가 상위권을 유지했고, Pine/voize는 모바일 적합성이 높아도 매출 공개 부족으로 일부 감점됐다.</div>
+      <div class='pattern'><strong>공통 패턴</strong> · 이번 8개사는 답변형 챗봇보다 실행형 agent 비중이 높음 · 휴대폰이 입력 단말이 아니라 실행 허브로 바뀌는 흐름 확인</div>
+      <div class='pattern'><strong>제조사 관점</strong> · Pine · Personal AI · Tolan은 OS 레벨 personal agent 후보 · Suki · voize는 vertical device bundle 후보 · Mindtrip · Layla는 travel mode 차별화 후보</div>
+      <div class='pattern'><strong>기술 해자</strong> · Suki는 EHR 통합 · Personal AI는 memory SLM · Wysa는 임상 논문 · voize는 on-device inference · Tolan은 voice memory system이 핵심</div>
+      <div class='pattern'><strong>투자 해석</strong> · 공개 valuation이 적은 회사는 점수 보수 처리 · 공개 매출이 있는 Wysa · 공개 유료사용자와 월매출이 있는 Tolan은 상대적으로 검증도 우위</div>
 
-      <h2 style="font-size:0.92rem; margin:.9rem 0 .5rem">모니터링 업데이트 필요 항목</h2>
-      <div class="monitor-list">
-        <div class="monitor-item"><span class="dot"></span><span><strong>Suki</strong> — athenahealth/HealthEdge 연동 이후 실제 seat expansion과 ARR 공개 여부</span></div>
-        <div class="monitor-item"><span class="dot"></span><span><strong>Pine AI</strong> — App Store 후기 증가, paid conversion, 통신사·보험사 제휴 여부</span></div>
-        <div class="monitor-item"><span class="dot"></span><span><strong>Personal AI</strong> — NVIDIA AI Grid 기반 memory platform의 상용 매출 전환 속도</span></div>
-        <div class="monitor-item"><span class="dot"></span><span><strong>Wysa</strong> — Kins 통합 후 hybrid care의 보험 청구/리텐션 지표 공개 여부</span></div>
-        <div class="monitor-item"><span class="dot"></span><span><strong>voize</strong> — 미국 진출 후 요양시설 계약 수와 valuation 공개 여부</span></div>
+      <h2 style='font-size:.92rem;margin:.9rem 0 .5rem'>모니터링 업데이트 포인트</h2>
+      <div class='monitor-list'>
+        <div class='monitor-item'><span class='dot'></span><span><strong>Suki</strong> · athenahealth seat expansion · 공개 ARR 확인</span></div>
+        <div class='monitor-item'><span class='dot'></span><span><strong>Pine AI</strong> · 제조사 · 통신사 제휴 여부 · paid conversion 공개 여부</span></div>
+        <div class='monitor-item'><span class='dot'></span><span><strong>Personal AI</strong> · telco edge 상용 계약 · mobile consumer rollout</span></div>
+        <div class='monitor-item'><span class='dot'></span><span><strong>Wysa</strong> · Kins · April Health 통합 후 payer 매출 비중 변화</span></div>
+        <div class='monitor-item'><span class='dot'></span><span><strong>voize</strong> · 미국 확장 계약 수 · 공개 매출 신호</span></div>
+        <div class='monitor-item'><span class='dot'></span><span><strong>Tolan</strong> · retention · safety disclosure · Android 확장</span></div>
+        <div class='monitor-item'><span class='dot'></span><span><strong>Mindtrip</strong> · Sabre · PayPal booking 상용화 시점</span></div>
+        <div class='monitor-item'><span class='dot'></span><span><strong>Layla</strong> · white-label booking revenue · airline partnership 확대</span></div>
       </div>
     </div>
 
-    <footer>작성 기준: '26.4.16 (목) · 문서 상태: 테스트 업데이트본 · 업데이트 시간: 2026-04-15 23:40 KST · GitHub Actions 07:00 KST 자동 커밋·푸시 · 내일 7시 서버 갱신 시 추가 모바일 AI Agent 후보도 유지 · PitchBook public 우선 확인, Dealroom/Crunchbase/official fallback</footer>
+    <footer>작성 기준 '26.4.16 (목) · 문서 상태 GitHub 원격 갱신본 · 업데이트 시간 2026-04-16 00:23 KST · GitHub Actions 07:00 KST 자동 커밋·푸시 · PitchBook public 우선 확인 · Dealroom · Crunchbase · official fallback</footer>
   </main>
 
   <script>
     function toggleTheme(){const b=document.body;b.setAttribute('data-theme',b.getAttribute('data-theme')==='dark'?'light':'dark')}
-    function setProfile(p){document.body.setAttribute('data-profile',p);document.querySelectorAll('.profile-btn').forEach(b=>b.classList.toggle('active',b.dataset.p===p))}
+    function setProfile(p){document.body.setAttribute('data-profile',p);document.querySelectorAll('.profile-btn').forEach(btn=>btn.classList.toggle('active',btn.dataset.p===p))}
     (()=>{const w=document.getElementById('tw');if(!w)return;window.addEventListener('keydown',e=>{if(e.key!=='ArrowRight'&&e.key!=='ArrowLeft')return;const a=document.activeElement;if(a&&(a.tagName==='INPUT'||a.tagName==='TEXTAREA'||a.isContentEditable))return;const r=w.getBoundingClientRect();if(r.bottom<=0||r.top>=window.innerHeight)return;e.preventDefault();w.scrollBy({left:e.key==='ArrowRight'?300:-300,behavior:'smooth'})},{passive:false})})();
   </script>
 </body>
