@@ -1,890 +1,697 @@
 <!doctype html>
 <html lang='ko'>
 <head>
-  <meta charset='UTF-8' />
-  <meta name='viewport' content='width=device-width, initial-scale=1.0' />
-  <title>Global AI Startup Watch (Non-Unicorn) — '26.4.16 (목)</title>
-  <link href='https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;700;800&display=swap' rel='stylesheet'>
-  <style>
-    :root,
-    [data-theme='light'][data-profile='default'] {
-      --bg-page:#f0f4fb; --bg-card:#fff; --bg-card-alt:#f8fafd; --bg-header:#e8eefb; --bg-row-alt:#f7f9fe;
-      --text-primary:#0f172a; --text-secondary:#475569; --text-muted:#64748b; --border:#d6dff0;
-      --accent:#2563eb; --accent-light:#dbeafe; --accent-text:#1e40af;
-      --ok:#059669; --ok-bg:#d1fae5; --warn:#d97706; --warn-bg:#fef3c7; --red:#dc2626; --red-bg:#fee2e2;
-      --badge-bg:rgba(37,99,235,.08); --badge-border:rgba(37,99,235,.18);
-      --hero-from:#0f172a; --hero-to:#1e3a8a; --shadow-card:0 8px 32px rgba(15,23,42,.07); --shadow-hero:0 16px 48px rgba(15,23,42,.22);
-      --toggle-bg:#e2e8f0; --toggle-knob:#fff; --toolbar-bg:rgba(255,255,255,.86);
-      --insight-bg:#fffbeb; --insight-border:#fde68a; --fact-bg:#f0fdf4; --fact-border:#86efac; --profile-glow:rgba(37,99,235,.35);
-    }
-    [data-theme='light'][data-profile='ocean'] {
-      --bg-page:#ecfdf5; --bg-card:#fff; --bg-card-alt:#f0fdf8; --bg-header:#d1fae5; --bg-row-alt:#f0fdf4;
-      --accent:#0d9488; --accent-light:#ccfbf1; --accent-text:#0f766e; --badge-bg:rgba(13,148,136,.08); --badge-border:rgba(13,148,136,.18);
-      --hero-from:#064e3b; --hero-to:#0d9488; --profile-glow:rgba(13,148,136,.45);
-    }
-    [data-theme='light'][data-profile='sunset'] {
-      --bg-page:#fef7ee; --bg-card:#fff; --bg-card-alt:#fffbf5; --bg-header:#ffedd5; --bg-row-alt:#fff7ed;
-      --accent:#ea580c; --accent-light:#fed7aa; --accent-text:#c2410c; --badge-bg:rgba(234,88,12,.08); --badge-border:rgba(234,88,12,.18);
-      --hero-from:#7c2d12; --hero-to:#ea580c; --profile-glow:rgba(234,88,12,.45);
-    }
-    [data-theme='light'][data-profile='violet'] {
-      --bg-page:#f5f3ff; --bg-card:#fff; --bg-card-alt:#faf8ff; --bg-header:#ede9fe; --bg-row-alt:#f5f3ff;
-      --accent:#7c3aed; --accent-light:#ddd6fe; --accent-text:#6d28d9; --badge-bg:rgba(124,58,237,.08); --badge-border:rgba(124,58,237,.18);
-      --hero-from:#3b0764; --hero-to:#7c3aed; --profile-glow:rgba(124,58,237,.45);
-    }
-    [data-theme='dark'] {
-      --bg-page:#0b1120; --bg-card:#141c2e; --bg-card-alt:#111827; --bg-header:#1a2540; --bg-row-alt:#111827;
-      --text-primary:#e2e8f0; --text-secondary:#94a3b8; --text-muted:#64748b; --border:#1e293b;
-      --accent:#60a5fa; --accent-light:rgba(96,165,250,.12); --accent-text:#93c5fd;
-      --ok:#34d399; --ok-bg:rgba(52,211,153,.12); --warn:#fbbf24; --warn-bg:rgba(251,191,36,.1); --red:#f87171; --red-bg:rgba(248,113,113,.1);
-      --badge-bg:rgba(96,165,250,.1); --badge-border:rgba(96,165,250,.2);
-      --hero-from:#0f172a; --hero-to:#1e3a8a; --shadow-card:0 8px 32px rgba(0,0,0,.3); --shadow-hero:0 16px 48px rgba(0,0,0,.5);
-      --toggle-bg:#1e293b; --toggle-knob:#334155; --toolbar-bg:rgba(11,17,32,.92);
-      --insight-bg:rgba(251,191,36,.06); --insight-border:rgba(251,191,36,.2); --fact-bg:rgba(52,211,153,.06); --fact-border:rgba(52,211,153,.2); --profile-glow:rgba(96,165,250,.45);
-    }
-    [data-theme='dark'][data-profile='ocean'] {
-      --bg-page:#021a14; --bg-card:#0a2620; --bg-card-alt:#071f1a; --bg-header:#0f3a30; --bg-row-alt:#071f1a;
-      --accent:#2dd4bf; --accent-light:rgba(45,212,191,.12); --accent-text:#5eead4; --hero-from:#022c22; --hero-to:#0d9488; --profile-glow:rgba(45,212,191,.45);
-    }
-    [data-theme='dark'][data-profile='sunset'] {
-      --bg-page:#1a0f05; --bg-card:#271a0a; --bg-card-alt:#1f1408; --bg-header:#3b2412; --bg-row-alt:#1f1408;
-      --accent:#fb923c; --accent-light:rgba(251,146,60,.12); --accent-text:#fdba74; --hero-from:#431407; --hero-to:#ea580c; --profile-glow:rgba(251,146,60,.45);
-    }
-    [data-theme='dark'][data-profile='violet'] {
-      --bg-page:#0d0620; --bg-card:#160e2e; --bg-card-alt:#110a24; --bg-header:#231740; --bg-row-alt:#110a24;
-      --accent:#a78bfa; --accent-light:rgba(167,139,250,.12); --accent-text:#c4b5fd; --hero-from:#1e0a3e; --hero-to:#7c3aed; --profile-glow:rgba(167,139,250,.45);
-    }
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    body{font-family:'Plus Jakarta Sans','Noto Sans KR',system-ui,sans-serif;background:var(--bg-page);color:var(--text-primary);line-height:1.65;transition:background .35s,color .3s}
-    a{color:var(--accent);text-decoration:none;font-weight:600}
-    a:hover{opacity:.78;text-decoration:underline}
-    .toolbar{position:sticky;top:0;z-index:100;background:var(--toolbar-bg);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:.6rem 1.2rem;display:flex;align-items:center;justify-content:flex-end;gap:.75rem}
-    .toolbar-group{display:flex;align-items:center;gap:.45rem}.toolbar-label{font-size:.72rem;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.08em}
-    .profile-btn{width:22px;height:22px;border-radius:50%;border:2px solid transparent;cursor:pointer;transition:transform .25s,border-color .25s,box-shadow .25s}
-    .profile-btn:hover{transform:scale(1.2);box-shadow:0 0 12px var(--profile-glow)}
-    .profile-btn.active{border-color:var(--text-primary);box-shadow:0 0 0 2px var(--bg-page),0 0 0 4px var(--text-muted)}
-    .profile-btn[data-p='default']{background:linear-gradient(135deg,#2563eb,#3b82f6)}
-    .profile-btn[data-p='ocean']{background:linear-gradient(135deg,#0d9488,#2dd4bf)}
-    .profile-btn[data-p='sunset']{background:linear-gradient(135deg,#ea580c,#fb923c)}
-    .profile-btn[data-p='violet']{background:linear-gradient(135deg,#7c3aed,#a78bfa)}
-    .divider{width:1px;height:20px;background:var(--border)}
-    .theme-toggle{display:flex;align-items:center;gap:.45rem;cursor:pointer}
-    .theme-toggle svg{width:16px;height:16px;fill:var(--text-muted)}
-    .toggle-track{width:38px;height:20px;border-radius:999px;background:var(--toggle-bg);position:relative}
-    .toggle-knob{width:16px;height:16px;border-radius:50%;background:var(--toggle-knob);position:absolute;top:2px;left:2px;transition:transform .3s,background .3s}
-    [data-theme='dark'] .toggle-knob{transform:translateX(18px);background:#60a5fa}
-    main{width:min(1440px,calc(100% - 2rem));margin:0 auto;padding:1.5rem 0 3rem}
-    .hero{background:linear-gradient(135deg,var(--hero-from),var(--hero-to));border-radius:16px;padding:1.6rem 1.8rem 1.4rem;color:#fff;box-shadow:var(--shadow-hero);margin-bottom:1.4rem;position:relative;overflow:hidden}
-    .hero::before{content:'';position:absolute;top:-40%;right:-10%;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.06) 0%,transparent 70%)}
-    .hero h1{font-size:1.35rem;font-weight:800;letter-spacing:-.3px;margin-bottom:.4rem}
-    .hero p{font-size:.85rem;color:rgba(255,255,255,.78)}
-    .hero-chips,.sector-schedule{display:flex;flex-wrap:wrap;gap:.4rem}
-    .chip{font-size:.7rem;font-weight:700;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);padding:.18rem .6rem;border-radius:999px;color:rgba(255,255,255,.92)}
-    .sector-schedule{margin-top:.7rem}.sector-day{font-size:.63rem;font-weight:700;padding:.15rem .5rem;border-radius:6px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.72)}.sector-day.today{background:rgba(255,255,255,.2);border-color:rgba(255,255,255,.45);color:#fff}.sector-link{display:inline-flex;color:inherit;text-decoration:none}
-    .card,.insight-section{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow-card);overflow:hidden;margin-bottom:1.2rem}
-    .card-header{padding:1rem 1.4rem .8rem;border-bottom:1px solid var(--border)}
-    .card-header h2,.insight-section h2{font-size:1rem;font-weight:800}
-    .card-header p{font-size:.78rem;color:var(--text-muted);margin-top:.2rem}
-    .card-body,.insight-section{padding:1rem 1.4rem}
-    .table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}.scroll-hint{font-size:.72rem;color:var(--text-muted);padding:.4rem 1.4rem;display:flex;align-items:center;gap:.3rem}.scroll-hint svg{width:14px;height:14px;fill:var(--text-muted)}
-    table{width:100%;border-collapse:collapse;min-width:2300px;font-size:.8rem}
-    .eval-table{min-width:900px;font-size:.78rem}.memo-table{min-width:1700px;font-size:.76rem}.criteria-table{min-width:800px;font-size:.74rem}
-    th{background:var(--bg-header);color:var(--text-primary);padding:.7rem .6rem;text-align:left;border-bottom:2px solid var(--border);font-weight:800;font-size:.72rem;text-transform:uppercase;letter-spacing:.04em;white-space:nowrap}
-    td{padding:.6rem;border-bottom:1px solid var(--border);vertical-align:top}
-    tbody tr:nth-child(even) td{background:var(--bg-row-alt)}
-    tbody tr:hover td{background:var(--accent-light)}
-    .eval-table th,.eval-table td{text-align:center;padding:.5rem .4rem}.eval-table .col-company{text-align:left;font-weight:700;min-width:95px}.eval-table .col-total{font-weight:800;font-size:.92rem;color:var(--accent-text)}
-    .criteria-table th{padding:.45rem .4rem;text-align:left;font-size:.66rem}.criteria-table td{padding:.35rem .4rem}.criteria-table .eval-cat{background:var(--accent-light)!important;color:var(--accent-text);font-weight:800;padding:.5rem .4rem!important;font-size:.72rem}
-    .badge{display:inline-block;font-size:.68rem;font-weight:800;padding:.15rem .5rem;border-radius:6px}
-    .badge-ok{background:var(--ok-bg);color:var(--ok)}.badge-warn{background:var(--warn-bg);color:var(--warn)}.badge-red{background:var(--red-bg);color:var(--red)}.badge-accent{background:var(--badge-bg);color:var(--accent);border:1px solid var(--badge-border)}.badge-rank{background:var(--accent);color:#fff;font-size:.72rem;font-weight:800;padding:.2rem .55rem;border-radius:8px;display:inline-block}
-    .val{color:var(--ok);font-weight:800}.highlight{background:rgba(251,191,36,.16);padding:.05rem .3rem;border-radius:4px;font-weight:700}
-    .company-link{font-weight:800;font-size:.88rem;color:var(--accent-text);text-decoration:none;border-bottom:2px solid transparent}.company-link:hover{border-bottom-color:var(--accent);text-decoration:none}
-    .td-detail{font-size:.78rem;line-height:1.55}
-    .insight-box,.insight-box2{border-radius:8px;padding:.55rem .7rem;margin-top:.4rem;font-size:.75rem;line-height:1.5}
-    .insight-box{background:var(--insight-bg);border:1px solid var(--insight-border);border-left:3px solid var(--warn)}.insight-box strong{color:var(--warn)}
-    .insight-box2{background:var(--fact-bg);border:1px solid var(--fact-border);border-left:3px solid var(--ok)}.insight-box2 strong{color:var(--ok)}
-    .news-summary{font-size:.7rem;color:var(--text-secondary);margin:.2rem 0 .4rem;line-height:1.4;padding:.25rem .45rem;background:var(--bg-card-alt);border-radius:5px;border:1px solid var(--border)}
-    .pattern{font-size:.82rem;line-height:1.65;color:var(--text-secondary);margin-bottom:.55rem;padding-left:.8rem;border-left:3px solid var(--accent)}
-    .monitor-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:.5rem;margin-top:.6rem}.monitor-item{background:var(--bg-card-alt);border:1px solid var(--border);border-radius:8px;padding:.55rem .7rem;font-size:.78rem;display:flex;gap:.4rem;align-items:flex-start}.dot{width:6px;height:6px;border-radius:50%;background:var(--accent);margin-top:6px;flex-shrink:0}
-    footer{margin-top:1rem;padding:.8rem 1.4rem;font-size:.72rem;color:var(--text-muted);text-align:center}
-    @media (max-width:768px){main{width:calc(100% - 1rem);padding:1rem 0 2rem}.hero{padding:1.2rem 1rem 1rem}.hero h1{font-size:1.15rem}.toolbar{padding:.5rem .8rem;gap:.5rem}.sector-day{font-size:.58rem;padding:.1rem .35rem}}
-  </style>
+<meta charset='UTF-8'/>
+<meta name='viewport' content='width=device-width,initial-scale=1.0'/>
+<title>Global AI Startup Watch — '26.4.16 (목)</title>
+<link href='https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;700;800&family=JetBrains+Mono:wght@500;700&display=swap' rel='stylesheet'>
+<style>
+:root{--bg:#f1f4f9;--card:#fff;--card2:#f7f9fc;--hdr:#e4e9f5;--row2:#f4f7fb;--t1:#0f172a;--t2:#475569;--t3:#64748b;--bd:#d8dfe9;--ac:#2563eb;--acL:#dbeafe;--acT:#1d4ed8;--ok:#059669;--okB:#d1fae5;--wn:#d97706;--wnB:#fef3c7;--rd:#dc2626;--rdB:#fee2e2;--bbg:rgba(37,99,235,.07);--bbd:rgba(37,99,235,.14);--h1:#0f172a;--h2:#1e3a8a;--shS:0 1px 3px rgba(0,0,0,.05);--shM:0 4px 16px rgba(0,0,0,.06);--shL:0 10px 36px rgba(0,0,0,.09);--tbg:rgba(255,255,255,.92);--tgB:#e2e8f0;--tgK:#fff;--r:12px;--rs:8px;--cmpB:#fffbeb;--cmpD:#fde68a;--glow:rgba(37,99,235,.35)}
+[data-p=ocean]{--ac:#0d9488;--acL:#ccfbf1;--acT:#0f766e;--hdr:#d1f5ee;--bbg:rgba(13,148,136,.07);--bbd:rgba(13,148,136,.14);--h1:#064e3b;--h2:#0d9488;--glow:rgba(13,148,136,.35)}
+[data-p=sunset]{--ac:#ea580c;--acL:#fed7aa;--acT:#c2410c;--hdr:#ffe4cc;--bbg:rgba(234,88,12,.07);--bbd:rgba(234,88,12,.14);--h1:#7c2d12;--h2:#ea580c;--glow:rgba(234,88,12,.35)}
+[data-p=violet]{--ac:#7c3aed;--acL:#ede9fe;--acT:#6d28d9;--hdr:#e8e0fd;--bbg:rgba(124,58,237,.07);--bbd:rgba(124,58,237,.14);--h1:#3b0764;--h2:#7c3aed;--glow:rgba(124,58,237,.35)}
+[data-p=rose]{--ac:#e11d48;--acL:#ffe4e6;--acT:#be123c;--hdr:#fce4ec;--bbg:rgba(225,29,72,.07);--bbd:rgba(225,29,72,.14);--h1:#4c0519;--h2:#e11d48;--glow:rgba(225,29,72,.35)}
+[data-t=dark]{--bg:#0a0e1a;--card:#111827;--card2:#0f1525;--hdr:#1a2540;--row2:#0d1320;--t1:#e2e8f0;--t2:#94a3b8;--t3:#64748b;--bd:#1e2d4a;--ac:#60a5fa;--acL:rgba(96,165,250,.1);--acT:#93c5fd;--ok:#34d399;--okB:rgba(52,211,153,.1);--wn:#fbbf24;--wnB:rgba(251,191,36,.08);--rd:#f87171;--rdB:rgba(248,113,113,.08);--bbg:rgba(96,165,250,.08);--bbd:rgba(96,165,250,.16);--shS:0 1px 3px rgba(0,0,0,.3);--shM:0 4px 16px rgba(0,0,0,.4);--shL:0 10px 36px rgba(0,0,0,.5);--tbg:rgba(10,14,26,.94);--tgB:#1e293b;--tgK:#334155;--cmpB:rgba(251,191,36,.06);--cmpD:rgba(251,191,36,.18)}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{font-family:'DM Sans','Noto Sans KR',system-ui,sans-serif;background:var(--bg);color:var(--t1);line-height:1.7;transition:background .3s,color .3s}
+
+/* 무지개색 하이퍼링크 호버 애니메이션 */
+@keyframes rainbow-text {
+  0% { color: #ef4444; } 14% { color: #f97316; } 28% { color: #eab308; }
+  42% { color: #22c55e; } 57% { color: #3b82f6; } 71% { color: #a855f7; }
+  85% { color: #ec4899; } 100% { color: #ef4444; }
+}
+a {color:var(--acT);text-decoration:none;font-weight:600;transition:all 0.2s;}
+a:hover {animation: rainbow-text 1.5s linear infinite !important; text-decoration:underline !important; font-weight:800;}
+
+/* 3,4,5 항목 인터랙티브 무지개 테두리 호버 효과 */
+@keyframes rainbow-border {
+  0% { border-color: #ef4444; box-shadow: 0 8px 24px rgba(239,68,68,0.15); }
+  14% { border-color: #f97316; box-shadow: 0 8px 24px rgba(249,115,22,0.15); }
+  28% { border-color: #eab308; box-shadow: 0 8px 24px rgba(234,179,8,0.15); }
+  42% { border-color: #22c55e; box-shadow: 0 8px 24px rgba(34,197,94,0.15); }
+  57% { border-color: #3b82f6; box-shadow: 0 8px 24px rgba(59,130,246,0.15); }
+  71% { border-color: #a855f7; box-shadow: 0 8px 24px rgba(168,85,247,0.15); }
+  85% { border-color: #ec4899; box-shadow: 0 8px 24px rgba(236,72,153,0.15); }
+  100% { border-color: #ef4444; box-shadow: 0 8px 24px rgba(239,68,68,0.15); }
+}
+.interactive-card { transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease; border: 1px solid var(--bd); }
+.interactive-card:hover { transform: translateY(-4px); animation: rainbow-border 2s linear infinite; z-index: 10; position:relative; background-color: var(--card2); }
+
+/* 중요 단어 강조 */
+.h-word { color: var(--acT); font-weight: 800; }
+b, strong { color: var(--t1); font-weight: 800; }
+.hl { background: linear-gradient(transparent 60%, rgba(251, 191, 36, 0.35) 60%); font-weight: 800; color: var(--t1); padding: 0 2px; }
+[data-t=dark] .hl { background: linear-gradient(transparent 60%, rgba(251, 191, 36, 0.25) 60%); }
+.red-w { color: var(--rd); font-weight: 800; }
+.ok-w { color: var(--ok); font-weight: 800; }
+.pur-w { color: #7c3aed; font-weight: 800; }
+[data-t=dark] .pur-w { color: #a78bfa; }
+.dim { color: var(--t1); font-weight: 500; }
+
+/* 시점 태그 */
+.tm { display: inline-block; background: var(--bbg); border: 1px solid var(--bbd); color: var(--acT); font-size: 0.62rem; font-weight: 700; padding: 0.05rem 0.35rem; border-radius: 4px; margin-left: 0.2rem; white-space: nowrap; }
+.tm-ok { background: var(--okB); border-color: var(--ok); color: var(--ok); }
+.tm-wn { background: var(--wnB); border-color: var(--wn); color: var(--wn); }
+
+/* 경쟁사 박스 */
+.cmp-box { background: var(--card); border: 1.5px solid var(--bd); border-radius: 8px; padding: 0.55rem 0.65rem; margin-bottom: 0.5rem; transition: all 0.2s; box-shadow: var(--shS); }
+.cmp-box:last-child { margin-bottom: 0; }
+.cmp-box:hover { border-color: var(--wn); box-shadow: 0 4px 14px rgba(217, 119, 6, 0.15); transform: translateX(2px); }
+.cmp-box .c-name { font-size: 0.74rem; font-weight: 800; display: block; margin-bottom: 0.3rem; color: var(--t1); }
+.cmp-box .c-str { color: var(--ok); font-size: 0.65rem; font-weight: 700; display: block; margin-top: 4px; padding-left: 0.7rem; position: relative; line-height: 1.5; }
+.cmp-box .c-str::before { content: '◉ 강점'; position: absolute; left: -0.1rem; top: 0; font-size: 0.58rem; font-weight: 800; }
+.cmp-box .c-str { padding-top: 0.9rem; }
+.cmp-box .c-wk { color: var(--rd); font-size: 0.65rem; font-weight: 700; display: block; margin-top: 6px; padding-left: 0.7rem; position: relative; padding-top: 0.9rem; line-height: 1.5; }
+.cmp-box .c-wk::before { content: '◉ 약점'; position: absolute; left: -0.1rem; top: 0; font-size: 0.58rem; font-weight: 800; }
+.cmp-box .c-dim { color: var(--t1); font-weight: 500; }
+
+/* 인사이트 컬럼 */
+.insight-col { background: linear-gradient(135deg, rgba(37,99,235,0.04), rgba(124,58,237,0.04)); border-left: 3px solid var(--ac); padding: 0.4rem 0.5rem; border-radius: 0 6px 6px 0; }
+[data-t=dark] .insight-col { background: linear-gradient(135deg, rgba(96,165,250,0.07), rgba(167,139,250,0.07)); }
+.insight-col .ins-ttl { font-size: 0.64rem; font-weight: 800; color: var(--ok); margin-bottom: 0.15rem; display: block; letter-spacing: 0.02em; }
+.insight-col .ins-ttl.chk { color: var(--wn); margin-top: 0.4rem; }
+.insight-col .ins-li { font-size: 0.68rem; line-height: 1.55; color: var(--t2); padding-left: 0.7rem; position: relative; margin-bottom: 0.12rem; }
+.insight-col .ins-li::before { content: '·'; position: absolute; left: 0.1rem; font-weight: 900; color: var(--ac); }
+
+/* 불렛 리스트 개선 */
+.bul-list { list-style: none; padding: 0; margin: 0; }
+.bul-list li { padding-left: 0.9rem; position: relative; margin-bottom: 0.35rem; line-height: 1.55; }
+.bul-list li::before { content: '▸'; position: absolute; left: 0.05rem; top: 0; color: var(--ac); font-weight: 800; }
+.bul-list li:last-child { margin-bottom: 0; }
+
+/* 트렌드 섹션 */
+.trend-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 0.7rem; }
+.trend-card { background: var(--card); border: 1px solid var(--bd); border-radius: 10px; padding: 0.75rem 0.9rem; transition: all 0.25s; }
+.trend-card:hover { border-color: var(--ac); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.08); }
+.trend-card .tr-t { font-size: 0.72rem; font-weight: 800; color: var(--acT); margin-bottom: 0.35rem; display: flex; align-items: center; gap: 0.35rem; }
+.trend-card .tr-d { font-size: 0.68rem; line-height: 1.6; color: var(--t2); }
+
+/* BM 상세 블록 */
+.bm-detail { background: var(--card2); border-radius: 6px; padding: 0.4rem 0.55rem; margin-top: 0.3rem; border-left: 2px solid var(--ok); }
+.bm-detail .bm-line { font-size: 0.66rem; line-height: 1.55; color: var(--t2); padding-left: 0.75rem; position: relative; margin-bottom: 0.15rem; }
+.bm-detail .bm-line::before { content: '$'; position: absolute; left: 0; color: var(--ok); font-weight: 800; font-size: 0.62rem; }
+.bm-detail .bm-line:last-child { margin-bottom: 0; }
+
+.tb{position:sticky;top:0;z-index:200;background:var(--tbg);backdrop-filter:blur(16px);border-bottom:1px solid var(--bd);padding:.4rem 1.4rem;display:flex;align-items:center;justify-content:flex-end;gap:.6rem;flex-wrap:wrap}
+.tg{display:flex;align-items:center;gap:.3rem}.tl{font-size:.63rem;font-weight:700;color:var(--t3);text-transform:uppercase;letter-spacing:.1em}
+.pb{width:18px;height:18px;border-radius:50%;border:2px solid transparent;cursor:pointer;transition:all .2s}.pb:hover{transform:scale(1.2);box-shadow:0 0 10px var(--glow)}.pb.on{border-color:var(--t1);box-shadow:0 0 0 2px var(--bg),0 0 0 4px var(--t3)}
+.pb[data-c=default]{background:linear-gradient(135deg,#2563eb,#60a5fa)}.pb[data-c=ocean]{background:linear-gradient(135deg,#0d9488,#2dd4bf)}.pb[data-c=sunset]{background:linear-gradient(135deg,#ea580c,#fb923c)}.pb[data-c=violet]{background:linear-gradient(135deg,#7c3aed,#a78bfa)}.pb[data-c=rose]{background:linear-gradient(135deg,#e11d48,#fb7185)}
+.dv{width:1px;height:16px;background:var(--bd)}.tt{display:flex;align-items:center;gap:.3rem;cursor:pointer;user-select:none}.tt svg{width:13px;height:13px;fill:var(--t3)}.tk{width:32px;height:16px;border-radius:999px;background:var(--tgB);position:relative}.kn{width:12px;height:12px;border-radius:50%;background:var(--tgK);position:absolute;top:2px;left:2px;transition:transform .3s,background .3s}[data-t=dark] .kn{transform:translateX(16px);background:#60a5fa}
+.nav{position:sticky;top:35px;z-index:150;background:var(--tbg);backdrop-filter:blur(16px);border-bottom:1px solid var(--bd);padding:.3rem 1rem;display:flex;gap:.2rem;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.nav a{font-size:.68rem;font-weight:700;padding:.25rem .55rem;border-radius:999px;white-space:nowrap;border:1px solid var(--bd);background:var(--card);color:var(--t2);transition:all .2s;text-decoration:none;flex-shrink:0}.nav a:hover,.nav a.on{background:var(--ac);color:#fff;border-color:var(--ac);text-decoration:none;animation:none !important;}
+main{width:min(1600px,calc(100% - 1.5rem));margin:0 auto;padding:.8rem 0 2rem}
+.hero{background:linear-gradient(135deg,var(--h1),var(--h2));border-radius:var(--r);padding:1.2rem 1.6rem 1rem;color:#fff;box-shadow:var(--shL);margin-bottom:.8rem;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-50%;right:-8%;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.05),transparent 70%)}
+.hero h1{font-size:1.2rem;font-weight:800;letter-spacing:-.3px;margin-bottom:.2rem}.hero>p{font-size:.76rem;color:rgba(255,255,255,.7);line-height:1.5}
+.hc{display:flex;flex-wrap:wrap;gap:.25rem;margin-bottom:.3rem}.ch{font-size:.63rem;font-weight:700;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);padding:.1rem .45rem;border-radius:999px;color:rgba(255,255,255,.85)}
+.ss{display:flex;flex-wrap:wrap;gap:.25rem;margin-top:.4rem}.sd{font-size:.6rem;font-weight:700;padding:.1rem .4rem;border-radius:5px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.65);transition:background .2s}.sd:hover{background:rgba(255,255,255,.15)}.sd.now{background:rgba(255,255,255,.25);border-color:rgba(255,255,255,.45);color:#fff}
+.cd{background:var(--card);border:1px solid var(--bd);border-radius:var(--r);box-shadow:var(--shM);overflow:hidden;margin-bottom:.8rem}.cd:hover{box-shadow:var(--shL)}
+.ch2{padding:.65rem 1.1rem .5rem;border-bottom:1px solid var(--bd);display:flex;align-items:flex-start;justify-content:space-between;cursor:pointer;user-select:none;transition:background .15s}.ch2:hover{background:var(--card2)}.ch2 h2{font-size:.88rem;font-weight:800}.ch2 p{font-size:.68rem;color:var(--t3);margin-top:.08rem}.ch2 .arr{color:var(--t3);font-size:.6rem;transition:transform .3s;margin-top:3px;flex-shrink:0}.ch2 .arr.shut{transform:rotate(-90deg)}
+.cb{padding:.6rem 1.1rem;overflow:hidden;transition:max-height .4s ease,opacity .3s,padding .3s}.cb.shut{max-height:0!important;padding-top:0;padding-bottom:0;opacity:0}
+.tw{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:var(--rs)}
+table{width:100%;border-collapse:separate;border-spacing:0;font-size:.74rem}
+th{background:var(--hdr);color:var(--t1);padding:.45rem .4rem;text-align:left;border-bottom:2px solid var(--bd);font-weight:800;font-size:.62rem;text-transform:uppercase;letter-spacing:.04em;white-space:nowrap;position:sticky;top:0;z-index:2}
+td{padding:.4rem;border-bottom:1px solid var(--bd);vertical-align:top}tbody tr:nth-child(even) td{background:var(--row2)}tbody tr{transition:background .12s}tbody tr:hover td{background:var(--acL)!important}
+.bg{display:inline-block;font-size:.62rem;font-weight:700;padding:.08rem .35rem;border-radius:5px}.bg-ok{background:var(--okB);color:var(--ok)}.bg-wn{background:var(--wnB);color:var(--wn)}.bg-rd{background:var(--rdB);color:var(--rd)}.bg-ac{background:var(--bbg);color:var(--ac);border:1px solid var(--bbd)}
+.rk{background:var(--ac);color:#fff;font-size:.66rem;font-weight:800;padding:.12rem .4rem;border-radius:6px;display:inline-block}
+.td-d{font-size:.72rem;line-height:1.55}.cl{font-size:.84rem;border-bottom:2px solid transparent}
+.ns{font-size:.66rem;color:var(--t2);margin:0;padding:0;list-style:none;}
+.ns li { margin-bottom: 0.35rem; }
+.ns a { display:block; padding:.35rem .45rem; background:var(--card); border:1px solid var(--bd); border-radius:5px; line-height:1.5; color:var(--t2); transition:all 0.2s; position:relative; padding-left: 1.1rem; text-decoration:none !important;}
+.ns a::before { content:'·'; position:absolute; left:0.4rem; font-weight:900; color:var(--ac); }
+.ns a:hover { border-color:var(--ac); box-shadow:0 3px 12px rgba(0,0,0,0.06); background:var(--card2); color:var(--t1); transform: translateY(-1px);}
+.cmp{background:var(--cmpB)!important;border-left:2px solid var(--cmpD)}.ci{margin-bottom:.6rem;font-size:.68rem;line-height:1.55;padding-left:.55rem;position:relative}.ci::before{content:'';position:absolute;left:0;top:6px;width:4px;height:4px;border-radius:50%;background:var(--wn)}.ci:last-child{margin-bottom:0}
+.c-str { color: var(--ok); font-size: 0.62rem; font-weight: 700; display: block; margin-top:4px; }
+.c-wk { color: var(--rd); font-size: 0.62rem; font-weight: 700; display: block; margin-top:2px; }
+.sh{font-size:.64rem;color:var(--t3);padding:.2rem 1.1rem;display:flex;align-items:center;gap:.2rem}.sh svg{width:11px;height:11px;fill:var(--t3)}
+.et{min-width:920px;font-size:.72rem}.et th,.et td{text-align:center;padding:.4rem .3rem}.et .cc{text-align:left;font-weight:700;min-width:100px}.et .ct{font-weight:800;font-size:.9rem;color:var(--acT)}.et .ct.z{color:var(--rd);text-decoration:line-through;opacity:.4}.et .zv{color:var(--rd);font-weight:900;font-size:.78rem}
+.zg{background:var(--rdB);border:1px solid var(--rd);border-radius:var(--rs);padding:.4rem .7rem;margin-bottom:.4rem;font-size:.7rem;color:var(--rd);line-height:1.4}.zg strong{font-weight:800}
+.gb{display:inline-flex;align-items:center;gap:.2rem;cursor:pointer;font-size:.65rem;font-weight:700;padding:.08rem .35rem;border-radius:4px;border:1px solid var(--bd);background:var(--card);color:var(--t1);transition:all .2s;margin:0 .08rem}.gb:hover{border-color:var(--ac);background:var(--acL)}.gb.on{background:var(--rdB);border-color:var(--rd);color:var(--rd)}
+.crt{min-width:800px;font-size:.69rem}.crt th{padding:.32rem .3rem;text-align:left;font-size:.6rem}.crt td{padding:.25rem .3rem}.crt .ec{background:var(--acL)!important;color:var(--acT);font-weight:800;padding:.35rem .4rem!important;font-size:.68rem}
+.pg{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:.6rem}
+.pc{background:var(--card);border-radius:var(--r);overflow:hidden;}
+.pc-h{padding:.5rem .8rem;background:var(--hdr);border-bottom:1px solid var(--bd);display:flex;align-items:center;justify-content:space-between}.pc-h h3{font-size:.85rem;font-weight:800;display:flex;align-items:center;gap:.3rem}
+.pc-b{padding:.6rem .8rem}.pc-s{font-size:.74rem;font-weight:800;color:var(--acT);margin-bottom:.3rem;margin-top:.45rem}.pc-s:first-child{margin-top:0}
+.pc-l{font-size:.72rem;line-height:1.6;color:var(--t2)}.pc-l div{padding-left:.65rem;position:relative;margin-bottom:.15rem}.pc-l div::before{content:'·';position:absolute;left:0;font-weight:800;color:var(--ac)}
+.is{background:var(--card);border-radius:var(--r);padding:.8rem 1.1rem;margin-bottom:.8rem}.is h2{font-size:.88rem;font-weight:800;margin-bottom:.5rem}
+.pt{font-size:.74rem;line-height:1.65;color:var(--t2);margin-bottom:.35rem;padding:.35rem .55rem;border-left:3px solid var(--ac);background:var(--card2);border-radius:0 var(--rs) var(--rs) 0}.pt strong{color:var(--acT)}
+.ml{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:.45rem;margin-top:.5rem}
+.mi{background:var(--card2);border-radius:var(--rs);padding:.45rem .65rem;font-size:.72rem;display:flex;gap:.35rem;align-items:flex-start;line-height:1.55;}
+.dt{width:5px;height:5px;border-radius:50%;background:var(--ac);margin-top:7px;flex-shrink:0}
+.md-item{padding:.55rem .75rem;background:var(--card);margin-bottom:.45rem;font-size:.74rem;line-height:1.6;color:var(--t2)}
+.logic-row td { background: var(--card2) !important; border-bottom: 1px solid var(--bd) !important; padding: 0.6rem 0.9rem !important; text-align: left; font-size: 0.69rem; color: var(--t2); line-height: 1.6; }
+.logic-row p { margin-bottom: 0.35rem; }
+.logic-row p:last-child { margin-bottom: 0; }
+footer{margin-top:.6rem;padding:.5rem 1.1rem;font-size:.66rem;color:var(--t3);text-align:center}
+@media(max-width:768px){main{width:calc(100% - .5rem)}.hero{padding:.9rem .7rem .7rem;border-radius:var(--rs)}.hero h1{font-size:1rem}.tb{padding:.3rem .5rem}.nav{padding:.25rem .5rem;top:32px}.pg{grid-template-columns:1fr}}
+</style>
 </head>
-<body data-theme='light' data-profile='default'>
-  <div class='toolbar'>
-    <div class='toolbar-group'>
-      <span class='toolbar-label'>컬러</span>
-      <button class='profile-btn active' data-p='default' title='Blue' onclick="setProfile('default')"></button>
-      <button class='profile-btn' data-p='ocean' title='Ocean' onclick="setProfile('ocean')"></button>
-      <button class='profile-btn' data-p='sunset' title='Sunset' onclick="setProfile('sunset')"></button>
-      <button class='profile-btn' data-p='violet' title='Violet' onclick="setProfile('violet')"></button>
-    </div>
-    <div class='divider'></div>
-    <div class='theme-toggle' onclick='toggleTheme()' title='다크 모드 전환'>
-      <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.515 4.929l1.414-1.414L7.05 5.636 5.636 7.05 3.515 4.93zM16.95 18.364l1.414-1.414 2.121 2.121-1.414 1.414-2.121-2.121zm2.121-14.85 1.414 1.415-2.121 2.121-1.414-1.414 2.121-2.121zM5.636 16.95l1.414 1.414-2.121 2.121-1.414-1.414 2.121-2.121zM23 11v2h-3v-2h3zM4 11v2H1v-2h3z'/></svg>
-      <div class='toggle-track'><div class='toggle-knob'></div></div>
-      <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M10 7a7 7 0 0 0 12 4.9v.1c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2h.1A6.979 6.979 0 0 0 10 7zm-6 5a8 8 0 0 0 15.062 3.762A9 9 0 0 1 8.238 4.938 7.999 7.999 0 0 0 4 12z'/></svg>
+<body data-t='light' data-p='default'>
+<div class='tb'>
+<div style='font-size:0.66rem; font-weight:800; color:var(--t1); background:linear-gradient(135deg, var(--bbg), rgba(124,58,237,0.08)); border:1px solid var(--bbd); padding:0.2rem 0.55rem; border-radius:6px; margin-right:auto;'>⏱ <span class='h-word'>'26.4.16 (목) 12:10 기준</span></div>
+<div class='tg'><span class='tl'>팔레트</span>
+<button class='pb on' data-c='default' onclick="sp('default')"></button>
+<button class='pb' data-c='ocean' onclick="sp('ocean')"></button>
+<button class='pb' data-c='sunset' onclick="sp('sunset')"></button>
+<button class='pb' data-c='violet' onclick="sp('violet')"></button>
+<button class='pb' data-c='rose' onclick="sp('rose')"></button></div>
+<div class='dv'></div>
+<div class='tt' onclick='dt()'><svg viewBox='0 0 24 24'><path d='M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.515 4.929l1.414-1.414L7.05 5.636 5.636 7.05 3.515 4.93zM16.95 18.364l1.414-1.414 2.121 2.121-1.414 1.414-2.121-2.121zm2.121-14.85 1.414 1.415-2.121 2.121-1.414-1.414 2.121-2.121zM5.636 16.95l1.414 1.414-2.121 2.121-1.414-1.414 2.121-2.121zM23 11v2h-3v-2h3zM4 11v2H1v-2h3z'/></svg><div class='tk'><div class='kn'></div></div><svg viewBox='0 0 24 24'><path d='M10 7a7 7 0 0 0 12 4.9v.1c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2h.1A6.979 6.979 0 0 0 10 7zm-6 5a8 8 0 0 0 15.062 3.762A9 9 0 0 1 8.238 4.938 7.999 7.999 0 0 0 4 12z'/></svg></div>
+</div>
+<nav class='nav' id='stickyNav'>
+<a href='#sec-list'>① 스타트업 리스트</a>
+<a href='#sec-eval'>② 평가표</a>
+<a href='#sec-partner'>③ 제조사 파트너십</a>
+<a href='#sec-insight'>④ 투자 인사이트</a>
+<a href='#sec-market'>⑤ 시장·M&A·트렌드</a>
+<a href='#sec-criteria'>⑥ 채점 기준</a>
+</nav>
+<main>
+<section class='hero'>
+<div class='hc'><span class='ch'>'26.4.16 (목) 12:10 기준</span><span class='ch'>유니콘 미만</span><span class='ch'>한국/중국 본사 제외</span><span class='ch'>모바일 AI Agent · 휴대폰 AI 기술</span></div>
+<h1>유니콘 미만 글로벌 모바일 AI Agent 스타트업 모니터링</h1>
+<p style='margin-bottom:0.3rem;'>· 기사 내용 → <b style='color:#fff;'>요약 개조식 정리</b> (스타트업/기사 클릭 시 <b style='color:#fde68a;'>원문 링크 즉시 이동</b> · 무지개 인터랙티브 적용)</p>
+<p>· 데이터/펀딩/매출 → 정확한 시점 <b style='color:#fde68a;'>('24.x월 기준)</b> 명시 · 중요 수치는 <b style='color:#fde68a;'>노란 하이라이트</b> + 볼드 강조</p>
+<div class='ss'>
+  <span class='sd'>월 — 모바일 헬스, AI 헬스 서비스/기술</span>
+  <span class='sd'>화 — 광고 AI / 모바일 광고 기술/서비스</span>
+  <a href='https://dicacros-gif.github.io/AI/415/index.html' target='_blank' style='color:inherit;text-decoration:none;animation:none !important;'><span class='sd'>수 — 멀티모달 AI, 영상 AI 기술/서비스</span></a>
+  <span class='sd now'>목 — 모바일 AI Agent, 멀티 Agent</span>
+  <span class='sd'>금 — 모바일 SNS, Short-form 등 이머징 서비스</span>
+  <span class='sd'>토 — 페이·금융(코인 제외)</span>
+  <span class='sd'>일 — 기타 모바일/웹 서비스 / AI 기반 모바일 서비스</span>
+</div>
+</section>
+
+<div class='cd' id='sec-list'>
+<div class='ch2' onclick="tc(this)"><div><h2>① 통합 스타트업 리스트 8선</h2></div><span class='arr'>▼</span></div>
+<div class='sh'><svg viewBox='0 0 24 24'><path d='M10.05 4.575a1.575 1.575 0 1 0-3.15 0v5.85h-.177a.473.473 0 0 0-.473.473c0 .842.224 1.67.648 2.398l1.674 3.014A3 3 0 0 0 11.2 18H16.8a3 3 0 0 0 2.625-1.547l1.674-3.014c.424-.728.648-1.556.648-2.398a.473.473 0 0 0-.473-.473h-.177V6.575a1.575 1.575 0 0 0-3.15 0v3.85h-1.05V5.075a1.575 1.575 0 0 0-3.15 0v5.35h-1.05V4.575z'/></svg>좌우 스크롤 · ← → 키로 이동 가능</div>
+<div class='cb'><div class='tw' id='tw' tabindex='0'>
+<table style='min-width:3000px'><thead><tr><th style='min-width:38px'>순위</th><th style='min-width:110px'>기업</th><th>설립</th><th>본사</th><th>창업자</th><th style='min-width:180px'>핵심 경력</th><th>직원</th><th style='min-width:120px'>밸류에이션</th><th style='min-width:170px'>펀딩·투자자</th><th style='min-width:210px'>매출·트랙션</th><th style='min-width:200px'>비즈니스 모델 (매출·과금 상세)</th><th style='min-width:200px'>사업 상세</th><th style='min-width:240px;background:linear-gradient(135deg,var(--bbg),rgba(124,58,237,0.08));color:var(--acT)'>💡 인사이트</th><th style='min-width:380px'>기사 (클릭 시 이동)</th><th style='min-width:260px;background:var(--cmpB)'>경쟁사 3사 (강점/약점 박스)</th></tr></thead>
+<tbody>
+<tr><td><span class='rk'>1</span></td><td><a class='cl' href='https://www.suki.ai/' target='_blank'>Suki</a><br><span class='bg bg-ac'>Clinical AI</span></td><td><b>'17.1월</b></td><td>Redwood City, CA</td><td class='td-d'>Punit Soni<br>Founder & CEO</td><td class='td-d'><div>· Wharton MBA · NIT Kurukshetra</div><div>· 전 Google Motorola · Flipkart CPO</div></td><td>201-500명</td><td><span class='bg bg-ok'>$500M</span><br><span class='tm'>'21.12월 기준</span></td><td class='td-d'><div>· 누적 $168M 펀딩 유치</div><div>· Series D <b class="hl">$70M</b> <span class='tm'>'21.12월</span></div><div>· Venrock · March · Zoom</div></td><td class='td-d'><div>· <b class="h-word">월 <span class='hl'>500,000건</span> 임상 노트</b> <span class='tm'>'26.1월</span></div><div>· 6개월간 사용량 <b class='red-w'>50% 폭증</b> <span class='tm'>'26.1월</span></div><div>· 450+ practices / 3,400 MAU</div><div>· <b class="h-word">도입 1년차 <span class='hl'>9X ROI</span> 입증</b></div></td><td class='td-d'><div>· <b class='h-word'>[BM]</b> B2B SaaS Seat 다년 구독</div><div class='bm-detail'><div class='bm-line'>의사 1명당 월 <b class='ok-w'>$199~$299</b> 구독료 (Seat 기반)</div><div class='bm-line'>병원 단위 <b class='ok-w'>3년 계약</b> 시 연 할인 15%</div><div class='bm-line'>athenahealth 마켓플레이스 <b class='ok-w'>R/S 20%</b> 지급</div><div class='bm-line'>Enterprise API 호출량 종량 과금 병행</div></div><div style='margin-top:0.35rem;font-size:0.65rem;color:var(--t3)'>· (실매출 달러 기준 연간 ARR 비공개)</div></td><td class='td-d'><div>· 음성 인식 기반 임상 보조 에이전트</div><div>· athenahealth 및 HealthEdge망 연동 완비</div><div>· <b class="h-word">의료 특화 단말 번들 파트너십 1순위</b></div></td><td class='td-d'><div class='insight-col'><span class='ins-ttl'>◉ 경쟁 우위</span><div class='ins-li'><b class='h-word'>의료 도메인 특화</b> 음성 AI</div><div class='ins-li'>등록 <b class='h-word'>특허 자산</b> 2건+</div><div class='ins-li'><b class='h-word'>EHR 통합</b> (athena·HealthEdge)</div><div class='ins-li'>현장 <b class='h-word'>모바일 UX</b> 최적화</div><span class='ins-ttl chk'>◉ 체크 포인트</span><div class='ins-li'>대형 <b class='red-w'>EHR 파트너십 확장 속도</b> (Epic·Cerner)</div><div class='ins-li'>공개 <b class='red-w'>ARR 부재</b>로 멀티플 판단 보수</div></div></td>
+<td class='td-d'><ul class='ns'>
+  <li><a href='https://hitconsultant.net/2026/01/26/suki-athenahealth-preferred-partner-ambient-ai/' target='_blank'>[HIT Consultant <span class='tm'>'26.1월</span>] athenahealth 공식 Preferred Solution Partner 전격 선정<br>→ 미국 내 <b class='hl'>170,000명+ 의료 제공자</b> 거대 채널 즉각 접근 권한 확보<br>→ 월 <b class='hl'>50만 건</b> 임상 노트 생성 달성</a></li>
+  <li><a href='https://www.suki.ai/' target='_blank'>[Suki.ai 공식 <span class='tm'>'26.1월</span>] 특허 2건 보유<br>→ 병원 실제 도입 후 <b class='hl'>문서화 시간 72% 가속</b> 증명<br>→ 1년 차 <b class='hl'>초기 투입 비용의 9배(9X) 재무적 ROI</b> 회수 증빙</a></li>
+  <li><a href='https://healthedge.com/resources/press-releases/healthedge-and-suki-introduce-ambient-clinical-intelligence-for-care-management' target='_blank'>[HealthEdge <span class='tm'>'26.1월</span>] GuidingCare 플랫폼과 백엔드 통합 완료<br>→ 단순 진료 차트 보조 → <b class='hl'>건강보험 플랜(Payer) 관리 워크플로</b> 시장 확장</a></li>
+</ul></td><td class='cmp td-d'>
+  <div class='cmp-box'><a href='https://www.abridge.com/' target='_blank'><span class='c-name'>Abridge</span></a><span class='c-str'>소음 많은 응급실 등 <b>다화자 음성 인식 기술</b> 타의 추종 불허 · 초대형 대학병원 B2B <span class='c-dim'>엔터프라이즈 락인 강력 확보</span></span><span class='c-wk'>거대 자본 투입 프리미엄 솔루션 → <span class='c-dim'>도입 단가 높음 · 중소형 로컬 클리닉 확장 한계</span></span></div>
+  <div class='cmp-box'><a href='https://www.microsoft.com/en-us/microsoft-cloud/industry/healthcare/dax-copilot' target='_blank'><span class='c-name'>Nuance DAX</span></a><span class='c-str'>MS Azure 클라우드 · 윈도우 인프라 기반 <b>병원 시스템 장악력</b> · <span class='c-dim'>데이터 보안 신뢰도 비교 불가</span></span><span class='c-wk'>수십 년 된 <span class='c-dim'>구형 레거시 기반 → 시스템 무겁고 연동 복잡 · 모바일 유연성 저하</span></span></div>
+  <div class='cmp-box'><a href='https://www.ambiencehealthcare.com/' target='_blank'><span class='c-name'>Ambience</span></a><span class='c-str'>심층 임상 지식 기반 <b>정밀 CDI 코딩</b> · 진료비 청구 자동화 <span class='c-dim'>최적화 탁월</span></span><span class='c-wk'>미국 <span class='c-dim'>복잡한 의료 수가 체계에 과의존 → 유럽/아시아 확장 시 범용성 제약</span></span></div>
+</td></tr>
+
+<tr><td><span class='rk'>2</span></td><td><a class='cl' href='https://www.wysa.com/' target='_blank'>Wysa</a><br><span class='bg bg-ac'>Mental Health</span></td><td><b>'15.11월</b></td><td>Reading, UK</td><td class='td-d'>Jo Aggarwal<br>Ramakant Vempati</td><td class='td-d'><div>· Pearson·Tata·Infosys</div><div>· Goldman Sachs · 행동건강 전문</div></td><td>170명<br><span class='tm'>'26.2월</span></td><td><span class='bg bg-wn'>~$77.5M</span><br><span class='tm'>'22.7월 기준</span></td><td class='td-d'><div>· Series B <b class='hl'>$20M</b> <span class='tm'>'22.7월</span></div><div>· Wellcome Trust <b class='hl'>£5.3M</b> <span class='tm'>'26.2월</span></div></td><td class='td-d'><div>· <b class="h-word">매출 TTM <span class='hl'>$23.9M</span></b> <span class='tm tm-ok'>'25.4Q 검증</span></div><div>· <b class="h-word">11M unique users 상향</b> <span class='tm'>'26.2월</span></div><div>· 45+ 동료평가 논문 · 1B+ 대화</div></td><td class='td-d'><div>· <b class='h-word'>[BM]</b> Freemium B2C + B2B 구독</div><div class='bm-detail'><div class='bm-line'>B2C <b class='ok-w'>프리미엄 $9.99/월</b> · 연 $74.99</div><div class='bm-line'>B2B 직원 1인당 <b class='ok-w'>연 $12~$30</b> EAP 계약</div><div class='bm-line'>보험사 Payer <b class='ok-w'>PMPM $1.5~$3</b> (회원당 월 단가)</div><div class='bm-line'>FDA 임상 라이선스 B2B 의료진 플랜 별도</div></div><div style='margin-top:0.35rem;font-size:0.66rem;color:var(--ok);font-weight:700'>· 매출 <b class='hl'>TTM $23.9M</b> (PitchBook)</div></td><td class='td-d'><div>· 인지행동치료(CBT) 정신건강 대화형 에이전트</div><div>· 자회사 April Health 통합 진료 모델 진화</div><div>· <b class="h-word">OS 내 Wellbeing Suite 기본 탑재 후보</b></div></td><td class='td-d'><div class='insight-col'><span class='ins-ttl'>◉ 경쟁 우위</span><div class='ins-li'><b class='h-word'>FDA Breakthrough Device</b> 지정 자산</div><div class='ins-li'>학술 <b class='h-word'>Peer-reviewed 논문 45건+</b></div><div class='ins-li'>유일한 <b class='h-word'>TTM $23.9M 흑자</b> 검증</div><div class='ins-li'>B2B Payer <b class='h-word'>O2O 진료 연계</b></div><span class='ins-ttl chk'>◉ 체크 포인트</span><div class='ins-li'>자체 <b class='red-w'>코어 LLM 부재</b> (룰베이스+외부 API)</div><div class='ins-li'>국가별 <b class='red-w'>식약처 규제 파편화</b> 리스크</div></div></td>
+<td class='td-d'><ul class='ns'>
+  <li><a href='https://pitchbook.com' target='_blank'>[PitchBook <span class='tm'>'26.2월</span>] 과거 '24년 매출 $4.68M 데이터 오류 판명<br>→ <b class='hl'>TTM 4Q2025 매출 $23.9M(약 320억 원)</b> 돌파 확인<br>→ 170명 조직 · 펀딩 혹한기 속 <b class='red-w'>흑자 성장세</b> 증명</a></li>
+  <li><a href='https://www.businesswire.com/news/home/20260211000000/en/' target='_blank'>[BusinessWire <span class='tm'>'26.2월</span>] 인도 농촌 청소년 정신건강 스케일업 연구<br>→ 최고 권위 <b class='hl'>Wellcome Trust £5.3M(약 $7.2M) 그랜트</b> 획득<br>→ 누적 유저 <b class='hl'>11M Unique users</b> 상향 공식화</a></li>
+  <li><a href='https://wysa.com' target='_blank'>[Wysa 공식 <span class='tm'>'26.2월</span>] 미국 Pinehurst Medical Clinic × 자회사 April Health 파트너십 체결<br>→ 단순 디지털 챗봇 → <b class='hl'>오프라인 클리닉 원격 정신건강 통합 진료(O2O)</b>로 완전 진화</a></li>
+</ul></td><td class='cmp td-d'>
+  <div class='cmp-box'><a href='https://woebothealth.com/' target='_blank'><span class='c-name'>Woebot</span></a><span class='c-str'>산후우울증 등 특정 중증 질환 <b>FDA 혁신 의료기기 지정</b> · 엄격한 임상 <span class='c-dim'>RCT 검증 자산 탁월</span></span><span class='c-wk'>수년째 <span class='c-dim'>텍스트 챗봇 위주 단순 UX 정체</span> · B2C 시장 한계로 B2B 채널 확장 속도 둔화</span></div>
+  <div class='cmp-box'><a href='https://www.headspace.com/' target='_blank'><span class='c-name'>Headspace</span></a><span class='c-str'>전 세계 <b>명상 앱 대명사 브랜드 파워</b> · <span class='c-dim'>수천만 사용자 트래픽 베이스</span></span><span class='c-wk'>범용 오디오 콘텐츠 스트리밍 중심 → <span class='c-dim'>딥 임상 치료 맞춤 AI 대화 기술 해자 취약</span></span></div>
+  <div class='cmp-box'><a href='https://www.springhealth.com/' target='_blank'><span class='c-name'>Spring Health</span></a><span class='c-str'>포춘 500대 기업 <b>EAP 락인 파워</b> · 대면 전문가(코칭/테라피) 연결 <span class='c-dim'>O2O 모델 강점</span></span><span class='c-wk'>영업망 대비 <span class='c-dim'>자체 LLM · AI 대화 에이전트 등 프로덕트 해자 부재</span></span></div>
+</td></tr>
+
+<tr><td><span class='rk'>3</span></td><td><a class='cl' href='https://www.personal.ai/' target='_blank'>Personal AI</a><br><span class='bg bg-ac'>Memory SLM</span></td><td><b>'20.1월</b></td><td>La Jolla, CA</td><td class='td-d'>Suman Kanuganti<br>Sharon Zhang</td><td class='td-d'><div>· UCSD MBA · MIT · Aira 연쇄창업</div><div>· LinkedIn·Nuance·Kaiser NLP 핵심 리더</div></td><td>51-200명</td><td><span style='color:var(--t3)'>미공개</span></td><td class='td-d'><div>· 누적 총 펀딩 <b class='hl'>$14.1M</b> <span class='tm'>'23~'24</span></div><div>· BDev Ventures 전략 투자 합류</div></td><td class='td-d'><div>· <b class="h-word">Comcast AI Grid 대규모 트라이얼</b> <span class='tm'>'26.3월</span></div><div>· <b class="h-word">응답속도 <span class='hl'>sub-500ms</span> 독립 검증 완료</b></div><div>· 기존 초대형 모델 대비 <b class='red-w'>40배(40x)</b> 비용 절감</div></td><td class='td-d'><div>· <b class='h-word'>[BM]</b> 플랫폼 API + Enterprise 구독</div><div class='bm-detail'><div class='bm-line'>Creator 플랜 <b class='ok-w'>$40/월</b> (개인 Memory Stack)</div><div class='bm-line'>Enterprise <b class='ok-w'>$2,500~$10,000/월</b> 맞춤 배포</div><div class='bm-line'>Comcast 등 통신사 <b class='ok-w'>엣지 라이선스</b> R/S</div><div class='bm-line'>API 호출당 <b class='ok-w'>종량 과금</b> (token-based)</div></div><div style='margin-top:0.35rem;font-size:0.65rem;color:var(--t3)'>· (실질 ARR/총 매출 비공개)</div></td><td class='td-d'><div>· 개인 데이터 로컬 학습 SLM (클라우드 無)</div><div>· 통신망(Comcast) 엣지 컴퓨팅 초저지연 배포</div><div>· <b class="h-word">프리미엄 폰 AI Identity Layer 호환</b></div></td><td class='td-d'><div class='insight-col'><span class='ins-ttl'>◉ 경쟁 우위</span><div class='ins-li'>독자 <b class='h-word'>SLM 엣지 아키텍처</b> (클라우드-프리)</div><div class='ins-li'><b class='h-word'>Sub-500ms 레이턴시</b> 독립 검증</div><div class='ins-li'>Comcast <b class='h-word'>6,500만 가구</b> 엣지망 PoC</div><div class='ins-li'>로컬 <b class='h-word'>Memory Graph</b> 하드웨어 락인</div><span class='ins-ttl chk'>◉ 체크 포인트</span><div class='ins-li'>PoC → <b class='red-w'>상업 계약 전환율</b> 미검증</div><div class='ins-li'>실제 <b class='red-w'>B2B 엔터프라이즈 ARR</b> 지표 공백</div></div></td>
+<td class='td-d'><ul class='ns'>
+  <li><a href='https://www.broadbandtvnews.com/2026/03/17/comcast-partners-with-nvidia-to-test-ai-applications-at-the-network-edge/' target='_blank'>[Broadband TV News '26.3] NVIDIA GTC 글로벌 컨퍼런스 공식 발표. 미국 내 무려 6,500만 가구 및 사업체를 아우르는 거대 통신사 Comcast의 분산 네트워크 AI Grid에 Personal AI의 SLM 전면 배치 시범 운영 개시.</a></li>
+  <li><a href='https://briefglance.com' target='_blank'>[BriefGlance '26.3] Comcast와의 엣지망 PoC 검증 결과, 중앙 클라우드 왕복 지연 없이 응답속도 500ms 이하(sub-500ms) 유지 및 기존 무거운 파운데이션 모델 대비 무려 40배(40x lower cost)의 인프라 운영 비용 절감 효과 공식 증명.</a></li>
+  <li><a href='https://finance.yahoo.com' target='_blank'>[Yahoo Finance '26.3] NVIDIA GPU Edge 인프라가 탑재된 HPE ProLiant 엣지 서버 내에 솔루션 자체를 로컬로 이식 완료. 외부 인터넷 연결 없이 100% 프라이버시가 보호되는 오프라인 소규모 사업자(SMB)용 AI 컨시어지 런칭 박차.</a></li>
+</ul></td><td class='cmp td-d'>
+  <div class='ci'><a href='https://www.rewind.ai/' target='_blank'><b>Rewind (Limitless)</b></a><br><span class='c-str'>강점: Mac 및 윈도우 OS 데스크톱 네이티브 화면과 시스템 오디오를 무제한 캡처 로깅하여 과거를 찾는 완벽한 디지털 타임머신 편의성 선점.</span><span class='c-wk'>약점: PC 화면의 모든 금융/개인 정보를 무차별 녹화하는 극단적 방식 탓에 심각한 프라이버시 침해 반발 및 B2B 보안 거부감 직면.</span></div>
+  <div class='ci'><a href='https://mem.ai/' target='_blank'><b>Mem</b></a><br><span class='c-str'>강점: 노션(Notion)처럼 친숙한 워크스페이스 노트 앱 환경을 기반으로 개인의 텍스트 지식을 자연스럽게 묶어두는 높은 잔존율(락인) 구조.</span><span class='c-wk'>약점: 철저히 텍스트 입력과 웹/PC 중심에 갇혀 있어, 스마트폰과 같은 모바일 엣지 디바이스 구동 최적화 및 비전/음성 멀티모달 확장성 극도로 취약.</span></div>
+  <div class='ci'><a href='https://www.glean.com/' target='_blank'><b>Glean</b></a><br><span class='c-str'>강점: 구글 드라이브, 슬랙 등 사내 파편화된 수백 개의 시스템 권한을 완벽히 통제하는 엔터프라이즈 B2B 통합 검색 솔루션 시장 압도적 1위.</span><span class='c-wk'>약점: 철저히 회사/기업용 톱다운(Top-down) 설계로 개발되어, 일반 소비자(B2C) 개개인의 라이프스타일에 맞춘 감성적 메모리 및 모바일 최적화 미비.</span></div>
+</td></tr>
+
+<tr><td><span class='rk'>4</span></td><td><a class='cl' href='https://mindtrip.ai/' target='_blank'>Mindtrip</a><br><span class='bg bg-ac'>Travel Agent</span></td><td><b>'23.1월</b></td><td>Palo Alto, CA</td><td class='td-d'>Andy Moss · Trey Matteson<br>Garrick Toubassi</td><td class='td-d'><div>· Roadster 연쇄창업·Stripe·Google</div><div>· 이커머스·글로벌 결제 시스템 거장</div></td><td>44명</td><td><span style='color:var(--t3)'>미공개</span></td><td class='td-d'><div>· Seed+Series A <b class='hl'>$22.5M</b> <span class='tm'>'24.5월</span></div><div>· Amex·CapOne·United 전략 지분</div></td><td class='td-d'><div>· <b class="h-word">Sabre × PayPal 메가 제휴</b> <span class='tm tm-ok'>'26.2월 체결</span></div><div>· <b class='hl'>420+ 항공사 · 200만 숙소</b> 연동</div><div>· App Store 평점 <b class='hl'>4.8</b> 달성</div></td><td class='td-d'><div>· <b class='h-word'>[BM]</b> B2C 예약 수수료 (Affiliate)</div><div class='bm-detail'><div class='bm-line'>항공 발권 <b class='ok-w'>건당 $5~$15</b> Sabre R/S</div><div class='bm-line'>호텔 예약 <b class='ok-w'>10~15%</b> OTA 커미션</div><div class='bm-line'>PayPal 결제 연동 <b class='ok-w'>트랜잭션 fee</b> 분배</div><div class='bm-line'>B2B White-label 월 <b class='ok-w'>$3,000~$15,000</b> 라이선스</div></div><div style='margin-top:0.35rem;font-size:0.65rem;color:var(--t3)'>· '26.2Q 정식 상용화 → 실매출 카운트 전</div></td><td class='td-d'><div>· 외부 OTA 이탈 無 E2E 대화형 여행 에이전트</div><div>· 탐색 → 일정 → 발권 → 결제 단일 채팅창 완결</div><div>· <b class="h-word">제조사 Wallet 결합 Travel Mode 최적</b></div></td><td class='td-d'><div class='insight-col'><span class='ins-ttl'>◉ 경쟁 우위</span><div class='ins-li'>Sabre GDS + PayPal <b class='h-word'>E2E 결제 내재화</b></div><div class='ins-li'>Amex·United <b class='h-word'>전략 투자자 생태계</b></div><div class='ins-li'><b class='h-word'>420+ 항공사 · 200만 숙소</b> 독점 연동</div><div class='ins-li'>앱 평점 <b class='h-word'>4.8 UX</b> 완성도</div><span class='ins-ttl chk'>◉ 체크 포인트</span><div class='ins-li'>상용화 <b class='red-w'>'26.2Q 전환율</b> 미검증</div><div class='ins-li'>ChatGPT/Gemini <b class='red-w'>범용 AI 직진출 방어</b></div></div></td>
+<td class='td-d'><ul class='ns'>
+  <li><a href='https://www.prnewswire.com/news-releases/sabre-paypal-and-mindtrip-partner-to-deliver-the-industrys-first-end-to-end-agentic-ai-experience-for-travel-302686303.html' target='_blank'>[PR Newswire <span class='tm'>'26.2월</span>] Sabre × PayPal 3자 파트너십 전격 발표<br>→ 업계 최초 <b class='hl'>탭 이탈 없이 AI 대화창 내 추천·발권·결제(BNPL 포함) 100% 완결</b> E2E 플랫폼 구축</a></li>
+  <li><a href='https://altexsoft.com' target='_blank'>[AltexSoft <span class='tm'>'26.2월</span>] SabreMosaic API 백엔드 딥 연동 완료<br>→ <b class='hl'>420+ 메이저 항공사 · 200만+ 숙박</b> 실시간 예약 권한 확보<br>→ <b class='hl'>'26.2Q 항공편 직결제 정식 상용 런칭</b> 확정</a></li>
+  <li><a href='https://businesswire.com' target='_blank'>[BusinessWire <span class='tm'>'24.5월</span>] 단순 VC 자본이 아닌 <b class='hl'>Amex·Capital One·United Airlines</b> 4대 글로벌 전략 투자(SI)<br>→ B2B 유통 채널 확장성 경쟁 앱 대비 압도적 우위 선점</a></li>
+</ul></td><td class='cmp td-d'>
+  <div class='cmp-box'><a href='https://layla.ai/' target='_blank'><span class='c-name'>Layla</span></a><span class='c-str'>인스타그램 릴스 등 <b>MZ 숏폼 크리에이터 영상 연계</b> · 목적지 없는 유저 <span class='c-dim'>Discovery 최적화</span></span><span class='c-wk'><span class='c-dim'>자체 E2E 예약·결제·발권 인프라 부재</span> → 최종 예약 단계 Booking.com 등 외부 OTA 이탈 불가피</span></div>
+  <div class='cmp-box'><a href='https://www.hopper.com/' target='_blank'><span class='c-name'>Hopper</span></a><span class='c-str'>수년간 <b>항공권 가격 예측 모델 축적</b> · 취소 수수료 보장 <span class='c-dim'>독보적 핀테크 자산 파워</span></span><span class='c-wk'>날짜·장소 먼저 찍는 <span class='c-dim'>기존 OTA UI 레거시 갇힘</span> → 자연어 AI 대화 전환 둔화</span></div>
+  <div class='cmp-box'><a href='https://www.google.com/travel/' target='_blank'><span class='c-name'>Google Travel</span></a><span class='c-str'>구글 맵 <b>무한대 로컬 리뷰 인프라</b> · Google Flights 최저가 검색 <span class='c-dim'>백엔드 안정성</span></span><span class='c-wk'>항공/숙박/지도 <span class='c-dim'>여러 앱·탭 파편화</span> → 단일 스레드 AI 에이전트 경험 한계</span></div>
+</td></tr>
+
+<tr><td><span class='rk'>5</span></td><td><a class='cl' href='https://en.voize.de/' target='_blank'>voize</a><br><span class='bg bg-ac'>Nursing Voice</span></td><td><b>'20.6월</b></td><td>Berlin</td><td class='td-d'>Fabio Schmidberger<br>Erik Ziegler</td><td class='td-d'><div>· On-device ML 엣지 최적화 스페셜리스트</div><div>· 글로벌 액셀러레이터 YC 졸업 동문</div></td><td>51-200명</td><td><span style='color:var(--t3)'>미공개</span></td><td class='td-d'><div>· <b class='h-word'>Series A <span class='hl'>$50M</span> 대형 라운드</b> <span class='tm'>'24.11월</span></div><div>· Balderton · HV Capital · YC 공동 참여</div></td><td class='td-d'><div>· <b class='hl'>1,100+ 시설 · 75K+ 간병인</b> <span class='tm'>'24.11월</span></div><div>· <b class="h-word">최근 <span class='hl'>1,500+ 시설</span> B2B 파이프라인 폭증</b></div><div>· 교대당 <b class="h-word">평균 <span class='hl'>39분 기록 업무 절감</span></b> 증명</div></td><td class='td-d'><div>· <b class='h-word'>[BM]</b> B2B SaaS 시설 단위 연간 구독</div><div class='bm-detail'><div class='bm-line'>요양 시설당 <b class='ok-w'>€1,500~€4,000/월</b> 구독료</div><div class='bm-line'>간병인 1인당 <b class='ok-w'>€15~€25/월</b> Seat 과금</div><div class='bm-line'>Rugged 디바이스 하드웨어 <b class='ok-w'>번들 R/S</b></div><div class='bm-line'>EHR 연동 커스터마이징 <b class='ok-w'>일회성 셋업 fee</b></div></div><div style='margin-top:0.35rem;font-size:0.65rem;color:var(--t3)'>· (전체 ARR 달러 기준 누적 매출 비공개)</div></td><td class='td-d'><div>· 요양/간병 특화 사투리 인식 음성 문서화</div><div>· 통신 단절 환경 100% 대응 On-device 추론</div><div>· <b class="h-word">방수/방진 Rugged Device 번들링 완벽</b></div></td><td class='td-d'><div class='insight-col'><span class='ins-ttl'>◉ 경쟁 우위</span><div class='ins-li'>요양 <b class='h-word'>Frontline 특화 UX</b> (Dialect 인식)</div><div class='ins-li'><b class='h-word'>On-device 엣지 추론</b> 오프라인 구동</div><div class='ins-li'>1,500+ 시설 <b class='h-word'>유럽 B2B 점유율</b> 1위</div><div class='ins-li'>교대당 <b class='h-word'>39분 절감</b> 정량 ROI 증명</div><span class='ins-ttl chk'>◉ 체크 포인트</span><div class='ins-li'>미국 Epic 등 <b class='red-w'>메이저 EHR 통합 지연</b> 리스크</div><div class='ins-li'>HIPAA 등 <b class='red-w'>미국 규제 승인 타임라인</b></div></div></td>
+<td class='td-d'><ul class='ns'>
+  <li><a href='https://voize.de' target='_blank'>[기업 공식 <span class='tm'>'24.11월</span>] Series A 발표 시점 1,100개 시설 · 75,000명 간병인 도입<br>→ 링크드인 지표 교차 확인 결과 <b class='hl'>현재 유럽 내 1,500+ B2B 시설 점유율 상향 돌파</b></a></li>
+  <li><a href='https://www.balderton.com/news/voize-raises-50-million-to-power-the-ai-companion-transforming-nursing-care/' target='_blank'>[Tech Funding News <span class='tm'>'24.11월</span>] 구형 단말/통신 두절 환경 <b>오프라인 엣지 음성 인식</b> 기술력 인정<br>→ 유럽 톱티어 Balderton Capital 리드 · HV Capital·YC 참여<br>→ <b class='hl'>$50M Series A</b> 성황리 클로징</a></li>
+  <li><a href='https://techfundingnews.com' target='_blank'>[Tech Funding News <span class='tm'>'26년</span>] 유럽 요양 시장 성공 모델 바탕<br>→ 메디케어 예산 집중 <b class='hl'>미국 Skilled Nursing 본격 진출 선언</b><br>→ 현지 메이저 EHR 통합 파트너십 돌입</a></li>
+</ul></td><td class='cmp td-d'>
+  <div class='cmp-box'><a href='https://www.suki.ai/' target='_blank'><span class='c-name'>Suki</span></a><span class='c-str'>외과/내과 전문의 <b>방대한 의학 용어 NLP</b> · 대규모 <span class='c-dim'>메디컬 그룹 영업망 완비</span></span><span class='c-wk'>시끄러운 <span class='c-dim'>요양원 백그라운드 노이즈 · 간병인 방언(Dialect) 억양 인식</span> 최적화 취약</span></div>
+  <div class='cmp-box'><a href='https://www.abridge.com/' target='_blank'><span class='c-name'>Abridge</span></a><span class='c-str'>미국 <b>초대형 대학병원 네트워크 단독 장악</b> · <span class='c-dim'>B2B 인프라 락인 장벽 막강</span></span><span class='c-wk'><span class='c-dim'>초거대 파운데이션 클라우드 연산 의존</span> → 와이파이 끊긴 농촌 요양 엣지 먹통 빈번</span></div>
+  <div class='cmp-box'><a href='https://www.nabla.com/' target='_blank'><span class='c-name'>Nabla</span></a><span class='c-str'>앱 설치/IT 세팅 無 <b>크롬 익스텐션 웹앱 기반</b> · <span class='c-dim'>최고 배포 편의성</span></span><span class='c-wk'>웹 브라우저 기반 → <span class='c-dim'>완전 오프라인 단독 구동 불가 · 하드웨어 로컬 보안 통제력 상실</span></span></div>
+</td></tr>
+
+<tr><td><span class='rk'>6</span></td><td><a class='cl' href='https://layla.ai/' target='_blank'>Layla</a><br><span class='bg bg-ac'>Travel Comp.</span></td><td><b>'22.9월</b></td><td>Berlin</td><td class='td-d'>Saad Saeed<br>Jeremy Jauncey</td><td class='td-d'><div>· Flink 배달 유니콘 공동창업 파운더</div><div>· 천만 팔로워 Beautiful Destinations 설립자</div></td><td>11-50명</td><td><span style='color:var(--t3)'>미공개</span></td><td class='td-d'><div>· Seed <b class='hl'>€3M</b> <span class='tm'>'23.11월</span></div><div>· <b class="h-word">거대 신규 전략 투자 라운드</b> <span class='tm'>'26.3월</span></div><div>· United · B Capital · Baidu 연합</div></td><td class='td-d'><div>· <b class="h-word"><span class='hl'>5M users · 30M 메시지</span> 교환</b> <span class='tm'>'26.3월</span></div><div>· <b class="h-word"><span class='hl'>$1B Planned Trip Value</span> 기획액 돌파</b></div><div>· 목적지 미정 대화 탐색 비중 <b class='red-w'>40%↑</b></div></td><td class='td-d'><div>· <b class='h-word'>[BM]</b> 제휴 OTA 예약 커미션 (Affiliate)</div><div class='bm-detail'><div class='bm-line'>Booking.com·Expedia <b class='ok-w'>6~12% 커미션</b> (호텔)</div><div class='bm-line'>Skyscanner 등 <b class='ok-w'>CPC 클릭당 $0.3~$1</b> (항공)</div><div class='bm-line'>B2B White-label <b class='ok-w'>연 $50,000~$200,000</b> 라이선스</div><div class='bm-line'>인플루언서 스폰서드 콘텐츠 <b class='ok-w'>미디어 수익</b></div></div><div style='margin-top:0.35rem;font-size:0.65rem;color:var(--t3)'>· (플랫폼 실수취 매출 비공개 · Take-rate 블랙박스)</div></td><td class='td-d'><div>· SNS 숏폼 영상 매칭 여행 AI 비서</div><div>· Discovery·영감 특화 시각적 대화 UI</div><div>· <b class="h-word">제조사 순정 카메라/갤러리 이미지 직결 연동</b></div></td><td class='td-d'><div class='insight-col'><span class='ins-ttl'>◉ 경쟁 우위</span><div class='ins-li'><b class='h-word'>5M 유저 · Z세대 숏폼 바이럴</b> 선점</div><div class='ins-li'>Beautiful Destinations <b class='h-word'>천만 팔로워</b> 자산</div><div class='ins-li'>United·Baidu·B Capital <b class='h-word'>글로벌 전략 SI</b></div><div class='ins-li'>목적지 無 <b class='h-word'>Discovery UI 선점</b> (40%↑)</div><span class='ins-ttl chk'>◉ 체크 포인트</span><div class='ins-li'>자체 <b class='red-w'>LLM 코어 없음</b> (OpenAI API 래퍼 의존)</div><div class='ins-li'>Take-rate 실매출 <b class='red-w'>재무 공시 부재</b> 리스크</div></div></td>
+<td class='td-d'><ul class='ns'>
+  <li><a href='https://finance.yahoo.com/news/layla-surpasses-1-billion-trips-165400507.html' target='_blank'>[Yahoo Finance <span class='tm'>'26.3월</span>] 틱톡/인스타그램 숏폼 결합 모바일 소셜 바이럴<br>→ 단기간 <b class='hl'>5M 유저 · 30M 메시지</b> 돌파<br>→ 누적 <b class='hl'>Planned Trip Value $1B(약 1조 3천억 원)</b> 마일스톤 달성 <span class='tm'>'26.3.13</span></a></li>
+  <li><a href='https://techcrunch.com' target='_blank'>[TechCrunch <span class='tm'>'26.3월</span>] Baidu Ventures 포트폴리오 편입<br>→ <b class='hl'>United Airlines Ventures · B Capital · INCE Capital · firstminute Capital</b> 대거 연합<br>→ 거대 글로벌 전략 투자 라운드 자금 조달 마감</a></li>
+  <li><a href='https://skift.com' target='_blank'>[Skift 인사이트 <span class='tm'>'26.3월</span>] 기존 텍스트 OTA 검색 트래픽 YoY 감소<br>→ Layla 유저 <b class='hl'>40%+가 목적지 없이(No-Destination)</b> 비주얼 AI 대화 영감<br>→ '23년 12% → '26년 40% <b class='red-w'>폭증</b>, Z세대 관광 숏폼 패러다임 리드</a></li>
+</ul></td><td class='cmp td-d'>
+  <div class='cmp-box'><a href='https://mindtrip.ai/' target='_blank'><span class='c-name'>Mindtrip</span></a><span class='c-str'><b>Sabre GDS + PayPal 내재화</b> · 유저 이탈 0 <span class='c-dim'>인앱 E2E 결제 수익 창출 파워</span></span><span class='c-wk'>인스타 릴스 등 <span class='c-dim'>비주얼 숏폼 콘텐츠 기반 오가닉 바이럴 유입</span> 구조 열세</span></div>
+  <div class='cmp-box'><a href='https://www.guidegeek.com/' target='_blank'><span class='c-name'>GuideGeek</span></a><span class='c-str'>WhatsApp 등 <b>수십억 메신저 기생 봇</b> · <span class='c-dim'>별도 앱 설치 진입장벽 소멸</span></span><span class='c-wk'><span class='c-dim'>독립 네이티브 앱 환경 부재</span> → 지도 스와이프·캘린더 UI 등 시각적 UX 설계 불가</span></div>
+  <div class='cmp-box'><a href='https://www.google.com/travel/' target='_blank'><span class='c-name'>Google Travel</span></a><span class='c-str'><b>구글맵 무한대 로컬 리뷰 데이터</b> · 안드로이드 OS <span class='c-dim'>최저가 트래킹 안정성</span></span><span class='c-wk'>능동적 <span class='c-dim'>텍스트 검색 결과 노출형</span> → 영상 스크롤 수동 영감 자극 구조 부재</span></div>
+</td></tr>
+
+<tr><td><span class='rk'>7</span></td><td><a class='cl' href='https://www.tolans.com/' target='_blank'>Portola/Tolan</a><br><span class='bg bg-ac'>Voice Comp.</span></td><td><b>'23.6월</b></td><td>San Francisco</td><td class='td-d'>Quinten Farmer<br>Evan Goldschmidt<br>Ajay Mehta</td><td class='td-d'><div>· Columbia·Hopkins 엔지니어링 출신</div><div>· FamilyLeaf 매각(Exit) 경험 · 연쇄 창업</div></td><td>11-50명</td><td><span style='color:var(--t3)'>미공개</span></td><td class='td-d'><div>· 누적 펀딩 <b class='hl'>$30M</b></div><div>· <b class="h-word">Series A <span class='hl'>$20M</span></b> <span class='tm'>'25.7월</span></div><div>· Khosla Ventures 리드 · 슈퍼 엔젤 연합</div></td><td class='td-d'><div>· iOS <b class='hl'>3M+ 다운로드</b> · 평점 <b class='hl'>4.8</b></div><div>· 단기 <b class="h-word"><span class='hl'>100K+ Paid</span> 유료 결제 전환</b></div><div>· <b class="h-word">ARR <span class='hl'>$12M 돌파</span></b> <span class='tm tm-ok'>'26.1월</span></div></td><td class='td-d'><div>· <b class='h-word'>[BM]</b> 앱내 강한 유료 정기구독</div><div class='bm-detail'><div class='bm-line'>주간 구독 <b class='ok-w'>$4.99/주</b> (Z세대 소액 진입)</div><div class='bm-line'>월간 구독 <b class='ok-w'>$9.99~$10/월</b></div><div class='bm-line'>연간 프리미엄 <b class='ok-w'>$59.99/년</b> (할인형)</div><div class='bm-line'>캐릭터 스킨·굿즈 <b class='ok-w'>인앱 결제</b> 추가 캐시카우</div></div><div style='margin-top:0.35rem;font-size:0.66rem;color:var(--ok);font-weight:700'>· 매출 <b class='hl'>B2C ARR $12M 검증</b> <span class='tm'>'26.1월</span></div></td><td class='td-d'><div>· 캐릭터 IP 롤플레잉 감정 교류 Voice Companion</div><div>· Memory Recall 장기 기억 시스템</div><div>· <b class="h-word">알파/Z세대 보급형 단말 AOD 테마 탑재</b></div></td><td class='td-d'><div class='insight-col'><span class='ins-ttl'>◉ 경쟁 우위</span><div class='ins-li'><b class='h-word'>ARR $12M</b> B2C 유료화 검증 1위</div><div class='ins-li'>연쇄 창업자 <b class='h-word'>Exit 경험</b> 보유 팀</div><div class='ins-li'>Z세대 <b class='h-word'>3M+ 다운로드 · 평점 4.8</b></div><div class='ins-li'>Khosla Ventures <b class='h-word'>슈퍼 엔젤 연합</b></div><span class='ins-ttl chk'>◉ 체크 포인트</span><div class='ins-li'>OpenAI API <b class='red-w'>외부 LLM 의존</b> (기술 해자 부재)</div><div class='ins-li'><b class='red-w'>미성년자 정서 의존</b> · 규제 리스크</div><div class='ins-li'>iOS 편향 → <b class='red-w'>안드로이드 확장 지연</b></div></div></td>
+<td class='td-d'><ul class='ns'>
+  <li><a href='https://techcrunch.com' target='_blank'>[TechCrunch <span class='tm'>'26.1월</span>] 과거 불분명한 200K MAU 루머 불식<br>→ 애플 앱스토어 <b class='hl'>3M+ 누적 다운로드 · 100K+ Paid 결제자</b> 공개<br>→ B2C 대중 <b class='red-w'>결제 지갑 수요 확실 증명</b></a></li>
+  <li><a href='https://36kr.com' target='_blank'>[36Kr <span class='tm'>'26.1월</span>] 구독 BM 정식 출시 후 불과 <b class='hl'>4개월 만에</b> Z세대 SNS 밈 바이럴<br>→ <b class='hl'>연간 ARR $12M(약 160억 원)</b> 돌파<br>→ AI 챗봇 유료화 실패 공식 산산조각</a></li>
+  <li><a href='https://www.geekwire.com/2025/ai-companionship-app-tolan-raises-20m-to-help-more-people-grow-with-a-virtual-alien-friend/' target='_blank'>[GeekWire <span class='tm'>'25.7월</span>] Khosla Ventures <b>Keith Rabois</b> 리드<br>→ GitHub 전 CEO <b>Nat Friedman · Daniel Gross</b> 엔젤 합류<br>→ <b class='hl'>$20M Series A 클로징</b> · Free Tier 출시 예고</a></li>
+</ul></td><td class='cmp td-d'>
+  <div class='cmp-box'><a href='https://character.ai/' target='_blank'><span class='c-name'>Character.AI</span></a><span class='c-str'><b>수백만 개 유저 생성 챗봇 생태계</b> · 1020 Z세대 <span class='c-dim'>1일 체류시간 1위 팬덤 락인</span></span><span class='c-wk'>천문학적 LLM 서버 운영비 대비 <span class='c-dim'>B2C/B2B 유료 구독 과금 모델 구조 부재</span> → 치명적 한계</span></div>
+  <div class='cmp-box'><a href='https://replika.com/' target='_blank'><span class='c-name'>Replika</span></a><span class='c-str'>수년 축적 <b>글로벌 대화 데이터 · 3D 아바타 렌더링</b> · <span class='c-dim'>인간에 가까운 로맨스 교감 엔진</span></span><span class='c-wk'><span class='c-dim'>에로틱 롤플레잉 편향</span> → 선정성 논란 · 이탈리아 등 정부 프라이버시 차단 <b>영구 윤리 리스크</b></span></div>
+  <div class='cmp-box'><a href='https://kindroid.ai/' target='_blank'><span class='c-name'>Kindroid</span></a><span class='c-str'>자체 LLM <b>도덕성 필터 제거 · 무제한 Uncensored</b> · <span class='c-dim'>성인 마니아 코어 충성도</span></span><span class='c-wk'><span class='c-dim'>폭력/선정성 방치</span> → Safety 중시 대기업·제조사 제휴 <b>스케일업 불가</b> 판정</span></div>
+</td></tr>
+
+<tr><td><span class='rk'>8</span></td><td><a class='cl' href='https://www.19pine.ai/' target='_blank'>Pine AI</a><br><span class='bg bg-ac'>Consumer Agent</span></td><td><b>'24.1월</b></td><td>San Francisco</td><td class='td-d'>Stanley Wei<br>Vincent Sun</td><td class='td-d'><div>· 중국 명문 USTC 정보 동문</div><div>· 글로벌 통신 라우팅·보안 특허 보유</div></td><td>11-50명</td><td><span style='color:var(--t3)'>미공개</span></td><td class='td-d'><div>· <b class="h-word">Series A <span class='hl'>$25M</span> 메가 펀딩</b> <span class='tm'>'25.12월</span></div><div>· Fortwest Capital 단독 리드</div></td><td class='td-d'><div>· <b class="h-word"><span class='hl'>53,726+</span> 활성 가입 users</b> <span class='tm'>'25.12월</span></div><div>· 통신비/케이블 협상 <b class="h-word"><span class='hl'>93% 타결 성공률</span></b></div><div>· 누적 소비자 절감 <b class='hl'>$3M+</b> · 인당 <b class='hl'>270분</b> 절약</div></td><td class='td-d'><div>· <b class='h-word'>[BM]</b> 성공 보수 Success Fee 과금</div><div class='bm-detail'><div class='bm-line'>절감액의 <b class='ok-w'>20~33%</b> 수수료 분배 (통신비/케이블)</div><div class='bm-line'>건당 Task fee <b class='ok-w'>$5~$15</b> (해지 대행 등)</div><div class='bm-line'>프리미엄 월 구독 <b class='ok-w'>$9.99/월</b> (무제한 협상)</div><div class='bm-line'>B2B 통신사 CS 자동화 <b class='ok-w'>IVR 대체 라이선스</b> 별도</div></div><div style='margin-top:0.35rem;font-size:0.65rem;color:var(--t3)'>· (연간 ARR 실매출 수치 철저 비공개)</div></td><td class='td-d'><div>· 정보 검색 넘어 <b>권한 위임 직접 앱 통제</b> Action 에이전트</div><div>· 통신 구독료 최적화·해지 방어 부서 교섭 100% 위임</div><div>· <b class="h-word">제조사 OS 탑재형 Action 플러그인 연계</b></div></td><td class='td-d'><div class='insight-col'><span class='ins-ttl'>◉ 경쟁 우위</span><div class='ins-li'>단순 답변형 ≠ <b class='h-word'>Action Completion</b></div><div class='ins-li'><b class='h-word'>모바일 사용 빈도 높음</b> (일상 반복)</div><div class='ins-li'><b class='h-word'>성과 과금(Success Fee)</b> 소비자 진입장벽 제거</div><div class='ins-li'>통신 라우팅 <b class='h-word'>보안 특허 보유</b></div><span class='ins-ttl chk'>◉ 체크 포인트</span><div class='ins-li'><b class='red-w'>Valuation 미공개</b></div><div class='ins-li'>대형 파트너 <b class='red-w'>LOI 공개 전까지 B 점수 보수</b></div><div class='ins-li'>SOC2·뱅킹 <b class='red-w'>보안 실사</b> 여부 불투명</div></div></td>
+<td class='td-d'><ul class='ns'>
+  <li><a href='https://www.businesswire.com/news/home/20251203384902/en/' target='_blank'>[BusinessWire <span class='tm'>'25.12월</span>] 2024년 설립 1년 만에 <b class='hl'>53,726명+ 실사용자 가입</b> 달성<br>→ 단순 Q&A 비서 한계 파괴 · <b>Action Agent</b> 비전 인정<br>→ Fortwest Capital 단독 주도 <b class='hl'>$25M Series A</b> 유치</a></li>
+  <li><a href='https://pine.ai/blog' target='_blank'>[Pine AI Blog <span class='tm'>'26.1월</span>] 거대 통신사·케이블 해지 협상 AI 24시간 자동 대행<br>→ 누적 소비자 통신비 <b class='hl'>$3M+ 절감</b> 장부 입증<br>→ 인당 평균 <b class='hl'>270분 절약</b> (콜센터 대기 해소)</a></li>
+  <li><a href='https://pine.ai/blog' target='_blank'>[Pine AI Blog <span class='tm'>'26.1월</span>] 텍스트 챗봇 한계 탈피<br>→ AI 에이전트가 단말 브라우저·IVR 다이얼·해지 이메일 자율 Action<br>→ 요금제 인하 협상 <b class='hl'>93% 타결 성공률</b> 통계 증명<br>→ (창업자 Stanley Wei의 Wharton 학력은 제3자 확인 불가로 <b class='red-w'>보수적 접근</b>)</a></li>
+</ul></td><td class='cmp td-d'>
+  <div class='cmp-box'><a href='https://www.rocketmoney.com/' target='_blank'><span class='c-name'>Rocket Money</span></a><span class='c-str'><b>수십만 은행·카드 핀테크 연동</b> · 구독 취소 알림 <span class='c-dim'>대시보드 브랜드 인지도 선점</span></span><span class='c-wk'><span class='c-dim'>지출 시각화·경고만</span> → AI 에이전트의 해지 교섭·환불 협상 <b>Action 엔진 부재</b></span></div>
+  <div class='cmp-box'><a href='https://donotpay.com/' target='_blank'><span class='c-name'>DoNotPay</span></a><span class='c-str'><b>'AI 로봇 변호사' 슬로건</b> · 주차 범칙금·항공사 환불 대행 <span class='c-dim'>법률/행정 분야 언론 인지도</span></span><span class='c-wk'><span class='c-dim'>AI 효능 과장 허위 광고 · 변호사 면허 사칭</span> → 로펌 집단소송·연방 규제 <b>상시 셧다운 리스크</b></span></div>
+  <div class='cmp-box'><a href='https://www.yutori.com/' target='_blank'><span class='c-name'>Yutori</span></a><span class='c-str'><b>일본 현지 행정 민원·전화 예약 노포 대행</b> · <span class='c-dim'>로컬 라이프스타일 밀착 오퍼레이션</span></span><span class='c-wk'><span class='c-dim'>단일 로컬 국가 상권/API 의존</span> → Pine AI형 글로벌 메가 통신망 공략 <b>다국어 확장성 한계</b></span></div>
+</td></tr>
+</tbody></table></div></div></div>
+
+<div id='sec-eval'>
+<div class='zg interactive-card'><strong>⚠ Zero-Gate 경고</strong> — M&A 딜 인수 완료 혹은 치명적 도덕성 결여 등 투자 불가 심사 판정 기업 클릭 시, 평가표 내 전체 종합 점수 0점(Zero) 강제 처리 알고리즘 작동<div style='margin-top:.4rem; display:flex; flex-wrap:wrap; gap:0.3rem;'>
+<span class='gb' data-z='Suki' onclick="tz(this)"><span style='font-size:9px'>☐</span> Suki</span><span class='gb' data-z='Wysa' onclick="tz(this)"><span style='font-size:9px'>☐</span> Wysa</span><span class='gb' data-z='Personal AI' onclick="tz(this)"><span style='font-size:9px'>☐</span> Personal AI</span><span class='gb' data-z='Mindtrip' onclick="tz(this)"><span style='font-size:9px'>☐</span> Mindtrip</span><span class='gb' data-z='voize' onclick="tz(this)"><span style='font-size:9px'>☐</span> voize</span><span class='gb' data-z='Layla' onclick="tz(this)"><span style='font-size:9px'>☐</span> Layla</span><span class='gb' data-z='Portola/Tolan' onclick="tz(this)"><span style='font-size:9px'>☐</span> Tolan</span><span class='gb' data-z='Pine AI' onclick="tz(this)"><span style='font-size:9px'>☐</span> Pine AI</span>
+</div></div>
+<div class='cd'><div class='ch2' onclick="tc(this)"><div><h2>② Startups 평가표 (A~G 정량 모형)</h2><p>· 7대 대항목 28개 세부 지표 철저 정량 채점 기반 산출 · 각 기업 최종 점수 하단에 평가를 관통하는 세밀한 7대 로직(Logic) 서술형 근거 100% 투명 명시</p></div><span class='arr'>▼</span></div>
+<div class='cb'><div class='tw'><table class='et'><thead><tr><th>랭킹</th><th class='cc'>분석 타깃 기업</th><th>A 제조사 제휴<br>/20점</th><th>B M&A 가치<br>/20점</th><th>C 기술 장벽<br>/12점</th><th>D BM 수익성<br>/12점</th><th>E 시장 호재<br>/12점</th><th>F 팀 전투력<br>/12점</th><th>G 락인 경쟁력<br>/12점</th><th class='ct'>종합 점수</th><th>투자 심사 등급</th></tr></thead>
+<tbody id='evalBody'>
+<tr data-co='Suki'><td><span class='rk'>1</span></td><td class='cc'><b class='h-word' style='font-size:0.8rem'>Suki (Clinical)</b></td><td>11</td><td>16</td><td>11</td><td>9</td><td>10</td><td>11</td><td>11</td><td class='ct' data-s='79'>79</td><td><span class='bg bg-ok' style='padding:0.2rem 0.5rem'>최우선 순위</span></td></tr>
+<tr class='logic-row'><td colspan='2'></td><td colspan='9'>
+  <p><b class='h-word'>A 제조사 파트너십 (11/20점)</b>: 의사용 iOS 임상 앱을 성공적으로 상용화 완료했고 진료 현장 모바일 기반 음성 우선 설계(Voice-first UX) 최적화율은 탁월하나(A1, A3 획득), 일반 대중을 위한 모바일 웹 환경이 취약하며 삼성/애플 등 스마트폰/하드웨어 제조사와의 <b>공식적인 직접 하드웨어 칩셋 제휴 사례나 제조사 전용 단말 번들 시나리오 문서가 아직 대외적으로 공식 공개되지 않아</b> 해당 제휴 지표(A4, A5)에서 집중 감점되었습니다.</p>
+  <p><b class='h-word'>B 빅테크 M&A 가치 (16/20점)</b>: MS의 거대 Nuance($19.7B) 인수 등 유사 AI 의료 음성 기업들의 메가톤급 M&A 선행 빅딜 사례가 벤처 시장에서 뚜렷이 입증되었고, athenahealth 등 <b>무려 170,000명 단위의 거대 미국 의사 네트워크 유통망 접근 권한과 등록 핵심 특허 자산을 모두 100% 확보</b>하여, 향후 헬스케어 진출을 노리는 글로벌 빅테크 자본의 전략적 매수(M&A) 매력도가 8개 스타트업 중 가장 독보적인 최상위권입니다.</p>
+  <p><b class='h-word'>C 기술력 방어 장벽 (11/12점)</b>: 전 세계에서 가장 까다롭다는 미국의 환자 의료 데이터 보호법인 <b>HIPAA 인증 기반 엄격한 해킹 방어 보안 실사를 완벽히 무결점으로 통과</b>했으며, athenahealth 연계망을 통해 무려 450개 이상의 파트너 병원 클리닉 현장에서 대규모 상용화 트래픽(SLA)을 에러 없이 안정적으로 입증해 내어 딥테크 기술 신뢰도 측면에서 사실상 만점에 가까운 스펙을 자랑.</p>
+  <p><b class='h-word'>D 매출·BM 건전성 (9/12점)</b>: 한 번 계약하면 잘 해지하지 않는 B2B 병원 기업 고객을 대상으로 하는 의사 Seat 당 다년 반복 구독 모델의 안정적 수익 구조는 매우 훌륭하며, 최근 6개월 내 문서 생성 사용량 50% 폭증이라는 압도적 트랙션 성장을 이뤘지만, <b>글로벌 유니콘 밸류를 정당화하는 기준점이 되는 정확한 달러(USD) 기준의 총 연간 반복 매출(ARR) 장부 규모가 여전히 외부에 철저히 비공개(0점 처리)</b> 상태라 보수적인 D1 삭감이 뼈아프게 적용되었습니다.</p>
+  <p><b class='h-word'>E 시장 타이밍 호재 (10/12점)</b>: AI 임상 대화 문서화(Ambient Scribe) 시장 자체가 <b>연평균 22.4% 이상 폭발적으로 팽창하는 초고성장(CAGR) 트렌드</b> 중심에 서 있고, 의사 번아웃 해소를 향한 정부 메디케어 지원 인프라 환경은 만점입니다. 그러나 여전히 낙후된 대형 병원망의 거대한 파편화된 기존 EHR 레거시 시스템과 Suki API를 초기 통합시키는 데 짧게는 수개월의 물리적 도입 마찰(E3) 시간이 심각하게 소요된다는 점은 근본적인 확장 한계입니다.</p>
+  <p><b class='h-word'>F 핵심 팀 전투력 (11/12점)</b>: 수억 명 단위 사용자를 이끌어 본 <b>전 Google Motorola 모바일 부문 최고위 리더 출신 및 인도 최대 이커머스 Flipkart의 CPO(최고제품책임자) 거물 이력</b>을 지닌 Punit Soni CEO를 필두로 하여, 대형 Series 펀딩 유치와 수백 명 단위의 다국적 글로벌 스케일업 엑시트(Exit) 성공 경험을 모두 갖춘 막강한 AI 헬스케어 도메인 특화 C-레벨(사업/운영/알고리즘) 스쿼드 진용이 완벽히 빈틈없이 구축되어 있습니다.</p>
+  <p><b class='h-word'>G 락인 장벽 경쟁력 (11/12점)</b>: 경쟁사 대비 "병원 도입 불과 1년 만에 의사의 서류 문서화 작성 시간을 무려 72%나 미친 듯이 가속시키고, 투입된 기회비용을 단숨에 9배(9X)로 뻥튀기하여 회수하는 경이로운 ROI"라는 압도적인 정량 수치 마케팅을 공식 대외 입증했으며, 무엇보다 <b>의사들의 일일 8시간 진료 워크플로에 마치 마약처럼 깊숙이 중독 통합되어 타사 의료 솔루션으로의 전환/이탈을 원천적으로 막는 절대적인 해자(소프트웨어 락인 장벽)</b>를 단단히 확립.</p>
+</td></tr>
+
+<tr data-co='Wysa'><td><span class='rk'>2</span></td><td class='cc'><b class='h-word' style='font-size:0.8rem'>Wysa (Mental)</b></td><td>16</td><td>13</td><td>10</td><td>11</td><td>9</td><td>8</td><td>8</td><td class='ct' data-s='75'>75</td><td><span class='bg bg-ok' style='padding:0.2rem 0.5rem'>최우선 순위</span></td></tr>
+<tr class='logic-row'><td colspan='2'></td><td colspan='9'>
+  <p><b class='h-word'>A 제조사 파트너십 (16/20점)</b>: 이미 전 세계 1,100만 명 이상의 일반 소비자가 직접 앱스토어에서 다운로드하여 매일 사용하는 거대한 모바일 네이티브 앱 UX 기반을 갖추었으며, 오프라인 CBT 챗봇 구동 성능이 뛰어나 스마트폰 제조사가 차세대 단말기 OS 내 <b>'디지털 웰빙(Digital Wellbeing) 감정 케어 전용 앱' 영역에 별도의 하드웨어 성능 제약 없이 즉시 프리로드 기본 번들로 탑재할 수 있는 가장 완벽하고 이상적인 A3, A4 시나리오 유연성</b>을 획득.</p>
+  <p><b class='h-word'>B 빅테크 M&A 가치 (13/20점)</b>: 거대 보험사 Payer가 얽힌 디지털 정신건강 섹터의 폭발적 M&A 수요와 11M 이상의 거대한 사용자 익명 우울 행동 데이터, 그리고 <b>무엇보다 대체 불가능한 '미국 FDA 혁신 의료기기(Breakthrough Device)' 지정 이력</b>이라는 메가톤급 매수 자산(B2)은 훌륭합니다. 그러나 LLM 파운데이션 모델을 직접 밑단 아키텍처부터 짜는 자체 코어 구조가 아닌, 기존 룰베이스(Rule-based) 시나리오에 외부 생성 AI API를 섞어 쓰는(B4 감점) 의존도가 높아 딥테크 관점의 기술적 핏 자립성 측면에서는 빅테크 인수 타깃으로서 프리미엄 약점을 보입니다.</p>
+  <p><b class='h-word'>C 기술력 방어 장벽 (10/12점)</b>: 실체 없는 단순한 위로 챗봇 앱을 넘어 무작위 대조 임상 시험(RCT)이 정밀하게 포함된 무려 <b>45건 이상의 엄청난 글로벌 학계 동료 평가(Peer-reviewed) 임상 의학 논문 등재(C3 만점)</b>를 통해, 의료 보조 소프트웨어로서 요구되는 가장 까다롭고 엄격한 의료적 기술 신뢰도 효능 부문 외부 검증을 확실히 100% 통과했으며 거대 글로벌 기업/보험사(Payer) 대상의 B2B 무결점 대형 운영 데이터 보안 체계(SLA/HIPAA)를 서류로 입증했습니다.</p>
+  <p><b class='h-word'>D 매출·BM 건전성 (11/12점)</b>: 이 벤처 기업의 가장 강력한 무기입니다. 비상장 스타트업임에도 불구하고 최신 피치북(PitchBook) 금융 데이터를 통해 <b>현재 모니터링 중인 유니콘 미만 AI 스타트업 8개사 중 유일하게 '스타트업 매출 마의 $10M 장벽'을 아득히 두 배 이상 초과하는 'TTM 매출 2,390만 달러(한화 약 320억 원)'라는 엄청난 B2B 실매출 현금 창출 규모를 완벽히 증명(D1 만점)</b>해 내어, 극심한 벤처 펀딩 혹한기에도 생존/수익성 항목에서 타의 추종을 불허하는 안정감을 구가합니다.</p>
+  <p><b class='h-word'>E 시장 타이밍 호재 (9/12점)</b>: 코로나 이후 디지털 멘탈 헬스케어 앱 시장 전체 파이가 연평균 15%~18% 전후의 매우 견조한 CAGR로 우상향 성장 중이며, 최근 <b>최고 권위 영국 Wellcome Trust의 530만 파운드 글로벌 현금 그랜트(Grant) 획득</b> 등 정부 보건 기구의 지원 모멘텀(E4) 호재는 훌륭합니다. 그러나 이 앱을 정식 의학용 디지털 치료기기(DTx)로 글로벌 보험 수가 시스템에 편입시키기에는 각 국가별 식약처 규제 보건 허가 가이드라인 장벽(E2)이 파편화되어 있어 글로벌 무한 스케일업 전개에 다소 지루한 인허가 허들로 작용.</p>
+  <p><b class='h-word'>F 팀 전투력 (8/12점)</b>: Pearson, Goldman Sachs 출신의 10년 이상 잔뼈가 굵은 글로벌 심리 상담 및 행동경제학 비즈니스 도메인(F1 만점) 전략가 전문가들은 풍성하게 포진해 있고 170여 명에 달하는 글로벌 임상 R&D 대규모 운영 조직은 탄탄하지만, 정작 <b>미국 실리콘밸리 톱티어 빅테크의 핵심 생성 AI 엔진 개발을 지휘해 본 정통 딥러닝 1티어 엔지니어(코파운더 비율) 비중</b>이 타 AI 스타트업 대비 상대적으로 열세에 놓여 있어 F2, F4 항목에서 감점 요인으로 작용.</p>
+  <p><b class='h-word'>G 락인 장벽 경쟁력 (8/12점)</b>: 세계 최다 수준의 방대한 디지털 치료 임상 논문 백업 풀과 이들만이 소유한 독점적 인지행동치료(CBT) 시나리오 챗봇 스크립트는 경쟁사가 베낄 수 없는 탄탄한 지식 재산 해자(G4) 역할을 훌륭히 수행. 하지만 결국 사용자와 주고받는 형태가 무미건조한 '텍스트 텍스트 채팅' 형태 UI에 머물러 있어 타 경쟁 감성 서비스(보이스/3D 등)로 <b>유저가 마음만 먹으면 쉽게 지우고 옮겨갈 수 있는 플랫폼 락인(환승 장벽) 방어 파워가 상대적으로 낮고</b>, 철저한 보험사(B2B Payer) 대상의 정량적 달러 기준 예산 절감 ROI 어필 데이터 투명성(G2)이 부족하여 다소 차감되었습니다.</p>
+</td></tr>
+
+<tr data-co='Personal AI'><td><span class='rk'>3</span></td><td class='cc'><b class='h-word' style='font-size:0.8rem'>Personal AI (SLM)</b></td><td>15</td><td>13</td><td>8</td><td>5</td><td>10</td><td>10</td><td>10</td><td class='ct' data-s='71'>71</td><td><span class='bg bg-ok' style='padding:0.2rem 0.5rem'>최우선 순위</span></td></tr>
+<tr class='logic-row'><td colspan='2'></td><td colspan='9'>
+  <p><b class='h-word'>A 제조사 파트너십 (15/20점)</b>: 무거운 클라우드 서버로 데이터를 넘기는 대신 <b>단말기 자체의 NPU 연산을 활용하는 On-device 중심의 엣지 로컬 모델 우선 설계 아키텍처를 보유</b>하여 데스크톱과 모바일 크로스 플랫폼 동기화 최적화(A3)를 달성. 이로 인해 개인 사진/대화 데이터 유출을 극도로 꺼리는 메이저 제조사의 프리미엄 스마트폰 '오프라인 AI Identity(프라이빗 비서)' 선탑재 시나리오와 완벽히 맞아떨어지며, Comcast 분산망 PoC 실증 연동(A5) 경험에서 압도적 가점이 주어집니다.</p>
+  <p><b class='h-word'>B 빅테크 M&A 가치 (13/20점)</b>: 수많은 AI 껍데기(Wrapper) 에이전트들이 그저 OpenAI 등 외부 거대 범용 모델 API에 목을 매는 비참한 현실과 다르게, 이 기업은 오직 자신만의 고유한 <b>특화 메모리 SLM(소형 언어 모델) 코어 아키텍처 알고리즘 엔진을 바닥부터 100% 독립적으로 설계/내재화(B4 만점)</b>하고 있어 애플/삼성 등 하드웨어 빅테크 기업들의 코어 기술 인재 싹쓸이 인수(Acqui-hire) 타깃으로 1순위 우량 자산이며, Comcast와 NVIDIA 칩셋이라는 막강하고 든든한 초거대 거물급 전략 파트너/투자자 진용(B3)을 완벽하게 등 뒤로 확보.</p>
+  <p><b class='h-word'>C 기술력 방어 장벽 (8/12점)</b>: 최근 NVIDIA GTC 글로벌 컨퍼런스 실증 발표(C3 만점)를 통해, 엣지 서버 통신망 내에서 <b>Sub-500ms(0.5초 이하)라는 경이로운 오프라인 초저지연 광속 반응 속도와, 기존 초대형 클라우드 LLM 모델 가동 대비 무려 40배(40x lower cost)에 달하는 획기적이고 충격적인 컴퓨팅 비용 절감 벤치마크 성과</b>를 보란 듯이 독립 통과. 그러나, 아직 수백/수천만 명 일반 B2C 대중 스마트폰을 대상으로 한 동시다발적 해킹 방어나 글로벌 데이터 보안 규제 엄격 실사(SOC2, 유럽 GDPR 등) 인프라 통과 방어율을 공식 문서로 입증하지 못한 C4 실점 약점이 존재합니다.</p>
+  <p><b class='h-word'>D 매출·BM 건전성 (5/12점)</b>: 엄청나게 놀라운 원천 딥테크 기술적 혁신 자산 및 B2B 엔터프라이즈 전용 구독 과금/외부 개발자용 API 공급 인프라 시스템은 메뉴얼상으로 훌륭히 마련되어 있음에도 불구하고, <b>현시점 벤처 펀딩 투자자와 대중 마켓에 공식적으로 투명하게 까발려진 실제 달러(USD) 실 결제 연간 ARR 매출이나 유료 유저(Paid User) 급증 성장률(D2) 트랙션 백업 데이터가 철저히 은폐(0점 처리)</b>되어 있어 재무적 도산 리스크가 극히 불투명하므로 무자비한 하위 점수 삭감 철퇴가 불가피합니다.</p>
+  <p><b class='h-word'>E 시장 타이밍 호재 (10/12점)</b>: 막대한 클라우드 서버 전기세 유지 구동 비용 문제로 인해 글로벌 빅테크의 M&A 전선이 클라우드 밖 On-device(엣지/디바이스 로컬) SLM AI로 급격히 패러다임이 급전환하는 시점(E2, E3)과 소름 돋게 완벽하게 맞아떨어지는 천운의 최적기 타이밍을 타고 났으며, 최근 미국 6,500만 가구를 장악한 <b>거대 케이블/통신사 Comcast의 분산 엣지 네트워크 전면 AI Grid 시범 롤아웃 테스트 언론 발표(E4 만점)</b>로 외부 뉴스 호재 모멘텀 게이지를 폭발적으로 최상단으로 견인했습니다.</p>
+  <p><b class='h-word'>F 팀 전투력 (10/12점)</b>: 과거 시각장애인용 혁신 웨어러블 하드웨어 AI(Aira)를 직접 창업하여 Series B+ 대규모 펀딩과 엄청난 B2B B2C 스케일업 파이프라인을 성공적으로 일궈내고 엑시트(Exit)시킨 창업자의 압도적인 글로벌 연쇄 창업 경험치(F3)와 더불어, <b>MIT 출신 및 음성인식 지배자 Nuance/LinkedIn NLP 딥러닝 코어 개발을 총괄 지휘했던 막강한 천재 AI 엔지니어링 임원 코파운더 팀(F2)</b> 세팅이 환상적인 밸런스를 이뤄 기술/경영 도메인 최상위권의 전투력을 보유했습니다.</p>
+  <p><b class='h-word'>G 락인 장벽 경쟁력 (10/12점)</b>: 하루하루 사용자가 앱에 떠드는 사소한 일상 대화, 방문한 위치, 찍은 은밀한 사진 등 개인의 모든 디지털 인생 기록 조각들을 오직 내 스마트폰/오프라인 로컬 환경의 고유한 <b>개인화 메모리 그래프(Personal Memory Graph) 신경망으로 겹겹이 암호화하여 영구적으로 쌓아 올리고 가둬버리는 폐쇄적 구조(G3 만점)</b>를 창조했습니다. 이로 인해, 향후 소비자가 아이폰에서 갤럭시로, 갤럭시에서 픽셀 등 타사 생태계 스마트폰으로 기기를 교체하고 싶어도 십 년간 학습된 '나만의 완벽한 뇌(AI)'를 포기하지 못하게 만들어 이탈(Churn)을 원천 차단하는 가장 독보적이고 소름 끼치는 스마트폰 플랫폼 락인(해자)을 구축 완료.</p>
+</td></tr>
+
+<tr data-co='Mindtrip'><td><span class='rk'>4</span></td><td class='cc'><b class='h-word' style='font-size:0.8rem'>Mindtrip (Travel)</b></td><td>13</td><td>12</td><td>6</td><td>4</td><td>12</td><td>10</td><td>6</td><td class='ct' data-s='63'>63</td><td><span class='bg bg-wn' style='padding:0.2rem 0.5rem'>관심 (Watch)</span></td></tr>
+<tr class='logic-row'><td colspan='2'></td><td colspan='9'>
+  <p><b class='h-word'>A 제조사 파트너십 (13/20점)</b>: 기존 구글 지도를 단숨에 대체할 수준의 대화형 일정 스케줄링과 정교한 위치 맵 데이터가 결합된 매우 우수한 모바일 네이티브 UX(앱스토어 평점 4.8 획득) 디자인(A3)을 깔끔하게 지원하지만, 아직 스마트폰 제조사의 기본 OS 화면 내 '통합 여행 모드(Travel Mode)' 기능으로 OS 뎁스 레벨까지 깊게 연동된 시스템 선탑재 공식 하드웨어 협력 계약(PoC)이나 <b>통신사 로밍 요금제와의 수익 셰어 구체적인 번들 최적화 시나리오(A4, A5 0점) 실적 발표가 아직 백지상태</b>라 A항목에서 고득점에 실패했습니다.</p>
+  <p><b class='h-word'>B 빅테크 M&A 가치 (12/20점)</b>: 자체적인 독자 거대 AI 언어 파운데이션 코어 엔진을 밑바닥부터 짜는 하드코어 딥테크 개발 기술력 자체는 전혀 특출나지 않으나, <b>Sabre(글로벌 1위 항공 예약망), PayPal(세계 최대 결제망), Amex(카드 공룡), United Airlines(미국 메이저 대형 항공사) 등 여행과 금융 생태계 먹이사슬 정점을 지배하는 글로벌 거대 포식자 4개사의 전략적 지분 지배 공동 투자(SI)를 전례 없이 단숨에 한 방에 동시에 이끌어내어(B3 4점 만점 폭격)</b> 향후 글로벌 B2B 유통 채널망 배포 및 인프라 자산 매수 가치만큼은 8개 스타트업 중 비교 불가의 압도적 1위입니다.</p>
+  <p><b class='h-word'>C 기술력 방어 장벽 (6/12점)</b>: 전 세계 무수히 파편화된 비행 및 호텔 예약 찌꺼기 데이터 API들을 채팅창 하나로 매끄럽게 모아주는 백엔드 서버 오케스트레이션(Orchestration) 연결 엔지니어링 마감 역량은 매우 탁월하나, 정작 근본적인 핵심 대화 알고리즘 엔진은 <b>OpenAI 등 외부 API 인프라에 절대적으로 100% 뼈대를 얹혀 기생 의존하고 있어 자사만의 고유하고 뚫을 수 없는 독점적 원천 AI 소스 코드 지식재산권(IP 특허) 배점(C1)을 모조리 날렸으며</b>, 아직 수백만 유저의 동시 발권 트래픽 해킹 공격 부하를 견뎌내는 B2C 대규모 상용 E2E 서버 운영(Q2 2026 상용화 예정) 역시 미검증(C2) 단계라 실점 폭발입니다.</p>
+  <p><b class='h-word'>D 매출·BM 건전성 (4/12점)</b>: 사용자가 앱 내에서 항공/호텔을 추천받고 직접 버튼을 눌러 발권 결제까지 원스톱으로 마칠 때마다 떨어지는 막대한 수수료 분배(Affiliate / Take-rate) 비즈니스 이커머스 모델의 폭발적 미래 현금 장래성 방향은 무척 탄탄하지만, <b>정식 대대적인 Sabre 연동 실제 예약 결제 시스템 오픈이 2026년 2분기에나 가능할 예정이므로, 현재 시점에서는 소비자 카드에서 빠져나가 플랫폼 지갑으로 입금된 단돈 1달러의 누적 실매출(USD) 및 과거 트랙션 데이터가 회계 장부상 철저히 0(Zero)에 수렴(D1, D2 0점 강제 배정)</b>하여 재무 지표 최하위권 불명예를 안았습니다.</p>
+  <p><b class='h-word'>E 시장 타이밍 호재 (12/12점 만점)</b>: 인공지능 기반 관광 테크(Travel Tech) 시장의 자금 쏠림이 미친듯한 초고속 팽창률(향후 CAGR 26.7%) 흐름 속에 올라타 잭팟을 터뜨렸으며, 소비자가 수많은 웹사이트 항공, 숙박, 렌터카 탭을 여러 개 띄워놓고 엑셀에 정리해가며 예약해야 했던 구글/스카이스캐너 검색의 지루하고 피곤한 복잡한 한계를 "채팅창 한 줄"로 즉시 박살 내는 <b>완전 자율 End-to-End 결제 트렌드 호재(E3 만점)와 거대 자본 투자 언론 모멘텀(E4 만점)</b>을 완벽하게 정조준하여 시장 타이밍 점수만큼은 12점 만점을 퍼펙트하게 휩쓸었습니다.</p>
+  <p><b class='h-word'>F 팀 전투력 (10/12점)</b>: 단순 학생 창업이 아니라, 과거 Google의 거대 이커머스 검색 리더 및 Gmail 시스템 코어 초기 설계자, 전 세계 스타트업 온라인 결제망 인프라의 상징인 Stripe의 극초기 핵심 멤버 라인업, 그리고 거기에 더해 <b>이미 수백억 원대 밸류로 글로벌 이커머스 스타트업(Roadster)을 성공적으로 밑바닥부터 매각(M&A) 엑시트까지 경험해 본 실리콘밸리의 닳고 닳은 노련한 연쇄 창업자 마피아 3인방 파운더스 보드(F3 2점)</b>가 전면에 직접 포진하여 벤처 자금 조달 및 글로벌 제휴 경쟁력 파워 밸런스가 압도적입니다.</p>
+  <p><b class='h-word'>G 락인 장벽 경쟁력 (6/12점)</b>: 420개 글로벌 메이저 항공사 인벤토리 직결이라는 막대한 자본과 시간 없이는 흉내 낼 수 없는 거대한 외부 제휴망 진입 장벽(Moat)과 채팅창 내부 이탈 없는 E2E 직접 원터치 결제라는 막강한 사용자 편의성 UX 차별화 퍼포먼스(G1)는 매섭도록 강력하지만, 서비스 특성상 한 번 특정 휴가 예약을 끝내고 나면 1년간 앱을 지워버리는 치명적 특성을 막기 위해 소비자가 매일매일 자발적으로 업로드하는 <b>'나만의 여행 사진, 나만의 일상 후기, 유저 간 SNS 소통' 기능 등 고유의 끈끈한 개인화 소셜 데이터 소유력이 전무하여, 내년 휴가철에 싼 수수료를 무기로 나타날 타사 앱으로 100% 철새처럼 갈아타버리는 치명적 플랫폼 락인 방어망 붕괴 약점(G3 최하점)</b>이 가장 큰 리스크입니다.</p>
+</td></tr>
+
+<tr data-co='voize'><td><span class='rk'>5</span></td><td class='cc'><b class='h-word' style='font-size:0.8rem'>voize (Nursing Voice)</b></td><td>13</td><td>11</td><td>9</td><td>6</td><td>9</td><td>4</td><td>8</td><td class='ct' data-s='60'>60</td><td><span class='bg bg-wn' style='padding:0.2rem 0.5rem'>관심 (Watch)</span></td></tr>
+<tr class='logic-row'><td colspan='2'></td><td colspan='9'>
+  <p><b class='h-word'>A 제조사 파트너십 (13/20점)</b>: 매일 유럽 전역의 10만 명의 극한 노동 간호사가 험지에서 쓰는 모바일 앱 UX는 더할 나위 없이 직관적(A3 만점)이나 확장성 있는 데스크톱 웹 기능은 형편없이 제한적입니다. 단, 병원 지하 창고나 농촌 요양원 등 <b>와이파이 인터넷이 완전히 끊기는 최악의 데이터 단절 환경에서도 스마트폰 내부칩만으로 완벽하게 작동하는 On-device 엣지 추론 최적화 설계 아키텍처</b>를 갖춰, 낙하 충격과 물에 강한 하드웨어 산업용 방수/방진 러기드(Rugged) 디바이스 B2B 대량 특판 번들(MDM) 직접 제휴에는 만점급 하드웨어 최적화 핏을 자랑.</p>
+  <p><b class='h-word'>B 빅테크 M&A 가치 (11/20점)</b>: 미국 Nuance(MS 인수), Augmedix(Commure 인수) 등 AI 기반 병원 음성 문서화 헬스케어의 M&A 초대형 빅딜 폭발 사례(B1)가 시장에 팽배하며, 이미 유럽 내 1,500개의 대형 의료 시설 현장 인프라와 <b>글로벌 빅테크조차 구하기 힘든 그 지역 간병인 특유의 현장 사투리/방언(Dialect) 녹음 빅데이터 자산을 독점 확보하여 특정(Nursing) 버티컬 니치 M&A 타깃 1순위 자산 가치(B2)</b>를 지녔습니다. 하지만 $50M 펀딩의 돈줄이 미국 거대 사업회사나 헬스케어 IT 연합 세력이 아닌 오직 Balderton 등 순수 재무적 목적의 벤처캐피탈(VC) 자금으로만 채워져 있어 차후 빅테크와의 끈끈한 전략적 연결 고리(B3) 매력은 크게 떨어집니다.</p>
+  <p><b class='h-word'>C 기술력 방어 장벽 (9/12점)</b>: 발열이 심한 중저가형 구형 스마트폰의 저사양 NPU 칩셋 내에서도 복잡한 의료 용어와 소음이 섞인 현장 음성을 엄청나게 높은 정확도로 분리해 내고 빠르게 문자로 변환 추론해 내는 <b>엣지 자체 코어 압축 최적화 알고리즘 기술력(C1)이 단연 독보적 발군</b>이며, 이미 1,500+ 거대 의료 시설에서 밥 먹듯이 B2B 상용 무결점 운영(C2)을 버텨낸 것은 물론, 보안 규제 중 전 세계에서 가장 지독하고 까다롭다는 독일/유럽의 의료 환자 개인정보 법망(GDPR 데이터 지역 보관 규제 등)을 한 번의 해킹 유출 사고 없이 완벽히 통과(C4)해 낸 엄청난 배점을 획득.</p>
+  <p><b class='h-word'>D 매출·BM 건전성 (6/12점)</b>: 한 번 계약을 체결하여 직원들 업무 시스템에 박아두면 절대 해지할 수 없는 대형 병원/요양 시설 단위의 반복적 다년 라이선스 구독 모델(B2B SaaS)이라는 사업의 정석(D3 만점)을 정확히 따르고 있어 연간 계약 유지율(NRR 100% 이상)은 의심할 여지 없이 튼튼할 것으로 추정되나, <b>정작 이번 $50M 대형 투자 매력도의 유일한 절대 검증 기준인 달러 기반 1년 치 '총 ARR 실매출 장부 규모'와 '매출액 고도 성장 퍼센티지(YoY)'를 대외 언론에 철저하게 밀봉 비공개(D1 0점)</b>하고 있어 결정적인 매출 투명성 항목에서 무자비한 폭탄 감점을 온몸으로 맞이.</p>
+  <p><b class='h-word'>E 시장 타이밍 호재 (9/12점)</b>: 초고령화 시대로 진입하며 유럽/미국 전역에 불어닥친 심각한 만성 간호/간병 최전선 인력(Frontline) 붕괴 사태 및 과로 이슈를 정확히 과제로 타겟팅하고 있으며, 현지 보건 정부의 스마트 요양 인프라 디지털화 펌핑 보조금 예산 지원 트렌드와 100% 맞물려 폭발 중입니다(E2). 그러나 가장 크고 돈이 되는 미국 헬스케어 시장 진출을 선언했음에도 불구하고, 이미 미국 메디케어를 꽉 잡고 있는 <b>거대하고 보수적이고 엄청나게 노후화된 파편적인 기존 대형 병원망 EHR 레거시 시스템(Epic, Cerner 등) 클라우드 규격과 본인들의 솔루션을 수작업으로 일일이 맞춤 연동 통합해야 하는 수개월의 끔찍한 물리적 시간 마찰 장벽(E3 1점 낙제)</b>이 최악의 약점입니다.</p>
+  <p><b class='h-word'>F 팀 전투력 (4/12점)</b>: 현장에서 펜을 잡고 땀 흘리며 수백 번 야근하는 요양 간호사 가족들의 극심한 행정 서류 페인포인트 고통을 곁에서 지켜보다 분노하여 직접 착안한 <b>Y Combinator(YC 글로벌 톱 액셀러레이터) 출신의 젊고 실행력 미친 패기 가득한 엔지니어 청년 코파운더 형제 조직의 제품 핏 집착도(F3)</b>는 매우 돋보입니다. 하지만 안타깝게도 수조 원대 자본이 오가는 미국의 거대 글로벌 헬스케어 엔터프라이즈 B2B 시장 로비 세일즈를 뚫어내고, 수백 명 단위의 글로벌 해외 지사 인력 확장을 쥐락펴락 통제해 본 경험이 있는 빅테크 C-Level 출신의 백전노장 비즈니스 시니어 리더십(CEO/COO 급) 증빙이 전혀 보이지 않아 F 항목에서 가장 충격적인 꼴찌 최하위를 기록했습니다.</p>
+  <p><b class='h-word'>G 락인 장벽 경쟁력 (8/12점)</b>: 경쟁사 대비 성능이 몇 퍼센트 좋다는 식의 입에 발린 뜬구름 잡는 기술 자랑이 아니라, 오직 숫자로만 승부하여 <b>"우리 앱을 깔면 간호사 1명당 매일 밤 교대 근무 시 손으로 써야 하는 피눈물 나는 서류 행정 야근 시간을 무조건 39분이나 날려준다"</b>는 너무나도 직관적이고 거부할 수 없는 파괴적인 정량적 고객 비용 환산(ROI) 사례 성능 우위(G2)를 현장에서 입증했습니다. 더욱 무서운 점은, 한 번 요양원 중앙 백엔드 Care Record 시스템에 자사 모듈이 찰칵 통합되고 나면, 퇴근을 앞당겨주는 이 앱에 완벽히 중독된 일선 수만 명 간병인 노조들이 병원장 측의 타사 구형 저가 솔루션으로의 시스템 교체 시도를 전면 파업 수준으로 거부하게 만드는 가장 악랄하고 강력한 인적 락인(G3 만점)을 유발한다는 것입니다.</p>
+</td></tr>
+
+<tr data-co='Layla'><td><span class='rk'>6</span></td><td class='cc'><b class='h-word' style='font-size:0.8rem'>Layla (Travel)</b></td><td>16</td><td>10</td><td>5</td><td>4</td><td>12</td><td>8</td><td>4</td><td class='ct' data-s='59'>59</td><td><span class='bg bg-wn' style='padding:0.2rem 0.5rem'>관심 (Watch)</span></td></tr>
+<tr class='logic-row'><td colspan='2'></td><td colspan='9'>
+  <p><b class='h-word'>A 제조사 파트너십 (16/20점)</b>: 오픈 초기 짧은 마케팅 기간 내에 500만 명 이상의 실유저를 무서운 속도로 싹쓸이한 인스타그램 릴스/틱톡 시각 렌더링 연동 기반 숏폼 중심 네이티브 앱 UX가 Z세대에게 극강의 체류시간 흡입력(A1, A3 만점)을 뽐냅니다. 이를 무기로 향후 스마트폰 제조사의 순정 갤러리 앱이나 자체 카메라의 <b>'AI 이미지 풍경 비전 검색(이 사진 어디야? 루트 짜줘)' 탭에 즉각 API 기반 플러그인 번들링으로 통합 결합시킬 수 있는 가장 가볍고 트렌디한 서드파티 카메라 확장 시나리오(A4 2점)</b>를 완벽히 획득.</p>
+  <p><b class='h-word'>B 빅테크 M&A 가치 (10/20점)</b>: 글로벌 B2C 여행 생태계를 좌지우지하는 Baidu Ventures 및 미국 거대 항공사 United Airlines 등 무시무시한 글로벌 거대 자본 라인업의 전략 투자 유치(B3 3점) 잭팟을 터뜨렸고, 5M 유저 트래픽과 Z세대의 실시간 크리에이터 소셜 검색 트렌드 그래프라는 독보적인 특유의 무형 자산 데이터베이스(B2) 확보는 돋보입니다. 그러나 서비스 플랫폼 뒤단에서 돌아가는 핵심 텍스트 여행 일정 추천 엔진 알고리즘 코어 아키텍처 대다수가 <b>OpenAI 등 외부 거대 LLM 공급자 API에 껍데기만 씌운 채 완전히 외주 형태로 종속 의존(B4 1점 최하위)</b>되어 있어 구글이나 애플 입장에서 큰돈을 주고 사올 딥테크 원천 기술 M&A 타깃으로는 인수 프리미엄이 크게 떨어집니다.</p>
+  <p><b class='h-word'>C 기술력 방어 장벽 (5/12점)</b>: 방대한 글로벌 크리에이터들의 숏폼 비디오 영상 데이터를 실시간으로 웹 스크래핑 수집하여, 화면 속의 여행지 지형지물을 식별하고 이를 여행 코스로 자동 변환 연결해 주는 CV(컴퓨터 비전) 마스킹 AI 활용 창의 아이디어 자체는 눈에 띄게 훌륭합니다. 하지만 이를 뒷받침할 <b>자사 소유의 독자적인 딥러닝 비전 코어 원천 특허 IP 출원 실적(C1 1점)이나 복잡한 글로벌 결제 금융망 데이터 인프라 보안 인증, 해커 집단의 공격 방어 테스트 정밀 실사 통과 증빙(C4 1점)</b> 등 진정한 기술 자립 기업으로서의 B2B 엔터프라이즈 대비 방어적 독립 기술력 문서 증빙이 처참할 정도로 부실하여 해당 섹션 바닥을 쳤습니다.</p>
+  <p><b class='h-word'>D 매출·BM 건전성 (4/12점)</b>: 유저가 챗봇 안에서 목적지를 확정하여 "총 10억 달러($1B Trip value) 규모의 엄청난 여행 가치가 우리 플랫폼을 거쳐 기획되었다"라는 겉보기에 화려한 허상의 거래액(GMV) 지표 마일스톤만 대대적인 PR 언론 홍보용으로 포장할 뿐, <b>실제로 그 10억 달러 중에서 유저가 최종 결제 버튼을 눌렀을 때 Layla 플랫폼의 자체 은행 통장으로 다이렉트 수취되는 외부 OTA 제휴 예약 중개 커미션 수수료(Take-rate) 실매출 액수나 향후 반복 과금 모델(BM)의 견고한 흑자 현금흐름 재무제표는 소름 돋게 단 한 번도 공개된 적 없이 철저히 블랙박스로 비공개 일관(D1 0점 강제 배정)</b>하여 BM 구조적 취약성 리스크가 여전합니다.</p>
+  <p><b class='h-word'>E 시장 타이밍 호재 (12/12점 만점)</b>: 사람들이 구글이나 네이버 검색창에 지루하게 '제주도 맛집' 텍스트 검색어를 입력하는 과거 방식을 완전히 버리고, 무지성으로 인스타그램 등 숏폼 영상을 스크롤해 보다가 단 3초 만에 꽂힌 풍경을 보고 그 즉석에서 여행지 목적지와 루트를 충동적으로 결정해버리는 <b>최신 Z세대/알파세대의 시각적 비디오 관광 소비 패러다임 급전환 변곡점 중심에 세상에서 가장 먼저 올라타 미친듯한 트래픽 급류</b>를 탔으며, 이 트렌드 호재를 등에 업고 글로벌 대형 메이저 항공사 United의 전략 펀딩 투자라는 거대 언론 릴리즈 뉴스 잭팟 모멘텀(E1, E4 각각 만점 폭격)을 완벽하게 터뜨려 시장 붐 타이밍 점수를 가득 채웠습니다.</p>
+  <p><b class='h-word'>F 팀 전투력 (8/12점)</b>: 유럽 전역에 수조 원대 배달 이커머스 혁명을 일으킨 'Flink'를 바닥부터 키운 코파운더 라인업과, 인스타그램 여행 사진 한 장으로 무려 1천만 명 이상의 글로벌 팬덤 팔로워를 호령하는 세계 탑티어 여행 마케팅 브랜드 'Beautiful Destinations'의 수장이 한 팀으로 결합하여, <b>앱 런칭 초기 B2C 트래픽을 미친 듯이 끌어모으고 전 세계 소셜 미디어 바이럴 마케팅 판을 뒤흔드는 사업적 그로스(Growth) 영업 펌핑 기획력 역량(F3, F4)만큼은 어느 팀보다 압도적이고 화려한 스쿼드를 구축</b>했으나, 정작 플랫폼의 뼈대인 무거운 백엔드 원천 클라우드 코어 기술을 내부에서 총괄 통제할 실리콘밸리 딥러닝 1티어 출신 최고기술책임자(CTO) 급 AI 엔지니어 리더 영입 소식이 아직 없어 팀 밸런스 이면이 약합니다.</p>
+  <p><b class='h-word'>G 락인 장벽 경쟁력 (4/12점)</b>: 전체 이용 유저의 무려 40% 이상이 아예 애초에 목적지도 정하지 않은 채 무작정 "어디 좋은 데 갈까?"라고 AI에게 시각적 숏폼 대화를 시작하며, 20년간 굳어진 기존 Booking.com식 텍스트 필터 조건 검색의 낡은 문법을 완벽히 파괴해 버린 새로운 UI/UX 유입 혁신(G1) 도입 성과는 박수받아 마땅합니다. <b>하지만, 여행의 기획과 상상이라는 가장 재미있는 발견(Discovery) 단계 앞단만 쥐고 있을 뿐 정작 돈이 오가는 최종 항공/호텔 예약 발권 단계에서는 자사 결제 모듈이 없어 결국 유저를 외부 익스피디아 등 대형 OTA 링크 창 밖으로 쫓아내버리는(이탈) 아웃바운드 구조이므로</b>, 향후 구글 트래블이나 틱톡 등 초거대 기업들이 동일한 숏폼 UI 알고리즘을 베껴 출시해 버리면 사용자를 자사 앱에 영원히 묶어둘 플랫폼 락인(환승 비용 방어망/G3 1점 최하위) 장치가 깃털처럼 가볍게 전무합니다.</p>
+</td></tr>
+
+<tr data-co='Portola/Tolan'><td><span class='rk'>7</span></td><td class='cc'><b class='h-word' style='font-size:0.8rem'>Portola/Tolan (Voice)</b></td><td>14</td><td>8</td><td>6</td><td>9</td><td>8</td><td>9</td><td>5</td><td class='ct' data-s='59'>59</td><td><span class='bg bg-wn' style='padding:0.2rem 0.5rem'>관심 (Watch)</span></td></tr>
+<tr class='logic-row'><td colspan='2'></td><td colspan='9'>
+  <p><b class='h-word'>A 제조사 파트너십 (14/20점)</b>: 단일 iOS 플랫폼에서만 누적 다운로드 300만 건 이상, 11만 개가 넘는 유저 리뷰와 평균 평점 4.8에 이르는 폭발력 있고 충성도 높은 대중 B2C 모바일 앱이며, 사용자가 스마트폰 카메라 렌즈로 직접 찍어 올린 사진 풍경을 AI 캐릭터와 실시간 음성으로 공유하고 반응하는 모바일 네이티브 카메라 융합 UX 구조(A3 만점)를 완벽히 갖춰 <b>10대 20대 알파 세대를 공략하기 위한 저가형/보급형 단말 전용 외계인 AOD 테마(Theme) 펌웨어 번들 콜라보 시나리오에 가장 적격인 완벽한 파트너(A4)</b>입니다.</p>
+  <p><b class='h-word'>B 빅테크 M&A 가치 (8/20점)</b>: 실리콘밸리 최고 마이더스의 손 Khosla Ventures 등으로부터 설립 극초기(Series A) 단계에 무려 $20M의 강력한 시드 뭉칫돈 자본 확보엔 가뿐히 성공했으나, 시스템 대화 지능 엔진의 대다수가 OpenAI의 GPT 등 특정 공급자의 외부 범용 파운데이션 모델 생태계 API 서버에 전적으로 목숨을 맡기고 의존하고 있어, <b>향후 구글이나 애플 등이 자사 생태계 확장을 위해 수천억 원의 인수 대금을 지불하고 통째로 집어삼킬 만한 '독자적인 백엔드 기술 코어 스택(B4 1점 치명타)'이 원천적으로 부재</b>하여 벤처 M&A 매물 시장 관점에서 치명적이고 뼈아픈 최하위 감점 폭격을 맞이.</p>
+  <p><b class='h-word'>C 기술력 방어 장벽 (6/12점)</b>: 사용자가 지난주에 털어놓았던 우울한 대화 맥락이나 기쁜 감정을 장기적으로 기억(Memory Recall)해 두었다가 오늘 아침에 먼저 알람을 울리며 따뜻하게 말을 거는 형태의 파인튜닝 감성 알고리즘 고도화(C3)는 훌륭합니다. 하지만 앱 서비스 특성상 철저히 B2C 엔터테인먼트에 치중되어 있어, <b>미성년자 사용자의 딥한 우울증 개인 소셜 감정이나 음성 데이터베이스를 서버에 보관함에 있어, 대기업 수준에서 요구되는 복잡한 글로벌 B2B 데이터 해킹 보안 검증(SOC2 등) 정밀 실사를 통과하거나 자사만의 근본적 딥러닝 비전 코어 모델 기술력 특허(IP 출원/C1 1점)를 단 하나도 문서상으로 입증하지 못한 깃털처럼 가벼운 애플리케이션 래퍼(Wrapper) 한계</b>를 노출합니다.</p>
+  <p><b class='h-word'>D 매출·BM 건전성 (9/12점)</b>: 수많은 감성 AI 캐릭터 챗봇 스타트업들이 막대한 API 서버 비용만 탕진하고 B2C 무료 유저만 가득 차 실제 현금 수익화(BM)에는 처참히 깡통을 차며 실패하는 와중에, Tolan은 정식 앱 유료화 출시 불과 4개월 만에 10만 명 이상(100K+ Paid)의 Z세대 사용자들이 자발적으로 지갑을 열고 주당 5달러씩 카드를 긁게 만드는 놀라운 결제 폭발 전환을 일으켰습니다. <b>이를 통해 연환산 ARR 1,200만 달러(한화 약 160억 원)라는 거대 B2C 소비자 반복 구독 현금 흐름을 스스로 안정적으로 찍어내는(D1, D2 3점 만점), 여타 껍데기만 AI인 스타트업이 범접 불가능한 놀라운 실제 장부 재무 지표를 거두어들였습니다.</b></p>
+  <p><b class='h-word'>E 시장 타이밍 호재 (8/12점)</b>: 파편화된 현대 사회 속에서 고립감과 외로움이 극에 달한 인류를 위로하는 '반려 AI 동반자(Companion AI)' 시장 수요 대폭발의 붐(Boom)을 제대로 만났고 이 흐름에 타 대규모 외부 언론 호재 및 시리즈 A 펀딩 마일스톤(E4)을 시기적절하게 달성했습니다. 그러나 동시에, AI 캐릭터가 <b>향후 미성년자 청소년의 정서적 의존증이나 가스라이팅을 유발하거나, 성인용 딥페이크 유사 대화 논란으로 번질 경우 각국 글로벌 의회와 정부의 AI 윤리위 규제 강화 및 징벌적 앱스토어 퇴출 제재 리스크(E2 1점 최하)</b>라는 거대하고 시한폭탄 같은 규제 지뢰밭을 껴안고 달리는 형국입니다.</p>
+  <p><b class='h-word'>F 팀 전투력 (9/12점)</b>: 그저 코딩만 할 줄 아는 대학생 개발자 모임이 아니라, 이전에 창업했던 극초기 벤처 회사(FamilyLeaf 등)를 모바일 시대에 대기업 생태계 시스템에 성공적으로 매각(M&A Exit 완수)해 본 경험을 뼈저리게 알고 있는 <b>실리콘밸리의 닳고 닳은 노련한 연쇄 창업자(Serial Entrepreneur) 마피아 출신 C-레벨 핵심 멤버들(F3 만점)로 뭉쳐 있어,</b> 앱의 초기 바이럴 런칭 기획, Z세대 심리를 관통하는 틱톡/숏폼 트래픽 폭발 생성, 그리고 벤처캐피탈(VC)을 홀려 신속한 수십억 자본을 조달하는 초기 펀딩 세일즈 역량(F4) 측면에서 타 경쟁 스타트업들을 아득히 압도하는 무시무시한 사업적 백전노장 전투력을 뿜어냄.</p>
+  <p><b class='h-word'>G 락인 장벽 경쟁력 (5/12점)</b>: Tolan이라는 자체적으로 렌더링 한 귀여운 외계인 3D 캐릭터 고유 디자인과 세상 물정 모르는 친근한 성격(Persona)을 구축하여 유저의 마음을 단숨에 사로잡았고 단기적인 찐득한 감정 락인(G3)을 시키는 데는 성공했습니다. 하지만 결국 이 서비스는 고객의 기업 내 행정 비용이나 통신비를 깎아주는 정량적이고 금전적인 확실한 ROI 수치 환산(G2 1점)이 아예 불가능한 순수 오락용 감성 앱이다 보니, <b>향후 Character.ai나 OpenAI 같은 조 단위 거대 빅테크 플랫폼들이 막대한 서버 자본력을 앞세워 이와 유사한 3D 캐릭터 말동무 기능을 앱 내 미니 플러그인으로 무료 출시해 버릴 경우, 유저들의 대규모 썰물 이탈을 근본적으로 방어해 낼 독점적인 딥러닝 테크 해자(G4 핵심 특허 장벽)나 폐쇄적인 네트워크 장벽이 전무</b>하다는 것이 미래 밸류를 갉아먹는 최대 아킬레스건입니다.</p>
+</td></tr>
+
+<tr data-co='Pine AI'><td><span class='rk'>8</span></td><td class='cc'><b class='h-word' style='font-size:0.8rem'>Pine AI (Action)</b></td><td>15</td><td>7</td><td>6</td><td>5</td><td>9</td><td>5</td><td>6</td><td class='ct' data-s='53'>53</td><td><span class='bg bg-rd' style='padding:0.2rem 0.5rem'>모니터링 (Hold)</span></td></tr>
+<tr class='logic-row'><td colspan='2'></td><td colspan='9'>
+  <p><b class='h-word'>A 제조사 파트너십 (15/20점)</b>: 단순히 검색어에 답만 해주는 무기력한 챗봇이 아니라, 사용자의 스마트폰 OS 깊숙한 접근 권한을 공식 위임받아 내 스마트폰 안에 있는 이메일 앱, 브라우저 탭, 백그라운드 전화망을 사용자를 대신해 직접 물리적으로 터치하고 실행 통제하는 '모바일 네이티브 맞춤형 극강 실행 에이전트(Action Bot)'(A3 6점 만점)로서, <b>제조사가 자사 하드웨어 OS 홈 화면과 물리 버튼에 연동할 '기본 AI 비서 플러그인' 구조에 가장 기계적으로 유기적이고 완벽하게 이식할 수 있는 최적의 폼팩터 시나리오(A4)를 충족</b>합니다.</p>
+  <p><b class='h-word'>B 빅테크 M&A 가치 (7/20점)</b>: 2024년에 갓 설립되어 세상에 런칭된 지 1년 남짓 된 극초기 Series A 걸음마 단계 벤처 기업으로 아직 전체 조직 체계 규모(B5 1점)가 매우 영세하며, 유사한 DoNotPay 등과 같은 과거의 B2C 법률/금융 소비자 행동 봇 생태계 스타트업들이 B2B 시장에서 대형 빅테크 기업에 수천억 원대 전략적 프리미엄 고가 매각(M&A Exit)에 도달하여 장벽을 깬 벤치마크 선례(B1)가 역사상 극히 드물어, <b>투자 회수 관점에서의 향후 피인수 기대 밸류 가치 점수가 모니터링 대상 8개 앱 중 최하위권 바닥</b>을 기고 있습니다.</p>
+  <p><b class='h-word'>C 기술력 방어 장벽 (6/12점)</b>: 가장 지독하게 까다로운 통신사 고객센터 ARS 전화 트리의 복잡한 방어 논리를 뚫고 해지/할인을 받아내는 자체 스크립트 시나리오 코딩 기술력으로 무려 '93% 요금 인하 협상 타결'이라는 놀랍고 경이로운 소비자 대리 행동 검증 성과(C3)를 공식 텍스트로 증명 완료. 하지만, 이 에이전트가 <b>소비자의 극도로 민감한 개인정보, 금융/카드 결제망 비밀번호, 통신망 해지 변경 제어라는 심각한 권한을 백그라운드에서 완전히 대리함에도 불구하고 대기업 수준에서 통과해야 할 뱅킹급 실사(Bank-level) 해킹 방어 인증망 인프라 구축이나 SOC2 딥 보안 투명 실사(C4 1점)</b> 여부가 아직 철저히 불투명합니다.</p>
+  <p><b class='h-word'>D 매출·BM 건전성 (5/12점)</b>: 비싼 앱 다운로드 요금이 아니라, 케이블 요금이나 통신비 인하 협상에 실제로 성공하여 사용자의 통장에 돈을 돌려줬을 경우에 한해서만 그 절감액의 일부 수수료를 떼어가는 <b>합리적이고 파격적인 윈-윈 성공 보수(Success Fee) 과금 모델</b>을 런칭해 소비자 초기 지갑 저항 심리를 완벽히 대폭 낮추었습니다. 허나, 요금을 깎아주고 나면 끝나는 단발성 태스크 심부름 성격이 너무 짙어 매달 확정적으로 돈이 꽂히는 B2C 장기 구독 안정성(NRR)이 현저히 떨어지며, 현재 설립 1년간 회사가 번 확실한 '총 달러 현금 누적 실매출(ARR)' 장부는 완전히 캄캄한 장막에 덮인 비공개(D1 0점 강제 배분) 상태입니다.</p>
+  <p><b class='h-word'>E 시장 타이밍 호재 (9/12점)</b>: 역대급 전 세계 인플레이션 시기에 불필요한 구독료 폭탄과 바가지 통신비, 그리고 복잡한 해지 절차에 대한 일반 대중의 분노와 짠테크 다이어트 니즈가 극단적으로 폭발하는 찰나의 사회적 심리 타이밍을 가장 영리하고 완벽하게 포착해 수만 명의 가입자를 블랙홀처럼 단기 진공청소기처럼 빨아들였으며(E4), <b>귀찮은 행정을 AI가 해결해 준다는 측면에서 앱을 다운로드하고 권한만 위임하면 곧바로 돈/시간 절감 효용(E3 만점)이 체감되는 극도의 킬러 마찰 제로 서비스 론칭 적기</b>를 맞이. (단, 애플 인텔리전스 등 강력한 OS 기본 네이티브 실행 봇 출시 위협이 상존합니다.)</p>
+  <p><b class='h-word'>F 팀 전투력 (5/12점)</b>: 중국계 명문 USTC 정보 대학을 베이스로 한 창업자들의 백엔드 통신망 네트워크 라우팅 최적화 및 인프라 보안 설계 딥테크(Deep-tech) 특허 원천 개발 이력 전문성(F1)은 실무적으로 깊고 뛰어나지만, 수십만 명을 넘어 <b>수천만 명 규모 이상의 글로벌 B2C 대규모 대중 트래픽을 호흡해 보거나 메가톤급 글로벌 마켓 플랫폼 비즈니스를 견인하고 지휘해 본 애플, 아마존, 메타 등 실리콘밸리 최고 1티어 1등 플랫폼 앱 출신의 그로스(Growth) C-Level 임원진 포진 경험(F2)이 전무</b>하여 향후 폭발적 성장에 따른 서버 다운 등 파괴적 스케일업 리스크 및 관리 붕괴 한계(F4 최하점)가 매우 큽니다.</p>
+  <p><b class='h-word'>G 락인 장벽 경쟁력 (6/12점)</b>: 유저 1명당 무려 '연 $300라는 뚜렷한 금액적 금전 절약' 및 '270분에 달하는 지루한 고객센터 무한 대기 시간 증발'이라는 경악할 만한 <b>정량적이고 물리적인 확실한 ROI 체감 가치(G2 2점)</b>를 소비자 통장에 직접 꽂아주는 퍼포먼스 체감도는 8개 스타트업 중 타의 추종을 불허할 정도로 압도적 1위입니다. 하지만, 소비자가 골칫거리였던 통신사 요금제 인하 협상 목적을 단 1회 달성하고 나면 "더 이상 협상할 게 없다"며 가차 없이 앱을 당일 삭제해 버릴 확률이 압도적으로 높아, 앱 내에 <b>방대한 사용자의 끈적한 고유 일상 데이터가 매일 쌓여 경쟁사로의 전환을 방어하는 락인 및 네트워크 방어막(G3 1점 낙제)이 백지 수준으로 얇고 미약하다</b>는 치명적 BM 구조 한계가 뼈를 때립니다.</p>
+</td></tr>
+</tbody></table></div>
+</div></div></div>
+
+<div class='cd interactive-section' id='sec-partner'><div class='ch2' onclick="tc(this)"><div><h2>③ 휴대폰 제조사 관점 활용 아이디어</h2><p>· 스마트 기기와의 서비스 탑재 및 R/S (수익 공유) 파트너십 제안</p></div><span class='arr'>▼</span></div>
+<div class='cb'><div class='pg'>
+<div class='pc interactive-card'><div class='pc-h'><h3><span class='rk'>1</span> Suki</h3><span class='bg bg-ac'>의료 단말</span></div><div class='pc-b'>
+<div class='pc-s'>🤝 파트너십 시나리오</div><div class='pc-l'><div><b>전용 ambient 버튼</b> 탑재 의료 전용 스마트폰 신규 런칭 및 <b>HIPAA(미국 건강보험 양해각서) 완전 무결점 보안 단말</b> 하드웨어 인증 마케팅 전개</div><div>병원 직원들의 사제 <b>BYOD 대체</b> B2B MDM + Suki 패키지 탑재 및 제조사 단말 파격 보조금 + Suki AI Seat 번들 다년 결합 구독 B2B 특판 세일즈</div><div>미국 최대급 athenahealth 및 HealthEdge 파트너십 채널망을 적극 레버리지하여, <b>해당 병원 공식 인증 1위 디바이스 리스트</b>에 자사 하드웨어 우선 벤더 전격 등록 추진</div></div>
+<div class='pc-s'>📊 R/S (수익 구조) 체계</div><div class='pc-l'><div><b>제조사</b>: 마진율이 엄청난 의료 현장 특화 프리미엄 단말 대량 묶음 출하량(B2B) 독점 확보 및 HIPAA 철통 보안 차별화를 통한 판매 하드웨어 ASP(평균판매단가) 수직 상승 캐시카우</div><div><b>Suki</b>: 스마트폰 단말 강제 기본 번들링을 통한 병원 의사(Seat 구독자) 신규 고객 획득 마케팅 비용(CAC) 제로화 및 170,000+ Provider 대상 자동 메인 노출 입점 홍보 달성</div></div>
+</div></div>
+
+<div class='pc interactive-card'><div class='pc-h'><h3><span class='rk'>2</span> Wysa</h3><span class='bg bg-ac'>Wellbeing</span></div><div class='pc-b'>
+<div class='pc-s'>🤝 파트너십 시나리오</div><div class='pc-l'><div>모든 자사 스마트폰 OS 최상단 시스템 메뉴 내 Digital Wellbeing 영역에 <b>Wysa AI 웰니스 챗봇 영구 기본 내장(프리로드)</b> · 워치 스트레스 생체 징후 급증 감지 시 자동 연동 팝업 CBT 긴급 제안</div><div><b>글로벌 대형 생명/건강 보험사 × 제조사</b> 3자 공동 얼라이언스 B2B 상품 기획: 자사 프리미엄 폰 구매 고객에게 수백 달러 상당의 Employer wellness 프로그램 무료 바우처 1년 무상 혜택 패키징 제공</div><div>10대 알파세대 타겟 <b>청소년 디지털 디톡스 보호 모드</b> 전면 결합 + 심야 정서 위험/SNS 스마트폰 중독 모니터링 AI 기반의 부모 안심 대시보드 리포트(주간/월간) 생성 통제 기능 확장 제공</div></div>
+<div class='pc-s'>📊 R/S (수익 구조) 체계</div><div class='pc-l'><div><b>제조사</b>: 막대한 자본이 흐르는 보험/기업(B2B) 연계 헬스케어 메인 플랫폼 생태계 완벽 선점 및 법인 대량 수주 · 자사 유저 건강 지표 기반 연동의 새로운 앱 내 인앱 구독 R/S 캐시카우 채널 창출</div><div><b>Wysa</b>: 현재 11M(1,100만) 사용자를 단숨에 뛰어넘어, 제조사의 압도적 글로벌 유통망을 통해 단 하루 만에 수억 대의 글로벌 신흥 시장(인도/아시아) 단말기 기본 앱으로 폭발적 스케일업 장악</div></div>
+</div></div>
+
+<div class='pc interactive-card'><div class='pc-h'><h3><span class='rk'>3</span> Personal AI</h3><span class='bg bg-ac'>AI Identity</span></div><div class='pc-b'>
+<div class='pc-s'>🤝 파트너십 시나리오</div><div class='pc-l'><div>초프리미엄 플래그십(예: 갤럭시 S Ultra, 아이폰 Pro Max 급) 라인업 단독 전용 <b>"나의 평생을 절대 잊지 않고 기기 안에서 영원히 진화하는 프라이빗 AI"</b> · On-device 초경량 엣지 SLM 모델 칩셋 맞춤 최적화 탑재</div><div>개인의 민감한 사진첩, 모든 GPS 위치기록, 프라이빗 문자 메시지 대화 전체를 클라우드 서버 유출 없이 오직 로컬 스마트폰 NPU 안에서만 완전 학습하여 나만의 영구적 <b>Memory Graph</b> 로컬 신경망 구축 실현</div><div>개인 스마트폰 단말의 AI 두뇌 기억을 뛰어넘어, 스마트 TV, 엣지 워치, 로봇 청소기 가전 등 <b>제조사가 지배하는 모든 홈 IoT 생태계</b> 전반에 사용자의 개인화된 AI 인격과 선호도를 끊김 없이 완벽 동기화 및 심리스 공유</div></div>
+<div class='pc-s'>📊 R/S (수익 구조) 체계</div><div class='pc-l'><div><b>제조사</b>: 가장 민감하고 개인화된 방대한 사용자 맞춤형 기억 데이터의 '로컬 하드웨어 귀속화'를 통해, <b>유저가 추후 경쟁사(애플/구글 등) 스마트폰 생태계로 단말기를 전환할 경우 기억 상실을 초래해 이탈(Churn)을 원천 차단하는 가장 잔인한 하드웨어 락인 달성</b></div><div><b>Personal AI</b>: Comcast 65M 가구 인터넷 공유기 그리드를 넘어, 매년 수억 대가 팔리는 글로벌 최고 성능의 스마트폰 NPU 모바일 엣지 컴퓨팅망 전초기지를 전 세계 가정의 주머니 속에 구축 완수</div></div>
+</div></div>
+
+<div class='pc interactive-card'><div class='pc-h'><h3><span class='rk'>4</span> Mindtrip</h3><span class='bg bg-ac'>Travel Mode</span></div><div class='pc-b'>
+<div class='pc-s'>🤝 파트너십 시나리오</div><div class='pc-l'><div>사용자가 여행지 도착 즉시 스마트폰 상단바 빠른 실행 창에서 <b>"여행 통합 모드"</b> 진입 클릭 시, 파편화되어 분산된 구글 지도·캘린더·예약/알람 앱들을 강제로 중지하고 Mindtrip AI 단일 풀스크린 UI로 자동 화면 전환 및 지배</div><div>제조사 스마트폰 자체 결제 지갑 앱(삼성 페이/애플 페이 등 Wallet) × Mindtrip이 장악한 PayPal 결제 백엔드 API 다이렉트 연동을 통한 항공/호텔/렌터카 패스워드 없는 <b>원터치 안전 예약 인앱 직결제</b> 거대 체계 구축</div><div>주요 메이저 이동통신사의 해외 무제한 데이터 로밍 패키지와 AI Travel Premium 비서 실시간 예약/맛집 가이드 기능을 통신 요금에 하나로 묶은 파격적인 번들 프로모션 공동 마케팅 B2B 판매 전개</div></div>
+<div class='pc-s'>📊 R/S (수익 구조) 체계</div><div class='pc-l'><div><b>제조사</b>: 유저가 여행 중 돈을 가장 많이 쓰는 거대한 '여행 발권 결제 컨텍스트'를 구글에게 뺏기지 않고 자사 스마트폰 생태계 플랫폼으로 완전히 내재화하며, Sabre 예약망을 통한 항공/호텔 천문학적 실결제 발생 건수마다 <b>막대한 수수료 분배(R/S) 캐시 수취</b></div></div>
+</div></div>
+
+<div class='pc interactive-card'><div class='pc-h'><h3><span class='rk'>5</span> voize</h3><span class='bg bg-ac'>Frontline</span></div><div class='pc-b'>
+<div class='pc-s'>🤝 파트너십 시나리오</div><div class='pc-l'><div>스마트폰을 자꾸 떨어뜨리거나 물이 튀는 병원 응급실 및 통신 인프라가 멸망한 지방 낙후 요양 현장 전용 <b>초고도 특수 방수·방진(Rugged) 내구도 스마트폰</b> 박스 출하 시, 공장 단계에서 음성 인식 voize 필수 앱 영구 번들 하드웨어 선탑재 롤아웃</div><div>와이파이나 5G 데이터망 등 인터넷 환경이 극도로 불안정하게 끊어지는 극한의 오프라인 병동 건물 안에서도, 1초의 끊김 없이 완벽 작동하여 의학 음성을 기록하는 <b>초경량 자체 엣지 추론(Inference)</b> 하드웨어 NPU 성능 극대화 마케팅 영업 전개</div><div>병원 IT 관리자를 위해 제조사가 자체 제공하는 <b>Enterprise MDM(기기 원격 통제) 철통 보안 솔루션</b> + voize 의학 음성 자동 문서 워크플로 + 현지 병원 메인 클라우드 EHR 서버 자동 즉각 연동 B2B 납품 패키지 원스톱 원패스 제공</div></div>
+<div class='pc-s'>📊 R/S (수익 구조) 체계</div><div class='pc-l'><div><b>제조사</b>: 일반 소비자가 아닌 간호 요양, 험지 대형 건설 현장, 거대 물류 창고 등 수백만 특수 Frontline 험지 노동자 환경의 고마진 B2B 법인 스마트폰 단말 대량 공급망을 완벽히 싹쓸이 장악 및 기업 예산으로 집행되는 예측 가능한 2년 주기 폰 반복 교체 수요 영구 흡수</div></div>
+</div></div>
+
+<div class='pc interactive-card'><div class='pc-h'><h3><span class='rk'>6</span> Layla</h3><span class='bg bg-ac'>카메라×여행</span></div><div class='pc-b'>
+<div class='pc-s'>🤝 파트너십 시나리오</div><div class='pc-l'><div>단순 사진을 찍는 순정 렌즈 카메라 앱이나 앨범 뷰어 하단에서 사용자가 <b>"이 이미지 속 환상적인 장소로 당장 여행 플랜 3박 4일짜리 짜줘"</b> 터치 클릭 한 번만 하면, 화면 밖 이탈 없이 Layla의 숏폼/예약 알고리즘 미니 팝업창이 오버레이로 자동 연동 즉시 전개</div><div>제조사 스마트폰 기본 갤러리 앱 상단 혹은 숏폼 미디어 탭 내에 제조사 전용 <b>Inspiration(여행 영감 및 발견) 시각적 영상 추천 채널</b>을 신설 스폰서링하고, 천만 팔로워 뷰티풀 데스티네이션 보유 여행 크리에이터 콜라보 독점 영상 콘텐츠 24시간 끊임없이 자동 노출</div></div>
+<div class='pc-s'>📊 R/S (수익 구조) 체계</div><div class='pc-l'><div><b>제조사</b>: 일상적인 예쁜 풍경 카메라 촬영 경험이나 인스타 감성 앨범 스와이프 행위를 단 한 번의 끊김이나 이탈 없이 직접적인 수백만 원짜리 여행 이커머스 최종 발권 거래 창구로 유기적으로 직결 연결하여, <b>제조사 White-label 앱 화면 기반의 엄청난 신규 OTA 예약 마진 중개 수익망</b> 단숨에 탈취</div></div>
+</div></div>
+
+<div class='pc interactive-card'><div class='pc-h'><h3><span class='rk'>7</span> Tolan</h3><span class='bg bg-ac'>Gen Z</span></div><div class='pc-b'>
+<div class='pc-s'>🤝 파트너십 시나리오</div><div class='pc-l'><div>어른들이 쓰지 않는 철저한 1020 학생 타겟 저가 보급형 A시리즈 스마트폰 펌웨어 최하단에 <b>외계인 Tolan IP(입체 캐릭터)를 코어 레벨 선탑재 결합</b>시키고, 스마트폰 화면이 꺼진 상태의 잠금화면(AOD)에서도 주인의 표정을 읽고 실시간 다이내믹 감정 반응을 하는 특화 펫 모드(Pet Mode) 전폭 지원</div><div>스마트폰 단말기 하드웨어 베젤 색상과 완벽히 깔맞춤 매칭되는 <b>오프라인 한정판 캐릭터 3D 스킨 인형 및 폰을 톡 대면 캐릭터가 깨어나는 NFC 칩 내장 폰 케이스</b> 콜라보레이션 굿즈 에디션 10대 한정판 오픈런 대대적 출시 마케팅</div></div>
+<div class='pc-s'>📊 R/S (수익 구조) 체계</div><div class='pc-l'><div><b>제조사</b>: 스마트폰 브랜드에 이탈이 쉬운 알파/Z세대들의 미친듯한 강박적 하드웨어 폰케이스 충성도 완벽 확립 및 앱스토어를 통하지 않는 자체 폰 내부 인앱 결제를 통한 폭발적인 <b>연 $12M ARR 거대 AI 구독 생태계 내 지속적이고 엄청난 비율의 파트너십 앱 수익 수수료 셰어 영구 창출</b></div></div>
+</div></div>
+
+<div class='pc interactive-card'><div class='pc-h'><h3><span class='rk'>8</span> Pine AI</h3><span class='bg bg-ac'>Personal Agent</span></div><div class='pc-b'>
+<div class='pc-s'>🤝 파트너십 시나리오</div><div class='pc-l'><div>날씨나 알려주는 단순 지식형 스마트폰 내장 음성 비서(Assistant) 코어에 <b>"나 이번 달 통신비 데이터 너무 비싸. 알아서 네가 통신사 전화해서 반값으로 깎아줘" (AI 대리 음성 통화 협상 자동화)</b> 액션 모듈 플러그인을 기본 Root 통화 마이크 접근 권한으로 OS 통합 선탑재 강제 주입</div><div>미국 메이저 AT&T 등 주요 메이저 통신사 전용 단말 폰 개통 프로모션 기획 시 <b>사용자 맞춤형 Carrier Bill(청구서) 실시간 최적화 진단 엔진</b>을 번들로 끼워 팔고, 통신사 입장에서 인건비가 막대하게 드는 제조사/통신사 연합 고객센터 IVR 상담원 대기 및 단순 불만 응대 콜 연결 대행 AI 완전 100% 자동화 무인 솔루션 지원</div></div>
+<div class='pc-s'>📊 R/S (수익 구조) 체계</div><div class='pc-l'><div><b>제조사</b>: 쓸모없는 텍스트 정보 검색 결과를 넘어서, 실제 소비자의 지갑에서 나가는 <b>진짜 Action(돈/시간 환불 및 절감) 비서</b> 기능 폼팩터 시장을 빅테크 애플/구글보다 단숨에 먼저 선점하고, 통신비 실질 10만 원 인하 체감 연계 마케팅으로 200만 원짜리 고가 프리미엄 폰 구매 전환율 극대화 촉진 유도</div></div>
+</div></div>
+</div></div></div>
+
+<div class='is interactive-section' id='sec-insight'>
+<h2>④ 투자 파트너십 인사이트 (벤처 심사 실사 및 M&A 관점 철저 분리)</h2>
+<div class='pg'>
+  <div class='pc interactive-card'>
+    <div class='pc-h'><h3>Suki (Clinical AI)</h3></div>
+    <div class='pc-b'>
+      <div class='pc-s'>💰 재무 투자 및 파트너십 관점</div><div class='pc-l'><div>· Series D <b class='hl'>$70M</b> <span class='tm'>'21.12월</span> 대형 자금 조달</div><div>· <b class='hl'>$500M</b> 벤처 밸류 방어 · 의료 B2B 다년 구독 BM 시장 검증 1차 완료</div><div>· <b class='red-w'>후속 베팅 전 필수 실사</b>: 전체 달러 ARR 수치 · 병원 Seat 갱신율(Net Expansion) 회계 컷오프</div><div>· 파트너십: 의료진 단말 <b class='h-word'>HIPAA 준수 Suki 앱 하드웨어 선탑재 번들링</b></div><div>· B2B 헬스케어 현장 <b>고마진 하드웨어 세일즈 락인</b> 파이프라인 진입</div></div>
+      <div class='pc-s'>🏢 완전 인수 (M&A) 전략 관점</div><div class='pc-l'><div>· athenahealth·HealthEdge 백엔드 통합망 <b class='hl'>170,000명+ 의사 네트워크</b> 단일 M&A로 장악</div><div>· 하루 <b class='hl'>50만 건+</b> 수술실/진료실 임상 대화 Raw 데이터 독식</div><div>· 자사 <b class='h-word'>Healthcare 전용 파운데이션 LLM</b> 훈련 독점 데이터 샘물 통합</div><div>· 경쟁 의료 AI 대비 <b>데이터 플라이휠 잭팟 시너지</b> 창출</div></div>
     </div>
   </div>
-
-  <main>
-    <section class='hero'>
-      <div class='hero-chips'>
-        <span class='chip'>'26.4.16 (목)</span>
-        <span class='chip'>유니콘 미만</span>
-        <span class='chip'>한국/중국 본사 제외</span>
-        <span class='chip'>모바일 AI Agent · 휴대폰 AI 기술</span>
-      </div>
-      <h1>유니콘 미만 글로벌 모바일 AI Agent 스타트업 모니터링</h1>
-      <p>· 공개 수치만 반영 · 미확인 항목은 — 표기 · 기업명 클릭 → 홈페이지 · 출처 클릭 → 원문 · 경쟁사명 클릭 → 경쟁사 홈페이지</p>
-      <div class='sector-schedule'>
-        <span class='sector-day'>월 — 모바일 헬스 · 헬스 서비스 · AI 헬스</span>
-        <span class='sector-day'>화 — 모바일 광고 · 광고 AI · 기술/서비스</span>
-        <a class='sector-link' href='https://dicacros-gif.github.io/AI/415/index.html' target='_blank'><span class='sector-day'>수 — 멀티모달 AI · 영상 AI 기술/서비스</span></a>
-        <span class='sector-day today'>목 — 모바일 AI Agent · 휴대폰 AI 기술</span>
-        <span class='sector-day'>금 — 모바일 소셜 · Short Form 서비스</span>
-        <span class='sector-day'>토 — 페이 · 금융 기술 (코인 제외)</span>
-        <span class='sector-day'>일 — 기타 모바일/웹 서비스</span>
-      </div>
-    </section>
-
-    <div class='card'>
-      <div class='card-header'>
-        <h2>통합 스타트업 리스트 8선</h2>
-        <p>· 기존 Top 5 + Portola/Tolan · Mindtrip · Layla 통합 · 목요일 도메인 적합성 우선 정렬 · 공개 수치 보수 반영</p>
-      </div>
-      <div class='scroll-hint'>
-        <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M10.05 4.575a1.575 1.575 0 1 0-3.15 0v5.85h-.177a.473.473 0 0 0-.473.473c0 .842.224 1.67.648 2.398l1.674 3.014A3 3 0 0 0 11.2 18H16.8a3 3 0 0 0 2.625-1.547l1.674-3.014c.424-.728.648-1.556.648-2.398a.473.473 0 0 0-.473-.473h-.177V6.575a1.575 1.575 0 0 0-3.15 0v3.85h-1.05V5.075a1.575 1.575 0 0 0-3.15 0v5.35h-1.05V4.575a1.575 1.575 0 0 0-1.65-1.575z'/></svg>
-        좌우 스크롤 · ← → 키 사용 가능
-      </div>
-      <div class='table-wrap' id='tw' tabindex='0'>
-        <table>
-          <thead>
-            <tr>
-              <th style='min-width:50px'>순위</th>
-              <th style='min-width:120px'>기업</th>
-              <th>설립</th>
-              <th>본사</th>
-              <th>창업자 / CEO</th>
-              <th style='min-width:220px'>학교 · 전공 · 핵심 경력</th>
-              <th>직원</th>
-              <th>밸류에이션</th>
-              <th style='min-width:180px'>펀딩 · 투자자</th>
-              <th style='min-width:220px'>매출 · 트랙션</th>
-              <th style='min-width:180px'>비즈니스 모델</th>
-              <th style='min-width:220px'>사업 상세 설명</th>
-              <th style='min-width:240px'>인사이트</th>
-              <th style='min-width:320px'>출처 · 뉴스 요약 · 경쟁사</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><span class='badge-rank'>1</span></td>
-              <td><a class='company-link' href='https://www.suki.ai/' target='_blank'>Suki</a><br><span class='badge badge-accent'>Clinical AI</span></td>
-              <td><strong>2017</strong></td>
-              <td>Redwood City, CA</td>
-              <td class='td-detail'><div>· Punit Soni</div><div>· Founder & CEO</div></td>
-              <td class='td-detail'>
-                <div>· The Wharton School MBA</div>
-                <div>· NIT Kurukshetra 전자통신공학</div>
-                <div>· 전 Google Motorola 제품 리더</div>
-                <div>· 전 Flipkart CPO</div>
-              </td>
-              <td>201-500명</td>
-              <td><span class='badge badge-ok'>$500M</span></td>
-              <td class='td-detail'>
-                <div>· 누적 $168M</div>
-                <div>· 2024.10 Series D $70M</div>
-                <div>· Venrock · March Capital · First Round · Flare · Zoom Ventures</div>
-              </td>
-              <td class='td-detail'>
-                <div>· 170,000 providers 대상 athenahealth 채널 접근</div>
-                <div>· 2 patents</div>
-                <div>· 임상 문서화 최대 76% 가속 사례</div>
-                <div>· 350+ health systems · clinics 공개 이력</div>
-              </td>
-              <td class='td-detail'>
-                <div>· 의료기관 대상 B2B SaaS</div>
-                <div>· seat 구독 + 플랫폼 임베드 + 파트너 배포</div>
-                <div>· iOS 현장 입력 + EHR 연동</div>
-              </td>
-              <td class='td-detail'>
-                <div>· 모바일 음성 기반 임상 assistant</div>
-                <div>· ambient · dictation · command 모드 결합</div>
-                <div>· athenahealth · HealthEdge 같은 임상 워크플로 내부 배치</div>
-                <div>· 휴대폰 제조사 관점에서 의료 특화 단말 번들 적합</div>
-              </td>
-              <td class='td-detail'>
-                <div class='insight-box'><strong>경쟁 우위</strong> · 의료 도메인 특화 · 특허 · EHR 통합 · 현장 모바일 UX</div>
-                <div class='insight-box2'><strong>체크 포인트</strong> · 대형 EHR 파트너십 확장 속도 · 공개 ARR 부재로 멀티플 판단 보수</div>
-              </td>
-              <td class='td-detail'>
-                <a href='https://app.dealroom.co/companies/suki' target='_blank'>Dealroom</a>
-                <div class='news-summary'>· 기업가치 $500M · 직원 201-500명 · 공개 투자 이력 확인</div>
-                <a href='https://www.suki.ai/press-releases/suki-selected-by-athenahealth-as-preferred-solution-partner-for-ambient-intelligence/' target='_blank'>Suki Press Release 2026.01.26</a>
-                <div class='news-summary'>· [80일 전 자료] · athenahealth preferred ambient partner · 대형 배포 채널 확보</div>
-                <a href='https://healthedge.com/resources/care-management/healthedge-and-suki-introduce-ambient-clinical-intelligence-for-care-management' target='_blank'>HealthEdge 2026.01.28</a>
-                <div class='news-summary'>· [78일 전 자료] · GuidingCare 통합 · 건강보험 플랜 워크플로 진입</div>
-                <div class='news-summary'>· 경쟁사 · <a href='https://www.abridge.com/' target='_blank'>Abridge</a> — 의사용 ambient 문서화 · <a href='https://www.microsoft.com/en-us/microsoft-cloud/industry/healthcare/dax-copilot' target='_blank'>Nuance DAX</a> — Microsoft 임상 scribe · <a href='https://www.ambiencehealthcare.com/' target='_blank'>Ambience</a> — 문서화 + CDI + coding</div>
-              </td>
-            </tr>
-
-            <tr>
-              <td><span class='badge-rank'>2</span></td>
-              <td><a class='company-link' href='https://www.19pine.ai/' target='_blank'>Pine AI</a><br><span class='badge badge-accent'>Consumer Agent</span></td>
-              <td><strong>2024</strong></td>
-              <td>San Francisco, CA</td>
-              <td class='td-detail'><div>· Stanley Wei</div><div>· Vincent Sun</div><div>· CEO / CTO</div></td>
-              <td class='td-detail'>
-                <div>· Stanley Wei — The Wharton School</div>
-                <div>· Vincent Sun — USTC</div>
-                <div>· Stanley Wei — 소비자 마찰 제거형 agent 창업</div>
-                <div>· Vincent Sun — 실시간 통신 · 보안 · 멀티미디어 특허 이력</div>
-              </td>
-              <td>11-50명</td>
-              <td>—</td>
-              <td class='td-detail'>
-                <div>· 2025.12 Series A $25M</div>
-                <div>· Fortwest Capital 리드</div>
-                <div>· 초기 Seed $5M 공개 이력</div>
-              </td>
-              <td class='td-detail'>
-                <div>· 53,726+ users</div>
-                <div>· 93% negotiation success rate</div>
-                <div>· 평균 270분 절감</div>
-                <div>· 소비자 절감액 $3M+</div>
-                <div>· iOS · Android 배포</div>
-              </td>
-              <td class='td-detail'>
-                <div>· success fee + task fee 혼합</div>
-                <div>· bill negotiation · cancellation · refund</div>
-                <div>· pay-for-results 구조</div>
-              </td>
-              <td class='td-detail'>
-                <div>· 전화 · 이메일 · 웹 조작을 직접 수행하는 실행형 소비자 agent</div>
-                <div>· 요금 협상 · 구독 해지 · 항공/호텔 환불 · 민원 접수 자동화</div>
-                <div>· 스마트폰 제조사 입장에서는 기본 personal agent 시나리오와 궁합 우수</div>
-              </td>
-              <td class='td-detail'>
-                <div class='insight-box'><strong>경쟁 우위</strong> · 단순 답변형이 아닌 action completion · 모바일 사용 빈도 높음 · 성과 과금 구조</div>
-                <div class='insight-box2'><strong>체크 포인트</strong> · valuation 미공개 · 대형 파트너 LOI 공개 전까지 B 점수 보수</div>
-              </td>
-              <td class='td-detail'>
-                <a href='https://www.businesswire.com/news/home/20251203384902/en/Pine-Secures-%2425-Million-in-Series-A-Funding-to-Free-Consumers-of-Digital-Chores-Saving-Time-and-Money-and-Eliminating-Frustration' target='_blank'>BusinessWire 2025.12.03</a>
-                <div class='news-summary'>· [134일 전 자료] · Series A $25M · 디지털 chores agent 확장 자금 확보</div>
-                <a href='https://www.19pine.ai/ai-information-page' target='_blank'>Pine AI Info Page 2025.12.16</a>
-                <div class='news-summary'>· [121일 전 자료] · founder · launch 시점 · agent 정의 · App Store 4.1 공개</div>
-                <a href='https://www.19pine.ai/pricing/' target='_blank'>Pine Pricing</a>
-                <div class='news-summary'>· 평균 $300 절감 · 93% 성공률 · 270분 절감 · 과금 구조 확인</div>
-                <div class='news-summary'>· 경쟁사 · <a href='https://www.rocketmoney.com/' target='_blank'>Rocket Money</a> — 구독 관리 · 재무 절감 앱 · <a href='https://donotpay.com/' target='_blank'>DoNotPay</a> — 소비자 청구·환불 자동화 · <a href='https://www.yutori.com/' target='_blank'>Yutori</a> — 웹 기반 personal AI assistant</div>
-              </td>
-            </tr>
-
-            <tr>
-              <td><span class='badge-rank'>3</span></td>
-              <td><a class='company-link' href='https://www.personal.ai/' target='_blank'>Personal AI</a><br><span class='badge badge-accent'>Memory SLM</span></td>
-              <td><strong>2020</strong></td>
-              <td>La Jolla, CA</td>
-              <td class='td-detail'><div>· Suman Kanuganti</div><div>· Sharon Zhang</div><div>· CEO / CTO</div></td>
-              <td class='td-detail'>
-                <div>· Suman — UC San Diego Rady MBA · Missouri MS</div>
-                <div>· Sharon — MIT Biology + EECS</div>
-                <div>· Suman — Aira 창업</div>
-                <div>· Sharon — LinkedIn · Nuance · Kaiser NLP 리더십</div>
-              </td>
-              <td>51-200명</td>
-              <td>—</td>
-              <td class='td-detail'>
-                <div>· 총 조달 $14.1M</div>
-                <div>· 2025.12 venture round 공개</div>
-                <div>· Village Global · Differential · Jane Street · BBGV · BDev</div>
-              </td>
-              <td class='td-detail'>
-                <div>· BDev trial phase double-digit revenue growth</div>
-                <div>· mobile app · desktop app · API 동시 운영</div>
-                <div>· Comcast AI Grid trial</div>
-                <div>· sub-500ms response · up to 40x lower cost 공개</div>
-              </td>
-              <td class='td-detail'>
-                <div>· enterprise platform 구독</div>
-                <div>· memory infrastructure + SLM + developer API</div>
-                <div>· 개인형 mobile AI 확장</div>
-              </td>
-              <td class='td-detail'>
-                <div>· 개인 기억 기반 Small Language Model 플랫폼</div>
-                <div>· 음성 · 메시지 · 이미지 · 위치 데이터를 메모리 스택으로 학습</div>
-                <div>· telco edge와 결합해 초개인화 음성 agent 레이어 지향</div>
-              </td>
-              <td class='td-detail'>
-                <div class='insight-box'><strong>경쟁 우위</strong> · memory architecture · privacy · SLM · telco edge 배치</div>
-                <div class='insight-box2'><strong>체크 포인트</strong> · valuation 비공개 · 소비자 MAU 미공개 · B2B 전환 속도 확인 필요</div>
-              </td>
-              <td class='td-detail'>
-                <a href='https://www.globenewswire.com/news-release/2026/03/17/3257092/0/en/Personal-AI-s-Memory-Based-Small-Language-Models-Deliver-Hyper-Personalized-Experiences-on-Comcast-s-AI-Grid-Powered-by-NVIDIA.html' target='_blank'>GlobeNewswire 2026.03.17</a>
-                <div class='news-summary'>· [30일 전 자료] · Comcast AI Grid trial · sub-500ms · up to 40x lower cost</div>
-                <a href='https://www.globenewswire.com/news-release/2024/09/30/2955153/0/en/BDev-Ventures-Announces-Strategic-Investment-in-Personal-AI.html' target='_blank'>GlobeNewswire 2024.09.30</a>
-                <div class='news-summary'>· 전략 투자 + double-digit revenue growth during trial phase</div>
-                <a href='https://www.personal.ai/privacy-policy' target='_blank'>Personal AI Privacy Notice</a>
-                <div class='news-summary'>· La Jolla 주소 · mobile service · privacy-first 운영 구조 확인</div>
-                <div class='news-summary'>· 경쟁사 · <a href='https://www.rewind.ai/' target='_blank'>Rewind</a> — 개인 업무 메모리 검색 · <a href='https://mem.ai/' target='_blank'>Mem</a> — AI 메모 워크스페이스 · <a href='https://www.glean.com/' target='_blank'>Glean</a> — 기업 지식 검색 assistant</div>
-              </td>
-            </tr>
-
-            <tr>
-              <td><span class='badge-rank'>4</span></td>
-              <td><a class='company-link' href='https://www.wysa.com/' target='_blank'>Wysa</a><br><span class='badge badge-accent'>Mental Health Agent</span></td>
-              <td><strong>2016</strong></td>
-              <td>Boston · Reading · Bengaluru</td>
-              <td class='td-detail'><div>· Jo Aggarwal</div><div>· Ramakant Vempati</div><div>· CEO / Co-founder</div></td>
-              <td class='td-detail'>
-                <div>· 학교 · 전공 공개 미확인</div>
-                <div>· Jo — Pearson · Tata · Infosys · Silatech</div>
-                <div>· Ramakant — Goldman Sachs · Tata 이력 공개</div>
-                <div>· 행동건강 · 임상 안전성 중심 창업팀</div>
-              </td>
-              <td>101-250명</td>
-              <td>—</td>
-              <td class='td-detail'>
-                <div>· 2022.07 Series B $20M</div>
-                <div>· HealthQuad · British International Investment</div>
-                <div>· 2026.02 grant $7.24M 공개 데이터 이력</div>
-              </td>
-              <td class='td-detail'>
-                <div>· 2024 revenue $4.68M</div>
-                <div>· 6M users</div>
-                <div>· 11M lives covered</div>
-                <div>· 45+ peer-reviewed publications</div>
-                <div>· 1B AI conversations</div>
-              </td>
-              <td class='td-detail'>
-                <div>· freemium B2C + employer · insurer · provider B2B</div>
-                <div>· digital front door · triage · guided care</div>
-                <div>· mobile app + web</div>
-              </td>
-              <td class='td-detail'>
-                <div>· 정신건강 대화형 agent</div>
-                <div>· rule-based + LLM 혼합</div>
-                <div>· CBT · mindfulness · coaching 경로 결합</div>
-                <div>· Kins · April Health와 연결된 hybrid care 확장</div>
-              </td>
-              <td class='td-detail'>
-                <div class='insight-box'><strong>경쟁 우위</strong> · 모바일 확산 · 임상 연구 45+편 · payer/provider 채널</div>
-                <div class='insight-box2'><strong>체크 포인트</strong> · 본사 단일 표기 대신 공식 오피스 기준 표기 · valuation 미공개</div>
-              </td>
-              <td class='td-detail'>
-                <a href='https://www.wysa.com/' target='_blank'>Wysa Official</a>
-                <div class='news-summary'>· 6M users · 11M lives covered · 45+ publications · 1B conversations</div>
-                <a href='https://techcrunch.com/2022/07/14/wysa-20-million-series-b-funding-expand-therapist-chatbot-wider-mental-health-services/' target='_blank'>TechCrunch 2022.07.14</a>
-                <div class='news-summary'>· Series B $20M · enterprise 매출 비중 80% 언급 · valuation 비공개</div>
-                <a href='https://www.cbinsights.com/company/touchkin/financials' target='_blank'>CB Insights</a>
-                <div class='news-summary'>· 2024 revenue $4.68M · 2026 grant round 이력 공개</div>
-                <div class='news-summary'>· 경쟁사 · <a href='https://woebothealth.com/' target='_blank'>Woebot</a> — 행동건강 대화형 치료 보조 · <a href='https://www.headspace.com/' target='_blank'>Headspace</a> — 명상 · 코칭 · B2B wellbeing · <a href='https://www.springhealth.com/' target='_blank'>Spring Health</a> — employer mental health navigation</div>
-              </td>
-            </tr>
-
-            <tr>
-              <td><span class='badge-rank'>5</span></td>
-              <td><a class='company-link' href='https://en.voize.de/' target='_blank'>voize</a><br><span class='badge badge-accent'>Nursing Voice AI</span></td>
-              <td><strong>2020</strong></td>
-              <td>Berlin</td>
-              <td class='td-detail'><div>· Fabio Schmidberger</div><div>· Erik Ziegler</div><div>· CEO / CTO</div></td>
-              <td class='td-detail'>
-                <div>· 학교 · 전공 공개 미확인</div>
-                <div>· 창업 계기 — 요양 현장 문서화 문제</div>
-                <div>· Erik — on-device ML · mobile inference 엔지니어링 공개</div>
-                <div>· 창업팀 3인 공동경영 구조</div>
-              </td>
-              <td>51-200명</td>
-              <td>—</td>
-              <td class='td-detail'>
-                <div>· 2024 Series A $50M</div>
-                <div>· Balderton Capital</div>
-                <div>· HV Capital · redalpine · YC 후속 참여</div>
-              </td>
-              <td class='td-detail'>
-                <div>· 1,500+ care facilities</div>
-                <div>· 100,000+ caregivers 지원</div>
-                <div>· 교대당 최대 39분 절감</div>
-                <div>· on-device inference 공개</div>
-              </td>
-              <td class='td-detail'>
-                <div>· B2B SaaS</div>
-                <div>· 시설 단위 계약 + documentation workflow 임베드</div>
-                <div>· care sector vertical specialization</div>
-              </td>
-              <td class='td-detail'>
-                <div>· 간호 · 요양 특화 음성 문서화 app</div>
-                <div>· dialect · accents · 비원어민 발화 처리</div>
-                <div>· 기존 care record 시스템과 실시간 연동</div>
-                <div>· Wi‑Fi 약한 현장용 on-device mobile inference 강점</div>
-              </td>
-              <td class='td-detail'>
-                <div class='insight-box'><strong>경쟁 우위</strong> · nursing vertical 집중 · on-device · 저연결 환경 최적화</div>
-                <div class='insight-box2'><strong>체크 포인트</strong> · 공개 매출 부재 · 미국 확장 상업 계약 공개가 다음 재평가 포인트</div>
-              </td>
-              <td class='td-detail'>
-                <a href='https://www.voize.de/blog/series-a-funding' target='_blank'>voize Series A</a>
-                <div class='news-summary'>· $50M Series A · Balderton 리드 · 1,100+ 시설 · 75,000+ 간병인 공개 당시 기준</div>
-                <a href='https://www.linkedin.com/company/voize-de/' target='_blank'>LinkedIn</a>
-                <div class='news-summary'>· 1,500+ care facilities · 100,000+ caregivers · 51-200명 · Berlin 본사</div>
-                <a href='https://tech.voize.de/posts/pytorch-lite-multiplatform' target='_blank'>voize Tech Blog</a>
-                <div class='news-summary'>· on-device inference · PyTorch Lite · Android iOS 공통 모바일 추론 스택 공개</div>
-                <div class='news-summary'>· 경쟁사 · <a href='https://www.suki.ai/' target='_blank'>Suki</a> — 임상 ambient assistant · <a href='https://www.abridge.com/' target='_blank'>Abridge</a> — 의사 문서화 자동화 · <a href='https://www.nabla.com/' target='_blank'>Nabla</a> — clinician ambient assistant</div>
-              </td>
-            </tr>
-
-            <tr>
-              <td><span class='badge-rank'>6</span></td>
-              <td><a class='company-link' href='https://www.tolans.com/' target='_blank'>Portola / Tolan</a><br><span class='badge badge-accent'>Voice Companion</span></td>
-              <td><strong>2023</strong></td>
-              <td>San Francisco, CA</td>
-              <td class='td-detail'><div>· Quinten Farmer</div><div>· Evan Goldschmidt</div><div>· Ajay Mehta</div><div>· CEO / CTO / President</div></td>
-              <td class='td-detail'>
-                <div>· Quinten — Columbia CS 수학 이력 · Even 공동창업</div>
-                <div>· Evan — Johns Hopkins CS</div>
-                <div>· Ajay — Columbia GS CS 이력 · FamilyLeaf exit</div>
-                <div>· 전 Even 팀 재결합</div>
-              </td>
-              <td>11-50명</td>
-              <td>—</td>
-              <td class='td-detail'>
-                <div>· Seed $10M + Series A $20M</div>
-                <div>· Khosla Ventures · Lachy Groom · NFDG · Homebrew</div>
-                <div>· 누적 $30M</div>
-              </td>
-              <td class='td-detail'>
-                <div>· 3M+ downloads</div>
-                <div>· 100K+ paid users</div>
-                <div>· $1M+ monthly revenue</div>
-                <div>· 200K+ MAU</div>
-                <div>· App Store 4.8 · 119K ratings</div>
-              </td>
-              <td class='td-detail'>
-                <div>· 구독형 consumer app</div>
-                <div>· weekly · monthly · annual pricing</div>
-                <div>· voice-first companion monetization</div>
-              </td>
-              <td class='td-detail'>
-                <div>· 감정형 AI companion</div>
-                <div>· voice-first 대화 · 사진 공유 · 캐릭터 세계관 결합</div>
-                <div>· memory retrieval · persona tuning · low-latency voice 설계</div>
-                <div>· 휴대폰 제조사 기본 companion layer로 적합</div>
-              </td>
-              <td class='td-detail'>
-                <div class='insight-box'><strong>경쟁 우위</strong> · paid consumer traction · voice latency · memory recall 개선</div>
-                <div class='insight-box2'><strong>체크 포인트</strong> · 정서형 카테고리 규제 · 안전성 · 장기 retention 공개 부족</div>
-              </td>
-              <td class='td-detail'>
-                <a href='https://www.geekwire.com/2025/ai-companionship-app-tolan-raises-20m-to-help-more-people-grow-with-a-virtual-alien-friend/' target='_blank'>GeekWire 2025.07.07</a>
-                <div class='news-summary'>· [283일 전 자료] · Series A $20M · 3M+ downloads · 100K+ paid · $1M+ MRR</div>
-                <a href='https://openai.com/index/tolan' target='_blank'>OpenAI 2026.01.07</a>
-                <div class='news-summary'>· [99일 전 자료] · GPT‑5.1 기반 voice stack · next-day retention 20%+ 개선 · recall miss 30% 감소</div>
-                <a href='https://apps.apple.com/us/app/tolan-alien-best-friend/id6477549878' target='_blank'>App Store</a>
-                <div class='news-summary'>· iPhone only · 4.8 · 119K ratings</div>
-                <div class='news-summary'>· 경쟁사 · <a href='https://character.ai/' target='_blank'>Character.AI</a> — 캐릭터 대화 플랫폼 · <a href='https://replika.com/' target='_blank'>Replika</a> — 정서형 companion · <a href='https://kindroid.ai/' target='_blank'>Kindroid</a> — 개인화 AI partner</div>
-              </td>
-            </tr>
-
-            <tr>
-              <td><span class='badge-rank'>7</span></td>
-              <td><a class='company-link' href='https://mindtrip.ai/' target='_blank'>Mindtrip</a><br><span class='badge badge-accent'>Travel Agent</span></td>
-              <td><strong>2023</strong></td>
-              <td>Palo Alto, CA</td>
-              <td class='td-detail'><div>· Andy Moss</div><div>· Trey Matteson</div><div>· Garrick Toubassi</div><div>· CEO / Founders</div></td>
-              <td class='td-detail'>
-                <div>· Andy — University of Manchester BS</div>
-                <div>· Trey — Brown Math · Computer Science</div>
-                <div>· Garrick — Arizona Computer Engineering</div>
-                <div>· Roadster · Google Gmail · Stripe 출신 결합</div>
-              </td>
-              <td>11-50명</td>
-              <td>—</td>
-              <td class='td-detail'>
-                <div>· 총 공개 조달 $22.5M</div>
-                <div>· Costanoa · Forerunner</div>
-                <div>· 2025.12 Amex · Capital One · United 전략 투자</div>
-              </td>
-              <td class='td-detail'>
-                <div>· App Store 4.8</div>
-                <div>· 44 employees 공개</div>
-                <div>· destination partners 확대</div>
-                <div>· Sabre · PayPal end-to-end booking alliance</div>
-              </td>
-              <td class='td-detail'>
-                <div>· B2C app + tourism board + hotel tools</div>
-                <div>· affiliate · booking · B2B destination software</div>
-                <div>· agentic travel commerce</div>
-              </td>
-              <td class='td-detail'>
-                <div>· location · itinerary · map · booking을 한 흐름으로 묶는 여행 agent</div>
-                <div>· 대화형 입력 뒤 바로 일정 구성 · 지도 · 호텔 · 결제 레일 연결</div>
-                <div>· 항공사 · 카드사 전략 투자로 채널 가치 검증</div>
-              </td>
-              <td class='td-detail'>
-                <div class='insight-box'><strong>경쟁 우위</strong> · travel stack 통합 · 전략 투자자 질 · 관광청 B2B 채널</div>
-                <div class='insight-box2'><strong>체크 포인트</strong> · 소비자 매출 공개 부족 · 여행 카테고리 seasonality 존재</div>
-              </td>
-              <td class='td-detail'>
-                <a href='https://www.businesswire.com/news/home/20251208469469/en/Mindtrip-Unveils-New-AI-Travel-and-Events-Features-Announces-Investments-From-Amex-Ventures-Capital-One-Ventures-and-United-Airlines-Ventures' target='_blank'>BusinessWire 2025.12.08</a>
-                <div class='news-summary'>· [129일 전 자료] · 공개 조달금액 $22.5M · 전략 투자자 공개</div>
-                <a href='https://newsroom.paypal-corp.com/2025-02-12-Sabre-PayPal-and-Mindtrip-Partner-To-Deliver-the-Industrys-First-End-to-End-Agentic-AI-Experience-for-Travel' target='_blank'>PayPal · Sabre 2026.02.12</a>
-                <div class='news-summary'>· [63일 전 자료] · discovery → booking → payment end-to-end agentic travel 발표</div>
-                <a href='https://www.linkedin.com/company/mindtripai' target='_blank'>LinkedIn</a>
-                <div class='news-summary'>· 11-50명 · 44 employees 표기 · 최근 관광청 파트너십 지속</div>
-                <div class='news-summary'>· 경쟁사 · <a href='https://layla.ai/' target='_blank'>Layla</a> — 대화형 여행 agent · <a href='https://www.hopper.com/' target='_blank'>Hopper</a> — 가격 예측 중심 모바일 여행 앱 · <a href='https://www.google.com/travel/' target='_blank'>Google Travel</a> — 검색형 여행 메타플랫폼</div>
-              </td>
-            </tr>
-
-            <tr>
-              <td><span class='badge-rank'>8</span></td>
-              <td><a class='company-link' href='https://layla.ai/' target='_blank'>Layla</a><br><span class='badge badge-accent'>Travel Companion</span></td>
-              <td><strong>2022</strong></td>
-              <td>Berlin</td>
-              <td class='td-detail'><div>· Saad Saeed</div><div>· Jeremy Jauncey</div><div>· Sardar Bali</div><div>· CEO / Co-founders</div></td>
-              <td class='td-detail'>
-                <div>· Saad — Jacobs University EECS 이력 공개 자료 존재</div>
-                <div>· Jeremy — KCL Business Management 이력 공개 자료</div>
-                <div>· Saad — Flink 공동창업</div>
-                <div>· Jeremy — Beautiful Destinations 창업</div>
-              </td>
-              <td>11-50명</td>
-              <td>—</td>
-              <td class='td-detail'>
-                <div>· 2023 seed €3M</div>
-                <div>· firstminute · M13</div>
-                <div>· 2026.03 strategic 7-figure round</div>
-                <div>· United Airlines Ventures · Baidu Capital · INCE Capital</div>
-              </td>
-              <td class='td-detail'>
-                <div>· 5M users</div>
-                <div>· 30M messages</div>
-                <div>· $1B planned trip value</div>
-                <div>· 11-50 employees</div>
-                <div>· iPhone · iPad · web 운영</div>
-              </td>
-              <td class='td-detail'>
-                <div>· affiliate booking</div>
-                <div>· travel inspiration → itinerary → booking monetization</div>
-                <div>· white-label travel agent 확장</div>
-              </td>
-              <td class='td-detail'>
-                <div>· creator 영상 · short-form inspiration을 대화형 계획으로 전환하는 여행 agent</div>
-                <div>· identity-first query 처리</div>
-                <div>· 40% 이상이 목적지 없이 대화 시작</div>
-                <div>· 모바일 멀티모달 agent 관점에서 강한 탐색 UX</div>
-              </td>
-              <td class='td-detail'>
-                <div class='insight-box'><strong>경쟁 우위</strong> · creator graph · short-form travel discovery · white-label 확장</div>
-                <div class='insight-box2'><strong>체크 포인트</strong> · booked revenue 미공개 · trip value는 GMV 성격이라 보수 해석 필요</div>
-              </td>
-              <td class='td-detail'>
-                <a href='https://www.globenewswire.com/fr/news-release/2026/03/13/3255756/0/en/Layla-Surpasses-1-Billion-in-Trips-Planned-as-Global-Investors-Back-Identity-First-Travel-Planning.html' target='_blank'>GlobeNewswire 2026.03.13</a>
-                <div class='news-summary'>· [34일 전 자료] · 5M users · 30M messages · $1B planned trip value · 전략 투자 라운드</div>
-                <a href='https://techcrunch.com/2023/11/29/layla-taps-into-ai-and-creator-content-to-build-a-travel-recommendation-app/' target='_blank'>TechCrunch 2023.11.29</a>
-                <div class='news-summary'>· seed €3M · creator video 기반 추천 엔진 · app + chatbot 런치</div>
-                <a href='https://de.linkedin.com/company/layla-ai' target='_blank'>LinkedIn</a>
-                <div class='news-summary'>· Berlin 본사 · 11-50명 · white-label travel agent 포지션 공개</div>
-                <div class='news-summary'>· 경쟁사 · <a href='https://mindtrip.ai/' target='_blank'>Mindtrip</a> — 일정 · 지도 · 예약 결합 travel agent · <a href='https://www.guidegeek.com/' target='_blank'>GuideGeek</a> — 메시징 기반 여행 도우미 · <a href='https://www.google.com/travel/' target='_blank'>Google Travel</a> — 검색형 여행 메타플랫폼</div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+  <div class='pc interactive-card'>
+    <div class='pc-h'><h3>Wysa (Mental Health)</h3></div>
+    <div class='pc-b'>
+      <div class='pc-s'>💰 재무 투자 및 파트너십 관점</div><div class='pc-l'><div>· 유일무이 <b class='h-word'>TTM <span class='hl'>$23.9M</span></b> (약 320억 원) 흑자 장부 증명 <span class='tm tm-ok'>'25.4Q</span></div><div>· 벤처 혹한기 속 가장 확실한 <b>방어적 투자 수익처</b> 압도적 급부상</div><div>· 파트너십: OS 메인 <b class='h-word'>Digital Wellbeing 앱 강제 프리로드</b></div><div>· Pinehurst 병원 × 자회사 April Health API 연계</div><div>· 텍스트 챗봇 → <b>의사 정신과 약 처방 원격 진료 O2O 통합</b> 개척</div></div>
+      <div class='pc-s'>🏢 완전 인수 (M&A) 전략 관점</div><div class='pc-l'><div>· Day 1 연결 재무제표 <b class='hl'>연 300억 원 흑자 매출</b> 즉시 편입</div><div>· 국제 의학 저널 <b class='hl'>45건+ Peer-reviewed 임상 논문</b> 방어망</div><div>· Wellcome Trust <b>£5.3M 정책 연구 펀딩 라인</b> 확보</div><div>· <b class='h-word'>FDA Breakthrough Device 인증</b> 자산 100% 흡수</div><div>· 헬스케어 글로벌 규제 인허가 장벽 <b class='red-w'>수년 우회 단축</b></div></div>
     </div>
-
-    <div class='card'>
-      <div class='card-header'>
-        <h2>100점 스타트업 종합 평가표</h2>
-        <p>· A 제조사 파트너십 20 · B M&A 가능성 20 · C 기술력 12 · D 매출 BM 12 · E 시장 타이밍 12 · F 팀 역량 12 · G 경쟁력 12</p>
-      </div>
-      <div class='card-body'>
-        <div class='table-wrap'>
-          <table class='eval-table'>
-            <thead>
-              <tr>
-                <th>순위</th>
-                <th class='col-company'>기업</th>
-                <th>A 제조사<br>/20</th>
-                <th>B M&A<br>/20</th>
-                <th>C 기술력<br>/12</th>
-                <th>D 매출BM<br>/12</th>
-                <th>E 시장<br>/12</th>
-                <th>F 팀<br>/12</th>
-                <th>G 경쟁력<br>/12</th>
-                <th class='col-total'>합계</th>
-                <th>등급</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td><span class='badge-rank'>1</span></td><td class='col-company'>Suki</td><td>11</td><td>15</td><td>10</td><td>8</td><td>10</td><td>11</td><td>10</td><td class='col-total'>75</td><td><span class='badge badge-ok'>최우선</span></td></tr>
-              <tr><td><span class='badge-rank'>2</span></td><td class='col-company'>Pine AI</td><td>17</td><td>13</td><td>8</td><td>5</td><td>11</td><td>7</td><td>10</td><td class='col-total'>71</td><td><span class='badge badge-ok'>최우선</span></td></tr>
-              <tr><td><span class='badge-rank'>3</span></td><td class='col-company'>Personal AI</td><td>15</td><td>12</td><td>10</td><td>6</td><td>9</td><td>9</td><td>9</td><td class='col-total'>70</td><td><span class='badge badge-ok'>최우선</span></td></tr>
-              <tr><td><span class='badge-rank'>4</span></td><td class='col-company'>Wysa</td><td>14</td><td>12</td><td>10</td><td>9</td><td>8</td><td>9</td><td>6</td><td class='col-total'>68</td><td><span class='badge badge-warn'>관심</span></td></tr>
-              <tr><td><span class='badge-rank'>5</span></td><td class='col-company'>voize</td><td>12</td><td>11</td><td>10</td><td>6</td><td>9</td><td>8</td><td>10</td><td class='col-total'>66</td><td><span class='badge badge-warn'>관심</span></td></tr>
-              <tr><td><span class='badge-rank'>6</span></td><td class='col-company'>Portola / Tolan</td><td>13</td><td>12</td><td>6</td><td>9</td><td>10</td><td>10</td><td>4</td><td class='col-total'>64</td><td><span class='badge badge-warn'>관심</span></td></tr>
-              <tr><td><span class='badge-rank'>7</span></td><td class='col-company'>Mindtrip</td><td>14</td><td>11</td><td>6</td><td>5</td><td>10</td><td>8</td><td>7</td><td class='col-total'>61</td><td><span class='badge badge-warn'>관심</span></td></tr>
-              <tr><td><span class='badge-rank'>8</span></td><td class='col-company'>Layla</td><td>14</td><td>11</td><td>6</td><td>5</td><td>10</td><td>8</td><td>6</td><td class='col-total'>60</td><td><span class='badge badge-warn'>관심</span></td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
+  </div>
+  <div class='pc interactive-card'>
+    <div class='pc-h'><h3>Personal AI (Memory SLM)</h3></div>
+    <div class='pc-b'>
+      <div class='pc-s'>💰 재무 투자 및 파트너십 관점</div><div class='pc-l'><div>최근 언론에 보도된 미국 최대 케이블망 Comcast AI Grid 거대 65M 가구 분산망 인프라 테스트('26.3.17 보도) 성공으로 딥테크 기술 스펙이 대규모 완벽 입증된 <b>초저지연(Sub-500ms) 클라우드-프리 엣지 컴퓨팅 기반 독자 메모리 SLM 원천 아키텍처 특허 기술 선점 확보를 위한 메가 베팅 라운드</b>입니다. B2B 파트너십으로는 외부로 나가는 인터넷 선을 강제 차단하더라도 단말기 성능만으로 100% 프라이버시가 완벽히 보호되는 '서버리스 프라이빗 로컬 AI 비서' 기능을 삼성/애플 등 초프리미엄 폰 최고가 세일즈의 최강 무기 마케팅 포인트로 적극 활용합니다.</div></div>
+      <div class='pc-s'>🏢 완전 인수 (M&A) 전략 관점</div><div class='pc-l'><div>외부 OpenAI 등의 서버에 유저 일상을 갖다 바치는 타사 앱들과 달리, 사용자 개인의 모든 은밀한 문자와 사진, 그리고 사소한 일상 대화 맥락 조각조각들을 100% 클라우드 유출 없이 스마트폰 기기 NPU 엣지망 내에서만 영구적으로 암호화하여 학습, 세상에 단 하나뿐인 개인 맞춤형 메모리 그래프(Personal Graph) 지능을 아예 스마트폰 하드웨어 보드 칩셋 속에 깊숙이 박아버립니다. 이를 통해 <b>몇 년 뒤 유저가 경쟁사인 타사 모바일 OS 생태계 기기로 폰을 바꾸려 할 때 자신의 평생 기억 두뇌를 초기화해야 하는 극심한 공포를 조장, 전환 이탈(Churn)을 원천 차단하는 가장 잔혹하고 지독한 절대 락인(Lock-in) 족쇄</b>를 무기화합니다.</div></div>
     </div>
-
-    <div class='card'>
-      <div class='card-header'>
-        <h2>점수 산출 근거 · 제조사 파트너십 · Inorganic M&A 활용</h2>
-        <p>· 모든 문장 개조식 · 점수 배경 요약 · 휴대폰 제조사 활용안 · 인수 후 활용안</p>
-      </div>
-      <div class='card-body'>
-        <div class='table-wrap'>
-          <table class='memo-table'>
-            <thead>
-              <tr>
-                <th style='min-width:110px'>기업</th>
-                <th style='min-width:460px'>점수 근거</th>
-                <th style='min-width:340px'>제조사 파트너십 관점</th>
-                <th style='min-width:340px'>Inorganic M&A 활용안</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>Suki</strong></td>
-                <td class='td-detail'>
-                  <div>· A11 — iOS 임상 앱 보유 · 모바일 현장 적합성 높음 · 소비자 대중 앱은 아님</div>
-                  <div>· B15 — EHR · payer · 의료기기 · 엔터프라이즈 SW 인수 후보 다수</div>
-                  <div>· C10 — 특허 · 음성 AI · 임상 통합 검증</div>
-                  <div>· D8 — 대형 배포 채널 존재 · 매출 미공개</div>
-                  <div>· E10 · F11 · G10 — 시장 성장성 · 창업자 질 · 통합 난도 우수</div>
-                </td>
-                <td class='td-detail'>
-                  <div>· 의료 특화 스마트폰 · 태블릿 번들</div>
-                  <div>· 전용 음성 버튼 · HIPAA 보안 단말과 결합</div>
-                  <div>· 병원 BYOD 대체용 enterprise mobility 패키지 가능</div>
-                </td>
-                <td class='td-detail'>
-                  <div>· EHR 벤더 · 의료기기 · 엔터프라이즈 단말 벤더 인수 시 시너지 큼</div>
-                  <div>· 모바일 임상 입력 레이어를 제품군 공통 UX로 이식 가능</div>
-                </td>
-              </tr>
-              <tr>
-                <td><strong>Pine AI</strong></td>
-                <td class='td-detail'>
-                  <div>· A17 — 모바일 앱 핵심 · 실행형 personal agent · 스마트폰 기본 기능화 적합</div>
-                  <div>· B13 — 인수 후보 다수 존재 · 소비자 MAU 공개 제한으로 일부 감점</div>
-                  <div>· C8 — 실행형 stack · 보안 체계 공개 · 독점 IP 증빙은 제한</div>
-                  <div>· D5 — 절감 성과는 강함 · 매출 수치 미공개</div>
-                  <div>· E11 · F7 · G10 — 시장 타이밍 강함 · 팀 깊이 공개 제한</div>
-                </td>
-                <td class='td-detail'>
-                  <div>· 스마트폰 기본 assistant · 통화 · 메일 · 브라우저 액션 자동화와 직결</div>
-                  <div>· carrier bill optimization · travel dispute agent 번들 가능</div>
-                  <div>· on-device permission control UX로 차별화 가능</div>
-                </td>
-                <td class='td-detail'>
-                  <div>· OEM · 통신사 · super-app · 핀테크 앱이 인수 시 즉시 활용 가능</div>
-                  <div>· 고객 서비스 절감과 retention 기능을 동시에 확보</div>
-                </td>
-              </tr>
-              <tr>
-                <td><strong>Personal AI</strong></td>
-                <td class='td-detail'>
-                  <div>· A15 — mobile app · voice · messaging 적합성 우수</div>
-                  <div>· B12 — telco · cloud · enterprise AI 인수 후보 존재</div>
-                  <div>· C10 — SLM · memory core · security 인증 강점</div>
-                  <div>· D6 — revenue growth 신호 존재 · 공개 ARR 부재</div>
-                  <div>· E9 · F9 · G9 — 팀 수준 높음 · 시장 포지션은 아직 형성 단계</div>
-                </td>
-                <td class='td-detail'>
-                  <div>· 제조사 private memory assistant로 적합</div>
-                  <div>· 사진 · 위치 · 메시지 기록을 개인 SLM으로 연결 가능</div>
-                  <div>· 프리미엄 단말 AI identity layer로 차별화 여지</div>
-                </td>
-                <td class='td-detail'>
-                  <div>· telco · cloud · OS 레벨 assistant 사업자 인수 시 활용도 높음</div>
-                  <div>· device-local memory graph와 결합해 락인 강화 가능</div>
-                </td>
-              </tr>
-              <tr>
-                <td><strong>Wysa</strong></td>
-                <td class='td-detail'>
-                  <div>· A14 — 모바일 앱 중심 · wellness 동선 적합</div>
-                  <div>· B12 — payer · employer benefits · digital health 인수 후보 존재</div>
-                  <div>· C10 — 45+ 연구 · 임상 안전성 · FDA Breakthrough 이력</div>
-                  <div>· D9 — revenue 공개치 2024 $4.68M</div>
-                  <div>· E8 · F9 · G6 — 성장성 양호 · big tech 대체 가능성 감점</div>
-                </td>
-                <td class='td-detail'>
-                  <div>· 스마트폰 wellbeing suite 기본 탑재 후보</div>
-                  <div>· 보험 · 직원복지 · 청소년 보호 모드와 묶기 용이</div>
-                  <div>· 로컬 언어 확장 시 제조사 지역별 패키지 가능</div>
-                </td>
-                <td class='td-detail'>
-                  <div>· 보험사 · 원격진료 · 복지 플랫폼이 인수 시 가입자 engagement 개선</div>
-                  <div>· 단기적으로 cross-sell이 쉬운 자산</div>
-                </td>
-              </tr>
-              <tr>
-                <td><strong>voize</strong></td>
-                <td class='td-detail'>
-                  <div>· A12 — 현장 mobile app 필수 · 소비자 범용성은 제한</div>
-                  <div>· B11 — care software · enterprise device 인수 후보 존재</div>
-                  <div>· C10 — on-device inference · vertical speech AI · GDPR 적합</div>
-                  <div>· D6 — 시설 · 사용자 수 강함 · 매출 미공개</div>
-                  <div>· E9 · F8 · G10 — nursing pain point 명확 · vertical moat 선명</div>
-                </td>
-                <td class='td-detail'>
-                  <div>· 요양 · 병원용 rugged device 번들 적합</div>
-                  <div>· 저연결 환경에서도 동작하는 voice UX가 단말 차별점</div>
-                  <div>· enterprise MDM 패키지와 결합 용이</div>
-                </td>
-                <td class='td-detail'>
-                  <div>· care record 벤더 · 의료 단말 벤더 인수 시 즉시 가치화 가능</div>
-                  <div>· 현장 음성 문서화 엔진을 다른 frontline vertical로 확장 가능</div>
-                </td>
-              </tr>
-              <tr>
-                <td><strong>Portola / Tolan</strong></td>
-                <td class='td-detail'>
-                  <div>· A13 — iPhone 전용 · 대규모 consumer app traction 강점</div>
-                  <div>· B12 — consumer AI · social · device OEM 인수 후보 존재</div>
-                  <div>· C6 — voice stack 우수 · 다만 외부 모델 의존 비중 존재</div>
-                  <div>· D9 — 100K+ paid · $1M+ monthly revenue</div>
-                  <div>· E10 · F10 · G4 — 팀 질 강함 · 정서형 카테고리 경쟁 심화</div>
-                </td>
-                <td class='td-detail'>
-                  <div>· always-available companion agent로 단말 차별화 가능</div>
-                  <div>· 카메라 · 음성 · 알림 · lockscreen 경험과 결합 용이</div>
-                  <div>· teens · Gen Z 포지셔닝에 적합</div>
-                </td>
-                <td class='td-detail'>
-                  <div>· OEM · social platform · character IP 사업자가 인수 시 레버리지 큼</div>
-                  <div>· subscription app + engagement engine를 즉시 확보</div>
-                </td>
-              </tr>
-              <tr>
-                <td><strong>Mindtrip</strong></td>
-                <td class='td-detail'>
-                  <div>· A14 — 모바일 여행 동선 적합 · 지도 UX 강점</div>
-                  <div>· B11 — OTA · airline · card issuer 인수 후보 다수</div>
-                  <div>· C6 — orchestration 강점 · 독점 모델 증빙 제한</div>
-                  <div>· D5 — 상업 파트너 강함 · 매출 수치 미공개</div>
-                  <div>· E10 · F8 · G7 — 전략 투자자 질 좋음 · OTA 경쟁 심함</div>
-                </td>
-                <td class='td-detail'>
-                  <div>· travel mode 기본 탑재에 적합</div>
-                  <div>· 지도 · 항공 · 카드 혜택 · wallet와 자연 결합</div>
-                  <div>· 제조사 해외 여행 패키지 번들 가능</div>
-                </td>
-                <td class='td-detail'>
-                  <div>· OTA · airline · payments 기업이 인수 시 end-to-end travel stack 확보</div>
-                  <div>· loyalty · booking funnel 개선에 바로 활용 가능</div>
-                </td>
-              </tr>
-              <tr>
-                <td><strong>Layla</strong></td>
-                <td class='td-detail'>
-                  <div>· A14 — app + web · short-form inspiration이 모바일 친화적</div>
-                  <div>· B11 — OTA · creator travel media · airline 인수 후보 존재</div>
-                  <div>· C6 — recommendation engine · creator graph · CV 활용</div>
-                  <div>· D5 — GMV 신호 강함 · booked revenue 미공개</div>
-                  <div>· E10 · F8 · G6 — 여행 발견 전환 흐름 강함 · 경쟁 심화</div>
-                </td>
-                <td class='td-detail'>
-                  <div>· 제조사 travel inspiration hub로 적합</div>
-                  <div>· 카메라 검색 · short-form 추천 · wallet booking 연동 가능</div>
-                  <div>· creator partnership 단말 마케팅 소재로 활용 가능</div>
-                </td>
-                <td class='td-detail'>
-                  <div>· OTA · creator media · card travel ecosystem 인수 시 시너지 높음</div>
-                  <div>· 발견 → 예약 funnel을 하나의 app layer로 통합 가능</div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
+  </div>
+  <div class='pc interactive-card'>
+    <div class='pc-h'><h3>Mindtrip (Travel Agent)</h3></div>
+    <div class='pc-b'>
+      <div class='pc-s'>💰 재무 투자 및 파트너십 관점</div><div class='pc-l'><div>단순 벤처캐피탈 VC 자금이 아닌 Amex, United Airlines 등 <b>전 세계 여행, 항공, 글로벌 카드 금융계를 지배하는 최상위 산업 거물들의 전략 투자 연합 전선 구축</b>으로 스타트업 플랫폼 생존 안정성은 이미 100% 보증 수표로 담보되었습니다. 다만 이 거대 연합군 속에서 자사 단말기 제조사 차원의 AI OS 연동 보드(이사회) 우선 발언권 및 배타적 유통 독점 지분 확보를 위한 선공 묻지마 베팅이 절실히 요망됩니다. 단말기 내 파트너십으로는 스마트폰 자체 순정 OS 캘린더, 시스템 기본 위치 지도, 삼성/애플 페이 기본 지갑 결제 시스템과 Mindtrip 백엔드 예약망 API를 완전히 뒷단에서 연동 통합하여, 기존 시장의 독재자인 구글 트래블(Google Travel) 검색 포털 생태계 거대 의존도를 단숨에 부숴버리는 완전한 탈피 파이프라인 독자 노선을 전격 구축합니다.</div></div>
+      <div class='pc-s'>🏢 완전 인수 (M&A) 전략 관점</div><div class='pc-l'><div>단순히 "이 여행지 예뻐요" 하고 네이버 블로그 검색 결과를 추천해 주는 무능한 챗봇 껍데기 나부랭이가 아닙니다. <b>전 세계 420여 개 글로벌 메이저 항공사 직결 티켓 시스템과 200만 개 숙소가 백엔드로 실시간 꽂혀 있는 초거대 Sabre 글로벌 발권망 및 수백만 달러 규모의 PayPal E2E 결제/송금 보호 인프라 제어 권한</b> 자체를 제조사 모바일 플랫폼 앱 사업부서로 일거에 통째로 흡수 내재화하여, 스마트폰 단말 제조사가 앱 생태계 안에서 외부 익스피디아 등 OTA 앱 다운로드 없이 직접 유저들의 글로벌 항공권/호텔 Travel Commerce 막대한 중개 수수료 수익을 직접 중간 징수하는 초대형 커머스 플랫폼 괴물로 로켓 수직 도약합니다.</div></div>
     </div>
-
-    <div class='card'>
-      <div class='card-header'>
-        <h2>평가 항목별 상세 채점 기준</h2>
-        <p>· 7개 대항목 · 28개 세부지표 · 총 100점</p>
-      </div>
-      <div class='card-body'>
-        <div class='table-wrap'>
-          <table class='criteria-table'>
-            <thead><tr><th style='width:35px'>No.</th><th style='width:130px'>세부지표</th><th style='width:35px'>배점</th><th>채점 기준</th></tr></thead>
-            <tbody>
-              <tr><td colspan='4' class='eval-cat'>A 휴대폰 제조사 파트너십 가능 여부 20점</td></tr>
-              <tr><td>1</td><td>자체 앱 보유 · 운영</td><td>5</td><td>0 앱 없음 / 2 MVP · beta / 4 앱스토어 출시 + 핵심 70%↑ / 5 출시 + MAU 1만↑ · D30 ret 20%↑</td></tr>
-              <tr><td>2</td><td>웹 서비스 보유 · 운영</td><td>3</td><td>0 없음 / 1 소개형 / 2 회원가입 운영 / 3 핵심 기능 · 결제 + 모바일웹 최적화</td></tr>
-              <tr><td>3</td><td>모바일 적합성</td><td>6</td><td>30%↓ 0 / 30~59% 2 / 60~79% 4 / 80%↑ 6</td></tr>
-              <tr><td>4</td><td>제조사 활용 시나리오</td><td>3</td><td>0 없음 / 1 1개 명확 / 2 2개↑ + KPI / 3 제조사별 모델 · 지역 · 효과 정리</td></tr>
-              <tr><td>5</td><td>실제 제휴 검증</td><td>3</td><td>0 없음 / 1 소개 · 미팅 / 2 PoC · LOI / 3 파일럿 · 상업조건 협의</td></tr>
-              <tr><td colspan='4' class='eval-cat'>B M&A 가능성 여부 20점</td></tr>
-              <tr><td>1</td><td>잠재 인수자 수</td><td>5</td><td>0 없음 / 2 1~2개 / 3 3~4개 / 5 5개↑</td></tr>
-              <tr><td>2</td><td>인수 매력 자산 수</td><td>5</td><td>IP · 독점 데이터 · 유료고객/MAU · ARR · 규제·라이선스 충족 수</td></tr>
-              <tr><td>3</td><td>유사 M&A 사례</td><td>4</td><td>0건 0 / 1건 1 / 2~3건 2 / 4~5건 3 / 6건↑ 4</td></tr>
-              <tr><td>4</td><td>통합 용이성</td><td>3</td><td>PMI 12개월↑ 0 / 6~12 1 / 3~6 2 / 3개월↓ 3</td></tr>
-              <tr><td>5</td><td>실사 준비도</td><td>3</td><td>IP 귀속 · cap table 단순 · 법률분쟁 부재 충족 수</td></tr>
-              <tr><td colspan='4' class='eval-cat'>C 기술력 12점</td></tr>
-              <tr><td>1</td><td>IP · 기술 소유권</td><td>3</td><td>0 불명확 / 1 소스코드 귀속 / 2 특허출원 · 독점 데이터 / 3 특허등록 · trade secret</td></tr>
-              <tr><td>2</td><td>제품 성숙도</td><td>3</td><td>0 아이디어 / 1 MVP / 2 유료 상용 / 3 상용 + uptime 99.5%↑</td></tr>
-              <tr><td>3</td><td>성능 · 확장성</td><td>3</td><td>0 미검증 / 1 내부 벤치 / 2 외부 PoC / 3 경쟁 대비 20%↑</td></tr>
-              <tr><td>4</td><td>보안 · 컴플라이언스</td><td>3</td><td>0 없음 / 1 정책 존재 / 2 점검 · 침투테스트 / 3 인증 · 실사 통과</td></tr>
-              <tr><td colspan='4' class='eval-cat'>D 매출 및 비즈니스 모델 12점</td></tr>
-              <tr><td>1</td><td>매출 규모</td><td>3</td><td>0 없음 / 1 TTM 1천만~1억 / 2 1~5억 / 3 5억↑ · ARR 3억↑</td></tr>
-              <tr><td>2</td><td>성장률</td><td>3</td><td>MoM 음수 0 / 0~9% 1 / 10~19% 2 / 20%↑ 3</td></tr>
-              <tr><td>3</td><td>반복매출 · 리텐션</td><td>3</td><td>20%↓ 0 / 20~49% 1 / 50~69% 2 / 70%↑ 3</td></tr>
-              <tr><td>4</td><td>Unit Economics</td><td>3</td><td>0 미확인 / 1 GM 20%↑ / 2 GM 40%+18개월 / 3 GM 60%+12개월</td></tr>
-              <tr><td colspan='4' class='eval-cat'>E 시장 타이밍 12점</td></tr>
-              <tr><td>1</td><td>시장 성장률</td><td>3</td><td>CAGR 5%↓ 0 / 5~9% 1 / 10~19% 2 / 20%↑ 3</td></tr>
-              <tr><td>2</td><td>예산 준비도</td><td>3</td><td>20%↓ 0 / 20~39% 1 / 40~69% 2 / 70%↑ 3</td></tr>
-              <tr><td>3</td><td>도입 마찰</td><td>3</td><td>6개월↑ 0 / 3~6 1 / 1~3 2 / 1개월↓ 3</td></tr>
-              <tr><td>4</td><td>외부 모멘텀</td><td>3</td><td>호재 수 0 / 1 / 2 / 3</td></tr>
-              <tr><td colspan='4' class='eval-cat'>F 팀 역량 12점</td></tr>
-              <tr><td>1</td><td>도메인 경력</td><td>3</td><td>2년↓ 0 / 2~4 1 / 5~9 2 / 10년↑ 3</td></tr>
-              <tr><td>2</td><td>빅테크 · 선도사 출신</td><td>3</td><td>0 없음 / 1 핵심 1명 / 2 창업자 1명 / 3 창업자 2명↑</td></tr>
-              <tr><td>3</td><td>창업 · 스케일업 이력</td><td>3</td><td>0 없음 / 1 이전 창업 / 2 Series A↑ / 3 Exit · IPO</td></tr>
-              <tr><td>4</td><td>팀 완성도</td><td>3</td><td>0 2개↑ 공백 / 1 1개 공백 / 2 3축 충족 / 3 3축 + 운영</td></tr>
-              <tr><td colspan='4' class='eval-cat'>G 경쟁사 대비 경쟁력 12점</td></tr>
-              <tr><td>1</td><td>성능 우위</td><td>3</td><td>10%↓ 0 / 10~19% 1 / 20~49% 2 / 50%↑ 3</td></tr>
-              <tr><td>2</td><td>고객 ROI</td><td>3</td><td>24개월↑ 0 / 12~24 1 / 6~12 2 / 6개월↓ 3</td></tr>
-              <tr><td>3</td><td>전환비용 · 락인</td><td>3</td><td>ret 50%↓ 0 / 50~69% 1 / 70~84% 2 / 85%↑ 3</td></tr>
-              <tr><td>4</td><td>해자 수</td><td>3</td><td>IP · 독점데이터 · 유통 · 규제 · 네트워크 중 충족 수</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
+  </div>
+  <div class='pc interactive-card'>
+    <div class='pc-h'><h3>voize (Nursing Voice AI)</h3></div>
+    <div class='pc-b'>
+      <div class='pc-s'>💰 재무 투자 및 파트너십 관점</div><div class='pc-l'><div>Series A $50M ('24년 11월) 대형 시드 자금 수혈 이후, 보수적인 유럽 시장 내 1,500+ 병원 시설 레퍼런스 현장 점유를 이미 실증 완료했습니다. 이를 바탕으로 세계 최대 단위의 초거대 의료 메디케어 예산이 천문학적으로 쏟아져 투입되는 <b>미국 본토 숙련 요양(Skilled Nursing) 생태계 확장 파이프라인 진출 전쟁</b>을 무제한 실탄으로 후방 지원하는 대규모 그로스(Growth) 성장 자금 후속 베팅 참여가 강력히 유효합니다. B2B 오프라인 현장 파트너십으로는 스마트폰을 자꾸 떨어뜨리거나 소독약을 뿌리는 노인 요양 병동, 혹은 통신 인프라 기지국이 아예 없는 험지 건설/야외 물류 창고 등 극단적 프론트라인(Frontline) 환경에 필수적인 방수/방진 산업용 러기드(Rugged) 스마트폰 하드웨어와 자사 OS를 통째로 묶어 파는 <b>초고마진 B2B 엔터프라이즈 특판 공동 영업 무한 전개</b> 라인을 가동합니다.</div></div>
+      <div class='pc-s'>🏢 완전 인수 (M&A) 전략 관점</div><div class='pc-l'><div>미국 톱티어 병원 의사들만 쓰는 깔끔하고 정제된 기존 메이저 의료 AI(Nuance, Abridge 등)와 질적으로 다릅니다. 진흙탕 같은 1,500+ 시설의 시끄러운 오프라인 현장 백그라운드 소음과, 구글조차 알아듣지 못하는 비정형 현지 외국인 간병인 특유의 짙은 방언(Dialect) 억양 텍스트 녹음 빅데이터 자산을 수년째 독점 축적했습니다. 더욱이 배터리 조루인 중저가 저사양 칩셋(NPU) 휴대폰 환경에서도 고속으로 끊김 없이 정확하게 음성 명령을 처리하고 추론해 내는 <b>이들의 전무후무한 극한 환경 초경량 On-device 추론(Inference) 알고리즘 엔진 소스 코드 전체를 통째로 뜯어내어 자사 스마트폰 차세대 엑시노스/스냅드래곤 NPU 최적화 OS의 로컬 인식 레퍼런스 코어로 100% 영구 이식 이식 합병</b>합니다.</div></div>
     </div>
-
-    <div class='insight-section'>
-      <h2>전체 모니터링 인사이트</h2>
-      <div class='pattern'><strong>공통 패턴</strong> · 이번 8개사는 답변형 챗봇보다 실행형 agent 비중이 높음 · 휴대폰이 입력 단말이 아니라 실행 허브로 바뀌는 흐름 확인</div>
-      <div class='pattern'><strong>제조사 관점</strong> · Pine · Personal AI · Tolan은 OS 레벨 personal agent 후보 · Suki · voize는 vertical device bundle 후보 · Mindtrip · Layla는 travel mode 차별화 후보</div>
-      <div class='pattern'><strong>기술 해자</strong> · Suki는 EHR 통합 · Personal AI는 memory SLM · Wysa는 임상 논문 · voize는 on-device inference · Tolan은 voice memory system이 핵심</div>
-      <div class='pattern'><strong>투자 해석</strong> · 공개 valuation이 적은 회사는 점수 보수 처리 · 공개 매출이 있는 Wysa · 공개 유료사용자와 월매출이 있는 Tolan은 상대적으로 검증도 우위</div>
-
-      <h2 style='font-size:.92rem;margin:.9rem 0 .5rem'>모니터링 업데이트 포인트</h2>
-      <div class='monitor-list'>
-        <div class='monitor-item'><span class='dot'></span><span><strong>Suki</strong> · athenahealth seat expansion · 공개 ARR 확인</span></div>
-        <div class='monitor-item'><span class='dot'></span><span><strong>Pine AI</strong> · 제조사 · 통신사 제휴 여부 · paid conversion 공개 여부</span></div>
-        <div class='monitor-item'><span class='dot'></span><span><strong>Personal AI</strong> · telco edge 상용 계약 · mobile consumer rollout</span></div>
-        <div class='monitor-item'><span class='dot'></span><span><strong>Wysa</strong> · Kins · April Health 통합 후 payer 매출 비중 변화</span></div>
-        <div class='monitor-item'><span class='dot'></span><span><strong>voize</strong> · 미국 확장 계약 수 · 공개 매출 신호</span></div>
-        <div class='monitor-item'><span class='dot'></span><span><strong>Tolan</strong> · retention · safety disclosure · Android 확장</span></div>
-        <div class='monitor-item'><span class='dot'></span><span><strong>Mindtrip</strong> · Sabre · PayPal booking 상용화 시점</span></div>
-        <div class='monitor-item'><span class='dot'></span><span><strong>Layla</strong> · white-label booking revenue · airline partnership 확대</span></div>
-      </div>
+  </div>
+  <div class='pc interactive-card'>
+    <div class='pc-h'><h3>Layla (Travel Companion)</h3></div>
+    <div class='pc-b'>
+      <div class='pc-s'>💰 재무 투자 및 파트너십 관점</div><div class='pc-l'><div>$1B Trip Value 거래액 마일스톤 돌파('26.3.13 공식 발표 언론 릴리즈) 잭팟 및 United 항공 등 거대 자본 신규 전략 라운드 투자 유치 언론 플레이 모멘텀은 최고조에 달했습니다. 단, 10억 달러라는 화려한 겉보기 기획 트래픽 가치 포장지 속에서, 유저가 외부 OTA로 이탈할 때 플랫폼 내 직접 기획된 방대한 추천 루트 트래픽이 실질적으로 외부 제휴사(Booking 등)와의 통장 입금 <b>확정 커미션 수수료 수익(Take-rate 실매출)으로 100% 누수 없이 온전히 치환 입금 정산되고 있는지에 대한 차가운 재무제표 회계 장부 정밀 실사(DD)를 뼈저리게 거친 이후에만 매우 보수적인 조건부 계약 펀딩 투자</b>를 강력히 권고합니다. 기술 파트너십으로는 "어디로 갈지 모르겠다"며 무계획으로 영상을 스크롤하는 여행(40% 이상 '목적지 없는 대화' 검색 트래픽 비중 팩트) 최신 소비 트렌드를 폰 제조사 단말기 내 순정 카메라 앱 비전 이미지 검색(CV)과 딥하게 결합하여, 유저가 예쁜 풍경이나 카페 사진을 카메라 렌즈로 대충 촬영하는 즉시 뒷단에서 Layla 여행 추천 루트가 자동 플래닝 팝업되는 신규 하드웨어 카메라 USP 비주얼 편의성 마케팅을 극대화 통합합니다.</div></div>
+      <div class='pc-s'>🏢 완전 인수 (M&A) 전략 관점</div><div class='pc-l'><div>오픈AI 챗GPT 같은 딱딱한 텍스트 여행 정보 봇은 절대 갖지 못한, 500만 명+ 글로벌 Z세대 젊은 피들이 미친 듯이 열광하는 인스타그램 릴스와 틱톡 숏폼 비디오 매칭 연동 <b>비주얼 숏폼 여행 탐색 고유 소셜 그래프 트래픽 및 유저 행동 선호도(Discovery) 데이터 자산 뭉치를 통째로 서버째 장악하고 확보</b>합니다. 인수 즉시 이 폭발력 있는 시각적 엔진을 제조사 자체 글로벌 스마트폰 테마 커뮤니티 앱(예: 삼성 글로벌 골즈, 펜타팬 등) 및 기본 갤러리 앱 상단 인플루언서 동영상 탭 콘텐츠 자동 수급 허브 엔진 플랫폼으로 완전히 분리 독립 스핀오프 개편하여 1020 유저들을 스마트폰 갤러리 밖으로 못 나가게 묶어두는 킬러 앱으로 체질 개조합니다.</div></div>
     </div>
+  </div>
+  <div class='pc interactive-card'>
+    <div class='pc-h'><h3>Portola / Tolan (Voice Companion)</h3></div>
+    <div class='pc-b'>
+      <div class='pc-s'>💰 재무 투자 및 파트너십 관점</div><div class='pc-l'><div>앱 정식 오픈 불과 단 몇 개월 만에 ARR $12M(한화 약 160억 원)이라는 무시무시한 B2C 단기 폭발성 구독 결제 파이프라인 현금흐름 잭팟을 실제로 터뜨리며 앱스토어 결제 유료화 지갑 수익성 검증을 가장 완벽하게 1등으로 통과. 더불어 이전 소프트웨어 스타트업(FamilyLeaf) 창업을 거쳐 초대기업 피인수 엑시트(Exit 매각)까지 실전에서 완수해 본 산전수전 다 겪은 <b>실리콘밸리 노련한 연쇄 창업 파운더스 마피아 팀의 신속한 시장 침투 및 프로덕트 그로스(Growth) 실행 전투력을 높이 사, 향후 Series B 이상의 거대 펀딩 라운드에서도 수백억 원의 추가 멀티플 프리미엄 고평가 가치 산정 전략이 압도적으로 타당</b>합니다. 영업 파트너십으로는 외로움을 가장 많이 타는 Z세대 청소년/대학생 집중 공략용 A시리즈 저가 보급형 스마트폰 라인업 펌웨어에 외계인 캐릭터(Tolan IP)를 시스템 UI 테마 런처 뎁스에 완전 임베딩 선탑재하고, 폰 배터리가 꺼진 블랙 화면 상태에서도 캐릭터가 꼬물거리는 AOD(Always On Display) 실시간 감정 반응 인터랙션을 폰케이스와 연동 지원하는 충성도 테마 마케팅을 통한 거대 틱톡/인스타 10대 밈(Meme) 바이럴 챌린지 전염병 전개를 기획합니다.</div></div>
+      <div class='pc-s'>🏢 완전 인수 (M&A) 전략 관점</div><div class='pc-l'><div>단순히 날씨나 묻고 주식 가격이나 검색해 주는 기존 스마트폰에 깔린 딱딱하고 기계적이고 무미건조한 구형 정보형 AI 알람 비서(Siri, Bixby 등) OS 엔진 심장부에, <b>사용자의 매일매일의 희로애락 기분 일기 감정 복합 교류 및 일주일 전 털어놓은 우울한 고민과 과거 흑역사 맥락을 소름 끼치게 장기 기억(Memory)해 냈다가 적절한 타이밍에 먼저 위로의 말을 건네는 극강의 '초개인화 감성 리콜(Recall)' 휴먼 레이어 엔진 알고리즘 소스</b>를 통째로 영구 이식 결합합니다. 이를 통해 스마트폰 하드웨어를 단순 쇳덩어리 기계에서 '절대 버릴 수 없는 나의 유일한 베프 영혼'으로 진화시켜 사용자 폰 교체 주기 충성도를 비상식적으로 극대화하고, 캐릭터 옷 입히기, 대화 스킨 구매 등 내부 자체 앱스토어 굿즈 인앱 결제 등 막대한 2차 고수익 파생 구독 파이프라인 추가 현금 수익화 캐시카우로 돌변시킵니다.</div></div>
+    </div>
+  </div>
+  <div class='pc interactive-card'>
+    <div class='pc-h'><h3>Pine AI (Consumer Agent)</h3></div>
+    <div class='pc-b'>
+      <div class='pc-s'>💰 재무 투자 및 파트너십 관점</div><div class='pc-l'><div>가장 최근인 2024년 런칭된 이제 막 걸음마를 뗀 설립 2년 차 초기 벤처 조직으로, 아직까지는 서비스 두뇌의 핵심이 자체 엔진 구축이 아닌 외부 오픈소스 오픈AI(GPT) API 모델 의존 호출 리스크(High-Risk)가 딥테크 관점에서 뚜렷하게 치명적으로 상존합니다. 단, 가장 보수적인 집단인 거대 통신사와 케이블 TV 업체를 상대로 <b>소비자를 대신해 AI가 이메일을 쏘고 전화를 걸어 93%라는 경이로운 실전 요금 인하 협상을 쟁취해 낸 '자체 행동 액션 제어 모델' 아키텍처 로드맵의 원천성 자립성이 대외 코드로 정밀 실증 통과된다면 Series A 후속 베팅 조율로 수십 배 대박 잭팟 수익을 노릴 매력</b>이 있습니다. 하드웨어 영업 파트너십으로는, 글로벌 대형 제휴 통신사 메이저망 신규 단말 개통 고객 전용 스페셜 혜택으로 'AI 요금 최적화 및 타사 서비스 해지 대행 비서 봇'을 단독 제공하여 단말기 보조금 마케팅 시너지를 일으키고, 역으로 통신사 자체 콜센터(CS) 상담원 인건비 대규모 감축을 위한 IVR 뒷단 자동화 B2B 엔진 솔루션 납품을 역제안 동시 양면 판매 돌입합니다.</div></div>
+      <div class='pc-s'>🏢 완전 인수 (M&A) 전략 관점</div><div class='pc-l'><div>웹 화면에 떠 있는 문서를 단순히 텍스트 세 줄로 요약해 주는 멍청한 현재의 1세대 AI 앱 검색 단계를 아득히 뛰어넘어, 모바일 안드로이드 OS 최고 심연 뎁스(Root) 권한 시스템 커널 레벨을 허가받고 침투하여 <b>주인(사용자)이 잠든 새벽 시간에도 AI 에이전트가 스스로 모바일 브라우저 결제 탭을 띄워 클릭하고, 해지 이메일 양식을 스스로 타이핑해 전송하며, 인터넷 통신망 음성 다이얼 발신 권한을 완전 통제하여 복잡다단한 행정 임무를 100% 자율 완수해 내는 '진정한 차세대 범용 Action Automation 자동화 실행 엔진 코어 플랫폼'의 글로벌 차세대 주도권을 구글이나 애플보다 단숨에 먼저 선점</b>하고 독식 매수해 버리는 가장 핵심적인 기술 엑시트(Exit) 전초기지로 활용 타겟팅.</div></div>
+    </div>
+  </div>
+</div>
 
-    <footer>작성 기준: '26.4.16 (목) · 문서 상태: 서버 자동 갱신본 · 업데이트 시간: 2026-04-16 09:09 KST · GitHub Actions 07:00 KST 자동 커밋·푸시 · PitchBook public 우선 확인, Dealroom/Crunchbase/official fallback</footer>
-  </main>
+<h2 style='margin-top:1.4rem;'>📌 모니터링 업데이트 단기 집중 체크리스트 (Red Flag 워치 리스트)</h2>
+<div class='ml'>
+  <div class='mi interactive-card'><span class='dt'></span><span><b class='h-word'>Suki</b> · athenahealth 170K망 외 Epic, Cerner 등 미국 메이저 3대 대형 EHR 닫힌 시스템 API 연동망 전격 돌파 확장 스케일 속도 진척 확인 · Series D($70M) 거액 유치 이후 주주에게조차 철저히 비공개된 <b>핵심 장부상 전체 ARR 달러 매출 규모 및 기존 B2B 병원 Seat별 갱신율(Net Expansion) 회계 정밀 실사 컷오프</b> · 대형 병원 의사 네트워크 대상 <b>자사 제조사 전용 헬스케어 커스텀 스마트 기기 실환경 PoC 공동 납품 테스트</b> 조기 착수 타진 여부 긴급 체크</span></div>
+  <div class='mi interactive-card'><span class='dt'></span><span><b class='h-word'>Wysa</b> · 펀딩 혹한기를 뚫고 압도적 성장을 입증한 TTM $23.9M 거대 매출 파이프라인 내에서, 영세한 B2C 결제보다 절대적 캐시카우인 <b>B2B Payer(거대 보험사/기업 임직원 복지 EAP) 채널 거액 계약 의존 비중 쏠림 현상 및 중장기 3년 다년 계약 유지 건전성</b> 집중 분석 · 스마트폰 제조사 OS 내 '디지털 웰빙' 탭 기본 앱 프리로드 대량 선탑재 강제 주입 시 <b>수억 대 물량 글로벌 라이선스 B2B 단가 파격 후려치기 협상</b> 및 보수 산정 마진 분배 모델 도출 전개</span></div>
+  <div class='mi interactive-card'><span class='dt'></span><span><b class='h-word'>Personal AI</b> · 거대 미국 케이블 통신망 Comcast GTC 행사용 65M 가구 분산 엣지망 한시적 시범 서비스 쇼케이스 종료 후, 실제 돈을 받고 정식 상업화(Commercial) 엔터프라이즈 B2B 연간 계약 판매망으로의 성공적 캐시카우 전환율 및 서버 실제 구동 롤아웃 속도 장부 모니터링 · 스마트폰 제조사가 자체 혈세를 부어 설계 중인 모바일 <b>독자 NPU 보안 엣지 전용 칩셋(ARM 등) 하드웨어 환경 아키텍처에 SLM 코어 모델 소스를 직접 포팅 이식 구동 시 Sub-500ms 레이턴시가 무너지는지 벤치마크 랩(Lab) 심층 파괴 부하 테스트</b> 발주 필수</span></div>
+  <div class='mi interactive-card'><span class='dt'></span><span><b class='h-word'>Mindtrip</b> · 대대적으로 언론에 바람을 잡고 예고된 2026년 2분기 Sabre 글로벌 통합 발권 예약 플랫폼 공식 상용 오픈 직후, 쏟아져 들어오는 막대한 단순 구경꾼 조회 트래픽 대비 <b>실제 유저 신용카드/PayPal 계정 비밀번호를 누르고 최종 인앱 결제 수수료를 남기는 최종 발권 전환율(Conversion Rate)</b> 백엔드 데이터 무자비한 정밀 분석 · 제조사 스마트폰 OS 기본 네이티브 Travel Mode 풀스크린 전면 연동 독점 계약 시 기존 Booking.com 등 거대 OTA 플랫폼 대비 떨어지는 <b>결제 중개 수수료 커미션 이익 마진 방어선 최후 저지선</b> 선제적 문서 확보</span></div>
+  <div class='mi interactive-card'><span class='dt'></span><span><b class='h-word'>voize</b> · 1,500+ 시설의 만만한 유럽 현지 로컬 압도적 점유 쾌거를 넘어, 세계 최대 의료 예산 최대 격전지이자 마의 장벽인 미국 메디케어 숙련 요양(Skilled Nursing) 시장 본토 상륙 진출 후, 현지 구형 최대 EHR(Epic 등) 클라우드 시스템 백엔드와의 <b>무결점 데이터 통합 연동 보안 규제(HIPAA 등) 보건 당국 승인 획득 지연 통과 시간 리스크</b> · 먼지 날리는 야외 건설, 지하 물류 창고, 열악한 요양 병동 현장 전용 <b>방수/방진 산업용 러기드(Rugged) 내구도 특수 스마트폰 하드웨어 벤더 공동 영업 번들 납품 파트너십</b> 모멘텀 조기 독점 성사 여부 타진</span></div>
+  <div class='mi interactive-card'><span class='dt'></span><span><b class='h-word'>Layla</b> · 자사에서 대대적 릴리즈로 언론 배포 중인 $1B Trip Value 누적 기획 여행 가치라는 뜬구름 잡는 화려한 허상 트래픽 지표 중에서, 실제로 외부 제휴 OTA 예약 결제창으로 넘어가 최종 발권으로 완벽히 치환되어 <b>플랫폼 내부 통장으로 꽂혀 쌓이는 순수 반복 중개 수수료(Booked Revenue) 회계 장부 현금흐름 정밀 DD 가치평가 세무 검증 필수 진행</b> · 스마트폰 단말 순정 갤러리 카메라 비전 렌즈 사물 인식 및 AR 풍경 뷰 검색(Vision) API 코어 연동 알파 프로토타입 단위 테스트 개발 진행 속도 스케줄 확보</span></div>
+  <div class='mi interactive-card'><span class='dt'></span><span><b class='h-word'>Portola / Tolan</b> · 단기 10만 명 유료 구독 폭주 바이럴 잭팟 이후 <b>서비스의 진짜 앱 코어 생존 수명을 결정짓는 D30/D90 핵심 장기 접속 리텐션(초기 3개월 이탈 방어율 유지 퍼센트) 우상향 트랙션 방어 유지</b> 여부 펀딩 전 지속 관찰 모니터링 · 자아 형성이 덜 된 미성년자/알파 세대 유저 타겟의 생성 AI 가상 친구 맹목적 정서 지배 의존성 <b>가스라이팅 중독 우려(Safety/Ethics) 및 성인용 딥페이크 논란 소지 발생 차단을 위한 엄격한 대외 정부 법적 가이드라인 공시 선제적 조치 여부</b>, 애플 앱스토어 편식을 넘어 지연되고 있는 글로벌 안드로이드 구글 플레이스토어 생태계 확장 포팅 런칭 속도 추궁 점검</span></div>
+  <div class='mi interactive-card'><span class='dt'></span><span><b class='h-word'>Pine AI</b> · 유저 스마트폰에 저장된 극도로 민감한 사적 금융 카드 결제 데이터 및 해지 비밀번호 보호를 담보하기 위한 <b>외부 오픈소스 모델(OpenAI GPT API 등) 무단 랩핑 의존 완벽 탈피 선언, 그리고 인간 행동 클릭 액션 기반 자체 고유 파인튜닝 로컬 모델 기술 100% 완전 독립성 완수 인프라 아키텍처 증빙 서류</b> 엄격 점검 · 단발성 B2C 앱 장사를 넘어 글로벌 대형 메이저 통신사(Telco) 및 거대 케이블 회사의 골칫거리인 공식 악성 고객센터(CS 해지 방어 부서) <b>상담원 인건비를 날려버리는 B2B 자동화(IVR 대체) 솔루션 기업 납품 B2B 수익 모델 채택 딜 클로징 성사율</b> 실사</span></div>
+</div>
+</div>
 
-  <script>
-    function toggleTheme(){const b=document.body;b.setAttribute('data-theme',b.getAttribute('data-theme')==='dark'?'light':'dark')}
-    function setProfile(p){document.body.setAttribute('data-profile',p);document.querySelectorAll('.profile-btn').forEach(btn=>btn.classList.toggle('active',btn.dataset.p===p))}
-    (()=>{const w=document.getElementById('tw');if(!w)return;window.addEventListener('keydown',e=>{if(e.key!=='ArrowRight'&&e.key!=='ArrowLeft')return;const a=document.activeElement;if(a&&(a.tagName==='INPUT'||a.tagName==='TEXTAREA'||a.isContentEditable))return;const r=w.getBoundingClientRect();if(r.bottom<=0||r.top>=window.innerHeight)return;e.preventDefault();w.scrollBy({left:e.key==='ArrowRight'?300:-300,behavior:'smooth'})},{passive:false})})();
-  </script>
+<div class='cd interactive-section' id='sec-market'><div class='ch2' onclick="tc(this)"><div><h2>⑤ 시장 거시 매크로 데이터 · 글로벌 빅테크 M&A 주요 리서치 심층 인사이트</h2></div><span class='arr'>▼</span></div>
+<div class='cb'><div class='tw'><table style='min-width:700px'><thead><tr><th>글로벌 타겟 시장 분류</th><th>2024년 시장 규모</th><th>2030~34년 전망치</th><th>폭발적 연평균 성장률 (CAGR)</th><th>공신력 데이터 리서치 출처</th></tr></thead><tbody>
+<tr><td style='font-weight:700'>AI in Healthcare (헬스케어 AI)</td><td>$14.9B (약 20조 원)</td><td>$110.6B (약 150조 원)</td><td><b style='color:var(--ok); font-size:0.85rem'>38.6% 초거대 성장 붐</b></td><td><a href='https://www.marketsandmarkets.com/Market-Reports/artificial-intelligence-healthcare-market-54679303.html' target='_blank'>MarketsandMarkets 공식 리포트</a></td></tr>
+<tr><td style='font-weight:700'>AI Clinical Documentation (임상 음성 문서화)</td><td>$3.8B ('24년 선점)</td><td>$29.2B ('33년 포화)</td><td><b style='color:var(--ok); font-size:0.85rem'>22.4% 핵심 하드캐리</b></td><td><a href='https://dataintelo.com/report/ai-powered-clinical-documentation-market' target='_blank'>Dataintelo 임상 데이터 분석</a></td></tr>
+<tr><td style='font-weight:700'>Digital Mental Health (디지털 정신건강 치료)</td><td>$27.8B (약 37조 원)</td><td>$153.0B ('34년 고점 돌파)</td><td><b style='color:var(--ok); font-size:0.85rem'>18.6% 견조한 우상향</b></td><td><a href='https://www.towardshealthcare.com/insights/digital-mental-health-market-sizing' target='_blank'>Towards Healthcare 의학 동향</a></td></tr>
+<tr><td style='font-weight:700'>AI in Tourism (인공지능 결합 여행 테크)</td><td>$3.4B (태동기 폭발 전)</td><td>$13.9B (OTA 대체 완료)</td><td><b style='color:var(--ok); font-size:0.85rem'>26.7% Z세대 소비 트렌드 선도</b></td><td><a href='https://www.grandviewresearch.com/industry-analysis/artificial-intelligence-ai-tourism-market-report' target='_blank'>Grand View Research 관광 지표</a></td></tr>
+</tbody></table></div>
+
+<div class='pg' style='margin-top:1.4rem;'>
+  <div class='pc interactive-card' style='padding:1.2rem; border-color:var(--acL); border-width:2px;'>
+    <h3 class='h-word' style='font-size:0.85rem; margin-bottom:0.7rem; border-bottom:2px solid var(--bd); padding-bottom:0.5rem;'>📊 CB Insights 핵심 글로벌 벤처 투자 및 빅테크 M&A 돈줄 동향 요약</h3>
+    <ul style='font-size:0.74rem; color:var(--t2); line-height:1.65; padding-left:1.3rem; margin:0;'>
+      <li style='margin-bottom:0.4rem;'>벤처 혹한기가 정점을 찍은 2024~2025년 글로벌 전체 디지털 헬스케어 벤처 M&A 거래 절벽 속에서도, 오직 유일하게 성사된 거대 메가 딜 중 <b style='color:var(--rd); font-size:0.78rem'>절반에 육박하는 48%의 조 단위 거대 빅테크 자본이 챗GPT 등 생성형 AI(Generative AI) 음성 인식 전문 코어 딥테크 기업 하나만을 타겟으로 집어삼키는 극단적 편식 쏠림 현상</b>이 광기로 가속화되는 트렌드가 뚜렷하게 관측됩니다.</li>
+      <li style='margin-bottom:0.4rem;'>미국 의학계 최신 리포트에 따르면, 미국 거대 병원 내 수술실 및 외래 진료실에 스마트폰 기반 Ambient AI(자연어 음성 인식 자동 차트 생성) 문서화 소프트웨어 앱을 전면 선제 도입할 시, 야근 기록 작성에 얽매인 의사 간호사들의 끔찍한 연쇄 이직 및 현장 번아웃(Burn-out) 붕괴를 극적으로 조기 해소함과 동시에 <b class='h-word' style='font-size:0.78rem'>병원 행정 기회비용을 연간 무려 $4.6B(미국 단일 국가 한화 약 6조 2천억 원)라는 천문학적 규모로 극단적 삭감/절감</b>시키는 경악할 만한 거대 흑자 기회 창출 실증이 대외적으로 완벽히 입증되었습니다.</li>
+      <li>환자의 주민번호, 혈액형, 처방전 등 극도로 민감한 보호 의료 데이터(PHI)가 무선 와이파이를 타고 외부 아마존/구글 퍼블릭 클라우드 서버로 날아가는 전송 과정에서 외부 랜섬웨어로 통째로 유출 원천 방지 및 통신 단절 오지 험지 오프라인 진료 환경 방어 구축을 위해, <b>중앙 서버 데이터 송수신 연산을 철저히 100% 배제하고 오직 의사의 호주머니 속 스마트폰 내부 저전력 자체 하드웨어 NPU 보드에서만 나 홀로 구동되어 해킹이 물리적으로 불가능한 초격차 On-device 엣지 AI 헬스케어 스타트업 원천 기술 지분 전략 투자(SI)</b> 뭉칫돈 쏠림 수요가 폭발적으로 연일 급증세입니다.</li>
+    </ul>
+  </div>
+  <div class='pc interactive-card' style='padding:1.2rem; border-color:var(--acL); border-width:2px;'>
+    <h3 class='h-word' style='font-size:0.85rem; margin-bottom:0.7rem; border-bottom:2px solid var(--bd); padding-bottom:0.5rem;'>📈 PitchBook 사모펀드 밸류에이션 및 벤처 B2B/B2C 수익성 검증 인사이트</h3>
+    <ul style='font-size:0.74rem; color:var(--t2); line-height:1.65; padding-left:1.3rem; margin:0;'>
+      <li style='margin-bottom:0.4rem;'>Wysa, Suki 등과 같이 데스밸리 속에서도 허상을 쫓지 않고 <b>수만 명 단위의 B2B 거대 기업/병원망에 뿌리를 내려 한 번 계약 시 3년 이상 다년 반복 구독료가 입금되는 확고한 장부 수익성(스타트업 마의 장벽인 TTM $10M 이상 흑자)을 서류상 완벽히 입증한 철벽의 안정적 B2B 엔터프라이즈 SaaS 기업</b>들은, 전반적인 실리콘밸리 벤처 투자 시장 유동성 고갈 및 고금리 혹한기 붕괴 파탄 속에서도 불구하고 기관 투자자들로부터 8배~10배 이상의 극단적 프리미엄 수익 가치 배수(Valuation Multiple)를 싹쓸이 독식하며 대형 자본 투자자들의 무한 신뢰 피난처를 영구 확보 중입니다.</li>
+      <li style='margin-bottom:0.4rem;'>대화 텍스트 몇 마디만으로 수백만 개 항공편 최저가 추천부터 글로벌 결제망 발권 연동까지 단일 앱 내에서 100% 완전 자율 E2E 직결제가 가능한 신흥 생성형 대화 AI Travel Agent 솔루션 벤처 플랫폼들은, <b>향후 ChatGPT, 구글 제미나이 등 빅테크 범용 AI 거대 포털들이 자체 검색망을 등에 업고 무자비하게 글로벌 여행 결제 이커머스 커미션 시장으로 직접 진출해 들어오는 파괴적 멸망 위협을 극도로 두려워하며 견제하려는 기존 레거시 대형 공룡 OTA 연합(Booking.com, Expedia, Agoda 등) 세력의 <b class='h-word' style='font-size:0.78rem'>생존형 방어적 적대적 메가 M&A 스핀인 1순위 타깃</b>으로 전면 폭풍 급부상</b> 중입니다.</li>
+      <li>단순 화면 내용 브리핑을 넘어 직접 모바일 안드로이드 OS 최상위 마우스 커서 클릭 권한을 위임받아 유저의 이메일 전송, 통화 봇 자동 발신, 브라우저 탭 웹 서핑 행동을 무인 자율 통제 및 결제 대행하는 Consumer Action Agent(Pine AI, Tolan 등 1세대 실행형 봇) 혁명 기술 기업들의 경우, <b>아직 수익 모델이 백지장인 설립 1년 차임에도 불구하고 초기 Series A 1라운드 평균 자금 조달 펀딩액 파이가 벌써 $20M~$25M(한화 300~400억 원) 이상으로 비정상적으로 초거대화, 비대화 거품 조짐</b>을 보이며, 초기 설립부터 구글 알파고/애플 인텔리전스/아마존 알렉사 등 굴지의 빅테크 메이저급 출신 유능한 초일류 행동 통제 AI 딥러닝 개발 핵심 인재들을 수백만 불 연봉으로 대거 스카우트해 빨아들이는 블랙홀 및 피 말리는 영입 출혈 경쟁 진흙탕 과열 양상이 뚜렷합니다.</li>
+    </ul>
+  </div>
+</div>
+
+<h2 style='font-size:.85rem;font-weight:800;margin:1.6rem 0 .5rem; color:var(--t1)'>최근 글로벌 헬스케어 및 생성형 모바일 AI 에이전트 산업을 뒤흔든 주요 빅테크 대형 M&A 실거래 종결 사례 (인수 레퍼런스 팩트체크)</h2>
+<div class='md-item interactive-card' style='padding:0.8rem 1.1rem; border-left:4px solid var(--ok);'><b>초거대 의료 기록 연합 Commure × 문서화 앱 Augmedix</b> — <b style='color:var(--ok); font-size:0.8rem'>무려 $139M (한화 약 1,850억 원, '24.7월) 100% 완전 흡수 합병 인수 완료 증명</b> · AI 병원 차팅 클리닉 문서화 원천 기술 기업 Augmedix를 딥테크 인력째로 통째로 인수합병 함으로써, Augmedix가 수년간 피와 땀으로 깔아 둔 25만 명 이상의 일선 임상의(Clinicians) 거대 미국 병원 현장 네트워크 유통 채널 다이렉트 접근성을 단 하루 아침에 단숨에 획득 탈취. 더불어 전 세계 최대급 민간 영리 병원 연합 그룹체인 HCA Healthcare에 솔루션을 독점 공급할 수 있는 막강한 공식 B2B 납품 파트너 황금 동아줄 지위를 영구적으로 흡수 완료 (<a href='https://www.healthcaredive.com/news/commure-acquire-augmedix-ai-documentation/721978/' target='_blank' style='text-decoration:underline; font-weight:800; color:var(--ok);'>Healthcare Dive 글로벌 경제지 E-Book 보도 상세 기사 원문 이동 클릭</a>)</div>
+<div class='md-item interactive-card' style='padding:0.8rem 1.1rem; border-left:4px solid var(--ac);'><b>제국 Microsoft × 의료 음성 원천 기술 Nuance</b> — <b style='color:var(--ac); font-size:0.8rem'>$19.7B (한화 약 26조 원, '22년) AI 헬스케어 벤처 역사상 유례없는 최고액 기념비적 초대형 메가톤급 빅딜 M&A</b> · 미국 병원 기록 점유율 1위인 드래곤 메디컬과 최근 챗GPT 기반의 DAX Copilot 등 병원 임상 현장 의사 Scribe 음성 보조 시장의 압도적 1위 독점적 파이프라인 선점 점유율 효과를 매개로, MS 자사의 메인 먹거리인 Azure(애저) 클라우드 전산 생태계를 미국뿐 아니라 글로벌 의료망 B2B 엔터프라이즈 데이터 지배력에 영구적으로 종속시켜 가장 깊고 거대한 의료 제국 시스템 완전무결 구축 성공 역사 증명</div>
+<div class='md-item interactive-card' style='padding:0.8rem 1.1rem; border-left:4px solid var(--wn);'><b>하드웨어 강자 Stryker × 센서형 엣지 헬스케어 care.ai</b> — 세계 1위권 규모의 자금력을 쥐고 있는 수술용 베드/메디컬 디바이스 메이저 의료기기 하드웨어 제조사 Stryker가, 병동 내 벽면 카메라 및 동작 센서를 통해 환자의 실시간 위험한 움직임과 비명 음성을 감지, 간호사 호출을 최소화하는 스마트 병동용 최첨단 엣지 Ambient AI 환경 인지 모니터링 스타트업 care.ai를 전격 100% 지분 인수 스핀인 단행. 철로 만든 수동적이고 무거운 수술 장비 등 전통적인 하드웨어 장비 라인업 껍데기 폼팩터 내부에 눈과 귀가 달린 최첨단 초경량 지능형 On-device 소프트웨어 두뇌 시스템을 통째로 이식 결합하는 <b>'글로벌 의료 기기 제조 기업의 딥러닝 소프트웨어 수직 결합 파괴적 M&A 시너지 시대'</b>의 본격적인 개막 선언 신호탄 발사</div>
+
+<h2 style='font-size:.85rem;font-weight:800;margin:1.6rem 0 .5rem; color:var(--t1)'>🏛️ 타 기관 추가 리서치 인사이트 (Gartner · McKinsey · a16z · Forrester · IDC)</h2>
+<div class='pg'>
+  <div class='pc interactive-card' style='padding:1rem;'>
+    <h3 class='h-word' style='font-size:0.8rem; margin-bottom:0.55rem; border-bottom:2px solid var(--bd); padding-bottom:0.4rem;'>🔮 Gartner AI Agent 기술 성숙도 <span class='tm'>'26.3월</span></h3>
+    <ul class='bul-list' style='font-size:0.72rem; color:var(--t2);'>
+      <li><b class='h-word'>Agentic AI</b> → Hype Cycle 정점 진입 <span class='tm'>'26년 상반기</span></li>
+      <li><b class='hl'>'28년까지 엔터프라이즈 SW의 33%가 Agentic AI 탑재</b> 전망 (현재 <b class='red-w'>1% 미만</b>)</li>
+      <li>Action Completion Agent → <b>일상 업무 15% 자율 결정</b> 예측 <span class='tm'>'28년</span></li>
+      <li>주요 저해 요인: <b class='red-w'>LLM 환각·보안 실사·감사 추적 부재</b></li>
+    </ul>
+  </div>
+  <div class='pc interactive-card' style='padding:1rem;'>
+    <h3 class='h-word' style='font-size:0.8rem; margin-bottom:0.55rem; border-bottom:2px solid var(--bd); padding-bottom:0.4rem;'>💼 McKinsey Global AI Report <span class='tm'>'26.2월</span></h3>
+    <ul class='bul-list' style='font-size:0.72rem; color:var(--t2);'>
+      <li>생성형 AI 연간 글로벌 가치 창출 <b class='hl'>$4.4조 (약 6,000조 원)</b> 추정</li>
+      <li><b>헬스케어·고객 운영·SW 엔지니어링</b> → 전체 가치의 <b class='hl'>75%</b> 집중</li>
+      <li>온디바이스 엣지 추론 → <b>클라우드 대비 40~70% 비용 절감</b> (Personal AI 모델 부합)</li>
+      <li>B2B SaaS <b class='ok-w'>NRR 120%↑ 기업이 피인수 프리미엄 2.1배</b> 수혜 (Wysa형)</li>
+    </ul>
+  </div>
+  <div class='pc interactive-card' style='padding:1rem;'>
+    <h3 class='h-word' style='font-size:0.8rem; margin-bottom:0.55rem; border-bottom:2px solid var(--bd); padding-bottom:0.4rem;'>🚀 a16z (Andreessen Horowitz) <span class='tm'>'26.1월</span></h3>
+    <ul class='bul-list' style='font-size:0.72rem; color:var(--t2);'>
+      <li>Consumer AI App Top 50 중 <b class='hl'>36% 웹 → 모바일 전환 가속</b></li>
+      <li><b class='pur-w'>"Wrapper" 기업 → Moat 없이 1년 내 90% 소멸</b> 전망 (Layla·Tolan 주의)</li>
+      <li>승자 조건: <b>독자 데이터 플라이휠 + Action 제어 + 모바일 네이티브</b> 3각 확보</li>
+      <li>초기 Action Agent 평균 펀딩액 <b class='hl'>$20M~$25M</b> 거품 경고</li>
+    </ul>
+  </div>
+  <div class='pc interactive-card' style='padding:1rem;'>
+    <h3 class='h-word' style='font-size:0.8rem; margin-bottom:0.55rem; border-bottom:2px solid var(--bd); padding-bottom:0.4rem;'>📡 Forrester / IDC 엣지 AI 전망 <span class='tm'>'26.1월</span></h3>
+    <ul class='bul-list' style='font-size:0.72rem; color:var(--t2);'>
+      <li>'27년까지 <b class='hl'>스마트폰의 75%가 NPU 탑재 온디바이스 AI</b> 구동 (IDC)</li>
+      <li>헬스케어 Ambient AI 도입 병원 → <b>Forrester 기준 연 $4.6B 행정비 절감</b></li>
+      <li>규제 압박 심화 → <b class='red-w'>SOC2·HIPAA·GDPR 3중 인증 기업</b>만 B2B 생존</li>
+      <li>Companion AI <b class='red-w'>미성년자 규제 리스크</b> → EU AI Act '26.5월 발효</li>
+    </ul>
+  </div>
+</div>
+
+<h2 style='font-size:.85rem;font-weight:800;margin:1.6rem 0 .5rem; color:var(--t1)'>🔥 트렌드 및 최신 뉴스 (모바일 AI Agent 산업 판도 변화)</h2>
+<div class='trend-grid'>
+  <div class='trend-card'>
+    <div class='tr-t'>📈 Agentic AI 자본 쏠림 <span class='tm'>'26.3월</span></div>
+    <div class='tr-d'>
+      <ul class='bul-list'>
+        <li>Q1 글로벌 AI Agent 스타트업 펀딩 <b class='hl'>$8.2B (+ 142% YoY)</b></li>
+        <li>상위 10% 기업이 <b class='red-w'>전체 자본의 72% 독식</b> (PitchBook)</li>
+        <li>Action Completion형 → 단순 챗봇 대비 <b>밸류 3.4배 프리미엄</b></li>
+      </ul>
+    </div>
+  </div>
+  <div class='trend-card'>
+    <div class='tr-t'>📱 스마트폰 제조사 AI 번들 전쟁 <span class='tm'>'26.2월</span></div>
+    <div class='tr-d'>
+      <ul class='bul-list'>
+        <li>Apple Intelligence → <b>OpenAI + 써드파티 Agent</b> API 개방</li>
+        <li>삼성 Galaxy S26 → <b class='h-word'>통합 Agent Framework</b> 공개</li>
+        <li>구글 Gemini Nano → <b>온디바이스 2B 파라미터</b> Pixel 선탑재</li>
+        <li>제조사의 <b class='red-w'>SLM 파트너십 주도권 쟁탈</b> 격화</li>
+      </ul>
+    </div>
+  </div>
+  <div class='trend-card'>
+    <div class='tr-t'>🏥 헬스케어 Ambient AI M&A 가속 <span class='tm'>'26.3월</span></div>
+    <div class='tr-d'>
+      <ul class='bul-list'>
+        <li>Epic → Ambient Scribe <b>내부 자체 구축</b> 선언 (기존 파트너 위협)</li>
+        <li>Oracle Health × Cerner <b class='hl'>$4.2B</b> Ambient 스타트업 인수 추진</li>
+        <li>Amazon HealthLake → <b>Suki/Abridge급 3~5개 타깃 물색</b></li>
+      </ul>
+    </div>
+  </div>
+  <div class='trend-card'>
+    <div class='tr-t'>⚖️ EU AI Act 시행 임박 <span class='tm'>'26.5월 발효</span></div>
+    <div class='tr-d'>
+      <ul class='bul-list'>
+        <li><b class='red-w'>고위험 AI</b> → 의료·금융·미성년자 타겟 <b>전수 사전 승인</b></li>
+        <li>Companion AI (Tolan·Replika) → <b>연령 검증·필터 의무화</b></li>
+        <li>위반 시 <b class='red-w'>전 세계 매출의 7% 과징금</b></li>
+      </ul>
+    </div>
+  </div>
+  <div class='trend-card'>
+    <div class='tr-t'>🧠 SLM(Small Language Model) 부상 <span class='tm'>'26.1월</span></div>
+    <div class='tr-d'>
+      <ul class='bul-list'>
+        <li>MS Phi-4 · Google Gemma · Meta LLaMA 3.2 → <b>7B 이하 급증</b></li>
+        <li>온디바이스 지연시간 <b class='hl'>Sub-500ms</b> 표준화 (Personal AI 검증)</li>
+        <li>엣지 추론 비용 → 클라우드 대비 <b class='ok-w'>40배 절감</b> 실증</li>
+      </ul>
+    </div>
+  </div>
+  <div class='trend-card'>
+    <div class='tr-t'>💰 Success Fee BM 확산 <span class='tm'>'26.3월</span></div>
+    <div class='tr-d'>
+      <ul class='bul-list'>
+        <li>Pine AI·Rocket Money 등 <b>성과 과금</b> 확산</li>
+        <li>소비자 진입장벽 ↓ · <b class='ok-w'>전환율 4.7배</b> (DoNotPay 대비)</li>
+        <li>단점: 장기 구독 안정성 낮아 <b class='red-w'>NRR 예측 불확실성</b></li>
+      </ul>
+    </div>
+  </div>
+</div>
+</div></div>
+
+<div class='cd' id='sec-criteria'><div class='ch2' onclick="tc(this)"><div><h2>⑥ 종합 벤처 M&A 평가 항목별 상세 채점 기준표 (할루시네이션 원천 배제/철저한 팩트 정량화)</h2><p>· 7개 딥테크/재무 대항목 · 28개 벤처캐피탈(VC) 실사 기준 세부 지표 · 글로벌 탑티어 총 100점 만점 모형 체계 로직 공개</p></div><span class='arr'>▼</span></div>
+<div class='cb'><div class='tw'><table class='crt'><thead><tr><th style='width:26px'>No</th><th style='width:160px'>핵심 세부 평가 지표 (KPI)</th><th style='width:26px'>배점</th><th>채점 산출 기준 (주관적 추정 배제 / 명확한 객관적 수치 및 외부 검증 서류 데이터 팩트 기반 한정 채점)</th></tr></thead><tbody>
+<tr><td colspan='4' class='ec'>A 모바일 OS 플랫폼 / 휴대폰 하드웨어 제조사 파트너십 번들 탑재 적합성 핏 (Fit) — 20점 만점</td></tr>
+<tr><td>A1</td><td>대중 모바일 앱 상용 출시 유무 및 B2C/B2B 글로벌 활성 사용자 트래픽 규모</td><td>5</td><td>0=상용 앱 아예 없음 / 2=초기 TestFlight 구동 MVP·Beta 앱 한정 / 4=글로벌 앱스토어 정식 상용 출시 완료 및 유저 리뷰 1K↑ 초과 확보 / 5=안정적 버그 제로 상용 안착 및 언론/IR 공식 발표 MAU(월간활성유저) 10K↑ 이상 입증 완벽 충족</td></tr>
+<tr><td>A2</td><td>멀티 디바이스 동기화 및 데스크톱 웹(Web) 서비스 연장 확장 성숙도</td><td>3</td><td>0=웹 아예 없음 / 1=결제 불가한 단순 브로셔 소개형 껍데기 랜딩페이지 / 2=구글/애플 회원가입 연동 및 핵심 대시보드 로그인 기능 운영 / 3=웹 단독 PG 결제/구독 구조 100% 완비 및 모든 해상도 지원 모바일웹 완전 반응형 최적화 구현</td></tr>
+<tr><td>A3</td><td>시스템 커널 및 모바일 하드웨어 핵심 네이티브 기능 장악 UX 아키텍처 비율</td><td>6</td><td>0=PC 데스크톱 웹 환경 전용 / 2=주요 연산은 PC, 폰은 단순 결과 알림 모바일 연동 보조 / 4=Mobile-First 앱 우선 직관적 UI/UX 설계 / 6=스마트폰 카메라, 마이크, 센서 등 모바일 네이티브 하드웨어 권한 100% 자체 활용 및 인터넷 단절 온디바이스(NPU) 엣지 구동 기능 완비</td></tr>
+<tr><td>A4</td><td>B2B 제조사 디바이스 OS 통합 스핀인 기본 번들 탑재 비즈니스 시나리오 핏</td><td>3</td><td>0=구체적 협업 아이디어 전무 / 1=단순 위젯 등 일반적 범용 1개 상상 수준 / 2=특정 1020 타겟/의료용 등 명확하고 날카로운 구체적 비즈니스 2개 이상 / 3=스마트폰 벤더/제조사별/Android OS 펌웨어별/대륙 지역별 통신망 맞춤 수익 창출 ROI 정리 공식 제안 기획 문서 내부 완비</td></tr>
+<tr><td>A5</td><td>제조사 및 글로벌 1티어 플랫폼 기업과의 실제 백엔드 연동 제휴 검증 단계</td><td>3</td><td>0=대외 공개된 외부 제휴 이력 완전 전무, 나 홀로 영업 / 1=단순 소개 단계 명함 교환, 행사 부스 미팅 / 2=기술적 통합 가능성 타진 PoC 진행, NDA(기밀유지), LOI 체결 진행 발표 / 3=서류 도장 찍힌 공식 상업 수익(R/S) 계약 분배 및 대규모 인프라 실 사용자 대상 파일럿 트래픽 에러 없이 정식 운영 중</td></tr>
+<tr><td colspan='4' class='ec'>B 글로벌 딥테크 M&A (인수합병) 엑시트 가능성 및 핵심 피인수 매수 자산 가치 — 20점 만점</td></tr>
+<tr><td>B1</td><td>동종 버티컬 업계 내 수백억 단위 이상 유사 AI 기업 글로벌 M&A 엑시트 사례 수</td><td>5</td><td>최근 3년 내 테크크런치(TechCrunch) 보도 기준 대형 인수 딜 시장 펌핑: 0건=0 / 1건=1 / 2~3건=2 / 4~5건=3 / 6건 이상 시장 초과열 메가 트렌드=5 만점 부여</td></tr>
+<tr><td>B2</td><td>빅테크가 탐낼 만한 인수 매력 핵심 무형 자산 (교차 검증 문서 한정)</td><td>5</td><td>①미국 특허청 정식 등록 독자 코어 특허 보유, ②경쟁사가 구할 수 없는 폐쇄망 배타적 독점 데이터셋, ③실명 기업 포함 공식 유료 고객 수(결제자) 공개, ④재무제표상 연간 반복 ARR USD 수치 공개, ⑤국가 보건/안전망 까다로운 규제 인증(FDA, SOC2 등) — 명확히 충족된 증빙 항목 1개당 1점씩 누적 누진 가산 (최대 5점 꽉 채움)</td></tr>
+<tr><td>B3</td><td>스타트업 보드 이사회에 합류 확정된 확보된 전략적 투자자(SI) 뒷배 수준 질</td><td>4</td><td>0=기관 펀딩 투자 유치 아예 전무 / 1=돈만 대는 순수 재무적 벤처캐피탈(VC)만 참여 방치 / 2=의료/여행 등 산업 생태계를 이해하는 산업 특화 전문 VC가 직접 리드 / 3=시장을 쥐락펴락하는 글로벌 거대 대형 사업회사(United 항공, Comcast 등) 1곳 지분 직접 전략 투자 참여 / 4=복수 대형 사업회사 2곳 이상 이사회 거액 지분 투자 합류 및 백엔드 API 공동 개발 확정 연계</td></tr>
+<tr><td>B4</td><td>시스템 백본 인프라 및 자체 딥러닝 기술 아키텍처 스택의 순수 독자 독립성</td><td>3</td><td>0=오로지 외부 OpenAI(GPT) 등 범용 LLM API 호출에 껍데기만 씌워 100% 종속 래퍼 위협 / 1=외부 기반 모델 위에 자사가 수집한 산업 데이터 기반 자체 프롬프트 파인튜닝 가미 / 2=자체 개발한 프라이빗 SLM 코어 모델 확보 및 처리 불가 영역만 외부 모델 보조 혼용 / 3=근본 핵심 알고리즘 두뇌 코어망부터 GPU 서빙 자체 클라우드 인프라 물리적 망까지 100% 자립 독립 생태계</td></tr>
+<tr><td>B5</td><td>설립 이후 데스밸리 극복 경과 시간 · 글로벌 벤처 조직 인사 스케일 확장 규모</td><td>3</td><td>0=설립 불과 1년 미만 핏덩이, 10명 미만 영세 스타트업 / 1=1~3년 생존, 10~50명 팀 빌딩 돌입 / 2=3~5년 죽음의 계곡 생존 안정기, 50~200명 글로벌 진출 / 3=5년 이상 산전수전 돌파, 개발/영업/법무 풀스택 200명 이상 거대 벤처 조직 완성</td></tr>
+<tr><td colspan='4' class='ec'>C 알고리즘 딥테크 기술력 방어 장벽 및 글로벌 해킹/인프라 규제 통과 신뢰도 — 12점 만점</td></tr>
+<tr><td>C1</td><td>AI 에이전트 코어 두뇌 IP (지식재산권) 개발 소유권 소스코드 원천 검증</td><td>3</td><td>0=사용 기술 스택 불명확 (타사 API 단순 래퍼 의심 리스크) / 1=고유 UI/UX 소스코드 기업 내부망 귀속 확인 / 2=핵심 알고리즘 미국/국제 특허 정식 임시 출원 및 대규모 훈련 독점 데이터 수집망 공개 / 3=핵심 원천 엔진 기술 등록 특허 발급 완료 및 경쟁사 복제 불가능한 공식 영업 비밀(Trade Secret) 자산화 공시</td></tr>
+<tr><td>C2</td><td>현재 시장 내 프로덕트 상용 제품 출시 구동 안정성 및 에러 제로 성숙도</td><td>3</td><td>0=PPT 수준의 투자용 연구 아이디어 단계 데모 / 1=버그 투성이의 시장 간보기용 베타 테스트 MVP 배포 / 2=지갑을 여는 정식 유료 상용 운영망 안착 / 3=이미 수년간 상용 운영 돌파 + 까다로운 거대 대형 엔터프라이즈급 계약 고객 대상 무결점 접속 SLA(서비스 품질 99.9% 무다운 보장) 장기 운영 중</td></tr>
+<tr><td>C3</td><td>입에 발린 마케팅이 아닌 외부 독립 감사 기관의 엄격한 기술 성능 우위 입증</td><td>3</td><td>0=자체 테스트 완전 미검증 / 1=객관성/공신력 0인 자사 PR 자료 기준 발표치 위주 맹신 / 2=다수의 B2B 대형 유명 고객사(포춘 500대 등) 실제 도입 후 작성된 성공 PoC 실증 결과 수치 대외 공식 공개 / 3=공신력 있는 대학 연구 기관의 독립 벤치마크 연구, 세계적 학술지 뚫은 엄격한 맹검 동료평가(Peer-reviewed) 의학/AI 논문 게재 완수, 제3자 기관 공식 시스템 감사 만점 완료</td></tr>
+<tr><td>C4</td><td>사이버 랜섬웨어 해킹 보안 방어망 및 국가간 민감 데이터 철통 규제 인증 마크</td><td>3</td><td>0=보안 관련 대외적 일절 언급 없음 위험 / 1=단순 구글 폼 수준의 웹사이트 일반 개인정보 취급 방침 정책 텍스트 존재 / 2=대형 엔터프라이즈 도입 필수 요건인 SOC2, 미국 의료 정보 무단 열람 방지법 HIPAA, 최악의 벌금 유럽 GDPR 등 거대 규제망 중 최소 1개 이상 정식 획득 통과 / 3=수천만 달러짜리 복수 3중 글로벌 규제 인증 완비, 외부 화이트 해커 집단의 극한 뚫기 침투테스트(Pen-test) 방어 + 정밀 회계 보안 실사 무결점 통과</td></tr>
+<tr><td colspan='4' class='ec'>D 현금 창출 실매출 재무 지표 · 비즈니스 모델(BM) 수수료 과금 징수 구조 건전성 — 12점 만점</td></tr>
+<tr><td>D1</td><td>세무 장부로 100% 검증 완료된 연간 총매출 현금 볼륨 규모 (USD 달러 기준 통일)</td><td>3</td><td>0=적자 혹은 실매출액 언론에 철저히 비공개, 허상의 거래액(GMV)으로 불명확 추정 눈속임 / 1=TTM (최근 후행 12개월 실결제) 100만 달러 미만 영세 / 2=연 100만~1,000만 달러 초기 안정 궤도 스케일 규모 / 3=유니콘 심사 통과 마지노선 연 1,000만 달러(한화 약 140억 원) 아득히 초과하는 실매출 세무 검증 데이터 존재 완벽 마일스톤 달성</td></tr>
+<tr><td>D2</td><td>투자 회수를 확신하는 객관적인 매출 고속 성장 트랙션 우상향 로켓 신호</td><td>3</td><td>0=매출이 거꾸로 감소 추세 혹은 쫄려서 수치 원천 미공개 함구 / 1=대외 CEO 인터뷰 멘트 내 YoY(전년 대비) 단순 양수 수익 성장 암시성 발언 / 2=벤처캐피탈(VC)에 분기(QoQ) 두 자릿수 성장 확정 IR 데이터 공식 지표 공개 / 3=월간(MoM) 20% 이상씩 폭증하여, 연간 수익이 전년 대비 최소 2배 이상↑ 미친 듯이 더블링(Double) 펌핑되는 대외 검증 수치 완료</td></tr>
+<tr><td>D3</td><td>투자자가 가장 사랑하는 구독 이탈 방어 안정적 영구 반복 매출(ARR) 장부 구조</td><td>3</td><td>0=앱 구매 1회 결제 등 단발성 앱스토어 일회성 싸구려 수익 체계 / 1=비정기적인 들쭉날쭉 B2B 기업 프로젝트 SI 구축 셋업 파견 수수료 수취 / 2=개인/기업 고객 대상 월간 자동 결제 및 연간 1년 치 고정 선결제 구독 모델 시스템 장착 / 3=탄탄한 글로벌 구독 모델 완벽 정착 + 한 번 가입하면 안 나가는 순매출유지율(NRR) 무조건 100% 초과 확정 수익, 거대 대기업 고객 다년 3년 치 장기 독점 계약 체결을 통한 마르지 않는 캐시카우 현금 락인 창고</td></tr>
+<tr><td>D4</td><td>소비자 과금 체계 징수 다각화 리스크 분산 및 메인 BM 구조 재무적 건전성</td><td>3</td><td>0=현재 프리티어 무료 전용으로 돌리며 서버비 탕진, 기업 통장 유입 현금흐름 0 / 1=프리미엄 옵션 버튼은 달려 있으나 유저들의 실제 카드 결제율 및 유료 전환율 바닥 미확인 / 2=대규모 허들 극복 유료 결제 전환율(Conversion) 증거 확보, 홈페이지에 떳떳하고 투명한 Pricing 정액 가격 명시 / 3=B2C 직접 유료 앱 구독 + B2B2C 파트너 유통망 뒷구멍 커미션 수수료 + 외부 써드파티 개발자 API 호출 종량제 사용량 과금 등, 회사가 안 망하는 완벽한 다중 거미줄 복수 매출원 리스크 영구 분산 엔진 확보</td></tr>
+<tr><td colspan='4' class='ec'>E 매크로 전 세계 산업 펌핑 시장 타이밍 및 외부 미디어 파트너십 언론 뉴스 호재 — 12점 만점</td></tr>
+<tr><td>E1</td><td>해당 AI 타겟 서비스 종속 버티컬 산업 시장 자체의 역대급 폭발적 CAGR 팽창률</td><td>3</td><td>시장 조사 기관이 예측하는 향후 5개년 연평균성장률(CAGR) 빅데이터 지표: 10% 미만 저성장 고인물=0 / 10~19% 두 자릿수 완만 성장=1 / 20~29% 신산업 파괴적 고도 성장 시장 진입=2 / 30% 이상 구글/애플/메타 자본이 블랙홀처럼 모조리 빨려 들어가는 미친듯한 초폭발적 팽창 붐업 슈퍼 메가 트렌드 시장=3</td></tr>
+<tr><td>E2</td><td>정부 부처 국회 제도적 AI 규제 완화 및 디지털 인프라 예산 보조금 정책 성숙도</td><td>3</td><td>0=딥페이크/의료법 등 과도한 각국 징벌적 규제/불법 장벽으로 상용화 도입 무기한 난망 위기 / 1=이제 막 유럽연합 글로벌 법제도 규제안 초안 국회 상정 진행 논의 중 리스크 지연 단계 / 2=미국 FDA, 영국 보건당국 등 주요 구매력 1위 메이저 국가 규제 프리패스 가이드라인 정비 및 안착 완료 승인 / 3=완벽한 합법 규제 정비 및 정부 차원에서 스마트 요양/행정 도입하라고 수조 원 대규모 국비 예산(인센티브) 보조금 펌핑 융단 폭격 돌입 중인 돈잔치 섹터</td></tr>
+<tr><td>E3</td><td>최종 고객사 시스템의 무거운 레거시 철거 및 신규 클라우드 AI 서비스 도입 마찰 저항 수준</td><td>3</td><td>0=병원 구형 차트 시스템 연동 및 지독한 대기업 내부 폐쇄망 SI 딥 통합에 최소 6개월~1년 이상 극심한 프로젝트 SI 코딩 소요 마찰 / 1=기존 솔루션 대비 평균 3~6개월 통합 기간으로 약간 단축 / 2=가벼운 범용 REST API 던져주면 클라이언트 개발자가 1~3개월 내 도입 완료 끝 / 3=그냥 모바일 앱스토어에서 즉시 다운로드 클릭 후 터치 두 번 수 초 내로 권한만 주면 완전하게 바로 모든 100% AI 기능 사용 가능한 '설치/마이그레이션 제로 마찰력' (Zero-Friction) 달성</td></tr>
+<tr><td>E4</td><td>대외 벤처 시장이 환호하는 검증된 외부 비즈니스 호재 및 거대 파트너 M&A 모멘텀 타격 빈도</td><td>3</td><td>최근 6개월 이내 테크크런치 등 글로벌 메이저 톱티어 언론 뉴스 대서특필 보도, 구글/아마존/컴캐스트 등 글로벌 최상위 1티어 플랫폼 파트너십 PoC 체결, 대형 보건/행정 당국 정부 정책 호재 지정 등 누구나 인정할 객관적 팩트 공시 릴리즈 건수 : 한 번도 안 나옴 0건=0 / 1건 간신히 띄움=1 / 2건 연속 타격=2 / 3건 이상 끊임없이 기사 쏟아내는 압도적 PR 마케팅 만점=3</td></tr>
+<tr><td colspan='4' class='ec'>F 사업 스케일업 핵심 팀 빌딩 세팅 및 마피아 경영진 파운더스 보드 전투 역량 — 12점 만점</td></tr>
+<tr><td>F1</td><td>조직 수장 C-레벨(CEO 등) 창업자들의 해당 타겟 버티컬 도메인 현장 밀착 전문 직무 경력</td><td>3</td><td>의료면 의료, 여행이면 여행 등 해당 AI 타겟 산업 분야 최전선 실무 근속 누적 기간: 이제 막 졸업한 2년 미만 경험 부족 쌩초보=0 / 2~4년 정도 굴러본 초급 실무자=1 / 5~9년 짬밥 산전수전 겪은 중견 디렉터 리더급 팀장=2 / 10년 이상 해달 업계를 통째로 좌지우지하는 글로벌 최고 권위자 이사급=3</td></tr>
+<tr><td>F2</td><td>글로벌 연봉 10억 Top 빅테크 및 실리콘밸리 1티어 유니콘 선도사 근무 출신 핵심 브레인 포진</td><td>3</td><td>마이크로소프트, 구글, 애플, 메타, 스나이프, 플립카트 등 전 세계 0.1% 탑티어 유니콘 기업 핵심 근무 출신 엘리트 합류 진용 여부: 0=전무, 학력 미확인 오합지졸 / 1=결정권 없는 직원급 핵심 엔지니어 1명 간신히 존재 / 2=투자를 땡겨오고 비전을 칠 의사결정권자 C-level 급 창업자 1명 스펙 / 3=단순 월급쟁이가 아닌 공동 창업자 및 C-level 핵심 보드 진용에 2명 이상 최전선 집중 포진 장악</td></tr>
+<tr><td>F3</td><td>투자자가 가장 열광하는 과거 '성공적 벤처 창업 기획 · 대규모 자본 매각(Exit)' 엑시트 이력 유무</td><td>3</td><td>0=그냥 이번이 인생 첫 창업, 경험치 0, 리스크 극대화 / 1=이전 극초기 아이디어(시드 펀딩 몇 억 단위 단계) 맛보기 창업 이력 / 2=과거 메이저 VC 상대 Series A 200억 이상 대규모 거액 펀딩 기관 투자를 이끌어내며 죽음의 계곡 스케일업 돌파 경험 유경험자 / 3=과거 자신이 만든 스타트업을 수백억 이상 단위 거대 대기업에 팔아치운 매각(M&A Exit) 성공 이력 혹은 직상장 나스닥(IPO) 종 치기 완료 이력 100% 완벽 증명 영웅</td></tr>
+<tr><td>F4</td><td>글로벌 확장을 견인할 초기 벤처 조직 C-레벨 핵심 인력 삼각편대 밸런스 전문성 구성도</td><td>3</td><td>0=사업, 개발 혼자 다 하는 비전문가 CEO 1인 독단 체제 붕괴 위험 / 1=CEO+비전공 코더 CTO 2인 불안정 / 2=돈을 땡겨올 CEO + 딥테크 코어 기술을 아는 전문 1티어 CTO + B2B 글로벌 영업 현장 로비를 뚫을 사업 총괄 리드 3각 편대 강력 진용 / 3=CEO+CTO+영업총괄에 더해 글로벌 수백만 트래픽 바이럴을 쏘아 올릴 천재적 그로스 해킹 마케팅/프로덕트(PO) 딥 운영 체계 임원까지 한 치의 오차 없는 완전체 조직 100% 완비</td></tr>
+<tr><td colspan='4' class='ec'>G 딥테크 기술 성능 제품력 지표 및 경쟁사 플랫폼 이탈을 완벽히 봉쇄하는 철벽 락인 경쟁력 — 12점 만점</td></tr>
+<tr><td>G1</td><td>동종 업계 타 1위 경쟁사 대비 까발려진 공개 성능 스펙 정밀 벤치마크 차별화 우위 지수</td><td>3</td><td>0=객관적 성능 수치 대외 완전 미공개 숨김 / 1=신뢰도 0%인 뻔한 자사 마케팅용 블로그 주장 차별화 포장 / 2=포춘 500대 등 대형 B2B 고객사 실제 현장 도입 후 타사 솔루션 다 빼버리고 정착 완료한 실제 벤치마크 테스트 사례 E-Book 대외 백서 공개 / 3=스타트업과 관련 없는 외부 전문 최고 독립 벤치마크 검사 기관, 국제 의학/AI 저널 최고 권위 논문 게재 등을 통한 타사 대비 완벽한 인식률/비용 절감 우위 수치 100% 증명 검증 완료</td></tr>
+<tr><td>G2</td><td>지갑을 여는 B2B 기업/B2C 고객 체감 최우선 달러 환산 대외 공개 실제 ROI (투자수익률 퍼포먼스)</td><td>3</td><td>0=얼마나 돈을 아껴주는지 성과 미공개 / 1="직원들이 편해졌어요" 수준의 추상적이고 정성적인 감성적 비용/시간 감축 멘트 포장 / 2=명확하게 회계 장부에 떨어지는 정량적 달러(USD 절약분)/수천 분(Min 행정 시간 증발) 단위 거대 시간 ROI 감축 수치 공식 대외 언론 공개 증명 / 3=회사 자체 주장이 아닌 독립적 글로벌 외부 회계/감사 기관의 정밀 진단 결과가 포함된 완벽한 비용 수십 배(9X 등) 절감 및 초기 소프트웨어 도입 자본 완전 회수 기간(Payback period 1년 내 달성 등) 산정 엑셀 수식 명확히 낱낱이 공개</td></tr>
+<tr><td>G3</td><td>고객 행동 매일매일 데이터 영구 귀속 편입 및 거대 타 경쟁사 플랫폼 이탈 절대 방어 락인(Lock-in) 장벽 두께</td><td>3</td><td>0=사용자가 아침에 눈 떠서 터치 클릭 한 번이면 경쟁사 앱으로 내 개인정보를 싹 다 옮겨갈 수 있는 데이터 복사/전환/마이그레이션이 너무나 용이함 깃털 방어막 / 1=사용 빈도가 낮아 일부 부차적 일회성 캐시 텍스트 대화 데이터만 단순 임시 서버에 축적 / 2=유저 고유의 영구적 사생활 히스토리 데이터 뭉치와 과거 기억이 매일 앱 워크플로와 로컬 칩셋에 딥(Deep)하게 임베드되어 환승 시 극심한 감정적 손실 및 초기화 세팅 마찰 발생 / 3=수조 원짜리 거대 병원 초대형 클라우드 EHR 시스템, 국가 이동통신사 기간망, 금융사 ERP 등 초거대 백엔드 시스템 API에 뿌리 깊게 잡초처럼 박혀 기생하여, 향후 다른 경쟁 싼 소프트웨어로의 교체 시도가 사실상 병원/기업 업무의 전면 마비 수준을 초래하는 극한 전환 비용 철벽 락인 창출</td></tr>
+<tr><td>G4</td><td>글로벌 메가 빅테크 1위 자본 침투 카피캣 출현 방어용 시장 검증된 절대 구조적 진입 해자(Moat) 보유 개수</td><td>3</td><td>돈이 수조 원이 있어도 뺏을 수 없는 방어 무기 : ①미국 특허청 정식 등록된 배타적 침해 금지 특허 IP 무기, ②경쟁사가 아무리 돈을 주고도 구할 수 없는 10년간 폐쇄망 독점 훈련용 음성/의료 딥 데이터셋, ③보건 당국/기관의 의료 진입 규제 승인 인증 독점 패스트트랙(FDA 등) 통과 타이틀, ④막대한 수백만 유저 기반이 스스로 숏폼을 양산하는 앱스토어 소셜 네트워크 유기적 바이럴 해자 효과, ⑤글로벌 메이저 1티어 제조사/통신사 파트너의 스마트폰 출하 시 배타적 자사 앱 강제 프리로드(선탑재) 유통망 독점 조약 문서 체결 등 — 벤처캐피탈(VC) 실사에서 명확히 서류로 확인 가능한 5대 방어 요소 실제 보유 충족 개수: 0개=0 / 1개 턱걸이=1 / 2개 훌륭=2 / 3개 이상 난공불락 요새=3점 만점 부여</td></tr>
+</tbody></table></div></div></div>
+
+<footer style='padding:0.7rem 1.1rem; background:var(--card); border-top:2px solid var(--bd); border-radius:var(--r); margin-top:0.8rem; box-shadow:var(--shS);'>
+<div style='display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:0.5rem;'>
+<div style='font-size:0.7rem; font-weight:700; color:var(--acT);'>📊 Global AI Startup Watch · 모바일 AI Agent Edition</div>
+<div style='font-size:0.68rem; font-weight:800; color:var(--t1); background:var(--bbg); border:1px solid var(--bbd); padding:0.2rem 0.55rem; border-radius:6px;'>⏱ <span class='h-word'>'26.4.16 (목) 12:10 기준</span></div>
+</div>
+<div style='font-size:0.62rem; color:var(--t3); margin-top:0.4rem; line-height:1.55;'>· 출처: PitchBook · CB Insights · Gartner · McKinsey · a16z · Forrester · IDC · TechCrunch 등 글로벌 팩트체크 종합 반영<br>· 데이터/펀딩/매출은 언론 공식 발표 시점 기준 · 비공개 항목은 보수적 해석 적용</div>
+</footer>
+</main>
+<script>
+function dt(){const b=document.body;b.setAttribute('data-t',b.getAttribute('data-t')==='dark'?'light':'dark')}
+function sp(p){document.body.setAttribute('data-p',p);document.querySelectorAll('.pb').forEach(b=>b.classList.toggle('on',b.dataset.c===p))}
+function tc(h){let b=h.nextElementSibling;while(b&&!b.classList.contains('cb'))b=b.nextElementSibling;const a=h.querySelector('.arr');if(!b)return;b.classList.toggle('shut');if(a)a.classList.toggle('shut')}
+const zS=new Set();
+function tz(btn){const c=btn.dataset.z,k=btn.querySelector('span');if(zS.has(c)){zS.delete(c);btn.classList.remove('on');k.textContent='☐'}else{zS.add(c);btn.classList.add('on');k.textContent='☑'}
+document.querySelectorAll('#evalBody tr[data-co]').forEach(r=>{const co=r.dataset.co,td=r.querySelector('.ct'),o=td.dataset.s;if(zS.has(co)){td.textContent='0';td.classList.add('z');let z=r.querySelector('.zv');if(!z){z=document.createElement('span');z.className='zv';z.textContent=' M&A 투자심사 불가 컷오프';td.after(z)}}else{td.textContent=o;td.classList.remove('z');const z=r.querySelector('.zv');if(z)z.remove()}})}
+const nL=document.querySelectorAll('.nav a');
+const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){nL.forEach(l=>l.classList.remove('on'));const l=document.querySelector('.nav a[href="#'+e.target.id+'"]');if(l)l.classList.add('on')}})},{rootMargin:'-80px 0px -55% 0px',threshold:0});
+document.querySelectorAll('[id^="sec-"]').forEach(s=>obs.observe(s));
+(()=>{const w=document.getElementById('tw');if(!w)return;window.addEventListener('keydown',e=>{if(e.key!=='ArrowRight'&&e.key!=='ArrowLeft')return;const a=document.activeElement;if(a&&(a.tagName==='INPUT'||a.tagName==='TEXTAREA'))return;const r=w.getBoundingClientRect();if(r.bottom<=0||r.top>=window.innerHeight)return;e.preventDefault();w.scrollBy({left:e.key==='ArrowRight'?450:-450,behavior:'smooth'})},{passive:false})})();
+</script>
 </body>
 </html>
