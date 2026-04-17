@@ -96,6 +96,8 @@ a:hover {animation: rainbow-text 1.5s linear infinite !important; text-decoratio
 .pc-b{max-height:2000px;overflow:hidden;transition:max-height .4s ease,opacity .3s,padding .3s;opacity:1}
 .hl-key{background:rgba(239,68,68,.15);color:var(--rd);padding:0 3px;border-radius:3px;font-weight:800}
 [data-t=dark] .hl-key{background:rgba(248,113,113,.18)}
+/* 1번 섹션 td-d 접기 transition */
+.td-d{transition:max-height .35s ease,opacity .25s,padding .25s;overflow:hidden}
 /* pc-box: 4번 섹션 기업별 접기/펼치기 컬러 박스 */
 .pc-box{background:var(--card);border:2px solid var(--bd);border-radius:var(--r);margin-bottom:.5rem;overflow:hidden;transition:border-color .2s,box-shadow .2s;cursor:pointer}
 .pc-box:hover{border-color:var(--hc,var(--ac));box-shadow:0 4px 20px rgba(0,0,0,.18),0 0 0 1px var(--hc,var(--ac))}
@@ -193,7 +195,7 @@ main{width:min(1600px,calc(100% - 1.5rem));margin:0 auto;padding:.8rem 0 2rem}
 .hero::before{content:'';position:absolute;top:-50%;right:-8%;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.05),transparent 70%)}
 .hero h1{font-size:1.2rem;font-weight:800;letter-spacing:-.3px;margin-bottom:.2rem}.hero>p{font-size:.76rem;color:rgba(255,255,255,.7);line-height:1.5}
 .hc{display:flex;flex-wrap:wrap;gap:.25rem;margin-bottom:.3rem}.ch{font-size:.63rem;font-weight:700;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);padding:.1rem .45rem;border-radius:999px;color:rgba(255,255,255,.85)}
-.ss{display:flex;flex-wrap:wrap;gap:.25rem;margin-top:.4rem}.sd{font-size:.6rem;font-weight:700;padding:.1rem .4rem;border-radius:5px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.65);transition:background .2s}.sd:hover{background:rgba(255,255,255,.15)}.sd.now{background:rgba(255,255,255,.25);border-color:rgba(255,255,255,.45);color:#fff}
+.ss{display:flex;flex-wrap:wrap;gap:.25rem;margin-top:.4rem}.sd{font-size:.6rem;font-weight:700;padding:.1rem .4rem;border-radius:5px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.65);transition:background .2s}.sd:hover{background:rgba(255,255,255,.15)}.sd.now{background:rgba(255,255,255,.25);border-color:rgba(255,255,255,.45);color:#fff}.sd-link{cursor:pointer}.sd-link:hover{background:rgba(255,255,255,.3)!important;color:#fff!important;border-color:rgba(255,255,255,.6)!important}
 .cd{background:var(--card);border:1px solid var(--bd);border-radius:var(--r);box-shadow:var(--shM);overflow:hidden;margin-bottom:.8rem}.cd:hover{box-shadow:var(--shL)}
 .ch2{padding:.65rem 1.1rem .5rem;border-bottom:1px solid var(--bd);display:flex;align-items:flex-start;justify-content:space-between;cursor:pointer;user-select:none;transition:background .15s}.ch2:hover{background:var(--card2)}.ch2 h2{font-size:.88rem;font-weight:800}.ch2 p{font-size:.68rem;color:var(--t3);margin-top:.08rem}.ch2 .arr{color:var(--t3);font-size:.6rem;transition:transform .3s;margin-top:3px;flex-shrink:0}.ch2 .arr.shut{transform:rotate(-90deg)}
 .cb{padding:.6rem 1.1rem;overflow:hidden;transition:max-height .4s ease,opacity .3s,padding .3s}.cb.shut{max-height:0!important;padding-top:0;padding-bottom:0;opacity:0}
@@ -261,13 +263,8 @@ footer{margin-top:.6rem;padding:.5rem 1.1rem;font-size:.66rem;color:var(--t3);te
 <h1>유니콘 미만 글로벌 모바일 AI Agent 스타트업 모니터링</h1>
 <p>· 데이터/펀딩/매출 → 정확한 시점 <b style='color:#fde68a;'>('26.x월 기준)</b> 명시 · 중요 수치는 <b style='color:#fde68a;'>노란 하이라이트</b> + 볼드 강조</p>
 <div class='ss'>
-  <span class='sd'>월 — <a href='https://dicacros-gif.github.io/AI/1' target='_blank' style='color:inherit;text-decoration:underline;animation:none !important;margin-right:.3rem'>🔗</a>광고 AI / 모바일 광고 기술/서비스</span>
-  <span class='sd'>화 — 모바일 헬스, AI 헬스 서비스/기술</span>
-  <span class='sd'>수 — <a href='https://dicacros-gif.github.io/AI/2' target='_blank' style='color:inherit;text-decoration:underline;animation:none !important;margin-right:.3rem'>🔗</a>모바일 AI 개인화 추천, On-device 데이터 분석 기술/서비스</span>
-  <span class='sd'>목 — 멀티모달 AI, 영상 AI 기술/서비스</span>
-  <span class='sd now'>금 — 모바일 AI Agent, 멀티 Agent</span>
-  <span class='sd'>토 — 모바일 SNS, Short-form 등 이머징 서비스</span>
-  <span class='sd'>일 — 페이·금융(코인 제외)</span>
+  <a href='https://dicacros-gif.github.io/AI/1' target='_blank' style='text-decoration:none;animation:none !important'><span class='sd sd-link'>🔗 월 — 광고 AI / 모바일 광고 기술/서비스</span></a>
+  <a href='https://dicacros-gif.github.io/AI/2' target='_blank' style='text-decoration:none;animation:none !important'><span class='sd sd-link'>🔗 수 — 모바일 AI 개인화 추천, On-device 데이터 분석 기술/서비스</span></a>
 </div>
 </section>
 
@@ -376,9 +373,9 @@ footer{margin-top:.6rem;padding:.5rem 1.1rem;font-size:.66rem;color:var(--t3);te
 
 <div style='background:var(--card2);border:1px solid var(--bd);border-radius:var(--rs);padding:.5rem .8rem;margin-bottom:.7rem;font-size:.67rem;display:flex;flex-wrap:wrap;gap:.35rem;align-items:center;line-height:1.6'>
 <strong style='color:var(--t1);font-size:.7rem'>🏆 가산점 기준 :</strong>
-<span style='background:rgba(239,68,68,.12);border:1px solid rgba(239,68,68,.4);color:#ef4444;padding:.08rem .38rem;border-radius:4px;font-weight:700;font-size:.62rem'>🔴 최상위 글로벌 VC <b>+2~3점</b></span>
-<span style='background:rgba(249,115,22,.12);border:1px solid rgba(249,115,22,.4);color:#f97316;padding:.08rem .38rem;border-radius:4px;font-weight:700;font-size:.62rem'>🟠 유럽·아시아 톱티어 <b>+1~2점</b></span>
-<span style='background:rgba(245,158,11,.12);border:1px solid rgba(245,158,11,.4);color:#f59e0b;padding:.08rem .38rem;border-radius:4px;font-weight:700;font-size:.62rem'>🟡 초대형 SI <b>+1~3점</b></span>
+<a href='#sec-criteria' style='text-decoration:none;animation:none !important'><span style='background:rgba(239,68,68,.12);border:1px solid rgba(239,68,68,.4);color:#ef4444;padding:.08rem .38rem;border-radius:4px;font-weight:700;font-size:.62rem;cursor:pointer' title='⑥ 채점 기준 보기'>🔴 최상위 글로벌 VC <b>+2~3점</b> ↗</span></a>
+<a href='#sec-criteria' style='text-decoration:none;animation:none !important'><span style='background:rgba(249,115,22,.12);border:1px solid rgba(249,115,22,.4);color:#f97316;padding:.08rem .38rem;border-radius:4px;font-weight:700;font-size:.62rem;cursor:pointer' title='⑥ 채점 기준 보기'>🟠 유럽·아시아 톱티어 <b>+1~2점</b> ↗</span></a>
+<a href='#sec-criteria' style='text-decoration:none;animation:none !important'><span style='background:rgba(245,158,11,.12);border:1px solid rgba(245,158,11,.4);color:#f59e0b;padding:.08rem .38rem;border-radius:4px;font-weight:700;font-size:.62rem;cursor:pointer' title='⑥ 채점 기준 보기'>🟡 초대형 SI <b>+1~3점</b> ↗</span></a>
 <span style='color:var(--t3);font-size:.62rem'>Khosla·Sequoia·a16z·Accel = 🔴 / Balderton·HV·Baidu·B Capital = 🟠 / YC·Wellcome·United·Amex·Comcast = 🟡</span>
 </div>
 
@@ -397,13 +394,13 @@ footer{margin-top:.6rem;padding:.5rem 1.1rem;font-size:.66rem;color:var(--t3);te
 <div style='display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:.5rem;padding:.6rem .8rem;background:var(--card2)'>
 <div style='background:var(--card);border:1px solid var(--bd);border-radius:var(--rs);padding:.55rem .75rem;transition:border-color .2s' onmouseover="this.style.borderColor='var(--ac)'" onmouseout="this.style.borderColor='var(--bd)'">
 <div style='font-size:.7rem;font-weight:800;color:var(--acT);margin-bottom:.3rem;border-bottom:1px dashed var(--bd);padding-bottom:.2rem'>A·B 제휴 &amp; M&A 가치</div>
-<ul class='bul-list' style='font-size:.69rem'><li>17만 명 의사 유통망(athenahealth) 독점 접근 확보로 빅테크 헬스 인수 타깃 1순위. 단, NPU 칩셋 실적 문서 부재로 A 삭감</li><li><span class='vc-badge'>VC 가산</span> <b class='ok-w'>Venrock · March</b> 헬스 전문 VC 뭉칫돈 잭팟으로 M&A 프리미엄 <b class='hl'>+2점</b></li></ul></div>
+<ul class='bul-list' style='font-size:.69rem'><li>17만 명 의사 유통망(athenahealth) 독점 접근 확보로 빅테크 헬스 인수 타깃 1순위. 단, NPU 칩셋 실적 문서 부재로 A 삭감</li><br><br><li><span class='vc-badge'>VC 가산</span> <b class='ok-w'>Venrock · March</b> 헬스 전문 VC 뭉칫돈 잭팟으로 M&A 프리미엄 <b class='hl'>+2점</b></li></ul></div>
 <div style='background:var(--card);border:1px solid var(--bd);border-radius:var(--rs);padding:.55rem .75rem;transition:border-color .2s' onmouseover="this.style.borderColor='var(--ac)'" onmouseout="this.style.borderColor='var(--bd)'">
 <div style='font-size:.7rem;font-weight:800;color:var(--acT);margin-bottom:.3rem;border-bottom:1px dashed var(--bd);padding-bottom:.2rem'>C·D 기술방어 &amp; 수익성</div>
-<ul class='bul-list' style='font-size:.69rem'><li>세계 최고 난이도 <b>HIPAA 사이버 보안 정밀 실사 완벽 통과</b> (C 11점)</li><li>다년 B2B Seat 구독은 훌륭하나, <b class='red-w'>핵심 ARR 달러 장부 대외 전면 은폐</b>로 D1 삭감</li></ul></div>
+<ul class='bul-list' style='font-size:.69rem'><li>세계 최고 난이도 <b>HIPAA 사이버 보안 정밀 실사 완벽 통과</b> (C 11점)</li><br><br><li>다년 B2B Seat 구독은 훌륭하나, <b class='red-w'>핵심 ARR 달러 장부 대외 전면 은폐</b>로 D1 삭감</li></ul></div>
 <div style='background:var(--card);border:1px solid var(--bd);border-radius:var(--rs);padding:.55rem .75rem;transition:border-color .2s' onmouseover="this.style.borderColor='var(--ac)'" onmouseout="this.style.borderColor='var(--bd)'">
 <div style='font-size:.7rem;font-weight:800;color:var(--acT);margin-bottom:.3rem;border-bottom:1px dashed var(--bd);padding-bottom:.2rem'>E·F·G 시장·팀·락인</div>
-<ul class='bul-list' style='font-size:.69rem'><li>Google Motorola 최고위 및 Flipkart 마피아 팀 빌딩으로 다국적 스케일업 밸런스 완벽 입증</li><li><b>"서류 72% 감축, 기회비용 9배 환수"</b> 백서 증명. 의사 일상에 마약처럼 침투해 타사 전환을 <b>원천 차단하는 절대 락인망 확립</b></li></ul></div>
+<ul class='bul-list' style='font-size:.69rem'><li>Google Motorola 최고위 및 Flipkart 마피아 팀 빌딩으로 다국적 스케일업 밸런스 완벽 입증</li><br><br><li><b>"서류 72% 감축, 기회비용 9배 환수"</b> 백서 증명. 의사 일상에 마약처럼 침투해 타사 전환을 <b>원천 차단하는 절대 락인망 확립</b></li></ul></div>
 </div></div></div>
 
 <div class='eval-company' data-co='Wysa'>
@@ -419,13 +416,13 @@ footer{margin-top:.6rem;padding:.5rem 1.1rem;font-size:.66rem;color:var(--t3);te
 <div style='display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:.5rem;padding:.6rem .8rem;background:var(--card2)'>
 <div style='background:var(--card);border:1px solid var(--bd);border-radius:var(--rs);padding:.55rem .75rem;transition:border-color .2s' onmouseover="this.style.borderColor='var(--ac)'" onmouseout="this.style.borderColor='var(--bd)'">
 <div style='font-size:.7rem;font-weight:800;color:var(--acT);margin-bottom:.3rem;border-bottom:1px dashed var(--bd);padding-bottom:.2rem'>A·B 제휴 &amp; M&A 가치</div>
-<ul class='bul-list' style='font-size:.69rem'><li>1,100만 글로벌 사용자 기반, 스마트폰 OS 내 <b>'디지털 웰빙' 기본 앱 프리로드 시나리오</b> 완벽 매칭</li><li><span class='vc-badge'>VC 가산</span> 글로벌 최고 권위 <b class='ok-w'>Wellcome Trust 거액 그랜트</b> 획득 가산 <b class='hl'>+1점</b></li></ul></div>
+<ul class='bul-list' style='font-size:.69rem'><li>1,100만 글로벌 사용자 기반, 스마트폰 OS 내 <b>'디지털 웰빙' 기본 앱 프리로드 시나리오</b> 완벽 매칭</li><br><br><li><span class='vc-badge'>VC 가산</span> 글로벌 최고 권위 <b class='ok-w'>Wellcome Trust 거액 그랜트</b> 획득 가산 <b class='hl'>+1점</b></li></ul></div>
 <div style='background:var(--card);border:1px solid var(--bd);border-radius:var(--rs);padding:.55rem .75rem;transition:border-color .2s' onmouseover="this.style.borderColor='var(--ac)'" onmouseout="this.style.borderColor='var(--bd)'">
 <div style='font-size:.7rem;font-weight:800;color:var(--acT);margin-bottom:.3rem;border-bottom:1px dashed var(--bd);padding-bottom:.2rem'>C·D 기술방어 &amp; 수익성</div>
-<ul class='bul-list' style='font-size:.69rem'><li>45건+ 학술 동료평가(Peer-reviewed) 딥 논문 등재로 의학적 신뢰성 철통 방어</li><li>8개사 중 유일하게 <b class='ok-w'>TTM 연매출 $23.9M(약 320억 원) 흑자 현금 장부 완벽 검증 (D 11점)</b></li></ul></div>
+<ul class='bul-list' style='font-size:.69rem'><li>45건+ 학술 동료평가(Peer-reviewed) 딥 논문 등재로 의학적 신뢰성 철통 방어</li><br><br><li>8개사 중 유일하게 <b class='ok-w'>TTM 연매출 $23.9M(약 320억 원) 흑자 현금 장부 완벽 검증 (D 11점)</b></li></ul></div>
 <div style='background:var(--card);border:1px solid var(--bd);border-radius:var(--rs);padding:.55rem .75rem;transition:border-color .2s' onmouseover="this.style.borderColor='var(--ac)'" onmouseout="this.style.borderColor='var(--bd)'">
 <div style='font-size:.7rem;font-weight:800;color:var(--acT);margin-bottom:.3rem;border-bottom:1px dashed var(--bd);padding-bottom:.2rem'>E·F·G 시장·팀·락인</div>
-<ul class='bul-list' style='font-size:.69rem'><li>디지털 멘탈 헬스 고성장 적중. 단 국가별 식약처 파편화로 인허가 장벽 잔존</li><li>독점 CBT 스크립트 락인 방어 구축. 단 텍스트 중심으로 <b class='red-w'>보이스/3D 경쟁사 대비 환승 방어력 취약</b></li></ul></div>
+<ul class='bul-list' style='font-size:.69rem'><li>디지털 멘탈 헬스 고성장 적중. 단 국가별 식약처 파편화로 인허가 장벽 잔존</li><br><br><li>독점 CBT 스크립트 락인 방어 구축. 단 텍스트 중심으로 <b class='red-w'>보이스/3D 경쟁사 대비 환승 방어력 취약</b></li></ul></div>
 </div></div></div>
 
 <div class='eval-company' data-co='Personal AI'>
@@ -441,13 +438,13 @@ footer{margin-top:.6rem;padding:.5rem 1.1rem;font-size:.66rem;color:var(--t3);te
 <div style='display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:.5rem;padding:.6rem .8rem;background:var(--card2)'>
 <div style='background:var(--card);border:1px solid var(--bd);border-radius:var(--rs);padding:.55rem .75rem;transition:border-color .2s' onmouseover="this.style.borderColor='var(--ac)'" onmouseout="this.style.borderColor='var(--bd)'">
 <div style='font-size:.7rem;font-weight:800;color:var(--acT);margin-bottom:.3rem;border-bottom:1px dashed var(--bd);padding-bottom:.2rem'>A·B 제휴 &amp; M&A 가치</div>
-<ul class='bul-list' style='font-size:.69rem'><li>클라우드 없이 단말칩(NPU) 연산만 쓰는 초경량 로컬 엣지 설계. 프리미엄 프라이빗 폰 선탑재 최적 핏</li><li><span class='vc-badge'>거대 SI 가산</span> 독자 SLM 코어 기반에 <b class='ok-w'>Comcast 6,500만 가구망 연동 잭팟</b> 공시 M&A 프리미엄 <b class='hl'>+2점</b></li></ul></div>
+<ul class='bul-list' style='font-size:.69rem'><li>클라우드 없이 단말칩(NPU) 연산만 쓰는 초경량 로컬 엣지 설계. 프리미엄 프라이빗 폰 선탑재 최적 핏</li><br><br><li><span class='vc-badge'>거대 SI 가산</span> 독자 SLM 코어 기반에 <b class='ok-w'>Comcast 6,500만 가구망 연동 잭팟</b> 공시 M&A 프리미엄 <b class='hl'>+2점</b></li></ul></div>
 <div style='background:var(--card);border:1px solid var(--bd);border-radius:var(--rs);padding:.55rem .75rem;transition:border-color .2s' onmouseover="this.style.borderColor='var(--ac)'" onmouseout="this.style.borderColor='var(--bd)'">
 <div style='font-size:.7rem;font-weight:800;color:var(--acT);margin-bottom:.3rem;border-bottom:1px dashed var(--bd);padding-bottom:.2rem'>C·D 기술방어 &amp; 수익성</div>
-<ul class='bul-list' style='font-size:.69rem'><li>오프라인 환경 <b>Sub-500ms 응답 및 기존 서버 인프라 비용 40배 절감</b> 벤치마크 완수 (C 8점)</li><li>SOC2 문서 부재 및 <b class='red-w'>기업 ARR 실결제 매출 데이터 100% 은폐</b>로 재무 점수 5점 나락</li></ul></div>
+<ul class='bul-list' style='font-size:.69rem'><li>오프라인 환경 <b>Sub-500ms 응답 및 기존 서버 인프라 비용 40배 절감</b> 벤치마크 완수 (C 8점)</li><br><br><li>SOC2 문서 부재 및 <b class='red-w'>기업 ARR 실결제 매출 데이터 100% 은폐</b>로 재무 점수 5점 나락</li></ul></div>
 <div style='background:var(--card);border:1px solid var(--bd);border-radius:var(--rs);padding:.55rem .75rem;transition:border-color .2s' onmouseover="this.style.borderColor='var(--ac)'" onmouseout="this.style.borderColor='var(--bd)'">
 <div style='font-size:.7rem;font-weight:800;color:var(--acT);margin-bottom:.3rem;border-bottom:1px dashed var(--bd);padding-bottom:.2rem'>E·F·G 시장·팀·락인</div>
-<ul class='bul-list' style='font-size:.69rem'><li>Aira 대규모 엑시트 이력 파운더 및 Nuance/LinkedIn NLP 리더십. 엣지 온디바이스 메가 트렌드 선점</li><li>사용자 일상을 폰 내부 <b>Memory Graph</b>로 암호화. 타사 폰 교체 시 <b>'기억 초기화 공포'</b>로 이탈 원천 차단하는 절대 락인</li></ul></div>
+<ul class='bul-list' style='font-size:.69rem'><li>Aira 대규모 엑시트 이력 파운더 및 Nuance/LinkedIn NLP 리더십. 엣지 온디바이스 메가 트렌드 선점</li><br><br><li>사용자 일상을 폰 내부 <b>Memory Graph</b>로 암호화. 타사 폰 교체 시 <b>'기억 초기화 공포'</b>로 이탈 원천 차단하는 절대 락인</li></ul></div>
 </div></div></div>
 
 <div class='eval-company' data-co='Mindtrip'>
@@ -463,13 +460,13 @@ footer{margin-top:.6rem;padding:.5rem 1.1rem;font-size:.66rem;color:var(--t3);te
 <div style='display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:.5rem;padding:.6rem .8rem;background:var(--card2)'>
 <div style='background:var(--card);border:1px solid var(--bd);border-radius:var(--rs);padding:.55rem .75rem;transition:border-color .2s' onmouseover="this.style.borderColor='var(--ac)'" onmouseout="this.style.borderColor='var(--bd)'">
 <div style='font-size:.7rem;font-weight:800;color:var(--acT);margin-bottom:.3rem;border-bottom:1px dashed var(--bd);padding-bottom:.2rem'>A·B 제휴 &amp; M&A 가치</div>
-<ul class='bul-list' style='font-size:.69rem'><li>대화형 일정 맵 모바일 네이티브 UX(앱 평점 4.8) 우수하나 폰 OS 뎁스 하드웨어 협력 계약 백지 상태로 A 부진</li><li><span class='vc-badge'>메가 SI 가산</span> <b class='ok-w'>Amex·United·Sabre</b> 여행/결제 글로벌 포식자 연합 전략 베팅 독식 <b class='hl'>+2점</b></li></ul></div>
+<ul class='bul-list' style='font-size:.69rem'><li>대화형 일정 맵 모바일 네이티브 UX(앱 평점 4.8) 우수하나 폰 OS 뎁스 하드웨어 협력 계약 백지 상태로 A 부진</li><br><br><li><span class='vc-badge'>메가 SI 가산</span> <b class='ok-w'>Amex·United·Sabre</b> 여행/결제 글로벌 포식자 연합 전략 베팅 독식 <b class='hl'>+2점</b></li></ul></div>
 <div style='background:var(--card);border:1px solid var(--bd);border-radius:var(--rs);padding:.55rem .75rem;transition:border-color .2s' onmouseover="this.style.borderColor='var(--ac)'" onmouseout="this.style.borderColor='var(--bd)'">
 <div style='font-size:.7rem;font-weight:800;color:var(--acT);margin-bottom:.3rem;border-bottom:1px dashed var(--bd);padding-bottom:.2rem'>C·D 기술방어 &amp; 수익성</div>
-<ul class='bul-list' style='font-size:.69rem'><li>420개 항공사/호텔 발권망 백엔드 오케스트레이션은 탁월. 단 지능 뼈대는 외부 OpenAI에 100% 래퍼 의존</li><li>'26년 2Q 정식 상용화 예정으로 <b class='red-w'>현재 실매출 장부 0(Zero)</b>. 재무 수익성 4점 낙제</li></ul></div>
+<ul class='bul-list' style='font-size:.69rem'><li>420개 항공사/호텔 발권망 백엔드 오케스트레이션은 탁월. 단 지능 뼈대는 외부 OpenAI에 100% 래퍼 의존</li><br><br><li>'26년 2Q 정식 상용화 예정으로 <b class='red-w'>현재 실매출 장부 0(Zero)</b>. 재무 수익성 4점 낙제</li></ul></div>
 <div style='background:var(--card);border:1px solid var(--bd);border-radius:var(--rs);padding:.55rem .75rem;transition:border-color .2s' onmouseover="this.style.borderColor='var(--ac)'" onmouseout="this.style.borderColor='var(--bd)'">
 <div style='font-size:.7rem;font-weight:800;color:var(--acT);margin-bottom:.3rem;border-bottom:1px dashed var(--bd);padding-bottom:.2rem'>E·F·G 시장·팀·락인</div>
-<ul class='bul-list' style='font-size:.69rem'><li>"채팅 한 줄 원터치 직결제"로 부순 파괴적 E2E 트렌드 잭팟 (시장성 <b class='hl'>12점 만점</b>). Stripe 결제 코어팀 극강</li><li>1년 1회 발권 후 앱 삭제하는 치명적 특성. <b class='red-w'>일상 소셜 데이터 락인 없어 타 OTA 철새 이탈 방어막 완전 붕괴</b></li></ul></div>
+<ul class='bul-list' style='font-size:.69rem'><li>"채팅 한 줄 원터치 직결제"로 부순 파괴적 E2E 트렌드 잭팟 (시장성 <b class='hl'>12점 만점</b>). Stripe 결제 코어팀 극강</li><br><br><li>1년 1회 발권 후 앱 삭제하는 치명적 특성. <b class='red-w'>일상 소셜 데이터 락인 없어 타 OTA 철새 이탈 방어막 완전 붕괴</b></li></ul></div>
 </div></div></div>
 
 <div class='eval-company' data-co='voize'>
@@ -485,13 +482,13 @@ footer{margin-top:.6rem;padding:.5rem 1.1rem;font-size:.66rem;color:var(--t3);te
 <div style='display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:.5rem;padding:.6rem .8rem;background:var(--card2)'>
 <div style='background:var(--card);border:1px solid var(--bd);border-radius:var(--rs);padding:.55rem .75rem;transition:border-color .2s' onmouseover="this.style.borderColor='var(--ac)'" onmouseout="this.style.borderColor='var(--bd)'">
 <div style='font-size:.7rem;font-weight:800;color:var(--acT);margin-bottom:.3rem;border-bottom:1px dashed var(--bd);padding-bottom:.2rem'>A·B 제휴 &amp; M&A 가치</div>
-<ul class='bul-list' style='font-size:.69rem'><li>인터넷 끊기는 험지에서도 작동하는 On-device 엣지 추론. 방수/방진 러기드 디바이스 B2B 번들 핏 만점</li><li><span class='vc-badge'>유명 VC 가산</span> <b class='ok-w'>Balderton Capital · Y Combinator</b> 유럽 톱티어 + 글로벌 액셀 연합 <b class='hl'>+2점</b></li></ul></div>
+<ul class='bul-list' style='font-size:.69rem'><li>인터넷 끊기는 험지에서도 작동하는 On-device 엣지 추론. 방수/방진 러기드 디바이스 B2B 번들 핏 만점</li><br><br><li><span class='vc-badge'>유명 VC 가산</span> <b class='ok-w'>Balderton Capital · Y Combinator</b> 유럽 톱티어 + 글로벌 액셀 연합 <b class='hl'>+2점</b></li></ul></div>
 <div style='background:var(--card);border:1px solid var(--bd);border-radius:var(--rs);padding:.55rem .75rem;transition:border-color .2s' onmouseover="this.style.borderColor='var(--ac)'" onmouseout="this.style.borderColor='var(--bd)'">
 <div style='font-size:.7rem;font-weight:800;color:var(--acT);margin-bottom:.3rem;border-bottom:1px dashed var(--bd);padding-bottom:.2rem'>C·D 기술방어 &amp; 수익성</div>
-<ul class='bul-list' style='font-size:.69rem'><li>저사양 NPU 칩셋에서도 방언 포함 음성 정확 변환. 독일 GDPR 의료 규제 완벽 통과 (C 9점)</li><li>다년 B2B SaaS 구독(NRR 견고 추정)이나 <b class='red-w'>달러 기준 총 ARR 장부 철저 비공개 (D1 0점 패널티)</b></li></ul></div>
+<ul class='bul-list' style='font-size:.69rem'><li>저사양 NPU 칩셋에서도 방언 포함 음성 정확 변환. 독일 GDPR 의료 규제 완벽 통과 (C 9점)</li><br><br><li>다년 B2B SaaS 구독(NRR 견고 추정)이나 <b class='red-w'>달러 기준 총 ARR 장부 철저 비공개 (D1 0점 패널티)</b></li></ul></div>
 <div style='background:var(--card);border:1px solid var(--bd);border-radius:var(--rs);padding:.55rem .75rem;transition:border-color .2s' onmouseover="this.style.borderColor='var(--ac)'" onmouseout="this.style.borderColor='var(--bd)'">
 <div style='font-size:.7rem;font-weight:800;color:var(--acT);margin-bottom:.3rem;border-bottom:1px dashed var(--bd);padding-bottom:.2rem'>E·F·G 시장·팀·락인</div>
-<ul class='bul-list' style='font-size:.69rem'><li>초고령화 시대 간병 인력 붕괴 타겟. 단 <b class='red-w'>미국 메이저 EHR(Epic 등) 딥 연동 수개월 마찰 장벽 (E3 낙제)</b></li><li>"교대당 39분 야근 감축" 정량 ROI 입증. 한 번 설치하면 노조가 교체 거부하는 <b>강력한 인적 락인 (G3 만점)</b></li></ul></div>
+<ul class='bul-list' style='font-size:.69rem'><li>초고령화 시대 간병 인력 붕괴 타겟. 단 <b class='red-w'>미국 메이저 EHR(Epic 등) 딥 연동 수개월 마찰 장벽 (E3 낙제)</b></li><br><br><li>"교대당 39분 야근 감축" 정량 ROI 입증. 한 번 설치하면 노조가 교체 거부하는 <b>강력한 인적 락인 (G3 만점)</b></li></ul></div>
 </div></div></div>
 
 <div class='eval-company' data-co='Layla'>
@@ -507,13 +504,13 @@ footer{margin-top:.6rem;padding:.5rem 1.1rem;font-size:.66rem;color:var(--t3);te
 <div style='display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:.5rem;padding:.6rem .8rem;background:var(--card2)'>
 <div style='background:var(--card);border:1px solid var(--bd);border-radius:var(--rs);padding:.55rem .75rem;transition:border-color .2s' onmouseover="this.style.borderColor='var(--ac)'" onmouseout="this.style.borderColor='var(--bd)'">
 <div style='font-size:.7rem;font-weight:800;color:var(--acT);margin-bottom:.3rem;border-bottom:1px dashed var(--bd);padding-bottom:.2rem'>A·B 제휴 &amp; M&A 가치</div>
-<ul class='bul-list' style='font-size:.69rem'><li>500만 명 Z세대 트래픽 싹쓸이한 틱톡/릴스 숏폼 시각 매칭 앱. 제조사 순정 카메라 'AI 비전 검색 탭' 플러그인 통합 시나리오 확보</li><li><span class='vc-badge'>메가 VC 가산</span> <b class='ok-w'>Baidu Ventures · United Airlines · B Capital</b> 글로벌 거대 자본 라운드 독식 잭팟 <b class='hl'>+3점</b></li></ul></div>
+<ul class='bul-list' style='font-size:.69rem'><li>500만 명 Z세대 트래픽 싹쓸이한 틱톡/릴스 숏폼 시각 매칭 앱. 제조사 순정 카메라 'AI 비전 검색 탭' 플러그인 통합 시나리오 확보</li><br><br><li><span class='vc-badge'>메가 VC 가산</span> <b class='ok-w'>Baidu Ventures · United Airlines · B Capital</b> 글로벌 거대 자본 라운드 독식 잭팟 <b class='hl'>+3점</b></li></ul></div>
 <div style='background:var(--card);border:1px solid var(--bd);border-radius:var(--rs);padding:.55rem .75rem;transition:border-color .2s' onmouseover="this.style.borderColor='var(--ac)'" onmouseout="this.style.borderColor='var(--bd)'">
 <div style='font-size:.7rem;font-weight:800;color:var(--acT);margin-bottom:.3rem;border-bottom:1px dashed var(--bd);padding-bottom:.2rem'>C·D 기술방어 &amp; 수익성</div>
-<ul class='bul-list' style='font-size:.69rem'><li>숏폼 CV 마스킹 AI 아이디어는 좋으나, 자체 딥러닝 CV 특허 IP 증명 및 금융망 해킹 보안 검증 서류가 깡통 수준</li><li><b class='red-w'>"$1B Trip Value" 허상 GMV 포장. 실제 플랫폼 통장 꽂히는 커미션(Take-rate) 장부는 블랙박스 일관 (D1 0점)</b></li></ul></div>
+<ul class='bul-list' style='font-size:.69rem'><li>숏폼 CV 마스킹 AI 아이디어는 좋으나, 자체 딥러닝 CV 특허 IP 증명 및 금융망 해킹 보안 검증 서류가 깡통 수준</li><br><br><li><b class='red-w'>"$1B Trip Value" 허상 GMV 포장. 실제 플랫폼 통장 꽂히는 커미션(Take-rate) 장부는 블랙박스 일관 (D1 0점)</b></li></ul></div>
 <div style='background:var(--card);border:1px solid var(--bd);border-radius:var(--rs);padding:.55rem .75rem;transition:border-color .2s' onmouseover="this.style.borderColor='var(--ac)'" onmouseout="this.style.borderColor='var(--bd)'">
 <div style='font-size:.7rem;font-weight:800;color:var(--acT);margin-bottom:.3rem;border-bottom:1px dashed var(--bd);padding-bottom:.2rem'>E·F·G 시장·팀·락인</div>
-<ul class='bul-list' style='font-size:.69rem'><li>목적지 미정(No-Destination) 숏폼 소비 패러다임 변곡점 선점 (시장 <b class='hl'>12점 만점</b>). Flink 유니콘+천만 팔로워 미디어 파운더 연합</li><li>결제 직전 외부 OTA로 유저 내쫓는 아웃바운드 구조. <b class='red-w'>구글/틱톡이 복제 출시 시 락인 방어벽 깃털처럼 전무 (G 최하점)</b></li></ul></div>
+<ul class='bul-list' style='font-size:.69rem'><li>목적지 미정(No-Destination) 숏폼 소비 패러다임 변곡점 선점 (시장 <b class='hl'>12점 만점</b>). Flink 유니콘+천만 팔로워 미디어 파운더 연합</li><br><br><li>결제 직전 외부 OTA로 유저 내쫓는 아웃바운드 구조. <b class='red-w'>구글/틱톡이 복제 출시 시 락인 방어벽 깃털처럼 전무 (G 최하점)</b></li></ul></div>
 </div></div></div>
 
 <div class='eval-company' data-co='Portola/Tolan'>
@@ -529,13 +526,13 @@ footer{margin-top:.6rem;padding:.5rem 1.1rem;font-size:.66rem;color:var(--t3);te
 <div style='display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:.5rem;padding:.6rem .8rem;background:var(--card2)'>
 <div style='background:var(--card);border:1px solid var(--bd);border-radius:var(--rs);padding:.55rem .75rem;transition:border-color .2s' onmouseover="this.style.borderColor='var(--ac)'" onmouseout="this.style.borderColor='var(--bd)'">
 <div style='font-size:.7rem;font-weight:800;color:var(--acT);margin-bottom:.3rem;border-bottom:1px dashed var(--bd);padding-bottom:.2rem'>A·B 제휴 &amp; M&A 가치</div>
-<ul class='bul-list' style='font-size:.69rem'><li>iOS 단일 300만 다운 및 평점 4.8 완성도. 알파세대 공략 보급형 폰 펌웨어 AOD 외계인 펫 모드 테마 선탑재 최적 핏</li><li><span class='vc-badge'>VC 가산</span> <b class='ok-w'>Khosla Ventures 리드 · GitHub 전 CEO 등 슈퍼 엔젤 연합 $20M</b> 조달로 M&A 방어선 대폭 구제 <b class='hl'>+2점</b></li></ul></div>
+<ul class='bul-list' style='font-size:.69rem'><li>iOS 단일 300만 다운 및 평점 4.8 완성도. 알파세대 공략 보급형 폰 펌웨어 AOD 외계인 펫 모드 테마 선탑재 최적 핏</li><br><br><li><span class='vc-badge'>VC 가산</span> <b class='ok-w'>Khosla Ventures 리드 · GitHub 전 CEO 등 슈퍼 엔젤 연합 $20M</b> 조달로 M&A 방어선 대폭 구제 <b class='hl'>+2점</b></li></ul></div>
 <div style='background:var(--card);border:1px solid var(--bd);border-radius:var(--rs);padding:.55rem .75rem;transition:border-color .2s' onmouseover="this.style.borderColor='var(--ac)'" onmouseout="this.style.borderColor='var(--bd)'">
 <div style='font-size:.7rem;font-weight:800;color:var(--acT);margin-bottom:.3rem;border-bottom:1px dashed var(--bd);padding-bottom:.2rem'>C·D 기술방어 &amp; 수익성</div>
-<ul class='bul-list' style='font-size:.69rem'><li>감성 장기 기억(Memory Recall) 파인튜닝 로직 우수. 단 미성년 타겟임에도 SOC2 보안 실사 서류 깡통</li><li>출시 4개월 만에 10만 유료 결제 폭발. <b class='ok-w'>ARR $12M(약 160억 원) B2C 구독 현금 파이프라인 실매출 세계 1위 돌파</b></li></ul></div>
+<ul class='bul-list' style='font-size:.69rem'><li>감성 장기 기억(Memory Recall) 파인튜닝 로직 우수. 단 미성년 타겟임에도 SOC2 보안 실사 서류 깡통</li><br><br><li>출시 4개월 만에 10만 유료 결제 폭발. <b class='ok-w'>ARR $12M(약 160억 원) B2C 구독 현금 파이프라인 실매출 세계 1위 돌파</b></li></ul></div>
 <div style='background:var(--card);border:1px solid var(--bd);border-radius:var(--rs);padding:.55rem .75rem;transition:border-color .2s' onmouseover="this.style.borderColor='var(--ac)'" onmouseout="this.style.borderColor='var(--bd)'">
 <div style='font-size:.7rem;font-weight:800;color:var(--acT);margin-bottom:.3rem;border-bottom:1px dashed var(--bd);padding-bottom:.2rem'>E·F·G 시장·팀·락인</div>
-<ul class='bul-list' style='font-size:.69rem'><li>외로운 현대인 반려 AI 붐 편승. 단 청소년 정서 의존 논란 시 <b class='red-w'>각국 규제 기관 앱스토어 영구 삭제 셧다운 지뢰밭 1순위</b></li><li>연쇄 창업자 마피아 보드 전투력 극강. 그러나 <b class='red-w'>빅테크 무료 복사본 출시 시 독점 딥러닝 해자 전무</b></li></ul></div>
+<ul class='bul-list' style='font-size:.69rem'><li>외로운 현대인 반려 AI 붐 편승. 단 청소년 정서 의존 논란 시 <b class='red-w'>각국 규제 기관 앱스토어 영구 삭제 셧다운 지뢰밭 1순위</b></li><br><br><li>연쇄 창업자 마피아 보드 전투력 극강. 그러나 <b class='red-w'>빅테크 무료 복사본 출시 시 독점 딥러닝 해자 전무</b></li></ul></div>
 </div></div></div>
 
 <div class='eval-company' data-co='Pine AI'>
@@ -551,13 +548,13 @@ footer{margin-top:.6rem;padding:.5rem 1.1rem;font-size:.66rem;color:var(--t3);te
 <div style='display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:.5rem;padding:.6rem .8rem;background:var(--card2)'>
 <div style='background:var(--card);border:1px solid var(--bd);border-radius:var(--rs);padding:.55rem .75rem;transition:border-color .2s' onmouseover="this.style.borderColor='var(--ac)'" onmouseout="this.style.borderColor='var(--bd)'">
 <div style='font-size:.7rem;font-weight:800;color:var(--acT);margin-bottom:.3rem;border-bottom:1px dashed var(--bd);padding-bottom:.2rem'>A·B 제휴 &amp; M&A 가치</div>
-<ul class='bul-list' style='font-size:.69rem'><li>OS 깊숙한 접근 권한으로 이메일·브라우저·전화망을 대신 실행하는 <b>모바일 네이티브 Action Bot</b>. 제조사 기본 AI 비서 플러그인 최적 폼팩터</li><li><span class='vc-badge'>초기 펀딩 가산</span> <b class='ok-w'>Fortwest $25M 메가 시드</b> 조기 잭팟으로 잠재력 프리미엄 상향 <b class='hl'>+1점</b></li></ul></div>
+<ul class='bul-list' style='font-size:.69rem'><li>OS 깊숙한 접근 권한으로 이메일·브라우저·전화망을 대신 실행하는 <b>모바일 네이티브 Action Bot</b>. 제조사 기본 AI 비서 플러그인 최적 폼팩터</li><br><br><li><span class='vc-badge'>초기 펀딩 가산</span> <b class='ok-w'>Fortwest $25M 메가 시드</b> 조기 잭팟으로 잠재력 프리미엄 상향 <b class='hl'>+1점</b></li></ul></div>
 <div style='background:var(--card);border:1px solid var(--bd);border-radius:var(--rs);padding:.55rem .75rem;transition:border-color .2s' onmouseover="this.style.borderColor='var(--ac)'" onmouseout="this.style.borderColor='var(--bd)'">
 <div style='font-size:.7rem;font-weight:800;color:var(--acT);margin-bottom:.3rem;border-bottom:1px dashed var(--bd);padding-bottom:.2rem'>C·D 기술방어 &amp; 수익성</div>
-<ul class='bul-list' style='font-size:.69rem'><li>"93% 요금 인하 협상 타결" 자체 액션 스크립트 팩트 입증. 단 금융 제어 권한 대리함에도 <b class='red-w'>SOC2 뱅킹급 해킹 방어 실사 증거 백지</b></li><li>성공 보수(Success Fee) 무저항 BM 안착. 단 단발성 심부름 탓에 <b class='red-w'>정기 구독(NRR) 파탄 · 총 ARR 장부 전면 은폐로 재무 최하위 (5점)</b></li></ul></div>
+<ul class='bul-list' style='font-size:.69rem'><li>"93% 요금 인하 협상 타결" 자체 액션 스크립트 팩트 입증. 단 금융 제어 권한 대리함에도 <b class='red-w'>SOC2 뱅킹급 해킹 방어 실사 증거 백지</b></li><br><br><li>성공 보수(Success Fee) 무저항 BM 안착. 단 단발성 심부름 탓에 <b class='red-w'>정기 구독(NRR) 파탄 · 총 ARR 장부 전면 은폐로 재무 최하위 (5점)</b></li></ul></div>
 <div style='background:var(--card);border:1px solid var(--bd);border-radius:var(--rs);padding:.55rem .75rem;transition:border-color .2s' onmouseover="this.style.borderColor='var(--ac)'" onmouseout="this.style.borderColor='var(--bd)'">
 <div style='font-size:.7rem;font-weight:800;color:var(--acT);margin-bottom:.3rem;border-bottom:1px dashed var(--bd);padding-bottom:.2rem'>E·F·G 시장·팀·락인</div>
-<ul class='bul-list' style='font-size:.69rem'><li>"연 $300 캐시백·270분 절약" 정량 ROI 8개사 중 압도적 1위. 단 <b class='red-w'>애플 인텔리전스 등 OS 내장 봇 출시 시 앱 생태계 강제 학살 위협</b></li><li>협상 1회 완료 후 앱 즉시 삭제하는 얌체 생태계. <b class='red-w'>일상 데이터 락인 방어막이 100% 백지화 붕괴 (G3 1점 낙제)</b></li></ul></div>
+<ul class='bul-list' style='font-size:.69rem'><li>"연 $300 캐시백·270분 절약" 정량 ROI 8개사 중 압도적 1위. 단 <b class='red-w'>애플 인텔리전스 등 OS 내장 봇 출시 시 앱 생태계 강제 학살 위협</b></li><br><br><li>협상 1회 완료 후 앱 즉시 삭제하는 얌체 생태계. <b class='red-w'>일상 데이터 락인 방어막이 100% 백지화 붕괴 (G3 1점 낙제)</b></li></ul></div>
 </div></div></div>
 
 </div><!-- end evalBody -->
@@ -762,8 +759,8 @@ footer{margin-top:.6rem;padding:.5rem 1.1rem;font-size:.66rem;color:var(--t3);te
 <div class='rf-bd'>
 <ul class='bul-list' style='font-size:.68rem'>
 <li>athenahealth 170K망 외 <b class='hl'>Epic · Cerner</b> 미국 메이저 3대 EHR 닫힌 API 연동 확장 스케일 속도 진척 확인</li>
-<li>Series D($70M) 거액 유치 이후 <b class='red-w'>주주에게조차 철저히 비공개된 전체 ARR 달러 매출 규모 및 병원 Seat별 갱신율(Net Expansion) 회계 정밀 실사 컷오프</b></li>
-<li><b>자사 제조사 전용 헬스케어 커스텀 스마트 기기 실환경 PoC 공동 납품 테스트</b> 조기 착수 타진 여부 긴급 체크</li>
+<br><br><li>Series D($70M) 거액 유치 이후 <b class='red-w'>주주에게조차 철저히 비공개된 전체 ARR 달러 매출 규모 및 병원 Seat별 갱신율(Net Expansion) 회계 정밀 실사 컷오프</b></li>
+<br><br><li><b>자사 제조사 전용 헬스케어 커스텀 스마트 기기 실환경 PoC 공동 납품 테스트</b> 조기 착수 타진 여부 긴급 체크</li>
 </ul>
 </div></div>
 
@@ -772,7 +769,7 @@ footer{margin-top:.6rem;padding:.5rem 1.1rem;font-size:.66rem;color:var(--t3);te
 <div class='rf-bd'>
 <ul class='bul-list' style='font-size:.68rem'>
 <li>TTM $23.9M 매출 파이프라인 내 <b class='hl'>B2B Payer(거대 보험사/기업 임직원 복지 EAP) 채널 거액 계약 의존 비중 쏠림 현상</b> 및 중장기 3년 다년 계약 유지 건전성 집중 분석</li>
-<li>스마트폰 제조사 OS 내 '디지털 웰빙' 탭 기본 앱 프리로드 대량 선탑재 강제 주입 시 <b class='red-w'>수억 대 물량 글로벌 라이선스 B2B 단가 파격 후려치기 협상</b> 및 보수 산정 마진 분배 모델 도출</li>
+<br><br><li>스마트폰 제조사 OS 내 '디지털 웰빙' 탭 기본 앱 프리로드 대량 선탑재 강제 주입 시 <b class='red-w'>수억 대 물량 글로벌 라이선스 B2B 단가 파격 후려치기 협상</b> 및 보수 산정 마진 분배 모델 도출</li>
 </ul>
 </div></div>
 
@@ -781,7 +778,7 @@ footer{margin-top:.6rem;padding:.5rem 1.1rem;font-size:.66rem;color:var(--t3);te
 <div class='rf-bd'>
 <ul class='bul-list' style='font-size:.68rem'>
 <li>Comcast GTC 행사용 65M 가구 엣지망 시범 쇼케이스 종료 후 <b class='hl'>실제 돈을 받는 정식 상업화(Commercial) 엔터프라이즈 B2B 연간 계약 판매망 성공적 캐시카우 전환율</b> 및 서버 구동 롤아웃 속도 모니터링</li>
-<li>모바일 <b class='red-w'>독자 NPU 보안 엣지 전용 칩셋(ARM 등) 하드웨어 환경에 SLM 코어 모델 포팅 구동 시 Sub-500ms 레이턴시가 무너지는지 벤치마크 랩(Lab) 심층 파괴 부하 테스트</b> 발주 필수</li>
+<br><br><li>모바일 <b class='red-w'>독자 NPU 보안 엣지 전용 칩셋(ARM 등) 하드웨어 환경에 SLM 코어 모델 포팅 구동 시 Sub-500ms 레이턴시가 무너지는지 벤치마크 랩(Lab) 심층 파괴 부하 테스트</b> 발주 필수</li>
 </ul>
 </div></div>
 
@@ -790,7 +787,7 @@ footer{margin-top:.6rem;padding:.5rem 1.1rem;font-size:.66rem;color:var(--t3);te
 <div class='rf-bd'>
 <ul class='bul-list' style='font-size:.68rem'>
 <li>2026년 2Q Sabre 글로벌 통합 발권 공식 상용 오픈 직후 막대한 구경꾼 조회 트래픽 대비 <b class='hl'>실제 유저 신용카드 클릭 최종 인앱 결제 수수료를 남기는 최종 발권 전환율(Conversion Rate)</b> 백엔드 데이터 무자비한 정밀 분석</li>
-<li>제조사 스마트폰 OS 기본 네이티브 Travel Mode 연동 독점 계약 시 기존 Booking.com 등 거대 OTA 플랫폼 대비 <b class='red-w'>결제 중개 수수료 커미션 이익 마진 방어선 최후 저지선</b> 선제적 문서 확보</li>
+<br><br><li>제조사 스마트폰 OS 기본 네이티브 Travel Mode 연동 독점 계약 시 기존 Booking.com 등 거대 OTA 플랫폼 대비 <b class='red-w'>결제 중개 수수료 커미션 이익 마진 방어선 최후 저지선</b> 선제적 문서 확보</li>
 </ul>
 </div></div>
 
@@ -804,7 +801,7 @@ footer{margin-top:.6rem;padding:.5rem 1.1rem;font-size:.66rem;color:var(--t3);te
 <div class='rf-bd'>
 <ul class='bul-list' style='font-size:.68rem'>
 <li>1,500+ 유럽 시설 점유를 넘어 미국 메디케어 숙련 요양(Skilled Nursing) 시장 본토 상륙 후 현지 최대 EHR(Epic 등) 클라우드 시스템 백엔드와의 <b class='hl'>무결점 데이터 통합 연동 보안 규제(HIPAA 등) 보건 당국 승인 획득 지연 통과 시간 리스크</b></li>
-<li>먼지 날리는 야외 건설 · 지하 물류 창고 · 열악한 요양 병동 현장 전용 <b class='red-w'>방수/방진 산업용 러기드(Rugged) 스마트폰 하드웨어 벤더 공동 영업 번들 납품 파트너십</b> 모멘텀 조기 독점 성사 여부 타진</li>
+<br><br><li>먼지 날리는 야외 건설 · 지하 물류 창고 · 열악한 요양 병동 현장 전용 <b class='red-w'>방수/방진 산업용 러기드(Rugged) 스마트폰 하드웨어 벤더 공동 영업 번들 납품 파트너십</b> 모멘텀 조기 독점 성사 여부 타진</li>
 </ul>
 </div></div>
 
@@ -813,7 +810,7 @@ footer{margin-top:.6rem;padding:.5rem 1.1rem;font-size:.66rem;color:var(--t3);te
 <div class='rf-bd'>
 <ul class='bul-list' style='font-size:.68rem'>
 <li>$1B Trip Value 화려한 허상 트래픽 지표 중에서 실제로 외부 OTA 예약 결제창으로 넘어가 최종 발권으로 치환되어 <b class='hl'>플랫폼 내부 통장으로 꽂혀 쌓이는 순수 반복 중개 수수료(Booked Revenue) 회계 장부 현금흐름 정밀 DD 가치평가 세무 검증 필수</b></li>
-<li>스마트폰 단말 순정 갤러리 카메라 비전 렌즈 사물 인식 및 <b class='red-w'>AR 풍경 뷰 검색(Vision) API 코어 연동 알파 프로토타입 단위 테스트 개발 진행 속도 스케줄</b> 확보</li>
+<br><br><li>스마트폰 단말 순정 갤러리 카메라 비전 렌즈 사물 인식 및 <b class='red-w'>AR 풍경 뷰 검색(Vision) API 코어 연동 알파 프로토타입 단위 테스트 개발 진행 속도 스케줄</b> 확보</li>
 </ul>
 </div></div>
 
@@ -822,7 +819,7 @@ footer{margin-top:.6rem;padding:.5rem 1.1rem;font-size:.66rem;color:var(--t3);te
 <div class='rf-bd'>
 <ul class='bul-list' style='font-size:.68rem'>
 <li>단기 10만 명 유료 구독 폭주 바이럴 이후 <b class='hl'>서비스 앱 코어 생존 수명을 결정짓는 D30/D90 핵심 장기 접속 리텐션(초기 3개월 이탈 방어율 유지 퍼센트) 우상향 트랙션 방어 유지</b> 여부 펀딩 전 지속 관찰</li>
-<li>미성년자/알파세대 유저 타겟의 생성 AI 가상 친구 맹목적 정서 의존성 <b class='red-w'>가스라이팅 중독 우려(Safety/Ethics) 및 성인용 딥페이크 논란 차단을 위한 대외 정부 법적 가이드라인 공시 선제적 조치 여부</b></li>
+<br><br><li>미성년자/알파세대 유저 타겟의 생성 AI 가상 친구 맹목적 정서 의존성 <b class='red-w'>가스라이팅 중독 우려(Safety/Ethics) 및 성인용 딥페이크 논란 차단을 위한 대외 정부 법적 가이드라인 공시 선제적 조치 여부</b></li>
 </ul>
 </div></div>
 
@@ -831,7 +828,7 @@ footer{margin-top:.6rem;padding:.5rem 1.1rem;font-size:.66rem;color:var(--t3);te
 <div class='rf-bd'>
 <ul class='bul-list' style='font-size:.68rem'>
 <li>유저 스마트폰에 저장된 극도로 민감한 사적 금융 카드 결제 데이터 보호를 담보하기 위한 <b class='hl'>외부 OpenAI GPT API 무단 랩핑 의존 탈피 선언 및 인간 행동 클릭 액션 기반 자체 고유 파인튜닝 로컬 모델 기술 100% 완전 독립성 완수 인프라 아키텍처 증빙 서류</b> 엄격 점검</li>
-<li>단발성 B2C 앱 장사를 넘어 글로벌 대형 통신사(Telco) 거대 케이블 회사 고객센터(CS 해지 방어 부서) <b class='red-w'>상담원 인건비를 날려버리는 B2B 자동화(IVR 대체) 솔루션 기업 납품 B2B 수익 모델 채택 딜 클로징 성사율</b> 실사</li>
+<br><br><li>단발성 B2C 앱 장사를 넘어 글로벌 대형 통신사(Telco) 거대 케이블 회사 고객센터(CS 해지 방어 부서) <b class='red-w'>상담원 인건비를 날려버리는 B2B 자동화(IVR 대체) 솔루션 기업 납품 B2B 수익 모델 채택 딜 클로징 성사율</b> 실사</li>
 </ul>
 </div></div>
 
@@ -848,28 +845,68 @@ footer{margin-top:.6rem;padding:.5rem 1.1rem;font-size:.66rem;color:var(--t3);te
 </tbody></table></div>
 
 <div class='pg' style='margin-top:1.4rem;'>
-  <div class='pc interactive-card' style='padding:1.2rem; border-color:var(--acL); border-width:2px;'>
-    <h3 class='h-word' style='font-size:0.85rem; margin-bottom:0.7rem; border-bottom:2px solid var(--bd); padding-bottom:0.5rem;'>📊 CB Insights 핵심 글로벌 벤처 투자 및 빅테크 M&A 돈줄 동향 요약</h3>
-    <ul style='font-size:0.74rem; color:var(--t2); line-height:1.65; padding-left:1.3rem; margin:0;'>
-      <li style='margin-bottom:0.4rem;'>벤처 혹한기가 정점을 찍은 2024~2025년 글로벌 전체 디지털 헬스케어 벤처 M&A 거래 절벽 속에서도, 오직 유일하게 성사된 거대 메가 딜 중 <b style='color:var(--rd); font-size:0.78rem'>절반에 육박하는 48%의 조 단위 거대 빅테크 자본이 챗GPT 등 생성형 AI(Generative AI) 음성 인식 전문 코어 딥테크 기업 하나만을 타겟으로 집어삼키는 극단적 편식 쏠림 현상</b>이 광기로 가속화되는 트렌드가 뚜렷하게 관측됩니다.</li>
-      <li style='margin-bottom:0.4rem;'>미국 의학계 최신 리포트에 따르면, 미국 거대 병원 내 수술실 및 외래 진료실에 스마트폰 기반 Ambient AI(자연어 음성 인식 자동 차트 생성) 문서화 소프트웨어 앱을 전면 선제 도입할 시, 야근 기록 작성에 얽매인 의사 간호사들의 끔찍한 연쇄 이직 및 현장 번아웃(Burn-out) 붕괴를 극적으로 조기 해소함과 동시에 <b class='h-word' style='font-size:0.78rem'>병원 행정 기회비용을 연간 무려 $4.6B(미국 단일 국가 한화 약 6조 2천억 원)라는 천문학적 규모로 극단적 삭감/절감</b>시키는 경악할 만한 거대 흑자 기회 창출 실증이 대외적으로 완벽히 입증되었습니다.</li>
-      <li>환자의 주민번호, 혈액형, 처방전 등 극도로 민감한 보호 의료 데이터(PHI)가 무선 와이파이를 타고 외부 아마존/구글 퍼블릭 클라우드 서버로 날아가는 전송 과정에서 외부 랜섬웨어로 통째로 유출 원천 방지 및 통신 단절 오지 험지 오프라인 진료 환경 방어 구축을 위해, <b>중앙 서버 데이터 송수신 연산을 철저히 100% 배제하고 오직 의사의 호주머니 속 스마트폰 내부 저전력 자체 하드웨어 NPU 보드에서만 나 홀로 구동되어 해킹이 물리적으로 불가능한 초격차 On-device 엣지 AI 헬스케어 스타트업 원천 기술 지분 전략 투자(SI)</b> 뭉칫돈 쏠림 수요가 폭발적으로 연일 급증세입니다.</li>
+  <div class='pc interactive-card' style='padding:1rem; border-color:rgba(59,130,246,.4); border-width:2px;'>
+    <h3 class='h-word' style='font-size:.8rem; margin-bottom:.55rem; border-bottom:2px solid var(--bd); padding-bottom:.35rem;'>📊 CB Insights 인사이트</h3>
+    <ul class='bul-list' style='font-size:.71rem; color:var(--t2); line-height:1.8'>
+      <li><b class='red-w'>벤처 혹한기 속 헬스케어 M&A 자본의 48%</b>가 생성형 AI 음성인식 딥테크 기업에 집중<br><br></li>
+      <li>병원 Ambient AI 도입 시 <b class='hl'>연간 $4.6B(약 6조 2천억 원)</b> 의료 행정 비용 절감 실증 완료<br><br></li>
+      <li>환자 PHI 보호·오프라인 진료 환경 대응 위한 <b class='h-word'>On-device 엣지 AI 헬스케어 스타트업</b>에 SI 전략 투자 수요 폭증</li>
     </ul>
   </div>
-  <div class='pc interactive-card' style='padding:1.2rem; border-color:var(--acL); border-width:2px;'>
-    <h3 class='h-word' style='font-size:0.85rem; margin-bottom:0.7rem; border-bottom:2px solid var(--bd); padding-bottom:0.5rem;'>📈 PitchBook 사모펀드 밸류에이션 및 벤처 B2B/B2C 수익성 검증 인사이트</h3>
-    <ul style='font-size:0.74rem; color:var(--t2); line-height:1.65; padding-left:1.3rem; margin:0;'>
-      <li style='margin-bottom:0.4rem;'>Wysa, Suki 등과 같이 데스밸리 속에서도 허상을 쫓지 않고 <b>수만 명 단위의 B2B 거대 기업/병원망에 뿌리를 내려 한 번 계약 시 3년 이상 다년 반복 구독료가 입금되는 확고한 장부 수익성(스타트업 마의 장벽인 TTM $10M 이상 흑자)을 서류상 완벽히 입증한 철벽의 안정적 B2B 엔터프라이즈 SaaS 기업</b>들은, 전반적인 실리콘밸리 벤처 투자 시장 유동성 고갈 및 고금리 혹한기 붕괴 파탄 속에서도 불구하고 기관 투자자들로부터 8배~10배 이상의 극단적 프리미엄 수익 가치 배수(Valuation Multiple)를 싹쓸이 독식하며 대형 자본 투자자들의 무한 신뢰 피난처를 영구 확보 중입니다.</li>
-      <li style='margin-bottom:0.4rem;'>대화 텍스트 몇 마디만으로 수백만 개 항공편 최저가 추천부터 글로벌 결제망 발권 연동까지 단일 앱 내에서 100% 완전 자율 E2E 직결제가 가능한 신흥 생성형 대화 AI Travel Agent 솔루션 벤처 플랫폼들은, <b>향후 ChatGPT, 구글 제미나이 등 빅테크 범용 AI 거대 포털들이 자체 검색망을 등에 업고 무자비하게 글로벌 여행 결제 이커머스 커미션 시장으로 직접 진출해 들어오는 파괴적 멸망 위협을 극도로 두려워하며 견제하려는 기존 레거시 대형 공룡 OTA 연합(Booking.com, Expedia, Agoda 등) 세력의 <b class='h-word' style='font-size:0.78rem'>생존형 방어적 적대적 메가 M&A 스핀인 1순위 타깃</b>으로 전면 폭풍 급부상</b> 중입니다.</li>
-      <li>단순 화면 내용 브리핑을 넘어 직접 모바일 안드로이드 OS 최상위 마우스 커서 클릭 권한을 위임받아 유저의 이메일 전송, 통화 봇 자동 발신, 브라우저 탭 웹 서핑 행동을 무인 자율 통제 및 결제 대행하는 Consumer Action Agent(Pine AI, Tolan 등 1세대 실행형 봇) 혁명 기술 기업들의 경우, <b>아직 수익 모델이 백지장인 설립 1년 차임에도 불구하고 초기 Series A 1라운드 평균 자금 조달 펀딩액 파이가 벌써 $20M~$25M(한화 300~400억 원) 이상으로 비정상적으로 초거대화, 비대화 거품 조짐</b>을 보이며, 초기 설립부터 구글 알파고/애플 인텔리전스/아마존 알렉사 등 굴지의 빅테크 메이저급 출신 유능한 초일류 행동 통제 AI 딥러닝 개발 핵심 인재들을 수백만 불 연봉으로 대거 스카우트해 빨아들이는 블랙홀 및 피 말리는 영입 출혈 경쟁 진흙탕 과열 양상이 뚜렷합니다.</li>
+  <div class='pc interactive-card' style='padding:1rem; border-color:rgba(16,185,129,.4); border-width:2px;'>
+    <h3 class='h-word' style='font-size:.8rem; margin-bottom:.55rem; border-bottom:2px solid var(--bd); padding-bottom:.35rem;'>📈 PitchBook 인사이트</h3>
+    <ul class='bul-list' style='font-size:.71rem; color:var(--t2); line-height:1.8'>
+      <li><b class='h-word'>TTM $10M↑ 흑자 B2B SaaS 기업</b>(Wysa·Suki형) → 혹한기에도 Valuation Multiple <b class='ok-w'>8~10배 프리미엄</b> 독식<br><br></li>
+      <li>AI Travel Agent 플랫폼 → 레거시 OTA 공룡(Booking·Expedia)의 <b class='red-w'>생존형 방어적 M&A 1순위 타깃</b>으로 급부상<br><br></li>
+      <li>Consumer Action Agent(Pine AI·Tolan 등) 초기 <b class='hl'>Series A 평균 $20M~$25M</b> 초거대화 — 빅테크 AI 인재 영입 출혈 경쟁 과열</li>
     </ul>
   </div>
 </div>
 
-<h2 style='font-size:.85rem;font-weight:800;margin:1.6rem 0 .5rem; color:var(--t1)'>최근 글로벌 헬스케어 및 생성형 모바일 AI 에이전트 산업을 뒤흔든 주요 빅테크 대형 M&A 실거래 종결 사례 (인수 레퍼런스 팩트체크)</h2>
-<div class='md-item interactive-card' style='padding:0.8rem 1.1rem; border-left:4px solid var(--ok);'><b>초거대 의료 기록 연합 Commure × 문서화 앱 Augmedix</b> — <b style='color:var(--ok); font-size:0.8rem'>무려 $139M (한화 약 1,850억 원, '24.7월) 100% 완전 흡수 합병 인수 완료 증명</b> · AI 병원 차팅 클리닉 문서화 원천 기술 기업 Augmedix를 딥테크 인력째로 통째로 인수합병 함으로써, Augmedix가 수년간 피와 땀으로 깔아 둔 25만 명 이상의 일선 임상의(Clinicians) 거대 미국 병원 현장 네트워크 유통 채널 다이렉트 접근성을 단 하루 아침에 단숨에 획득 탈취. 더불어 전 세계 최대급 민간 영리 병원 연합 그룹체인 HCA Healthcare에 솔루션을 독점 공급할 수 있는 막강한 공식 B2B 납품 파트너 황금 동아줄 지위를 영구적으로 흡수 완료 (<a href='https://www.healthcaredive.com/news/commure-acquire-augmedix-ai-documentation/721978/' target='_blank' style='text-decoration:underline; font-weight:800; color:var(--ok);'>Healthcare Dive 글로벌 경제지 E-Book 보도 상세 기사 원문 이동 클릭</a>)</div>
-<div class='md-item interactive-card' style='padding:0.8rem 1.1rem; border-left:4px solid var(--ac);'><b>제국 Microsoft × 의료 음성 원천 기술 Nuance</b> — <b style='color:var(--ac); font-size:0.8rem'>$19.7B (한화 약 26조 원, '22년) AI 헬스케어 벤처 역사상 유례없는 최고액 기념비적 초대형 메가톤급 빅딜 M&A</b> · 미국 병원 기록 점유율 1위인 드래곤 메디컬과 최근 챗GPT 기반의 DAX Copilot 등 병원 임상 현장 의사 Scribe 음성 보조 시장의 압도적 1위 독점적 파이프라인 선점 점유율 효과를 매개로, MS 자사의 메인 먹거리인 Azure(애저) 클라우드 전산 생태계를 미국뿐 아니라 글로벌 의료망 B2B 엔터프라이즈 데이터 지배력에 영구적으로 종속시켜 가장 깊고 거대한 의료 제국 시스템 완전무결 구축 성공 역사 증명</div>
-<div class='md-item interactive-card' style='padding:0.8rem 1.1rem; border-left:4px solid var(--wn);'><b>하드웨어 강자 Stryker × 센서형 엣지 헬스케어 care.ai</b> — 세계 1위권 규모의 자금력을 쥐고 있는 수술용 베드/메디컬 디바이스 메이저 의료기기 하드웨어 제조사 Stryker가, 병동 내 벽면 카메라 및 동작 센서를 통해 환자의 실시간 위험한 움직임과 비명 음성을 감지, 간호사 호출을 최소화하는 스마트 병동용 최첨단 엣지 Ambient AI 환경 인지 모니터링 스타트업 care.ai를 전격 100% 지분 인수 스핀인 단행. 철로 만든 수동적이고 무거운 수술 장비 등 전통적인 하드웨어 장비 라인업 껍데기 폼팩터 내부에 눈과 귀가 달린 최첨단 초경량 지능형 On-device 소프트웨어 두뇌 시스템을 통째로 이식 결합하는 <b>'글로벌 의료 기기 제조 기업의 딥러닝 소프트웨어 수직 결합 파괴적 M&A 시너지 시대'</b>의 본격적인 개막 선언 신호탄 발사</div>
+<h2 style='font-size:.82rem;font-weight:900;margin:1.4rem 0 .5rem; color:var(--t1)'>🏢 최근 M&A 사례</h2>
+<div style='display:flex;flex-direction:column;gap:.45rem'>
+
+<div class='rf-box rf-green' style='cursor:default'>
+<div class='rf-hd' style='cursor:default'>
+<span class='rf-ico'>🏥</span><b>Commure × Augmedix</b>
+<span style='margin-left:auto;font-size:.65rem;font-weight:700;color:var(--ok)'>$139M · '24.7월</span>
+</div>
+<div class='rf-bd' style='max-height:none!important;opacity:1!important'>
+<ul class='bul-list' style='font-size:.71rem;line-height:1.9'>
+<li>AI 병원 차팅 문서화 Augmedix 딥테크 인력째 통째 인수합병<br><br></li>
+<li>일선 임상의 <b class='hl'>25만 명+</b> 거대 미국 병원 현장 네트워크 유통채널 단숨에 획득<br><br></li>
+<li><b class='h-word'>HCA Healthcare</b> 독점 공급 파트너 지위 영구 흡수 → B2B 납품망 완성
+<a href='https://www.healthcaredive.com/news/commure-acquire-augmedix-ai-documentation/721978/' target='_blank' style='margin-left:.4rem;font-size:.62rem;color:var(--ok);text-decoration:underline'>원문↗</a></li>
+</ul>
+</div></div>
+
+<div class='rf-box rf-blue' style='cursor:default'>
+<div class='rf-hd' style='cursor:default'>
+<span class='rf-ico'>💻</span><b>Microsoft × Nuance</b>
+<span style='margin-left:auto;font-size:.65rem;font-weight:700;color:#3b82f6'>$19.7B · '22년</span>
+</div>
+<div class='rf-bd' style='max-height:none!important;opacity:1!important'>
+<ul class='bul-list' style='font-size:.71rem;line-height:1.9'>
+<li>AI 헬스케어 M&A 역사상 <b class='hl'>최고액</b> — Dragon Medical + DAX Copilot 의사 Scribe 시장 1위 선점<br><br></li>
+<li>미국 병원 EMR 기록 점유율 1위 파이프라인 통째 흡수<br><br></li>
+<li><b class='h-word'>Azure 클라우드</b>를 글로벌 의료망 B2B 엔터프라이즈 데이터 지배력에 영구 종속 완성</li>
+</ul>
+</div></div>
+
+<div class='rf-box rf-amber' style='cursor:default'>
+<div class='rf-hd' style='cursor:default'>
+<span class='rf-ico'>🔬</span><b>Stryker × care.ai</b>
+<span style='margin-left:auto;font-size:.65rem;font-weight:700;color:#f59e0b'>하드웨어 × 소프트웨어 수직 결합</span>
+</div>
+<div class='rf-bd' style='max-height:none!important;opacity:1!important'>
+<ul class='bul-list' style='font-size:.71rem;line-height:1.9'>
+<li>의료기기 하드웨어 제조사 Stryker가 <b class='h-word'>스마트 병동 Ambient AI 모니터링</b> 스타트업 care.ai 100% 지분 인수<br><br></li>
+<li>병동 카메라·동작 센서 → 환자 위험 움직임 실시간 감지, 간호사 호출 최소화<br><br></li>
+<li><b>글로벌 의료기기 제조사의 딥러닝 SW 수직 결합 M&A 시대</b> 개막 신호탄</li>
+</ul>
+</div></div>
+
+</div>
 
 <h2 style='font-size:.85rem;font-weight:800;margin:1.6rem 0 .5rem; color:var(--t1)'>🏛️ 타 기관 추가 리서치 인사이트 (Gartner · McKinsey · a16z · Forrester · IDC)</h2>
 <div style='display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:.5rem;margin-bottom:.6rem'>
@@ -993,22 +1030,22 @@ footer{margin-top:.6rem;padding:.5rem 1.1rem;font-size:.66rem;color:var(--t3);te
 <div style='background:linear-gradient(135deg,rgba(239,68,68,.08),rgba(249,115,22,.06));border:1.5px solid rgba(239,68,68,.3);border-radius:var(--r);padding:.65rem 1rem;margin:.5rem 0 .8rem'>
   <div style='font-size:.75rem;font-weight:800;color:var(--rd);margin-bottom:.4rem'>🏆 유명 VC (Famous Venture Capital) 정의 및 가산점 적용 기준</div>
   <div style='display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:.5rem;font-size:.68rem;line-height:1.7'>
-    <div style='background:rgba(239,68,68,.1);border:1.5px solid rgba(239,68,68,.35);border-radius:8px;padding:.55rem .75rem'>
+    <div style='background:rgba(239,68,68,.15);border:2px solid rgba(239,68,68,.55);border-radius:8px;padding:.55rem .75rem'>
       <b style='color:#ef4444;font-size:.72rem'>🔴 최상위 글로벌 VC</b><br>
       <span style='color:var(--t2)'>Khosla Ventures · Sequoia Capital · Andreessen Horowitz(a16z) · Accel · Index Ventures · Lightspeed · GV(Google Ventures)</span>
       <div style='margin-top:.3rem;font-size:.62rem;color:#ef4444;font-weight:700'>B항목 <b>+2~3점</b> 가산</div>
     </div>
-    <div style='background:rgba(249,115,22,.1);border:1.5px solid rgba(249,115,22,.35);border-radius:8px;padding:.55rem .75rem'>
+    <div style='background:rgba(249,115,22,.15);border:2px solid rgba(249,115,22,.55);border-radius:8px;padding:.55rem .75rem'>
       <b style='color:#f97316;font-size:.72rem'>🟠 유럽·아시아 톱티어 VC</b><br>
       <span style='color:var(--t2)'>Balderton Capital · HV Capital · firstminute Capital · INCE Capital · Baidu Ventures · B Capital</span>
       <div style='margin-top:.3rem;font-size:.62rem;color:#f97316;font-weight:700'>B항목 <b>+1~2점</b> 가산</div>
     </div>
-    <div style='background:rgba(245,158,11,.1);border:1.5px solid rgba(245,158,11,.35);border-radius:8px;padding:.55rem .75rem'>
+    <div style='background:rgba(245,158,11,.15);border:2px solid rgba(245,158,11,.55);border-radius:8px;padding:.55rem .75rem'>
       <b style='color:#f59e0b;font-size:.72rem'>🟡 초대형 전략 투자자(SI)</b><br>
       <span style='color:var(--t2)'>Y Combinator(YC) · Wellcome Trust · United Airlines · Amex · Comcast 등 대형 사업회사 직접 지분 투자</span>
       <div style='margin-top:.3rem;font-size:.62rem;color:#f59e0b;font-weight:700'>B항목 <b>+1~3점</b> 가산</div>
     </div>
-    <div style='background:rgba(52,211,153,.08);border:1.5px solid rgba(52,211,153,.3);border-radius:8px;padding:.55rem .75rem'>
+    <div style='background:rgba(52,211,153,.12);border:2px solid rgba(52,211,153,.5);border-radius:8px;padding:.55rem .75rem'>
       <b style='color:var(--ok);font-size:.72rem'>✅ 가산점 반영 기준</b><br>
       <span style='color:var(--t2)'>위 VC/SI 유치 시 <b style='color:var(--ok)'>B항목(M&A 가치) +1~3점</b><br>슈퍼 엔젤·연쇄창업자 합류 시 <b style='color:var(--ok)'>F항목(팀 전투력) +1~2점</b></span>
       <div style='margin-top:.3rem;font-size:.62rem;color:var(--rd);font-weight:700'>단순 재무적 VC만 = 가산점 없음</div>
