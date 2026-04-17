@@ -21,7 +21,7 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth;scroll-padding-top:80px}
 body{font-family:'DM Sans','Noto Sans KR',system-ui,sans-serif;background:var(--bg);color:var(--t1);line-height:1.7;transition:background .3s,color .3s}
 
-/* 臾댁?媛쒖깋 ?섏씠?쇰쭅???몃쾭 ?좊땲硫붿씠??*/
+
 @keyframes rainbow-text {
   0% { color: #ef4444; } 14% { color: #f97316; } 28% { color: #eab308; }
   42% { color: #22c55e; } 57% { color: #3b82f6; } 71% { color: #a855f7; }
@@ -30,7 +30,7 @@ body{font-family:'DM Sans','Noto Sans KR',system-ui,sans-serif;background:var(--
 a {color:var(--acT);text-decoration:none;font-weight:600;transition:all 0.2s;}
 a:hover {animation: rainbow-text 1.5s linear infinite !important; text-decoration:underline !important; font-weight:800;}
 
-/* 3,4,5 ??ぉ ?명꽣?숉떚釉?臾댁?媛??뚮몢由??몃쾭 ?④낵 */
+
 @keyframes rainbow-border {
   0% { border-color: #ef4444; box-shadow: 0 8px 24px rgba(239,68,68,0.15); }
   14% { border-color: #f97316; box-shadow: 0 8px 24px rgba(249,115,22,0.15); }
@@ -44,7 +44,7 @@ a:hover {animation: rainbow-text 1.5s linear infinite !important; text-decoratio
 .interactive-card { transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease; border: 1px solid var(--bd); }
 .interactive-card:hover { transform: translateY(-4px); animation: rainbow-border 2s linear infinite; z-index: 10; position:relative; background-color: var(--card2); }
 
-/* vc-badge ?좊챸 VC 媛?곗젏 */
+
 .vc-badge{padding:.12rem .45rem;border-radius:4px;font-size:.6rem;font-weight:800;margin-right:.2rem;display:inline-block;letter-spacing:.02em;border:1px solid transparent}
 .vc-red{background:#ef4444;color:#fff;box-shadow:0 2px 6px rgba(239,68,68,.3);border-color:#dc2626}
 .vc-orange{background:#f97316;color:#fff;box-shadow:0 2px 6px rgba(249,115,22,.3);border-color:#ea580c}
@@ -53,11 +53,11 @@ a:hover {animation: rainbow-text 1.5s linear infinite !important; text-decoratio
 [data-t=dark] .vc-red{box-shadow:0 2px 8px rgba(239,68,68,.4)}
 [data-t=dark] .vc-orange{box-shadow:0 2px 8px rgba(249,115,22,.4)}
 [data-t=dark] .vc-gold{background:#fbbf24;box-shadow:0 2px 8px rgba(245,158,11,.4)}
-/* ?좊챸 VC ?뺤쓽 諛뺤뒪 */
+
 .vc-def{background:linear-gradient(135deg,rgba(239,68,68,.08),rgba(249,115,22,.06));border:1px solid rgba(239,68,68,.25);border-radius:var(--rs);padding:.5rem .8rem;margin-bottom:.6rem;font-size:.68rem;color:var(--t2);line-height:1.6}
 .vc-def strong{color:var(--rd);font-size:.7rem}
 [data-t=dark] .vc-def{background:linear-gradient(135deg,rgba(239,68,68,.12),rgba(249,115,22,.08));border-color:rgba(239,68,68,.35)}
-/* ?됯???湲곗뾽蹂??묎린 諛뺤뒪 */
+
 .eval-company{background:var(--card);border:1.5px solid var(--bd);border-radius:var(--r);margin-bottom:.6rem;overflow:hidden;transition:all .25s}
 .eval-company:hover{border-color:var(--ac);box-shadow:var(--shM)}
 .eval-company-hd{padding:.55rem .9rem;cursor:pointer;display:flex;align-items:center;justify-content:space-between;background:var(--hdr);user-select:none;transition:background .15s}
@@ -68,7 +68,7 @@ a:hover {animation: rainbow-text 1.5s linear infinite !important; text-decoratio
 .eval-company-hd .ec-arr.shut{transform:rotate(-90deg)}
 .eval-company-bd{overflow:hidden;max-height:1200px;transition:max-height .4s ease,opacity .3s,padding .3s}
 .eval-company-bd.shut{max-height:0!important;opacity:0}
-/* 3,4,5踰?諛뺤뒪 ?묎린 */
+
 .sec-box{background:var(--card);border:1px solid var(--bd);border-radius:var(--r);box-shadow:var(--shM);margin-bottom:.8rem;overflow:hidden}
 .sec-box-hd{padding:.6rem 1rem;cursor:pointer;display:flex;align-items:center;justify-content:space-between;background:var(--hdr);user-select:none;transition:background .15s}
 .sec-box-hd:hover{background:var(--acL)}
@@ -78,7 +78,7 @@ a:hover {animation: rainbow-text 1.5s linear infinite !important; text-decoratio
 .sec-box-hd .sb-arr.shut{transform:rotate(-90deg)}
 .sec-box-bd{padding:.7rem .9rem;overflow:hidden;transition:max-height .4s ease,opacity .3s,padding .3s}
 .sec-box-bd.shut{max-height:0!important;padding-top:0;padding-bottom:0;opacity:0}
-/* 6踰?湲곗???諛뺤뒪 ?묎린 */
+
 .crit-group{background:var(--card);border:1.5px solid var(--bd);border-radius:var(--r);margin-bottom:.5rem;overflow:hidden;transition:all .25s}
 .crit-group:hover{border-color:var(--ac);box-shadow:var(--shM)}
 .crit-group-hd{padding:.5rem .8rem;cursor:pointer;display:flex;align-items:center;background:var(--hdr);user-select:none;transition:background .2s;gap:.3rem}
@@ -89,7 +89,7 @@ a:hover {animation: rainbow-text 1.5s linear infinite !important; text-decoratio
 .crit-group-hd .cg-arr.shut{transform:rotate(-90deg)}
 .crit-group-bd{overflow:hidden;transition:max-height .5s ease,opacity .3s}
 .crit-group-bd.shut{max-height:0!important;opacity:0}
-/* ???뱀뀡 pc-box ?묎린/?쇱튂湲?*/
+
 .pc-coll .pc-h{display:flex;align-items:center;transition:background .18s}
 .pc-coll:hover .pc-h{background:var(--acL)}
 [data-t=dark] .pc-coll:hover .pc-h{background:rgba(96,165,250,.1)}
@@ -97,9 +97,9 @@ a:hover {animation: rainbow-text 1.5s linear infinite !important; text-decoratio
 .pc-b{max-height:2000px;overflow:hidden;transition:max-height .4s ease,opacity .3s,padding .3s;opacity:1}
 .hl-key{background:rgba(239,68,68,.15);color:var(--rd);padding:0 3px;border-radius:3px;font-weight:800}
 [data-t=dark] .hl-key{background:rgba(248,113,113,.18)}
-/* 1踰??뱀뀡 td-d ?묎린 transition */
+
 .td-d{transition:max-height .35s ease,opacity .25s,padding .25s;overflow:hidden}
-/* pc-box: 4踰??뱀뀡 湲곗뾽蹂??묎린/?쇱튂湲?而щ윭 諛뺤뒪 */
+
 .pc-box{background:var(--card);border:2px solid var(--bd);border-radius:var(--r);margin-bottom:.5rem;overflow:hidden;transition:border-color .2s,box-shadow .2s;cursor:pointer}
 .pc-box:hover{border-color:var(--hc,var(--ac));box-shadow:0 4px 20px rgba(0,0,0,.18),0 0 0 1px var(--hc,var(--ac))}
 .pc-box-hd{display:flex;align-items:center;gap:.45rem;padding:.5rem .85rem;background:var(--hdr);user-select:none;transition:background .18s}
@@ -111,7 +111,7 @@ a:hover {animation: rainbow-text 1.5s linear infinite !important; text-decoratio
 .pc-box-arr.shut{transform:rotate(-90deg)}
 .pc-box-bd{padding:.6rem .9rem .7rem;overflow:hidden;max-height:800px;transition:max-height .4s ease,opacity .3s,padding .3s;font-size:.7rem;color:var(--t2);line-height:1.6}
 .pc-box-bd.shut{max-height:0;padding-top:0;padding-bottom:0;opacity:0}
-/* rf-box: Red Flag ?뚯튂 由ъ뒪??諛뺤뒪 */
+
 .rf-box{background:var(--card);border:1.5px solid var(--bd);border-radius:var(--r);overflow:hidden;transition:border-color .2s,box-shadow .2s,transform .15s;cursor:pointer}
 .rf-box:hover{transform:translateY(-2px);box-shadow:var(--shM)}
 .rf-hd{display:flex;align-items:center;gap:.45rem;padding:.45rem .75rem;user-select:none;font-size:.75rem;font-weight:800;transition:background .18s}
@@ -121,7 +121,7 @@ a:hover {animation: rainbow-text 1.5s linear infinite !important; text-decoratio
 .rf-arr.shut{transform:rotate(-90deg)}
 .rf-bd{padding:.5rem .75rem .6rem;overflow:hidden;max-height:600px;transition:max-height .4s ease,opacity .3s,padding .3s;color:var(--t2);line-height:1.6}
 .rf-bd.shut{max-height:0;padding-top:0;padding-bottom:0;opacity:0}
-/* rf-box ?됱긽 ?뚮쭏蹂?*/
+
 .rf-blue{border-color:rgba(59,130,246,.3)}.rf-blue:hover{border-color:#3b82f6}.rf-blue .rf-hd{background:rgba(59,130,246,.1)}.rf-blue:hover .rf-hd{background:rgba(59,130,246,.18)}
 .rf-green{border-color:rgba(16,185,129,.3)}.rf-green:hover{border-color:#10b981}.rf-green .rf-hd{background:rgba(16,185,129,.1)}.rf-green:hover .rf-hd{background:rgba(16,185,129,.18)}
 .rf-violet{border-color:rgba(139,92,246,.3)}.rf-violet:hover{border-color:#8b5cf6}.rf-violet .rf-hd{background:rgba(139,92,246,.1)}.rf-violet:hover .rf-hd{background:rgba(139,92,246,.18)}
@@ -140,45 +140,45 @@ b, strong { color: var(--t1); font-weight: 800; }
 [data-t=dark] .pur-w { color: #a78bfa; }
 .dim { color: var(--t1); font-weight: 500; }
 
-/* ?쒖젏 ?쒓렇 */
+
 .tm { display: inline-block; background: var(--bbg); border: 1px solid var(--bbd); color: var(--acT); font-size: 0.62rem; font-weight: 700; padding: 0.05rem 0.35rem; border-radius: 4px; margin-left: 0.2rem; white-space: nowrap; }
 .tm-ok { background: var(--okB); border-color: var(--ok); color: var(--ok); }
 .tm-wn { background: var(--wnB); border-color: var(--wn); color: var(--wn); }
 
-/* 寃쎌웳??諛뺤뒪 */
+
 .cmp-box { background: var(--card); border: 1.5px solid var(--bd); border-radius: 8px; padding: 0.55rem 0.65rem; margin-bottom: 0.5rem; transition: all 0.2s; box-shadow: var(--shS); }
 .cmp-box:last-child { margin-bottom: 0; }
 .cmp-box:hover { border-color: var(--wn); box-shadow: 0 4px 14px rgba(217, 119, 6, 0.15); transform: translateX(2px); }
 .cmp-box .c-name { font-size: 0.74rem; font-weight: 800; display: block; margin-bottom: 0.3rem; color: var(--t1); }
 .cmp-box .c-str { color: var(--ok); font-size: 0.65rem; font-weight: 700; display: block; margin-top: 4px; padding-left: 0.7rem; position: relative; line-height: 1.5; }
-.cmp-box .c-str::before { content: '??媛뺤젏'; position: absolute; left: -0.1rem; top: 0; font-size: 0.58rem; font-weight: 800; }
+.cmp-box .c-str::before { content: '강점'; position: absolute; left: -0.1rem; top: 0; font-size: 0.58rem; font-weight: 800; }
 .cmp-box .c-str { padding-top: 0.9rem; }
 .cmp-box .c-wk { color: var(--rd); font-size: 0.65rem; font-weight: 700; display: block; margin-top: 6px; padding-left: 0.7rem; position: relative; padding-top: 0.9rem; line-height: 1.5; }
-.cmp-box .c-wk::before { content: '???쎌젏'; position: absolute; left: -0.1rem; top: 0; font-size: 0.58rem; font-weight: 800; }
+.cmp-box .c-wk::before { content: '약점'; position: absolute; left: -0.1rem; top: 0; font-size: 0.58rem; font-weight: 800; }
 .cmp-box .c-dim { color: var(--t1); font-weight: 500; }
 
-/* ?몄궗?댄듃 而щ읆 */
+
 .insight-col { background: linear-gradient(135deg, rgba(37,99,235,0.04), rgba(124,58,237,0.04)); border-left: 3px solid var(--ac); padding: 0.4rem 0.5rem; border-radius: 0 6px 6px 0; }
 [data-t=dark] .insight-col { background: linear-gradient(135deg, rgba(96,165,250,0.07), rgba(167,139,250,0.07)); }
 .insight-col .ins-ttl { font-size: 0.64rem; font-weight: 800; color: var(--ok); margin-bottom: 0.15rem; display: block; letter-spacing: 0.02em; }
 .insight-col .ins-ttl.chk { color: var(--wn); margin-top: 0.4rem; }
 .insight-col .ins-li { font-size: 0.68rem; line-height: 1.55; color: var(--t2); padding-left: 0.7rem; position: relative; margin-bottom: 0.12rem; }
-.insight-col .ins-li::before { content: '쨌'; position: absolute; left: 0.1rem; font-weight: 900; color: var(--ac); }
+.insight-col .ins-li::before { content: '\2022'; position: absolute; left: 0.1rem; font-weight: 900; color: var(--ac); }
 
-/* 遺덈젢 由ъ뒪??媛쒖꽑 */
+
 .bul-list { list-style: none; padding: 0; margin: 0; }
 .bul-list li { padding-left: 0.9rem; position: relative; margin-bottom: 0.35rem; line-height: 1.55; }
-.bul-list li::before { content: '??; position: absolute; left: 0.05rem; top: 0; color: var(--ac); font-weight: 800; }
+.bul-list li::before { content: '\2022'; position: absolute; left: 0.05rem; top: 0; color: var(--ac); font-weight: 800; }
 .bul-list li:last-child { margin-bottom: 0; }
 
-/* ?몃젋???뱀뀡 */
+
 .trend-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 0.7rem; }
 .trend-card { background: var(--card); border: 1px solid var(--bd); border-radius: 10px; padding: 0.75rem 0.9rem; transition: all 0.25s; }
 .trend-card:hover { border-color: var(--ac); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.08); }
 .trend-card .tr-t { font-size: 0.72rem; font-weight: 800; color: var(--acT); margin-bottom: 0.35rem; display: flex; align-items: center; gap: 0.35rem; }
 .trend-card .tr-d { font-size: 0.68rem; line-height: 1.6; color: var(--t2); }
 
-/* BM ?곸꽭 釉붾줉 */
+
 .bm-detail { background: var(--card2); border-radius: 6px; padding: 0.4rem 0.55rem; margin-top: 0.3rem; border-left: 2px solid var(--ok); }
 .bm-detail .bm-line { font-size: 0.66rem; line-height: 1.55; color: var(--t2); padding-left: 0.75rem; position: relative; margin-bottom: 0.15rem; }
 .bm-detail .bm-line::before { content: '$'; position: absolute; left: 0; color: var(--ok); font-weight: 800; font-size: 0.62rem; }
@@ -210,7 +210,7 @@ td{padding:.4rem;border-bottom:1px solid var(--bd);vertical-align:top}tbody tr:n
 .ns{font-size:.66rem;color:var(--t2);margin:0;padding:0;list-style:none;}
 .ns li { margin-bottom: 0.35rem; }
 .ns a { display:block; padding:.35rem .45rem; background:var(--card); border:1px solid var(--bd); border-radius:5px; line-height:1.5; color:var(--t2); transition:all 0.2s; position:relative; padding-left: 1.1rem; text-decoration:none !important;}
-.ns a::before { content:'쨌'; position:absolute; left:0.4rem; font-weight:900; color:var(--ac); }
+.ns a::before { content: '\2022'; position: absolute; left: 0.4rem; font-weight: 900; color: var(--ac); }
 .ns a:hover { border-color:var(--ac); box-shadow:0 3px 12px rgba(0,0,0,0.06); background:var(--card2); color:var(--t1); transform: translateY(-1px);}
 .cmp{background:var(--cmpB)!important;border-left:2px solid var(--cmpD)}.ci{margin-bottom:.6rem;font-size:.68rem;line-height:1.55;padding-left:.55rem;position:relative}.ci::before{content:'';position:absolute;left:0;top:6px;width:4px;height:4px;border-radius:50%;background:var(--wn)}.ci:last-child{margin-bottom:0}
 .c-str { color: var(--ok); font-size: 0.62rem; font-weight: 700; display: block; margin-top:4px; }
@@ -224,7 +224,7 @@ td{padding:.4rem;border-bottom:1px solid var(--bd);vertical-align:top}tbody tr:n
 .pc{background:var(--card);border-radius:var(--r);overflow:hidden;}
 .pc-h{padding:.5rem .8rem;background:var(--hdr);border-bottom:1px solid var(--bd);display:flex;align-items:center;justify-content:space-between}.pc-h h3{font-size:.85rem;font-weight:800;display:flex;align-items:center;gap:.3rem}
 .pc-b{padding:.6rem .8rem}.pc-s{font-size:.74rem;font-weight:800;color:var(--acT);margin-bottom:.3rem;margin-top:.45rem}.pc-s:first-child{margin-top:0}
-.pc-l{font-size:.72rem;line-height:1.6;color:var(--t2)}.pc-l div{padding-left:.65rem;position:relative;margin-bottom:.15rem}.pc-l div::before{content:'쨌';position:absolute;left:0;font-weight:800;color:var(--ac)}
+.pc-l{font-size:.72rem;line-height:1.6;color:var(--t2)}.pc-l div{padding-left:.65rem;position:relative;margin-bottom:.15rem}.pc-l div::before { content: '\2022'; position: absolute; left: 0; font-weight: 800; color: var(--ac); }
 .is{background:var(--card);border-radius:var(--r);padding:.8rem 1.1rem;margin-bottom:.8rem}.is h2{font-size:.88rem;font-weight:800;margin-bottom:.5rem}
 .pt{font-size:.74rem;line-height:1.65;color:var(--t2);margin-bottom:.35rem;padding:.35rem .55rem;border-left:3px solid var(--ac);background:var(--card2);border-radius:0 var(--rs) var(--rs) 0}.pt strong{color:var(--acT)}
 .ml{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:.45rem;margin-top:.5rem}
@@ -241,7 +241,7 @@ footer{margin-top:.6rem;padding:.5rem 1.1rem;font-size:.66rem;color:var(--t3);te
 </head>
 <body data-t="light" data-p="default">
 <div class="tb">
-  <div style="font-size:0.66rem; font-weight:800; color:var(--t1); background:linear-gradient(135deg, var(--bbg), rgba(124,58,237,0.08)); border:1px solid var(--bbd); padding:0.2rem 0.55rem; border-radius:6px; margin-right:auto;">⏱ <span class="h-word">&#39;26.4.17 (금) 21:06 기준</span></div>
+  <div style="font-size:0.66rem; font-weight:800; color:var(--t1); background:linear-gradient(135deg, var(--bbg), rgba(124,58,237,0.08)); border:1px solid var(--bbd); padding:0.2rem 0.55rem; border-radius:6px; margin-right:auto;">⏱ <span class="h-word">&#39;26.4.17 (금) 21:32 기준</span></div>
   <div class="tg"><span class="tl">팔레트</span>
     <button class="pb on" data-c="default" onclick="sp('default')"></button>
     <button class="pb" data-c="ocean" onclick="sp('ocean')"></button>
@@ -398,33 +398,33 @@ footer{margin-top:.6rem;padding:.5rem 1.1rem;font-size:.66rem;color:var(--t3);te
   <td><ul class="ns"><li><a href="https://mindtrip.ai/team" target="_blank" rel="noopener">공식 Team</a></li><li><a href="https://www.globenewswire.com/news-release/2023/09/08/2740357/0/en/Generative-AI-Startup-Mindtrip-Raises-7M-to-Plan-Your-Next-Trip.html" target="_blank" rel="noopener">GlobeNewswire - seed</a></li></ul></td>
   <td><ul class="ns"><li><a href="https://layla.ai/about" target="_blank" rel="noopener">Layla</a></li><li><a href="https://guidegeek.com/" target="_blank" rel="noopener">GuideGeek</a></li></ul></td>
 </tr>
-<tr class="tr-main" data-open="1" onclick="toggleRow('Pine AI', this)">
+<tr class="tr-main" data-open="1" onclick="toggleRow('Rewind / Limitless', this)">
   <td><span class="rk">5</span></td>
   <td>
     <div style="display:flex; align-items:center; gap:.35rem; flex-wrap:wrap;">
-      <a href="https://www.19pine.ai/ai-information-page" target="_blank" rel="noopener"><strong>Pine AI</strong></a>
-      <span class="bg bg-ac">Personal Agent</span>
+      <a href="https://www.limitless.ai/about" target="_blank" rel="noopener"><strong>Rewind / Limitless</strong></a>
+      <span class="bg bg-ac">Personal Memory AI</span>
       <span class="tr-arr cl">▼</span>
     </div>
-    <div class="td-d" style="margin-top:.35rem;">개인 작업 자동화와 금전 절감이라는 명확한 효용을 제시하는 consumer AI agent</div>
+    <div class="td-d" style="margin-top:.35rem;">보고, 말하고, 들은 것을 개인 메모리로 재호출하는 memory-first personalized AI</div>
   </td>
-  <td><div class="td-d">개인 소비자의 청구서 협상, 고객센터 대행, 반복 디지털 작업을 대신하는 personalized AI agent</div></td>
+  <td><div class="td-d">개인의 대화와 기기 활동을 기억 레이어로 묶어 personalized AI를 만드는 memory-first 서비스</div></td>
   <td>
-    <div class="td-d"><strong>설립</strong> 2024</div>
-    <div class="td-d"><strong>본사</strong> Palo Alto, California, US</div>
+    <div class="td-d"><strong>설립</strong> 2022</div>
+    <div class="td-d"><strong>본사</strong> San Francisco, California, US</div>
   </td>
   <td>
-    <div class="td-d"><strong>투자</strong> 2025-12 Series A $25M</div>
-    <div class="td-d"><strong>가치</strong> 비공개</div>
+    <div class="td-d"><strong>투자</strong> 2022 seed $10M, Limitless 기준 누적 $33M+</div>
+    <div class="td-d"><strong>가치</strong> 2022 seed 시점 $75M, 최근 비공개</div>
   </td>
-  <td><div class="td-d">93% negotiation success, $3M+ user savings 공시</div></td>
-  <td><div class="td-d">모바일에서 반복적으로 쓰는 개인화 AI agent 성격이 강하므로 폴더 2 적합</div></td>
+  <td><div class="td-d">Rewind Pro와 Limitless Pro/Unlimited 운영, pendant + app 기반 personalized memory stack 전개</div></td>
+  <td><div class="td-d">개인 기억과 맥락 continuity를 제품 중심에 둔 personalized AI 회사라 폴더 2 적합</div></td>
   <td>
-    <div class="td-d">범용 assistant보다 생활 밀착형 에이전트에 가깝다. 개인 데이터를 바탕으로 반복 업무를 대신하는 구조라 개인화 AI 페이지에 넣는 편이 타당하다.</div>
-    <div class="td-d" style="margin-top:.35rem;"><span class="tm">독립성</span> 독립 운영. 아직 초기여서 스케일 지속성은 검증 단계.</div>
+    <div class="td-d">추천 인프라보다는 personal memory layer에 가깝다. 다만 privacy, continuity, 개인 데이터 락인이라는 폴더 2 핵심 축과 정확히 맞닿는다.</div>
+    <div class="td-d" style="margin-top:.35rem;"><span class="tm">독립성</span> 독립 운영. Rewind에서 Limitless로 리브랜딩하며 personalized AI memory stack 방향을 강화했다.</div>
   </td>
-  <td><ul class="ns"><li><a href="https://www.19pine.ai/ai-information-page" target="_blank" rel="noopener">공식 정보 페이지</a></li><li><a href="https://www.businesswire.com/news/home/20251203384902/en/Pine-Secures-%2425-Million-in-Series-A-Funding-to-Free-Consumers-of-Digital-Chores-Saving-Time-and-Money-and-Eliminating-Frustration" target="_blank" rel="noopener">Business Wire - Series A</a></li></ul></td>
-  <td><ul class="ns"><li><a href="https://donotpay.com/" target="_blank" rel="noopener">DoNotPay</a></li><li><a href="https://www.rocketmoney.com/" target="_blank" rel="noopener">Rocket Money</a></li></ul></td>
+  <td><ul class="ns"><li><a href="https://www.limitless.ai/about" target="_blank" rel="noopener">Limitless About</a></li><li><a href="https://www.rewind.ai/blog/launching-rewind" target="_blank" rel="noopener">Rewind launch</a></li><li><a href="https://techcrunch.com/2024/04/17/a16z-backed-rewind-pivots-to-build-ai-powered-pendant-to-record-your-conversations/" target="_blank" rel="noopener">TechCrunch - Limitless pivot</a></li></ul></td>
+  <td><ul class="ns"><li><a href="https://www.personal.ai/company" target="_blank" rel="noopener">Personal AI</a></li><li><a href="https://mem.ai/" target="_blank" rel="noopener">Mem</a></li></ul></td>
 </tr>
 <tr class="tr-main" data-open="1" onclick="toggleRow('Personal AI', this)">
   <td><span class="rk">6</span></td>
@@ -517,59 +517,49 @@ footer{margin-top:.6rem;padding:.5rem 1.1rem;font-size:.66rem;color:var(--t3);te
   </div>
 
   <div class="cd" id="sec-eval">
-    <div class="ch2" onclick="tc(this)"><div><h2>② 100점 요약 평가표</h2><p>온디바이스 처리, 모바일 유통 적합성, 개인화 모형의 지속성을 중심으로 재채점</p></div><span class="arr">▼</span></div>
-    <div class="cb" id="evalBody">
+    <div class="ch2" onclick="tc(this)"><div><h2>② 100점 요약 평가표</h2><p>A~G 7대 항목과 세부 기준표 골격은 유지하고, 모바일 개인화&#183;온디바이스&#183;메모리 지속성 항목만 남겨 재채점</p></div><span class="arr">▼</span></div>
+    <div class="cb">
+      <div class="zg interactive-card"><strong>⚠ Zero-Gate 경고</strong> — 인수 완료, 독립성 훼손, 도메인 순수성 이탈처럼 현재 페이지 기준에 맞지 않는다고 판단되는 기업을 클릭하면 종합점수를 0점으로 강제합니다.
+        <div style="margin-top:.4rem; display:flex; flex-wrap:wrap; gap:0.3rem;">
+<span class="gb" data-z="Aampe" onclick="tz(this)"><span style="font-size:9px">☐</span> Aampe</span><span class="gb" data-z="Wysa" onclick="tz(this)"><span style="font-size:9px">☐</span> Wysa</span><span class="gb" data-z="Sentiance" onclick="tz(this)"><span style="font-size:9px">☐</span> Sentiance</span><span class="gb" data-z="Mindtrip" onclick="tz(this)"><span style="font-size:9px">☐</span> Mindtrip</span><span class="gb" data-z="Rewind / Limitless" onclick="tz(this)"><span style="font-size:9px">☐</span> Rewind / Limitless</span><span class="gb" data-z="Personal AI" onclick="tz(this)"><span style="font-size:9px">☐</span> Personal AI</span><span class="gb" data-z="Layla" onclick="tz(this)"><span style="font-size:9px">☐</span> Layla</span><span class="gb" data-z="Airial" onclick="tz(this)"><span style="font-size:9px">☐</span> Airial</span>
+        </div>
+      </div>
+      <div style="background:var(--card2);border:1px solid var(--bd);border-radius:var(--rs);padding:.5rem .8rem;margin-bottom:.7rem;font-size:.67rem;display:flex;flex-wrap:wrap;gap:.35rem;align-items:center;line-height:1.6">
+        <strong style="color:var(--t1);font-size:.7rem">🏆 가산점 기준 :</strong>
+        <span style="background:rgba(239,68,68,.12);border:1px solid rgba(239,68,68,.4);color:#ef4444;padding:.08rem .38rem;border-radius:4px;font-weight:700;font-size:.62rem">🔴 최상위 글로벌 VC <b>+2~3점</b></span>
+        <span style="background:rgba(249,115,22,.12);border:1px solid rgba(249,115,22,.4);color:#f97316;padding:.08rem .38rem;border-radius:4px;font-weight:700;font-size:.62rem">🟠 섹터 톱티어 VC <b>+1~2점</b></span>
+        <span style="background:rgba(245,158,11,.12);border:1px solid rgba(245,158,11,.4);color:#f59e0b;padding:.08rem .38rem;border-radius:4px;font-weight:700;font-size:.62rem">🟡 전략 투자자(SI) <b>+1~3점</b></span>
+        <span style="color:var(--t3);font-size:.62rem">A~G 기본 점수는 유지하고, 공개적으로 확인되는 투자자/전략 파트너의 질이 있을 때만 보수적으로 가산합니다.</span>
+      </div>
+      <div id="evalBody">
 <div class="eval-company interactive-card" data-co="Aampe">
   <div class="eval-company-hd" onclick="toggleEval(this)">
     <div class="ec-title">
       <span class="rk">1</span>
-      <span>Aampe</span>
-      <span class="bg bg-ac">Lifecycle Personalization</span>
+      <b class="h-word">Aampe</b>
+      <span style="font-size:.63rem;color:var(--t3)">(Lifecycle Personalization)</span>
+      
     </div>
     <div class="ec-meta">
+      <span style="font-size:.62rem;color:var(--t2)">A:17 B:14 C:16 D:12 E:10 F:7 G:8</span>
       <span class="ec-total" data-s="84" style="font-size:.86rem; font-weight:900; color:var(--acT);">84</span>
       <span class="ec-grade"><span class="bg bg-ok">우선 검토</span></span>
       <span class="ec-arr shut">▼</span>
     </div>
   </div>
   <div class="eval-company-bd shut">
-    <div style="padding:.7rem .9rem;">
-      <div class="tw">
-        <table class="et" style="min-width:720px">
-          <thead>
-            <tr>
-              <th class="cc">기업</th>
-              <th>A</th><th>B</th><th>C</th><th>D</th><th>E</th><th>F</th><th>G</th><th>Total</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="cc">Aampe</td>
-              <td>17</td>
-              <td>14</td>
-              <td>16</td>
-              <td>12</td>
-              <td>10</td>
-              <td>7</td>
-              <td>8</td>
-              <td class="ct">84</td>
-            </tr>
-          </tbody>
-        </table>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:.5rem;padding:.6rem .8rem;background:var(--card2)">
+      <div style="background:var(--card);border:1px solid var(--bd);border-radius:var(--rs);padding:.55rem .75rem;transition:border-color .2s">
+        <div style="font-size:.7rem;font-weight:800;color:var(--acT);margin-bottom:.3rem;border-bottom:1px dashed var(--bd);padding-bottom:.2rem">A·B 파트너십 &amp; M&amp;A 가치</div>
+        <ul class="bul-list"><li>모바일 앱의 푸시, CRM, lifecycle automation을 AI agent 방식으로 개인화하는 인프라</li><li>모바일 메시징과 개인화 추천을 직접 다루는 인프라라 폴더 2의 정중앙</li><li>대형 CDP/CRM 플레이어의 personalization agent 보강 인수</li></ul>
       </div>
-      <div class="pg" style="margin-top:.7rem;">
-        <div class="pc interactive-card" style="padding:.8rem;">
-          <div class="pc-s">강점</div>
-          <div class="pc-l"><div>모바일 lifecycle personalization이라는 실제 예산 항목과 직접 연결된다.</div><div>성과 지표를 공개 사례로 제시해 제품 가치가 비교적 선명하다.</div><div>CRM 대체 또는 보강 레이어라 잠재 인수자 풀도 넓다.</div></div>
-          <div class="pc-s">리스크</div>
-          <div class="pc-l"><div>Braze/Iterable 같은 대형 incumbent와 직접 비교될 수 있다.</div><div>고객 데이터 연결 비용이 도입 마찰로 작용할 수 있다.</div><div>AI agent 메시지가 과장되면 automation vendor로 축소 해석될 위험이 있다.</div></div>
-        </div>
-        <div class="pc interactive-card" style="padding:.8rem;">
-          <div class="pc-s">왜 이 폴더인가</div>
-          <div class="pc-l"><div>모바일 메시징과 개인화 추천을 직접 다루는 인프라라 폴더 2의 정중앙</div></div>
-          <div class="pc-s">전략적 출구</div>
-          <div class="pc-l"><div>대형 CDP/CRM 플레이어의 personalization agent 보강 인수</div><div>슈퍼앱, 핀테크, 리테일 앱의 전용 엔진 파트너</div><div>독립 personalization infrastructure로 SaaS 확대</div></div>
-        </div>
+      <div style="background:var(--card);border:1px solid var(--bd);border-radius:var(--rs);padding:.55rem .75rem;transition:border-color .2s">
+        <div style="font-size:.7rem;font-weight:800;color:var(--acT);margin-bottom:.3rem;border-bottom:1px dashed var(--bd);padding-bottom:.2rem">C·D 기술 방어 &amp; BM</div>
+        <ul class="bul-list"><li>마케팅 자동화가 아니라 app lifecycle personalization layer로 해석되는 개인화 인프라</li><li>상용화 신호: 100M AI agents deployed, Taxfix 사례에서 unsubscribe 21% 감소 공시</li><li>투자/가치 공개 상태: 2024-12 Series A $18M / 비공개</li></ul>
+      </div>
+      <div style="background:var(--card);border:1px solid var(--bd);border-radius:var(--rs);padding:.55rem .75rem;transition:border-color .2s">
+        <div style="font-size:.7rem;font-weight:800;color:var(--acT);margin-bottom:.3rem;border-bottom:1px dashed var(--bd);padding-bottom:.2rem">E·F·G 시장·팀·방어력</div>
+        <ul class="bul-list"><li>모바일 앱 운영팀이 기존 CRM 대신 붙일 수 있는 personalization engine이다. 모바일 재방문과 전환에 직접 연결돼 제품과 매출 사이 거리가 짧다.</li><li>강점: 모바일 lifecycle personalization이라는 실제 예산 항목과 직접 연결된다.</li><li>리스크: B</li></ul>
       </div>
     </div>
   </div>
@@ -578,53 +568,30 @@ footer{margin-top:.6rem;padding:.5rem 1.1rem;font-size:.66rem;color:var(--t3);te
   <div class="eval-company-hd" onclick="toggleEval(this)">
     <div class="ec-title">
       <span class="rk">2</span>
-      <span>Wysa</span>
-      <span class="bg bg-ac">Personalized Mental Health AI</span>
+      <b class="h-word">Wysa</b>
+      <span style="font-size:.63rem;color:var(--t3)">(Personalized Mental Health AI)</span>
+      <span class="vc-badge vc-gold">🟡 Wellcome Trust</span>
     </div>
     <div class="ec-meta">
+      <span style="font-size:.62rem;color:var(--t2)">A:15 B:12 C:13 D:13 E:12 F:9 G:8</span>
       <span class="ec-total" data-s="82" style="font-size:.86rem; font-weight:900; color:var(--acT);">82</span>
       <span class="ec-grade"><span class="bg bg-ok">우선 검토</span></span>
       <span class="ec-arr shut">▼</span>
     </div>
   </div>
   <div class="eval-company-bd shut">
-    <div style="padding:.7rem .9rem;">
-      <div class="tw">
-        <table class="et" style="min-width:720px">
-          <thead>
-            <tr>
-              <th class="cc">기업</th>
-              <th>A</th><th>B</th><th>C</th><th>D</th><th>E</th><th>F</th><th>G</th><th>Total</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="cc">Wysa</td>
-              <td>15</td>
-              <td>12</td>
-              <td>13</td>
-              <td>13</td>
-              <td>12</td>
-              <td>9</td>
-              <td>8</td>
-              <td class="ct">82</td>
-            </tr>
-          </tbody>
-        </table>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:.5rem;padding:.6rem .8rem;background:var(--card2)">
+      <div style="background:var(--card);border:1px solid var(--bd);border-radius:var(--rs);padding:.55rem .75rem;transition:border-color .2s">
+        <div style="font-size:.7rem;font-weight:800;color:var(--acT);margin-bottom:.3rem;border-bottom:1px dashed var(--bd);padding-bottom:.2rem">A·B 파트너십 &amp; M&amp;A 가치</div>
+        <ul class="bul-list"><li>모바일 기반 정신건강 AI 코치와 human-in-the-loop 지원을 결합한 personalized AI 서비스</li><li>범용 on-device 분석은 아니지만 모바일 개인화 AI 서비스로는 충분히 폴더 2 적합</li><li>가산점/전략 투자 시그널: 🟡 Wellcome Trust</li><li>디지털 헬스&#183;보험&#183;복지 플랫폼의 개인화 AI 레이어 인수</li></ul>
       </div>
-      <div class="pg" style="margin-top:.7rem;">
-        <div class="pc interactive-card" style="padding:.8rem;">
-          <div class="pc-s">강점</div>
-          <div class="pc-l"><div>장기간 대화와 개인화 기록이 제품 가치의 핵심이다.</div><div>모바일 반복 사용성이 강하고 복지/보험 경로까지 열려 있다.</div><div>대화량과 도달 인구 수를 공개해 규모 신호가 있다.</div></div>
-          <div class="pc-s">리스크</div>
-          <div class="pc-l"><div>규제와 임상 신뢰성 이슈를 동반하는 vertical이다.</div><div>온디바이스 처리보다 서비스 계층이 더 두드러진다.</div><div>범용 personalization infra로 확장하기는 제한적일 수 있다.</div></div>
-        </div>
-        <div class="pc interactive-card" style="padding:.8rem;">
-          <div class="pc-s">왜 이 폴더인가</div>
-          <div class="pc-l"><div>범용 on-device 분석은 아니지만 모바일 개인화 AI 서비스로는 충분히 폴더 2 적합</div></div>
-          <div class="pc-s">전략적 출구</div>
-          <div class="pc-l"><div>디지털 헬스&#183;보험&#183;복지 플랫폼의 개인화 AI 레이어 인수</div><div>스마트폰 OEM wellbeing bundle 파트너</div><div>기업 복지/건강관리 솔루션과의 전략 제휴</div></div>
-        </div>
+      <div style="background:var(--card);border:1px solid var(--bd);border-radius:var(--rs);padding:.55rem .75rem;transition:border-color .2s">
+        <div style="font-size:.7rem;font-weight:800;color:var(--acT);margin-bottom:.3rem;border-bottom:1px dashed var(--bd);padding-bottom:.2rem">C·D 기술 방어 &amp; BM</div>
+        <ul class="bul-list"><li>개인화 AI가 실제 습관 형성과 대화 맥락 유지로 이어지는 대표적인 모바일 vertical AI</li><li>상용화 신호: 11M lives covered, 500M+ conversations 공시</li><li>투자/가치 공개 상태: 공개 투자자 존재, 최신 공개 금액/라운드는 제한적 / 비공개</li></ul>
+      </div>
+      <div style="background:var(--card);border:1px solid var(--bd);border-radius:var(--rs);padding:.55rem .75rem;transition:border-color .2s">
+        <div style="font-size:.7rem;font-weight:800;color:var(--acT);margin-bottom:.3rem;border-bottom:1px dashed var(--bd);padding-bottom:.2rem">E·F·G 시장·팀·방어력</div>
+        <ul class="bul-list"><li>헬스케어/웰빙 vertical이지만 개인화와 반복 사용성이 강하다. B2C 앱과 B2B2C 복지/보험 경로를 동시에 가진 점이 장점이다.</li><li>강점: 장기간 대화와 개인화 기록이 제품 가치의 핵심이다.</li><li>리스크: 규</li></ul>
       </div>
     </div>
   </div>
@@ -633,53 +600,30 @@ footer{margin-top:.6rem;padding:.5rem 1.1rem;font-size:.66rem;color:var(--t3);te
   <div class="eval-company-hd" onclick="toggleEval(this)">
     <div class="ec-title">
       <span class="rk">3</span>
-      <span>Sentiance</span>
-      <span class="bg bg-ac">On-device Behavioral Intelligence</span>
+      <b class="h-word">Sentiance</b>
+      <span style="font-size:.63rem;color:var(--t3)">(On-device Behavioral Intelligence)</span>
+      
     </div>
     <div class="ec-meta">
+      <span style="font-size:.62rem;color:var(--t2)">A:17 B:13 C:16 D:9 E:10 F:7 G:9</span>
       <span class="ec-total" data-s="81" style="font-size:.86rem; font-weight:900; color:var(--acT);">81</span>
       <span class="ec-grade"><span class="bg bg-ok">우선 검토</span></span>
       <span class="ec-arr shut">▼</span>
     </div>
   </div>
   <div class="eval-company-bd shut">
-    <div style="padding:.7rem .9rem;">
-      <div class="tw">
-        <table class="et" style="min-width:720px">
-          <thead>
-            <tr>
-              <th class="cc">기업</th>
-              <th>A</th><th>B</th><th>C</th><th>D</th><th>E</th><th>F</th><th>G</th><th>Total</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="cc">Sentiance</td>
-              <td>17</td>
-              <td>13</td>
-              <td>16</td>
-              <td>9</td>
-              <td>10</td>
-              <td>7</td>
-              <td>9</td>
-              <td class="ct">81</td>
-            </tr>
-          </tbody>
-        </table>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:.5rem;padding:.6rem .8rem;background:var(--card2)">
+      <div style="background:var(--card);border:1px solid var(--bd);border-radius:var(--rs);padding:.55rem .75rem;transition:border-color .2s">
+        <div style="font-size:.7rem;font-weight:800;color:var(--acT);margin-bottom:.3rem;border-bottom:1px dashed var(--bd);padding-bottom:.2rem">A·B 파트너십 &amp; M&amp;A 가치</div>
+        <ul class="bul-list"><li>모바일 센서와 context signal을 기기 내에서 처리하는 behavioral intelligence SDK</li><li>온디바이스 데이터 분석과 mobile SDK가 핵심이라 폴더 2에 가장 강하게 부합</li><li>통신사, 보험사, mobility data 플랫폼의 전략 인수</li></ul>
       </div>
-      <div class="pg" style="margin-top:.7rem;">
-        <div class="pc interactive-card" style="padding:.8rem;">
-          <div class="pc-s">강점</div>
-          <div class="pc-l"><div>on-device processing이라는 차별점이 매우 선명하다.</div><div>센서 데이터, 행동 데이터, 프라이버시 규제 흐름을 동시에 탄다.</div><div>보험/모빌리티/웰빙으로 확장 가능한 horizontal SDK다.</div></div>
-          <div class="pc-s">리스크</div>
-          <div class="pc-l"><div>개발자 통합과 긴 세일즈 사이클이 확장 속도를 늦출 수 있다.</div><div>vertical solution으로 보이면 TAM 해석이 좁아질 수 있다.</div><div>최근 공개 자금조달 정보가 제한적이다.</div></div>
-        </div>
-        <div class="pc interactive-card" style="padding:.8rem;">
-          <div class="pc-s">왜 이 폴더인가</div>
-          <div class="pc-l"><div>온디바이스 데이터 분석과 mobile SDK가 핵심이라 폴더 2에 가장 강하게 부합</div></div>
-          <div class="pc-s">전략적 출구</div>
-          <div class="pc-l"><div>통신사, 보험사, mobility data 플랫폼의 전략 인수</div><div>OEM/device OS 맥락 인텔리전스 번들</div><div>privacy-first sensor intelligence SDK로 독립 성장</div></div>
-        </div>
+      <div style="background:var(--card);border:1px solid var(--bd);border-radius:var(--rs);padding:.55rem .75rem;transition:border-color .2s">
+        <div style="font-size:.7rem;font-weight:800;color:var(--acT);margin-bottom:.3rem;border-bottom:1px dashed var(--bd);padding-bottom:.2rem">C·D 기술 방어 &amp; BM</div>
+        <ul class="bul-list"><li>모바일 센서 데이터의 프라이버시 친화적 분석을 제품화한 on-device intelligence 사업자</li><li>상용화 신호: 수백만 드라이버 지원과 on-device processing을 공식 사이트에서 강조</li><li>투자/가치 공개 상태: 2017 €8M 공개, 이후 추가 공개 라운드는 제한적 / 비공개</li></ul>
+      </div>
+      <div style="background:var(--card);border:1px solid var(--bd);border-radius:var(--rs);padding:.55rem .75rem;transition:border-color .2s">
+        <div style="font-size:.7rem;font-weight:800;color:var(--acT);margin-bottom:.3rem;border-bottom:1px dashed var(--bd);padding-bottom:.2rem">E·F·G 시장·팀·방어력</div>
+        <ul class="bul-list"><li>모바일 OS 정책이 더 엄격해질수록 기기 내 처리와 행동 인텔리전스의 전략 가치가 높아진다. 보험, 모빌리티, 웰빙 등 여러 vertical로 전개 가능하다.</li><li>강점: on-device processing이라는 차별점이 매우 선명하다.</li><li>리스크: 개</li></ul>
       </div>
     </div>
   </div>
@@ -688,108 +632,62 @@ footer{margin-top:.6rem;padding:.5rem 1.1rem;font-size:.66rem;color:var(--t3);te
   <div class="eval-company-hd" onclick="toggleEval(this)">
     <div class="ec-title">
       <span class="rk">4</span>
-      <span>Mindtrip</span>
-      <span class="bg bg-ac">Personalized Travel AI</span>
+      <b class="h-word">Mindtrip</b>
+      <span style="font-size:.63rem;color:var(--t3)">(Personalized Travel AI)</span>
+      
     </div>
     <div class="ec-meta">
+      <span style="font-size:.62rem;color:var(--t2)">A:14 B:11 C:12 D:12 E:11 F:9 G:9</span>
       <span class="ec-total" data-s="78" style="font-size:.86rem; font-weight:900; color:var(--acT);">78</span>
       <span class="ec-grade"><span class="bg bg-ok">우선 검토</span></span>
       <span class="ec-arr shut">▼</span>
     </div>
   </div>
   <div class="eval-company-bd shut">
-    <div style="padding:.7rem .9rem;">
-      <div class="tw">
-        <table class="et" style="min-width:720px">
-          <thead>
-            <tr>
-              <th class="cc">기업</th>
-              <th>A</th><th>B</th><th>C</th><th>D</th><th>E</th><th>F</th><th>G</th><th>Total</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="cc">Mindtrip</td>
-              <td>14</td>
-              <td>11</td>
-              <td>12</td>
-              <td>12</td>
-              <td>11</td>
-              <td>9</td>
-              <td>9</td>
-              <td class="ct">78</td>
-            </tr>
-          </tbody>
-        </table>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:.5rem;padding:.6rem .8rem;background:var(--card2)">
+      <div style="background:var(--card);border:1px solid var(--bd);border-radius:var(--rs);padding:.55rem .75rem;transition:border-color .2s">
+        <div style="font-size:.7rem;font-weight:800;color:var(--acT);margin-bottom:.3rem;border-bottom:1px dashed var(--bd);padding-bottom:.2rem">A·B 파트너십 &amp; M&amp;A 가치</div>
+        <ul class="bul-list"><li>개인화 여행 추천과 itinerary planning을 모바일 경험으로 옮기는 AI 서비스</li><li>여행 vertical이지만 personalized recommendation이 핵심이어서 폴더 2 적합</li><li>OTA, 항공, 여행 커머스 플랫폼의 전략 인수</li></ul>
       </div>
-      <div class="pg" style="margin-top:.7rem;">
-        <div class="pc interactive-card" style="padding:.8rem;">
-          <div class="pc-s">강점</div>
-          <div class="pc-l"><div>개인화 추천 가치가 사용자에게 즉시 체감된다.</div><div>여행 카테고리는 LTV와 제휴 확장 여지가 크다.</div><div>모바일 앱 출시로 사용 맥락이 강화됐다.</div></div>
-          <div class="pc-s">리스크</div>
-          <div class="pc-l"><div>travel vertical에 묶여 범용 personalization infra와는 다르다.</div><div>거래성 수익모델이 확실해지기 전까지 변동성이 클 수 있다.</div><div>경쟁사 다수가 빠르게 생겨나는 영역이다.</div></div>
-        </div>
-        <div class="pc interactive-card" style="padding:.8rem;">
-          <div class="pc-s">왜 이 폴더인가</div>
-          <div class="pc-l"><div>여행 vertical이지만 personalized recommendation이 핵심이어서 폴더 2 적합</div></div>
-          <div class="pc-s">전략적 출구</div>
-          <div class="pc-l"><div>OTA, 항공, 여행 커머스 플랫폼의 전략 인수</div><div>카드/멤버십 앱의 premium travel AI 파트너</div><div>여행 개인화 엔진으로 수익화 확대</div></div>
-        </div>
+      <div style="background:var(--card);border:1px solid var(--bd);border-radius:var(--rs);padding:.55rem .75rem;transition:border-color .2s">
+        <div style="font-size:.7rem;font-weight:800;color:var(--acT);margin-bottom:.3rem;border-bottom:1px dashed var(--bd);padding-bottom:.2rem">C·D 기술 방어 &amp; BM</div>
+        <ul class="bul-list"><li>여행 검색을 개인화 추천과 대화형 planning으로 바꾸는 소비자용 AI 앱</li><li>상용화 신호: 10M+ POIs, 30K+ local experts, 2025 모바일 앱 출시</li><li>투자/가치 공개 상태: 2023 seed $7M / 비공개</li></ul>
+      </div>
+      <div style="background:var(--card);border:1px solid var(--bd);border-radius:var(--rs);padding:.55rem .75rem;transition:border-color .2s">
+        <div style="font-size:.7rem;font-weight:800;color:var(--acT);margin-bottom:.3rem;border-bottom:1px dashed var(--bd);padding-bottom:.2rem">E·F·G 시장·팀·방어력</div>
+        <ul class="bul-list"><li>범용 infra는 아니지만 개인화 추천의 사용자 가치가 매우 직관적이다. 모바일에서 반복적으로 사용할 이유를 만들 수 있는 vertical companion에 가깝다.</li><li>강점: 개인화 추천 가치가 사용자에게 즉시 체감된다.</li><li>리스크: t</li></ul>
       </div>
     </div>
   </div>
 </div>
-<div class="eval-company interactive-card" data-co="Pine AI">
+<div class="eval-company interactive-card" data-co="Rewind / Limitless">
   <div class="eval-company-hd" onclick="toggleEval(this)">
     <div class="ec-title">
       <span class="rk">5</span>
-      <span>Pine AI</span>
-      <span class="bg bg-ac">Personal Agent</span>
+      <b class="h-word">Rewind / Limitless</b>
+      <span style="font-size:.63rem;color:var(--t3)">(Personal Memory AI)</span>
+      <span class="vc-badge vc-red">🔴 a16z &#183; Sam Altman</span>
     </div>
     <div class="ec-meta">
-      <span class="ec-total" data-s="76" style="font-size:.86rem; font-weight:900; color:var(--acT);">76</span>
+      <span style="font-size:.62rem;color:var(--t2)">A:13 B:13 C:14 D:9 E:11 F:10 G:11</span>
+      <span class="ec-total" data-s="81" style="font-size:.86rem; font-weight:900; color:var(--acT);">81</span>
       <span class="ec-grade"><span class="bg bg-ok">우선 검토</span></span>
       <span class="ec-arr shut">▼</span>
     </div>
   </div>
   <div class="eval-company-bd shut">
-    <div style="padding:.7rem .9rem;">
-      <div class="tw">
-        <table class="et" style="min-width:720px">
-          <thead>
-            <tr>
-              <th class="cc">기업</th>
-              <th>A</th><th>B</th><th>C</th><th>D</th><th>E</th><th>F</th><th>G</th><th>Total</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="cc">Pine AI</td>
-              <td>13</td>
-              <td>12</td>
-              <td>11</td>
-              <td>12</td>
-              <td>11</td>
-              <td>8</td>
-              <td>9</td>
-              <td class="ct">76</td>
-            </tr>
-          </tbody>
-        </table>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:.5rem;padding:.6rem .8rem;background:var(--card2)">
+      <div style="background:var(--card);border:1px solid var(--bd);border-radius:var(--rs);padding:.55rem .75rem;transition:border-color .2s">
+        <div style="font-size:.7rem;font-weight:800;color:var(--acT);margin-bottom:.3rem;border-bottom:1px dashed var(--bd);padding-bottom:.2rem">A·B 파트너십 &amp; M&amp;A 가치</div>
+        <ul class="bul-list"><li>개인의 대화와 기기 활동을 기억 레이어로 묶어 personalized AI를 만드는 memory-first 서비스</li><li>개인 기억과 맥락 continuity를 제품 중심에 둔 personalized AI 회사라 폴더 2 적합</li><li>가산점/전략 투자 시그널: 🔴 a16z &#183; Sam Altman</li><li>디바이스 제조사 또는 productivity suite의 memory layer 인수</li></ul>
       </div>
-      <div class="pg" style="margin-top:.7rem;">
-        <div class="pc interactive-card" style="padding:.8rem;">
-          <div class="pc-s">강점</div>
-          <div class="pc-l"><div>사용자 절감 금액이라는 강한 ROI 메시지가 있다.</div><div>개인화 agent가 실제 행동으로 이어지는 점이 뚜렷하다.</div><div>소비자 금융/통신/구독 관리와 연결되기 쉽다.</div></div>
-          <div class="pc-s">리스크</div>
-          <div class="pc-l"><div>작업 자동화의 규제와 플랫폼 정책 변화에 노출된다.</div><div>모바일 전용 infra보다는 consumer agent 서비스에 가깝다.</div><div>성과 지표가 아직 초기 단계일 수 있다.</div></div>
-        </div>
-        <div class="pc interactive-card" style="padding:.8rem;">
-          <div class="pc-s">왜 이 폴더인가</div>
-          <div class="pc-l"><div>모바일에서 반복적으로 쓰는 개인화 AI agent 성격이 강하므로 폴더 2 적합</div></div>
-          <div class="pc-s">전략적 출구</div>
-          <div class="pc-l"><div>핀테크, 구독관리, 개인 재무 플랫폼의 전략 인수</div><div>통신사/카드사 앱의 절감 assistant 제휴</div><div>개인 업무 자동화 agent로 독립 성장</div></div>
-        </div>
+      <div style="background:var(--card);border:1px solid var(--bd);border-radius:var(--rs);padding:.55rem .75rem;transition:border-color .2s">
+        <div style="font-size:.7rem;font-weight:800;color:var(--acT);margin-bottom:.3rem;border-bottom:1px dashed var(--bd);padding-bottom:.2rem">C·D 기술 방어 &amp; BM</div>
+        <ul class="bul-list"><li>보고, 말하고, 들은 것을 개인 메모리로 재호출하는 memory-first personalized AI</li><li>상용화 신호: Rewind Pro와 Limitless Pro/Unlimited 운영, pendant + app 기반 personalized memory stack 전개</li><li>투자/가치 공개 상태: 2022 seed $10M, Limitless 기준 누적 $33M+ / 2022 seed 시점 $75M, 최근 비공개</li></ul>
+      </div>
+      <div style="background:var(--card);border:1px solid var(--bd);border-radius:var(--rs);padding:.55rem .75rem;transition:border-color .2s">
+        <div style="font-size:.7rem;font-weight:800;color:var(--acT);margin-bottom:.3rem;border-bottom:1px dashed var(--bd);padding-bottom:.2rem">E·F·G 시장·팀·방어력</div>
+        <ul class="bul-list"><li>추천 인프라보다는 personal memory layer에 가깝다. 다만 privacy, continuity, 개인 데이터 락인이라는 폴더 2 핵심 축과 정확히 맞닿는다.</li><li>강점: 개인 기억과 맥락 continuity라는 차별점이 매우 선명하다.</li><li>리스크: 프</li></ul>
       </div>
     </div>
   </div>
@@ -798,53 +696,30 @@ footer{margin-top:.6rem;padding:.5rem 1.1rem;font-size:.66rem;color:var(--t3);te
   <div class="eval-company-hd" onclick="toggleEval(this)">
     <div class="ec-title">
       <span class="rk">6</span>
-      <span>Personal AI</span>
-      <span class="bg bg-ac">Memory-first Personalized AI</span>
+      <b class="h-word">Personal AI</b>
+      <span style="font-size:.63rem;color:var(--t3)">(Memory-first Personalized AI)</span>
+      
     </div>
     <div class="ec-meta">
+      <span style="font-size:.62rem;color:var(--t2)">A:12 B:12 C:14 D:10 E:10 F:8 G:9</span>
       <span class="ec-total" data-s="75" style="font-size:.86rem; font-weight:900; color:var(--acT);">75</span>
       <span class="ec-grade"><span class="bg bg-ok">우선 검토</span></span>
       <span class="ec-arr shut">▼</span>
     </div>
   </div>
   <div class="eval-company-bd shut">
-    <div style="padding:.7rem .9rem;">
-      <div class="tw">
-        <table class="et" style="min-width:720px">
-          <thead>
-            <tr>
-              <th class="cc">기업</th>
-              <th>A</th><th>B</th><th>C</th><th>D</th><th>E</th><th>F</th><th>G</th><th>Total</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="cc">Personal AI</td>
-              <td>12</td>
-              <td>12</td>
-              <td>14</td>
-              <td>10</td>
-              <td>10</td>
-              <td>8</td>
-              <td>9</td>
-              <td class="ct">75</td>
-            </tr>
-          </tbody>
-        </table>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:.5rem;padding:.6rem .8rem;background:var(--card2)">
+      <div style="background:var(--card);border:1px solid var(--bd);border-radius:var(--rs);padding:.55rem .75rem;transition:border-color .2s">
+        <div style="font-size:.7rem;font-weight:800;color:var(--acT);margin-bottom:.3rem;border-bottom:1px dashed var(--bd);padding-bottom:.2rem">A·B 파트너십 &amp; M&amp;A 가치</div>
+        <ul class="bul-list"><li>개인 메모리, profile, private context continuity를 기반으로 한 personalized AI platform</li><li>개인화 AI의 핵심인 memory layer와 identity continuity를 다루므로 폴더 2 적합</li><li>디바이스 제조사 또는 private AI stack 사업자의 전략 인수</li></ul>
       </div>
-      <div class="pg" style="margin-top:.7rem;">
-        <div class="pc interactive-card" style="padding:.8rem;">
-          <div class="pc-s">강점</div>
-          <div class="pc-l"><div>개인 메모리와 profile continuity라는 차별점이 강하다.</div><div>device-linked private agent로 이어질 수 있는 서사가 있다.</div><div>B2C와 creator/prosumer 용도 양쪽으로 읽힌다.</div></div>
-          <div class="pc-s">리스크</div>
-          <div class="pc-l"><div>대중적 traction 공개가 아직 제한적이다.</div><div>LLM 플랫폼 경쟁이 심해지면 차별화 설명이 어려울 수 있다.</div><div>개인 데이터 처리에 대한 신뢰 설계가 중요하다.</div></div>
-        </div>
-        <div class="pc interactive-card" style="padding:.8rem;">
-          <div class="pc-s">왜 이 폴더인가</div>
-          <div class="pc-l"><div>개인화 AI의 핵심인 memory layer와 identity continuity를 다루므로 폴더 2 적합</div></div>
-          <div class="pc-s">전략적 출구</div>
-          <div class="pc-l"><div>디바이스 제조사 또는 private AI stack 사업자의 전략 인수</div><div>productivity suite의 private memory layer 파트너</div><div>개인 knowledge agent 플랫폼으로 독립 성장</div></div>
-        </div>
+      <div style="background:var(--card);border:1px solid var(--bd);border-radius:var(--rs);padding:.55rem .75rem;transition:border-color .2s">
+        <div style="font-size:.7rem;font-weight:800;color:var(--acT);margin-bottom:.3rem;border-bottom:1px dashed var(--bd);padding-bottom:.2rem">C·D 기술 방어 &amp; BM</div>
+        <ul class="bul-list"><li>단순 챗봇이 아니라 개인별 기억과 맥락을 장기 유지하려는 memory-first AI</li><li>상용화 신호: 2026 NVIDIA GTC 관련 발표에서 low latency와 cost efficiency 강조</li><li>투자/가치 공개 상태: 공개 자금/가치 정보 제한적, Comcast NBCUniversal LIFT Labs 참여 이력 / 비공개</li></ul>
+      </div>
+      <div style="background:var(--card);border:1px solid var(--bd);border-radius:var(--rs);padding:.55rem .75rem;transition:border-color .2s">
+        <div style="font-size:.7rem;font-weight:800;color:var(--acT);margin-bottom:.3rem;border-bottom:1px dashed var(--bd);padding-bottom:.2rem">E·F·G 시장·팀·방어력</div>
+        <ul class="bul-list"><li>on-device 순수 분석 회사는 아니지만, personalized AI의 본질인 long-term profile을 제품 중심에 둔다. 향후 device-linked private agent로 확장하기 쉽다.</li><li>강점: 개인 메모리와 profile continuity라는 차별점이 강하다.</li><li>리스크: 대</li></ul>
       </div>
     </div>
   </div>
@@ -853,53 +728,30 @@ footer{margin-top:.6rem;padding:.5rem 1.1rem;font-size:.66rem;color:var(--t3);te
   <div class="eval-company-hd" onclick="toggleEval(this)">
     <div class="ec-title">
       <span class="rk">7</span>
-      <span>Layla</span>
-      <span class="bg bg-ac">Identity-first Travel Personalization</span>
+      <b class="h-word">Layla</b>
+      <span style="font-size:.63rem;color:var(--t3)">(Identity-first Travel Personalization)</span>
+      <span class="vc-badge vc-orange">🟠 B Capital &#183; Baidu</span>
     </div>
     <div class="ec-meta">
+      <span style="font-size:.62rem;color:var(--t2)">A:13 B:11 C:11 D:11 E:11 F:8 G:8</span>
       <span class="ec-total" data-s="73" style="font-size:.86rem; font-weight:900; color:var(--acT);">73</span>
       <span class="ec-grade"><span class="bg bg-wn">전략 관찰</span></span>
       <span class="ec-arr shut">▼</span>
     </div>
   </div>
   <div class="eval-company-bd shut">
-    <div style="padding:.7rem .9rem;">
-      <div class="tw">
-        <table class="et" style="min-width:720px">
-          <thead>
-            <tr>
-              <th class="cc">기업</th>
-              <th>A</th><th>B</th><th>C</th><th>D</th><th>E</th><th>F</th><th>G</th><th>Total</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="cc">Layla</td>
-              <td>13</td>
-              <td>11</td>
-              <td>11</td>
-              <td>11</td>
-              <td>11</td>
-              <td>8</td>
-              <td>8</td>
-              <td class="ct">73</td>
-            </tr>
-          </tbody>
-        </table>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:.5rem;padding:.6rem .8rem;background:var(--card2)">
+      <div style="background:var(--card);border:1px solid var(--bd);border-radius:var(--rs);padding:.55rem .75rem;transition:border-color .2s">
+        <div style="font-size:.7rem;font-weight:800;color:var(--acT);margin-bottom:.3rem;border-bottom:1px dashed var(--bd);padding-bottom:.2rem">A·B 파트너십 &amp; M&amp;A 가치</div>
+        <ul class="bul-list"><li>개인 취향과 identity를 기반으로 여행 추천과 planning을 개인화하는 travel AI</li><li>travel vertical이지만 identity-first recommendation에 초점이 있어 폴더 2 편입 가능</li><li>가산점/전략 투자 시그널: 🟠 B Capital &#183; Baidu</li><li>항공/OTA/멤버십 플랫폼의 identity-based recommendation 인수</li></ul>
       </div>
-      <div class="pg" style="margin-top:.7rem;">
-        <div class="pc interactive-card" style="padding:.8rem;">
-          <div class="pc-s">강점</div>
-          <div class="pc-l"><div>identity-first 포지셔닝이 분명하다.</div><div>사용자 수와 trip volume을 공개해 소비자 traction 신호가 있다.</div><div>전략 투자자 조합이 확장 경로를 넓힌다.</div></div>
-          <div class="pc-s">리스크</div>
-          <div class="pc-l"><div>여행 vertical에 묶여 범용 개인화 इं프라로 보기 어렵다.</div><div>사용 빈도가 계절성과 경기 흐름을 탈 수 있다.</div><div>travel AI 경쟁이 빠르게 과열되고 있다.</div></div>
-        </div>
-        <div class="pc interactive-card" style="padding:.8rem;">
-          <div class="pc-s">왜 이 폴더인가</div>
-          <div class="pc-l"><div>travel vertical이지만 identity-first recommendation에 초점이 있어 폴더 2 편입 가능</div></div>
-          <div class="pc-s">전략적 출구</div>
-          <div class="pc-l"><div>항공/OTA/멤버십 플랫폼의 identity-based recommendation 인수</div><div>카메라/지도/여행 앱과의 전략 제휴</div><div>travel personalization brand로 독립 확장</div></div>
-        </div>
+      <div style="background:var(--card);border:1px solid var(--bd);border-radius:var(--rs);padding:.55rem .75rem;transition:border-color .2s">
+        <div style="font-size:.7rem;font-weight:800;color:var(--acT);margin-bottom:.3rem;border-bottom:1px dashed var(--bd);padding-bottom:.2rem">C·D 기술 방어 &amp; BM</div>
+        <ul class="bul-list"><li>여행 추천을 검색보다 개인 identity와 대화 맥락으로 바꾸는 consumer AI</li><li>상용화 신호: 30M messages, $1B+ trips planned, 5M+ users 공시</li><li>투자/가치 공개 상태: 2026-03 전략 투자 7-figure disclosed / 비공개</li></ul>
+      </div>
+      <div style="background:var(--card);border:1px solid var(--bd);border-radius:var(--rs);padding:.55rem .75rem;transition:border-color .2s">
+        <div style="font-size:.7rem;font-weight:800;color:var(--acT);margin-bottom:.3rem;border-bottom:1px dashed var(--bd);padding-bottom:.2rem">E·F·G 시장·팀·방어력</div>
+        <ul class="bul-list"><li>개인화 추천의 product-market fit을 보기 좋은 vertical 사례다. 범용 온디바이스 인프라는 아니지만 개인화 AI 서비스로서의 성장 논리는 충분하다.</li><li>강점: identity-first 포지셔닝이 분명하다.</li><li>리스크: 여</li></ul>
       </div>
     </div>
   </div>
@@ -908,57 +760,35 @@ footer{margin-top:.6rem;padding:.5rem 1.1rem;font-size:.66rem;color:var(--t3);te
   <div class="eval-company-hd" onclick="toggleEval(this)">
     <div class="ec-title">
       <span class="rk">8</span>
-      <span>Airial</span>
-      <span class="bg bg-ac">Travel Personalization</span>
+      <b class="h-word">Airial</b>
+      <span style="font-size:.63rem;color:var(--t3)">(Travel Personalization)</span>
+      
     </div>
     <div class="ec-meta">
+      <span style="font-size:.62rem;color:var(--t2)">A:11 B:9 C:10 D:10 E:11 F:8 G:10</span>
       <span class="ec-total" data-s="69" style="font-size:.86rem; font-weight:900; color:var(--acT);">69</span>
       <span class="ec-grade"><span class="bg bg-wn">전략 관찰</span></span>
       <span class="ec-arr shut">▼</span>
     </div>
   </div>
   <div class="eval-company-bd shut">
-    <div style="padding:.7rem .9rem;">
-      <div class="tw">
-        <table class="et" style="min-width:720px">
-          <thead>
-            <tr>
-              <th class="cc">기업</th>
-              <th>A</th><th>B</th><th>C</th><th>D</th><th>E</th><th>F</th><th>G</th><th>Total</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="cc">Airial</td>
-              <td>11</td>
-              <td>9</td>
-              <td>10</td>
-              <td>10</td>
-              <td>11</td>
-              <td>8</td>
-              <td>10</td>
-              <td class="ct">69</td>
-            </tr>
-          </tbody>
-        </table>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:.5rem;padding:.6rem .8rem;background:var(--card2)">
+      <div style="background:var(--card);border:1px solid var(--bd);border-radius:var(--rs);padding:.55rem .75rem;transition:border-color .2s">
+        <div style="font-size:.7rem;font-weight:800;color:var(--acT);margin-bottom:.3rem;border-bottom:1px dashed var(--bd);padding-bottom:.2rem">A·B 파트너십 &amp; M&amp;A 가치</div>
+        <ul class="bul-list"><li>소셜 콘텐츠를 itinerary로 변환하는 personalized travel planning AI</li><li>개인화 추천 AI로는 맞지만 범용성은 약해 폴더 2 하위권에 배치</li><li>travel discovery 앱 또는 OTA의 niche acquisition 대상</li></ul>
       </div>
-      <div class="pg" style="margin-top:.7rem;">
-        <div class="pc interactive-card" style="padding:.8rem;">
-          <div class="pc-s">강점</div>
-          <div class="pc-l"><div>소셜 발견과 여행 planning을 직접 연결하는 UX가 직관적이다.</div><div>초기 단계라 전략적 제휴/매각 유연성이 높다.</div><div>모바일 소비자 행동과 가까운 제품이다.</div></div>
-          <div class="pc-s">리스크</div>
-          <div class="pc-l"><div>범용 personalization infra가 아니라 travel app 성격이 강하다.</div><div>초기 단계라 공개 지표가 제한적이다.</div><div>경쟁이 치열하고 차별화 유지가 어렵다.</div></div>
-        </div>
-        <div class="pc interactive-card" style="padding:.8rem;">
-          <div class="pc-s">왜 이 폴더인가</div>
-          <div class="pc-l"><div>개인화 추천 AI로는 맞지만 범용성은 약해 폴더 2 하위권에 배치</div></div>
-          <div class="pc-s">전략적 출구</div>
-          <div class="pc-l"><div>travel discovery 앱 또는 OTA의 niche acquisition 대상</div><div>카메라/소셜/여행 커머스 제휴</div><div>계속 관찰하되 우선 검토 대상은 아님</div></div>
-        </div>
+      <div style="background:var(--card);border:1px solid var(--bd);border-radius:var(--rs);padding:.55rem .75rem;transition:border-color .2s">
+        <div style="font-size:.7rem;font-weight:800;color:var(--acT);margin-bottom:.3rem;border-bottom:1px dashed var(--bd);padding-bottom:.2rem">C·D 기술 방어 &amp; BM</div>
+        <ul class="bul-list"><li>소셜 피드 기반 여행 개인화를 시도하는 초기 소비자 AI 서비스</li><li>상용화 신호: public beta 공개, 모바일 앱 로드맵 제시</li><li>투자/가치 공개 상태: 2025-06 seed $3M / 비공개</li></ul>
+      </div>
+      <div style="background:var(--card);border:1px solid var(--bd);border-radius:var(--rs);padding:.55rem .75rem;transition:border-color .2s">
+        <div style="font-size:.7rem;font-weight:800;color:var(--acT);margin-bottom:.3rem;border-bottom:1px dashed var(--bd);padding-bottom:.2rem">E·F·G 시장·팀·방어력</div>
+        <ul class="bul-list"><li>폴더 2 안에서는 가장 경계선에 있는 회사다. 범용 on-device 분석보다는 travel recommendation app에 가깝지만, personalized AI라는 조건에는 맞는다.</li><li>강점: 소셜 발견과 여행 planning을 직접 연결하는 UX가 직관적이다.</li><li>리스크: 범</li></ul>
       </div>
     </div>
   </div>
 </div>
+      </div>
     </div>
   </div>
 
@@ -1090,16 +920,16 @@ footer{margin-top:.6rem;padding:.5rem 1.1rem;font-size:.66rem;color:var(--t3);te
 <div class="pc-box" style="--hc:#ef4444" onclick="tpc(this)">
   <div class="pc-box-hd">
     <span class="pc-box-ico">5</span>
-    <b>Pine AI</b>
-    <span class="bg bg-ac">Personal Agent</span>
+    <b>Rewind / Limitless</b>
+    <span class="bg bg-ac">Personal Memory AI</span>
     <span class="pc-box-arr shut">▼</span>
   </div>
   <div class="pc-box-bd shut">
-    <div><strong>핵심 논리</strong> 범용 assistant보다 생활 밀착형 에이전트에 가깝다. 개인 데이터를 바탕으로 반복 업무를 대신하는 구조라 개인화 AI 페이지에 넣는 편이 타당하다.</div>
-    <div style="margin-top:.45rem;"><strong>상용화 신호</strong> 93% negotiation success, $3M+ user savings 공시</div>
-    <div style="margin-top:.45rem;"><strong>독립성/거래 상태</strong> 독립 운영. 아직 초기여서 스케일 지속성은 검증 단계.</div>
+    <div><strong>핵심 논리</strong> 추천 인프라보다는 personal memory layer에 가깝다. 다만 privacy, continuity, 개인 데이터 락인이라는 폴더 2 핵심 축과 정확히 맞닿는다.</div>
+    <div style="margin-top:.45rem;"><strong>상용화 신호</strong> Rewind Pro와 Limitless Pro/Unlimited 운영, pendant + app 기반 personalized memory stack 전개</div>
+    <div style="margin-top:.45rem;"><strong>독립성/거래 상태</strong> 독립 운영. Rewind에서 Limitless로 리브랜딩하며 personalized AI memory stack 방향을 강화했다.</div>
     <div class="bm-detail">
-      <div class="bm-line">핀테크, 구독관리, 개인 재무 플랫폼의 전략 인수</div><div class="bm-line">통신사/카드사 앱의 절감 assistant 제휴</div><div class="bm-line">개인 업무 자동화 agent로 독립 성장</div>
+      <div class="bm-line">디바이스 제조사 또는 productivity suite의 memory layer 인수</div><div class="bm-line">private AI stack 또는 wearable AI 플랫폼과의 전략 제휴</div><div class="bm-line">개인 knowledge/memory assistant로 독립 성장</div>
     </div>
   </div>
 </div>
@@ -1149,6 +979,92 @@ footer{margin-top:.6rem;padding:.5rem 1.1rem;font-size:.66rem;color:var(--t3);te
     <div class="bm-detail">
       <div class="bm-line">travel discovery 앱 또는 OTA의 niche acquisition 대상</div><div class="bm-line">카메라/소셜/여행 커머스 제휴</div><div class="bm-line">계속 관찰하되 우선 검토 대상은 아님</div>
     </div>
+  </div>
+</div>
+    </div>
+    <div style="margin:1.2rem 0 .5rem;display:flex;align-items:center;gap:.5rem">
+      <span style="font-size:.85rem;font-weight:900;color:var(--rd)">📌 모니터링 체크 리스트</span>
+      <span style="background:var(--rdB);color:var(--rd);font-size:.62rem;font-weight:800;padding:.1rem .45rem;border-radius:4px;border:1px solid var(--rd)">Red Flag 워치 리스트</span>
+    </div>
+    <div class="pg">
+<div class="rf-box rf-blue" onclick="trf(this)">
+  <div class="rf-hd">
+    <span class="rf-ico">📌</span>
+    <b>Aampe</b>
+    <span class="rf-arr">▼</span>
+  </div>
+  <div class="rf-bd shut">
+    <ul class="bul-list"><li>Braze/Iterable 같은 대형 incumbent와 직접 비교될 수 있다.</li><li>고객 데이터 연결 비용이 도입 마찰로 작용할 수 있다.</li></ul>
+  </div>
+</div>
+<div class="rf-box rf-green" onclick="trf(this)">
+  <div class="rf-hd">
+    <span class="rf-ico">🧭</span>
+    <b>Wysa</b>
+    <span class="rf-arr">▼</span>
+  </div>
+  <div class="rf-bd shut">
+    <ul class="bul-list"><li>규제와 임상 신뢰성 이슈를 동반하는 vertical이다.</li><li>온디바이스 처리보다 서비스 계층이 더 두드러진다.</li></ul>
+  </div>
+</div>
+<div class="rf-box rf-violet" onclick="trf(this)">
+  <div class="rf-hd">
+    <span class="rf-ico">🔍</span>
+    <b>Sentiance</b>
+    <span class="rf-arr">▼</span>
+  </div>
+  <div class="rf-bd shut">
+    <ul class="bul-list"><li>개발자 통합과 긴 세일즈 사이클이 확장 속도를 늦출 수 있다.</li><li>vertical solution으로 보이면 TAM 해석이 좁아질 수 있다.</li></ul>
+  </div>
+</div>
+<div class="rf-box rf-amber" onclick="trf(this)">
+  <div class="rf-hd">
+    <span class="rf-ico">📉</span>
+    <b>Mindtrip</b>
+    <span class="rf-arr">▼</span>
+  </div>
+  <div class="rf-bd shut">
+    <ul class="bul-list"><li>travel vertical에 묶여 범용 personalization infra와는 다르다.</li><li>거래성 수익모델이 확실해지기 전까지 변동성이 클 수 있다.</li></ul>
+  </div>
+</div>
+<div class="rf-box rf-red" onclick="trf(this)">
+  <div class="rf-hd">
+    <span class="rf-ico">🛡️</span>
+    <b>Rewind / Limitless</b>
+    <span class="rf-arr">▼</span>
+  </div>
+  <div class="rf-bd shut">
+    <ul class="bul-list"><li>프라이버시와 동의(consent) 설계가 제품 확장성의 핵심 리스크다.</li><li>웨어러블/데스크톱 비중이 있어 순수 모바일 회사로 보기는 어렵다.</li></ul>
+  </div>
+</div>
+<div class="rf-box rf-cyan" onclick="trf(this)">
+  <div class="rf-hd">
+    <span class="rf-ico">📲</span>
+    <b>Personal AI</b>
+    <span class="rf-arr">▼</span>
+  </div>
+  <div class="rf-bd shut">
+    <ul class="bul-list"><li>대중적 traction 공개가 아직 제한적이다.</li><li>LLM 플랫폼 경쟁이 심해지면 차별화 설명이 어려울 수 있다.</li></ul>
+  </div>
+</div>
+<div class="rf-box rf-purple" onclick="trf(this)">
+  <div class="rf-hd">
+    <span class="rf-ico">🧠</span>
+    <b>Layla</b>
+    <span class="rf-arr">▼</span>
+  </div>
+  <div class="rf-bd shut">
+    <ul class="bul-list"><li>여행 vertical에 묶여 범용 개인화 인프라로 보기 어렵다.</li><li>사용 빈도가 계절성과 경기 흐름을 탈 수 있다.</li></ul>
+  </div>
+</div>
+<div class="rf-box rf-orange" onclick="trf(this)">
+  <div class="rf-hd">
+    <span class="rf-ico">⚠️</span>
+    <b>Airial</b>
+    <span class="rf-arr">▼</span>
+  </div>
+  <div class="rf-bd shut">
+    <ul class="bul-list"><li>범용 personalization infra가 아니라 travel app 성격이 강하다.</li><li>초기 단계라 공개 지표가 제한적이다.</li></ul>
   </div>
 </div>
     </div></div>
@@ -1209,96 +1125,357 @@ footer{margin-top:.6rem;padding:.5rem 1.1rem;font-size:.66rem;color:var(--t3);te
   </div>
 
   <div class="cd" id="sec-criteria">
-    <div class="ch2" onclick="tc(this)"><div><h2>⑥ 채점 기준</h2><p>개인화 AI / on-device 분석 중심으로 재정의한 7개 평가축</p></div><span class="arr">▼</span></div>
+    <div class="ch2" onclick="tc(this)"><div><h2>⑥ 채점 기준</h2><p>416 템플릿의 A~G 평가축을 유지하면서 모바일 개인화 / on-device / personalized AI용 문구로 다시 정리</p></div><span class="arr">▼</span></div>
     <div class="cb">
+      <div class="vc-def">
+        <strong>기준 유지 원칙</strong> 416 템플릿의 A~G 축은 유지하고, 각 세부 지표의 문장만 1페이지는 광고 AI / 모바일 ad-tech, 2페이지는 모바일 개인화 / on-device / personalized AI에 맞게 다시 치환했습니다.
+      </div>
 <div class="crit-group interactive-card" style="--cg:#3b82f6">
   <div class="crit-group-hd" onclick="tcg(this)">
-    <strong>A. 모바일 &#183; 온디바이스 적합성</strong>
-    <span class="tm">0~20점</span>
-    <span class="cg-arr shut" style="margin-left:auto">▼</span>
+    <strong style="color:#3b82f6">A</strong>
+    <span style="font-size:.72rem;font-weight:800;color:var(--t1);margin-left:.4rem">모바일 앱 &#183; 온디바이스 처리 &#183; 반복 사용성 적합성</span>
+    <span style="font-size:.65rem;color:var(--ok);font-weight:700;margin-left:auto;margin-right:.5rem">20점 만점</span>
+    <span class="cg-arr shut">▼</span>
   </div>
   <div class="crit-group-bd shut">
-    <div style="padding:.65rem .85rem;">
-      <div class="dim" style="margin-bottom:.45rem;">개인화가 실제 모바일 경험 또는 기기 내 처리와 얼마나 가까이 붙어 있는가</div>
-      <ul class="bul-list"><li>모바일 앱 또는 SDK 배포 접점이 직접 있는가</li><li>데이터를 기기 안에서 처리하거나 최소 전송 구조를 갖는가</li><li>개인 프로필/기억/행동 데이터를 장기 유지하는가</li><li>OS 정책과 프라이버시 강화에 유리한 구조인가</li></ul>
+    <div style="padding:.55rem .8rem .1rem;font-size:.65rem;color:var(--t3);line-height:1.6;">개인화 AI가 실제 모바일 경험에 얼마나 깊게 붙고, 기기 내 처리 혹은 private profile layer와 얼마나 가까운지를 본다.</div>
+    <div class="tw" style="padding:.35rem .6rem .6rem">
+      <table class="crt">
+        <thead>
+          <tr>
+            <th style="width:34px">No</th>
+            <th style="width:210px">핵심 세부 평가 지표</th>
+            <th style="width:34px">배점</th>
+            <th>채점 산출 기준</th>
+          </tr>
+        </thead>
+        <tbody>
+<tr>
+  <td>A1</td>
+  <td>모바일 앱&#183;SDK 직접 접점</td>
+  <td>5</td>
+  <td>0=모바일 접점 약함 / 3=앱 또는 SDK 존재 / 5=모바일이 주 사용 환경</td>
+</tr>
+<tr>
+  <td>A2</td>
+  <td>온디바이스&#183;저전송 구조</td>
+  <td>5</td>
+  <td>0=클라우드 의존 / 3=부분적 로컬 처리 / 5=on-device 또는 privacy-first 구조가 핵심</td>
+</tr>
+<tr>
+  <td>A3</td>
+  <td>개인 프로필&#183;기억 지속성</td>
+  <td>5</td>
+  <td>0=세션성 사용 / 3=개인 프로필 유지 / 5=기억&#183;맥락 continuity가 제품 핵심</td>
+</tr>
+<tr>
+  <td>A4</td>
+  <td>OS 정책&#183;프라이버시 환경 적합성</td>
+  <td>5</td>
+  <td>0=정책 역풍 큼 / 3=중립 / 5=프라이버시 강화가 오히려 우위</td>
+</tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>
 <div class="crit-group interactive-card" style="--cg:#10b981">
   <div class="crit-group-hd" onclick="tcg(this)">
-    <strong>B. 전략 거래 가능성</strong>
-    <span class="tm">0~15점</span>
-    <span class="cg-arr shut" style="margin-left:auto">▼</span>
+    <strong style="color:#10b981">B</strong>
+    <span style="font-size:.72rem;font-weight:800;color:var(--t1);margin-left:.4rem">OEM &#183; OS &#183; vertical 플랫폼 입장에서의 M&amp;A/제휴 가치</span>
+    <span style="font-size:.65rem;color:var(--ok);font-weight:700;margin-left:auto;margin-right:.5rem">20점 만점</span>
+    <span class="cg-arr shut">▼</span>
   </div>
   <div class="crit-group-bd shut">
-    <div style="padding:.65rem .85rem;">
-      <div class="dim" style="margin-bottom:.45rem;">디바이스 제조사, CDP, 여행/헬스케어/핀테크 플랫폼이 왜 사거나 제휴하고 싶어할지를 본다</div>
-      <ul class="bul-list"><li>OEM, 통신사, 슈퍼앱, vertical 플랫폼과의 시너지 설명이 쉬운가</li><li>개인화 엔진이 기존 서비스의 체류시간과 전환을 높여주는가</li><li>기억/프로필/센서 데이터 등 쉽게 복제하기 어려운 축이 있는가</li><li>인수 후 기존 제품군에 곧바로 붙일 수 있는가</li></ul>
+    <div style="padding:.55rem .8rem .1rem;font-size:.65rem;color:var(--t3);line-height:1.6;">OEM, 통신사, productivity suite, health/travel/fintech 플랫폼이 왜 사거나 제휴하고 싶어할지를 본다.</div>
+    <div class="tw" style="padding:.35rem .6rem .6rem">
+      <table class="crt">
+        <thead>
+          <tr>
+            <th style="width:34px">No</th>
+            <th style="width:210px">핵심 세부 평가 지표</th>
+            <th style="width:34px">배점</th>
+            <th>채점 산출 기준</th>
+          </tr>
+        </thead>
+        <tbody>
+<tr>
+  <td>B1</td>
+  <td>OEM&#183;통신사&#183;슈퍼앱 시너지</td>
+  <td>5</td>
+  <td>0=시너지 약함 / 3=일부 시너지 / 5=기기&#183;유통&#183;서비스 번들 논리 명확</td>
+</tr>
+<tr>
+  <td>B2</td>
+  <td>전환&#183;체류시간 개선 가치</td>
+  <td>5</td>
+  <td>0=효용 불명확 / 3=사용 경험 개선 / 5=전환&#183;리텐션 향상 논리가 선명</td>
+</tr>
+<tr>
+  <td>B3</td>
+  <td>복제 어려운 데이터 자산</td>
+  <td>4</td>
+  <td>0=차별 자산 약함 / 2=일부 자산 / 4=기억&#183;프로필&#183;센서 데이터 등 차별 자산 강함</td>
+</tr>
+<tr>
+  <td>B4</td>
+  <td>인수 후 제품군 부착 용이성</td>
+  <td>3</td>
+  <td>0=통합 어려움 / 2=부분 가능 / 3=기존 제품군에 비교적 쉽게 붙음</td>
+</tr>
+<tr>
+  <td>B5</td>
+  <td>전략 투자자&#183;VC 시그널</td>
+  <td>3</td>
+  <td>0=전략 시그널 약함 / 1=일반 재무 투자 / 3=전략 투자자 또는 톱티어 VC 존재</td>
+</tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>
 <div class="crit-group interactive-card" style="--cg:#8b5cf6">
   <div class="crit-group-hd" onclick="tcg(this)">
-    <strong>C. 기술 밀도와 IP</strong>
-    <span class="tm">0~15점</span>
-    <span class="cg-arr shut" style="margin-left:auto">▼</span>
+    <strong style="color:#8b5cf6">C</strong>
+    <span style="font-size:.72rem;font-weight:800;color:var(--t1);margin-left:.4rem">추천 모델 &#183; 메모리 레이어 &#183; 센서 해석 &#183; privacy 기술 밀도</span>
+    <span style="font-size:.65rem;color:var(--ok);font-weight:700;margin-left:auto;margin-right:.5rem">12점 만점</span>
+    <span class="cg-arr shut">▼</span>
   </div>
   <div class="crit-group-bd shut">
-    <div style="padding:.65rem .85rem;">
-      <div class="dim" style="margin-bottom:.45rem;">단순 챗봇이 아니라 추천, 기억, 센서 해석, 프로파일링 기술이 실제 제품 우위로 이어지는가</div>
-      <ul class="bul-list"><li>추천 품질 또는 행동 예측의 근거가 있는가</li><li>memory layer, context engine, edge processing 등 차별적 계층이 있는가</li><li>고객 데이터가 모델 개선 루프로 이어지는가</li><li>vertical AI라면 해당 vertical에서의 특화 데이터가 있는가</li></ul>
+    <div style="padding:.55rem .8rem .1rem;font-size:.65rem;color:var(--t3);line-height:1.6;">단순 챗봇이 아니라 추천, 기억, context engine, edge processing이 실제 제품 우위로 이어지는지를 본다.</div>
+    <div class="tw" style="padding:.35rem .6rem .6rem">
+      <table class="crt">
+        <thead>
+          <tr>
+            <th style="width:34px">No</th>
+            <th style="width:210px">핵심 세부 평가 지표</th>
+            <th style="width:34px">배점</th>
+            <th>채점 산출 기준</th>
+          </tr>
+        </thead>
+        <tbody>
+<tr>
+  <td>C1</td>
+  <td>추천&#183;행동예측 품질 근거</td>
+  <td>3</td>
+  <td>0=근거 약함 / 2=제품 차별화 일부 / 3=추천&#183;예측 품질이 핵심 경쟁력</td>
+</tr>
+<tr>
+  <td>C2</td>
+  <td>메모리&#183;context&#183;edge 계층</td>
+  <td>3</td>
+  <td>0=일반 앱 / 2=일부 차별 계층 / 3=memory, context, on-device 중 하나 이상이 핵심</td>
+</tr>
+<tr>
+  <td>C3</td>
+  <td>데이터→모델 개선 루프</td>
+  <td>3</td>
+  <td>0=정적 제품 / 2=일부 학습 루프 / 3=사용 데이터가 개인화 품질 개선으로 이어짐</td>
+</tr>
+<tr>
+  <td>C4</td>
+  <td>vertical 특화 데이터</td>
+  <td>3</td>
+  <td>0=범용 데이터만 / 2=vertical 데이터 일부 / 3=해당 카테고리 특화 데이터가 강함</td>
+</tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>
 <div class="crit-group interactive-card" style="--cg:#f59e0b">
   <div class="crit-group-hd" onclick="tcg(this)">
-    <strong>D. BM과 반복 사용성</strong>
-    <span class="tm">0~15점</span>
-    <span class="cg-arr shut" style="margin-left:auto">▼</span>
+    <strong style="color:#f59e0b">D</strong>
+    <span style="font-size:.72rem;font-weight:800;color:var(--t1);margin-left:.4rem">구독 &#183; 라이선스 &#183; B2B2C &#183; 반복 사용성 기반 BM 건전성</span>
+    <span style="font-size:.65rem;color:var(--ok);font-weight:700;margin-left:auto;margin-right:.5rem">12점 만점</span>
+    <span class="cg-arr shut">▼</span>
   </div>
   <div class="crit-group-bd shut">
-    <div style="padding:.65rem .85rem;">
-      <div class="dim" style="margin-bottom:.45rem;">개인화 AI가 일회성 체험이 아니라 반복 사용과 매출로 이어지는가</div>
-      <ul class="bul-list"><li>구독, usage fee, enterprise contract 등 반복 매출 구조가 있는가</li><li>추천/개인화 품질이 재방문이나 retention으로 연결되는가</li><li>개인화 데이터가 쌓일수록 switching cost가 높아지는가</li><li>B2C와 B2B2C 확장 경로 중 하나라도 선명한가</li></ul>
+    <div style="padding:.55rem .8rem .1rem;font-size:.65rem;color:var(--t3);line-height:1.6;">개인화 AI가 일회성 체험이 아니라 반복 사용과 매출, 또는 B2B2C 계약으로 이어지는지를 본다.</div>
+    <div class="tw" style="padding:.35rem .6rem .6rem">
+      <table class="crt">
+        <thead>
+          <tr>
+            <th style="width:34px">No</th>
+            <th style="width:210px">핵심 세부 평가 지표</th>
+            <th style="width:34px">배점</th>
+            <th>채점 산출 기준</th>
+          </tr>
+        </thead>
+        <tbody>
+<tr>
+  <td>D1</td>
+  <td>구독&#183;usage&#183;license 구조</td>
+  <td>3</td>
+  <td>0=수익 구조 약함 / 2=기본 과금 존재 / 3=구독 또는 license 구조 선명</td>
+</tr>
+<tr>
+  <td>D2</td>
+  <td>재방문&#183;리텐션 연계성</td>
+  <td>3</td>
+  <td>0=일회성 / 2=반복 사용 일부 / 3=개인화 품질이 재방문을 만듦</td>
+</tr>
+<tr>
+  <td>D3</td>
+  <td>데이터 축적 기반 switching cost</td>
+  <td>3</td>
+  <td>0=이탈 쉬움 / 2=일부 손실 / 3=이탈 시 기억&#183;프로필 손실이 큼</td>
+</tr>
+<tr>
+  <td>D4</td>
+  <td>B2C&#183;B2B2C 확장성</td>
+  <td>3</td>
+  <td>0=단일 경로 / 2=부분 확장 / 3=개인 소비와 제휴 유통 경로가 모두 보임</td>
+</tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>
 <div class="crit-group interactive-card" style="--cg:#ef4444">
   <div class="crit-group-hd" onclick="tcg(this)">
-    <strong>E. 시장 타이밍</strong>
-    <span class="tm">0~12점</span>
-    <span class="cg-arr shut" style="margin-left:auto">▼</span>
+    <strong style="color:#ef4444">E</strong>
+    <span style="font-size:.72rem;font-weight:800;color:var(--t1);margin-left:.4rem">추천 엔진 &#183; edge AI &#183; privacy 규제 전환의 타이밍 적합성</span>
+    <span style="font-size:.65rem;color:var(--ok);font-weight:700;margin-left:auto;margin-right:.5rem">12점 만점</span>
+    <span class="cg-arr shut">▼</span>
   </div>
   <div class="crit-group-bd shut">
-    <div style="padding:.65rem .85rem;">
-      <div class="dim" style="margin-bottom:.45rem;">추천 엔진, edge AI, digital therapeutics, travel AI 같은 고성장 인접 시장과 얼마나 겹치는가</div>
-      <ul class="bul-list"><li>시장 보고서 기준 CAGR이 높은 인접 시장에 걸쳐 있는가</li><li>프라이버시 강화가 오히려 기회가 되는 구조인가</li><li>모바일 사용시간 증가와 함께 수요가 자연히 늘어나는가</li><li>AI agent 전환 흐름의 수혜를 받을 수 있는가</li></ul>
+    <div style="padding:.55rem .8rem .1rem;font-size:.65rem;color:var(--t3);line-height:1.6;">추천 엔진, edge AI, digital therapeutics, travel AI 같은 인접 시장과 규제 환경이 현재 기회가 되는지를 본다.</div>
+    <div class="tw" style="padding:.35rem .6rem .6rem">
+      <table class="crt">
+        <thead>
+          <tr>
+            <th style="width:34px">No</th>
+            <th style="width:210px">핵심 세부 평가 지표</th>
+            <th style="width:34px">배점</th>
+            <th>채점 산출 기준</th>
+          </tr>
+        </thead>
+        <tbody>
+<tr>
+  <td>E1</td>
+  <td>인접 시장 CAGR</td>
+  <td>3</td>
+  <td>0=저성장 / 2=중간 / 3=고성장 시장과 직접 겹침</td>
+</tr>
+<tr>
+  <td>E2</td>
+  <td>프라이버시 강화 수혜</td>
+  <td>3</td>
+  <td>0=규제 역풍 / 2=중립 / 3=privacy-by-design이 경쟁 우위</td>
+</tr>
+<tr>
+  <td>E3</td>
+  <td>모바일 사용시간&#183;행동 데이터 수혜</td>
+  <td>3</td>
+  <td>0=관련성 낮음 / 2=간접 수혜 / 3=직접 수혜</td>
+</tr>
+<tr>
+  <td>E4</td>
+  <td>AI agent 전환 흐름 수혜</td>
+  <td>3</td>
+  <td>0=정적 추천 / 2=대화형 요소 일부 / 3=agent형 personalized AI로 확장 가능</td>
+</tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>
 <div class="crit-group interactive-card" style="--cg:#06b6d4">
   <div class="crit-group-hd" onclick="tcg(this)">
-    <strong>F. 팀과 실행력</strong>
-    <span class="tm">0~10점</span>
-    <span class="cg-arr shut" style="margin-left:auto">▼</span>
+    <strong style="color:#06b6d4">F</strong>
+    <span style="font-size:.72rem;font-weight:800;color:var(--t1);margin-left:.4rem">모바일 AI &#183; recommender &#183; privacy &#183; product execution 역량</span>
+    <span style="font-size:.65rem;color:var(--ok);font-weight:700;margin-left:auto;margin-right:.5rem">12점 만점</span>
+    <span class="cg-arr shut">▼</span>
   </div>
   <div class="crit-group-bd shut">
-    <div style="padding:.65rem .85rem;">
-      <div class="dim" style="margin-bottom:.45rem;">초기 스타트업이어도 제품 완성도와 go-to-market의 일관성이 있는가</div>
-      <ul class="bul-list"><li>창업팀이 카테고리 문제를 실제로 오래 다뤄왔는가</li><li>공개 사례, 고객, 사용자 수 등 기본 실행 신호가 있는가</li><li>수직 시장과 기술 난이도 사이 균형이 맞는가</li><li>너무 넓은 AI 회사가 아니라 핵심 문제 하나가 분명한가</li></ul>
+    <div style="padding:.55rem .8rem .1rem;font-size:.65rem;color:var(--t3);line-height:1.6;">모바일 개인화 문제를 실제로 오래 다뤄본 팀인지, 그리고 제품&#183;데이터&#183;유통 실행의 일관성이 있는지 본다.</div>
+    <div class="tw" style="padding:.35rem .6rem .6rem">
+      <table class="crt">
+        <thead>
+          <tr>
+            <th style="width:34px">No</th>
+            <th style="width:210px">핵심 세부 평가 지표</th>
+            <th style="width:34px">배점</th>
+            <th>채점 산출 기준</th>
+          </tr>
+        </thead>
+        <tbody>
+<tr>
+  <td>F1</td>
+  <td>카테고리 문제 경험</td>
+  <td>3</td>
+  <td>0=도메인 약함 / 2=관련 경험 일부 / 3=모바일 AI&#183;privacy&#183;추천 경험이 강함</td>
+</tr>
+<tr>
+  <td>F2</td>
+  <td>기본 실행 신호</td>
+  <td>3</td>
+  <td>0=공개 신호 부족 / 2=고객 또는 사용자 일부 / 3=사용자&#183;고객&#183;제품 완성도 신호 충분</td>
+</tr>
+<tr>
+  <td>F3</td>
+  <td>기술 난이도와 시장 범위 균형</td>
+  <td>3</td>
+  <td>0=과도하게 넓음 / 2=보통 / 3=핵심 문제 집중도가 높음</td>
+</tr>
+<tr>
+  <td>F4</td>
+  <td>제품&#183;데이터&#183;유통 삼각형</td>
+  <td>3</td>
+  <td>0=한 축만 강함 / 2=두 축 확보 / 3=세 축이 비교적 균형적</td>
+</tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>
 <div class="crit-group interactive-card" style="--cg:#a855f7">
   <div class="crit-group-hd" onclick="tcg(this)">
-    <strong>G. 경쟁 우위와 방어력</strong>
-    <span class="tm">0~13점</span>
-    <span class="cg-arr shut" style="margin-left:auto">▼</span>
+    <strong style="color:#a855f7">G</strong>
+    <span style="font-size:.72rem;font-weight:800;color:var(--t1);margin-left:.4rem">latency &#183; trust &#183; memory continuity &#183; privacy moat 기반 방어력</span>
+    <span style="font-size:.65rem;color:var(--ok);font-weight:700;margin-left:auto;margin-right:.5rem">12점 만점</span>
+    <span class="cg-arr shut">▼</span>
   </div>
   <div class="crit-group-bd shut">
-    <div style="padding:.65rem .85rem;">
-      <div class="dim" style="margin-bottom:.45rem;">대형 플랫폼이 비슷한 기능을 넣어도 살아남을 이유가 있는가</div>
-      <ul class="bul-list"><li>개인화 품질이 데이터 축적에 따라 더 좋아지는가</li><li>개인 기억 또는 온디바이스 처리처럼 쉽게 베끼기 어려운 층이 있는가</li><li>vertical specialization이 강한가, 혹은 horizontal infra로 확장 가능한가</li><li>사용자가 이탈할수록 손실되는 맥락 데이터가 많은가</li></ul>
+    <div style="padding:.55rem .8rem .1rem;font-size:.65rem;color:var(--t3);line-height:1.6;">대형 플랫폼이 유사 기능을 내놔도 살아남을 이유가 있는지, 특히 local moat와 memory continuity가 있는지를 본다.</div>
+    <div class="tw" style="padding:.35rem .6rem .6rem">
+      <table class="crt">
+        <thead>
+          <tr>
+            <th style="width:34px">No</th>
+            <th style="width:210px">핵심 세부 평가 지표</th>
+            <th style="width:34px">배점</th>
+            <th>채점 산출 기준</th>
+          </tr>
+        </thead>
+        <tbody>
+<tr>
+  <td>G1</td>
+  <td>개인화 품질의 누적 우위</td>
+  <td>3</td>
+  <td>0=차별 약함 / 2=일부 우위 / 3=사용 데이터가 누적될수록 품질이 강해짐</td>
+</tr>
+<tr>
+  <td>G2</td>
+  <td>local moat / on-device moat</td>
+  <td>3</td>
+  <td>0=클라우드 대체 용이 / 2=부분 차별 / 3=온디바이스 또는 privacy moat가 명확</td>
+</tr>
+<tr>
+  <td>G3</td>
+  <td>vertical specialization vs horizontal 확장성</td>
+  <td>3</td>
+  <td>0=둘 다 약함 / 2=한쪽 강함 / 3=vertical 강점과 확장성 중 하나가 뚜렷</td>
+</tr>
+<tr>
+  <td>G4</td>
+  <td>맥락 데이터 이탈 비용</td>
+  <td>3</td>
+  <td>0=이탈 쉬움 / 2=일부 손실 / 3=기억&#183;프로필&#183;행동 맥락 손실이 커 방어력 높음</td>
+</tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>
@@ -1308,7 +1485,7 @@ footer{margin-top:.6rem;padding:.5rem 1.1rem;font-size:.66rem;color:var(--t3);te
   <footer style="padding:0.7rem 1.1rem; background:var(--card); border-top:2px solid var(--bd); border-radius:var(--r); margin-top:0.8rem; box-shadow:var(--shS);">
     <div style="display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:0.5rem;">
       <div style="font-size:0.7rem; font-weight:700; color:var(--acT);">Global AI Startup Watch &#183; Page 2 &#183; 모바일 개인화 AI / On-device 데이터 분석</div>
-      <div style="font-size:0.68rem; font-weight:800; color:var(--t1); background:var(--bbg); border:1px solid var(--bbd); padding:0.2rem 0.55rem; border-radius:6px;">⏱ <span class="h-word">&#39;26.4.17 (금) 21:06 기준</span></div>
+      <div style="font-size:0.68rem; font-weight:800; color:var(--t1); background:var(--bbg); border:1px solid var(--bbd); padding:0.2rem 0.55rem; border-radius:6px;">⏱ <span class="h-word">&#39;26.4.17 (금) 21:32 기준</span></div>
     </div>
     <div style="font-size:0.62rem; color:var(--t3); margin-top:0.4rem; line-height:1.55;">출처 우선순위: 공식 사이트 &gt; 공식 보도자료 &gt; 신뢰 가능한 외부 기사. 비상장 기업 가치는 비공개로 표기했고, 범용성이 약한 vertical AI는 경계선 주석을 남겨 보수적으로 해석했습니다.</div>
   </footer>
@@ -1320,8 +1497,47 @@ function tc(h){let b=h.nextElementSibling;while(b&&!b.classList.contains('cb'))b
 function toggleEval(hd){const bd=hd.nextElementSibling;const arr=hd.querySelector('.ec-arr');if(!bd)return;const isShut=bd.classList.toggle('shut');if(arr)arr.classList.toggle('shut',isShut)}
 function tph(hd){const bd=hd.parentElement.querySelector('.pc-b');const arr=hd.querySelector('.pc-h-arr');if(!bd)return;const isShut=bd.classList.toggle('pc-b-shut');if(arr)arr.style.transform=isShut?'rotate(-90deg)':''}
 function tpc(box){const bd=box.querySelector('.pc-box-bd');const arr=box.querySelector('.pc-box-arr');if(!bd)return;const isShut=bd.classList.toggle('shut');if(arr)arr.classList.toggle('shut',isShut)}
+function trf(box){const bd=box.querySelector('.rf-bd');const arr=box.querySelector('.rf-arr');if(!bd)return;const isShut=bd.classList.toggle('shut');if(arr)arr.classList.toggle('shut',isShut)}
 function tcg(hd){const bd=hd.nextElementSibling;const arr=hd.querySelector('.cg-arr');if(!bd)return;const isShut=bd.classList.toggle('shut');if(isShut){bd.style.maxHeight='0';bd.style.opacity='0'}else{bd.style.maxHeight='1200px';bd.style.opacity='1'}if(arr)arr.classList.toggle('shut',isShut)}
 function toggleRow(rowId,trEl){const arr=trEl.querySelector('.tr-arr');const isOpen=trEl.dataset.open==='1';const tds=trEl.querySelectorAll('.td-d');tds.forEach(td=>{if(isOpen){td.style.maxHeight='0';td.style.overflow='hidden';td.style.opacity='0';td.style.padding='0'}else{td.style.maxHeight='600px';td.style.overflow='';td.style.opacity='1';td.style.padding=''}});trEl.dataset.open=isOpen?'0':'1';if(arr)arr.style.transform=isOpen?'rotate(-90deg)':''}
+const zS=new Set();
+function tz(btn){
+  const c=btn.dataset.z,k=btn.querySelector('span');
+  if(zS.has(c)){zS.delete(c);btn.classList.remove('on');k.textContent='☐'}else{zS.add(c);btn.classList.add('on');k.textContent='☑'}
+  document.querySelectorAll('#evalBody .eval-company').forEach(box=>{
+    const co=box.dataset.co;
+    const totEl=box.querySelector('.ec-total');
+    const gradeEl=box.querySelector('.ec-grade');
+    if(!totEl)return;
+    const orig=totEl.dataset.s;
+    if(zS.has(co)){
+      totEl.textContent='0';
+      totEl.style.color='var(--rd)';
+      if(gradeEl){
+        gradeEl.querySelectorAll('.bg-ok,.bg-wn,.bg-rd').forEach(el=>el.style.display='none');
+        if(!gradeEl.querySelector('.zv')){
+          const zv=document.createElement('span');
+          zv.className='zv';
+          zv.style.cssText='background:var(--rdB);color:var(--rd);padding:.12rem .4rem;border-radius:4px;font-size:.62rem;font-weight:800;border:1px solid var(--rd)';
+          zv.textContent='⛔ 보류 (Zero-Gate)';
+          gradeEl.appendChild(zv);
+        }
+      }
+    }else{
+      totEl.textContent=orig;
+      totEl.style.color='';
+      if(gradeEl){
+        gradeEl.querySelectorAll('.bg-ok,.bg-wn,.bg-rd').forEach(el=>el.style.display='');
+        const zv=gradeEl.querySelector('.zv');
+        if(zv)zv.remove();
+      }
+    }
+  });
+}
+document.addEventListener('DOMContentLoaded',function(){
+  document.querySelectorAll('.eval-company-bd').forEach(bd=>{bd.classList.add('shut');const arr=bd.previousElementSibling&&bd.previousElementSibling.querySelector('.ec-arr');if(arr)arr.classList.add('shut')});
+  document.querySelectorAll('.tr-main').forEach(tr=>{tr.dataset.open='1';const arr=tr.querySelector('.tr-arr');if(arr)arr.style.transform=''});
+});
 const nL=document.querySelectorAll('.nav a');
 const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){nL.forEach(l=>l.classList.remove('on'));const l=document.querySelector('.nav a[href="#'+e.target.id+'"]');if(l)l.classList.add('on')}})},{rootMargin:'-80px 0px -55% 0px',threshold:0});
 document.querySelectorAll('[id^="sec-"]').forEach(s=>obs.observe(s));
