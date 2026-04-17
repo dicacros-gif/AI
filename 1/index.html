@@ -1,0 +1,1330 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Global AI Startup Watch - 광고 AI / 모바일 광고 기술&#183;서비스</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+
+:root{--bg:#f1f4f9;--card:#fff;--card2:#f7f9fc;--hdr:#e4e9f5;--row2:#f4f7fb;--t1:#0f172a;--t2:#475569;--t3:#64748b;--bd:#d8dfe9;--ac:#2563eb;--acL:#dbeafe;--acT:#1d4ed8;--ok:#059669;--okB:#d1fae5;--wn:#d97706;--wnB:#fef3c7;--rd:#dc2626;--rdB:#fee2e2;--bbg:rgba(37,99,235,.07);--bbd:rgba(37,99,235,.14);--h1:#0f172a;--h2:#1e3a8a;--shS:0 1px 3px rgba(0,0,0,.05);--shM:0 4px 16px rgba(0,0,0,.06);--shL:0 10px 36px rgba(0,0,0,.09);--tbg:rgba(255,255,255,.92);--tgB:#e2e8f0;--tgK:#fff;--r:12px;--rs:8px;--cmpB:#fffbeb;--cmpD:#fde68a;--glow:rgba(37,99,235,.35)}
+[data-p=ocean]{--ac:#0d9488;--acL:#ccfbf1;--acT:#0f766e;--hdr:#d1f5ee;--bbg:rgba(13,148,136,.07);--bbd:rgba(13,148,136,.14);--h1:#064e3b;--h2:#0d9488;--glow:rgba(13,148,136,.35)}
+[data-p=sunset]{--ac:#ea580c;--acL:#fed7aa;--acT:#c2410c;--hdr:#ffe4cc;--bbg:rgba(234,88,12,.07);--bbd:rgba(234,88,12,.14);--h1:#7c2d12;--h2:#ea580c;--glow:rgba(234,88,12,.35)}
+[data-p=violet]{--ac:#7c3aed;--acL:#ede9fe;--acT:#6d28d9;--hdr:#e8e0fd;--bbg:rgba(124,58,237,.07);--bbd:rgba(124,58,237,.14);--h1:#3b0764;--h2:#7c3aed;--glow:rgba(124,58,237,.35)}
+[data-p=rose]{--ac:#e11d48;--acL:#ffe4e6;--acT:#be123c;--hdr:#fce4ec;--bbg:rgba(225,29,72,.07);--bbd:rgba(225,29,72,.14);--h1:#4c0519;--h2:#e11d48;--glow:rgba(225,29,72,.35)}
+[data-t=dark]{--bg:#0a0e1a;--card:#111827;--card2:#0f1525;--hdr:#1a2540;--row2:#0d1320;--t1:#e2e8f0;--t2:#94a3b8;--t3:#64748b;--bd:#1e2d4a;--ac:#60a5fa;--acL:rgba(96,165,250,.1);--acT:#93c5fd;--ok:#34d399;--okB:rgba(52,211,153,.1);--wn:#fbbf24;--wnB:rgba(251,191,36,.08);--rd:#f87171;--rdB:rgba(248,113,113,.08);--bbg:rgba(96,165,250,.08);--bbd:rgba(96,165,250,.16);--shS:0 1px 3px rgba(0,0,0,.3);--shM:0 4px 16px rgba(0,0,0,.4);--shL:0 10px 36px rgba(0,0,0,.5);--tbg:rgba(10,14,26,.94);--tgB:#1e293b;--tgK:#60a5fa;--cmpB:rgba(251,191,36,.06);--cmpD:rgba(251,191,36,.18);--h1:#1e3a8a;--h2:#3b82f6}
+[data-t=dark][data-p=ocean]{--ac:#2dd4bf;--acL:rgba(45,212,191,0.1);--acT:#5eead4;--bbg:rgba(45,212,191,.08);--bbd:rgba(45,212,191,.16);--hdr:#0f3b35;--h1:#0f766e;--h2:#14b8a6;--tgK:#2dd4bf}
+[data-t=dark][data-p=sunset]{--ac:#fb923c;--acL:rgba(251,146,60,0.1);--acT:#fdba74;--bbg:rgba(251,146,60,.08);--bbd:rgba(251,146,60,.16);--hdr:#3f1d0b;--h1:#9a3412;--h2:#ea580c;--tgK:#fb923c}
+[data-t=dark][data-p=violet]{--ac:#a78bfa;--acL:rgba(167,139,250,0.1);--acT:#c4b5fd;--bbg:rgba(167,139,250,.08);--bbd:rgba(167,139,250,.16);--hdr:#2a1b4e;--h1:#5b21b6;--h2:#8b5cf6;--tgK:#a78bfa}
+[data-t=dark][data-p=rose]{--ac:#fb7185;--acL:rgba(251,113,133,0.1);--acT:#fda4af;--bbg:rgba(251,113,133,.08);--bbd:rgba(251,113,133,.16);--hdr:#3f1422;--h1:#9f1239;--h2:#e11d48;--tgK:#fb7185}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{font-family:'DM Sans','Noto Sans KR',system-ui,sans-serif;background:var(--bg);color:var(--t1);line-height:1.7;transition:background .3s,color .3s}
+
+/* 臾댁?媛쒖깋 ?섏씠?쇰쭅???몃쾭 ?좊땲硫붿씠??*/
+@keyframes rainbow-text {
+  0% { color: #ef4444; } 14% { color: #f97316; } 28% { color: #eab308; }
+  42% { color: #22c55e; } 57% { color: #3b82f6; } 71% { color: #a855f7; }
+  85% { color: #ec4899; } 100% { color: #ef4444; }
+}
+a {color:var(--acT);text-decoration:none;font-weight:600;transition:all 0.2s;}
+a:hover {animation: rainbow-text 1.5s linear infinite !important; text-decoration:underline !important; font-weight:800;}
+
+/* 3,4,5 ??ぉ ?명꽣?숉떚釉?臾댁?媛??뚮몢由??몃쾭 ?④낵 */
+@keyframes rainbow-border {
+  0% { border-color: #ef4444; box-shadow: 0 8px 24px rgba(239,68,68,0.15); }
+  14% { border-color: #f97316; box-shadow: 0 8px 24px rgba(249,115,22,0.15); }
+  28% { border-color: #eab308; box-shadow: 0 8px 24px rgba(234,179,8,0.15); }
+  42% { border-color: #22c55e; box-shadow: 0 8px 24px rgba(34,197,94,0.15); }
+  57% { border-color: #3b82f6; box-shadow: 0 8px 24px rgba(59,130,246,0.15); }
+  71% { border-color: #a855f7; box-shadow: 0 8px 24px rgba(168,85,247,0.15); }
+  85% { border-color: #ec4899; box-shadow: 0 8px 24px rgba(236,72,153,0.15); }
+  100% { border-color: #ef4444; box-shadow: 0 8px 24px rgba(239,68,68,0.15); }
+}
+.interactive-card { transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease; border: 1px solid var(--bd); }
+.interactive-card:hover { transform: translateY(-4px); animation: rainbow-border 2s linear infinite; z-index: 10; position:relative; background-color: var(--card2); }
+
+/* vc-badge ?좊챸 VC 媛?곗젏 */
+.vc-badge{padding:.12rem .45rem;border-radius:4px;font-size:.6rem;font-weight:800;margin-right:.2rem;display:inline-block;letter-spacing:.02em;border:1px solid transparent}
+.vc-red{background:#ef4444;color:#fff;box-shadow:0 2px 6px rgba(239,68,68,.3);border-color:#dc2626}
+.vc-orange{background:#f97316;color:#fff;box-shadow:0 2px 6px rgba(249,115,22,.3);border-color:#ea580c}
+.vc-gold{background:#f59e0b;color:#000;box-shadow:0 2px 6px rgba(245,158,11,.3);border-color:#d97706}
+.vc-gray{background:#64748b;color:#fff;box-shadow:0 2px 6px rgba(100,116,139,.3);border-color:#475569}
+[data-t=dark] .vc-red{box-shadow:0 2px 8px rgba(239,68,68,.4)}
+[data-t=dark] .vc-orange{box-shadow:0 2px 8px rgba(249,115,22,.4)}
+[data-t=dark] .vc-gold{background:#fbbf24;box-shadow:0 2px 8px rgba(245,158,11,.4)}
+/* ?좊챸 VC ?뺤쓽 諛뺤뒪 */
+.vc-def{background:linear-gradient(135deg,rgba(239,68,68,.08),rgba(249,115,22,.06));border:1px solid rgba(239,68,68,.25);border-radius:var(--rs);padding:.5rem .8rem;margin-bottom:.6rem;font-size:.68rem;color:var(--t2);line-height:1.6}
+.vc-def strong{color:var(--rd);font-size:.7rem}
+[data-t=dark] .vc-def{background:linear-gradient(135deg,rgba(239,68,68,.12),rgba(249,115,22,.08));border-color:rgba(239,68,68,.35)}
+/* ?됯???湲곗뾽蹂??묎린 諛뺤뒪 */
+.eval-company{background:var(--card);border:1.5px solid var(--bd);border-radius:var(--r);margin-bottom:.6rem;overflow:hidden;transition:all .25s}
+.eval-company:hover{border-color:var(--ac);box-shadow:var(--shM)}
+.eval-company-hd{padding:.55rem .9rem;cursor:pointer;display:flex;align-items:center;justify-content:space-between;background:var(--hdr);user-select:none;transition:background .15s}
+.eval-company-hd:hover{background:var(--acL)}
+.eval-company-hd .ec-title{font-size:.82rem;font-weight:800;display:flex;align-items:center;gap:.5rem}
+.eval-company-hd .ec-meta{display:flex;align-items:center;gap:.4rem;flex-shrink:0}
+.eval-company-hd .ec-arr{font-size:.55rem;color:var(--t3);transition:transform .3s;margin-left:.3rem}
+.eval-company-hd .ec-arr.shut{transform:rotate(-90deg)}
+.eval-company-bd{overflow:hidden;max-height:1200px;transition:max-height .4s ease,opacity .3s,padding .3s}
+.eval-company-bd.shut{max-height:0!important;opacity:0}
+/* 3,4,5踰?諛뺤뒪 ?묎린 */
+.sec-box{background:var(--card);border:1px solid var(--bd);border-radius:var(--r);box-shadow:var(--shM);margin-bottom:.8rem;overflow:hidden}
+.sec-box-hd{padding:.6rem 1rem;cursor:pointer;display:flex;align-items:center;justify-content:space-between;background:var(--hdr);user-select:none;transition:background .15s}
+.sec-box-hd:hover{background:var(--acL)}
+[data-t=dark] .sec-box-hd:hover{background:rgba(96,165,250,.1)}
+.sec-box-hd h3{font-size:.82rem;font-weight:800;display:flex;align-items:center;gap:.4rem}
+.sec-box-hd .sb-arr{font-size:.55rem;color:var(--t3);transition:transform .3s}
+.sec-box-hd .sb-arr.shut{transform:rotate(-90deg)}
+.sec-box-bd{padding:.7rem .9rem;overflow:hidden;transition:max-height .4s ease,opacity .3s,padding .3s}
+.sec-box-bd.shut{max-height:0!important;padding-top:0;padding-bottom:0;opacity:0}
+/* 6踰?湲곗???諛뺤뒪 ?묎린 */
+.crit-group{background:var(--card);border:1.5px solid var(--bd);border-radius:var(--r);margin-bottom:.5rem;overflow:hidden;transition:all .25s}
+.crit-group:hover{border-color:var(--ac);box-shadow:var(--shM)}
+.crit-group-hd{padding:.5rem .8rem;cursor:pointer;display:flex;align-items:center;background:var(--hdr);user-select:none;transition:background .2s;gap:.3rem}
+.crit-group-hd:hover{background:color-mix(in srgb,var(--cg,var(--ac)) 12%,var(--hdr))}
+[data-t=dark] .crit-group-hd:hover{background:color-mix(in srgb,var(--cg,var(--ac)) 18%,var(--hdr))}
+.crit-group-hd strong{font-size:.78rem;font-weight:800;color:var(--acT)}
+.crit-group-hd .cg-arr{font-size:.55rem;color:var(--t3);transition:transform .3s}
+.crit-group-hd .cg-arr.shut{transform:rotate(-90deg)}
+.crit-group-bd{overflow:hidden;transition:max-height .5s ease,opacity .3s}
+.crit-group-bd.shut{max-height:0!important;opacity:0}
+/* ???뱀뀡 pc-box ?묎린/?쇱튂湲?*/
+.pc-coll .pc-h{display:flex;align-items:center;transition:background .18s}
+.pc-coll:hover .pc-h{background:var(--acL)}
+[data-t=dark] .pc-coll:hover .pc-h{background:rgba(96,165,250,.1)}
+.pc-b-shut{max-height:0!important;overflow:hidden;padding-top:0!important;padding-bottom:0!important;opacity:0;transition:max-height .4s ease,opacity .3s,padding .3s}
+.pc-b{max-height:2000px;overflow:hidden;transition:max-height .4s ease,opacity .3s,padding .3s;opacity:1}
+.hl-key{background:rgba(239,68,68,.15);color:var(--rd);padding:0 3px;border-radius:3px;font-weight:800}
+[data-t=dark] .hl-key{background:rgba(248,113,113,.18)}
+/* 1踰??뱀뀡 td-d ?묎린 transition */
+.td-d{transition:max-height .35s ease,opacity .25s,padding .25s;overflow:hidden}
+/* pc-box: 4踰??뱀뀡 湲곗뾽蹂??묎린/?쇱튂湲?而щ윭 諛뺤뒪 */
+.pc-box{background:var(--card);border:2px solid var(--bd);border-radius:var(--r);margin-bottom:.5rem;overflow:hidden;transition:border-color .2s,box-shadow .2s;cursor:pointer}
+.pc-box:hover{border-color:var(--hc,var(--ac));box-shadow:0 4px 20px rgba(0,0,0,.18),0 0 0 1px var(--hc,var(--ac))}
+.pc-box-hd{display:flex;align-items:center;gap:.45rem;padding:.5rem .85rem;background:var(--hdr);user-select:none;transition:background .18s}
+.pc-box:hover .pc-box-hd{background:color-mix(in srgb,var(--hc,var(--ac)) 12%,var(--hdr))}
+[data-t=dark] .pc-box:hover .pc-box-hd{background:color-mix(in srgb,var(--hc,var(--ac)) 18%,var(--hdr))}
+.pc-box-ico{width:18px;height:18px;border-radius:50%;background:var(--hc,var(--ac));color:#fff;font-size:.6rem;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.pc-box-hd b{font-size:.8rem;font-weight:800;color:var(--t1)}
+.pc-box-arr{margin-left:auto;font-size:.55rem;color:var(--t3);transition:transform .3s}
+.pc-box-arr.shut{transform:rotate(-90deg)}
+.pc-box-bd{padding:.6rem .9rem .7rem;overflow:hidden;max-height:800px;transition:max-height .4s ease,opacity .3s,padding .3s;font-size:.7rem;color:var(--t2);line-height:1.6}
+.pc-box-bd.shut{max-height:0;padding-top:0;padding-bottom:0;opacity:0}
+/* rf-box: Red Flag ?뚯튂 由ъ뒪??諛뺤뒪 */
+.rf-box{background:var(--card);border:1.5px solid var(--bd);border-radius:var(--r);overflow:hidden;transition:border-color .2s,box-shadow .2s,transform .15s;cursor:pointer}
+.rf-box:hover{transform:translateY(-2px);box-shadow:var(--shM)}
+.rf-hd{display:flex;align-items:center;gap:.45rem;padding:.45rem .75rem;user-select:none;font-size:.75rem;font-weight:800;transition:background .18s}
+.rf-ico{font-size:.85rem}
+.rf-hd b{flex:1;color:var(--t1)}
+.rf-arr{font-size:.52rem;color:var(--t3);transition:transform .3s}
+.rf-arr.shut{transform:rotate(-90deg)}
+.rf-bd{padding:.5rem .75rem .6rem;overflow:hidden;max-height:600px;transition:max-height .4s ease,opacity .3s,padding .3s;color:var(--t2);line-height:1.6}
+.rf-bd.shut{max-height:0;padding-top:0;padding-bottom:0;opacity:0}
+/* rf-box ?됱긽 ?뚮쭏蹂?*/
+.rf-blue{border-color:rgba(59,130,246,.3)}.rf-blue:hover{border-color:#3b82f6}.rf-blue .rf-hd{background:rgba(59,130,246,.1)}.rf-blue:hover .rf-hd{background:rgba(59,130,246,.18)}
+.rf-green{border-color:rgba(16,185,129,.3)}.rf-green:hover{border-color:#10b981}.rf-green .rf-hd{background:rgba(16,185,129,.1)}.rf-green:hover .rf-hd{background:rgba(16,185,129,.18)}
+.rf-violet{border-color:rgba(139,92,246,.3)}.rf-violet:hover{border-color:#8b5cf6}.rf-violet .rf-hd{background:rgba(139,92,246,.1)}.rf-violet:hover .rf-hd{background:rgba(139,92,246,.18)}
+.rf-amber{border-color:rgba(245,158,11,.3)}.rf-amber:hover{border-color:#f59e0b}.rf-amber .rf-hd{background:rgba(245,158,11,.1)}.rf-amber:hover .rf-hd{background:rgba(245,158,11,.18)}
+.rf-red{border-color:rgba(239,68,68,.3)}.rf-red:hover{border-color:#ef4444}.rf-red .rf-hd{background:rgba(239,68,68,.1)}.rf-red:hover .rf-hd{background:rgba(239,68,68,.18)}
+.rf-cyan{border-color:rgba(6,182,212,.3)}.rf-cyan:hover{border-color:#06b6d4}.rf-cyan .rf-hd{background:rgba(6,182,212,.1)}.rf-cyan:hover .rf-hd{background:rgba(6,182,212,.18)}
+.rf-purple{border-color:rgba(168,85,247,.3)}.rf-purple:hover{border-color:#a855f7}.rf-purple .rf-hd{background:rgba(168,85,247,.1)}.rf-purple:hover .rf-hd{background:rgba(168,85,247,.18)}
+.rf-orange{border-color:rgba(249,115,22,.3)}.rf-orange:hover{border-color:#f97316}.rf-orange .rf-hd{background:rgba(249,115,22,.1)}.rf-orange:hover .rf-hd{background:rgba(249,115,22,.18)}
+[data-t=dark] .rf-box:hover{box-shadow:0 4px 20px rgba(0,0,0,.4)}
+b, strong { color: var(--t1); font-weight: 800; }
+.hl { background: linear-gradient(transparent 60%, rgba(251, 191, 36, 0.35) 60%); font-weight: 800; color: var(--t1); padding: 0 2px; }
+[data-t=dark] .hl { background: linear-gradient(transparent 60%, rgba(251, 191, 36, 0.25) 60%); }
+.red-w { color: var(--rd); font-weight: 800; }
+.ok-w { color: var(--ok); font-weight: 800; }
+.pur-w { color: #7c3aed; font-weight: 800; }
+[data-t=dark] .pur-w { color: #a78bfa; }
+.dim { color: var(--t1); font-weight: 500; }
+
+/* ?쒖젏 ?쒓렇 */
+.tm { display: inline-block; background: var(--bbg); border: 1px solid var(--bbd); color: var(--acT); font-size: 0.62rem; font-weight: 700; padding: 0.05rem 0.35rem; border-radius: 4px; margin-left: 0.2rem; white-space: nowrap; }
+.tm-ok { background: var(--okB); border-color: var(--ok); color: var(--ok); }
+.tm-wn { background: var(--wnB); border-color: var(--wn); color: var(--wn); }
+
+/* 寃쎌웳??諛뺤뒪 */
+.cmp-box { background: var(--card); border: 1.5px solid var(--bd); border-radius: 8px; padding: 0.55rem 0.65rem; margin-bottom: 0.5rem; transition: all 0.2s; box-shadow: var(--shS); }
+.cmp-box:last-child { margin-bottom: 0; }
+.cmp-box:hover { border-color: var(--wn); box-shadow: 0 4px 14px rgba(217, 119, 6, 0.15); transform: translateX(2px); }
+.cmp-box .c-name { font-size: 0.74rem; font-weight: 800; display: block; margin-bottom: 0.3rem; color: var(--t1); }
+.cmp-box .c-str { color: var(--ok); font-size: 0.65rem; font-weight: 700; display: block; margin-top: 4px; padding-left: 0.7rem; position: relative; line-height: 1.5; }
+.cmp-box .c-str::before { content: '??媛뺤젏'; position: absolute; left: -0.1rem; top: 0; font-size: 0.58rem; font-weight: 800; }
+.cmp-box .c-str { padding-top: 0.9rem; }
+.cmp-box .c-wk { color: var(--rd); font-size: 0.65rem; font-weight: 700; display: block; margin-top: 6px; padding-left: 0.7rem; position: relative; padding-top: 0.9rem; line-height: 1.5; }
+.cmp-box .c-wk::before { content: '???쎌젏'; position: absolute; left: -0.1rem; top: 0; font-size: 0.58rem; font-weight: 800; }
+.cmp-box .c-dim { color: var(--t1); font-weight: 500; }
+
+/* ?몄궗?댄듃 而щ읆 */
+.insight-col { background: linear-gradient(135deg, rgba(37,99,235,0.04), rgba(124,58,237,0.04)); border-left: 3px solid var(--ac); padding: 0.4rem 0.5rem; border-radius: 0 6px 6px 0; }
+[data-t=dark] .insight-col { background: linear-gradient(135deg, rgba(96,165,250,0.07), rgba(167,139,250,0.07)); }
+.insight-col .ins-ttl { font-size: 0.64rem; font-weight: 800; color: var(--ok); margin-bottom: 0.15rem; display: block; letter-spacing: 0.02em; }
+.insight-col .ins-ttl.chk { color: var(--wn); margin-top: 0.4rem; }
+.insight-col .ins-li { font-size: 0.68rem; line-height: 1.55; color: var(--t2); padding-left: 0.7rem; position: relative; margin-bottom: 0.12rem; }
+.insight-col .ins-li::before { content: '쨌'; position: absolute; left: 0.1rem; font-weight: 900; color: var(--ac); }
+
+/* 遺덈젢 由ъ뒪??媛쒖꽑 */
+.bul-list { list-style: none; padding: 0; margin: 0; }
+.bul-list li { padding-left: 0.9rem; position: relative; margin-bottom: 0.35rem; line-height: 1.55; }
+.bul-list li::before { content: '??; position: absolute; left: 0.05rem; top: 0; color: var(--ac); font-weight: 800; }
+.bul-list li:last-child { margin-bottom: 0; }
+
+/* ?몃젋???뱀뀡 */
+.trend-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 0.7rem; }
+.trend-card { background: var(--card); border: 1px solid var(--bd); border-radius: 10px; padding: 0.75rem 0.9rem; transition: all 0.25s; }
+.trend-card:hover { border-color: var(--ac); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.08); }
+.trend-card .tr-t { font-size: 0.72rem; font-weight: 800; color: var(--acT); margin-bottom: 0.35rem; display: flex; align-items: center; gap: 0.35rem; }
+.trend-card .tr-d { font-size: 0.68rem; line-height: 1.6; color: var(--t2); }
+
+/* BM ?곸꽭 釉붾줉 */
+.bm-detail { background: var(--card2); border-radius: 6px; padding: 0.4rem 0.55rem; margin-top: 0.3rem; border-left: 2px solid var(--ok); }
+.bm-detail .bm-line { font-size: 0.66rem; line-height: 1.55; color: var(--t2); padding-left: 0.75rem; position: relative; margin-bottom: 0.15rem; }
+.bm-detail .bm-line::before { content: '$'; position: absolute; left: 0; color: var(--ok); font-weight: 800; font-size: 0.62rem; }
+.bm-detail .bm-line:last-child { margin-bottom: 0; }
+
+.tb{position:sticky;top:0;z-index:200;background:var(--tbg);backdrop-filter:blur(16px);border-bottom:1px solid var(--bd);padding:.4rem 1.4rem;display:flex;align-items:center;justify-content:flex-end;gap:.6rem;flex-wrap:wrap}
+.tg{display:flex;align-items:center;gap:.3rem}.tl{font-size:.63rem;font-weight:700;color:var(--t3);text-transform:uppercase;letter-spacing:.1em}
+.pb{width:18px;height:18px;border-radius:50%;border:2px solid transparent;cursor:pointer;transition:all .2s}.pb:hover{transform:scale(1.2);box-shadow:0 0 10px var(--glow)}.pb.on{border-color:var(--t1);box-shadow:0 0 0 2px var(--bg),0 0 0 4px var(--t3)}
+.pb[data-c=default]{background:linear-gradient(135deg,#2563eb,#60a5fa)}.pb[data-c=ocean]{background:linear-gradient(135deg,#0d9488,#2dd4bf)}.pb[data-c=sunset]{background:linear-gradient(135deg,#ea580c,#fb923c)}.pb[data-c=violet]{background:linear-gradient(135deg,#7c3aed,#a78bfa)}.pb[data-c=rose]{background:linear-gradient(135deg,#e11d48,#fb7185)}
+.dv{width:1px;height:16px;background:var(--bd)}.tt{display:flex;align-items:center;gap:.3rem;cursor:pointer;user-select:none}.tt svg{width:13px;height:13px;fill:var(--t3)}.tk{width:32px;height:16px;border-radius:999px;background:var(--tgB);position:relative}.kn{width:12px;height:12px;border-radius:50%;background:var(--tgK);position:absolute;top:2px;left:2px;transition:transform .3s,background .3s}[data-t=dark] .kn{transform:translateX(16px);background:#60a5fa}
+.nav{position:sticky;top:35px;z-index:150;background:var(--tbg);backdrop-filter:blur(16px);border-bottom:1px solid var(--bd);padding:.3rem 1rem;display:flex;gap:.2rem;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.nav a{font-size:.68rem;font-weight:700;padding:.25rem .55rem;border-radius:999px;white-space:nowrap;border:1px solid var(--bd);background:var(--card);color:var(--t2);transition:all .2s;text-decoration:none;flex-shrink:0}.nav a:hover,.nav a.on{background:var(--ac);color:#fff;border-color:var(--ac);text-decoration:none;animation:none !important;}
+main{width:min(1600px,calc(100% - 1.5rem));margin:0 auto;padding:.8rem 0 2rem}
+.hero{background:linear-gradient(135deg,var(--h1),var(--h2));border-radius:var(--r);padding:1.2rem 1.6rem 1rem;color:#fff;box-shadow:var(--shL);margin-bottom:.8rem;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-50%;right:-8%;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.05),transparent 70%)}
+.hero h1{font-size:1.2rem;font-weight:800;letter-spacing:-.3px;margin-bottom:.2rem}.hero>p{font-size:.76rem;color:rgba(255,255,255,.7);line-height:1.5}
+.hc{display:flex;flex-wrap:wrap;gap:.25rem;margin-bottom:.3rem}.ch{font-size:.63rem;font-weight:700;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);padding:.1rem .45rem;border-radius:999px;color:rgba(255,255,255,.85)}
+.ss{display:flex;flex-wrap:wrap;gap:.25rem;margin-top:.4rem}.sd{font-size:.6rem;font-weight:700;padding:.1rem .4rem;border-radius:5px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.65);transition:background .2s}.sd:hover{background:rgba(255,255,255,.15)}.sd.now{background:rgba(255,255,255,.25);border-color:rgba(255,255,255,.45);color:#fff}.sd-link{cursor:pointer}.sd-link:hover{background:rgba(255,255,255,.3)!important;color:#fff!important;border-color:rgba(255,255,255,.6)!important}
+.cd{background:var(--card);border:1px solid var(--bd);border-radius:var(--r);box-shadow:var(--shM);overflow:hidden;margin-bottom:.8rem}.cd:hover{box-shadow:var(--shL)}
+.ch2{padding:.65rem 1.1rem .5rem;border-bottom:1px solid var(--bd);display:flex;align-items:flex-start;justify-content:space-between;cursor:pointer;user-select:none;transition:background .15s}.ch2:hover{background:var(--card2)}.ch2 h2{font-size:.88rem;font-weight:800}.ch2 p{font-size:.68rem;color:var(--t3);margin-top:.08rem}.ch2 .arr{color:var(--t3);font-size:.6rem;transition:transform .3s;margin-top:3px;flex-shrink:0}.ch2 .arr.shut{transform:rotate(-90deg)}
+.cb{padding:.6rem 1.1rem;overflow:hidden;transition:max-height .4s ease,opacity .3s,padding .3s}.cb.shut{max-height:0!important;padding-top:0;padding-bottom:0;opacity:0}
+.tw{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:var(--rs)}
+table{width:100%;border-collapse:separate;border-spacing:0;font-size:.74rem}
+th{background:var(--hdr);color:var(--t1);padding:.45rem .4rem;text-align:left;border-bottom:2px solid var(--bd);font-weight:800;font-size:.62rem;text-transform:uppercase;letter-spacing:.04em;white-space:nowrap;position:sticky;top:0;z-index:2}
+td{padding:.4rem;border-bottom:1px solid var(--bd);vertical-align:top}tbody tr:nth-child(even) td{background:var(--row2)}tbody tr{transition:background .12s}tbody tr:hover td{background:var(--acL)!important}
+.bg{display:inline-block;font-size:.62rem;font-weight:700;padding:.08rem .35rem;border-radius:5px}.bg-ok{background:var(--okB);color:var(--ok)}.bg-wn{background:var(--wnB);color:var(--wn)}.bg-rd{background:var(--rdB);color:var(--rd)}.bg-ac{background:var(--bbg);color:var(--ac);border:1px solid var(--bbd)}
+.rk{background:var(--ac);color:#fff;font-size:.66rem;font-weight:800;padding:.12rem .4rem;border-radius:6px;display:inline-block}
+.td-d{font-size:.72rem;line-height:1.55}.cl{font-size:.84rem;border-bottom:2px solid transparent}
+.ns{font-size:.66rem;color:var(--t2);margin:0;padding:0;list-style:none;}
+.ns li { margin-bottom: 0.35rem; }
+.ns a { display:block; padding:.35rem .45rem; background:var(--card); border:1px solid var(--bd); border-radius:5px; line-height:1.5; color:var(--t2); transition:all 0.2s; position:relative; padding-left: 1.1rem; text-decoration:none !important;}
+.ns a::before { content:'쨌'; position:absolute; left:0.4rem; font-weight:900; color:var(--ac); }
+.ns a:hover { border-color:var(--ac); box-shadow:0 3px 12px rgba(0,0,0,0.06); background:var(--card2); color:var(--t1); transform: translateY(-1px);}
+.cmp{background:var(--cmpB)!important;border-left:2px solid var(--cmpD)}.ci{margin-bottom:.6rem;font-size:.68rem;line-height:1.55;padding-left:.55rem;position:relative}.ci::before{content:'';position:absolute;left:0;top:6px;width:4px;height:4px;border-radius:50%;background:var(--wn)}.ci:last-child{margin-bottom:0}
+.c-str { color: var(--ok); font-size: 0.62rem; font-weight: 700; display: block; margin-top:4px; }
+.c-wk { color: var(--rd); font-size: 0.62rem; font-weight: 700; display: block; margin-top:2px; }
+.sh{font-size:.64rem;color:var(--t3);padding:.2rem 1.1rem;display:flex;align-items:center;gap:.2rem}.sh svg{width:11px;height:11px;fill:var(--t3)}
+.et{min-width:920px;font-size:.72rem}.et th,.et td{text-align:center;padding:.4rem .3rem}.et .cc{text-align:left;font-weight:700;min-width:100px}.et .ct{font-weight:800;font-size:.9rem;color:var(--acT)}.et .ct.z{color:var(--rd);text-decoration:line-through;opacity:.4}.et .zv{color:var(--rd);font-weight:900;font-size:.78rem}
+.zg{background:var(--rdB);border:1px solid var(--rd);border-radius:var(--rs);padding:.4rem .7rem;margin-bottom:.4rem;font-size:.7rem;color:var(--rd);line-height:1.4}.zg strong{font-weight:800}
+.gb{display:inline-flex;align-items:center;gap:.2rem;cursor:pointer;font-size:.65rem;font-weight:700;padding:.08rem .35rem;border-radius:4px;border:1px solid var(--bd);background:var(--card);color:var(--t1);transition:all .2s;margin:0 .08rem}.gb:hover{border-color:var(--ac);background:var(--acL)}.gb.on{background:var(--rdB);border-color:var(--rd);color:var(--rd)}
+.crt{min-width:800px;font-size:.69rem}.crt th{padding:.32rem .3rem;text-align:left;font-size:.6rem}.crt td{padding:.25rem .3rem}.crt .ec{background:var(--acL)!important;color:var(--acT);font-weight:800;padding:.35rem .4rem!important;font-size:.68rem}
+.pg{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:.6rem}
+.pc{background:var(--card);border-radius:var(--r);overflow:hidden;}
+.pc-h{padding:.5rem .8rem;background:var(--hdr);border-bottom:1px solid var(--bd);display:flex;align-items:center;justify-content:space-between}.pc-h h3{font-size:.85rem;font-weight:800;display:flex;align-items:center;gap:.3rem}
+.pc-b{padding:.6rem .8rem}.pc-s{font-size:.74rem;font-weight:800;color:var(--acT);margin-bottom:.3rem;margin-top:.45rem}.pc-s:first-child{margin-top:0}
+.pc-l{font-size:.72rem;line-height:1.6;color:var(--t2)}.pc-l div{padding-left:.65rem;position:relative;margin-bottom:.15rem}.pc-l div::before{content:'쨌';position:absolute;left:0;font-weight:800;color:var(--ac)}
+.is{background:var(--card);border-radius:var(--r);padding:.8rem 1.1rem;margin-bottom:.8rem}.is h2{font-size:.88rem;font-weight:800;margin-bottom:.5rem}
+.pt{font-size:.74rem;line-height:1.65;color:var(--t2);margin-bottom:.35rem;padding:.35rem .55rem;border-left:3px solid var(--ac);background:var(--card2);border-radius:0 var(--rs) var(--rs) 0}.pt strong{color:var(--acT)}
+.ml{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:.45rem;margin-top:.5rem}
+.mi{background:var(--card2);border-radius:var(--rs);padding:.45rem .65rem;font-size:.72rem;display:flex;gap:.35rem;align-items:flex-start;line-height:1.55;}
+.dt{width:5px;height:5px;border-radius:50%;background:var(--ac);margin-top:7px;flex-shrink:0}
+.md-item{padding:.55rem .75rem;background:var(--card);margin-bottom:.45rem;font-size:.74rem;line-height:1.6;color:var(--t2)}
+.logic-row td { background: var(--card2) !important; border-bottom: 1px solid var(--bd) !important; padding: 0.6rem 0.9rem !important; text-align: left; font-size: 0.69rem; color: var(--t2); line-height: 1.6; }
+.logic-row p { margin-bottom: 0.35rem; }
+.logic-row p:last-child { margin-bottom: 0; }
+footer{margin-top:.6rem;padding:.5rem 1.1rem;font-size:.66rem;color:var(--t3);text-align:center}
+@media(max-width:768px){main{width:calc(100% - .5rem)}.hero{padding:.9rem .7rem .7rem;border-radius:var(--rs)}.hero h1{font-size:1rem}.tb{padding:.3rem .5rem}.nav{padding:.25rem .5rem;top:32px}.pg{grid-template-columns:1fr}}
+
+</style>
+</head>
+<body data-t="light" data-p="default">
+<div class="tb">
+  <div style="font-size:0.66rem; font-weight:800; color:var(--t1); background:linear-gradient(135deg, var(--bbg), rgba(124,58,237,0.08)); border:1px solid var(--bbd); padding:0.2rem 0.55rem; border-radius:6px; margin-right:auto;">⏱ <span class="h-word">&#39;26.4.17 (금) 21:06 기준</span></div>
+  <div class="tg"><span class="tl">팔레트</span>
+    <button class="pb on" data-c="default" onclick="sp('default')"></button>
+    <button class="pb" data-c="ocean" onclick="sp('ocean')"></button>
+    <button class="pb" data-c="sunset" onclick="sp('sunset')"></button>
+    <button class="pb" data-c="violet" onclick="sp('violet')"></button>
+    <button class="pb" data-c="rose" onclick="sp('rose')"></button>
+  </div>
+  <div class="dv"></div>
+  <div class="tt" onclick="dt()"><svg viewBox="0 0 24 24"><path d="M21.75 15.5A9 9 0 0 1 8.5 2.25 9 9 0 1 0 21.75 15.5Z"/></svg><div class="tk"><div class="kn"></div></div></div>
+</div>
+<nav class="nav">
+  <a href="#sec-list">① 스타트업 리스트</a>
+  <a href="#sec-eval">② 평가표</a>
+  <a href="#sec-partner">③ 파트너십</a>
+  <a href="#sec-insight">④ 투자 인사이트</a>
+  <a href="#sec-market">⑤ 시장·M&A·트렌드</a>
+  <a href="#sec-criteria">⑥ 채점 기준</a>
+</nav>
+<main>
+  <section class="hero">
+    <div class="hc"><span class="ch">광고 AI</span>
+<span class="ch">모바일 광고 기술/서비스</span>
+<span class="ch">AdTech</span>
+<span class="ch">SDK &#183; DSP &#183; Retargeting</span>
+<span class="ch">퍼포먼스 마케팅</span></div>
+    <h1>모바일 광고 AI 스타트업 모니터링</h1>
+    <p>광고 AI, 모바일 광고 기술&#183;서비스, 앱 수익화와 UA 자동화 영역에서 현재도 독립 운영 중인 모바일 ad-tech 스타트업 중심으로 다시 정리한 페이지입니다. 416 템플릿의 형식은 유지하고, 기업&#183;시장&#183;점수 체계만 광고 AI 축에 맞게 교체했습니다.</p>
+    <div class="ss"><span class="sd now">1 — 광고 AI / 모바일 광고 기술&#183;서비스</span>
+<a class="sd sd-link" href="https://dicacros-gif.github.io/AI/2" target="_blank" rel="noopener">2 — 모바일 AI 개인화 추천 / On-device 데이터 분석</a>
+<a class="sd sd-link" href="https://dicacros-gif.github.io/AI/416" target="_blank" rel="noopener">416 — 모바일 AI Agent 템플릿</a></div>
+  </section>
+
+  <div class="cd" id="sec-list">
+    <div class="ch2" onclick="tc(this)"><div><h2>① 광고 AI &#183; 모바일 광고 기술/서비스 스타트업 리스트 8선</h2><p>모바일 광고 집행, SDK 수익화, 리타게팅, 퍼블리셔 인프라를 기준으로 재정렬</p></div><span class="arr">▼</span></div>
+    <div class="sh"><svg viewBox="0 0 24 24"><path d="M10.05 4.575a1.575 1.575 0 1 0-3.15 0v5.85h-.177a.473.473 0 0 0-.473.473c0 .842.224 1.67.648 2.398l1.674 3.014A3 3 0 0 0 11.2 18H16.8a3 3 0 0 0 2.625-1.547l1.674-3.014c.424-.728.648-1.556.648-2.398a.473.473 0 0 0-.473-.473h-.177V6.575a1.575 1.575 0 0 0-3.15 0v3.85h-1.05V5.075a1.575 1.575 0 0 0-3.15 0v5.35h-1.05V4.575z"/></svg>좌우 스크롤 · 회사별 요약 클릭 시 세부 문장이 접힙니다</div>
+    <div class="cb">
+      <div class="tw" id="tw">
+        <table style="min-width:1700px">
+          <thead>
+            <tr>
+              <th>Rank</th><th>기업</th><th>핵심 기술/서비스</th><th>설립·본사</th><th>투자·가치</th><th>상용화 신호</th><th>폴더 분류 근거</th><th>핵심 논리</th><th>출처</th><th>주요 경쟁사</th>
+            </tr>
+          </thead>
+          <tbody>
+<tr class="tr-main" data-open="1" onclick="toggleRow('Appodeal', this)">
+  <td><span class="rk">1</span></td>
+  <td>
+    <div style="display:flex; align-items:center; gap:.35rem; flex-wrap:wrap;">
+      <a href="https://appodeal.com/" target="_blank" rel="noopener"><strong>Appodeal</strong></a>
+      <span class="bg bg-ac">Mediation / Monetization</span>
+      <span class="tr-arr cl">▼</span>
+    </div>
+    <div class="td-d" style="margin-top:.35rem;">퍼블리셔의 광고 수익 최적화와 UA 운영 자동화를 동시에 잡는 앱 중심 ad-tech 운영체계</div>
+  </td>
+  <td><div class="td-d">모바일 앱 수익화, mediation, bidding, UA 운영 도구를 함께 제공하는 모바일 광고 인프라</div></td>
+  <td>
+    <div class="td-d"><strong>설립</strong> 2014</div>
+    <div class="td-d"><strong>본사</strong> McLean, Virginia, US</div>
+  </td>
+  <td>
+    <div class="td-d"><strong>투자</strong> 2018 공개 라운드 $8M, 이후 신규 공개 라운드 확인 어려움</div>
+    <div class="td-d"><strong>가치</strong> 비공개</div>
+  </td>
+  <td><div class="td-d">Pixalate 2025 기준 상위권 모바일 광고 SDK 그룹에 포함</div></td>
+  <td><div class="td-d">광고 네트워크가 아니라 모바일 앱 수익화와 광고 최적화 엔진이 핵심이므로 폴더 1</div></td>
+  <td>
+    <div class="td-d">퍼블리셔와 광고주 양면을 연결하는 모바일 수익화 인프라다. mediation, bidding, analytics를 묶어 제공해 SDK 락인이 생기고, 인수 후보로도 해석하기 쉽다.</div>
+    <div class="td-d" style="margin-top:.35rem;"><span class="tm">독립성</span> 독립 운영. 최근 인수 완료 공시는 확인되지 않음.</div>
+  </td>
+  <td><ul class="ns"><li><a href="https://appodeal.com/" target="_blank" rel="noopener">공식 사이트</a></li><li><a href="https://venturebeat.com/marketing/appodeal-raises-8-million-for-transparent-mobile-ad-monetization/" target="_blank" rel="noopener">VentureBeat - 2018 funding</a></li></ul></td>
+  <td><ul class="ns"><li><a href="https://www.applovin.com/max/" target="_blank" rel="noopener">AppLovin MAX</a></li><li><a href="https://unity.com/products/levelplay" target="_blank" rel="noopener">Unity LevelPlay</a></li></ul></td>
+</tr>
+<tr class="tr-main" data-open="1" onclick="toggleRow('Adikteev', this)">
+  <td><span class="rk">2</span></td>
+  <td>
+    <div style="display:flex; align-items:center; gap:.35rem; flex-wrap:wrap;">
+      <a href="https://www.adikteev.com/" target="_blank" rel="noopener"><strong>Adikteev</strong></a>
+      <span class="bg bg-ac">Retargeting / Creative AI</span>
+      <span class="tr-arr cl">▼</span>
+    </div>
+    <div class="td-d" style="margin-top:.35rem;">광고 집행보다 churn 예측과 리인게이지먼트 자동화에 더 무게가 실린 모바일 퍼포먼스 엔진</div>
+  </td>
+  <td><div class="td-d">모바일 앱 리인게이지먼트, churn 기반 bidding, 크리에이티브 최적화에 강한 모바일 광고 서비스</div></td>
+  <td>
+    <div class="td-d"><strong>설립</strong> 2012</div>
+    <div class="td-d"><strong>본사</strong> Paris, France</div>
+  </td>
+  <td>
+    <div class="td-d"><strong>투자</strong> 2018 Series B $12M 공개, 2025 minority investment/MBO 공시</div>
+    <div class="td-d"><strong>가치</strong> 비공개</div>
+  </td>
+  <td><div class="td-d">2024 gross sales 약 €90M, 2017~2024 약 60% CAGR 공시</div></td>
+  <td><div class="td-d">리텐션과 리타게팅 중심의 모바일 광고 실행사이자 기술 사업자라 폴더 1</div></td>
+  <td>
+    <div class="td-d">ATT 이후 리타게팅이 어려워진 시장에서 churn signal과 creative refresh를 함께 제공하는 것이 차별점이다. 광고 AI가 실제 매출로 이어지는 구조가 비교적 선명하다.</div>
+    <div class="td-d" style="margin-top:.35rem;"><span class="tm">독립성</span> 독립 운영 유지. 2025 minority investment는 있었지만 완전 인수 완료 공시는 아님.</div>
+  </td>
+  <td><ul class="ns"><li><a href="https://www.adikteev.com/" target="_blank" rel="noopener">공식 사이트</a></li><li><a href="https://www.agila-capital.com/news/agilacapital-leads-a-minority-investment-in-adikteev-a-prominent-provider-of-performance-growth-solutions-for-mobile-apps-publishers" target="_blank" rel="noopener">Agila Capital - 2025 minority investment</a></li></ul></td>
+  <td><ul class="ns"><li><a href="https://www.remerge.io/" target="_blank" rel="noopener">Remerge</a></li><li><a href="https://www.moloco.com/" target="_blank" rel="noopener">Moloco Ads</a></li></ul></td>
+</tr>
+<tr class="tr-main" data-open="1" onclick="toggleRow('Kayzen', this)">
+  <td><span class="rk">3</span></td>
+  <td>
+    <div style="display:flex; align-items:center; gap:.35rem; flex-wrap:wrap;">
+      <a href="https://kayzen.io/about" target="_blank" rel="noopener"><strong>Kayzen</strong></a>
+      <span class="bg bg-ac">Mobile DSP</span>
+      <span class="tr-arr cl">▼</span>
+    </div>
+    <div class="td-d" style="margin-top:.35rem;">모바일 광고주가 직접 운용하거나 인하우스할 수 있게 만든 자동화 DSP</div>
+  </td>
+  <td><div class="td-d">모바일 퍼포먼스 마케팅, UA, retargeting, campaign automation에 초점을 둔 mobile-first DSP</div></td>
+  <td>
+    <div class="td-d"><strong>설립</strong> 2019</div>
+    <div class="td-d"><strong>본사</strong> Berlin, Germany</div>
+  </td>
+  <td>
+    <div class="td-d"><strong>투자</strong> 2019 late seed $4M+ 공개, 이후 신규 공개 라운드 확인 어려움</div>
+    <div class="td-d"><strong>가치</strong> 비공개</div>
+  </td>
+  <td><div class="td-d">230B+ daily ad requests, 1.9B+ unique users, 1B+ ads/day 공개</div></td>
+  <td><div class="td-d">순수 모바일 DSP 성격이 강하고 광고 집행 자동화가 핵심이므로 폴더 1</div></td>
+  <td>
+    <div class="td-d">채널 집행을 API와 대시보드로 통합하는 구조라 모바일 광고주와 에이전시 양쪽에서 모두 읽힌다. 향후 인하우스 UA 툴킷 수요가 커질수록 가치가 높아질 수 있다.</div>
+    <div class="td-d" style="margin-top:.35rem;"><span class="tm">독립성</span> 독립 운영. Affle/YouAppi 계열처럼 이미 그룹 편입된 상태는 아님.</div>
+  </td>
+  <td><ul class="ns"><li><a href="https://kayzen.io/about" target="_blank" rel="noopener">공식 소개</a></li><li><a href="https://kayzen.io/blog/programmatic-in-housing-onwards-and-upwards-with-our-4m-funding-round" target="_blank" rel="noopener">Kayzen - funding round</a></li></ul></td>
+  <td><ul class="ns"><li><a href="https://www.thetradedesk.com/" target="_blank" rel="noopener">The Trade Desk</a></li><li><a href="https://smadex.com/" target="_blank" rel="noopener">Smadex</a></li></ul></td>
+</tr>
+<tr class="tr-main" data-open="1" onclick="toggleRow('Remerge', this)">
+  <td><span class="rk">4</span></td>
+  <td>
+    <div style="display:flex; align-items:center; gap:.35rem; flex-wrap:wrap;">
+      <a href="https://www.remerge.io/" target="_blank" rel="noopener"><strong>Remerge</strong></a>
+      <span class="bg bg-ac">Retargeting DSP</span>
+      <span class="tr-arr cl">▼</span>
+    </div>
+    <div class="td-d" style="margin-top:.35rem;">ATT 이후에도 살아남은 프라이버시 친화형 모바일 리타게팅 플레이어</div>
+  </td>
+  <td><div class="td-d">모바일 리타게팅, 재참여 캠페인, incrementality 측정을 내세우는 privacy-first DSP</div></td>
+  <td>
+    <div class="td-d"><strong>설립</strong> 2014</div>
+    <div class="td-d"><strong>본사</strong> Berlin, Germany</div>
+  </td>
+  <td>
+    <div class="td-d"><strong>투자</strong> 2015 Series A $3M 공개, 이후 신규 공개 라운드 제한적</div>
+    <div class="td-d"><strong>가치</strong> 비공개</div>
+  </td>
+  <td><div class="td-d">AppsFlyer Premier Partner 등 대형 mobile measurement 생태계와의 연동 신호</div></td>
+  <td><div class="td-d">모바일 앱 재참여 광고의 실행 엔진이므로 폴더 1</div></td>
+  <td>
+    <div class="td-d">신규 유저 확보보다 기존 유저 재활성화에 초점을 맞춘 구조라 광고주의 효율 예산과 맞는다. measurement partner 연동이 강점이다.</div>
+    <div class="td-d" style="margin-top:.35rem;"><span class="tm">독립성</span> 독립 운영. Jampp처럼 그룹 편입 사실을 전면에 두고 있지 않다.</div>
+  </td>
+  <td><ul class="ns"><li><a href="https://www.remerge.io/" target="_blank" rel="noopener">공식 사이트</a></li><li><a href="https://tech.eu/2015/08/27/remerge-adtech-funding/" target="_blank" rel="noopener">Tech.eu - Series A</a></li></ul></td>
+  <td><ul class="ns"><li><a href="https://www.adikteev.com/" target="_blank" rel="noopener">Adikteev</a></li><li><a href="https://www.jampp.com/" target="_blank" rel="noopener">Jampp</a></li></ul></td>
+</tr>
+<tr class="tr-main" data-open="1" onclick="toggleRow('BidMachine', this)">
+  <td><span class="rk">5</span></td>
+  <td>
+    <div style="display:flex; align-items:center; gap:.35rem; flex-wrap:wrap;">
+      <a href="https://www.bidmachine.io/" target="_blank" rel="noopener"><strong>BidMachine</strong></a>
+      <span class="bg bg-ac">SDK Exchange</span>
+      <span class="tr-arr cl">▼</span>
+    </div>
+    <div class="td-d" style="margin-top:.35rem;">광고주보다는 퍼블리셔 수익화 인프라에 가까운 모바일 광고 교환 계층</div>
+  </td>
+  <td><div class="td-d">퍼블리셔용 SDK, direct exchange, monetization layer를 묶은 모바일 광고 거래 인프라</div></td>
+  <td>
+    <div class="td-d"><strong>설립</strong> 2019</div>
+    <div class="td-d"><strong>본사</strong> McLean, Virginia, US</div>
+  </td>
+  <td>
+    <div class="td-d"><strong>투자</strong> 공개 투자 라운드 확인 어려움</div>
+    <div class="td-d"><strong>가치</strong> 비공개</div>
+  </td>
+  <td><div class="td-d">500+ publishers, 600M+ users, 1T+ ad requests/month 공시</div></td>
+  <td><div class="td-d">모바일 퍼블리셔가 직접 붙이는 ad exchange/SDK여서 폴더 1</div></td>
+  <td>
+    <div class="td-d">직접 연결과 SDK 설치가 핵심이어서 플랫폼 사업자 또는 OEM 번들 관점에서 읽기 좋다. mediation과 exchange 사이의 인프라 포지션이 분명하다.</div>
+    <div class="td-d" style="margin-top:.35rem;"><span class="tm">독립성</span> 독립 운영으로 보이며 공개 인수 완료 이력 확인 어려움.</div>
+  </td>
+  <td><ul class="ns"><li><a href="https://www.bidmachine.io/" target="_blank" rel="noopener">공식 사이트</a></li><li><a href="https://www.linkedin.com/company/bidmachine" target="_blank" rel="noopener">LinkedIn profile</a></li></ul></td>
+  <td><ul class="ns"><li><a href="https://appodeal.com/" target="_blank" rel="noopener">Appodeal</a></li><li><a href="https://pubmatic.com/" target="_blank" rel="noopener">PubMatic</a></li></ul></td>
+</tr>
+<tr class="tr-main" data-open="1" onclick="toggleRow('Bidease', this)">
+  <td><span class="rk">6</span></td>
+  <td>
+    <div style="display:flex; align-items:center; gap:.35rem; flex-wrap:wrap;">
+      <a href="https://www.bidease.com/" target="_blank" rel="noopener"><strong>Bidease</strong></a>
+      <span class="bg bg-ac">AI DSP</span>
+      <span class="tr-arr cl">▼</span>
+    </div>
+    <div class="td-d" style="margin-top:.35rem;">성과형 모바일 DSP 포지션을 유지하면서 AI 최적화를 전면에 내세우는 플레이어</div>
+  </td>
+  <td><div class="td-d">AI 기반 mobile DSP, UA, re-engagement, monetization을 내세우는 모바일 광고 플랫폼</div></td>
+  <td>
+    <div class="td-d"><strong>설립</strong> 2016</div>
+    <div class="td-d"><strong>본사</strong> New York City, New York, US</div>
+  </td>
+  <td>
+    <div class="td-d"><strong>투자</strong> 초기 투자 존재하나 공개 금액은 제한적</div>
+    <div class="td-d"><strong>가치</strong> 비공개</div>
+  </td>
+  <td><div class="td-d">170M daily ad impressions 공시</div></td>
+  <td><div class="td-d">모바일 광고 성과 집행과 최적화가 핵심이므로 폴더 1</div></td>
+  <td>
+    <div class="td-d">광고 AI라는 메시지를 전면에 걸기 쉬운 회사다. 다만 독보적 제품 경계보다 execution engine 성격이 강해 점수는 중간권으로 두는 편이 안전하다.</div>
+    <div class="td-d" style="margin-top:.35rem;"><span class="tm">독립성</span> 독립 운영. 명확한 인수 편입 공시 확인 어려움.</div>
+  </td>
+  <td><ul class="ns"><li><a href="https://www.bidease.com/" target="_blank" rel="noopener">공식 사이트</a></li><li><a href="https://www.crunchbase.com/organization/bidease" target="_blank" rel="noopener">Crunchbase profile</a></li></ul></td>
+  <td><ul class="ns"><li><a href="https://kayzen.io/about" target="_blank" rel="noopener">Kayzen</a></li><li><a href="https://www.moloco.com/" target="_blank" rel="noopener">Moloco</a></li></ul></td>
+</tr>
+<tr class="tr-main" data-open="1" onclick="toggleRow('AdAction', this)">
+  <td><span class="rk">7</span></td>
+  <td>
+    <div style="display:flex; align-items:center; gap:.35rem; flex-wrap:wrap;">
+      <a href="https://www.adaction.com/about" target="_blank" rel="noopener"><strong>AdAction</strong></a>
+      <span class="bg bg-ac">Performance Mobile Marketing</span>
+      <span class="tr-arr cl">▼</span>
+    </div>
+    <div class="td-d" style="margin-top:.35rem;">네트워크 사업과 퍼포먼스 서비스가 섞인 모바일 마케팅 플레이어</div>
+  </td>
+  <td><div class="td-d">모바일 퍼포먼스 마케팅, 가치교환형 media, loyalty와 acquisition을 묶는 mobile-first 서비스</div></td>
+  <td>
+    <div class="td-d"><strong>설립</strong> 2013</div>
+    <div class="td-d"><strong>본사</strong> Denver, Colorado, US</div>
+  </td>
+  <td>
+    <div class="td-d"><strong>투자</strong> 공개 투자 금액 확인 어려움</div>
+    <div class="td-d"><strong>가치</strong> 비공개</div>
+  </td>
+  <td><div class="td-d">1B+ conversions, 180+ countries, 80% annual inventory growth 공시</div></td>
+  <td><div class="td-d">모바일 앱 획득과 광고 성과 운영에 초점이 있어 폴더 1</div></td>
+  <td>
+    <div class="td-d">완전한 소프트웨어 기업이라기보다는 서비스 혼합형이다. 그럼에도 모바일 광고 성과 집행과 가치교환형 inventory 운영이 강해서 폴더 1 후보군에 넣을 수 있다.</div>
+    <div class="td-d" style="margin-top:.35rem;"><span class="tm">독립성</span> 독립 운영으로 보이나 공개 거래 정보는 제한적.</div>
+  </td>
+  <td><ul class="ns"><li><a href="https://www.adaction.com/about" target="_blank" rel="noopener">공식 About</a></li><li><a href="https://www.crunchbase.com/organization/adaction" target="_blank" rel="noopener">Crunchbase profile</a></li></ul></td>
+  <td><ul class="ns"><li><a href="https://youappi.com/" target="_blank" rel="noopener">YouAppi</a></li><li><a href="https://www.bidease.com/" target="_blank" rel="noopener">Bidease</a></li></ul></td>
+</tr>
+<tr class="tr-main" data-open="1" onclick="toggleRow('BidMotion', this)">
+  <td><span class="rk">8</span></td>
+  <td>
+    <div style="display:flex; align-items:center; gap:.35rem; flex-wrap:wrap;">
+      <a href="https://bidmotion.com/" target="_blank" rel="noopener"><strong>BidMotion</strong></a>
+      <span class="bg bg-ac">Audience Segmentation</span>
+      <span class="tr-arr cl">▼</span>
+    </div>
+    <div class="td-d" style="margin-top:.35rem;">규모는 작지만 mobile performance 광고 최적화에 초점을 둔 niche 사업자</div>
+  </td>
+  <td><div class="td-d">AI 기반 모바일 direct-response 광고, audience segmentation, ROI 최적화에 초점을 둔 소형 플레이어</div></td>
+  <td>
+    <div class="td-d"><strong>설립</strong> 2014</div>
+    <div class="td-d"><strong>본사</strong> Paris, France</div>
+  </td>
+  <td>
+    <div class="td-d"><strong>투자</strong> 공개 투자 금액 확인 어려움</div>
+    <div class="td-d"><strong>가치</strong> 비공개</div>
+  </td>
+  <td><div class="td-d">시장 데이터상 소규모 팀과 제한적 매출로 추정되는 얇은 플레이어</div></td>
+  <td><div class="td-d">광고 타게팅과 세그먼트 최적화가 주력이므로 폴더 1에는 맞지만 우선순위는 낮음</div></td>
+  <td>
+    <div class="td-d">엄격히 보면 하위권 관찰 대상이다. 기존 Affle 계열로 편입된 회사들을 빼고 독립 ad-tech만 남길 때 넣을 수 있는 보수적 말단 후보군이다.</div>
+    <div class="td-d" style="margin-top:.35rem;"><span class="tm">독립성</span> 독립 운영으로 보이지만 규모가 작아 지속성 모니터링 필요.</div>
+  </td>
+  <td><ul class="ns"><li><a href="https://bidmotion.com/" target="_blank" rel="noopener">공식 사이트</a></li><li><a href="https://www.crunchbase.com/organization/bidmotion" target="_blank" rel="noopener">Crunchbase profile</a></li></ul></td>
+  <td><ul class="ns"><li><a href="https://www.adikteev.com/" target="_blank" rel="noopener">Adikteev</a></li><li><a href="https://smadex.com/" target="_blank" rel="noopener">Smadex</a></li></ul></td>
+</tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="cd" id="sec-eval">
+    <div class="ch2" onclick="tc(this)"><div><h2>② 100점 요약 평가표</h2><p>A~G 7개 항목으로 모바일 유통 적합성, 거래 가능성, 기술 밀도를 정량화</p></div><span class="arr">▼</span></div>
+    <div class="cb" id="evalBody">
+<div class="eval-company interactive-card" data-co="Appodeal">
+  <div class="eval-company-hd" onclick="toggleEval(this)">
+    <div class="ec-title">
+      <span class="rk">1</span>
+      <span>Appodeal</span>
+      <span class="bg bg-ac">Mediation / Monetization</span>
+    </div>
+    <div class="ec-meta">
+      <span class="ec-total" data-s="76" style="font-size:.86rem; font-weight:900; color:var(--acT);">76</span>
+      <span class="ec-grade"><span class="bg bg-ok">우선 검토</span></span>
+      <span class="ec-arr shut">▼</span>
+    </div>
+  </div>
+  <div class="eval-company-bd shut">
+    <div style="padding:.7rem .9rem;">
+      <div class="tw">
+        <table class="et" style="min-width:720px">
+          <thead>
+            <tr>
+              <th class="cc">기업</th>
+              <th>A</th><th>B</th><th>C</th><th>D</th><th>E</th><th>F</th><th>G</th><th>Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="cc">Appodeal</td>
+              <td>14</td>
+              <td>11</td>
+              <td>12</td>
+              <td>13</td>
+              <td>10</td>
+              <td>8</td>
+              <td>8</td>
+              <td class="ct">76</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="pg" style="margin-top:.7rem;">
+        <div class="pc interactive-card" style="padding:.8rem;">
+          <div class="pc-s">강점</div>
+          <div class="pc-l"><div>앱 퍼블리셔가 바로 붙일 수 있는 SDK형 제품으로 모바일 배포 동선이 짧다.</div><div>수익화와 UA 운영이 한 스택에 있어 고객당 매출 확장 여지가 크다.</div><div>Mediation/analytics 번들이라 광고 경기 둔화에도 완전한 단일 포인트 실패를 피한다.</div></div>
+          <div class="pc-s">리스크</div>
+          <div class="pc-l"><div>최근 공개 자금조달 이력이 적어 성장 가속 구간을 외부에서 읽기 어렵다.</div><div>MAX, LevelPlay 같은 대형 경쟁군과 비교하면 브랜드 파워가 약하다.</div><div>모바일 광고 정책 변화가 SDK 수익 구조에 직접 반영될 수 있다.</div></div>
+        </div>
+        <div class="pc interactive-card" style="padding:.8rem;">
+          <div class="pc-s">왜 이 폴더인가</div>
+          <div class="pc-l"><div>광고 네트워크가 아니라 모바일 앱 수익화와 광고 최적화 엔진이 핵심이므로 폴더 1</div></div>
+          <div class="pc-s">전략적 출구</div>
+          <div class="pc-l"><div>게임&#183;앱 수익화 플랫폼의 bolt-on 인수 후보</div><div>지역 OEM 또는 앱스토어 사업자의 기본 수익화 번들 파트너</div><div>독립 mediation stack으로도 현금흐름형 운영 가능</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="eval-company interactive-card" data-co="Adikteev">
+  <div class="eval-company-hd" onclick="toggleEval(this)">
+    <div class="ec-title">
+      <span class="rk">2</span>
+      <span>Adikteev</span>
+      <span class="bg bg-ac">Retargeting / Creative AI</span>
+    </div>
+    <div class="ec-meta">
+      <span class="ec-total" data-s="74" style="font-size:.86rem; font-weight:900; color:var(--acT);">74</span>
+      <span class="ec-grade"><span class="bg bg-wn">전략 관찰</span></span>
+      <span class="ec-arr shut">▼</span>
+    </div>
+  </div>
+  <div class="eval-company-bd shut">
+    <div style="padding:.7rem .9rem;">
+      <div class="tw">
+        <table class="et" style="min-width:720px">
+          <thead>
+            <tr>
+              <th class="cc">기업</th>
+              <th>A</th><th>B</th><th>C</th><th>D</th><th>E</th><th>F</th><th>G</th><th>Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="cc">Adikteev</td>
+              <td>13</td>
+              <td>11</td>
+              <td>13</td>
+              <td>13</td>
+              <td>10</td>
+              <td>8</td>
+              <td>6</td>
+              <td class="ct">74</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="pg" style="margin-top:.7rem;">
+        <div class="pc interactive-card" style="padding:.8rem;">
+          <div class="pc-s">강점</div>
+          <div class="pc-l"><div>리인게이지먼트와 churn 기반 입찰에 특화되어 광고비 효율 논리가 명확하다.</div><div>유럽 기반이지만 글로벌 모바일 앱 퍼블리셔 대응 경험이 길다.</div><div>광고 운영 + 크리에이티브 최적화를 함께 묶어 실무 전환 장벽을 낮춘다.</div></div>
+          <div class="pc-s">리스크</div>
+          <div class="pc-l"><div>리타게팅 규제와 프라이버시 정책에 성과 민감도가 높다.</div><div>광고주 지출이 줄면 단기 실적 변동성이 커질 수 있다.</div><div>독립성은 유지되지만 중장기적으로 PE/전략 매각 시나리오가 열려 있다.</div></div>
+        </div>
+        <div class="pc interactive-card" style="padding:.8rem;">
+          <div class="pc-s">왜 이 폴더인가</div>
+          <div class="pc-l"><div>리텐션과 리타게팅 중심의 모바일 광고 실행사이자 기술 사업자라 폴더 1</div></div>
+          <div class="pc-s">전략적 출구</div>
+          <div class="pc-l"><div>대형 DSP 또는 MMP의 리타게팅 보강용 인수 대상</div><div>통신사/퍼블리셔 연합의 CRM 광고 엔진 파트너</div><div>유럽 ad-tech 롤업 내 핵심 성장 자산</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="eval-company interactive-card" data-co="Kayzen">
+  <div class="eval-company-hd" onclick="toggleEval(this)">
+    <div class="ec-title">
+      <span class="rk">3</span>
+      <span>Kayzen</span>
+      <span class="bg bg-ac">Mobile DSP</span>
+    </div>
+    <div class="ec-meta">
+      <span class="ec-total" data-s="72" style="font-size:.86rem; font-weight:900; color:var(--acT);">72</span>
+      <span class="ec-grade"><span class="bg bg-wn">전략 관찰</span></span>
+      <span class="ec-arr shut">▼</span>
+    </div>
+  </div>
+  <div class="eval-company-bd shut">
+    <div style="padding:.7rem .9rem;">
+      <div class="tw">
+        <table class="et" style="min-width:720px">
+          <thead>
+            <tr>
+              <th class="cc">기업</th>
+              <th>A</th><th>B</th><th>C</th><th>D</th><th>E</th><th>F</th><th>G</th><th>Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="cc">Kayzen</td>
+              <td>14</td>
+              <td>10</td>
+              <td>13</td>
+              <td>11</td>
+              <td>10</td>
+              <td>7</td>
+              <td>7</td>
+              <td class="ct">72</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="pg" style="margin-top:.7rem;">
+        <div class="pc interactive-card" style="padding:.8rem;">
+          <div class="pc-s">강점</div>
+          <div class="pc-l"><div>모바일 퍼스트 DSP 포지셔닝이 선명하다.</div><div>대규모 요청량과 글로벌 커버리지를 공개 수치로 보여준다.</div><div>광고 운영팀 인하우스 전환 흐름과 맞물린다.</div></div>
+          <div class="pc-s">리스크</div>
+          <div class="pc-l"><div>대형 DSP와 비교하면 자본력과 브랜드 인지도가 제한적이다.</div><div>최근 공개 라운드 정보가 적어 자금 여력을 외부에서 읽기 어렵다.</div><div>커머디티화된 매체 구매 영역으로 오해받을 수 있다.</div></div>
+        </div>
+        <div class="pc interactive-card" style="padding:.8rem;">
+          <div class="pc-s">왜 이 폴더인가</div>
+          <div class="pc-l"><div>순수 모바일 DSP 성격이 강하고 광고 집행 자동화가 핵심이므로 폴더 1</div></div>
+          <div class="pc-s">전략적 출구</div>
+          <div class="pc-l"><div>대형 마케팅 플랫폼의 모바일 DSP 보강 인수</div><div>지역 슈퍼앱/퍼블리셔의 광고 운영 스택 파트너</div><div>독립 SaaS형 캠페인 자동화 사업으로 성장</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="eval-company interactive-card" data-co="Remerge">
+  <div class="eval-company-hd" onclick="toggleEval(this)">
+    <div class="ec-title">
+      <span class="rk">4</span>
+      <span>Remerge</span>
+      <span class="bg bg-ac">Retargeting DSP</span>
+    </div>
+    <div class="ec-meta">
+      <span class="ec-total" data-s="70" style="font-size:.86rem; font-weight:900; color:var(--acT);">70</span>
+      <span class="ec-grade"><span class="bg bg-wn">전략 관찰</span></span>
+      <span class="ec-arr shut">▼</span>
+    </div>
+  </div>
+  <div class="eval-company-bd shut">
+    <div style="padding:.7rem .9rem;">
+      <div class="tw">
+        <table class="et" style="min-width:720px">
+          <thead>
+            <tr>
+              <th class="cc">기업</th>
+              <th>A</th><th>B</th><th>C</th><th>D</th><th>E</th><th>F</th><th>G</th><th>Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="cc">Remerge</td>
+              <td>13</td>
+              <td>10</td>
+              <td>12</td>
+              <td>11</td>
+              <td>9</td>
+              <td>7</td>
+              <td>8</td>
+              <td class="ct">70</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="pg" style="margin-top:.7rem;">
+        <div class="pc interactive-card" style="padding:.8rem;">
+          <div class="pc-s">강점</div>
+          <div class="pc-l"><div>재참여 광고에 집중해 메시지가 분명하다.</div><div>measurement ecosystem과의 연결성이 강하다.</div><div>광고주 입장에서 CPA 복구 논리를 만들기 쉽다.</div></div>
+          <div class="pc-s">리스크</div>
+          <div class="pc-l"><div>리타게팅 시장 자체가 프라이버시 정책에 크게 흔들린다.</div><div>공개 성장 수치가 제한적이라 현재 확장 속도를 외부에서 판단하기 어렵다.</div><div>DSP 경쟁이 치열해 차별화 설명이 더 필요하다.</div></div>
+        </div>
+        <div class="pc interactive-card" style="padding:.8rem;">
+          <div class="pc-s">왜 이 폴더인가</div>
+          <div class="pc-l"><div>모바일 앱 재참여 광고의 실행 엔진이므로 폴더 1</div></div>
+          <div class="pc-s">전략적 출구</div>
+          <div class="pc-l"><div>MMP 또는 CRM ad-tech 플레이어의 리타게팅 기능 보강 인수</div><div>게임&#183;커머스 앱 특화 성과 조직과의 전략 제휴</div><div>privacy-safe retargeting niche player로 독립 운영</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="eval-company interactive-card" data-co="BidMachine">
+  <div class="eval-company-hd" onclick="toggleEval(this)">
+    <div class="ec-title">
+      <span class="rk">5</span>
+      <span>BidMachine</span>
+      <span class="bg bg-ac">SDK Exchange</span>
+    </div>
+    <div class="ec-meta">
+      <span class="ec-total" data-s="69" style="font-size:.86rem; font-weight:900; color:var(--acT);">69</span>
+      <span class="ec-grade"><span class="bg bg-wn">전략 관찰</span></span>
+      <span class="ec-arr shut">▼</span>
+    </div>
+  </div>
+  <div class="eval-company-bd shut">
+    <div style="padding:.7rem .9rem;">
+      <div class="tw">
+        <table class="et" style="min-width:720px">
+          <thead>
+            <tr>
+              <th class="cc">기업</th>
+              <th>A</th><th>B</th><th>C</th><th>D</th><th>E</th><th>F</th><th>G</th><th>Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="cc">BidMachine</td>
+              <td>14</td>
+              <td>9</td>
+              <td>12</td>
+              <td>10</td>
+              <td>9</td>
+              <td>7</td>
+              <td>8</td>
+              <td class="ct">69</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="pg" style="margin-top:.7rem;">
+        <div class="pc interactive-card" style="padding:.8rem;">
+          <div class="pc-s">강점</div>
+          <div class="pc-l"><div>SDK 설치형이라 모바일 배포 접점이 뚜렷하다.</div><div>직접 교환 계층을 표방해 퍼블리셔 마진 논리에 강하다.</div><div>대규모 요청량과 사용자 도달 수를 공개한다.</div></div>
+          <div class="pc-s">리스크</div>
+          <div class="pc-l"><div>공개 자금조달 정보가 제한적이다.</div><div>퍼블리셔 인프라 시장은 글로벌 대형 SSP/DSP와 맞붙어야 한다.</div><div>브랜드 인지도 측면에서 후발로 읽힐 수 있다.</div></div>
+        </div>
+        <div class="pc interactive-card" style="padding:.8rem;">
+          <div class="pc-s">왜 이 폴더인가</div>
+          <div class="pc-l"><div>모바일 퍼블리셔가 직접 붙이는 ad exchange/SDK여서 폴더 1</div></div>
+          <div class="pc-s">전략적 출구</div>
+          <div class="pc-l"><div>퍼블리셔 도구 확대를 원하는 ad exchange 사업자의 인수 후보</div><div>지역 OEM&#183;브라우저 사업자의 광고 수익화 파트너</div><div>직접 거래형 인프라 사업으로 틈새 방어 가능</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="eval-company interactive-card" data-co="Bidease">
+  <div class="eval-company-hd" onclick="toggleEval(this)">
+    <div class="ec-title">
+      <span class="rk">6</span>
+      <span>Bidease</span>
+      <span class="bg bg-ac">AI DSP</span>
+    </div>
+    <div class="ec-meta">
+      <span class="ec-total" data-s="67" style="font-size:.86rem; font-weight:900; color:var(--acT);">67</span>
+      <span class="ec-grade"><span class="bg bg-ac">선별 검토</span></span>
+      <span class="ec-arr shut">▼</span>
+    </div>
+  </div>
+  <div class="eval-company-bd shut">
+    <div style="padding:.7rem .9rem;">
+      <div class="tw">
+        <table class="et" style="min-width:720px">
+          <thead>
+            <tr>
+              <th class="cc">기업</th>
+              <th>A</th><th>B</th><th>C</th><th>D</th><th>E</th><th>F</th><th>G</th><th>Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="cc">Bidease</td>
+              <td>13</td>
+              <td>9</td>
+              <td>11</td>
+              <td>10</td>
+              <td>9</td>
+              <td>7</td>
+              <td>8</td>
+              <td class="ct">67</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="pg" style="margin-top:.7rem;">
+        <div class="pc interactive-card" style="padding:.8rem;">
+          <div class="pc-s">강점</div>
+          <div class="pc-l"><div>AI DSP라는 카테고리 메시지가 직관적이다.</div><div>UA와 재참여 양쪽에 적용 가능하다.</div><div>집행 데이터가 쌓일수록 알고리즘 개선 논리를 만들기 쉽다.</div></div>
+          <div class="pc-s">리스크</div>
+          <div class="pc-l"><div>공개 고객 규모와 재무 정보가 제한적이다.</div><div>DSP 영역 자체가 차별화보다 운영력 경쟁으로 흐를 수 있다.</div><div>광고주 의존도가 높아 매크로에 민감하다.</div></div>
+        </div>
+        <div class="pc interactive-card" style="padding:.8rem;">
+          <div class="pc-s">왜 이 폴더인가</div>
+          <div class="pc-l"><div>모바일 광고 성과 집행과 최적화가 핵심이므로 폴더 1</div></div>
+          <div class="pc-s">전략적 출구</div>
+          <div class="pc-l"><div>DSP 라인업을 보강하려는 ad-tech 플랫폼의 인수 대상</div><div>agency trading desk와의 전용 집행 파트너십</div><div>UA 최적화 niche engine으로 독립 성장</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="eval-company interactive-card" data-co="AdAction">
+  <div class="eval-company-hd" onclick="toggleEval(this)">
+    <div class="ec-title">
+      <span class="rk">7</span>
+      <span>AdAction</span>
+      <span class="bg bg-ac">Performance Mobile Marketing</span>
+    </div>
+    <div class="ec-meta">
+      <span class="ec-total" data-s="64" style="font-size:.86rem; font-weight:900; color:var(--acT);">64</span>
+      <span class="ec-grade"><span class="bg bg-ac">선별 검토</span></span>
+      <span class="ec-arr shut">▼</span>
+    </div>
+  </div>
+  <div class="eval-company-bd shut">
+    <div style="padding:.7rem .9rem;">
+      <div class="tw">
+        <table class="et" style="min-width:720px">
+          <thead>
+            <tr>
+              <th class="cc">기업</th>
+              <th>A</th><th>B</th><th>C</th><th>D</th><th>E</th><th>F</th><th>G</th><th>Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="cc">AdAction</td>
+              <td>12</td>
+              <td>8</td>
+              <td>10</td>
+              <td>11</td>
+              <td>9</td>
+              <td>7</td>
+              <td>7</td>
+              <td class="ct">64</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="pg" style="margin-top:.7rem;">
+        <div class="pc interactive-card" style="padding:.8rem;">
+          <div class="pc-s">강점</div>
+          <div class="pc-l"><div>실제 성과 마케팅 운영 숫자를 공격적으로 제시한다.</div><div>가치교환형 inventory 운영으로 포지셔닝이 분명하다.</div><div>모바일 글로벌 distribution에 익숙한 편이다.</div></div>
+          <div class="pc-s">리스크</div>
+          <div class="pc-l"><div>서비스 비중이 높아 pure software multiple을 받기 어렵다.</div><div>공개 투자 이력과 기술 자산 설명이 약하다.</div><div>장기 moat가 inventory 관계에 치우칠 수 있다.</div></div>
+        </div>
+        <div class="pc interactive-card" style="padding:.8rem;">
+          <div class="pc-s">왜 이 폴더인가</div>
+          <div class="pc-l"><div>모바일 앱 획득과 광고 성과 운영에 초점이 있어 폴더 1</div></div>
+          <div class="pc-s">전략적 출구</div>
+          <div class="pc-l"><div>성과 마케팅 그룹의 bolt-on 인수</div><div>loyalty media를 원하는 대형 광고 네트워크 파트너</div><div>특정 vertical 중심의 현금흐름 사업</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="eval-company interactive-card" data-co="BidMotion">
+  <div class="eval-company-hd" onclick="toggleEval(this)">
+    <div class="ec-title">
+      <span class="rk">8</span>
+      <span>BidMotion</span>
+      <span class="bg bg-ac">Audience Segmentation</span>
+    </div>
+    <div class="ec-meta">
+      <span class="ec-total" data-s="60" style="font-size:.86rem; font-weight:900; color:var(--acT);">60</span>
+      <span class="ec-grade"><span class="bg bg-ac">선별 검토</span></span>
+      <span class="ec-arr shut">▼</span>
+    </div>
+  </div>
+  <div class="eval-company-bd shut">
+    <div style="padding:.7rem .9rem;">
+      <div class="tw">
+        <table class="et" style="min-width:720px">
+          <thead>
+            <tr>
+              <th class="cc">기업</th>
+              <th>A</th><th>B</th><th>C</th><th>D</th><th>E</th><th>F</th><th>G</th><th>Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="cc">BidMotion</td>
+              <td>11</td>
+              <td>7</td>
+              <td>9</td>
+              <td>9</td>
+              <td>8</td>
+              <td>7</td>
+              <td>9</td>
+              <td class="ct">60</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="pg" style="margin-top:.7rem;">
+        <div class="pc interactive-card" style="padding:.8rem;">
+          <div class="pc-s">강점</div>
+          <div class="pc-l"><div>niche audience segmentation 포지션이 명확하다.</div><div>소형 사업자라 전략 매각 논리를 만들기 쉽다.</div><div>모바일 direct-response에 집중한다.</div></div>
+          <div class="pc-s">리스크</div>
+          <div class="pc-l"><div>규모와 성장 신호가 상위권 대비 약하다.</div><div>장기 독립 생존보다 매각 시나리오 의존도가 높다.</div><div>공개 검증 가능한 수치가 적다.</div></div>
+        </div>
+        <div class="pc interactive-card" style="padding:.8rem;">
+          <div class="pc-s">왜 이 폴더인가</div>
+          <div class="pc-l"><div>광고 타게팅과 세그먼트 최적화가 주력이므로 폴더 1에는 맞지만 우선순위는 낮음</div></div>
+          <div class="pc-s">전략적 출구</div>
+          <div class="pc-l"><div>유럽권 ad-tech 롤업의 tuck-in 대상</div><div>세그먼트 기술 보강용 소규모 전략 인수</div><div>계속 모니터링하되 우선 투자 대상은 아님</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    </div>
+  </div>
+
+  <div class="cd interactive-section" id="sec-partner">
+    <div class="ch2" onclick="tc(this)"><div><h2>③ 모바일 플랫폼 &#183; OEM &#183; 퍼블리셔 파트너십 아이디어</h2><p>템플릿 흐름을 유지하되 제조사 중심이 아닌 모바일 광고 생태계 파트너십 관점으로 재구성</p></div><span class="arr">▼</span></div>
+    <div class="cb"><div class="pg">
+<div class="pc interactive-card pc-coll">
+  <div class="pc-h" onclick="tph(this)" style="cursor:pointer">
+    <h3><span class="rk" style="background:#3b82f6">1</span> Appodeal</h3>
+    <span class="bg bg-ac">SDK 수익화 번들</span>
+    <span class="pc-h-arr" style="margin-left:auto;font-size:.55rem;color:var(--t3);transition:transform .3s">▼</span>
+  </div>
+  <div class="pc-b pc-b-shut">
+    <div class="pc-s">활용 아이디어</div>
+    <div class="pc-l"><div>OEM, 앱스토어, 슈퍼앱이 기본 앱군의 광고 수익화를 묶어 넣을 때 가장 바로 연결하기 쉬운 유형이다.</div></div>
+    <div class="pc-s">세부 포인트</div>
+    <div class="pc-l"><div>기본 설치 앱군에 mediation과 analytics를 함께 묶어 수익화 레이어를 형성</div><div>게임/툴 앱 퍼블리셔 네트워크 확장에 적합</div><div>광고 운영 인력이 작은 파트너에게 관리 콘솔 번들을 제공하기 쉽다</div></div>
+  </div>
+</div>
+<div class="pc interactive-card pc-coll">
+  <div class="pc-h" onclick="tph(this)" style="cursor:pointer">
+    <h3><span class="rk" style="background:#10b981">2</span> Adikteev</h3>
+    <span class="bg bg-ac">리인게이지먼트</span>
+    <span class="pc-h-arr" style="margin-left:auto;font-size:.55rem;color:var(--t3);transition:transform .3s">▼</span>
+  </div>
+  <div class="pc-b pc-b-shut">
+    <div class="pc-s">활용 아이디어</div>
+    <div class="pc-l"><div>통신사, 게임 허브, 멤버십 앱처럼 휴면 복귀가 중요한 환경에서 churn 기반 리타게팅 시나리오가 선명하다.</div></div>
+    <div class="pc-s">세부 포인트</div>
+    <div class="pc-l"><div>휴면 유저 복귀 캠페인을 CRM과 광고의 중간지점에서 실행 가능</div><div>creative refresh와 성과 측정을 함께 묶기 쉽다</div><div>구독형 앱과 게임 퍼블리셔에서 CPA 회복 논리를 만들기 좋다</div></div>
+  </div>
+</div>
+<div class="pc interactive-card pc-coll">
+  <div class="pc-h" onclick="tph(this)" style="cursor:pointer">
+    <h3><span class="rk" style="background:#8b5cf6">3</span> Kayzen</h3>
+    <span class="bg bg-ac">모바일 DSP</span>
+    <span class="pc-h-arr" style="margin-left:auto;font-size:.55rem;color:var(--t3);transition:transform .3s">▼</span>
+  </div>
+  <div class="pc-b pc-b-shut">
+    <div class="pc-s">활용 아이디어</div>
+    <div class="pc-l"><div>지역 단위 광고 마켓플레이스 또는 슈퍼앱 광고 셀프서브 스택을 붙일 때 인하우스 DSP 성격으로 활용 가능하다.</div></div>
+    <div class="pc-s">세부 포인트</div>
+    <div class="pc-l"><div>광고주 운영팀이 직접 만질 수 있는 집행 콘솔 제공</div><div>로컬 inventory와 글로벌 UA 집행을 하나의 운영선으로 묶기 적합</div><div>광고 자동화 기능을 white-label 논리로 전개하기 쉽다</div></div>
+  </div>
+</div>
+<div class="pc interactive-card pc-coll">
+  <div class="pc-h" onclick="tph(this)" style="cursor:pointer">
+    <h3><span class="rk" style="background:#f59e0b">4</span> BidMachine</h3>
+    <span class="bg bg-ac">직접 교환 계층</span>
+    <span class="pc-h-arr" style="margin-left:auto;font-size:.55rem;color:var(--t3);transition:transform .3s">▼</span>
+  </div>
+  <div class="pc-b pc-b-shut">
+    <div class="pc-s">활용 아이디어</div>
+    <div class="pc-l"><div>브라우저, 앱스토어, OEM 콘텐츠 허브가 퍼블리셔 인벤토리를 직접 거래형으로 묶을 때 구조가 맞는다.</div></div>
+    <div class="pc-s">세부 포인트</div>
+    <div class="pc-l"><div>직접 연결형 exchange 논리가 퍼블리셔 마진 방어와 맞닿아 있다</div><div>SDK 설치가 전제가 되어 모바일 배포 접점이 분명하다</div><div>장기적으로 mediation과 exchange의 중간 인프라 역할을 노릴 수 있다</div></div>
+  </div>
+</div>
+    </div></div>
+  </div>
+
+  <div class="cd interactive-section" id="sec-insight">
+    <div class="ch2" onclick="tc(this)"><div><h2>④ 투자 파트너십 인사이트</h2><p>재무 투자, 전략 제휴, M&amp;A 후보군 관점을 분리해 짧고 보수적으로 요약</p></div><span class="arr">▼</span></div>
+    <div class="cb"><div class="pg">
+<div class="pc-box" style="--hc:#3b82f6" onclick="tpc(this)">
+  <div class="pc-box-hd">
+    <span class="pc-box-ico">1</span>
+    <b>Appodeal</b>
+    <span class="bg bg-ac">Mediation / Monetization</span>
+    <span class="pc-box-arr shut">▼</span>
+  </div>
+  <div class="pc-box-bd shut">
+    <div><strong>핵심 논리</strong> 퍼블리셔와 광고주 양면을 연결하는 모바일 수익화 인프라다. mediation, bidding, analytics를 묶어 제공해 SDK 락인이 생기고, 인수 후보로도 해석하기 쉽다.</div>
+    <div style="margin-top:.45rem;"><strong>상용화 신호</strong> Pixalate 2025 기준 상위권 모바일 광고 SDK 그룹에 포함</div>
+    <div style="margin-top:.45rem;"><strong>독립성/거래 상태</strong> 독립 운영. 최근 인수 완료 공시는 확인되지 않음.</div>
+    <div class="bm-detail">
+      <div class="bm-line">게임&#183;앱 수익화 플랫폼의 bolt-on 인수 후보</div><div class="bm-line">지역 OEM 또는 앱스토어 사업자의 기본 수익화 번들 파트너</div><div class="bm-line">독립 mediation stack으로도 현금흐름형 운영 가능</div>
+    </div>
+  </div>
+</div>
+<div class="pc-box" style="--hc:#10b981" onclick="tpc(this)">
+  <div class="pc-box-hd">
+    <span class="pc-box-ico">2</span>
+    <b>Adikteev</b>
+    <span class="bg bg-ac">Retargeting / Creative AI</span>
+    <span class="pc-box-arr shut">▼</span>
+  </div>
+  <div class="pc-box-bd shut">
+    <div><strong>핵심 논리</strong> ATT 이후 리타게팅이 어려워진 시장에서 churn signal과 creative refresh를 함께 제공하는 것이 차별점이다. 광고 AI가 실제 매출로 이어지는 구조가 비교적 선명하다.</div>
+    <div style="margin-top:.45rem;"><strong>상용화 신호</strong> 2024 gross sales 약 €90M, 2017~2024 약 60% CAGR 공시</div>
+    <div style="margin-top:.45rem;"><strong>독립성/거래 상태</strong> 독립 운영 유지. 2025 minority investment는 있었지만 완전 인수 완료 공시는 아님.</div>
+    <div class="bm-detail">
+      <div class="bm-line">대형 DSP 또는 MMP의 리타게팅 보강용 인수 대상</div><div class="bm-line">통신사/퍼블리셔 연합의 CRM 광고 엔진 파트너</div><div class="bm-line">유럽 ad-tech 롤업 내 핵심 성장 자산</div>
+    </div>
+  </div>
+</div>
+<div class="pc-box" style="--hc:#8b5cf6" onclick="tpc(this)">
+  <div class="pc-box-hd">
+    <span class="pc-box-ico">3</span>
+    <b>Kayzen</b>
+    <span class="bg bg-ac">Mobile DSP</span>
+    <span class="pc-box-arr shut">▼</span>
+  </div>
+  <div class="pc-box-bd shut">
+    <div><strong>핵심 논리</strong> 채널 집행을 API와 대시보드로 통합하는 구조라 모바일 광고주와 에이전시 양쪽에서 모두 읽힌다. 향후 인하우스 UA 툴킷 수요가 커질수록 가치가 높아질 수 있다.</div>
+    <div style="margin-top:.45rem;"><strong>상용화 신호</strong> 230B+ daily ad requests, 1.9B+ unique users, 1B+ ads/day 공개</div>
+    <div style="margin-top:.45rem;"><strong>독립성/거래 상태</strong> 독립 운영. Affle/YouAppi 계열처럼 이미 그룹 편입된 상태는 아님.</div>
+    <div class="bm-detail">
+      <div class="bm-line">대형 마케팅 플랫폼의 모바일 DSP 보강 인수</div><div class="bm-line">지역 슈퍼앱/퍼블리셔의 광고 운영 스택 파트너</div><div class="bm-line">독립 SaaS형 캠페인 자동화 사업으로 성장</div>
+    </div>
+  </div>
+</div>
+<div class="pc-box" style="--hc:#f59e0b" onclick="tpc(this)">
+  <div class="pc-box-hd">
+    <span class="pc-box-ico">4</span>
+    <b>Remerge</b>
+    <span class="bg bg-ac">Retargeting DSP</span>
+    <span class="pc-box-arr shut">▼</span>
+  </div>
+  <div class="pc-box-bd shut">
+    <div><strong>핵심 논리</strong> 신규 유저 확보보다 기존 유저 재활성화에 초점을 맞춘 구조라 광고주의 효율 예산과 맞는다. measurement partner 연동이 강점이다.</div>
+    <div style="margin-top:.45rem;"><strong>상용화 신호</strong> AppsFlyer Premier Partner 등 대형 mobile measurement 생태계와의 연동 신호</div>
+    <div style="margin-top:.45rem;"><strong>독립성/거래 상태</strong> 독립 운영. Jampp처럼 그룹 편입 사실을 전면에 두고 있지 않다.</div>
+    <div class="bm-detail">
+      <div class="bm-line">MMP 또는 CRM ad-tech 플레이어의 리타게팅 기능 보강 인수</div><div class="bm-line">게임&#183;커머스 앱 특화 성과 조직과의 전략 제휴</div><div class="bm-line">privacy-safe retargeting niche player로 독립 운영</div>
+    </div>
+  </div>
+</div>
+<div class="pc-box" style="--hc:#ef4444" onclick="tpc(this)">
+  <div class="pc-box-hd">
+    <span class="pc-box-ico">5</span>
+    <b>BidMachine</b>
+    <span class="bg bg-ac">SDK Exchange</span>
+    <span class="pc-box-arr shut">▼</span>
+  </div>
+  <div class="pc-box-bd shut">
+    <div><strong>핵심 논리</strong> 직접 연결과 SDK 설치가 핵심이어서 플랫폼 사업자 또는 OEM 번들 관점에서 읽기 좋다. mediation과 exchange 사이의 인프라 포지션이 분명하다.</div>
+    <div style="margin-top:.45rem;"><strong>상용화 신호</strong> 500+ publishers, 600M+ users, 1T+ ad requests/month 공시</div>
+    <div style="margin-top:.45rem;"><strong>독립성/거래 상태</strong> 독립 운영으로 보이며 공개 인수 완료 이력 확인 어려움.</div>
+    <div class="bm-detail">
+      <div class="bm-line">퍼블리셔 도구 확대를 원하는 ad exchange 사업자의 인수 후보</div><div class="bm-line">지역 OEM&#183;브라우저 사업자의 광고 수익화 파트너</div><div class="bm-line">직접 거래형 인프라 사업으로 틈새 방어 가능</div>
+    </div>
+  </div>
+</div>
+<div class="pc-box" style="--hc:#06b6d4" onclick="tpc(this)">
+  <div class="pc-box-hd">
+    <span class="pc-box-ico">6</span>
+    <b>Bidease</b>
+    <span class="bg bg-ac">AI DSP</span>
+    <span class="pc-box-arr shut">▼</span>
+  </div>
+  <div class="pc-box-bd shut">
+    <div><strong>핵심 논리</strong> 광고 AI라는 메시지를 전면에 걸기 쉬운 회사다. 다만 독보적 제품 경계보다 execution engine 성격이 강해 점수는 중간권으로 두는 편이 안전하다.</div>
+    <div style="margin-top:.45rem;"><strong>상용화 신호</strong> 170M daily ad impressions 공시</div>
+    <div style="margin-top:.45rem;"><strong>독립성/거래 상태</strong> 독립 운영. 명확한 인수 편입 공시 확인 어려움.</div>
+    <div class="bm-detail">
+      <div class="bm-line">DSP 라인업을 보강하려는 ad-tech 플랫폼의 인수 대상</div><div class="bm-line">agency trading desk와의 전용 집행 파트너십</div><div class="bm-line">UA 최적화 niche engine으로 독립 성장</div>
+    </div>
+  </div>
+</div>
+<div class="pc-box" style="--hc:#a855f7" onclick="tpc(this)">
+  <div class="pc-box-hd">
+    <span class="pc-box-ico">7</span>
+    <b>AdAction</b>
+    <span class="bg bg-ac">Performance Mobile Marketing</span>
+    <span class="pc-box-arr shut">▼</span>
+  </div>
+  <div class="pc-box-bd shut">
+    <div><strong>핵심 논리</strong> 완전한 소프트웨어 기업이라기보다는 서비스 혼합형이다. 그럼에도 모바일 광고 성과 집행과 가치교환형 inventory 운영이 강해서 폴더 1 후보군에 넣을 수 있다.</div>
+    <div style="margin-top:.45rem;"><strong>상용화 신호</strong> 1B+ conversions, 180+ countries, 80% annual inventory growth 공시</div>
+    <div style="margin-top:.45rem;"><strong>독립성/거래 상태</strong> 독립 운영으로 보이나 공개 거래 정보는 제한적.</div>
+    <div class="bm-detail">
+      <div class="bm-line">성과 마케팅 그룹의 bolt-on 인수</div><div class="bm-line">loyalty media를 원하는 대형 광고 네트워크 파트너</div><div class="bm-line">특정 vertical 중심의 현금흐름 사업</div>
+    </div>
+  </div>
+</div>
+<div class="pc-box" style="--hc:#f97316" onclick="tpc(this)">
+  <div class="pc-box-hd">
+    <span class="pc-box-ico">8</span>
+    <b>BidMotion</b>
+    <span class="bg bg-ac">Audience Segmentation</span>
+    <span class="pc-box-arr shut">▼</span>
+  </div>
+  <div class="pc-box-bd shut">
+    <div><strong>핵심 논리</strong> 엄격히 보면 하위권 관찰 대상이다. 기존 Affle 계열로 편입된 회사들을 빼고 독립 ad-tech만 남길 때 넣을 수 있는 보수적 말단 후보군이다.</div>
+    <div style="margin-top:.45rem;"><strong>상용화 신호</strong> 시장 데이터상 소규모 팀과 제한적 매출로 추정되는 얇은 플레이어</div>
+    <div style="margin-top:.45rem;"><strong>독립성/거래 상태</strong> 독립 운영으로 보이지만 규모가 작아 지속성 모니터링 필요.</div>
+    <div class="bm-detail">
+      <div class="bm-line">유럽권 ad-tech 롤업의 tuck-in 대상</div><div class="bm-line">세그먼트 기술 보강용 소규모 전략 인수</div><div class="bm-line">계속 모니터링하되 우선 투자 대상은 아님</div>
+    </div>
+  </div>
+</div>
+    </div></div>
+  </div>
+
+  <div class="cd interactive-section" id="sec-market">
+    <div class="ch2" onclick="tc(this)"><div><h2>⑤ 시장 거시 매크로 · M&A · 트렌드</h2><p>프로그래매틱 광고, CDP, 어트리뷰션, 모바일 광고 자동화 시장을 묶어 해석</p></div><span class="arr">▼</span></div>
+    <div class="cb">
+      <div class="tw"><table style="min-width:760px"><thead><tr><th>시장 분류</th><th>현재 규모</th><th>전망치</th><th>CAGR</th><th>출처</th></tr></thead><tbody>
+<tr>
+  <td style="font-weight:700">Programmatic Advertising</td>
+  <td>2023년 $678.37B</td>
+  <td>2030년 $2,753.03B</td>
+  <td><b style="color:var(--ok); font-size:0.85rem">22.8%</b></td>
+  <td><a href="https://www.grandviewresearch.com/industry-analysis/programmatic-advertising-market-report" target="_blank" rel="noopener">Grand View Research</a></td>
+</tr>
+<tr>
+  <td style="font-weight:700">Programmatic Advertising Platform</td>
+  <td>2024~2030 성장 구간</td>
+  <td>2030년 $41.44B</td>
+  <td><b style="color:var(--ok); font-size:0.85rem">27.1%</b></td>
+  <td><a href="https://www.grandviewresearch.com/press-release/global-programmatic-advertising-platform-market" target="_blank" rel="noopener">Grand View Research</a></td>
+</tr>
+<tr>
+  <td style="font-weight:700">Customer Data Platform</td>
+  <td>2025년 $8.26B</td>
+  <td>2033년 $58.41B</td>
+  <td><b style="color:var(--ok); font-size:0.85rem">27.8%</b></td>
+  <td><a href="https://www.grandviewresearch.com/industry-analysis/customer-data-platform-market" target="_blank" rel="noopener">Grand View Research</a></td>
+</tr>
+<tr>
+  <td style="font-weight:700">Marketing Attribution Software</td>
+  <td>2024년 $4.74B</td>
+  <td>2030년 $10.10B</td>
+  <td><b style="color:var(--ok); font-size:0.85rem">13.6%</b></td>
+  <td><a href="https://www.grandviewresearch.com/industry-analysis/marketing-attribution-software-market-report" target="_blank" rel="noopener">Grand View Research</a></td>
+</tr>
+      </tbody></table></div>
+      <div class="trend-grid" style="margin-top:1rem;">
+<div class="trend-card interactive-card">
+  <div class="tr-t">📌 Privacy reset 이후의 광고 AI</div>
+  <div class="tr-d">ATT와 SKAN 이후에도 살아남는 회사는 데이터 양보다 모바일 SDK 접점, 퍼블리셔 관계, 리인게이지먼트 알고리즘을 함께 가진 곳이다.</div>
+</div>
+<div class="trend-card interactive-card">
+  <div class="tr-t">📌 DSP만으로는 부족하다</div>
+  <div class="tr-d">순수 집행 엔진보다 mediation, measurement, creative refresh, churn prediction을 묶는 회사가 더 높은 전략 가치를 가진다.</div>
+</div>
+<div class="trend-card interactive-card">
+  <div class="tr-t">📌 M&amp;A는 인프라 보강형으로 발생</div>
+  <div class="tr-d">대형 ad-tech나 앱 수익화 플랫폼이 모바일 특화 DSP, retargeting, exchange 계층을 bolt-on 하는 흐름이 더 현실적이다.</div>
+</div>
+<div class="trend-card interactive-card">
+  <div class="tr-t">📌 관찰 우선순위</div>
+  <div class="tr-d">상위권은 Appodeal, Adikteev, Kayzen, Remerge다. Appodeal은 SDK 락인, Adikteev는 churn-based retargeting, Kayzen은 mobile DSP, Remerge는 privacy-safe 재참여 논리가 강하다.</div>
+</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cd" id="sec-criteria">
+    <div class="ch2" onclick="tc(this)"><div><h2>⑥ 채점 기준</h2><p>광고 AI / 모바일 ad-tech 용도로 다시 정의한 7개 평가축</p></div><span class="arr">▼</span></div>
+    <div class="cb">
+<div class="crit-group interactive-card" style="--cg:#3b82f6">
+  <div class="crit-group-hd" onclick="tcg(this)">
+    <strong>A. 모바일 유통 접점 적합성</strong>
+    <span class="tm">0~20점</span>
+    <span class="cg-arr shut" style="margin-left:auto">▼</span>
+  </div>
+  <div class="crit-group-bd shut">
+    <div style="padding:.65rem .85rem;">
+      <div class="dim" style="margin-bottom:.45rem;">모바일 앱, SDK, 퍼블리셔, OEM, 슈퍼앱 등 실제 배포 접점이 얼마나 직접적인가</div>
+      <ul class="bul-list"><li>모바일 앱 또는 SDK 배포 접점이 직접 존재하는가</li><li>광고 집행이 아닌 인프라 레이어까지 통제하는가</li><li>퍼블리셔 락인 또는 운영 콘솔 락인을 만들 수 있는가</li><li>앱스토어, 브라우저, 슈퍼앱과 붙을 명확한 구성이 있는가</li></ul>
+    </div>
+  </div>
+</div>
+<div class="crit-group interactive-card" style="--cg:#10b981">
+  <div class="crit-group-hd" onclick="tcg(this)">
+    <strong>B. 전략 거래 가능성</strong>
+    <span class="tm">0~15점</span>
+    <span class="cg-arr shut" style="margin-left:auto">▼</span>
+  </div>
+  <div class="crit-group-bd shut">
+    <div style="padding:.65rem .85rem;">
+      <div class="dim" style="margin-bottom:.45rem;">독립 유지 가능성과 동시에 대형 플랫폼에 매력적인 인수 포인트가 있는가</div>
+      <ul class="bul-list"><li>대형 ad-tech 또는 MMP가 사갈 기능 공백을 메우는가</li><li>기술과 고객을 함께 흡수할 수 있는 구조인가</li><li>기존 그룹 편입 완료 기업은 감점한다</li><li>bolt-on 인수 후 시너지 설명이 쉬운가</li></ul>
+    </div>
+  </div>
+</div>
+<div class="crit-group interactive-card" style="--cg:#8b5cf6">
+  <div class="crit-group-hd" onclick="tcg(this)">
+    <strong>C. 기술 밀도와 데이터 자산</strong>
+    <span class="tm">0~15점</span>
+    <span class="cg-arr shut" style="margin-left:auto">▼</span>
+  </div>
+  <div class="crit-group-bd shut">
+    <div style="padding:.65rem .85rem;">
+      <div class="dim" style="margin-bottom:.45rem;">집행 도구를 넘어 모델, 예측, 자동화, measurement 노하우가 제품에 녹아 있는가</div>
+      <ul class="bul-list"><li>bidding 또는 churn prediction이 실제 제품 차별점인가</li><li>creative refresh, targeting, incrementality 등 고도화 포인트가 있는가</li><li>고객 운영 데이터가 알고리즘 개선으로 이어지는가</li><li>단순 대행보다 소프트웨어 비중이 높은가</li></ul>
+    </div>
+  </div>
+</div>
+<div class="crit-group interactive-card" style="--cg:#f59e0b">
+  <div class="crit-group-hd" onclick="tcg(this)">
+    <strong>D. 매출 구조와 BM</strong>
+    <span class="tm">0~15점</span>
+    <span class="cg-arr shut" style="margin-left:auto">▼</span>
+  </div>
+  <div class="crit-group-bd shut">
+    <div style="padding:.65rem .85rem;">
+      <div class="dim" style="margin-bottom:.45rem;">미디어 마진, SaaS, usage fee가 어떻게 섞여 있고 반복 매출이 얼마나 예상되는가</div>
+      <ul class="bul-list"><li>광고 spend 연동 매출 외에 반복 매출 레이어가 존재하는가</li><li>고객당 확장 가능한 모듈이 있는가</li><li>광고 경기 둔화 시에도 유지되는 수익 구조가 있는가</li><li>퍼블리셔와 광고주 양면 중 어느 한쪽에 과도하게 치우치지 않는가</li></ul>
+    </div>
+  </div>
+</div>
+<div class="crit-group interactive-card" style="--cg:#ef4444">
+  <div class="crit-group-hd" onclick="tcg(this)">
+    <strong>E. 시장 타이밍</strong>
+    <span class="tm">0~12점</span>
+    <span class="cg-arr shut" style="margin-left:auto">▼</span>
+  </div>
+  <div class="crit-group-bd shut">
+    <div style="padding:.65rem .85rem;">
+      <div class="dim" style="margin-bottom:.45rem;">프로그래매틱 자동화, 1st-party data, attribution 재편의 흐름을 타고 있는가</div>
+      <ul class="bul-list"><li>privacy-first 전환 뒤에도 제품 메시지가 살아 있는가</li><li>모바일 광고 예산 이동의 수혜를 받을 구조인가</li><li>CDP, attribution, DSP 재통합 흐름과 맞물리는가</li><li>최근 시장 보고서상 성장률이 높은 인접 시장에 걸쳐 있는가</li></ul>
+    </div>
+  </div>
+</div>
+<div class="crit-group interactive-card" style="--cg:#06b6d4">
+  <div class="crit-group-hd" onclick="tcg(this)">
+    <strong>F. 팀과 실행력</strong>
+    <span class="tm">0~10점</span>
+    <span class="cg-arr shut" style="margin-left:auto">▼</span>
+  </div>
+  <div class="crit-group-bd shut">
+    <div style="padding:.65rem .85rem;">
+      <div class="dim" style="margin-bottom:.45rem;">팀의 업력, 글로벌 운영 경험, 카테고리 이해도</div>
+      <ul class="bul-list"><li>광고 생태계 경험이 풍부한 팀인가</li><li>글로벌 퍼블리셔/광고주를 다뤄본 운영 흔적이 있는가</li><li>조직 규모 대비 제품 범위가 과도하지 않은가</li><li>장기 독립 운영 또는 매각 후 통합 둘 다 가능한가</li></ul>
+    </div>
+  </div>
+</div>
+<div class="crit-group interactive-card" style="--cg:#a855f7">
+  <div class="crit-group-hd" onclick="tcg(this)">
+    <strong>G. 경쟁 우위와 방어력</strong>
+    <span class="tm">0~13점</span>
+    <span class="cg-arr shut" style="margin-left:auto">▼</span>
+  </div>
+  <div class="crit-group-bd shut">
+    <div style="padding:.65rem .85rem;">
+      <div class="dim" style="margin-bottom:.45rem;">대형 DSP, MMP, mediation 플랫폼과 붙었을 때 사라지지 않는 이유가 있는가</div>
+      <ul class="bul-list"><li>특정 세그먼트에서 명확한 1위 또는 강한 틈새가 있는가</li><li>고객 전환 비용이 높거나 이탈 비용이 높은가</li><li>집행 운영 데이터를 통해 모델이 계속 좋아지는가</li><li>서비스형 운영에만 기대지 않고 제품형 차별화가 있는가</li></ul>
+    </div>
+  </div>
+</div>
+    </div>
+  </div>
+
+  <footer style="padding:0.7rem 1.1rem; background:var(--card); border-top:2px solid var(--bd); border-radius:var(--r); margin-top:0.8rem; box-shadow:var(--shS);">
+    <div style="display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:0.5rem;">
+      <div style="font-size:0.7rem; font-weight:700; color:var(--acT);">Global AI Startup Watch &#183; Page 1 &#183; 광고 AI / 모바일 광고 기술&#183;서비스</div>
+      <div style="font-size:0.68rem; font-weight:800; color:var(--t1); background:var(--bbg); border:1px solid var(--bbd); padding:0.2rem 0.55rem; border-radius:6px;">⏱ <span class="h-word">&#39;26.4.17 (금) 21:06 기준</span></div>
+    </div>
+    <div style="font-size:0.62rem; color:var(--t3); margin-top:0.4rem; line-height:1.55;">출처 우선순위: 공식 사이트 &gt; 공식 투자/보도자료 &gt; 신뢰 가능한 외부 기사. 비상장 기업 가치는 비공개로 표기했고, 독립성 이슈가 있는 회사는 별도 주석으로 보수적으로 반영했습니다.</div>
+  </footer>
+</main>
+<script>
+function dt(){const b=document.body;b.setAttribute('data-t',b.getAttribute('data-t')==='dark'?'light':'dark')}
+function sp(p){document.body.setAttribute('data-p',p);document.querySelectorAll('.pb').forEach(b=>b.classList.toggle('on',b.dataset.c===p))}
+function tc(h){let b=h.nextElementSibling;while(b&&!b.classList.contains('cb'))b=b.nextElementSibling;const a=h.querySelector('.arr');if(!b)return;b.classList.toggle('shut');if(a)a.classList.toggle('shut')}
+function toggleEval(hd){const bd=hd.nextElementSibling;const arr=hd.querySelector('.ec-arr');if(!bd)return;const isShut=bd.classList.toggle('shut');if(arr)arr.classList.toggle('shut',isShut)}
+function tph(hd){const bd=hd.parentElement.querySelector('.pc-b');const arr=hd.querySelector('.pc-h-arr');if(!bd)return;const isShut=bd.classList.toggle('pc-b-shut');if(arr)arr.style.transform=isShut?'rotate(-90deg)':''}
+function tpc(box){const bd=box.querySelector('.pc-box-bd');const arr=box.querySelector('.pc-box-arr');if(!bd)return;const isShut=bd.classList.toggle('shut');if(arr)arr.classList.toggle('shut',isShut)}
+function tcg(hd){const bd=hd.nextElementSibling;const arr=hd.querySelector('.cg-arr');if(!bd)return;const isShut=bd.classList.toggle('shut');if(isShut){bd.style.maxHeight='0';bd.style.opacity='0'}else{bd.style.maxHeight='1200px';bd.style.opacity='1'}if(arr)arr.classList.toggle('shut',isShut)}
+function toggleRow(rowId,trEl){const arr=trEl.querySelector('.tr-arr');const isOpen=trEl.dataset.open==='1';const tds=trEl.querySelectorAll('.td-d');tds.forEach(td=>{if(isOpen){td.style.maxHeight='0';td.style.overflow='hidden';td.style.opacity='0';td.style.padding='0'}else{td.style.maxHeight='600px';td.style.overflow='';td.style.opacity='1';td.style.padding=''}});trEl.dataset.open=isOpen?'0':'1';if(arr)arr.style.transform=isOpen?'rotate(-90deg)':''}
+const nL=document.querySelectorAll('.nav a');
+const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){nL.forEach(l=>l.classList.remove('on'));const l=document.querySelector('.nav a[href="#'+e.target.id+'"]');if(l)l.classList.add('on')}})},{rootMargin:'-80px 0px -55% 0px',threshold:0});
+document.querySelectorAll('[id^="sec-"]').forEach(s=>obs.observe(s));
+</script>
+</body>
+</html>
