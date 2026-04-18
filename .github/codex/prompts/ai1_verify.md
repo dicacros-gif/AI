@@ -15,8 +15,8 @@ Hard rules:
 - AI/1 is the personalization / on-device page.
 - Existing companies stay published unless a human removes them later.
 - Legacy Korea/China HQ problems become removal candidates, not auto-deletions.
+- Korean-language sources cannot support decisive facts or final publish citations.
 - Every visible date must include time and `KST`.
 - Do not edit published HTML in this phase.
 
 Write the JSON and Markdown files defined in `phase_context.md`.
-

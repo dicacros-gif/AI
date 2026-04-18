@@ -57,6 +57,7 @@
 - South Korea headquartered companies below the current publish bar should be removed during explicit cleanup passes. The active threshold is fewer than `51` employees when a credible employee range exists.
 - Prefer software, service, engine, and enabling technology companies over pure hardware vendors.
 - Existing published companies are not auto-deleted by default; legacy violations are flagged as removal candidates unless an explicit cleanup rule is being applied.
+- Recurring daily updates should preserve already-published companies and focus on refreshing facts plus adding newly discovered candidates.
 
 ## Ranking Rule
 - Newly discovered startups only are ranked.
@@ -72,7 +73,7 @@
 - Date-only labels are forbidden.
 
 ## Do-Not Rules
-- Do not rely on Korean-language sources for decisive facts.
+- Do not use Korean-language sources as decisive support or final publish citations.
 - Do not hallucinate undisclosed funding, revenue, headcount, valuation, partnership, or investor details.
 - Do not auto-delete existing published companies during update, verify, scout, or score unless an explicit cleanup rule is being applied.
 - Do not edit published HTML in non-render phases.

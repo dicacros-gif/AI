@@ -44,6 +44,7 @@
 - Render must preserve shell structure and emit visible `KST` timestamps.
 - Global QA or final check blockers stop publish.
 - Existing published companies are retained by default; new-candidate rules are stricter than legacy cleanup.
+- Normal recurring runs should update facts on existing companies and add new discoveries instead of pruning the published set.
 - Explicit cleanup passes may remove hardware-first companies and South Korea headquartered companies below the active size threshold of `51` employees.
 
 ## Troubleshooting Order
@@ -61,5 +62,5 @@
 
 ## Source-Quality Checks
 - Prefer official English sources and authoritative English media.
-- Korean-language sources are not decisive for final-candidate inclusion.
+- Korean-language sources are excluded from decisive facts and final publish citations.
 - Hardware-first candidates should be excluded from promotion, and explicit cleanup can remove already published hardware-first companies.

@@ -13,9 +13,9 @@ Goal:
 Scoring rules:
 - Unsupported claims earn no points.
 - Software/service/engine leverage outranks pure hardware-first stories.
+- Score only from authoritative English-language evidence; Korean-language sources cannot justify points.
 - Tie-break by revenue strength, traction recency, primary-source quality, manufacturer/M&A fit, and defensibility.
 - Final new-candidate ranking must be deterministic and contiguous 1 -> N.
 
 Do not edit published HTML.
 Write the files named in `phase_context.md`.
-

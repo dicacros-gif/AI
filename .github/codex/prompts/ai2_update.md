@@ -13,9 +13,8 @@ Goal:
 Hard rules:
 - Non-render phases must not edit published HTML.
 - Prefer English authoritative and official English sources.
-- Korean-language sources cannot be decisive evidence.
+- Exclude Korean-language sources from decisive evidence and final publish citations.
 - Legacy Korea/China HQ problems become removal candidates, not auto-deletions.
 - Do not scout new companies in this phase.
 
 Write the JSON and Markdown files defined in `phase_context.md`.
-

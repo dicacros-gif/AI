@@ -15,8 +15,8 @@ Hard rules:
 - AI/2 is the ad AI / mobile advertising technology page.
 - Existing companies stay published unless a human later removes them.
 - Legacy Korea/China HQ issues become removal candidates only.
+- Korean-language sources cannot support decisive facts or final publish citations.
 - Every visible date needs visible time and `KST`.
 - Do not edit published HTML.
 
 Write the files named in `phase_context.md`.
-

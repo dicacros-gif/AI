@@ -13,9 +13,9 @@ Goal:
 Scoring rules:
 - Unsupported claims get zero credit.
 - Prefer SW/service/engine/technology leverage over pure hardware-first stories.
+- Score only from authoritative English-language evidence; Korean-language sources cannot justify points.
 - Tie-breaks: revenue strength, traction recency, primary-source quality, manufacturer/M&A fit, defensibility.
 - Final approved new-candidate order must be deterministic 1 -> N.
 
 Do not edit published HTML.
 Write the files defined in `phase_context.md`.
-

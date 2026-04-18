@@ -22,6 +22,7 @@
 - Scheduled times use `Asia/Seoul` as the business timezone and are converted to UTC cron entries in the workflow.
 - Existing published companies are retained by default.
 - Legacy rule violations are surfaced as removal candidates rather than auto-deletions.
+- The recurring publish model is additive: keep existing published companies, refresh their facts, and layer in newly discovered candidates over time.
 - Explicit cleanup passes may remove hardware-first companies and South Korea headquartered companies below the active size threshold.
 - Newly discovered companies are filtered more strictly:
   - no South Korea / China HQ
@@ -55,7 +56,7 @@
 
 ## English Source Policy
 - English-language official and authoritative sources are decisive.
-- Korean-language sources are discouraged and cannot stand alone as decisive support for publish decisions.
+- Korean-language sources are excluded from decisive research and final publish citations.
 - Official press releases count as company-distributed claims, not independent verification.
 
 ## Korea / China Exclusion Policy

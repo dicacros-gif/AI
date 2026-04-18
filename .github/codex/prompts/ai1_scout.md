@@ -18,7 +18,8 @@ Hard rules:
 - South Korea headquartered companies with a credible employee range below 51 should not be promoted.
 - Prefer software, service, engine, and enabling-technology companies over pure hardware vendors.
 - Newly discovered candidates need revenue evidence, technology differentiation, and clear mobile-first or mobile-integrated UX.
-- English authoritative sources are mandatory for decisive inclusion.
+- English authoritative sources are mandatory for decisive inclusion and scoring support.
+- Korean-language sources must be ignored for decisive facts and final publish citations.
 - Do not edit published HTML.
 
 Write the JSON and Markdown files named in `phase_context.md`.

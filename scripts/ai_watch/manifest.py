@@ -141,10 +141,11 @@ NON_NEGOTIABLE_RULES = [
     "Newly discovered startups must use deterministic rank order 1 -> N everywhere downstream.",
     "Newly discovered startups must exclude South Korea and China headquarters unless HQ is verified elsewhere and not in those countries.",
     "Existing published companies are not auto-deleted unless an explicit cleanup rule is being applied.",
+    "Recurring publish runs preserve existing published companies and focus on fact refreshes plus additive new-candidate updates.",
     "Explicit cleanup rules remove hardware-first companies and South Korea headquartered companies below the active 51-employee threshold.",
     "New discovery and scoring exclude hardware-first vendors and favor software, service, engine, and enabling technology companies.",
     "Every visible generation timestamp must include date, weekday, time, and KST.",
-    "English-language authoritative evidence is decisive; Korean-language sources cannot be the sole support for publish decisions.",
+    "English-language authoritative evidence is required for decisive facts; Korean-language sources are excluded from decisive research and final publish citations.",
 ]
 
 

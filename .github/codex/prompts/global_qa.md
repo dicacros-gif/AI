@@ -17,11 +17,10 @@ Must check:
 - duplicate startups across pages
 - missing visible time or missing `KST`
 - ranking/order drift
-- Korean-language decisive-source dependence
+- Korean-language decisive-source dependence or Korean-language final publish citations
 - Korea/China new-candidate violations
 - unicorn violations
 - placeholder text
 - broken shell structures
 
 Write the files named in `phase_context.md`.
-
