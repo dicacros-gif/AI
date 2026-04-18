@@ -1,0 +1,8 @@
+{
+  "phase": "ai1_scout",
+  "page": "ai1",
+  "generatedAt": "2026-04-19T06:05:59.014972",
+  "rejections": [],
+  "defaultBias": "prefer software/service/engine/technology companies over pure hardware vendors and evaluate the full global pool except South Korea/China headquarters",
+  "mergedAgents": []
+}
