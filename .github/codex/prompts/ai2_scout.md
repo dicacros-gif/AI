@@ -15,7 +15,7 @@ Hard rules:
 - Exclude newly discovered South Korea and China HQ startups.
 - Exclude hardware-first vendors.
 - Prefer SW/service/engine/technology companies over pure hardware vendors.
-- When candidate quality is similar, prefer U.S.-headquartered candidates first before widening to other eligible regions.
+- Eligible new candidates can come from any global region except South Korea or China headquarters, and the final shortlist should favor the strongest English-evidenced candidates from the full global pool.
 - Require revenue evidence, technology differentiation, and true mobile or mobile-ad-stack relevance.
 - English authoritative evidence is mandatory for decisive inclusion and scoring support.
 - Korean-language sources must be ignored for decisive facts and final publish citations.

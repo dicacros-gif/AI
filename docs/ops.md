@@ -10,7 +10,7 @@
 - `ai1_update` / `ai2_update`: latest updates for already-published companies only.
 - `ai1_verify` / `ai2_verify`: factual, logical, timestamp, category, and legacy-rule cross-checking.
 - `ai1_scout` / `ai2_scout`: new-candidate discovery with strict exclusion and source rules.
-- Scout phases should prefer U.S.-headquartered candidates first when multiple eligible candidates have similar evidence quality.
+- Scout phases should search the full eligible global pool and exclude only South Korea / China headquarters from new-candidate promotion.
 - `ai1_score` / `ai2_score`: evidence-backed scoring for approved new candidates only.
 - `ai1_render` / `ai2_render`: conservative HTML updates with mandatory KST timestamps.
 - `global_qa`: cross-page QA before publish acceptance.

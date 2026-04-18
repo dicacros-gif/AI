@@ -30,7 +30,7 @@
   - mobile relevance required
   - exclude hardware-first vendors
   - prefer software / service / engine / technology companies over pure hardware vendors
-  - when evidence quality is comparable, prioritize U.S.-headquartered candidates first
+- newly discovered candidates are drawn from the full global pool except South Korea / China headquarters
 
 ## Final Canonical Schedule
 - `04:00 KST` `ai1_update` -> `0 19 * * *` UTC

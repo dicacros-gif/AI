@@ -56,7 +56,7 @@
 - Newly discovered startups need clear mobile-first, mobile-native, or deeply mobile-surface relevance.
 - Hardware-first vendors are excluded from new-candidate promotion.
 - Prefer software, service, engine, and enabling technology companies over pure hardware vendors.
-- When evidence quality is comparable, daily discovery should prioritize U.S.-headquartered candidates first and then widen to other non-Korea / non-China candidates.
+- Newly discovered candidates can come from any global region except South Korea or China headquarters, and daily discovery should select the strongest evidence-backed eligible candidates from the full global pool.
 - `AI/1` publish set excludes semiconductor fabless, chip vendors, and hardware-first companies.
 - If an `AI/1` company is primarily a semiconductor, chip, fabless, or hardware vendor, replace it with a software, service, engine, or enabling-technology company backed by English-language evidence.
 - Existing published companies stay on the page during recurring runs; automation should refresh facts and add newly discovered candidates instead of pruning the legacy set.

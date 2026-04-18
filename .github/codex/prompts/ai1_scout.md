@@ -17,7 +17,7 @@ Hard rules:
 - Exclude hardware-first vendors.
 - Exclude semiconductor fabless and chip vendors.
 - Prefer software, service, engine, and enabling-technology companies over pure hardware vendors.
-- When candidate quality is similar, prefer U.S.-headquartered candidates first before widening to other eligible regions.
+- Eligible new candidates can come from any global region except South Korea or China headquarters, and the final shortlist should favor the strongest English-evidenced candidates from the full global pool.
 - Newly discovered candidates need revenue evidence, technology differentiation, and clear mobile-first or mobile-integrated UX.
 - English authoritative sources are mandatory for decisive inclusion and scoring support.
 - Korean-language sources must be ignored for decisive facts and final publish citations.
