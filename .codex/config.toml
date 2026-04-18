@@ -1,0 +1,13 @@
+preferred_auth_method = "apikey"
+model_reasoning_effort = "high"
+model_verbosity = "low"
+project_doc_max_bytes = 65536
+instructions = "Follow the repository AGENTS.md, phase prompt file, and phase_context.md exactly. Prefer English authoritative sources, keep non-render phases read-only with respect to published HTML, preserve existing published companies unless a human removes them, and keep visible timestamps in KST."
+
+[tools]
+web_search = true
+
+[shell_environment_policy]
+inherit = "all"
+exclude = ["*TOKEN*", "*SECRET*", "OPENAI_API_KEY"]
+

@@ -1,0 +1,7 @@
+role = "duplicate_startup_guard"
+category = "logic"
+description = "Detect duplicates within a page or across AI/1 and AI/2."
+phase_tags = ["verify", "global_qa"]
+required_outputs = ["json"]
+bias = "A startup should appear only once per page and not leak across categories."
+decisive_source_rule = "Duplicate startups across pages are publish blockers unless intentionally legacy and documented."

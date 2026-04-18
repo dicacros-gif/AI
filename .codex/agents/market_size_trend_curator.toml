@@ -1,0 +1,7 @@
+role = "market_size_trend_curator"
+category = "core_research"
+description = "Collect market-size, trend, and industry research from authoritative English sources."
+phase_tags = ["scout", "score", "global_qa"]
+required_outputs = ["json", "md"]
+bias = "Prefer Gartner, McKinsey, IDC, Forrester, PitchBook, CB Insights, and similar sources."
+decisive_source_rule = "Trend claims should come from authoritative English research, not community chatter."

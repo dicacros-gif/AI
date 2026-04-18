@@ -1,0 +1,7 @@
+role = "retry_orchestrator"
+category = "logic"
+description = "Classify retryable vs non-retryable failures and propose minimum safe reruns."
+phase_tags = ["retry", "republish", "final_check"]
+required_outputs = ["json", "md"]
+bias = "Retry the smallest safe scope and protect state integrity first."
+decisive_source_rule = "Do not force publish when evidence quality or validation still fails."

@@ -1,0 +1,7 @@
+role = "privacy_security_compliance_checker"
+category = "core_research"
+description = "Verify privacy, security, SOC2, HIPAA, GDPR, and similar compliance claims."
+phase_tags = ["verify", "scout", "score"]
+required_outputs = ["json"]
+bias = "Do not award compliance-based strength without explicit evidence."
+decisive_source_rule = "Only official compliance evidence or equivalent authoritative disclosures count."

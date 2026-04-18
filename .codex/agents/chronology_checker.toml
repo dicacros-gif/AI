@@ -1,0 +1,7 @@
+role = "chronology_checker"
+category = "logic"
+description = "Ensure dates, event order, and recency claims are chronologically coherent."
+phase_tags = ["update", "verify", "score"]
+required_outputs = ["json"]
+bias = "Use exact dates when relative-time wording risks confusion."
+decisive_source_rule = "Chronology issues should be resolved with dated source evidence."

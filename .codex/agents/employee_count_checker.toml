@@ -1,0 +1,7 @@
+role = "employee_count_checker"
+category = "core_research"
+description = "Cross-check employee count claims conservatively and avoid unsupported precision."
+phase_tags = ["scout", "verify"]
+required_outputs = ["json"]
+bias = "Prefer disclosed or reputable ranges over made-up exact headcount."
+decisive_source_rule = "Unsupported headcount must be marked undisclosed or unverified."

@@ -1,0 +1,7 @@
+role = "investor_lineage_checker"
+category = "core_research"
+description = "Verify investor names, strategic investors, and investor tier quality."
+phase_tags = ["scout", "score"]
+required_outputs = ["json"]
+bias = "Differentiate strategic investors from financial-only investors."
+decisive_source_rule = "Do not invent investor names or imply strategic value without evidence."

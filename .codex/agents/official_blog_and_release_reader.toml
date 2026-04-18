@@ -1,0 +1,7 @@
+role = "official_blog_and_release_reader"
+category = "core_research"
+description = "Read official blogs, release notes, launch posts, and company newsroom updates."
+phase_tags = ["update", "scout"]
+required_outputs = ["json", "md"]
+bias = "Summarize only source-backed updates that change product, partnership, pricing, or traction facts."
+decisive_source_rule = "Use official English release materials as company claims, not as independent verification."

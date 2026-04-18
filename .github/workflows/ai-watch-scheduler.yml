@@ -1,0 +1,245 @@
+name: AI Watch Scheduler
+
+on:
+  schedule:
+    - cron: "0 19 * * *"
+    - cron: "20 19 * * *"
+    - cron: "30 19 * * *"
+    - cron: "40 19 * * *"
+    - cron: "50 19 * * *"
+    - cron: "0 20 * * *"
+    - cron: "20 20 * * *"
+    - cron: "30 20 * * *"
+    - cron: "40 20 * * *"
+    - cron: "0 21 * * *"
+    - cron: "10 21 * * *"
+    - cron: "30 21 * * *"
+    - cron: "0 22 * * *"
+    - cron: "30 22 * * *"
+  workflow_dispatch:
+    inputs:
+      phase:
+        description: "Phase to run"
+        required: true
+        default: scheduled
+        type: choice
+        options:
+          - scheduled
+          - ai1_update
+          - ai1_verify
+          - ai1_scout
+          - ai1_score
+          - ai1_render
+          - ai2_update
+          - ai2_verify
+          - ai2_scout
+          - ai2_score
+          - ai2_render
+          - global_qa
+          - retry_failed
+          - republish_or_qa
+          - final_retry_or_publish_check
+      target_date:
+        description: "Optional KST date in YYYY-MM-DD"
+        required: false
+        type: string
+      page:
+        description: "Optional explicit page key for manual runs"
+        required: false
+        type: choice
+        options:
+          - ""
+          - ai1
+          - ai2
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ai-watch-${{ github.ref }}-${{ github.event.schedule || inputs.phase || 'manual' }}
+  cancel-in-progress: false
+
+jobs:
+  resolve:
+    runs-on: ubuntu-latest
+    outputs:
+      phase: ${{ steps.resolve.outputs.phase }}
+      page: ${{ steps.resolve.outputs.page }}
+      run_date: ${{ steps.resolve.outputs.run_date }}
+      phase_root: ${{ steps.resolve.outputs.phase_root }}
+      prompt_file: ${{ steps.resolve.outputs.prompt_file }}
+      agent_matrix: ${{ steps.resolve.outputs.agent_matrix }}
+      kst_slot: ${{ steps.resolve.outputs.kst_slot }}
+      should_run_codex: ${{ steps.resolve.outputs.should_run_codex }}
+      commit_main: ${{ steps.resolve.outputs.commit_main }}
+      validate_publish: ${{ steps.resolve.outputs.validate_publish }}
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Generate agent assets
+        run: python scripts/generate_codex_assets.py
+      - id: resolve
+        run: |
+          python scripts/resolve_schedule.py \
+            --scheduled-cron "${{ github.event.schedule }}" \
+            --manual-phase "${{ inputs.phase }}" \
+            --manual-date "${{ inputs.target_date }}" \
+            --manual-page "${{ inputs.page }}" \
+            --github-output "$GITHUB_OUTPUT"
+
+  phase_agents:
+    needs: resolve
+    if: needs.resolve.outputs.should_run_codex == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    strategy:
+      fail-fast: false
+      matrix:
+        include: ${{ fromJSON(needs.resolve.outputs.agent_matrix) }}
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Generate agent assets
+        run: python scripts/generate_codex_assets.py
+      - name: Bootstrap phase state
+        run: |
+          python scripts/run_phase.py \
+            --mode bootstrap \
+            --phase "${{ needs.resolve.outputs.phase }}" \
+            --page "${{ needs.resolve.outputs.page }}" \
+            --role "${{ matrix.role }}" \
+            --run-date "${{ needs.resolve.outputs.run_date }}"
+      - name: Run Codex for agent role
+        uses: openai/codex-action@v1
+        with:
+          openai-api-key: ${{ secrets.OPENAI_API_KEY }}
+          codex-home: .codex
+          prompt-file: ${{ needs.resolve.outputs.prompt_file }}
+          working-directory: .
+          sandbox: workspace-write
+          safety-strategy: drop-sudo
+          output-file: ${{ needs.resolve.outputs.phase_root }}/agents/${{ matrix.role }}.final.md
+          model: gpt-5.4
+          effort: high
+      - name: Upload agent artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: ai-watch-${{ needs.resolve.outputs.phase }}-${{ matrix.role }}-${{ needs.resolve.outputs.run_date }}
+          path: ${{ needs.resolve.outputs.phase_root }}/agents/${{ matrix.role }}*
+          if-no-files-found: ignore
+
+  consolidate:
+    needs: [resolve, phase_agents]
+    if: always() && needs.resolve.result == 'success'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Generate agent assets
+        run: python scripts/generate_codex_assets.py
+      - name: Download agent artifacts
+        if: needs.resolve.outputs.should_run_codex == 'true'
+        uses: actions/download-artifact@v4
+        with:
+          pattern: ai-watch-${{ needs.resolve.outputs.phase }}-*-${{ needs.resolve.outputs.run_date }}
+          path: ${{ needs.resolve.outputs.phase_root }}/agents
+          merge-multiple: true
+      - name: Consolidate phase outputs
+        run: |
+          python scripts/run_phase.py \
+            --mode consolidate \
+            --phase "${{ needs.resolve.outputs.phase }}" \
+            --page "${{ needs.resolve.outputs.page }}" \
+            --run-date "${{ needs.resolve.outputs.run_date }}"
+      - name: Validate ranking
+        if: needs.resolve.outputs.validate_publish == 'true'
+        continue-on-error: true
+        run: |
+          python scripts/validate_ranking.py 1/index.html 2/index.html \
+            --json-output "${{ needs.resolve.outputs.phase_root }}/validator_ranking.json"
+      - name: Validate publish targets
+        if: needs.resolve.outputs.validate_publish == 'true'
+        continue-on-error: true
+        run: |
+          python scripts/validate_publish.py \
+            --page1 1/index.html \
+            --page2 2/index.html \
+            --json-output "${{ needs.resolve.outputs.phase_root }}/validator_publish.json"
+      - name: Validate state tree
+        continue-on-error: true
+        run: |
+          python scripts/validate_state.py \
+            --run-root ".state/runs/${{ needs.resolve.outputs.run_date }}" \
+            --json-output "${{ needs.resolve.outputs.phase_root }}/validator_state.json"
+      - name: Validate sources
+        continue-on-error: true
+        run: |
+          python scripts/validate_sources.py \
+            "${{ needs.resolve.outputs.phase_root }}/source_quality_report.json" \
+            "${{ needs.resolve.outputs.phase_root }}/source_integrity.json" \
+            "${{ needs.resolve.outputs.phase_root }}/scout_candidates.json" \
+            "${{ needs.resolve.outputs.phase_root }}/scores.json" \
+            --json-output "${{ needs.resolve.outputs.phase_root }}/validator_sources.json"
+      - name: Summarize failures
+        run: |
+          python scripts/report_failures.py \
+            "${{ needs.resolve.outputs.phase_root }}/validator_ranking.json" \
+            "${{ needs.resolve.outputs.phase_root }}/validator_publish.json" \
+            "${{ needs.resolve.outputs.phase_root }}/validator_state.json" \
+            "${{ needs.resolve.outputs.phase_root }}/validator_sources.json" \
+            --json-output "${{ needs.resolve.outputs.phase_root }}/failure_summary.json"
+      - name: Enforce publish gate
+        if: needs.resolve.outputs.validate_publish == 'true'
+        run: |
+          python -c "import json,sys; d=json.load(open(r'${{ needs.resolve.outputs.phase_root }}/failure_summary.json', encoding='utf-8')); issues=d.get('summary', []); sys.exit(1 if issues else 0)"
+      - name: Persist state branch
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git fetch origin ai-watch-state || true
+          rm -rf _state_branch
+          if git ls-remote --exit-code --heads origin ai-watch-state >/dev/null 2>&1; then
+            git worktree add _state_branch origin/ai-watch-state
+          else
+            git worktree add --detach _state_branch
+            cd _state_branch
+            git checkout --orphan ai-watch-state
+            git rm -rf . >/dev/null 2>&1 || true
+            cd ..
+          fi
+          mkdir -p "_state_branch/$(dirname "${{ needs.resolve.outputs.phase_root }}")"
+          rm -rf "_state_branch/${{ needs.resolve.outputs.phase_root }}"
+          cp -R "${{ needs.resolve.outputs.phase_root }}" "_state_branch/${{ needs.resolve.outputs.phase_root }}"
+          cd _state_branch
+          git add .
+          git commit -m "state: ${{ needs.resolve.outputs.phase }} ${{ needs.resolve.outputs.run_date }} ${{ needs.resolve.outputs.kst_slot }}" || echo "No state changes to commit."
+          git push origin HEAD:ai-watch-state
+      - name: Commit rendered pages
+        if: needs.resolve.outputs.commit_main == 'true'
+        run: |
+          if git diff --quiet -- 1/index.html 2/index.html; then
+            echo "No page changes to commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add 1/index.html 2/index.html
+          git commit -m "ai-watch: ${{ needs.resolve.outputs.phase }} ${{ needs.resolve.outputs.run_date }} ${{ needs.resolve.outputs.kst_slot }}"
+          git push
+      - name: Upload consolidated artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: ai-watch-consolidated-${{ needs.resolve.outputs.phase }}-${{ needs.resolve.outputs.run_date }}
+          path: ${{ needs.resolve.outputs.phase_root }}
+          if-no-files-found: error
+

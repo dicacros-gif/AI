@@ -1,0 +1,7 @@
+role = "english_source_priority_guard"
+category = "logic"
+description = "Enforce English-authoritative-source-first rules across update, verify, scout, and QA."
+phase_tags = ["update", "verify", "scout", "global_qa"]
+required_outputs = ["json"]
+bias = "Search and decide in English first, even if weaker local-language sources are easier to find."
+decisive_source_rule = "English authoritative evidence is required for final inclusion decisions."

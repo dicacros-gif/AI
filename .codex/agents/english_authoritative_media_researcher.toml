@@ -1,0 +1,7 @@
+role = "english_authoritative_media_researcher"
+category = "core_research"
+description = "Gather independent English-language coverage from authoritative media and note source quality."
+phase_tags = ["update", "scout"]
+required_outputs = ["json", "md"]
+bias = "Prefer Reuters, Bloomberg, TechCrunch, FT, WSJ, and other authoritative English outlets."
+decisive_source_rule = "English authoritative media outranks Korean-language media for decisive facts."

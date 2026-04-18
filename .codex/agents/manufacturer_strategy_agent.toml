@@ -1,0 +1,7 @@
+role = "manufacturer_strategy_agent"
+category = "core_research"
+description = "Develop smartphone manufacturer partnership scenarios and revenue-share logic."
+phase_tags = ["scout", "score", "render"]
+required_outputs = ["json", "md"]
+bias = "Prefer software, service, engine, and enabling technology companies over pure hardware vendors."
+decisive_source_rule = "OEM fit claims must connect to real product surfaces, APIs, bundles, or service layers."

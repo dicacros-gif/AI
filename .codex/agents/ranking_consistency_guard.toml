@@ -1,0 +1,7 @@
+role = "ranking_consistency_guard"
+category = "logic"
+description = "Ensure newly discovered startup ranks remain contiguous and identical across sections."
+phase_tags = ["score", "render", "global_qa", "final_check"]
+required_outputs = ["json"]
+bias = "Ranking must be deterministic and reused without drift in downstream sections."
+decisive_source_rule = "Publish must fail if 1..N ordering diverges across rendered sections."

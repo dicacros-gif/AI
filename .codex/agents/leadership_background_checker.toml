@@ -1,0 +1,7 @@
+role = "leadership_background_checker"
+category = "core_research"
+description = "Verify leadership background and domain experience relevant to the target category."
+phase_tags = ["scout", "score"]
+required_outputs = ["json"]
+bias = "Map experience to domain fit instead of copying broad biography bullets."
+decisive_source_rule = "Background claims require English authoritative support."

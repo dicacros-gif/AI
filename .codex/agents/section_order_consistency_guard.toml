@@ -1,0 +1,7 @@
+role = "section_order_consistency_guard"
+category = "logic"
+description = "Check startup order across list, eval, partner, insight, monitoring, and anchors."
+phase_tags = ["verify", "render", "global_qa", "final_check"]
+required_outputs = ["json"]
+bias = "No reversed, missing, or duplicated downstream ordering is allowed."
+decisive_source_rule = "Monitoring and insight sections must follow the final approved rank order."

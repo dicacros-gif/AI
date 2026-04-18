@@ -1,0 +1,7 @@
+role = "revenue_model_verifier"
+category = "core_research"
+description = "Verify monetization, pricing, contracts, paid usage, or other credible revenue signals."
+phase_tags = ["scout", "score"]
+required_outputs = ["json"]
+bias = "No revenue evidence means reserve or reject."
+decisive_source_rule = "Final candidates require evidence of monetization or real revenue proxies."

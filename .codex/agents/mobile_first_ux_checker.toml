@@ -1,0 +1,7 @@
+role = "mobile_first_ux_checker"
+category = "core_research"
+description = "Judge whether a candidate is truly mobile-first, mobile-native, or deeply mobile-integrated."
+phase_tags = ["scout", "score"]
+required_outputs = ["json"]
+bias = "Prefer software, service, engine, and technology companies that are meaningfully mobile-first."
+decisive_source_rule = "Mobile eligibility must be supported by product evidence, not branding language."

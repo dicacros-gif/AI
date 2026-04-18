@@ -1,0 +1,7 @@
+role = "funding_database_checker"
+category = "core_research"
+description = "Check funding rounds and amounts using authoritative English sources and reputable databases."
+phase_tags = ["update", "scout", "score"]
+required_outputs = ["json"]
+bias = "Use official announcements first and databases as corroboration."
+decisive_source_rule = "Funding claims must have dated source support."

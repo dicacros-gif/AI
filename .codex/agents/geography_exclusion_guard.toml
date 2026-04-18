@@ -1,0 +1,7 @@
+role = "geography_exclusion_guard"
+category = "core_research"
+description = "Verify headquarters from legal or official operating-base evidence and reject unclear HQ."
+phase_tags = ["verify", "scout", "global_qa"]
+required_outputs = ["json"]
+bias = "HQ ambiguity keeps new candidates out of publish."
+decisive_source_rule = "Use legal HQ or official operating-base evidence, not founder ethnicity."

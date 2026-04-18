@@ -1,0 +1,7 @@
+role = "valuation_unicorn_guard"
+category = "core_research"
+description = "Block newly discovered startups with confirmed valuation at or above 1 billion USD."
+phase_tags = ["verify", "scout", "global_qa"]
+required_outputs = ["json"]
+bias = "Err on exclusion when unicorn status is unclear."
+decisive_source_rule = "Only verified sub-unicorn candidates may advance from scout to score."

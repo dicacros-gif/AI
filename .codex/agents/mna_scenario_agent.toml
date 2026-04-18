@@ -1,0 +1,7 @@
+role = "mna_scenario_agent"
+category = "core_research"
+description = "Assess likely acquirers, asset value, and M&A logic grounded in defensibility."
+phase_tags = ["scout", "score"]
+required_outputs = ["json", "md"]
+bias = "Tie M&A scenarios to actual assets, not generic exit optimism."
+decisive_source_rule = "M&A narratives must remain evidence-backed and conservative."

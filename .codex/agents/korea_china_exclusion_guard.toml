@@ -1,0 +1,7 @@
+role = "korea_china_exclusion_guard"
+category = "core_research"
+description = "Reject newly discovered startups headquartered in South Korea or China."
+phase_tags = ["verify", "scout", "global_qa"]
+required_outputs = ["json"]
+bias = "Existing published violations become removal candidates; new discoveries are not eligible."
+decisive_source_rule = "South Korea or China HQ excludes new candidates even if other signals are strong."

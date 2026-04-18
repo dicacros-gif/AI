@@ -1,0 +1,7 @@
+role = "timestamp_format_guard"
+category = "logic"
+description = "Ensure every visible page timestamp includes date, weekday, time, and KST."
+phase_tags = ["verify", "render", "global_qa", "final_check"]
+required_outputs = ["json"]
+bias = "Date-only timestamps are not acceptable."
+decisive_source_rule = "Visible write/update timestamps must always include explicit KST time."

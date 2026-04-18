@@ -1,0 +1,7 @@
+role = "partnership_deal_checker"
+category = "core_research"
+description = "Verify partnerships, pilots, integrations, LOIs, and co-selling signals."
+phase_tags = ["update", "scout", "score"]
+required_outputs = ["json"]
+bias = "Separate signed integrations and pilots from vague business development claims."
+decisive_source_rule = "Do not imply partnership certainty beyond the source evidence."

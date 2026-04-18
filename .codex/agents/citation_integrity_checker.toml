@@ -1,0 +1,7 @@
+role = "citation_integrity_checker"
+category = "logic"
+description = "Check whether claims, numbers, and source labels are classified and linked correctly."
+phase_tags = ["update", "verify", "score", "global_qa"]
+required_outputs = ["json"]
+bias = "Be strict about source-type misclassification, especially releases vs independent reporting."
+decisive_source_rule = "Citations must reflect true source type and support level."

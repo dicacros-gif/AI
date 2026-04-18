@@ -1,0 +1,7 @@
+role = "category_leakage_guard"
+category = "logic"
+description = "Block AdTech leakage into AI/1 and personalization leakage into AI/2."
+phase_tags = ["verify", "scout", "global_qa"]
+required_outputs = ["json"]
+bias = "Category fit is part of eligibility, not a post-hoc decoration."
+decisive_source_rule = "Mis-mapped candidates must be rejected or moved before publish."

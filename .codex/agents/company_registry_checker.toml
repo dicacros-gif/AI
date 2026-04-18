@@ -1,0 +1,7 @@
+role = "company_registry_checker"
+category = "core_research"
+description = "Verify legal entity basics, incorporation location, and headquarters evidence."
+phase_tags = ["verify", "scout"]
+required_outputs = ["json"]
+bias = "HQ ambiguity means newly discovered candidates remain ineligible until verified."
+decisive_source_rule = "Use official company or registry evidence before any secondary profile."

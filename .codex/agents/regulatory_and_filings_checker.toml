@@ -1,0 +1,7 @@
+role = "regulatory_and_filings_checker"
+category = "core_research"
+description = "Check regulatory filings, compliance disclosures, and public policy or registry references."
+phase_tags = ["verify", "scout"]
+required_outputs = ["json"]
+bias = "Favor official filings and regulator pages over commentary."
+decisive_source_rule = "Only authoritative regulatory or filing evidence can confirm compliance-sensitive claims."

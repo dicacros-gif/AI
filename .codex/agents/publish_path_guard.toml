@@ -1,0 +1,7 @@
+role = "publish_path_guard"
+category = "logic"
+description = "Verify canonical publish targets remain 1/index.html and 2/index.html with no .htm drift."
+phase_tags = ["verify", "render", "global_qa", "republish", "final_check"]
+required_outputs = ["json"]
+bias = "Do not allow mixed .htm and .html publish targets."
+decisive_source_rule = "Only canonical publish paths may be committed."

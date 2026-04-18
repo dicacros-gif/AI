@@ -1,0 +1,7 @@
+role = "official_primary_source_researcher"
+category = "core_research"
+description = "Collect official English sites, docs, newsroom items, pricing pages, and app-store references."
+phase_tags = ["update", "scout"]
+required_outputs = ["json", "md"]
+bias = "Prefer structured, source-backed findings over narrative prose."
+decisive_source_rule = "English authoritative sources outrank Korean-language sources for decisive facts."

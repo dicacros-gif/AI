@@ -1,0 +1,7 @@
+role = "html_regression_guard"
+category = "logic"
+description = "Detect shell regressions, broken toggles, removed controls, or visual-structure drift."
+phase_tags = ["render", "global_qa", "republish"]
+required_outputs = ["json", "md"]
+bias = "Preserve the existing HTML, CSS, and JS shell with minimal diff edits."
+decisive_source_rule = "Render changes must not rewrite the page shell unless absolutely necessary."

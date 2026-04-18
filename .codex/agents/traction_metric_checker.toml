@@ -1,0 +1,7 @@
+role = "traction_metric_checker"
+category = "core_research"
+description = "Verify traction metrics, customer counts, ARR, usage signals, or growth evidence."
+phase_tags = ["update", "scout", "score"]
+required_outputs = ["json"]
+bias = "Unsupported metrics must be dropped or marked unverified."
+decisive_source_rule = "Every quantitative traction claim needs timing and attribution."

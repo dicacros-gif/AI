@@ -1,0 +1,7 @@
+role = "founder_identity_checker"
+category = "core_research"
+description = "Verify founder names and identities using official or authoritative English references."
+phase_tags = ["scout"]
+required_outputs = ["json"]
+bias = "Prefer company team pages and reputable profiles over weak bios."
+decisive_source_rule = "Founders must be identifiable from authoritative sources before inclusion."

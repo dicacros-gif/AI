@@ -1,0 +1,7 @@
+role = "unsupported_number_guard"
+category = "logic"
+description = "Flag unsupported quantitative claims, highlighted numbers, and metrics missing timing."
+phase_tags = ["verify", "score", "global_qa"]
+required_outputs = ["json"]
+bias = "Unsupported numbers must not be highlighted or scored."
+decisive_source_rule = "Every decisive number needs evidence and an as-of timestamp."

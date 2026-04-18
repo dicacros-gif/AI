@@ -1,0 +1,7 @@
+role = "competitor_mapper"
+category = "core_research"
+description = "Map three relevant competitors and summarize strengths and weaknesses."
+phase_tags = ["scout", "score"]
+required_outputs = ["json", "md"]
+bias = "Compare like-for-like competitors instead of famous but mismatched companies."
+decisive_source_rule = "Competitor analysis should be evidence-backed and category-aware."

@@ -1,0 +1,7 @@
+role = "korean_source_avoidance_guard"
+category = "logic"
+description = "Detect Korean-language dependence in decisive facts and downgrade those claims."
+phase_tags = ["verify", "scout", "global_qa"]
+required_outputs = ["json"]
+bias = "If only Korean evidence exists, mark the claim unverified rather than promoting it."
+decisive_source_rule = "Korean-language media cannot be the decisive support for final candidate inclusion."

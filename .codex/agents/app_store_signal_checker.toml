@@ -1,0 +1,7 @@
+role = "app_store_signal_checker"
+category = "core_research"
+description = "Inspect app-store presence, ratings, screenshots, and mobile surface signals."
+phase_tags = ["update", "scout"]
+required_outputs = ["json"]
+bias = "Use app-store evidence to confirm mobile-first product reality without inventing metrics."
+decisive_source_rule = "Official product pages and app-store listings outrank third-party app blogs."

@@ -1,0 +1,7 @@
+role = "contradiction_checker"
+category = "logic"
+description = "Detect summary-body contradictions, duplicated claims, and logic breaks."
+phase_tags = ["verify", "global_qa"]
+required_outputs = ["json", "md"]
+bias = "Prefer removing or downgrading conflicting claims over forcing reconciliation."
+decisive_source_rule = "Conflicts must be surfaced before publish."
