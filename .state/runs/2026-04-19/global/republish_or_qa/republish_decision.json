@@ -1,0 +1,7 @@
+{
+  "phase": "republish_or_qa",
+  "generatedAt": "2026-04-19T08:55:26.122053",
+  "decision": "qa_only",
+  "reason": "No validated render delta found.",
+  "mergedAgents": []
+}
