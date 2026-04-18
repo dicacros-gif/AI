@@ -55,6 +55,8 @@
 - Newly discovered startups need clear mobile-first, mobile-native, or deeply mobile-surface relevance.
 - Hardware-first vendors are excluded from new-candidate promotion.
 - Prefer software, service, engine, and enabling technology companies over pure hardware vendors.
+- `AI/1` publish set excludes semiconductor fabless, chip vendors, and hardware-first companies.
+- If an `AI/1` company is primarily a semiconductor, chip, fabless, or hardware vendor, replace it with a software, service, engine, or enabling-technology company backed by English-language evidence.
 - Existing published companies stay on the page during recurring runs; automation should refresh facts and add newly discovered candidates instead of pruning the legacy set.
 - Legacy violations are flagged as removal candidates for later human review and are not auto-deleted by automation.
 - Recurring daily updates should preserve already-published companies and focus on refreshing facts plus adding newly discovered candidates.
@@ -76,6 +78,7 @@
 - Do not use Korean-language sources as decisive support or final publish citations.
 - Do not hallucinate undisclosed funding, revenue, headcount, valuation, partnership, or investor details.
 - Do not auto-delete existing published companies during recurring automation; only flag issues for later human review.
+- Exception: if the user explicitly requests removing fabless, chip, or hardware-first companies from `AI/1`, obey the request in the next render.
 - Do not edit published HTML in non-render phases.
 - Do not regenerate the entire shell if a minimal diff is enough.
 - If unsure, downgrade to unverified; do not invent.

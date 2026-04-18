@@ -15,6 +15,7 @@ Hard rules:
 - Exclude newly discovered startups headquartered in South Korea or China.
 - If HQ is unclear, reserve or reject the candidate.
 - Exclude hardware-first vendors.
+- Exclude semiconductor fabless and chip vendors.
 - Prefer software, service, engine, and enabling-technology companies over pure hardware vendors.
 - Newly discovered candidates need revenue evidence, technology differentiation, and clear mobile-first or mobile-integrated UX.
 - English authoritative sources are mandatory for decisive inclusion and scoring support.

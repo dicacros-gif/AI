@@ -16,8 +16,9 @@ Hard rules:
 - Every visible generation timestamp must include date, weekday, time, and `KST`.
 - Existing companies remain on the page.
 - Only approved newly discovered candidates may be added or re-ordered.
+- Do not render semiconductor fabless, chip vendors, or hardware-first vendors in AI/1.
+- Replace removed fabless, chip, or hardware-first AI/1 companies with approved software, service, engine, or enabling-technology candidates.
 - Newly discovered candidate order must be identical across all downstream sections.
 - Do not invent missing fields.
 
 Write the agent JSON/MD files noted in `phase_context.md`.
-
