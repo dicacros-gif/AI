@@ -4,11 +4,13 @@
 - `.github/workflows/ai-watch-scheduler.yml` is the single scheduled automation entrypoint.
 - Each scheduled run resolves exactly one phase.
 - The workflow fans out the relevant Codex agent subset for that phase, consolidates outputs, validates the result, persists state, and only publishes when gates pass.
+- Production runs happen on GitHub-hosted runners in `Asia/Seoul` business time, so the daily cycle continues even when the local computer is off.
 
 ## Phase Descriptions
 - `ai1_update` / `ai2_update`: latest updates for already-published companies only.
 - `ai1_verify` / `ai2_verify`: factual, logical, timestamp, category, and legacy-rule cross-checking.
 - `ai1_scout` / `ai2_scout`: new-candidate discovery with strict exclusion and source rules.
+- Scout phases should prefer U.S.-headquartered candidates first when multiple eligible candidates have similar evidence quality.
 - `ai1_score` / `ai2_score`: evidence-backed scoring for approved new candidates only.
 - `ai1_render` / `ai2_render`: conservative HTML updates with mandatory KST timestamps.
 - `global_qa`: cross-page QA before publish acceptance.

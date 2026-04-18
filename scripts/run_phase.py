@@ -54,8 +54,8 @@ def default_phase_payloads(phase: str, page: str) -> dict[str, Any]:
     if suffix == "scout":
         return {
             "scout_candidates.json": {"phase": phase, "page": page, "generatedAt": now, "candidates": []},
-            "scout_rejections.json": {"phase": phase, "page": page, "generatedAt": now, "rejections": [], "defaultBias": "prefer software/service/engine/technology over pure hardware vendors"},
-            "reserve_candidates.json": {"phase": phase, "page": page, "generatedAt": now, "reserve": [], "reasons": ["Reject or reserve South Korea/China HQ, unicorns, unclear HQ, and pure hardware-first vendors without service/engine leverage."]},
+            "scout_rejections.json": {"phase": phase, "page": page, "generatedAt": now, "rejections": [], "defaultBias": "prefer U.S.-headquartered software/service/engine/technology companies over pure hardware vendors when evidence quality is comparable"},
+            "reserve_candidates.json": {"phase": phase, "page": page, "generatedAt": now, "reserve": [], "reasons": ["Reject or reserve South Korea/China HQ, unicorns, unclear HQ, and pure hardware-first vendors without service/engine leverage. Prefer U.S.-headquartered candidates first when evidence quality is comparable."]},
             "competitor_map.json": {"phase": phase, "page": page, "generatedAt": now, "items": []},
             "manufacturer_strategy.json": {"phase": phase, "page": page, "generatedAt": now, "items": []},
             "ranking_proposal.json": {"phase": phase, "page": page, "generatedAt": now, "ranking": [], "rule": "Only newly discovered approved candidates can be ranked 1..N."},
@@ -131,7 +131,7 @@ def bootstrap_phase(phase: str, page: str, role: str, run_date: str) -> Path:
             f"- required JSON output: `{output_json.as_posix()}`",
             f"- required Markdown output: `{output_md.as_posix()}`",
             "- 신규 업체 규칙: South Korea / China HQ 불가, HQ 불명확 시 reserve/reject, unicorn 불가, revenue evidence 필수.",
-            "- 우대 규칙: HW 단독 업체보다 SW·서비스·엔진·기술형 회사를 우대한다.",
+            "- 우대 규칙: HW 단독 업체보다 SW·서비스·엔진·기술형 회사를 우대하고, 근거 품질이 비슷하면 미국 본사 후보를 먼저 본다.",
             "- 기존 게시 업체는 자동 삭제하지 않는다. 위반 소지가 있으면 removal candidate로만 기록한다.",
             "- Non-render phase에서는 published HTML을 수정하지 않는다.",
         ]
@@ -284,4 +284,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

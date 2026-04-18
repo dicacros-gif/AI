@@ -55,6 +55,9 @@ on:
 permissions:
   contents: write
 
+env:
+  TZ: Asia/Seoul
+
 concurrency:
   group: ai-watch-${{ github.ref }}-${{ github.event.schedule || inputs.phase || 'manual' }}
   cancel-in-progress: false
@@ -242,4 +245,3 @@ jobs:
           name: ai-watch-consolidated-${{ needs.resolve.outputs.phase }}-${{ needs.resolve.outputs.run_date }}
           path: ${{ needs.resolve.outputs.phase_root }}
           if-no-files-found: error
-

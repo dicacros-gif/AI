@@ -30,6 +30,7 @@
   - mobile relevance required
   - exclude hardware-first vendors
   - prefer software / service / engine / technology companies over pure hardware vendors
+  - when evidence quality is comparable, prioritize U.S.-headquartered candidates first
 
 ## Final Canonical Schedule
 - `04:00 KST` `ai1_update` -> `0 19 * * *` UTC
@@ -66,6 +67,7 @@
 - Normal recurring runs keep existing published companies in place.
 - Daily automation refreshes facts on existing companies and layers in newly discovered companies over time.
 - Legacy policy problems are surfaced as removal candidates or manual review items instead of automatic deletions.
+- The canonical runtime is GitHub Actions on GitHub-hosted runners; local terminals are not part of the recurring production path.
 
 ## Date + Time Display Policy
 - All visible write/generation labels must include date, weekday, time, and `KST`.
