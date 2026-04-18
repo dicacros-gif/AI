@@ -22,11 +22,14 @@
 - Scheduled times use `Asia/Seoul` as the business timezone and are converted to UTC cron entries in the workflow.
 - Existing published companies are retained by default.
 - Legacy rule violations are surfaced as removal candidates rather than auto-deletions.
+- Explicit cleanup passes may remove hardware-first companies and South Korea headquartered companies below the active size threshold.
 - Newly discovered companies are filtered more strictly:
   - no South Korea / China HQ
   - no unicorns
   - revenue evidence required
   - mobile relevance required
+  - exclude hardware-first vendors
+  - South Korea HQ companies under `51` employees are below the current publish bar
   - prefer software / service / engine / technology companies over pure hardware vendors
 
 ## Final Canonical Schedule
@@ -60,6 +63,10 @@
 - If HQ is unclear, the candidate is held back.
 - Existing published violations are flagged in verify/global QA as removal candidates and are not auto-deleted.
 
+## Cleanup Policy
+- Hardware-first companies can be explicitly removed from already published pages when the user requests a cleanup pass.
+- South Korea headquartered companies with a credible employee range below `51` can be explicitly removed from already published pages when the user requests a cleanup pass.
+
 ## Date + Time Display Policy
 - All visible write/generation labels must include date, weekday, time, and `KST`.
 - Date-only visible labels are invalid.
@@ -68,4 +75,3 @@
 - Publish targets are normalized to `1/index.html` and `2/index.html`.
 - The scheduler and validators fail on `.htm` drift.
 - The render phase keeps the existing shell and applies only conservative page mutations.
-

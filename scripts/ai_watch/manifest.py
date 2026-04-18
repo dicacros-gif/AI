@@ -24,7 +24,7 @@ CANONICAL_PAGE_MAP: dict[str, dict[str, str]] = {
         "canonical_label": "모바일 AI 개인화 추천, On-device 데이터 분석",
         "domain_summary": "mobile AI personalization, on-device data analysis, personalized AI, recommendation engine, privacy-aware UX",
         "short_title": "Personalization / On-device",
-        "discovery_bias": "Prefer software, service, engine, and enabling technology companies over pure hardware vendors.",
+        "discovery_bias": "Exclude hardware-first vendors and favor software, service, engine, and enabling technology companies.",
     },
     "ai2": {
         "slug": "2",
@@ -33,7 +33,7 @@ CANONICAL_PAGE_MAP: dict[str, dict[str, str]] = {
         "canonical_label": "광고 AI / 모바일 광고 기술·서비스",
         "domain_summary": "ad AI, mobile advertising technology/services, AdTech, SDK, DSP, retargeting, performance marketing, video AI advertising",
         "short_title": "Ad AI / Mobile AdTech",
-        "discovery_bias": "Prefer software, service, engine, and enabling technology companies over pure hardware vendors.",
+        "discovery_bias": "Exclude hardware-first vendors and favor software, service, engine, and enabling technology companies.",
     },
 }
 
@@ -140,8 +140,9 @@ SOURCE_PRIORITY = {
 NON_NEGOTIABLE_RULES = [
     "Newly discovered startups must use deterministic rank order 1 -> N everywhere downstream.",
     "Newly discovered startups must exclude South Korea and China headquarters unless HQ is verified elsewhere and not in those countries.",
-    "Existing published companies are not auto-deleted; legacy violations must be flagged as removal candidates.",
-    "Prefer software, service, engine, and enabling technology companies over pure hardware vendors for new discovery and scoring.",
+    "Existing published companies are not auto-deleted unless an explicit cleanup rule is being applied.",
+    "Explicit cleanup rules remove hardware-first companies and South Korea headquartered companies below the active 51-employee threshold.",
+    "New discovery and scoring exclude hardware-first vendors and favor software, service, engine, and enabling technology companies.",
     "Every visible generation timestamp must include date, weekday, time, and KST.",
     "English-language authoritative evidence is decisive; Korean-language sources cannot be the sole support for publish decisions.",
 ]
@@ -216,7 +217,7 @@ AGENT_DEFINITIONS: dict[str, AgentDefinition] = {
     "revenue_model_verifier": _agent("revenue_model_verifier", "core_research", "Verify monetization, pricing, payment conversion, contracts, ARR evidence, or credible revenue proxies.", ("scout", "score"), ("json",), bias="No revenue evidence means reserve or reject."),
     "traction_metric_checker": _agent("traction_metric_checker", "core_research", "Verify traction metrics, usage claims, customer counts, GMV, ARR, or growth indicators conservatively.", ("update", "scout", "score"), ("json",)),
     "competitor_mapper": _agent("competitor_mapper", "core_research", "Map three relevant competitors and summarize strength/weakness comparisons using evidence-backed product logic.", ("scout", "score"), ("json", "md")),
-    "manufacturer_strategy_agent": _agent("manufacturer_strategy_agent", "core_research", "Develop smartphone manufacturer partnership scenarios, R/S logic, and OEM strategic fit.", ("scout", "score", "render"), ("json", "md"), bias="Prefer software/service/engine assets that can slot into OEM stacks over pure hardware vendors."),
+    "manufacturer_strategy_agent": _agent("manufacturer_strategy_agent", "core_research", "Develop smartphone manufacturer partnership scenarios, R/S logic, and OEM strategic fit.", ("scout", "score", "render"), ("json", "md"), bias="Exclude hardware-first vendors and prefer software/service/engine assets that can slot into OEM stacks."),
     "partnership_deal_checker": _agent("partnership_deal_checker", "core_research", "Verify partnerships, LOIs, pilots, integrations, and co-selling signals using primary or authoritative sources.", ("update", "scout", "score"), ("json",)),
     "mna_scenario_agent": _agent("mna_scenario_agent", "core_research", "Assess likely acquirers, asset value, and M&A logic grounded in comparable deals and asset defensibility.", ("scout", "score"), ("json", "md")),
     "market_size_trend_curator": _agent("market_size_trend_curator", "core_research", "Collect market-size, trend, research, and industry direction signals from authoritative English research.", ("scout", "score", "global_qa"), ("json", "md")),

@@ -14,10 +14,11 @@ Goal:
 Hard rules:
 - Exclude newly discovered startups headquartered in South Korea or China.
 - If HQ is unclear, reserve or reject the candidate.
+- Exclude hardware-first vendors.
+- South Korea headquartered companies with a credible employee range below 51 should not be promoted.
 - Prefer software, service, engine, and enabling-technology companies over pure hardware vendors.
 - Newly discovered candidates need revenue evidence, technology differentiation, and clear mobile-first or mobile-integrated UX.
 - English authoritative sources are mandatory for decisive inclusion.
 - Do not edit published HTML.
 
 Write the JSON and Markdown files named in `phase_context.md`.
-

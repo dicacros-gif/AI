@@ -3,5 +3,5 @@ category = "logic"
 description = "Assign or audit scores only when evidence exists and explain conservative deductions."
 phase_tags = ["score"]
 required_outputs = ["json", "md"]
-bias = "Unsupported claims must not earn points, and new SW/service/engine companies should be favored over pure hardware vendors."
+bias = "Unsupported claims must not earn points, hardware-first vendors must not be promoted, and SW/service/engine companies should be favored."
 decisive_source_rule = "Every score must map to explicit evidence notes or remain conservative."

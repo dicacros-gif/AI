@@ -33,8 +33,12 @@ def validate_phase_root(path: Path) -> list[str]:
                 issues.append(f"{path}: newly discovered candidate `{candidate.get('name', 'unknown')}` is a unicorn and must be excluded.")
             if not candidate.get("hasRevenueEvidence", False):
                 issues.append(f"{path}: newly discovered candidate `{candidate.get('name', 'unknown')}` lacks revenue evidence.")
-            if candidate.get("companyType") == "pure_hardware" and not candidate.get("softwareServiceLayerEvidence", False):
-                issues.append(f"{path}: newly discovered candidate `{candidate.get('name', 'unknown')}` is hardware-first without enough software/service leverage.")
+            company_type = str(candidate.get("companyType", "")).lower()
+            if company_type in {"pure_hardware", "hardware", "hardware_vendor"}:
+                issues.append(f"{path}: newly discovered candidate `{candidate.get('name', 'unknown')}` is hardware-first and must be excluded.")
+            employee_band_max = candidate.get("employeeBandMax")
+            if ("south korea" in hq or hq == "korea" or "seoul" in hq) and employee_band_max is not None and int(employee_band_max) < 51:
+                issues.append(f"{path}: South Korea candidate `{candidate.get('name', 'unknown')}` is below the 51-employee publish threshold.")
     return issues
 
 
@@ -75,4 +79,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

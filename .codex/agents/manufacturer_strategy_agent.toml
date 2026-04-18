@@ -3,5 +3,5 @@ category = "core_research"
 description = "Develop smartphone manufacturer partnership scenarios and revenue-share logic."
 phase_tags = ["scout", "score", "render"]
 required_outputs = ["json", "md"]
-bias = "Prefer software, service, engine, and enabling technology companies over pure hardware vendors."
+bias = "Exclude hardware-first vendors and prefer software, service, engine, and enabling technology companies."
 decisive_source_rule = "OEM fit claims must connect to real product surfaces, APIs, bundles, or service layers."
