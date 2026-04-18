@@ -5,7 +5,7 @@ from pathlib import Path
 
 from .manifest import CANONICAL_NAV_LABELS, CANONICAL_PAGE_MAP, format_visible_kst
 
-VISIBLE_TS_RE = re.compile(r"'\d{2}\.\d{1,2}\.\d{1,2} \([^)]+\)(?: \d{2}:\d{2} KST 기준| 기준 · 작성 \d{2}:\d{2})")
+VISIBLE_TS_RE = re.compile(r"'\d{2}\.\d{1,2}\.\d{1,2} \([^)]+\)(?: \d{2}:\d{2} KST 기준| \d{2}:\d{2} KST 기준 · 작성 \d{2}:\d{2} KST(?: · 작성 \d{2}:\d{2} KST)*)")
 TITLE_RE = re.compile(r"<title>([^<]+)</title>")
 HERO_LINK_BLOCK_RE = re.compile(r"<div class='ss'>.*?</div>", re.S)
 TABLE_ROW_RE = re.compile(r"<tr class='tr-main'.*?</tr>", re.S)
