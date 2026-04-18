@@ -19,6 +19,8 @@ Hard rules:
 - Do not render semiconductor fabless, chip vendors, or hardware-first vendors in AI/1.
 - Replace removed fabless, chip, or hardware-first AI/1 companies with approved software, service, engine, or enabling-technology candidates.
 - Newly discovered candidate order must be identical across all downstream sections.
+- In section `①`, collapsed startup rows must shrink to a real one-line summary row with reduced height.
+- Do not leave hidden text inside full-height table rows after collapse.
 - Sections `②`, `③`, `④`, `⑤` must use concise bullet fragments, not sentence prose.
 - Do not end bullets in sections `②`, `③`, `④`, `⑤` with `~다` or periods.
 - Do not invent missing fields.

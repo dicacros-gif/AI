@@ -15,6 +15,8 @@ REQUIRED_HTML_PATTERNS = {
     "criteria_group": re.compile(r"class='crit-group(?:\s|')"),
     "insight_box": re.compile(r"class='pc-box(?:\s|')"),
     "red_flag_box": re.compile(r"class='rf-box(?:\s|')"),
+    "row_summary_style": re.compile(r"row-summary-cell"),
+    "row_summary_js": re.compile(r"buildRowSummaryHtml"),
 }
 PLACEHOLDER_MARKERS = ["TODO", "TBD", "PLACEHOLDER", "lorem ipsum"]
 

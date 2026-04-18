@@ -70,6 +70,9 @@
 - No duplicate ranks.
 - No missing ranks.
 - No reversed downstream order.
+- In section `①` startup list tables, clicking a company row must collapse it to a true single-line summary row.
+- Collapsed rows must reduce vertical height visibly; do not leave empty multi-line row height behind.
+- Collapsed row summary should keep the top-line essentials only, such as rank, company, and compact meta.
 
 ## Date + Time Display Rule
 - Every visible write or generation timestamp must include date, weekday, time, and `KST`.

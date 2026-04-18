@@ -17,6 +17,8 @@ Hard rules:
 - Existing companies remain published.
 - Only approved newly discovered companies may be added or re-ranked.
 - Newly discovered candidate order must stay identical across every downstream section.
+- In section `①`, collapsed startup rows must shrink to a real one-line summary row with reduced height.
+- Do not leave hidden text inside full-height table rows after collapse.
 - Sections `②`, `③`, `④`, `⑤` must use concise bullet fragments, not sentence prose.
 - Do not end bullets in sections `②`, `③`, `④`, `⑤` with `~다` or periods.
 - Do not invent unsupported numbers or missing fields.

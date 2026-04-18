@@ -206,6 +206,14 @@ td{padding:.4rem;border-bottom:1px solid var(--bd);vertical-align:top}tbody tr:n
 .bg{display:inline-block;font-size:.62rem;font-weight:700;padding:.08rem .35rem;border-radius:5px}.bg-ok{background:var(--okB);color:var(--ok)}.bg-wn{background:var(--wnB);color:var(--wn)}.bg-rd{background:var(--rdB);color:var(--rd)}.bg-ac{background:var(--bbg);color:var(--ac);border:1px solid var(--bbd)}
 .rk{background:var(--ac);color:#fff;font-size:.66rem;font-weight:800;padding:.12rem .4rem;border-radius:6px;display:inline-block}
 .td-d{font-size:.72rem;line-height:1.55}.cl{font-size:.84rem;border-bottom:2px solid transparent}
+.row-summary-cell{padding:.28rem .45rem!important;background:var(--card)!important}
+.row-summary{display:flex;align-items:center;gap:.55rem;min-width:0}
+.row-summary-main{display:flex;align-items:center;gap:.35rem;min-width:0;flex:1;overflow:hidden}
+.row-summary-name{font-size:.74rem;font-weight:800;color:var(--t1);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.row-summary-meta{font-size:.64rem;color:var(--t3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:0 1 auto}
+.row-summary-arr{font-size:.58rem;color:var(--t3);flex-shrink:0}
+tr.row-collapsed td{border-bottom:1px solid var(--bd)}
+tr.row-collapsed:hover td{background:var(--acL)!important}
 .ns{font-size:.66rem;color:var(--t2);margin:0;padding:0;list-style:none;}
 .ns li { margin-bottom: 0.35rem; }
 .ns a { display:block; padding:.35rem .45rem; background:var(--card); border:1px solid var(--bd); border-radius:5px; line-height:1.5; color:var(--t2); transition:all 0.2s; position:relative; padding-left: 1.1rem; text-decoration:none !important;}
@@ -239,7 +247,7 @@ footer{margin-top:.6rem;padding:.5rem 1.1rem;font-size:.66rem;color:var(--t3);te
 </head>
 <body data-t='light' data-p='default'>
 <div class='tb'>
-<div style='font-size:0.66rem; font-weight:800; color:var(--t1); background:linear-gradient(135deg, var(--bbg), rgba(124,58,237,0.08)); border:1px solid var(--bbd); padding:0.2rem 0.55rem; border-radius:6px; margin-right:auto;'>⏱ <span class='h-word'>'26.4.18 (토) 19:01 KST 기준</span></div>
+<div style='font-size:0.66rem; font-weight:800; color:var(--t1); background:linear-gradient(135deg, var(--bbg), rgba(124,58,237,0.08)); border:1px solid var(--bbd); padding:0.2rem 0.55rem; border-radius:6px; margin-right:auto;'>⏱ <span class='h-word'>'26.4.18 (토) 19:08 KST 기준</span></div>
   <div class='tg'><span class='tl'>팔레트</span>
     <button class='pb on' data-c='default' onclick="sp('default')"></button>
     <button class='pb' data-c='ocean' onclick="sp('ocean')"></button>
@@ -260,7 +268,7 @@ footer{margin-top:.6rem;padding:.5rem 1.1rem;font-size:.66rem;color:var(--t3);te
 </nav>
 <main>
 <section class='hero'>
-<div class='hc'><span class='ch'>'26.4.18 (토) 19:01 KST 기준</span><span class='ch'>유니콘 미만 우선</span><span class='ch'>광고 AI / 모바일 광고 기술</span><span class='ch'>영문 권위 소스 기준</span></div>
+<div class='hc'><span class='ch'>'26.4.18 (토) 19:08 KST 기준</span><span class='ch'>유니콘 미만 우선</span><span class='ch'>광고 AI / 모바일 광고 기술</span><span class='ch'>영문 권위 소스 기준</span></div>
   <h1>글로벌 광고 AI / 모바일 광고 기술 스타트업 모니터링</h1>
   <p>· 첨부 스타트업을 광고 AI 도메인 기준으로 재분류 · 영문 1차·권위 기사 링크 중심으로 팩트체크 · 한국어 기사 단독 근거는 최종 판단에서 배제</p>
   <div class='ss'>
@@ -1073,7 +1081,7 @@ footer{margin-top:.6rem;padding:.5rem 1.1rem;font-size:.66rem;color:var(--t3);te
 <footer style='padding:0.7rem 1.1rem; background:var(--card); border-top:2px solid var(--bd); border-radius:var(--r); margin-top:0.8rem; box-shadow:var(--shS);'>
   <div style='display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:0.5rem;'>
     <div style='font-size:0.7rem; font-weight:700; color:var(--acT);'>📊 Global AI Startup Watch · 광고 AI / 모바일 광고 기술 Edition</div>
-<div style='font-size:0.68rem; font-weight:800; color:var(--t1); background:var(--bbg); border:1px solid var(--bbd); padding:0.2rem 0.55rem; border-radius:6px;'>⏱ <span class='h-word'>'26.4.18 (토) 19:01 KST 기준</span></div>
+<div style='font-size:0.68rem; font-weight:800; color:var(--t1); background:var(--bbg); border:1px solid var(--bbd); padding:0.2rem 0.55rem; border-radius:6px;'>⏱ <span class='h-word'>'26.4.18 (토) 19:08 KST 기준</span></div>
   </div>
   <div style='font-size:0.62rem; color:var(--t3); margin-top:0.4rem; line-height:1.55;'>· 출처: 첨부 팩트체크 문서와 영문 기사 링크(TechCrunch, WSJ, Adweek, Business Wire, FinSMEs, PR Newswire, Crunchbase, adtech tokyo archive, official sites) 기준 재구성<br>· 한국어 기사 단독 수치·주장은 최종 판단 근거에서 제외 · 투자·매출·지표는 영문 공개 시점 기준 · 비공개 항목은 보수적으로 해석</div>
 </footer>
@@ -1101,34 +1109,42 @@ document.addEventListener('DOMContentLoaded',function(){
 });
 
 // 1번 섹션 테이블 행 접기/펼치기
+function rowCellText(trEl, cellIndex){
+  const cell=trEl.children[cellIndex];
+  return cell?cell.textContent.replace(/\s+/g,' ').trim():'';
+}
+
+function buildRowSummaryHtml(trEl){
+  const rank=trEl.querySelector('.rk')?.outerHTML||'';
+  const company=trEl.children[1]?.querySelector('a.cl')?.textContent.trim()||'';
+  const badge=trEl.children[1]?.querySelector('.bg')?.outerHTML||'';
+  const meta=[rowCellText(trEl,2),rowCellText(trEl,3)].filter(Boolean).join(' · ');
+  const colspan=trEl.children.length||1;
+  return `<td colspan="${colspan}" class="row-summary-cell"><div class="row-summary"><div class="row-summary-main">${rank}<span class="row-summary-name">${company}</span>${badge}</div>${meta?`<div class="row-summary-meta">${meta}</div>`:''}<span class="row-summary-arr">▶</span></div></td>`;
+}
+
 function toggleRow(rowId, trEl){
-  const arr = trEl.querySelector('.tr-arr');
-  const isOpen = trEl.dataset.open === '1';
-  // td-d 셀들 토글
-  const tds = trEl.querySelectorAll('.td-d');
-  tds.forEach(td => {
-    if(isOpen){
-      td.style.maxHeight = td.dataset.mh || '0';
-      td.style.overflow = 'hidden';
-      td.style.opacity = '0';
-      td.style.padding = '0';
-    } else {
-      td.style.maxHeight = '600px';
-      td.style.overflow = '';
-      td.style.opacity = '1';
-      td.style.padding = '';
-    }
-  });
-  trEl.dataset.open = isOpen ? '0' : '1';
-  if(arr) arr.style.transform = isOpen ? 'rotate(-90deg)' : '';
+  const isOpen=trEl.dataset.open!=='0';
+  if(isOpen){
+    if(!trEl._originalHTML){trEl._originalHTML=trEl.innerHTML}
+    trEl.innerHTML=buildRowSummaryHtml(trEl);
+    trEl.dataset.open='0';
+    trEl.classList.add('row-collapsed');
+    return;
+  }
+  if(trEl._originalHTML){
+    trEl.innerHTML=trEl._originalHTML;
+  }
+  trEl.dataset.open='1';
+  trEl.classList.remove('row-collapsed');
 }
 
 // 초기화: 모든 1번 섹션 tr 기본 펼침 상태로
 document.addEventListener('DOMContentLoaded', function(){
   document.querySelectorAll('.tr-main').forEach(tr => {
-    tr.dataset.open = '1';
-    const arr = tr.querySelector('.tr-arr');
-    if(arr) arr.style.transform = '';
+    tr._originalHTML=tr.innerHTML;
+    tr.dataset.open='1';
+    tr.classList.remove('row-collapsed');
   });
 });
 
