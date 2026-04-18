@@ -1,0 +1,14 @@
+{
+  "phase": "ai1_score",
+  "page": "ai1",
+  "generatedAt": "2026-04-19T06:06:13.764566",
+  "ranking": [],
+  "tieBreakOrder": [
+    "revenue strength",
+    "traction recency",
+    "primary-source quality",
+    "strategic fit",
+    "defensibility"
+  ],
+  "mergedAgents": []
+}
