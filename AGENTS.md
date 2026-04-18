@@ -53,10 +53,10 @@
 - Newly discovered startups need revenue evidence.
 - Newly discovered startups need technology differentiation.
 - Newly discovered startups need clear mobile-first, mobile-native, or deeply mobile-surface relevance.
-- Hardware-first vendors are excluded from new-candidate promotion and should be removed from currently published pages during explicit cleanup passes.
-- South Korea headquartered companies below the current publish bar should be removed during explicit cleanup passes. The active threshold is fewer than `51` employees when a credible employee range exists.
+- Hardware-first vendors are excluded from new-candidate promotion.
 - Prefer software, service, engine, and enabling technology companies over pure hardware vendors.
-- Existing published companies are not auto-deleted by default; legacy violations are flagged as removal candidates unless an explicit cleanup rule is being applied.
+- Existing published companies stay on the page during recurring runs; automation should refresh facts and add newly discovered candidates instead of pruning the legacy set.
+- Legacy violations are flagged as removal candidates for later human review and are not auto-deleted by automation.
 - Recurring daily updates should preserve already-published companies and focus on refreshing facts plus adding newly discovered candidates.
 
 ## Ranking Rule
@@ -75,7 +75,7 @@
 ## Do-Not Rules
 - Do not use Korean-language sources as decisive support or final publish citations.
 - Do not hallucinate undisclosed funding, revenue, headcount, valuation, partnership, or investor details.
-- Do not auto-delete existing published companies during update, verify, scout, or score unless an explicit cleanup rule is being applied.
+- Do not auto-delete existing published companies during recurring automation; only flag issues for later human review.
 - Do not edit published HTML in non-render phases.
 - Do not regenerate the entire shell if a minimal diff is enough.
 - If unsure, downgrade to unverified; do not invent.

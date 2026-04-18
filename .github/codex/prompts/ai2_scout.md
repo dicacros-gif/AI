@@ -14,11 +14,11 @@ Goal:
 Hard rules:
 - Exclude newly discovered South Korea and China HQ startups.
 - Exclude hardware-first vendors.
-- South Korea headquartered companies with a credible employee range below 51 should not be promoted.
 - Prefer SW/service/engine/technology companies over pure hardware vendors.
 - Require revenue evidence, technology differentiation, and true mobile or mobile-ad-stack relevance.
 - English authoritative evidence is mandatory for decisive inclusion and scoring support.
 - Korean-language sources must be ignored for decisive facts and final publish citations.
+- Keep the currently published company set intact; this phase only proposes additive new candidates.
 - Do not edit published HTML.
 
 Write the files listed in `phase_context.md`.

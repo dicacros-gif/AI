@@ -23,14 +23,12 @@
 - Existing published companies are retained by default.
 - Legacy rule violations are surfaced as removal candidates rather than auto-deletions.
 - The recurring publish model is additive: keep existing published companies, refresh their facts, and layer in newly discovered candidates over time.
-- Explicit cleanup passes may remove hardware-first companies and South Korea headquartered companies below the active size threshold.
 - Newly discovered companies are filtered more strictly:
   - no South Korea / China HQ
   - no unicorns
   - revenue evidence required
   - mobile relevance required
   - exclude hardware-first vendors
-  - South Korea HQ companies under `51` employees are below the current publish bar
   - prefer software / service / engine / technology companies over pure hardware vendors
 
 ## Final Canonical Schedule
@@ -64,9 +62,10 @@
 - If HQ is unclear, the candidate is held back.
 - Existing published violations are flagged in verify/global QA as removal candidates and are not auto-deleted.
 
-## Cleanup Policy
-- Hardware-first companies can be explicitly removed from already published pages when the user requests a cleanup pass.
-- South Korea headquartered companies with a credible employee range below `51` can be explicitly removed from already published pages when the user requests a cleanup pass.
+## Published Set Stability Policy
+- Normal recurring runs keep existing published companies in place.
+- Daily automation refreshes facts on existing companies and layers in newly discovered companies over time.
+- Legacy policy problems are surfaced as removal candidates or manual review items instead of automatic deletions.
 
 ## Date + Time Display Policy
 - All visible write/generation labels must include date, weekday, time, and `KST`.
