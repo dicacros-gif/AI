@@ -76,6 +76,12 @@
 - Example: `'26.4.17 (금) 06:10 KST 기준`
 - Date-only labels are forbidden.
 
+## Bullet Style Rule
+- Sections `②`, `③`, `④`, `⑤` must use concise bullet-fragment writing.
+- Do not end those bullets with sentence-final `~다`.
+- Do not end those bullets with periods.
+- Prefer noun phrases, short action phrases, and `확인 필요` / `점검 필요` style fragments.
+
 ## Do-Not Rules
 - Do not use Korean-language sources as decisive support or final publish citations.
 - Do not hallucinate undisclosed funding, revenue, headcount, valuation, partnership, or investor details.

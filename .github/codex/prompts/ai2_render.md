@@ -17,7 +17,8 @@ Hard rules:
 - Existing companies remain published.
 - Only approved newly discovered companies may be added or re-ranked.
 - Newly discovered candidate order must stay identical across every downstream section.
+- Sections `②`, `③`, `④`, `⑤` must use concise bullet fragments, not sentence prose.
+- Do not end bullets in sections `②`, `③`, `④`, `⑤` with `~다` or periods.
 - Do not invent unsupported numbers or missing fields.
 
 Write the files named in `phase_context.md`.
-

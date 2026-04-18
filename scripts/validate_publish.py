@@ -6,7 +6,7 @@ import re
 import sys
 from pathlib import Path
 
-from ai_watch.html_tools import VISIBLE_TS_RE, extract_order_map
+from ai_watch.html_tools import VISIBLE_TS_RE, extract_order_map, find_bullet_style_issues
 
 REQUIRED_HTML_PATTERNS = {
     "toolbar": re.compile(r"class='tb'"),
@@ -44,10 +44,14 @@ def validate_path(path: Path) -> list[str]:
     for label in visible_labels:
         if "KST" not in label:
             issues.append(f"{path}: timestamp missing KST suffix -> {label}")
-    if "기준" in html and "KST 기준" not in html and "작성" not in html:
+    if "湲곗?" in html and "KST 湲곗?" not in html and "?묒꽦" not in html:
         issues.append(f"{path}: found visible date text without explicit KST label.")
     if "<h1></h1>" in html or "class='cb'></div>" in html:
         issues.append(f"{path}: empty critical section detected.")
+
+    bullet_style_issues = find_bullet_style_issues(html)
+    if bullet_style_issues:
+        issues.append(f"{path}: sections 2-5 must use bullet fragments without sentence-final `~다` or periods -> {bullet_style_issues[0]}")
     return issues
 
 
