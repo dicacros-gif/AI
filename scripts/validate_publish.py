@@ -19,6 +19,10 @@ REQUIRED_HTML_PATTERNS = {
     "row_summary_js": re.compile(r"buildRowSummaryHtml"),
 }
 ROW_ID_PATTERN = re.compile(r"<tr class='tr-main' data-row='([^']+)' onclick=\"toggleRow\('([^']+)',this\)\"")
+EVAL_COMPANY_START = re.compile(r"<div class='eval-company'[^>]*data-co='[^']+'")
+EVAL_COMPANY_KEY = re.compile(r"data-co='([^']+)'")
+EVAL_COMPANY_HD = re.compile(r"<div class='eval-company-hd'")
+EVAL_COMPANY_BD = re.compile(r"<div class='eval-company-bd'")
 PLACEHOLDER_MARKERS = ["TODO", "TBD", "PLACEHOLDER", "lorem ipsum"]
 FORBIDDEN_NON_MOBILE_PATTERNS = {
     "tv_ctv_framing": re.compile(
@@ -35,6 +39,27 @@ FORBIDDEN_NON_MOBILE_PATTERNS = {
 def company_names(path: Path) -> list[str]:
     html = path.read_text(encoding="utf-8")
     return [name for _, name in extract_order_map(html)["list"]]
+
+
+def validate_eval_company_cards(path: Path, html: str) -> list[str]:
+    issues: list[str] = []
+    starts = list(EVAL_COMPANY_START.finditer(html))
+    for index, match in enumerate(starts):
+        next_start = starts[index + 1].start() if index + 1 < len(starts) else len(html)
+        chunk = html[match.start():next_start]
+        key_match = EVAL_COMPANY_KEY.search(chunk[:200])
+        key = key_match.group(1) if key_match else f"index {index + 1}"
+        hd_match = EVAL_COMPANY_HD.search(chunk)
+        bd_match = EVAL_COMPANY_BD.search(chunk)
+        if not hd_match:
+            issues.append(f"{path}: eval-company `{key}` is missing `eval-company-hd` before the next card.")
+            continue
+        if not bd_match:
+            issues.append(f"{path}: eval-company `{key}` is missing `eval-company-bd` before the next card.")
+            continue
+        if hd_match.start() > bd_match.start():
+            issues.append(f"{path}: eval-company `{key}` has `eval-company-bd` before `eval-company-hd`.")
+    return issues
 
 
 def validate_path(path: Path) -> list[str]:
@@ -55,6 +80,7 @@ def validate_path(path: Path) -> list[str]:
     mismatched_pairs = [f"{left}!={right}" for left, right in row_pairs if left != right]
     if mismatched_pairs:
         issues.append(f"{path}: section-1 row id / onclick mismatch -> {mismatched_pairs[0]}")
+    issues.extend(validate_eval_company_cards(path, html))
     for marker in PLACEHOLDER_MARKERS:
         if marker in html:
             issues.append(f"{path}: placeholder text `{marker}` remains in published HTML.")

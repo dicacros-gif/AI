@@ -75,6 +75,8 @@
 - Collapsed row summary should keep the top-line essentials only, such as rank, company, and compact meta.
 - Every `tr-main` row in section `①` must have a unique `data-row` key.
 - Collapse / expand logic must resolve state from each row's own `data-row`; do not rely on fragile positional assumptions as the list grows.
+- In section `②`, every `eval-company` card must keep its own `eval-company-hd` and `eval-company-bd` inside the same wrapper.
+- Do not start a new `eval-company` card before the previous card's `eval-company-bd` has been emitted and closed.
 
 ## Date + Time Display Rule
 - Every visible write or generation timestamp must include date, weekday, time, and `KST`.
