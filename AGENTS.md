@@ -81,6 +81,10 @@
 - Collapse / expand logic must resolve state from each row's own `data-row`; do not rely on fragile positional assumptions as the list grows.
 - In section `②`, every `eval-company` card must keep its own `eval-company-hd` and `eval-company-bd` inside the same wrapper.
 - Do not start a new `eval-company` card before the previous card's `eval-company-bd` has been emitted and closed.
+- Section `⑥` title must stay `Startup 상세 채점 기준표 (정량화 기준)`.
+- In section `⑥`, keep the left KPI column visibly narrower than the scoring-reference column.
+- In section `⑥`, push `배점` and `채점 산출 기준` to the right and remove avoidable right-side blank space.
+- Section `⑥` tables should fill the available card width; do not leave a wide empty gutter on the right.
 
 ## Date + Time Display Rule
 - Every visible write or generation timestamp must include date, weekday, time, and `KST`.

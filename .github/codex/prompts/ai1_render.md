@@ -37,6 +37,9 @@ Hard rules:
 - Prefer fragment endings such as `노림`, `포인트`, `안전`, `빨라짐`, `상단 티어`.
 - Keep AI/1 strictly in a smartphone / handset / mobile-surface frame.
 - Remove TV, CTV, FAST, broadcast, smart-TV, living-room, smart-display, kiosk, and signage wording from every published section.
+- Section `⑥` title must render as `Startup 상세 채점 기준표 (정량화 기준)`.
+- In section `⑥`, keep the KPI column narrower and give more width to `배점` / `채점 산출 기준`.
+- Do not leave a wide right-side empty gutter in section `⑥`; tables should fill the card cleanly.
 - Do not invent missing fields.
 
 Write the agent JSON/MD files noted in `phase_context.md`.
