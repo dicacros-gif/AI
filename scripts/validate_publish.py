@@ -19,6 +19,16 @@ REQUIRED_HTML_PATTERNS = {
     "row_summary_js": re.compile(r"buildRowSummaryHtml"),
 }
 PLACEHOLDER_MARKERS = ["TODO", "TBD", "PLACEHOLDER", "lorem ipsum"]
+FORBIDDEN_NON_MOBILE_PATTERNS = {
+    "tv_ctv_framing": re.compile(
+        r"(?:\bCTV\b|\bFAST\b|smart[\s-]?TV|TV\s*광고|broadcast|living[-\s]?room|set[-\s]?top)",
+        re.IGNORECASE,
+    ),
+    "non_phone_surface_framing": re.compile(
+        r"(?:스마트\s*디스플레이|키오스크|smart\s*display|kiosk|signage)",
+        re.IGNORECASE,
+    ),
+}
 
 
 def company_names(path: Path) -> list[str]:
@@ -31,6 +41,7 @@ def validate_path(path: Path) -> list[str]:
         return [f"Missing publish target: {path}"]
 
     html = path.read_text(encoding="utf-8")
+    visible_text = re.sub(r"<[^>]+>", " ", html)
     issues: list[str] = []
 
     for label, pattern in REQUIRED_HTML_PATTERNS.items():
@@ -39,6 +50,9 @@ def validate_path(path: Path) -> list[str]:
     for marker in PLACEHOLDER_MARKERS:
         if marker in html:
             issues.append(f"{path}: placeholder text `{marker}` remains in published HTML.")
+    for label, pattern in FORBIDDEN_NON_MOBILE_PATTERNS.items():
+        if pattern.search(visible_text):
+            issues.append(f"{path}: forbidden non-mobile framing `{label}` remains in published HTML.")
 
     visible_labels = VISIBLE_TS_RE.findall(html)
     if len(visible_labels) < 3:
@@ -46,14 +60,16 @@ def validate_path(path: Path) -> list[str]:
     for label in visible_labels:
         if "KST" not in label:
             issues.append(f"{path}: timestamp missing KST suffix -> {label}")
-    if "湲곗?" in html and "KST 湲곗?" not in html and "?묒꽦" not in html:
+    if "기준" in html and "KST 기준" not in html and "비공개" not in html:
         issues.append(f"{path}: found visible date text without explicit KST label.")
     if "<h1></h1>" in html or "class='cb'></div>" in html:
         issues.append(f"{path}: empty critical section detected.")
 
     bullet_style_issues = find_bullet_style_issues(html)
     if bullet_style_issues:
-        issues.append(f"{path}: sections 2-5 must use bullet fragments without sentence-final `~다` or periods -> {bullet_style_issues[0]}")
+        issues.append(
+            f"{path}: sections 2-5 must use bullet fragments without sentence-final `~다` or periods -> {bullet_style_issues[0]}"
+        )
     return issues
 
 

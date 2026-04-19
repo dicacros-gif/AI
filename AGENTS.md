@@ -115,3 +115,7 @@
 ## HTML Editing Rule
 - Preserve CSS shell, JS behavior, palette buttons, dark/light toggle, collapsible sections, rank badges, summary score blocks, competitor boxes, insight panels, timestamp chips, and footer/header/hero structure.
 - Render phases must use minimum-diff edits to existing HTML whenever possible.
+- `AI/1` and `AI/2` must stay in a smartphone / handset / mobile-surface frame.
+- Do not write TV, CTV, smart TV, FAST, broadcast, set-top, or living-room media framing into published HTML.
+- Do not write smart display, kiosk, signage, or store-hardware framing as the primary OEM angle.
+- Sections `③`, `④`, `⑤`, `⑥` must be described from a smartphone manufacturer point of view only.
