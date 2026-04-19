@@ -5,7 +5,7 @@ import json
 import sys
 from pathlib import Path
 
-from ai_watch.manifest import PHASE_REQUIRED_OUTPUTS, phase_suffix
+from ai_watch.manifest import PHASE_REQUIRED_OUTPUTS, phase_contract, phase_ids, phase_suffix
 
 
 def load_json(path: Path) -> dict:
@@ -13,12 +13,45 @@ def load_json(path: Path) -> dict:
 
 
 def validate_phase_root(path: Path) -> list[str]:
-    phase = path.name
-    suffix = phase_suffix(phase)
+    phase_id = path.name
+    contract = phase_contract(phase_id)
+    suffix = phase_suffix(phase_id)
     issues: list[str] = []
+
     for required in PHASE_REQUIRED_OUTPUTS[suffix]:
         if not (path / required).exists():
             issues.append(f"{path}: missing required state artifact `{required}`.")
+
+    if not (path / "run_manifest.json").exists():
+        issues.append(f"{path}: missing `run_manifest.json`.")
+    if not (path / "phase_contract.json").exists():
+        issues.append(f"{path}: missing `phase_contract.json`.")
+    else:
+        phase_contract_payload = load_json(path / "phase_contract.json")
+        if not phase_contract_payload.get("gates"):
+            issues.append(f"{path}: `phase_contract.json` has no gates.")
+        if not phase_contract_payload.get("fail_closed_fields"):
+            issues.append(f"{path}: `phase_contract.json` has no fail-closed fields.")
+        evidence_contract = phase_contract_payload.get("evidence_contract", {})
+        expected_keys = {
+            "min_sources_per_core_claim",
+            "min_sources_for_mutable_claim",
+            "max_staleness_days",
+            "freshness_fields",
+        }
+        missing_keys = expected_keys.difference(evidence_contract.keys())
+        if missing_keys:
+            missing = ", ".join(sorted(missing_keys))
+            issues.append(f"{path}: `phase_contract.json` evidence contract is missing keys: {missing}.")
+
+    if (path / "run_manifest.json").exists():
+        manifest_payload = load_json(path / "run_manifest.json")
+        if manifest_payload.get("phase") != phase_id:
+            issues.append(f"{path}: `run_manifest.json` phase mismatch.")
+        if manifest_payload.get("kind") != contract.kind:
+            issues.append(f"{path}: `run_manifest.json` kind mismatch for `{phase_id}`.")
+        if manifest_payload.get("runsCodex") and not manifest_payload.get("promptFile"):
+            issues.append(f"{path}: Codex phase manifest is missing `promptFile`.")
 
     scout_candidates = path / "scout_candidates.json"
     if scout_candidates.exists():
@@ -36,9 +69,18 @@ def validate_phase_root(path: Path) -> list[str]:
             company_type = str(candidate.get("companyType", "")).lower()
             if company_type in {"pure_hardware", "hardware", "hardware_vendor"}:
                 issues.append(f"{path}: newly discovered candidate `{candidate.get('name', 'unknown')}` is hardware-first and must be excluded.")
-            employee_band_max = candidate.get("employeeBandMax")
-            if ("south korea" in hq or hq == "korea" or "seoul" in hq) and employee_band_max is not None and int(employee_band_max) < 51:
-                issues.append(f"{path}: South Korea candidate `{candidate.get('name', 'unknown')}` is below the 51-employee publish threshold.")
+
+    verified_candidates = path / "verified_candidates.jsonl"
+    if verified_candidates.exists() and contract.kind == "candidate_verify":
+        content = verified_candidates.read_text(encoding="utf-8").strip()
+        if not content:
+            issues.append(f"{path}: candidate verify phase produced an empty `verified_candidates.jsonl` file.")
+
+    claims = path / "claims.jsonl"
+    if claims.exists() and contract.kind == "claim_ledger":
+        if '"source_id":' not in claims.read_text(encoding="utf-8"):
+            issues.append(f"{path}: claim ledger has no `source_id` entries.")
+
     return issues
 
 
@@ -50,23 +92,9 @@ def main() -> None:
 
     run_root = Path(args.run_root)
     issues: list[str] = []
+    known_phase_ids = set(phase_ids())
     for phase_root in sorted(run_root.rglob("*")):
-        if phase_root.is_dir() and phase_root.name in {
-            "ai1_update",
-            "ai1_verify",
-            "ai1_scout",
-            "ai1_score",
-            "ai1_render",
-            "ai2_update",
-            "ai2_verify",
-            "ai2_scout",
-            "ai2_score",
-            "ai2_render",
-            "global_qa",
-            "retry_failed",
-            "republish_or_qa",
-            "final_retry_or_publish_check",
-        }:
+        if phase_root.is_dir() and phase_root.name in known_phase_ids:
             issues.extend(validate_phase_root(phase_root))
 
     payload = {"ok": not issues, "issues": issues}

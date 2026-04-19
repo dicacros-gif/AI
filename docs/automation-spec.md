@@ -1,84 +1,173 @@
-# Automation Spec
+# Automation Specification
 
 ## Original Requirement Summary
-- Run the entire Global AI Startup Watch workflow on GitHub servers even when the user's computer is off.
-- Use `openai/codex-action@v1`, prompt-file based phases, repo-scoped `AGENTS.md`, `.codex/config.toml`, custom agent files, validators, state persistence, publish gating, retry logic, and KST scheduling.
-- Enforce deterministic new-startup ranking, English-authoritative-source priority, visible KST timestamps, and South Korea / China exclusion for newly discovered startups.
+- Run the full AI Watch pipeline on GitHub servers with no dependency on a local laptop
+- Keep the workflow fully automated, stateful across phases, and publish-gated
+- Prioritize English authoritative evidence
+- Exclude newly discovered startups headquartered in South Korea or China
+- Keep ranking deterministic and timestamps explicit in `KST`
 
-## Conflicts Found
-- The repository had older scheduled workflows that published unrelated or simplified output and would conflict with the new scheduler.
-- The current published page mapping was reversed relative to the new canonical mapping.
-- Visible write timestamps were using `기준 · 작성 HH:MM` instead of the canonical `HH:MM KST 기준` format.
-- Existing published pages contain legacy companies and source patterns that do not fully comply with the new discovery rules.
+## Problems Identified In The Prior Design
+- The old model assumed many separate scheduled checkpoints instead of one orchestrated run
+- Exact top-of-hour schedule slots were treated as reliable even though GitHub scheduled workflows can be delayed under load
+- Update and scout phases mixed freshness checks, evidence collection, and verification without a clear contract
+- Agent lists were richer than the actual claim-level verification model
+- Runner behavior was described too much like a persistent server instead of an ephemeral job VM
+- Freshness, TTL, and publish-time recheck were not explicit first-class phases
+- Candidate verification happened too late, after scout outputs were already close to scoring
 
-## Canonical Decisions Taken
-- Canonical page mapping is:
-  - `AI/1` = personalization / on-device.
-  - `AI/2` = ad AI / mobile AdTech.
-- Canonical publish targets are:
-  - `1/index.html`
-  - `2/index.html`
-- Legacy `.htm` usage is treated as invalid drift.
-- Scheduled times use `Asia/Seoul` as the business timezone and are converted to UTC cron entries in the workflow.
-- Existing published companies are retained by default.
-- Legacy rule violations are surfaced as removal candidates rather than auto-deletions.
-- The recurring publish model is additive: keep existing published companies, refresh their facts, and layer in newly discovered candidates over time.
-- Production execution is server-only:
-  - GitHub Actions on GitHub-hosted runners are the canonical runtime
-  - local script execution is not part of the production update/publish path
-  - manual intervention should use GitHub `workflow_dispatch`
-- Newly discovered companies are filtered more strictly:
-  - no South Korea / China HQ
-  - no unicorns
-  - revenue evidence required
-  - mobile relevance required
-  - exclude hardware-first vendors
-  - prefer software / service / engine / technology companies over pure hardware vendors
-- newly discovered candidates are drawn from the full global pool except South Korea / China headquarters
+## Canonical Decisions
+- One scheduled workflow starts the daily run
+- The scheduled entrypoint is `04:03 KST`, not the top of the hour
+- Sequencing is controlled by `needs`, not by multiple fragmented cron triggers
+- Runtime timezone is `Asia/Seoul`
+- GitHub-hosted runners are the canonical production runtime
+- Runner-local state is not trusted across jobs
+- State is passed through artifacts and the `ai-watch-state` branch
+- Each phase is defined as a contract with explicit inputs, outputs, gates, retry policy, evidence contract, and fail-closed fields
 
-## Final Canonical Schedule
-- `04:00 KST` `ai1_update` -> `0 19 * * *` UTC
-- `04:20 KST` `ai1_verify` -> `20 19 * * *` UTC
-- `04:30 KST` `ai1_scout` -> `30 19 * * *` UTC
-- `04:40 KST` `ai1_score` -> `40 19 * * *` UTC
-- `04:50 KST` `ai1_render` -> `50 19 * * *` UTC
-- `05:00 KST` `ai2_update` -> `0 20 * * *` UTC
-- `05:20 KST` `ai2_verify` -> `20 20 * * *` UTC
-- `05:30 KST` `ai2_scout` -> `30 20 * * *` UTC
-- `05:40 KST` `ai2_score` -> `40 20 * * *` UTC
-- `06:00 KST` `ai2_render` -> `0 21 * * *` UTC
-- `06:10 KST` `global_qa` -> `10 21 * * *` UTC
-- `06:30 KST` `retry_failed` -> `30 21 * * *` UTC
-- `07:00 KST` `republish_or_qa` -> `0 22 * * *` UTC
-- `07:30 KST` `final_retry_or_publish_check` -> `30 22 * * *` UTC
+## Canonical Page Mapping
+- `AI/1` -> `1/index.html`
+- `AI/2` -> `2/index.html`
+- `.htm` drift is invalid and must fail validation
 
-## Ranking Rule
-- Ranking applies to newly discovered approved candidates only.
-- Rank must be contiguous from `1` through `N`.
-- The same order is reused across all downstream sections and state artifacts.
+## Canonical Daily Flow
+- `04:03 KST` `preflight_source_health`
+- `04:08 KST` `ai1_source_freshness_probe`
+- `04:13 KST` `ai1_update`
+- `04:25 KST` `ai1_verify`
+- `04:38 KST` `ai1_scout`
+- `04:48 KST` `ai1_entity_resolution`
+- `04:55 KST` `ai1_evidence_normalize`
+- `05:02 KST` `ai1_claim_ledger_build`
+- `05:10 KST` `ai1_candidate_verify`
+- `05:18 KST` `ai1_staleness_gate`
+- `05:28 KST` `ai1_score`
+- `05:38 KST` `ai1_render_staging`
+- `05:48 KST` `ai2_source_freshness_probe`
+- `05:55 KST` `ai2_update`
+- `06:07 KST` `ai2_verify`
+- `06:20 KST` `ai2_scout`
+- `06:30 KST` `ai2_entity_resolution`
+- `06:37 KST` `ai2_evidence_normalize`
+- `06:44 KST` `ai2_claim_ledger_build`
+- `06:52 KST` `ai2_candidate_verify`
+- `07:00 KST` `ai2_staleness_gate`
+- `07:10 KST` `ai2_score`
+- `07:20 KST` `ai2_render_staging`
+- `07:30 KST` `global_recency_recheck`
+- `07:40 KST` `global_qa`
+- `07:48 KST` `repair_retry`
+- `07:55 KST` `publish_if_changed`
+- `08:00 KST` `post_publish_smoke`
 
-## English Source Policy
-- English-language official and authoritative sources are decisive.
-- Korean-language sources are excluded from decisive research and final publish citations.
-- Official press releases count as company-distributed claims, not independent verification.
+## Why The Schedule Changed
+- GitHub scheduled workflows are not a hard real-time scheduler
+- Top-of-hour load is a known reliability risk
+- A single orchestrator plus `needs` is more reliable than many separate scheduled workflows
 
-## Korea / China Exclusion Policy
-- Newly discovered startups headquartered in South Korea or China are not eligible.
-- If HQ is unclear, the candidate is held back.
-- Existing published violations are flagged in verify/global QA as removal candidates and are not auto-deleted.
+## Claim And Evidence Model
+- Raw source snapshots are not the final truth model
+- All decisive facts must pass through normalized evidence and claim artifacts
+- Core artifacts
+- `evidence.jsonl`
+- `claims.jsonl`
+- `claim_summary.json`
+- `claim_conflicts.json`
+- Claim schema requires:
+- `claim_id`
+- `company_id`
+- `field`
+- `value`
+- `source_id`
+- `source_type`
+- `published_at`
+- `retrieved_at_utc`
+- `quote`
+- `confidence`
+- `ttl_days`
+- `verification_status`
 
-## Published Set Stability Policy
-- Normal recurring runs keep existing published companies in place.
-- Daily automation refreshes facts on existing companies and layers in newly discovered companies over time.
-- Legacy policy problems are surfaced as removal candidates or manual review items instead of automatic deletions.
-- The canonical runtime is GitHub Actions on GitHub-hosted runners; local terminals are not part of the recurring production path.
-- The scheduler, phase execution, state persistence, and publish steps must remain runnable with the local computer turned off.
+## New First-Class Phases
+- `preflight_source_health`
+- check runtime, branch state, basic prerequisites, and source health before expensive work
+- `source_freshness_probe`
+- detect changes from RSS, sitemap, ETag, Last-Modified, page hash, and app-store metadata before deeper fetches
+- `entity_resolution`
+- map legal name, brand name, app name, parent, domain, and aliases to one canonical company identifier
+- `evidence_normalize`
+- turn raw source findings into a standard evidence schema
+- `claim_ledger_build`
+- split facts into claim-level rows
+- `candidate_verify`
+- fail closed on HQ ambiguity, Korea or China HQ, unicorn status, category mismatch, stale core evidence, or missing citations before scoring
+- `staleness_gate`
+- remove TTL-expired core claims from publish eligibility
+- `global_recency_recheck`
+- refresh fast-moving official sources just before publish
+- `publish_diff_guard`
+- allow publish only when validated changes stay inside approved surfaces
+- `post_publish_smoke`
+- confirm public URLs, timestamps, anchors, and publish paths after publish
 
-## Date + Time Display Policy
-- All visible write/generation labels must include date, weekday, time, and `KST`.
-- Date-only visible labels are invalid.
+## Evidence And Freshness Policy
+- Official release and newsroom claims: `1-7` days
+- App-store metadata and version claims: `1-3` days
+- Funding and valuation claims: `7-14` days
+- Partnership and M&A signals: `7` days
+- HQ and legal-entity claims: `30-90` days
+- Platform-policy and regulatory drift claims: `7-14` days
+- If a core claim is stale and not refreshed, fail closed
 
-## Publish Target Normalization Decision
-- Publish targets are normalized to `1/index.html` and `2/index.html`.
-- The scheduler and validators fail on `.htm` drift.
-- The render phase keeps the existing shell and applies only conservative page mutations.
+## Source Priority
+- `regulatory filing / registry`
+- `official company or investor source`
+- `app store / developer docs`
+- `authoritative English media`
+- `secondary databases and analyst platforms`
+- `community or social signals`
+- Korean-language media can support context but cannot be decisive support for final publish facts
+
+## Fail-Closed Fields
+- `headquarters_country`
+- `unicorn_status`
+- `category`
+- `funding_amount`
+- `valuation`
+- `ranking`
+- `timestamp`
+- `publish_path`
+
+## Retry Policy
+- Retry only transient failures
+- network timeout
+- 429
+- 5xx
+- temporary source unavailability
+- artifact transport failure
+- Do not retry fail-closed quality failures
+- Korea or China HQ
+- unicorn status confirmed
+- stale core claim
+- unsupported number
+- missing citation
+- unresolved source conflict
+- category mismatch
+- HTML shell regression
+- AI/2 deprecation or policy drift blocker
+
+## AI/2 Specific Policy Drift Guard
+- AI/2 must explicitly track privacy and platform-policy deprecations
+- Deprecated or retired Privacy Sandbox assumptions cannot be scored as current strategic upside
+- The automation includes dedicated deprecation-watch and Privacy Sandbox guards in the contract model
+
+## Rendering And Publish Decision
+- Non-render phases do not edit production HTML
+- Render phases are guarded by publish diff checks and validation
+- Publish occurs only when validated content changed
+- Workflow files, core templates, and automation control files are outside the normal automated publish surface
+
+## Current Implementation Boundary
+- The repository now enforces phase contracts, freshness probes, claim-ledger artifacts, candidate verification, recency recheck, and publish diff guarding
+- Render remains constrained to dedicated render phases with HTML regression and publish-surface guards
+- A future migration can move fully to data-first deterministic rendering, but the current implementation already narrows and validates the render surface

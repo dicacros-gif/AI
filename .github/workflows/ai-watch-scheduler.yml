@@ -1,82 +1,93 @@
-name: AI Watch Scheduler
+name: AI Watch Orchestrator
 
 on:
   schedule:
-    - cron: "0 19 * * *"
-    - cron: "20 19 * * *"
-    - cron: "30 19 * * *"
-    - cron: "40 19 * * *"
-    - cron: "50 19 * * *"
-    - cron: "0 20 * * *"
-    - cron: "20 20 * * *"
-    - cron: "30 20 * * *"
-    - cron: "40 20 * * *"
-    - cron: "0 21 * * *"
-    - cron: "10 21 * * *"
-    - cron: "30 21 * * *"
-    - cron: "0 22 * * *"
-    - cron: "30 22 * * *"
+    - cron: "3 4 * * *"
+      timezone: "Asia/Seoul"
   workflow_dispatch:
     inputs:
       phase:
-        description: "Phase to run"
+        description: "Run the full orchestrator or one specific phase"
         required: true
-        default: scheduled
+        default: all
         type: choice
         options:
-          - scheduled
+          - all
+          - preflight_source_health
+          - ai1_source_freshness_probe
           - ai1_update
           - ai1_verify
           - ai1_scout
+          - ai1_entity_resolution
+          - ai1_evidence_normalize
+          - ai1_claim_ledger_build
+          - ai1_candidate_verify
+          - ai1_staleness_gate
           - ai1_score
-          - ai1_render
+          - ai1_render_staging
+          - ai2_source_freshness_probe
           - ai2_update
           - ai2_verify
           - ai2_scout
+          - ai2_entity_resolution
+          - ai2_evidence_normalize
+          - ai2_claim_ledger_build
+          - ai2_candidate_verify
+          - ai2_staleness_gate
           - ai2_score
-          - ai2_render
+          - ai2_render_staging
+          - global_recency_recheck
           - global_qa
-          - retry_failed
-          - republish_or_qa
-          - final_retry_or_publish_check
+          - repair_retry
+          - publish_if_changed
+          - post_publish_smoke
       target_date:
         description: "Optional KST date in YYYY-MM-DD"
         required: false
         type: string
-      page:
-        description: "Optional explicit page key for manual runs"
-        required: false
-        type: choice
-        options:
-          - ""
-          - ai1
-          - ai2
 
 permissions:
-  contents: write
+  contents: read
 
 env:
   TZ: Asia/Seoul
   AI_WATCH_SERVER_ONLY: "true"
 
 concurrency:
-  group: ai-watch-${{ github.ref }}-${{ github.event.schedule || inputs.phase || 'manual' }}
+  group: daily-ai-intel-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
-  resolve:
+  context:
     runs-on: ubuntu-latest
     outputs:
-      phase: ${{ steps.resolve.outputs.phase }}
-      page: ${{ steps.resolve.outputs.page }}
-      run_date: ${{ steps.resolve.outputs.run_date }}
-      phase_root: ${{ steps.resolve.outputs.phase_root }}
-      prompt_file: ${{ steps.resolve.outputs.prompt_file }}
-      agent_matrix: ${{ steps.resolve.outputs.agent_matrix }}
-      kst_slot: ${{ steps.resolve.outputs.kst_slot }}
-      should_run_codex: ${{ steps.resolve.outputs.should_run_codex }}
-      commit_main: ${{ steps.resolve.outputs.commit_main }}
-      validate_publish: ${{ steps.resolve.outputs.validate_publish }}
+      run_date: ${{ steps.meta.outputs.run_date }}
+      single_phase: ${{ steps.meta.outputs.single_phase }}
+      full_run: ${{ steps.meta.outputs.full_run }}
+    steps:
+      - id: meta
+        run: |
+          python - <<'PY' >> "$GITHUB_OUTPUT"
+          import os
+          from datetime import datetime
+          from zoneinfo import ZoneInfo
+          target = os.environ.get("TARGET_DATE", "").strip()
+          phase = os.environ.get("TARGET_PHASE", "all").strip() or "all"
+          if not target:
+              target = datetime.now(ZoneInfo("Asia/Seoul")).strftime("%Y-%m-%d")
+          print(f"run_date={target}")
+          print(f"single_phase={'' if phase == 'all' else phase}")
+          print(f"full_run={'true' if phase == 'all' else 'false'}")
+          PY
+        env:
+          TARGET_DATE: ${{ inputs.target_date }}
+          TARGET_PHASE: ${{ inputs.phase }}
+
+  manual_single_phase:
+    needs: context
+    if: needs.context.outputs.single_phase != ''
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-python@v5
@@ -89,64 +100,63 @@ jobs:
       - id: resolve
         run: |
           python scripts/resolve_schedule.py \
-            --scheduled-cron "${{ github.event.schedule }}" \
-            --manual-phase "${{ inputs.phase }}" \
-            --manual-date "${{ inputs.target_date }}" \
-            --manual-page "${{ inputs.page }}" \
+            --manual-phase "${{ needs.context.outputs.single_phase }}" \
+            --manual-date "${{ needs.context.outputs.run_date }}" \
             --github-output "$GITHUB_OUTPUT"
-
-  phase_agents:
-    needs: resolve
-    if: needs.resolve.outputs.should_run_codex == 'true'
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-    strategy:
-      fail-fast: false
-      matrix:
-        include: ${{ fromJSON(needs.resolve.outputs.agent_matrix) }}
-    steps:
-      - uses: actions/checkout@v5
-      - uses: actions/setup-python@v5
+      - name: Download prior artifacts
+        continue-on-error: true
+        uses: actions/download-artifact@v4
         with:
-          python-version: "3.11"
-      - name: Enforce GitHub-hosted runtime
-        run: python scripts/enforce_server_only.py
-      - name: Generate agent assets
-        run: python scripts/generate_codex_assets.py
-      - name: Bootstrap phase state
+          pattern: ai-watch-state-${{ needs.context.outputs.run_date }}-*
+          path: _artifacts
+      - name: Restore prior state
+        run: python scripts/restore_phase_artifacts.py --artifact-root _artifacts --repo-root .
+      - name: Bootstrap codex phase
+        if: steps.resolve.outputs.should_run_codex == 'true'
         run: |
           python scripts/run_phase.py \
             --mode bootstrap \
-            --phase "${{ needs.resolve.outputs.phase }}" \
-            --page "${{ needs.resolve.outputs.page }}" \
-            --role "${{ matrix.role }}" \
-            --run-date "${{ needs.resolve.outputs.run_date }}"
-      - name: Run Codex for agent role
+            --phase "${{ steps.resolve.outputs.phase }}" \
+            --run-date "${{ needs.context.outputs.run_date }}"
+      - name: Run Codex
+        if: steps.resolve.outputs.should_run_codex == 'true'
         uses: openai/codex-action@v1
         with:
           openai-api-key: ${{ secrets.OPENAI_API_KEY }}
           codex-home: .codex
-          prompt-file: ${{ needs.resolve.outputs.prompt_file }}
+          prompt-file: ${{ steps.resolve.outputs.prompt_file }}
           working-directory: .
           sandbox: workspace-write
           safety-strategy: drop-sudo
-          output-file: ${{ needs.resolve.outputs.phase_root }}/agents/${{ matrix.role }}.final.md
+          output-file: ${{ steps.resolve.outputs.phase_root }}/codex.final.md
           model: gpt-5.4
           effort: high
-      - name: Upload agent artifacts
+      - name: Consolidate codex phase
+        if: steps.resolve.outputs.should_run_codex == 'true'
+        run: |
+          python scripts/run_phase.py \
+            --mode consolidate \
+            --phase "${{ steps.resolve.outputs.phase }}" \
+            --run-date "${{ needs.context.outputs.run_date }}"
+      - name: Execute script phase
+        if: steps.resolve.outputs.should_run_codex != 'true'
+        run: |
+          python scripts/run_phase.py \
+            --mode execute \
+            --phase "${{ steps.resolve.outputs.phase }}" \
+            --run-date "${{ needs.context.outputs.run_date }}"
+      - name: Upload phase artifact
         uses: actions/upload-artifact@v4
         with:
-          name: ai-watch-${{ needs.resolve.outputs.phase }}-${{ matrix.role }}-${{ needs.resolve.outputs.run_date }}
-          path: ${{ needs.resolve.outputs.phase_root }}/agents/${{ matrix.role }}*
-          if-no-files-found: ignore
+          name: ai-watch-state-${{ needs.context.outputs.run_date }}-${{ steps.resolve.outputs.phase }}
+          path: ${{ steps.resolve.outputs.phase_root }}
+          if-no-files-found: error
 
-  consolidate:
-    needs: [resolve, phase_agents]
-    if: always() && needs.resolve.result == 'success'
+  preflight_source_health:
+    needs: context
+    if: needs.context.outputs.full_run == 'true'
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-python@v5
@@ -156,63 +166,683 @@ jobs:
         run: python scripts/enforce_server_only.py
       - name: Generate agent assets
         run: python scripts/generate_codex_assets.py
-      - name: Download agent artifacts
-        if: needs.resolve.outputs.should_run_codex == 'true'
+      - name: Execute preflight
+        run: python scripts/run_phase.py --mode execute --phase preflight_source_health --run-date "${{ needs.context.outputs.run_date }}"
+      - name: Upload preflight artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ai-watch-state-${{ needs.context.outputs.run_date }}-preflight_source_health
+          path: .state/runs/${{ needs.context.outputs.run_date }}/global/preflight_source_health
+          if-no-files-found: error
+
+  ai1_research:
+    needs: [context, preflight_source_health]
+    if: needs.context.outputs.full_run == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 70
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Enforce GitHub-hosted runtime
+        run: python scripts/enforce_server_only.py
+      - name: Generate agent assets
+        run: python scripts/generate_codex_assets.py
+      - name: Download prior artifacts
+        continue-on-error: true
         uses: actions/download-artifact@v4
         with:
-          pattern: ai-watch-${{ needs.resolve.outputs.phase }}-*-${{ needs.resolve.outputs.run_date }}
-          path: ${{ needs.resolve.outputs.phase_root }}/agents
-          merge-multiple: true
-      - name: Consolidate phase outputs
-        run: |
-          python scripts/run_phase.py \
-            --mode consolidate \
-            --phase "${{ needs.resolve.outputs.phase }}" \
-            --page "${{ needs.resolve.outputs.page }}" \
-            --run-date "${{ needs.resolve.outputs.run_date }}"
+          pattern: ai-watch-state-${{ needs.context.outputs.run_date }}-*
+          path: _artifacts
+      - name: Restore prior state
+        run: python scripts/restore_phase_artifacts.py --artifact-root _artifacts --repo-root .
+      - name: Execute ai1_source_freshness_probe
+        run: python scripts/run_phase.py --mode execute --phase ai1_source_freshness_probe --run-date "${{ needs.context.outputs.run_date }}"
+      - name: Bootstrap ai1_update
+        run: python scripts/run_phase.py --mode bootstrap --phase ai1_update --run-date "${{ needs.context.outputs.run_date }}"
+      - name: Run Codex ai1_update
+        uses: openai/codex-action@v1
+        with:
+          openai-api-key: ${{ secrets.OPENAI_API_KEY }}
+          codex-home: .codex
+          prompt-file: .github/codex/prompts/ai1_update.md
+          working-directory: .
+          sandbox: workspace-write
+          safety-strategy: drop-sudo
+          output-file: .state/runs/${{ needs.context.outputs.run_date }}/ai1/ai1_update/codex.final.md
+          model: gpt-5.4
+          effort: high
+      - name: Consolidate ai1_update
+        run: python scripts/run_phase.py --mode consolidate --phase ai1_update --run-date "${{ needs.context.outputs.run_date }}"
+      - name: Bootstrap ai1_verify
+        run: python scripts/run_phase.py --mode bootstrap --phase ai1_verify --run-date "${{ needs.context.outputs.run_date }}"
+      - name: Run Codex ai1_verify
+        uses: openai/codex-action@v1
+        with:
+          openai-api-key: ${{ secrets.OPENAI_API_KEY }}
+          codex-home: .codex
+          prompt-file: .github/codex/prompts/ai1_verify.md
+          working-directory: .
+          sandbox: workspace-write
+          safety-strategy: drop-sudo
+          output-file: .state/runs/${{ needs.context.outputs.run_date }}/ai1/ai1_verify/codex.final.md
+          model: gpt-5.4
+          effort: high
+      - name: Consolidate ai1_verify
+        run: python scripts/run_phase.py --mode consolidate --phase ai1_verify --run-date "${{ needs.context.outputs.run_date }}"
+      - name: Bootstrap ai1_scout
+        run: python scripts/run_phase.py --mode bootstrap --phase ai1_scout --run-date "${{ needs.context.outputs.run_date }}"
+      - name: Run Codex ai1_scout
+        uses: openai/codex-action@v1
+        with:
+          openai-api-key: ${{ secrets.OPENAI_API_KEY }}
+          codex-home: .codex
+          prompt-file: .github/codex/prompts/ai1_scout.md
+          working-directory: .
+          sandbox: workspace-write
+          safety-strategy: drop-sudo
+          output-file: .state/runs/${{ needs.context.outputs.run_date }}/ai1/ai1_scout/codex.final.md
+          model: gpt-5.4
+          effort: high
+      - name: Consolidate ai1_scout
+        run: python scripts/run_phase.py --mode consolidate --phase ai1_scout --run-date "${{ needs.context.outputs.run_date }}"
+      - name: Upload ai1 research artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: ai-watch-state-${{ needs.context.outputs.run_date }}-ai1_research
+          path: |
+            .state/runs/${{ needs.context.outputs.run_date }}/ai1/ai1_source_freshness_probe
+            .state/runs/${{ needs.context.outputs.run_date }}/ai1/ai1_update
+            .state/runs/${{ needs.context.outputs.run_date }}/ai1/ai1_verify
+            .state/runs/${{ needs.context.outputs.run_date }}/ai1/ai1_scout
+          if-no-files-found: error
+
+  ai1_contracts:
+    needs: [context, ai1_research]
+    if: needs.context.outputs.full_run == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Enforce GitHub-hosted runtime
+        run: python scripts/enforce_server_only.py
+      - name: Download prior artifacts
+        continue-on-error: true
+        uses: actions/download-artifact@v4
+        with:
+          pattern: ai-watch-state-${{ needs.context.outputs.run_date }}-*
+          path: _artifacts
+      - name: Restore prior state
+        run: python scripts/restore_phase_artifacts.py --artifact-root _artifacts --repo-root .
+      - name: Execute ai1_entity_resolution
+        run: python scripts/run_phase.py --mode execute --phase ai1_entity_resolution --run-date "${{ needs.context.outputs.run_date }}"
+      - name: Execute ai1_evidence_normalize
+        run: python scripts/run_phase.py --mode execute --phase ai1_evidence_normalize --run-date "${{ needs.context.outputs.run_date }}"
+      - name: Execute ai1_claim_ledger_build
+        run: python scripts/run_phase.py --mode execute --phase ai1_claim_ledger_build --run-date "${{ needs.context.outputs.run_date }}"
+      - name: Execute ai1_candidate_verify
+        run: python scripts/run_phase.py --mode execute --phase ai1_candidate_verify --run-date "${{ needs.context.outputs.run_date }}"
+      - name: Execute ai1_staleness_gate
+        run: python scripts/run_phase.py --mode execute --phase ai1_staleness_gate --run-date "${{ needs.context.outputs.run_date }}"
+      - name: Upload ai1 contract artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: ai-watch-state-${{ needs.context.outputs.run_date }}-ai1_contracts
+          path: |
+            .state/runs/${{ needs.context.outputs.run_date }}/ai1/ai1_entity_resolution
+            .state/runs/${{ needs.context.outputs.run_date }}/ai1/ai1_evidence_normalize
+            .state/runs/${{ needs.context.outputs.run_date }}/ai1/ai1_claim_ledger_build
+            .state/runs/${{ needs.context.outputs.run_date }}/ai1/ai1_candidate_verify
+            .state/runs/${{ needs.context.outputs.run_date }}/ai1/ai1_staleness_gate
+          if-no-files-found: error
+
+  ai1_score:
+    needs: [context, ai1_contracts]
+    if: needs.context.outputs.full_run == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Enforce GitHub-hosted runtime
+        run: python scripts/enforce_server_only.py
+      - name: Generate agent assets
+        run: python scripts/generate_codex_assets.py
+      - name: Download prior artifacts
+        continue-on-error: true
+        uses: actions/download-artifact@v4
+        with:
+          pattern: ai-watch-state-${{ needs.context.outputs.run_date }}-*
+          path: _artifacts
+      - name: Restore prior state
+        run: python scripts/restore_phase_artifacts.py --artifact-root _artifacts --repo-root .
+      - name: Bootstrap ai1_score
+        run: python scripts/run_phase.py --mode bootstrap --phase ai1_score --run-date "${{ needs.context.outputs.run_date }}"
+      - name: Run Codex ai1_score
+        uses: openai/codex-action@v1
+        with:
+          openai-api-key: ${{ secrets.OPENAI_API_KEY }}
+          codex-home: .codex
+          prompt-file: .github/codex/prompts/ai1_score.md
+          working-directory: .
+          sandbox: workspace-write
+          safety-strategy: drop-sudo
+          output-file: .state/runs/${{ needs.context.outputs.run_date }}/ai1/ai1_score/codex.final.md
+          model: gpt-5.4
+          effort: high
+      - name: Consolidate ai1_score
+        run: python scripts/run_phase.py --mode consolidate --phase ai1_score --run-date "${{ needs.context.outputs.run_date }}"
+      - name: Upload ai1 score artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ai-watch-state-${{ needs.context.outputs.run_date }}-ai1_score
+          path: .state/runs/${{ needs.context.outputs.run_date }}/ai1/ai1_score
+          if-no-files-found: error
+
+  ai1_render_staging:
+    needs: [context, ai1_score]
+    if: needs.context.outputs.full_run == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Enforce GitHub-hosted runtime
+        run: python scripts/enforce_server_only.py
+      - name: Generate agent assets
+        run: python scripts/generate_codex_assets.py
+      - name: Download prior artifacts
+        continue-on-error: true
+        uses: actions/download-artifact@v4
+        with:
+          pattern: ai-watch-state-${{ needs.context.outputs.run_date }}-*
+          path: _artifacts
+      - name: Restore prior state
+        run: python scripts/restore_phase_artifacts.py --artifact-root _artifacts --repo-root .
+      - name: Bootstrap ai1_render_staging
+        run: python scripts/run_phase.py --mode bootstrap --phase ai1_render_staging --run-date "${{ needs.context.outputs.run_date }}"
+      - name: Run Codex ai1_render_staging
+        uses: openai/codex-action@v1
+        with:
+          openai-api-key: ${{ secrets.OPENAI_API_KEY }}
+          codex-home: .codex
+          prompt-file: .github/codex/prompts/ai1_render.md
+          working-directory: .
+          sandbox: workspace-write
+          safety-strategy: drop-sudo
+          output-file: .state/runs/${{ needs.context.outputs.run_date }}/ai1/ai1_render_staging/codex.final.md
+          model: gpt-5.4
+          effort: high
+      - name: Consolidate ai1_render_staging
+        run: python scripts/run_phase.py --mode consolidate --phase ai1_render_staging --run-date "${{ needs.context.outputs.run_date }}"
+      - name: Upload ai1 render artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ai-watch-state-${{ needs.context.outputs.run_date }}-ai1_render_staging
+          path: .state/runs/${{ needs.context.outputs.run_date }}/ai1/ai1_render_staging
+          if-no-files-found: error
+
+  ai2_research:
+    needs: [context, ai1_render_staging]
+    if: needs.context.outputs.full_run == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 70
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Enforce GitHub-hosted runtime
+        run: python scripts/enforce_server_only.py
+      - name: Generate agent assets
+        run: python scripts/generate_codex_assets.py
+      - name: Download prior artifacts
+        continue-on-error: true
+        uses: actions/download-artifact@v4
+        with:
+          pattern: ai-watch-state-${{ needs.context.outputs.run_date }}-*
+          path: _artifacts
+      - name: Restore prior state
+        run: python scripts/restore_phase_artifacts.py --artifact-root _artifacts --repo-root .
+      - name: Execute ai2_source_freshness_probe
+        run: python scripts/run_phase.py --mode execute --phase ai2_source_freshness_probe --run-date "${{ needs.context.outputs.run_date }}"
+      - name: Bootstrap ai2_update
+        run: python scripts/run_phase.py --mode bootstrap --phase ai2_update --run-date "${{ needs.context.outputs.run_date }}"
+      - name: Run Codex ai2_update
+        uses: openai/codex-action@v1
+        with:
+          openai-api-key: ${{ secrets.OPENAI_API_KEY }}
+          codex-home: .codex
+          prompt-file: .github/codex/prompts/ai2_update.md
+          working-directory: .
+          sandbox: workspace-write
+          safety-strategy: drop-sudo
+          output-file: .state/runs/${{ needs.context.outputs.run_date }}/ai2/ai2_update/codex.final.md
+          model: gpt-5.4
+          effort: high
+      - name: Consolidate ai2_update
+        run: python scripts/run_phase.py --mode consolidate --phase ai2_update --run-date "${{ needs.context.outputs.run_date }}"
+      - name: Bootstrap ai2_verify
+        run: python scripts/run_phase.py --mode bootstrap --phase ai2_verify --run-date "${{ needs.context.outputs.run_date }}"
+      - name: Run Codex ai2_verify
+        uses: openai/codex-action@v1
+        with:
+          openai-api-key: ${{ secrets.OPENAI_API_KEY }}
+          codex-home: .codex
+          prompt-file: .github/codex/prompts/ai2_verify.md
+          working-directory: .
+          sandbox: workspace-write
+          safety-strategy: drop-sudo
+          output-file: .state/runs/${{ needs.context.outputs.run_date }}/ai2/ai2_verify/codex.final.md
+          model: gpt-5.4
+          effort: high
+      - name: Consolidate ai2_verify
+        run: python scripts/run_phase.py --mode consolidate --phase ai2_verify --run-date "${{ needs.context.outputs.run_date }}"
+      - name: Bootstrap ai2_scout
+        run: python scripts/run_phase.py --mode bootstrap --phase ai2_scout --run-date "${{ needs.context.outputs.run_date }}"
+      - name: Run Codex ai2_scout
+        uses: openai/codex-action@v1
+        with:
+          openai-api-key: ${{ secrets.OPENAI_API_KEY }}
+          codex-home: .codex
+          prompt-file: .github/codex/prompts/ai2_scout.md
+          working-directory: .
+          sandbox: workspace-write
+          safety-strategy: drop-sudo
+          output-file: .state/runs/${{ needs.context.outputs.run_date }}/ai2/ai2_scout/codex.final.md
+          model: gpt-5.4
+          effort: high
+      - name: Consolidate ai2_scout
+        run: python scripts/run_phase.py --mode consolidate --phase ai2_scout --run-date "${{ needs.context.outputs.run_date }}"
+      - name: Upload ai2 research artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: ai-watch-state-${{ needs.context.outputs.run_date }}-ai2_research
+          path: |
+            .state/runs/${{ needs.context.outputs.run_date }}/ai2/ai2_source_freshness_probe
+            .state/runs/${{ needs.context.outputs.run_date }}/ai2/ai2_update
+            .state/runs/${{ needs.context.outputs.run_date }}/ai2/ai2_verify
+            .state/runs/${{ needs.context.outputs.run_date }}/ai2/ai2_scout
+          if-no-files-found: error
+
+  ai2_contracts:
+    needs: [context, ai2_research]
+    if: needs.context.outputs.full_run == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Enforce GitHub-hosted runtime
+        run: python scripts/enforce_server_only.py
+      - name: Download prior artifacts
+        continue-on-error: true
+        uses: actions/download-artifact@v4
+        with:
+          pattern: ai-watch-state-${{ needs.context.outputs.run_date }}-*
+          path: _artifacts
+      - name: Restore prior state
+        run: python scripts/restore_phase_artifacts.py --artifact-root _artifacts --repo-root .
+      - name: Execute ai2_entity_resolution
+        run: python scripts/run_phase.py --mode execute --phase ai2_entity_resolution --run-date "${{ needs.context.outputs.run_date }}"
+      - name: Execute ai2_evidence_normalize
+        run: python scripts/run_phase.py --mode execute --phase ai2_evidence_normalize --run-date "${{ needs.context.outputs.run_date }}"
+      - name: Execute ai2_claim_ledger_build
+        run: python scripts/run_phase.py --mode execute --phase ai2_claim_ledger_build --run-date "${{ needs.context.outputs.run_date }}"
+      - name: Execute ai2_candidate_verify
+        run: python scripts/run_phase.py --mode execute --phase ai2_candidate_verify --run-date "${{ needs.context.outputs.run_date }}"
+      - name: Execute ai2_staleness_gate
+        run: python scripts/run_phase.py --mode execute --phase ai2_staleness_gate --run-date "${{ needs.context.outputs.run_date }}"
+      - name: Upload ai2 contract artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: ai-watch-state-${{ needs.context.outputs.run_date }}-ai2_contracts
+          path: |
+            .state/runs/${{ needs.context.outputs.run_date }}/ai2/ai2_entity_resolution
+            .state/runs/${{ needs.context.outputs.run_date }}/ai2/ai2_evidence_normalize
+            .state/runs/${{ needs.context.outputs.run_date }}/ai2/ai2_claim_ledger_build
+            .state/runs/${{ needs.context.outputs.run_date }}/ai2/ai2_candidate_verify
+            .state/runs/${{ needs.context.outputs.run_date }}/ai2/ai2_staleness_gate
+          if-no-files-found: error
+
+  ai2_score:
+    needs: [context, ai2_contracts]
+    if: needs.context.outputs.full_run == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Enforce GitHub-hosted runtime
+        run: python scripts/enforce_server_only.py
+      - name: Generate agent assets
+        run: python scripts/generate_codex_assets.py
+      - name: Download prior artifacts
+        continue-on-error: true
+        uses: actions/download-artifact@v4
+        with:
+          pattern: ai-watch-state-${{ needs.context.outputs.run_date }}-*
+          path: _artifacts
+      - name: Restore prior state
+        run: python scripts/restore_phase_artifacts.py --artifact-root _artifacts --repo-root .
+      - name: Bootstrap ai2_score
+        run: python scripts/run_phase.py --mode bootstrap --phase ai2_score --run-date "${{ needs.context.outputs.run_date }}"
+      - name: Run Codex ai2_score
+        uses: openai/codex-action@v1
+        with:
+          openai-api-key: ${{ secrets.OPENAI_API_KEY }}
+          codex-home: .codex
+          prompt-file: .github/codex/prompts/ai2_score.md
+          working-directory: .
+          sandbox: workspace-write
+          safety-strategy: drop-sudo
+          output-file: .state/runs/${{ needs.context.outputs.run_date }}/ai2/ai2_score/codex.final.md
+          model: gpt-5.4
+          effort: high
+      - name: Consolidate ai2_score
+        run: python scripts/run_phase.py --mode consolidate --phase ai2_score --run-date "${{ needs.context.outputs.run_date }}"
+      - name: Upload ai2 score artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ai-watch-state-${{ needs.context.outputs.run_date }}-ai2_score
+          path: .state/runs/${{ needs.context.outputs.run_date }}/ai2/ai2_score
+          if-no-files-found: error
+
+  ai2_render_staging:
+    needs: [context, ai2_score]
+    if: needs.context.outputs.full_run == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Enforce GitHub-hosted runtime
+        run: python scripts/enforce_server_only.py
+      - name: Generate agent assets
+        run: python scripts/generate_codex_assets.py
+      - name: Download prior artifacts
+        continue-on-error: true
+        uses: actions/download-artifact@v4
+        with:
+          pattern: ai-watch-state-${{ needs.context.outputs.run_date }}-*
+          path: _artifacts
+      - name: Restore prior state
+        run: python scripts/restore_phase_artifacts.py --artifact-root _artifacts --repo-root .
+      - name: Bootstrap ai2_render_staging
+        run: python scripts/run_phase.py --mode bootstrap --phase ai2_render_staging --run-date "${{ needs.context.outputs.run_date }}"
+      - name: Run Codex ai2_render_staging
+        uses: openai/codex-action@v1
+        with:
+          openai-api-key: ${{ secrets.OPENAI_API_KEY }}
+          codex-home: .codex
+          prompt-file: .github/codex/prompts/ai2_render.md
+          working-directory: .
+          sandbox: workspace-write
+          safety-strategy: drop-sudo
+          output-file: .state/runs/${{ needs.context.outputs.run_date }}/ai2/ai2_render_staging/codex.final.md
+          model: gpt-5.4
+          effort: high
+      - name: Consolidate ai2_render_staging
+        run: python scripts/run_phase.py --mode consolidate --phase ai2_render_staging --run-date "${{ needs.context.outputs.run_date }}"
+      - name: Upload ai2 render artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ai-watch-state-${{ needs.context.outputs.run_date }}-ai2_render_staging
+          path: .state/runs/${{ needs.context.outputs.run_date }}/ai2/ai2_render_staging
+          if-no-files-found: error
+
+  global_recency_recheck:
+    needs: [context, ai1_render_staging, ai2_render_staging]
+    if: needs.context.outputs.full_run == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Enforce GitHub-hosted runtime
+        run: python scripts/enforce_server_only.py
+      - name: Download prior artifacts
+        continue-on-error: true
+        uses: actions/download-artifact@v4
+        with:
+          pattern: ai-watch-state-${{ needs.context.outputs.run_date }}-*
+          path: _artifacts
+      - name: Restore prior state
+        run: python scripts/restore_phase_artifacts.py --artifact-root _artifacts --repo-root .
+      - name: Execute global_recency_recheck
+        run: python scripts/run_phase.py --mode execute --phase global_recency_recheck --run-date "${{ needs.context.outputs.run_date }}"
+      - name: Upload recency artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ai-watch-state-${{ needs.context.outputs.run_date }}-global_recency_recheck
+          path: .state/runs/${{ needs.context.outputs.run_date }}/global/global_recency_recheck
+          if-no-files-found: error
+
+  global_qa:
+    needs: [context, global_recency_recheck]
+    if: needs.context.outputs.full_run == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Enforce GitHub-hosted runtime
+        run: python scripts/enforce_server_only.py
+      - name: Generate agent assets
+        run: python scripts/generate_codex_assets.py
+      - name: Download prior artifacts
+        continue-on-error: true
+        uses: actions/download-artifact@v4
+        with:
+          pattern: ai-watch-state-${{ needs.context.outputs.run_date }}-*
+          path: _artifacts
+      - name: Restore prior state
+        run: python scripts/restore_phase_artifacts.py --artifact-root _artifacts --repo-root .
+      - name: Bootstrap global_qa
+        run: python scripts/run_phase.py --mode bootstrap --phase global_qa --run-date "${{ needs.context.outputs.run_date }}"
+      - name: Run Codex global_qa
+        uses: openai/codex-action@v1
+        with:
+          openai-api-key: ${{ secrets.OPENAI_API_KEY }}
+          codex-home: .codex
+          prompt-file: .github/codex/prompts/global_qa.md
+          working-directory: .
+          sandbox: workspace-write
+          safety-strategy: drop-sudo
+          output-file: .state/runs/${{ needs.context.outputs.run_date }}/global/global_qa/codex.final.md
+          model: gpt-5.4
+          effort: high
+      - name: Consolidate global_qa
+        run: python scripts/run_phase.py --mode consolidate --phase global_qa --run-date "${{ needs.context.outputs.run_date }}"
+      - name: Upload global QA artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ai-watch-state-${{ needs.context.outputs.run_date }}-global_qa
+          path: .state/runs/${{ needs.context.outputs.run_date }}/global/global_qa
+          if-no-files-found: error
+
+  repair_retry:
+    needs: [context, global_qa]
+    if: needs.context.outputs.full_run == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Enforce GitHub-hosted runtime
+        run: python scripts/enforce_server_only.py
+      - name: Download prior artifacts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: ai-watch-state-${{ needs.context.outputs.run_date }}-*
+          path: _artifacts
+      - name: Restore prior state
+        run: python scripts/restore_phase_artifacts.py --artifact-root _artifacts --repo-root .
+      - name: Execute repair_retry
+        run: python scripts/run_phase.py --mode execute --phase repair_retry --run-date "${{ needs.context.outputs.run_date }}"
+      - name: Upload retry artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ai-watch-state-${{ needs.context.outputs.run_date }}-repair_retry
+          path: .state/runs/${{ needs.context.outputs.run_date }}/global/repair_retry
+          if-no-files-found: error
+
+  publish_if_changed:
+    needs: [context, global_qa, repair_retry]
+    if: needs.context.outputs.full_run == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Enforce GitHub-hosted runtime
+        run: python scripts/enforce_server_only.py
+      - name: Download prior artifacts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: ai-watch-state-${{ needs.context.outputs.run_date }}-*
+          path: _artifacts
+      - name: Restore prior state
+        run: python scripts/restore_phase_artifacts.py --artifact-root _artifacts --repo-root .
+      - name: Execute publish_if_changed phase
+        run: python scripts/run_phase.py --mode execute --phase publish_if_changed --run-date "${{ needs.context.outputs.run_date }}"
       - name: Validate ranking
-        if: needs.resolve.outputs.validate_publish == 'true'
         continue-on-error: true
         run: |
           python scripts/validate_ranking.py 1/index.html 2/index.html \
-            --json-output "${{ needs.resolve.outputs.phase_root }}/validator_ranking.json"
+            --json-output ".state/runs/${{ needs.context.outputs.run_date }}/global/publish_if_changed/validator_ranking.json"
       - name: Validate publish targets
-        if: needs.resolve.outputs.validate_publish == 'true'
         continue-on-error: true
         run: |
           python scripts/validate_publish.py \
             --page1 1/index.html \
             --page2 2/index.html \
-            --json-output "${{ needs.resolve.outputs.phase_root }}/validator_publish.json"
+            --json-output ".state/runs/${{ needs.context.outputs.run_date }}/global/publish_if_changed/validator_publish.json"
       - name: Validate state tree
         continue-on-error: true
         run: |
           python scripts/validate_state.py \
-            --run-root ".state/runs/${{ needs.resolve.outputs.run_date }}" \
-            --json-output "${{ needs.resolve.outputs.phase_root }}/validator_state.json"
+            --run-root ".state/runs/${{ needs.context.outputs.run_date }}" \
+            --json-output ".state/runs/${{ needs.context.outputs.run_date }}/global/publish_if_changed/validator_state.json"
       - name: Validate sources
         continue-on-error: true
         run: |
           python scripts/validate_sources.py \
-            "${{ needs.resolve.outputs.phase_root }}/source_quality_report.json" \
-            "${{ needs.resolve.outputs.phase_root }}/source_integrity.json" \
-            "${{ needs.resolve.outputs.phase_root }}/scout_candidates.json" \
-            "${{ needs.resolve.outputs.phase_root }}/scores.json" \
-            --json-output "${{ needs.resolve.outputs.phase_root }}/validator_sources.json"
+            ".state/runs/${{ needs.context.outputs.run_date }}/ai1/ai1_update/source_quality_report.json" \
+            ".state/runs/${{ needs.context.outputs.run_date }}/ai1/ai1_verify/source_integrity.json" \
+            ".state/runs/${{ needs.context.outputs.run_date }}/ai1/ai1_scout/scout_candidates.json" \
+            ".state/runs/${{ needs.context.outputs.run_date }}/ai1/ai1_score/scores.json" \
+            ".state/runs/${{ needs.context.outputs.run_date }}/ai2/ai2_update/source_quality_report.json" \
+            ".state/runs/${{ needs.context.outputs.run_date }}/ai2/ai2_verify/source_integrity.json" \
+            ".state/runs/${{ needs.context.outputs.run_date }}/ai2/ai2_scout/scout_candidates.json" \
+            ".state/runs/${{ needs.context.outputs.run_date }}/ai2/ai2_score/scores.json" \
+            ".state/runs/${{ needs.context.outputs.run_date }}/global/global_qa/global_qa.json" \
+            --json-output ".state/runs/${{ needs.context.outputs.run_date }}/global/publish_if_changed/validator_sources.json"
       - name: Summarize failures
         run: |
           python scripts/report_failures.py \
-            "${{ needs.resolve.outputs.phase_root }}/validator_ranking.json" \
-            "${{ needs.resolve.outputs.phase_root }}/validator_publish.json" \
-            "${{ needs.resolve.outputs.phase_root }}/validator_state.json" \
-            "${{ needs.resolve.outputs.phase_root }}/validator_sources.json" \
-            --json-output "${{ needs.resolve.outputs.phase_root }}/failure_summary.json"
+            ".state/runs/${{ needs.context.outputs.run_date }}/global/publish_if_changed/validator_ranking.json" \
+            ".state/runs/${{ needs.context.outputs.run_date }}/global/publish_if_changed/validator_publish.json" \
+            ".state/runs/${{ needs.context.outputs.run_date }}/global/publish_if_changed/validator_state.json" \
+            ".state/runs/${{ needs.context.outputs.run_date }}/global/publish_if_changed/validator_sources.json" \
+            --json-output ".state/runs/${{ needs.context.outputs.run_date }}/global/publish_if_changed/failure_summary.json"
       - name: Enforce publish gate
-        if: needs.resolve.outputs.validate_publish == 'true'
         run: |
-          python -c "import json,sys; d=json.load(open(r'${{ needs.resolve.outputs.phase_root }}/failure_summary.json', encoding='utf-8')); issues=d.get('summary', []); sys.exit(1 if issues else 0)"
+          python - <<'PY'
+          import json
+          import sys
+          from pathlib import Path
+          summary = json.loads(Path(".state/runs/${{ needs.context.outputs.run_date }}/global/publish_if_changed/failure_summary.json").read_text(encoding="utf-8"))
+          sys.exit(1 if summary.get("summary") else 0)
+          PY
+      - name: Commit rendered pages if changed
+        run: |
+          if git diff --quiet -- 1/index.html 2/index.html; then
+            echo "No page changes to commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add 1/index.html 2/index.html
+          git commit -m "ai-watch: publish ${{ needs.context.outputs.run_date }}"
+          git push
+      - name: Upload publish artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ai-watch-state-${{ needs.context.outputs.run_date }}-publish_if_changed
+          path: .state/runs/${{ needs.context.outputs.run_date }}/global/publish_if_changed
+          if-no-files-found: error
+
+  post_publish_smoke:
+    needs: [context, publish_if_changed]
+    if: needs.context.outputs.full_run == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Enforce GitHub-hosted runtime
+        run: python scripts/enforce_server_only.py
+      - name: Download prior artifacts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: ai-watch-state-${{ needs.context.outputs.run_date }}-*
+          path: _artifacts
+      - name: Restore prior state
+        run: python scripts/restore_phase_artifacts.py --artifact-root _artifacts --repo-root .
+      - name: Execute post_publish_smoke
+        run: python scripts/run_phase.py --mode execute --phase post_publish_smoke --run-date "${{ needs.context.outputs.run_date }}"
+      - name: Upload smoke artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ai-watch-state-${{ needs.context.outputs.run_date }}-post_publish_smoke
+          path: .state/runs/${{ needs.context.outputs.run_date }}/global/post_publish_smoke
+          if-no-files-found: error
+
+  persist_state:
+    needs: [context, manual_single_phase, post_publish_smoke]
+    if: always() && (needs.manual_single_phase.result == 'success' || needs.post_publish_smoke.result == 'success')
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v5
+      - name: Download all phase artifacts
+        continue-on-error: true
+        uses: actions/download-artifact@v4
+        with:
+          pattern: ai-watch-state-${{ needs.context.outputs.run_date }}-*
+          path: _artifacts
+      - name: Restore state tree
+        run: python scripts/restore_phase_artifacts.py --artifact-root _artifacts --repo-root .
       - name: Persist state branch
-        if: always()
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -227,28 +857,11 @@ jobs:
             git rm -rf . >/dev/null 2>&1 || true
             cd ..
           fi
-          mkdir -p "_state_branch/$(dirname "${{ needs.resolve.outputs.phase_root }}")"
-          rm -rf "_state_branch/${{ needs.resolve.outputs.phase_root }}"
-          cp -R "${{ needs.resolve.outputs.phase_root }}" "_state_branch/${{ needs.resolve.outputs.phase_root }}"
+          mkdir -p "_state_branch/.state/runs"
+          rm -rf "_state_branch/.state/runs/${{ needs.context.outputs.run_date }}"
+          mkdir -p "_state_branch/.state/runs"
+          cp -R ".state/runs/${{ needs.context.outputs.run_date }}" "_state_branch/.state/runs/"
           cd _state_branch
-          git add .
-          git commit -m "state: ${{ needs.resolve.outputs.phase }} ${{ needs.resolve.outputs.run_date }} ${{ needs.resolve.outputs.kst_slot }}" || echo "No state changes to commit."
+          git add .state/runs/${{ needs.context.outputs.run_date }}
+          git commit -m "state: ${{ needs.context.outputs.run_date }}" || echo "No state changes to commit."
           git push origin HEAD:ai-watch-state
-      - name: Commit rendered pages
-        if: needs.resolve.outputs.commit_main == 'true'
-        run: |
-          if git diff --quiet -- 1/index.html 2/index.html; then
-            echo "No page changes to commit."
-            exit 0
-          fi
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add 1/index.html 2/index.html
-          git commit -m "ai-watch: ${{ needs.resolve.outputs.phase }} ${{ needs.resolve.outputs.run_date }} ${{ needs.resolve.outputs.kst_slot }}"
-          git push
-      - name: Upload consolidated artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: ai-watch-consolidated-${{ needs.resolve.outputs.phase }}-${{ needs.resolve.outputs.run_date }}
-          path: ${{ needs.resolve.outputs.phase_root }}
-          if-no-files-found: error

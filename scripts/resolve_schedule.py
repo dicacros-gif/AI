@@ -5,13 +5,12 @@ import json
 from pathlib import Path
 
 from ai_watch.manifest import (
-    PHASE_KST_SLOTS,
-    PHASE_PROMPTS,
-    PHASE_TO_PAGE,
-    SCHEDULE_TO_PHASE,
+    ORCHESTRATOR_SCHEDULE,
+    kst_date_string,
+    phase_contract,
+    phase_ids,
     phase_matrix,
     state_phase_root,
-    kst_date_string,
 )
 
 
@@ -22,33 +21,41 @@ def emit_output(path: str, key: str, value: str) -> None:
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--scheduled-cron", default="")
-    parser.add_argument("--manual-phase", default="")
+    parser.add_argument("--manual-phase", default="all")
     parser.add_argument("--manual-date", default="")
     parser.add_argument("--manual-page", default="")
     parser.add_argument("--github-output", default="")
     args = parser.parse_args()
 
-    phase = (args.manual_phase or "").strip()
-    if not phase or phase == "scheduled":
-        phase = SCHEDULE_TO_PHASE[args.scheduled_cron.strip()]
+    phase = (args.manual_phase or "all").strip()
+    if phase != "all" and phase not in phase_ids():
+        raise SystemExit(f"Unknown phase: {phase}")
 
-    page = (args.manual_page or "").strip() or PHASE_TO_PAGE.get(phase, "")
     run_date = (args.manual_date or "").strip() or kst_date_string()
-    phase_root = state_phase_root(run_date, page or None, phase)
-
-    payload = {
-        "phase": phase,
-        "page": page,
-        "run_date": run_date,
-        "phase_root": phase_root.as_posix(),
-        "prompt_file": PHASE_PROMPTS[phase],
-        "agent_matrix": json.dumps(phase_matrix(phase), ensure_ascii=False),
-        "kst_slot": PHASE_KST_SLOTS[phase],
-        "should_run_codex": "true" if phase_matrix(phase) else "false",
-        "commit_main": "true" if phase.endswith("_render") or phase == "republish_or_qa" else "false",
-        "validate_publish": "true" if phase.endswith("_render") or phase in {"global_qa", "republish_or_qa", "final_retry_or_publish_check"} else "false",
-    }
+    if phase == "all":
+        payload = {
+            "phase": "all",
+            "page": "",
+            "run_date": run_date,
+            "phase_root": "",
+            "prompt_file": "",
+            "agent_matrix": "[]",
+            "kst_slot": ORCHESTRATOR_SCHEDULE["kst_start"],
+            "should_run_codex": "false",
+        }
+    else:
+        contract = phase_contract(phase)
+        page = (args.manual_page or "").strip() or contract.page or ""
+        payload = {
+            "phase": phase,
+            "page": page,
+            "run_date": run_date,
+            "phase_root": state_phase_root(run_date, page or None, phase).as_posix(),
+            "prompt_file": contract.prompt_file or "",
+            "agent_matrix": json.dumps(phase_matrix(phase), ensure_ascii=False),
+            "kst_slot": contract.kst_slot,
+            "should_run_codex": "true" if contract.runs_codex else "false",
+        }
 
     if args.github_output:
         for key, value in payload.items():
@@ -59,4 +66,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
