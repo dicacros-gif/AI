@@ -71,7 +71,9 @@
 - No missing ranks.
 - No reversed downstream order.
 - The top navigation index row must stay on the first visible line at the upper-left of the page.
+- Palette buttons and the dark-mode toggle must share that same first visible top row at the upper-right of the page.
 - Do not leave the section index as a second-row bar under the toolbar.
+- Do not leave palette buttons or the dark-mode toggle in a second sticky row under the top navigation.
 - In section `①` startup list tables, clicking a company row must collapse it to a true single-line summary row.
 - Collapsed rows must reduce vertical height visibly; do not leave empty multi-line row height behind.
 - Collapsed row summary should keep the top-line essentials only, such as rank, company, and compact meta.

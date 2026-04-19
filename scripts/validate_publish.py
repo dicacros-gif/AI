@@ -9,6 +9,7 @@ from pathlib import Path
 from ai_watch.html_tools import VISIBLE_TS_RE, extract_order_map, find_bullet_style_issues
 
 REQUIRED_HTML_PATTERNS = {
+    "topbar": re.compile(r"class='topbar'"),
     "toolbar": re.compile(r"class='tb'"),
     "sticky_nav": re.compile(r"id='stickyNav'"),
     "eval_company": re.compile(r"class='eval-company(?:\s|')"),
@@ -17,6 +18,11 @@ REQUIRED_HTML_PATTERNS = {
     "red_flag_box": re.compile(r"class='rf-box(?:\s|')"),
     "row_summary_style": re.compile(r"row-summary-cell"),
     "row_summary_js": re.compile(r"buildRowSummaryHtml"),
+}
+TOPBAR_STRUCTURE = re.compile(r"<div class='topbar'>\s*<nav class='nav' id='stickyNav'>.*?</nav>\s*<div class='tb'>", re.S)
+FORBIDDEN_TOPBAR_PATTERNS = {
+    "toolbar_second_row": re.compile(r"\.tb\{position:sticky", re.IGNORECASE),
+    "nav_sticky_second_row": re.compile(r"\.nav\{position:sticky", re.IGNORECASE),
 }
 ROW_ID_PATTERN = re.compile(r"<tr class='tr-main' data-row='([^']+)' onclick=\"toggleRow\('([^']+)',this\)\"")
 EVAL_COMPANY_START = re.compile(r"<div class='eval-company'[^>]*data-co='[^']+'")
@@ -73,6 +79,11 @@ def validate_path(path: Path) -> list[str]:
     for label, pattern in REQUIRED_HTML_PATTERNS.items():
         if not pattern.search(html):
             issues.append(f"{path}: missing required HTML structure `{label}`.")
+    if not TOPBAR_STRUCTURE.search(html):
+        issues.append(f"{path}: top navigation and toolbar controls must share the same first-row topbar wrapper.")
+    for label, pattern in FORBIDDEN_TOPBAR_PATTERNS.items():
+        if pattern.search(html):
+            issues.append(f"{path}: forbidden second-row topbar layout `{label}` detected.")
 
     row_pairs = ROW_ID_PATTERN.findall(html)
     row_ids = [left for left, _ in row_pairs]

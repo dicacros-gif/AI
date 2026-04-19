@@ -18,7 +18,9 @@ Hard rules:
 - Only approved newly discovered companies may be added or re-ranked.
 - Newly discovered candidate order must stay identical across every downstream section.
 - Keep the section index nav on the first visible line at the upper-left of the page.
+- Palette buttons and the dark-mode toggle must sit on that same first visible top row at the upper-right.
 - Do not render the section index as a second row below the toolbar.
+- Do not leave palette buttons or the dark-mode toggle in a separate second sticky row.
 - In section `①`, collapsed startup rows must shrink to a real one-line summary row with reduced height.
 - Do not leave hidden text inside full-height table rows after collapse.
 - Every section `①` startup row must keep a unique `data-row` key and collapse state must resolve from that key even after new rows are added.
