@@ -86,7 +86,7 @@
 ## Bullet Style Rule
 - Section `①` insight, article-link, and competitor strength/weakness copy must use concise bullet-fragment writing.
 - Do not end section `①` insight/article/competitor copy with sentence-final `~다`.
-- Prefer fragment endings such as `공개`, `명확`, `선명`, `강함`, `보임`, `노림`, `내재화`, `증명`, `정리`, `소개`, `보도`, `설명`, `분류`, `중요`, `유연`, `좁음`, `높음`, `약함`, `빠름`, `두꺼움`, `다룸`.
+- Prefer fragment endings such as `공개`, `명확`, `선명`, `강함`, `보임`, `노림`, `내재화`, `증명`, `정리`, `소개`, `보도`, `설명`, `분류`, `중요`, `유연`, `좁음`, `높음`, `약함`, `빠름`, `두꺼움`, `다룸`, `제시`, `확보`, `전달`, `요약`, `기록`, `언급`, `인수와 같음`, `나음`.
 - Sections `②`, `③`, `④`, `⑤` must use concise bullet-fragment writing.
 - Do not end those bullets with sentence-final `~다`.
 - Do not end those bullets with periods.

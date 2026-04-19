@@ -144,6 +144,29 @@ BULLET_ENDING_REPLACEMENTS: tuple[tuple[str, str], ...] = (
     ("이다", ""),
 )
 
+PARTIAL_FRAGMENT_REPAIRS: tuple[tuple[str, str], ...] = (
+    ("선명하", "선명"),
+    ("중요하", "중요"),
+    ("유연하", "유연"),
+    ("제시했", "제시"),
+    ("확보했", "확보"),
+    ("정리한", "정리"),
+    ("소개한", "소개"),
+    ("보도한", "보도"),
+    ("전했", "전달"),
+    ("요약했", "요약"),
+    ("남겼", "기록"),
+    ("언급한", "언급"),
+    ("정리했", "정리"),
+    ("소개했", "소개"),
+    ("보도했", "보도"),
+    ("다뤘", "다룸"),
+    ("설명한", "설명"),
+    ("분류한", "분류"),
+    ("인수와 같", "인수와 같음"),
+    ("낫", "나음"),
+)
+
 
 def read_text(path: Path) -> str:
     return path.read_text(encoding="utf-8")
@@ -243,6 +266,10 @@ def _normalize_bullet_sentence(text: str) -> str:
     normalized = re.sub(r"[.。]\s*$", "", normalized)
     if normalized.endswith("다"):
         normalized = normalized[:-1]
+    for source, target in PARTIAL_FRAGMENT_REPAIRS:
+        if normalized.endswith(source):
+            normalized = normalized[: -len(source)] + target
+            break
     return normalized
 
 
