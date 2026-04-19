@@ -19,6 +19,8 @@ Hard rules:
 - Do not render semiconductor fabless, chip vendors, or hardware-first vendors in AI/1.
 - Replace removed fabless, chip, or hardware-first AI/1 companies with approved software, service, engine, or enabling-technology candidates.
 - Newly discovered candidate order must be identical across all downstream sections.
+- Keep the section index nav on the first visible line at the upper-left of the page.
+- Do not render the section index as a second row below the toolbar.
 - In section `①`, collapsed startup rows must shrink to a real one-line summary row with reduced height.
 - Do not leave hidden text inside full-height table rows after collapse.
 - Every section `①` startup row must keep a unique `data-row` key and collapse state must resolve from that key even after new rows are added.
@@ -26,6 +28,7 @@ Hard rules:
 - Never begin the next `eval-company` block before closing the current card body.
 - Section `①` insight, article-link, and competitor strength/weakness copy must use concise bullet fragments.
 - Do not end section `①` insight/article/competitor copy with `~다` or periods.
+- Do not satisfy this by deleting only the last `다`; rewrite the ending into a natural fragment.
 - Prefer fragment endings such as `공개`, `명확`, `선명`, `강함`, `보임`, `노림`, `내재화`, `증명`, `정리`, `소개`, `보도`, `설명`, `분류`, `중요`, `유연`, `좁음`, `높음`, `약함`, `빠름`, `두꺼움`, `다룸`, `제시`, `확보`, `전달`, `요약`, `기록`, `언급`, `인수와 같음`, `나음`.
 - Sections `②`, `③`, `④`, `⑤` must use concise bullet fragments, not sentence prose.
 - Do not end bullets in sections `②`, `③`, `④`, `⑤` with `~다` or periods.

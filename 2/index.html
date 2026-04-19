@@ -183,12 +183,12 @@ b, strong { color: var(--t1); font-weight: 800; }
 .bm-detail .bm-line::before { content: '$'; position: absolute; left: 0; color: var(--ok); font-weight: 800; font-size: 0.62rem; }
 .bm-detail .bm-line:last-child { margin-bottom: 0; }
 
-.tb{position:sticky;top:0;z-index:200;background:var(--tbg);backdrop-filter:blur(16px);border-bottom:1px solid var(--bd);padding:.4rem 1.4rem;display:flex;align-items:center;justify-content:flex-end;gap:.6rem;flex-wrap:wrap}
+.tb{position:sticky;top:36px;z-index:200;background:var(--tbg);backdrop-filter:blur(16px);border-bottom:1px solid var(--bd);padding:.4rem 1.4rem;display:flex;align-items:center;justify-content:flex-end;gap:.6rem;flex-wrap:wrap}
 .tg{display:flex;align-items:center;gap:.3rem}.tl{font-size:.63rem;font-weight:700;color:var(--t3);text-transform:uppercase;letter-spacing:.1em}
 .pb{width:18px;height:18px;border-radius:50%;border:2px solid transparent;cursor:pointer;transition:all .2s}.pb:hover{transform:scale(1.2);box-shadow:0 0 10px var(--glow)}.pb.on{border-color:var(--t1);box-shadow:0 0 0 2px var(--bg),0 0 0 4px var(--t3)}
 .pb[data-c=default]{background:linear-gradient(135deg,#2563eb,#60a5fa)}.pb[data-c=ocean]{background:linear-gradient(135deg,#0d9488,#2dd4bf)}.pb[data-c=sunset]{background:linear-gradient(135deg,#ea580c,#fb923c)}.pb[data-c=violet]{background:linear-gradient(135deg,#7c3aed,#a78bfa)}.pb[data-c=rose]{background:linear-gradient(135deg,#e11d48,#fb7185)}
 .dv{width:1px;height:16px;background:var(--bd)}.tt{display:flex;align-items:center;gap:.3rem;cursor:pointer;user-select:none}.tt svg{width:13px;height:13px;fill:var(--t3)}.tk{width:32px;height:16px;border-radius:999px;background:var(--tgB);position:relative}.kn{width:12px;height:12px;border-radius:50%;background:var(--tgK);position:absolute;top:2px;left:2px;transition:transform .3s,background .3s}[data-t=dark] .kn{transform:translateX(16px);background:#60a5fa}
-.nav{position:sticky;top:35px;z-index:150;background:var(--tbg);backdrop-filter:blur(16px);border-bottom:1px solid var(--bd);padding:.3rem 1rem;display:flex;gap:.2rem;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.nav{position:sticky;top:0;z-index:210;background:var(--tbg);backdrop-filter:blur(16px);border-bottom:1px solid var(--bd);padding:.3rem 1rem;display:flex;justify-content:flex-start;gap:.2rem;overflow-x:auto;-webkit-overflow-scrolling:touch}
 .nav a{font-size:.68rem;font-weight:700;padding:.25rem .55rem;border-radius:999px;white-space:nowrap;border:1px solid var(--bd);background:var(--card);color:var(--t2);transition:all .2s;text-decoration:none;flex-shrink:0}.nav a:hover,.nav a.on{background:var(--ac);color:#fff;border-color:var(--ac);text-decoration:none;animation:none !important;}
 main{width:min(1600px,calc(100% - 1.5rem));margin:0 auto;padding:.8rem 0 2rem}
 .hero{background:linear-gradient(135deg,var(--h1),var(--h2));border-radius:var(--r);padding:1.2rem 1.6rem 1rem;color:#fff;box-shadow:var(--shL);margin-bottom:.8rem;position:relative;overflow:hidden}
@@ -242,10 +242,18 @@ tr.row-collapsed:hover td{background:var(--acL)!important}
 .logic-row p { margin-bottom: 0.35rem; }
 .logic-row p:last-child { margin-bottom: 0; }
 footer{margin-top:.6rem;padding:.5rem 1.1rem;font-size:.66rem;color:var(--t3);text-align:center}
-@media(max-width:768px){main{width:calc(100% - .5rem)}.hero{padding:.9rem .7rem .7rem;border-radius:var(--rs)}.hero h1{font-size:1rem}.tb{padding:.3rem .5rem}.nav{padding:.25rem .5rem;top:32px}.pg{grid-template-columns:1fr}}
+@media(max-width:768px){main{width:calc(100% - .5rem)}.hero{padding:.9rem .7rem .7rem;border-radius:var(--rs)}.hero h1{font-size:1rem}.tb{top:32px;padding:.3rem .5rem}.nav{top:0;padding:.25rem .5rem}.pg{grid-template-columns:1fr}}
 </style>
 </head>
 <body data-t='light' data-p='default'>
+<nav class='nav' id='stickyNav'>
+  <a href='#sec-list'>① 스타트업 리스트</a>
+  <a href='#sec-eval'>② 평가표</a>
+  <a href='#sec-partner'>③ 제조사 파트너십</a>
+  <a href='#sec-insight'>④ 투자 인사이트</a>
+  <a href='#sec-market'>⑤ 시장·M&A·트렌드</a>
+  <a href='#sec-criteria'>⑥ 채점 기준</a>
+</nav>
 <div class='tb'>
   <div class='tg'>
     <button class='pb on' data-c='default' onclick="sp('default')"></button>
@@ -257,17 +265,9 @@ footer{margin-top:.6rem;padding:.5rem 1.1rem;font-size:.66rem;color:var(--t3);te
   <div class='dv'></div>
   <div class='tt' onclick='dt()'><svg viewBox='0 0 24 24'><path d='M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.515 4.929l1.414-1.414L7.05 5.636 5.636 7.05 3.515 4.93zM16.95 18.364l1.414-1.414 2.121 2.121-1.414 1.414-2.121-2.121zm2.121-14.85 1.414 1.415-2.121 2.121-1.414-1.414 2.121-2.121zM5.636 16.95l1.414 1.414-2.121 2.121-1.414-1.414 2.121-2.121zM23 11v2h-3v-2h3zM4 11v2H1v-2h3z'/></svg><div class='tk'><div class='kn'></div></div><svg viewBox='0 0 24 24'><path d='M10 7a7 7 0 0 0 12 4.9v.1c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2h.1A6.979 6.979 0 0 0 10 7zm-6 5a8 8 0 0 0 15.062 3.762A9 9 0 0 1 8.238 4.938 7.999 7.999 0 0 0 4 12z'/></svg></div>
 </div>
-<nav class='nav' id='stickyNav'>
-  <a href='#sec-list'>① 스타트업 리스트</a>
-  <a href='#sec-eval'>② 평가표</a>
-  <a href='#sec-partner'>③ 제조사 파트너십</a>
-  <a href='#sec-insight'>④ 투자 인사이트</a>
-  <a href='#sec-market'>⑤ 시장·M&A·트렌드</a>
-  <a href='#sec-criteria'>⑥ 채점 기준</a>
-</nav>
 <main>
 <section class='hero'>
-<div class='hc'><span class='ch'>'26.4.19 (일) 14:17 KST 기준</span><span class='ch'>유니콘 미만 우선</span><span class='ch'>한국/중국 본사 제외</span><span class='ch'>영문 권위 소스 기준</span></div>
+<div class='hc'><span class='ch'>'26.4.19 (일) 14:49 KST 기준</span><span class='ch'>유니콘 미만 우선</span><span class='ch'>한국/중국 본사 제외</span><span class='ch'>영문 권위 소스 기준</span></div>
   <h1>글로벌 광고 AI / 모바일 광고 기술 스타트업 모니터링</h1>
   <p>광고 AI, 모바일 광고 기술/서비스, AdTech, SDK · DSP · Retargeting, 퍼포먼스 마케팅, 영상 ai 광고</p>
   <div class='ss'>
@@ -1134,7 +1134,7 @@ footer{margin-top:.6rem;padding:.5rem 1.1rem;font-size:.66rem;color:var(--t3);te
 <footer style='padding:0.7rem 1.1rem; background:var(--card); border-top:2px solid var(--bd); border-radius:var(--r); margin-top:0.8rem; box-shadow:var(--shS);'>
   <div style='display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:0.5rem;'>
     <div style='font-size:0.7rem; font-weight:700; color:var(--acT);'>📊 Global AI Startup Watch · 광고 AI / 모바일 광고 기술 Edition</div>
-<div style='font-size:0.68rem; font-weight:800; color:var(--t1); background:var(--bbg); border:1px solid var(--bbd); padding:0.2rem 0.55rem; border-radius:6px;'>⏱ <span class='h-word'>'26.4.19 (일) 14:17 KST 기준</span></div>
+<div style='font-size:0.68rem; font-weight:800; color:var(--t1); background:var(--bbg); border:1px solid var(--bbd); padding:0.2rem 0.55rem; border-radius:6px;'>⏱ <span class='h-word'>'26.4.19 (일) 14:49 KST 기준</span></div>
   </div>
   <div style='font-size:0.62rem; color:var(--t3); margin-top:0.4rem; line-height:1.55;'>· 출처: 첨부 팩트체크 문서와 영문 기사 링크(TechCrunch, WSJ, Adweek, Business Wire, FinSMEs, PR Newswire, Crunchbase, adtech tokyo archive, official sites) 기준 재구성<br>· 한국어 기사 단독 수치·주장은 최종 판단 근거에서 제외 · 투자·매출·지표는 영문 공개 시점 기준 · 비공개 항목은 보수적으로 해석</div>
 </footer>

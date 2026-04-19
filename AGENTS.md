@@ -70,6 +70,8 @@
 - No duplicate ranks.
 - No missing ranks.
 - No reversed downstream order.
+- The top navigation index row must stay on the first visible line at the upper-left of the page.
+- Do not leave the section index as a second-row bar under the toolbar.
 - In section `①` startup list tables, clicking a company row must collapse it to a true single-line summary row.
 - Collapsed rows must reduce vertical height visibly; do not leave empty multi-line row height behind.
 - Collapsed row summary should keep the top-line essentials only, such as rank, company, and compact meta.
@@ -86,6 +88,7 @@
 ## Bullet Style Rule
 - Section `①` insight, article-link, and competitor strength/weakness copy must use concise bullet-fragment writing.
 - Do not end section `①` insight/article/competitor copy with sentence-final `~다`.
+- Never satisfy this rule by trimming only the final `다`; rewrite the ending into a natural fragment instead.
 - Prefer fragment endings such as `공개`, `명확`, `선명`, `강함`, `보임`, `노림`, `내재화`, `증명`, `정리`, `소개`, `보도`, `설명`, `분류`, `중요`, `유연`, `좁음`, `높음`, `약함`, `빠름`, `두꺼움`, `다룸`, `제시`, `확보`, `전달`, `요약`, `기록`, `언급`, `인수와 같음`, `나음`.
 - Sections `②`, `③`, `④`, `⑤` must use concise bullet-fragment writing.
 - Do not end those bullets with sentence-final `~다`.
