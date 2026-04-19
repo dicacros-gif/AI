@@ -80,7 +80,11 @@
 - Palette buttons and the dark-mode toggle must share that same first visible top row at the upper-right of the page.
 - Do not leave the section index as a second-row bar under the toolbar.
 - Do not leave palette buttons or the dark-mode toggle in a second sticky row under the top navigation.
+- In section `③`, manufacturer partnership idea boxes must render open by default.
+- Do not publish section `③` partnership boxes with the body collapsed on initial load.
 - In section `①` startup list tables, clicking a company row must collapse it to a true single-line summary row.
+- In section `①`, keep the integrated startup table materially narrower than the old 3000px-wide layout.
+- Prefer tighter column widths and more natural line wrapping so more content is visible vertically without excessive horizontal scrolling.
 - Collapsed rows must reduce vertical height visibly; do not leave empty multi-line row height behind.
 - Collapsed row summary should keep the top-line essentials only, such as rank, company, and compact meta.
 - Every `tr-main` row in section `①` must have a unique `data-row` key.

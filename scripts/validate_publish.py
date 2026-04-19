@@ -27,6 +27,12 @@ FORBIDDEN_TOPBAR_PATTERNS = {
     "toolbar_second_row": re.compile(r"\.tb\{position:sticky", re.IGNORECASE),
     "nav_sticky_second_row": re.compile(r"\.nav\{position:sticky", re.IGNORECASE),
 }
+FORBIDDEN_DEFAULT_COLLAPSE_PATTERNS = {
+    "partner_boxes_collapsed_by_default": re.compile(r"class='pc-b pc-b-shut'"),
+}
+FORBIDDEN_SECTION1_WIDTH_PATTERNS = {
+    "legacy_section1_table_width": re.compile(r"<table style='min-width:3000px'>"),
+}
 ROW_ID_PATTERN = re.compile(r"<tr class='tr-main' data-row='([^']+)' onclick=\"toggleRow\('([^']+)',this\)\"")
 EVAL_COMPANY_START = re.compile(r"<div class='eval-company'[^>]*data-co='[^']+'")
 EVAL_COMPANY_KEY = re.compile(r"data-co='([^']+)'")
@@ -92,6 +98,12 @@ def validate_path(path: Path) -> list[str]:
     for label, pattern in FORBIDDEN_TOPBAR_PATTERNS.items():
         if pattern.search(html):
             issues.append(f"{path}: forbidden second-row topbar layout `{label}` detected.")
+    for label, pattern in FORBIDDEN_DEFAULT_COLLAPSE_PATTERNS.items():
+        if pattern.search(html):
+            issues.append(f"{path}: forbidden default-collapsed partnership layout `{label}` detected.")
+    for label, pattern in FORBIDDEN_SECTION1_WIDTH_PATTERNS.items():
+        if pattern.search(html):
+            issues.append(f"{path}: forbidden legacy-wide section-1 table layout `{label}` detected.")
 
     row_pairs = ROW_ID_PATTERN.findall(html)
     row_ids = [left for left, _ in row_pairs]

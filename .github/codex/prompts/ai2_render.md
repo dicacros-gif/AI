@@ -21,7 +21,11 @@ Hard rules:
 - Palette buttons and the dark-mode toggle must sit on that same first visible top row at the upper-right.
 - Do not render the section index as a second row below the toolbar.
 - Do not leave palette buttons or the dark-mode toggle in a separate second sticky row.
+- In section `③`, manufacturer partnership idea boxes must render open by default.
+- Do not leave section `③` partnership bodies collapsed on initial page load.
 - In section `①`, collapsed startup rows must shrink to a real one-line summary row with reduced height.
+- In section `①`, keep the integrated startup table materially narrower than the old 3000px-wide layout.
+- Prefer tighter column widths and more natural line wrapping so more content is visible vertically without excessive horizontal scrolling.
 - Do not leave hidden text inside full-height table rows after collapse.
 - Every section `①` startup row must keep a unique `data-row` key and collapse state must resolve from that key even after new rows are added.
 - In section `②`, each `eval-company` wrapper must contain its own `eval-company-hd` immediately followed by its own `eval-company-bd`.
