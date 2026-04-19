@@ -146,10 +146,31 @@ BULLET_ENDING_REPLACEMENTS: tuple[tuple[str, str], ...] = (
 
 PARTIAL_FRAGMENT_REPAIRS: tuple[tuple[str, str], ...] = (
     ("선명하", "선명"),
+    ("분명하", "분명"),
+    ("명확하", "명확"),
+    ("뚜렷하", "뚜렷"),
     ("중요하", "중요"),
     ("유연하", "유연"),
+    ("풍부하", "풍부"),
+    ("보수적으로 본", "보수적 평가"),
+    ("보수적으로 둔", "보수적 평가"),
+    ("전면에 둔", "전면 배치"),
+    ("잘 맞는", "적합"),
+    ("맞는", "맞음"),
+    ("얻는", "얻음"),
+    ("높아진", "높음"),
+    ("빠르", "빠름"),
+    ("깊", "깊음"),
+    ("많", "많음"),
+    ("작", "작음"),
+    ("아니", "아님"),
+    ("생겼", "생김"),
     ("제시했", "제시"),
     ("확보했", "확보"),
+    ("발표했", "발표"),
+    ("설명했", "설명"),
+    ("선명했", "선명"),
+    ("제시한", "제시"),
     ("정리한", "정리"),
     ("소개한", "소개"),
     ("보도한", "보도"),
@@ -165,6 +186,13 @@ PARTIAL_FRAGMENT_REPAIRS: tuple[tuple[str, str], ...] = (
     ("분류한", "분류"),
     ("인수와 같", "인수와 같음"),
     ("낫", "나음"),
+    ("넓", "넓음"),
+    ("낮", "낮음"),
+    ("앞선", "앞섬"),
+    ("가볍", "가벼움"),
+    ("보여 준", "보여줌"),
+    ("보여줘", "보여줌"),
+    ("보여 줘", "보여줌"),
 )
 
 
@@ -264,8 +292,6 @@ def _normalize_bullet_sentence(text: str) -> str:
             normalized = normalized[: -len(source)] + target
             break
     normalized = re.sub(r"[.。]\s*$", "", normalized)
-    if normalized.endswith("다"):
-        normalized = normalized[:-1]
     for source, target in PARTIAL_FRAGMENT_REPAIRS:
         if normalized.endswith(source):
             normalized = normalized[: -len(source)] + target
@@ -396,7 +422,11 @@ def find_bullet_style_issues(html: str) -> list[str]:
 def normalize_page(html: str, current_page: str, visible_label: str) -> str:
     html = replace_visible_timestamps(html, visible_label)
     html = normalize_cross_links(html, current_page)
-    return normalize_bullet_sections(html)
+    html = normalize_bullet_sections(html)
+    # When nested span markup splits the last adjective fragment, remove the dangling tail
+    # after the inner highlight so the phrase stays readable.
+    html = re.sub(r"</span>하</span>", "</span></span>", html)
+    return html
 
 
 def ensure_canonical_page_mapping(repo_root: Path, visible_label: str | None = None) -> dict[str, str]:
