@@ -85,6 +85,8 @@
 - In section `⑥`, widen the left KPI column enough for readable labels, while keeping `배점` and `채점 산출 기준` aligned further to the right.
 - In section `⑥`, remove avoidable right-side blank space and let the table fill the card cleanly.
 - Section `⑥` tables should fill the available card width; do not leave a wide empty gutter on the right.
+- In section `⑥`, keep the KPI column visibly wider, push the score and scoring-rule columns further right, and avoid a loose right gutter.
+- In section `⑥`, auto-highlight the highest score band with yellow emphasis plus accent color, and keep low-score bands visually distinct.
 - Quantitative date chips should show only compact labels such as `'26.4월`.
 - Do not leave suffixes such as `확인`, `기준`, `official`, `pricing`, or `case` inside visible quantitative date chips.
 - Replace vague labels such as `최근` with the current visible month label on the page.

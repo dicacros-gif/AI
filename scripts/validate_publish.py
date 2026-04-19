@@ -19,6 +19,8 @@ REQUIRED_HTML_PATTERNS = {
     "row_summary_style": re.compile(r"row-summary-cell"),
     "row_summary_js": re.compile(r"buildRowSummaryHtml"),
     "metric_time_link_js": re.compile(r"hydrateMetricTimeLinks"),
+    "criteria_highlight_js": re.compile(r"hydrateCriteriaHighlights"),
+    "criteria_highlight_style": re.compile(r"\.crt \.score-top"),
 }
 TOPBAR_STRUCTURE = re.compile(r"<div class='topbar'>\s*<nav class='nav' id='stickyNav'>.*?</nav>\s*<div class='tb'>", re.S)
 FORBIDDEN_TOPBAR_PATTERNS = {

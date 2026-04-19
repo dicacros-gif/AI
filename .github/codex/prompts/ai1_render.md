@@ -40,6 +40,8 @@ Hard rules:
 - Section `⑥` title must render as `Startup 상세 채점 기준표 (정량화 기준)`.
 - In section `⑥`, widen the KPI column enough for readable labels and keep `배점` / `채점 산출 기준` aligned further to the right.
 - Do not leave a wide right-side empty gutter in section `⑥`; tables should fill the card cleanly.
+- In section `⑥`, keep the KPI column visibly wider, push the score and scoring-rule columns further right, and avoid a loose right gutter.
+- In section `⑥`, auto-highlight the highest score band with yellow emphasis plus accent color, and keep low-score bands visually distinct.
 - Quantitative date chips must render as compact labels such as `'26.4월`.
 - Do not leave suffixes such as `확인`, `기준`, `official`, `pricing`, or `case` inside visible quantitative date chips.
 - Replace vague labels such as `최근` with the current page month label.
