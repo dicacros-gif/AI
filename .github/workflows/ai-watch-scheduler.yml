@@ -57,6 +57,7 @@ permissions:
 
 env:
   TZ: Asia/Seoul
+  AI_WATCH_SERVER_ONLY: "true"
 
 concurrency:
   group: ai-watch-${{ github.ref }}-${{ github.event.schedule || inputs.phase || 'manual' }}
@@ -81,6 +82,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
+      - name: Enforce GitHub-hosted runtime
+        run: python scripts/enforce_server_only.py
       - name: Generate agent assets
         run: python scripts/generate_codex_assets.py
       - id: resolve
@@ -107,6 +110,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
+      - name: Enforce GitHub-hosted runtime
+        run: python scripts/enforce_server_only.py
       - name: Generate agent assets
         run: python scripts/generate_codex_assets.py
       - name: Bootstrap phase state
@@ -147,6 +152,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
+      - name: Enforce GitHub-hosted runtime
+        run: python scripts/enforce_server_only.py
       - name: Generate agent assets
         run: python scripts/generate_codex_assets.py
       - name: Download agent artifacts

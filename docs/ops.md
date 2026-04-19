@@ -5,6 +5,8 @@
 - Each scheduled run resolves exactly one phase.
 - The workflow fans out the relevant Codex agent subset for that phase, consolidates outputs, validates the result, persists state, and only publishes when gates pass.
 - Production runs happen on GitHub-hosted runners in `Asia/Seoul` business time, so the daily cycle continues even when the local computer is off.
+- Update, render, retry, and publish paths are server-only and must not depend on local terminals or local cron.
+- `scripts/enforce_server_only.py` and `scripts/run_phase.py` both reject non-GitHub-hosted runtime for production phase execution.
 
 ## Phase Descriptions
 - `ai1_update` / `ai2_update`: latest updates for already-published companies only.
@@ -23,6 +25,7 @@
 - Choose a specific phase or leave phase resolution to the scheduled slot.
 - Optional: provide `target_date` in `YYYY-MM-DD`.
 - Use manual runs for smoke tests, backfills, or validator-only checks.
+- Do not run `run_phase.py` locally for production work; use GitHub Actions manual dispatch instead.
 
 ## Retry Logic
 - Retry decisions are based on validator outputs and `report_failures.py`.

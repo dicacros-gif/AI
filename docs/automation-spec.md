@@ -23,6 +23,10 @@
 - Existing published companies are retained by default.
 - Legacy rule violations are surfaced as removal candidates rather than auto-deletions.
 - The recurring publish model is additive: keep existing published companies, refresh their facts, and layer in newly discovered candidates over time.
+- Production execution is server-only:
+  - GitHub Actions on GitHub-hosted runners are the canonical runtime
+  - local script execution is not part of the production update/publish path
+  - manual intervention should use GitHub `workflow_dispatch`
 - Newly discovered companies are filtered more strictly:
   - no South Korea / China HQ
   - no unicorns
@@ -68,6 +72,7 @@
 - Daily automation refreshes facts on existing companies and layers in newly discovered companies over time.
 - Legacy policy problems are surfaced as removal candidates or manual review items instead of automatic deletions.
 - The canonical runtime is GitHub Actions on GitHub-hosted runners; local terminals are not part of the recurring production path.
+- The scheduler, phase execution, state persistence, and publish steps must remain runnable with the local computer turned off.
 
 ## Date + Time Display Policy
 - All visible write/generation labels must include date, weekday, time, and `KST`.

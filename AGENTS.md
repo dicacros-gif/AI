@@ -19,6 +19,12 @@
 - `docs/automation-spec.md`: canonical decisions and rule resolution.
 - `docs/ops.md`: operations runbook.
 
+## Server-Only Runtime Rule
+- Recurring production work must run only on GitHub-hosted runners through GitHub Actions.
+- Do not rely on a local laptop, local terminal, local scheduler, or local background session for update, scoring, render, publish, or retry work.
+- Manual intervention should use `workflow_dispatch` on GitHub, not local script execution.
+- Local validation can be treated as development-only, but production update/publish paths are server-only.
+
 ## Canonical Page Mapping
 - `AI/1` = mobile AI personalization, on-device data analysis, personalized AI, recommendation engine, privacy-aware UX.
 - `AI/2` = ad AI, mobile advertising technology/services, AdTech, SDK, DSP, retargeting, performance marketing, video AI advertising.

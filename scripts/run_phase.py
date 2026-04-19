@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 from datetime import datetime
 from pathlib import Path
 from typing import Any
@@ -21,6 +22,17 @@ from ai_watch.manifest import (
 
 def repo_root() -> Path:
     return Path(__file__).resolve().parents[1]
+
+
+def require_server_runtime() -> None:
+    github_actions = os.environ.get("GITHUB_ACTIONS", "").lower() == "true"
+    runner_environment = os.environ.get("RUNNER_ENVIRONMENT", "").lower()
+    if github_actions and runner_environment == "github-hosted":
+        return
+    raise SystemExit(
+        "run_phase.py is server-only for AI Watch automation. "
+        "Execute it on GitHub-hosted runners through GitHub Actions."
+    )
 
 
 def write_json(path: Path, data: Any) -> None:
@@ -264,6 +276,8 @@ def main() -> None:
     parser.add_argument("--run-date", default="")
     parser.add_argument("--visible-timestamp", default="")
     args = parser.parse_args()
+
+    require_server_runtime()
 
     run_date = args.run_date or kst_date_string()
 
