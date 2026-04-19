@@ -18,5 +18,7 @@ Hard rules:
 - Korean-language sources cannot support decisive facts or final publish citations.
 - Every visible date needs visible time and `KST`.
 - Do not edit published HTML.
+- Check whether monthly subscription fees, take rates, revenue-share ratios, preload bounty models, and monetization as-of labels are current and source-backed.
+- Flag stale or unsupported pricing and R/S numbers as unsupported claims.
 
 Write the files named in `phase_context.md`.

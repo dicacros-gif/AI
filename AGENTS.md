@@ -111,6 +111,7 @@
 - Existing published companies stay in place during recurring runs
 - Recurring automation refreshes existing facts and adds approved new candidates
 - Legacy policy violations become review candidates, not automatic deletions
+- AI/1 must not be scored with ad-tech KPI logic or generic SaaS-growth logic alone
 
 ## Ranking And Timestamp Rules
 - Rank only newly approved new candidates
@@ -118,10 +119,146 @@
 - The same order must appear in every downstream section and ranking artifact
 - Every visible generation timestamp must include date, weekday, time, and `KST`
 
+## Monetization Detail Rules
+- In `비즈니스 모델 (매출·과금 상세)`, always look for the latest authoritative monthly subscription fee, usage-based price, take rate, revenue-share ratio, or OEM split structure
+- Prefer official pricing, help-center, developer, partner, investor, or contractual disclosure pages before media summaries
+- When the latest monetization detail is found, include the amount or ratio plus the visible `'26.x월` as-of label
+- If the amount or ratio cannot be verified, mark it `undisclosed` or `unverified`
+- Do not guess a subscription fee, take rate, or revenue-share percentage
+
+## AI/1 Quantified Scorecard
+- `A` `20` points
+- `12-month OEM partnership possibility`
+- `A1` `6` device integration fit
+- `A2` `4` privacy and regulatory fit
+- `A3` `5` commercialization structure fit
+- `A4` `5` strategic differentiation contribution
+- `B` `20` points
+- `minority stake / bolt-on / strategic acquisition fit`
+- `B1` `6` proprietary technology and IP value
+- `B2` `5` PMI integration ease
+- `B3` `5` strategic gap coverage
+- `B4` `4` deal feasibility
+- `C` `20` points
+- `device-side technical fit`
+- `OS coverage and SDK maturity`
+- `on-device proof level`
+- `latency, battery, and memory evidence`
+- `chipset, NPU, and OEM adaptation`
+- `D` `15` points
+- `product differentiation contribution`
+- `system experience contribution`
+- `personalization data advantage`
+- `cross-device expansion value`
+- `E` `10` points
+- `privacy and regulatory trust`
+- `privacy architecture`
+- `data minimization and governance`
+- `global deployment readiness`
+- `F` `10` points
+- `business stability`
+- `funding recency and runway`
+- `customers, revenue, and repeat contracts`
+- `concentration and stability`
+- `G` `5` points
+- `execution ease`
+- `API and SDK maturity`
+- `deployment speed and support`
+- `reference customers and responsiveness`
+
+## AI/1 Required Tracking Fields
+- `last_funding_date`
+- `last_round`
+- `lead_investor`
+- `oem_or_tier1_partnership_evidence`
+- `on_device_proof_level`
+- `sdk_maturity`
+- `privacy_architecture`
+- `strategic_fit_surface`
+- `mna_type`
+- `monthly_subscription_price`
+- `pricing_currency`
+- `revenue_share_ratio`
+- `revenue_share_basis`
+- `monetization_as_of_month`
+
+## AI/1 2026 Observation Areas
+- semantic layer or personal knowledge graph
+- hybrid on-device agents
+- cross-device personalization
+- privacy-preserving analytics infrastructure
+
 ## AI/2 Platform Policy Drift
 - Treat mobile ad platform policy and measurement deprecations as first-class risk inputs
 - Do not score deprecated or retired Privacy Sandbox assumptions as positive growth signals
 - Fail closed when AdTech policy claims are outdated or unsupported
+- Do not score cookie-era retargeting narratives or retired ironSource-network assumptions as current OEM upside
+
+## AI/2 Quantified Scorecard
+- `A` `20` points
+- `OEM ad-surface partnership possibility`
+- `A1` `5` OEM channel fit
+- `A2` `4` integration burden
+- `A3` `4` commercial proof
+- `A4` `4` regional and customer coverage
+- `A5` `3` brand and regulatory safety
+- `B` `20` points
+- `minority stake / bolt-on / strategic acquisition fit`
+- `B1` `5` strategic synergy
+- `B2` `4` deal feasibility
+- `B3` `4` integration ease
+- `B4` `4` asset scarcity
+- `B5` `3` financial case
+- `C` `15` points
+- `on-device, SDK, and deployment integration ease`
+- `supported OEM surfaces and placements`
+- `SDK and API maturity`
+- `measurement and MMP interoperability`
+- `deployment lead time and ops load`
+- `D` `15` points
+- `data, privacy, and regulatory readiness`
+- `ATT and SKAN readiness`
+- `Android privacy and first-party resilience`
+- `fraud, brand safety, and governance`
+- `cross-region regulatory readiness`
+- `E` `15` points
+- `ad performance and commercial proof`
+- `reach and revenue proof`
+- `performance metrics`
+- `customer quality and repeatability`
+- `F` `10` points
+- `strategic differentiation and defensibility`
+- `exclusive distribution or channel rights`
+- `model and measurement moat`
+- `lock-in and surface ownership`
+- `G` `5` points
+- `financial stability and execution`
+- `funding and runway`
+- `GTM and enterprise responsiveness`
+- `operational focus`
+
+## AI/2 Required Tracking Fields
+- `last_funding_date`
+- `last_round`
+- `lead_investor`
+- `oem_or_telco_partnership_evidence`
+- `supported_oem_surfaces`
+- `sdk_maturity`
+- `measurement_stack_support`
+- `privacy_readiness`
+- `public_reach_or_device_footprint`
+- `mna_type`
+- `monthly_subscription_price`
+- `pricing_currency`
+- `revenue_share_ratio`
+- `revenue_share_basis`
+- `monetization_as_of_month`
+
+## AI/2 2026 Observation Areas
+- OEM advertising reach and device footprint
+- preload, app discovery, store, browser, and recommendation surfaces
+- ATT, SKAN, AdAttributionKit, Privacy Sandbox drift, first-party measurement, and clean-room readiness
+- alternative distribution and OEM inventory control
 
 ## Rendering Rules
 - Non-render phases must not edit published HTML

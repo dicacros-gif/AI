@@ -16,5 +16,8 @@ Hard rules:
 - Exclude Korean-language sources from decisive evidence and final publish citations.
 - Legacy Korea/China HQ problems become removal candidates, not auto-deletions.
 - Do not scout new companies in this phase.
+- Refresh monetization details when available from the latest authoritative source.
+- Look for monthly subscription fees, SaaS pricing bands, take rates, revenue-share ratios, preload bounty models, OEM split structures, and pricing-page changes.
+- If the latest monetization amount or ratio is not verifiable, mark it unverified instead of guessing.
 
 Write the JSON and Markdown files defined in `phase_context.md`.

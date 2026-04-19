@@ -18,5 +18,7 @@ Hard rules:
 - Korean-language sources cannot support decisive facts or final publish citations.
 - Every visible date must include time and `KST`.
 - Do not edit published HTML in this phase.
+- Check whether monthly subscription fees, take rates, revenue-share ratios, and monetization as-of labels are current and source-backed.
+- Flag stale or unsupported pricing and R/S numbers as unsupported claims.
 
 Write the JSON and Markdown files defined in `phase_context.md`.

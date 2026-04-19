@@ -30,6 +30,12 @@ Hard rules:
 - Every section `①` startup row must keep a unique `data-row` key and collapse state must resolve from that key even after new rows are added.
 - In section `②`, each `eval-company` wrapper must contain its own `eval-company-hd` immediately followed by its own `eval-company-bd`.
 - Never begin the next `eval-company` block before closing the current card body.
+- In section `⑥`, render the quantified AI/2 smartphone-OEM adtech scorecard, not the older generic ad rubric.
+- Keep the full AI/2 score weights as `A20 / B20 / C15 / D15 / E15 / F10 / G5`.
+- Keep `A` as `OEM ad-surface partnership possibility`.
+- Keep `B` as `minority stake / bolt-on / strategic acquisition fit`.
+- In section `⑥`, show operational tracking fields such as last funding date, OEM or telco evidence, supported OEM surfaces, SDK maturity, measurement stack support, privacy readiness, public reach or device footprint, and M&A type.
+- Remove stale or misleading AI/2 wording that treats cookie-era retargeting, retired ironSource-network assumptions, or deprecated Privacy Sandbox theses as current OEM upside.
 - Section `①` insight, article-link, and competitor strength/weakness copy must use concise bullet fragments.
 - Do not end section `①` insight/article/competitor copy with `~다` or periods.
 - Do not satisfy this by deleting only the last `다`; rewrite the ending into a natural fragment.
@@ -49,6 +55,9 @@ Hard rules:
 - Replace vague labels such as `최근` with the current page month label.
 - Quantitative date chips in startup rows should link to the nearest supporting source article.
 - Do not render hero chips such as `한국/중국 본사 제외` or `영문 권위 소스 기준`.
+- In `비즈니스 모델 (매출·과금 상세)`, render monthly subscription fees, pricing bands, take rates, preload bounty models, or revenue-share ratios only when the latest authoritative source supports them.
+- Show monetization amounts or ratios with a visible `'26.x월` as-of label and nearest-source link where possible.
+- If monetization detail is unavailable, render `undisclosed` or `unverified` instead of guessing.
 - Do not invent unsupported numbers or missing fields.
 
 Write the files named in `phase_context.md`.

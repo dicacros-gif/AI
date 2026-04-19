@@ -17,6 +17,9 @@ Hard rules:
 - Exclude Korean-language sources from decisive evidence and final publish citations.
 - If a published company looks like a South Korea or China HQ legacy case, flag it as a removal candidate instead of deleting it.
 - Do not scout new companies in this phase.
+- Refresh monetization details when available from the latest authoritative source.
+- Look for monthly subscription fees, usage pricing, take rates, revenue-share ratios, OEM split structures, and pricing-page changes.
+- If the latest monetization amount or ratio is not verifiable, mark it unverified instead of guessing.
 
 Write both files listed in `phase_context.md`:
 - agent JSON findings

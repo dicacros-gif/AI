@@ -10,6 +10,7 @@ from typing import Any
 from ai_watch.html_tools import VISIBLE_TS_RE, ensure_canonical_page_mapping, extract_order_map
 from ai_watch.manifest import (
     CANONICAL_PAGE_MAP,
+    DOMAIN_SCORECARDS,
     NON_NEGOTIABLE_RULES,
     ORCHESTRATOR_SCHEDULE,
     PHASE_REQUIRED_OUTPUTS,
@@ -153,18 +154,11 @@ def default_json_payload(file_name: str, phase_id: str, page: str, run_date: str
     if file_name == "staleness_gate.json":
         return base | {"status": "ok", "staleClaims": 0, "freshClaims": 0}
     if file_name == "scores.json":
+        scorecard = DOMAIN_SCORECARDS.get(page or "", {})
         return base | {
             "scores": [],
-            "formula": {
-                "domain_fit": 0.25,
-                "evidence_strength": 0.20,
-                "traction_quality": 0.15,
-                "strategic_fit": 0.15,
-                "product_maturity": 0.10,
-                "market_timing": 0.10,
-                "defensibility": 0.05,
-                "risk_penalty": "subtract",
-            },
+            "formula": {"model": scorecard.get("version", "deterministic_a_g"), "weights": scorecard.get("weights", {})},
+            "requiredTrackingFields": scorecard.get("required_tracking_fields", []),
             "failClosed": list(contract.fail_closed_fields),
         }
     if file_name == "score_evidence_map.json":
@@ -435,6 +429,20 @@ def bootstrap_phase(phase_id: str, run_date: str, explicit_page: str | None = No
     write_text(phase_root / "phase_context.md", context + "\n")
 
     if contract.runs_codex:
+        scorecard_note = ""
+        if contract.kind == "score" and page in DOMAIN_SCORECARDS:
+            scorecard = DOMAIN_SCORECARDS[page]
+            scorecard_note = (
+                "\n".join(
+                    [
+                        "",
+                        f"- scorecard version: {scorecard['version']}",
+                        f"- scorecard weights: {json.dumps(scorecard['weights'], ensure_ascii=False)}",
+                        f"- required tracking fields: {', '.join(scorecard.get('required_tracking_fields', []))}",
+                    ]
+                )
+                + "\n"
+            )
         write_text(
             phase_root / "codex_prompt_context.md",
             "\n".join(
@@ -448,6 +456,7 @@ def bootstrap_phase(phase_id: str, run_date: str, explicit_page: str | None = No
                     "Work from the claim/evidence contract first. Do not trust uncited page text. Keep changes deterministic and conservative.",
                 ]
             )
+            + scorecard_note
             + "\n",
         )
     return phase_root

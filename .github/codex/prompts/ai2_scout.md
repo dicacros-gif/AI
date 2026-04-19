@@ -21,5 +21,7 @@ Hard rules:
 - Korean-language sources must be ignored for decisive facts and final publish citations.
 - Keep the currently published company set intact; this phase only proposes additive new candidates.
 - Do not edit published HTML.
+- Collect monetization detail when available: monthly subscription fee, SaaS pricing band, take rate, revenue-share ratio, preload bounty model, OEM split structure, and the latest visible as-of month.
+- Prefer official pricing, help-center, developer, partner, investor, or contractual disclosure pages over secondary media for pricing and R/S facts.
 
 Write the files listed in `phase_context.md`.

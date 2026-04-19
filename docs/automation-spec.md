@@ -87,6 +87,119 @@
 - `confidence`
 - `ttl_days`
 - `verification_status`
+- Monetization claims should also track the latest verifiable monthly subscription amount, pricing currency, revenue-share ratio, revenue-share basis, and monetization as-of month when available
+
+## AI/1 Quantified Scorecard Update
+- The prior AI/1 scoring logic was too close to a generic AI company or recommendation API checklist
+- AI/1 now uses a smartphone-OEM scorecard that separates partnership fit from acquisition fit
+- `A` `20`
+- `12-month OEM partnership possibility`
+- `A1` `6` device integration fit
+- `A2` `4` privacy and regulatory fit
+- `A3` `5` commercialization structure fit
+- `A4` `5` strategic differentiation contribution
+- `B` `20`
+- `minority stake / bolt-on / strategic acquisition fit`
+- `B1` `6` proprietary technology and IP value
+- `B2` `5` PMI integration ease
+- `B3` `5` strategic gap coverage
+- `B4` `4` deal feasibility
+- `C` `20`
+- `device-side technical fit`
+- `D` `15`
+- `product differentiation contribution`
+- `E` `10`
+- `privacy and regulatory trust`
+- `F` `10`
+- `business stability`
+- `G` `5`
+- `execution ease`
+- AI/1 candidate verification must record:
+- `on_device_proof_level`
+- `sdk_maturity`
+- `privacy_architecture`
+- `oem_or_tier1_partnership_evidence`
+- `last_funding_date`
+- `last_round`
+- `lead_investor`
+- `strategic_fit_surface`
+- `mna_type`
+- `monthly_subscription_price`
+- `pricing_currency`
+- `revenue_share_ratio`
+- `revenue_share_basis`
+- `monetization_as_of_month`
+
+## AI/1 Scoring Principles Added
+- Do not let ad-tech KPI or generic SaaS growth logic inflate AI/1 OEM rankings
+- Distinguish `claimed`, `demo`, and `production` on-device proof levels
+- Penalize cloud-first products that market themselves as on-device without production-grade proof
+- Separate `good partner` from `worth buying`
+- A company can score well on partnership fit and still score lower on acquisition fit
+- A company can score well on acquisition fit and still be too heavy or too risky for short-term OEM partnership
+
+## AI/1 2026 Observation Areas Added
+- semantic layer or personal knowledge graph
+- hybrid on-device agents
+- cross-device personalization
+- privacy-preserving analytics infrastructure
+
+## AI/2 Quantified Scorecard Update
+- The prior AI/2 scoring logic was too generic for smartphone OEM decision-making
+- AI/2 now uses a smartphone-OEM adtech scorecard that separates partnership fit from acquisition fit
+- `A` `20`
+- `OEM ad-surface partnership possibility`
+- `A1` `5` OEM channel fit
+- `A2` `4` integration burden
+- `A3` `4` commercial proof
+- `A4` `4` regional and customer coverage
+- `A5` `3` brand and regulatory safety
+- `B` `20`
+- `minority stake / bolt-on / strategic acquisition fit`
+- `B1` `5` strategic synergy
+- `B2` `4` deal feasibility
+- `B3` `4` integration ease
+- `B4` `4` asset scarcity
+- `B5` `3` financial case
+- `C` `15`
+- `on-device, SDK, and deployment integration ease`
+- `D` `15`
+- `data, privacy, and regulatory readiness`
+- `E` `15`
+- `ad performance and commercial proof`
+- `F` `10`
+- `strategic differentiation and defensibility`
+- `G` `5`
+- `financial stability and execution`
+- AI/2 candidate verification must record:
+- `oem_or_telco_partnership_evidence`
+- `supported_oem_surfaces`
+- `sdk_maturity`
+- `measurement_stack_support`
+- `privacy_readiness`
+- `public_reach_or_device_footprint`
+- `last_funding_date`
+- `last_round`
+- `lead_investor`
+- `mna_type`
+- `monthly_subscription_price`
+- `pricing_currency`
+- `revenue_share_ratio`
+- `revenue_share_basis`
+- `monetization_as_of_month`
+
+## AI/2 Scoring Principles Added
+- Do not let generic ad-growth stories outrank OEM execution factors
+- Distinguish OEM-surface channel fit from pure DSP or creative-tool value
+- Penalize outdated cookie-era retargeting theses and retired ironSource-network assumptions
+- Treat ATT, SKAN, AdAttributionKit, Privacy Sandbox drift, fraud, and brand safety as first-class risk inputs
+- Separate `good OEM partner` from `worth buying`
+
+## AI/2 2026 Observation Areas Added
+- OEM advertising reach and device footprint
+- preload, app discovery, store, browser, and recommendation surfaces
+- ATT, SKAN, AdAttributionKit, Privacy Sandbox drift, first-party measurement, and clean-room readiness
+- alternative distribution and OEM inventory control
 
 ## New First-Class Phases
 - `preflight_source_health`
@@ -171,3 +284,4 @@
 - The repository now enforces phase contracts, freshness probes, claim-ledger artifacts, candidate verification, recency recheck, and publish diff guarding
 - Render remains constrained to dedicated render phases with HTML regression and publish-surface guards
 - A future migration can move fully to data-first deterministic rendering, but the current implementation already narrows and validates the render surface
+- AI/1 score scaffolding, prompts, and rendered criteria are aligned to the quantified mobile OEM model above

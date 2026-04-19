@@ -32,6 +32,12 @@ Hard rules:
 - Every section `①` startup row must keep a unique `data-row` key and collapse state must resolve from that key even after new rows are added.
 - In section `②`, each `eval-company` wrapper must contain its own `eval-company-hd` immediately followed by its own `eval-company-bd`.
 - Never begin the next `eval-company` block before closing the current card body.
+- In section `⑥`, render the quantified AI/1 smartphone-OEM scorecard, not the older generic AI rubric.
+- Keep the full AI/1 score weights as `A20 / B20 / C20 / D15 / E10 / F10 / G5`.
+- Keep `A` as `12-month OEM partnership possibility`.
+- Keep `B` as `minority stake / bolt-on / strategic acquisition fit`.
+- In section `⑥`, show operational tracking fields such as last funding date, OEM or Tier-1 evidence, on-device proof level, SDK maturity, privacy architecture, strategic fit surface, and M&A type.
+- Remove stale or misleading AI/1 wording that treats ad-tech KPI or generic SaaS momentum as direct OEM fit.
 - Section `①` insight, article-link, and competitor strength/weakness copy must use concise bullet fragments.
 - Do not end section `①` insight/article/competitor copy with `~다` or periods.
 - Do not satisfy this by deleting only the last `다`; rewrite the ending into a natural fragment.
@@ -51,6 +57,9 @@ Hard rules:
 - Replace vague labels such as `최근` with the current page month label.
 - Quantitative date chips in startup rows should link to the nearest supporting source article.
 - Do not render hero chips such as `한국/중국 본사 제외` or `영문 기사 기준`.
+- In `비즈니스 모델 (매출·과금 상세)`, render monthly subscription fees, pricing bands, take rates, or revenue-share ratios only when the latest authoritative source supports them.
+- Show monetization amounts or ratios with a visible `'26.x월` as-of label and nearest-source link where possible.
+- If monetization detail is unavailable, render `undisclosed` or `unverified` instead of guessing.
 - Do not invent missing fields.
 
 Write the agent JSON/MD files noted in `phase_context.md`.

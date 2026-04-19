@@ -61,6 +61,71 @@
 - `publish_if_changed`
   - publish only when validated content changed and the diff stays inside allowed publish surfaces
 
+## AI/1 Score Model
+- AI/1 score uses a quantified A-G smartphone-OEM model
+- `A 20`
+  - 12-month OEM partnership possibility
+- `B 20`
+  - minority stake / bolt-on / strategic acquisition fit
+- `C 20`
+  - device-side technical fit
+- `D 15`
+  - product differentiation contribution
+- `E 10`
+  - privacy and regulatory trust
+- `F 10`
+  - business stability
+- `G 5`
+  - execution ease
+- AI/1 score must record and cite:
+  - `on_device_proof_level`
+  - `sdk_maturity`
+  - `privacy_architecture`
+  - `oem_or_tier1_partnership_evidence`
+  - `last_funding_date`
+  - `last_round`
+  - `lead_investor`
+  - `strategic_fit_surface`
+  - `mna_type`
+  - `monthly_subscription_price`
+  - `pricing_currency`
+  - `revenue_share_ratio`
+  - `revenue_share_basis`
+  - `monetization_as_of_month`
+
+## AI/2 Score Model
+- AI/2 score uses a quantified A-G smartphone-OEM adtech model
+- `A 20`
+  - OEM ad-surface partnership possibility
+- `B 20`
+  - minority stake / bolt-on / strategic acquisition fit
+- `C 15`
+  - on-device, SDK, and deployment integration ease
+- `D 15`
+  - data, privacy, and regulatory readiness
+- `E 15`
+  - ad performance and commercial proof
+- `F 10`
+  - strategic differentiation and defensibility
+- `G 5`
+  - financial stability and execution
+- AI/2 score must record and cite:
+  - `oem_or_telco_partnership_evidence`
+  - `supported_oem_surfaces`
+  - `sdk_maturity`
+  - `measurement_stack_support`
+  - `privacy_readiness`
+  - `public_reach_or_device_footprint`
+  - `last_funding_date`
+  - `last_round`
+  - `lead_investor`
+  - `mna_type`
+  - `monthly_subscription_price`
+  - `pricing_currency`
+  - `revenue_share_ratio`
+  - `revenue_share_basis`
+  - `monetization_as_of_month`
+
 ## Skills Layout
 - Repeatable workflow guidance lives under `.agents/skills/`
 - `source-freshness`
@@ -77,6 +142,7 @@
 - partnership / M&A signals: `7` days
 - HQ / legal entity claims: `30-90` days
 - platform policy / regulatory drift: `7-14` days
+- pricing, take-rate, subscription, and revenue-share claims: `7-14` days
 
 ## Source Priority
 - `Tier 0`
