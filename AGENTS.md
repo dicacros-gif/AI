@@ -82,9 +82,14 @@
 - In section `②`, every `eval-company` card must keep its own `eval-company-hd` and `eval-company-bd` inside the same wrapper.
 - Do not start a new `eval-company` card before the previous card's `eval-company-bd` has been emitted and closed.
 - Section `⑥` title must stay `Startup 상세 채점 기준표 (정량화 기준)`.
-- In section `⑥`, keep the left KPI column visibly narrower than the scoring-reference column.
-- In section `⑥`, push `배점` and `채점 산출 기준` to the right and remove avoidable right-side blank space.
+- In section `⑥`, widen the left KPI column enough for readable labels, while keeping `배점` and `채점 산출 기준` aligned further to the right.
+- In section `⑥`, remove avoidable right-side blank space and let the table fill the card cleanly.
 - Section `⑥` tables should fill the available card width; do not leave a wide empty gutter on the right.
+- Quantitative date chips should show only compact labels such as `'26.4월`.
+- Do not leave suffixes such as `확인`, `기준`, `official`, `pricing`, or `case` inside visible quantitative date chips.
+- Replace vague labels such as `최근` with the current visible month label on the page.
+- Quantitative date chips in startup rows should link to the nearest supporting source.
+- Do not render hero chips such as `한국/중국 본사 제외`, `영문 기사 기준`, or `영문 권위 소스 기준`.
 
 ## Date + Time Display Rule
 - Every visible write or generation timestamp must include date, weekday, time, and `KST`.

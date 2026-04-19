@@ -18,6 +18,7 @@ REQUIRED_HTML_PATTERNS = {
     "red_flag_box": re.compile(r"class='rf-box(?:\s|')"),
     "row_summary_style": re.compile(r"row-summary-cell"),
     "row_summary_js": re.compile(r"buildRowSummaryHtml"),
+    "metric_time_link_js": re.compile(r"hydrateMetricTimeLinks"),
 }
 TOPBAR_STRUCTURE = re.compile(r"<div class='topbar'>\s*<nav class='nav' id='stickyNav'>.*?</nav>\s*<div class='tb'>", re.S)
 FORBIDDEN_TOPBAR_PATTERNS = {
@@ -40,6 +41,11 @@ FORBIDDEN_NON_MOBILE_PATTERNS = {
         re.IGNORECASE,
     ),
 }
+FORBIDDEN_HERO_CHIPS = (
+    "한국/중국 본사 제외",
+    "영문 기사 기준",
+    "영문 권위 소스 기준",
+)
 
 
 def company_names(path: Path) -> list[str]:
@@ -102,6 +108,10 @@ def validate_path(path: Path) -> list[str]:
     for label, pattern in FORBIDDEN_NON_MOBILE_PATTERNS.items():
         if pattern.search(visible_text):
             issues.append(f"{path}: forbidden non-mobile framing `{label}` remains in published HTML.")
+
+    for label in FORBIDDEN_HERO_CHIPS:
+        if label in visible_text:
+            issues.append(f"{path}: forbidden hero chip `{label}` remains in published HTML.")
 
     visible_labels = VISIBLE_TS_RE.findall(html)
     if len(visible_labels) < 2:

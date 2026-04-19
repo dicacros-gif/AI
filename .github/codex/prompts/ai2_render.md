@@ -36,8 +36,13 @@ Hard rules:
 - Keep AI/2 strictly in a smartphone / handset / mobile-surface frame.
 - Remove TV, CTV, FAST, broadcast, smart-TV, living-room, smart-display, kiosk, and signage wording from every published section.
 - Section `⑥` title must render as `Startup 상세 채점 기준표 (정량화 기준)`.
-- In section `⑥`, keep the KPI column narrower and give more width to `배점` / `채점 산출 기준`.
+- In section `⑥`, widen the KPI column enough for readable labels and keep `배점` / `채점 산출 기준` aligned further to the right.
 - Do not leave a wide right-side empty gutter in section `⑥`; tables should fill the card cleanly.
+- Quantitative date chips must render as compact labels such as `'26.4월`.
+- Do not leave suffixes such as `확인`, `기준`, `official`, `pricing`, or `case` inside visible quantitative date chips.
+- Replace vague labels such as `최근` with the current page month label.
+- Quantitative date chips in startup rows should link to the nearest supporting source article.
+- Do not render hero chips such as `한국/중국 본사 제외` or `영문 권위 소스 기준`.
 - Do not invent unsupported numbers or missing fields.
 
 Write the files named in `phase_context.md`.
