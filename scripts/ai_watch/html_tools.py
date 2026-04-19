@@ -19,11 +19,21 @@ LI_RE = re.compile(r"<li>(.*?)</li>", re.S)
 LEAF_DIV_RE = re.compile(r"<div>(.*?)</div>", re.S)
 TAG_SPLIT_RE = re.compile(r"(<[^>]+>)")
 DIV_TAG_RE = re.compile(r"</?div\b[^>]*>")
+SEC_LIST_ID = "sec-list"
 SECTION_IDS = ("sec-eval", "sec-partner", "sec-insight", "sec-market")
+BULLET_STYLE_SECTION_IDS = (SEC_LIST_ID,) + SECTION_IDS
 BULLET_STYLE_ISSUE_RE = re.compile(
     r"(?:[.。]\s*|한다|된다|있다|없다|좋다|높다|크다|맞다|필요하다|가능하다|어렵다|쉽다|커진다|늘어난다|이어진다|형성된다|생긴다|보여\s*준다|봐야\s*한다|해야\s*한다|보수적이어야\s*한다|제공한다|판매한다|강화한다|확장한다|연결한다|배포한다|고도화한다|활용한다|자동화한다|통합한다|구축한다|단축한다|가속한다|통제한다|탐색한다|실험한다|작동한다|절제한다|뒷받침한다|설계한다|전환한다|집행한다|처리한다|노린다|포인트다|안전하다|빨라진다|상단\s*티어다|[가-힣A-Za-z0-9]+다)\s*$"
 )
 BULLET_ENDING_REPLACEMENTS: tuple[tuple[str, str], ...] = (
+    ("공개했다", "공개"),
+    ("공개한다", "공개"),
+    ("명확하다", "명확"),
+    ("선명하다", "선명"),
+    ("직접적이다", "직접적"),
+    ("현대적이다", "현대적"),
+    ("부족하다", "부족"),
+    ("봐야 한다", "추가 확인 필요"),
     ("상단 티어다", "상단 티어"),
     ("빨라진다", "빨라짐"),
     ("안전하다", "안전"),
@@ -234,14 +244,39 @@ def _normalize_partner_items(section_html: str) -> str:
     return "".join(pieces)
 
 
+def _normalize_section1_fragments(section_html: str) -> str:
+    section_html = _normalize_li_items(section_html)
+    section_html = re.sub(
+        r"<div class='ins-li'>(.*?)</div>",
+        lambda match: f"<div class='ins-li'>{_normalize_last_text_node(match.group(1))}</div>",
+        section_html,
+        flags=re.S,
+    )
+    section_html = re.sub(
+        r"<span class='c-str'>(.*?)</span>",
+        lambda match: f"<span class='c-str'>{_normalize_last_text_node(match.group(1))}</span>",
+        section_html,
+        flags=re.S,
+    )
+    section_html = re.sub(
+        r"<span class='c-wk'>(.*?)</span>",
+        lambda match: f"<span class='c-wk'>{_normalize_last_text_node(match.group(1))}</span>",
+        section_html,
+        flags=re.S,
+    )
+    return section_html
+
+
 def normalize_bullet_sections(html: str) -> str:
-    for section_id in SECTION_IDS:
+    for section_id in BULLET_STYLE_SECTION_IDS:
         bounds = _section_range(html, section_id)
         if not bounds:
             continue
         start, end = bounds
         block = html[start:end]
-        if section_id == "sec-partner":
+        if section_id == SEC_LIST_ID:
+            block = _normalize_section1_fragments(block)
+        elif section_id == "sec-partner":
             block = _normalize_partner_items(block)
         else:
             block = _normalize_li_items(block)
@@ -256,13 +291,27 @@ def _visible_text(fragment: str) -> str:
 
 def find_bullet_style_issues(html: str) -> list[str]:
     issues: list[str] = []
-    for section_id in SECTION_IDS:
+    for section_id in BULLET_STYLE_SECTION_IDS:
         bounds = _section_range(html, section_id)
         if not bounds:
             continue
         start, end = bounds
         block = html[start:end]
-        if section_id == "sec-partner":
+        if section_id == SEC_LIST_ID:
+            for item in LI_RE.findall(block):
+                text = _visible_text(item)
+                if text and BULLET_STYLE_ISSUE_RE.search(text):
+                    issues.append(f"{section_id}: {text}")
+            for pattern in (
+                re.compile(r"<div class='ins-li'>(.*?)</div>", re.S),
+                re.compile(r"<span class='c-str'>(.*?)</span>", re.S),
+                re.compile(r"<span class='c-wk'>(.*?)</span>", re.S),
+            ):
+                for item in pattern.findall(block):
+                    text = _visible_text(item)
+                    if text and BULLET_STYLE_ISSUE_RE.search(text):
+                        issues.append(f"{section_id}: {text}")
+        elif section_id == "sec-partner":
             for _, _, pc_block in _iter_div_class_blocks(block, "pc-l"):
                 inner = pc_block[len("<div class='pc-l'>") : -len("</div>")]
                 for item in LEAF_DIV_RE.findall(inner):

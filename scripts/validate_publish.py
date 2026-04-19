@@ -73,6 +73,7 @@ def validate_path(path: Path) -> list[str]:
     for label, pattern in REQUIRED_HTML_PATTERNS.items():
         if not pattern.search(html):
             issues.append(f"{path}: missing required HTML structure `{label}`.")
+
     row_pairs = ROW_ID_PATTERN.findall(html)
     row_ids = [left for left, _ in row_pairs]
     if row_ids and len(row_ids) != len(set(row_ids)):
@@ -80,10 +81,13 @@ def validate_path(path: Path) -> list[str]:
     mismatched_pairs = [f"{left}!={right}" for left, right in row_pairs if left != right]
     if mismatched_pairs:
         issues.append(f"{path}: section-1 row id / onclick mismatch -> {mismatched_pairs[0]}")
+
     issues.extend(validate_eval_company_cards(path, html))
+
     for marker in PLACEHOLDER_MARKERS:
         if marker in html:
             issues.append(f"{path}: placeholder text `{marker}` remains in published HTML.")
+
     for label, pattern in FORBIDDEN_NON_MOBILE_PATTERNS.items():
         if pattern.search(visible_text):
             issues.append(f"{path}: forbidden non-mobile framing `{label}` remains in published HTML.")
@@ -102,7 +106,7 @@ def validate_path(path: Path) -> list[str]:
     bullet_style_issues = find_bullet_style_issues(html)
     if bullet_style_issues:
         issues.append(
-            f"{path}: sections 2-5 must use bullet fragments without sentence-final `~다` or periods -> {bullet_style_issues[0]}"
+            f"{path}: section-1 insight/article/competitor copy and sections 2-5 must use bullet fragments without sentence-final `~다` or periods -> {bullet_style_issues[0]}"
         )
     return issues
 

@@ -84,6 +84,9 @@
 - Date-only labels are forbidden.
 
 ## Bullet Style Rule
+- Section `①` insight, article-link, and competitor strength/weakness copy must use concise bullet-fragment writing.
+- Do not end section `①` insight/article/competitor copy with sentence-final `~다`.
+- Prefer fragment endings such as `공개`, `명확`, `선명`, `강함`, `보임`, `노림`.
 - Sections `②`, `③`, `④`, `⑤` must use concise bullet-fragment writing.
 - Do not end those bullets with sentence-final `~다`.
 - Do not end those bullets with periods.
