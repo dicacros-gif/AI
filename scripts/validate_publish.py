@@ -18,6 +18,7 @@ REQUIRED_HTML_PATTERNS = {
     "row_summary_style": re.compile(r"row-summary-cell"),
     "row_summary_js": re.compile(r"buildRowSummaryHtml"),
 }
+ROW_ID_PATTERN = re.compile(r"<tr class='tr-main' data-row='([^']+)' onclick=\"toggleRow\('([^']+)',this\)\"")
 PLACEHOLDER_MARKERS = ["TODO", "TBD", "PLACEHOLDER", "lorem ipsum"]
 FORBIDDEN_NON_MOBILE_PATTERNS = {
     "tv_ctv_framing": re.compile(
@@ -47,6 +48,13 @@ def validate_path(path: Path) -> list[str]:
     for label, pattern in REQUIRED_HTML_PATTERNS.items():
         if not pattern.search(html):
             issues.append(f"{path}: missing required HTML structure `{label}`.")
+    row_pairs = ROW_ID_PATTERN.findall(html)
+    row_ids = [left for left, _ in row_pairs]
+    if row_ids and len(row_ids) != len(set(row_ids)):
+        issues.append(f"{path}: duplicate section-1 row ids detected.")
+    mismatched_pairs = [f"{left}!={right}" for left, right in row_pairs if left != right]
+    if mismatched_pairs:
+        issues.append(f"{path}: section-1 row id / onclick mismatch -> {mismatched_pairs[0]}")
     for marker in PLACEHOLDER_MARKERS:
         if marker in html:
             issues.append(f"{path}: placeholder text `{marker}` remains in published HTML.")

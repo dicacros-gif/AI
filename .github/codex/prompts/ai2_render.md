@@ -19,8 +19,10 @@ Hard rules:
 - Newly discovered candidate order must stay identical across every downstream section.
 - In section `①`, collapsed startup rows must shrink to a real one-line summary row with reduced height.
 - Do not leave hidden text inside full-height table rows after collapse.
+- Every section `①` startup row must keep a unique `data-row` key and collapse state must resolve from that key even after new rows are added.
 - Sections `②`, `③`, `④`, `⑤` must use concise bullet fragments, not sentence prose.
 - Do not end bullets in sections `②`, `③`, `④`, `⑤` with `~다` or periods.
+- Prefer fragment endings such as `노림`, `포인트`, `안전`, `빨라짐`, `상단 티어`.
 - Keep AI/2 strictly in a smartphone / handset / mobile-surface frame.
 - Remove TV, CTV, FAST, broadcast, smart-TV, living-room, smart-display, kiosk, and signage wording from every published section.
 - Do not invent unsupported numbers or missing fields.

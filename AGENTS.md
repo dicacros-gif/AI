@@ -73,6 +73,8 @@
 - In section `①` startup list tables, clicking a company row must collapse it to a true single-line summary row.
 - Collapsed rows must reduce vertical height visibly; do not leave empty multi-line row height behind.
 - Collapsed row summary should keep the top-line essentials only, such as rank, company, and compact meta.
+- Every `tr-main` row in section `①` must have a unique `data-row` key.
+- Collapse / expand logic must resolve state from each row's own `data-row`; do not rely on fragile positional assumptions as the list grows.
 
 ## Date + Time Display Rule
 - Every visible write or generation timestamp must include date, weekday, time, and `KST`.
@@ -84,6 +86,7 @@
 - Do not end those bullets with sentence-final `~다`.
 - Do not end those bullets with periods.
 - Prefer noun phrases, short action phrases, and `확인 필요` / `점검 필요` style fragments.
+- Prefer fragment endings such as `노림`, `포인트`, `안전`, `빨라짐`, `상단 티어`.
 
 ## Do-Not Rules
 - Do not use Korean-language sources as decisive support or final publish citations.
