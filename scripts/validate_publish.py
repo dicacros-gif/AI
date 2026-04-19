@@ -93,6 +93,9 @@ def validate_path(path: Path) -> list[str]:
     html = path.read_text(encoding="utf-8")
     visible_text = re.sub(r"<[^>]+>", " ", html)
     issues: list[str] = []
+    criteria_start = html.find("id='sec-criteria'")
+    criteria_end = html.find("<footer", criteria_start) if criteria_start != -1 else -1
+    criteria_html = html[criteria_start:criteria_end] if criteria_start != -1 and criteria_end != -1 else ""
 
     for label, pattern in REQUIRED_HTML_PATTERNS.items():
         if not pattern.search(html):
@@ -150,6 +153,8 @@ def validate_path(path: Path) -> list[str]:
         issues.append(
             f"{path}: section-1 insight/article/competitor copy and sections 2-5 must use bullet fragments without sentence-final `~다` or periods -> {bullet_style_issues[0]}"
         )
+    if criteria_html and ("??" in criteria_html or "�" in criteria_html):
+        issues.append(f"{path}: section-6 criteria block contains mojibake or question-mark corruption.")
     return issues
 
 

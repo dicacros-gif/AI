@@ -35,6 +35,8 @@ Hard rules:
 - In section `②`, each `eval-company` wrapper must contain its own `eval-company-hd` immediately followed by its own `eval-company-bd`.
 - Never begin the next `eval-company` block before closing the current card body.
 - In section `⑥`, render the quantified AI/2 smartphone-OEM adtech scorecard, not the older generic ad rubric.
+- In section `⑥`, keep the full block in normal UTF-8 Korean copy with intact arrows and symbols.
+- Do not leave mojibake, `??`, or broken question-mark placeholders anywhere in the criteria block.
 - Keep the full AI/2 score weights as `A20 / B20 / C15 / D15 / E15 / F10 / G5`.
 - Keep `A` as `OEM ad-surface partnership possibility`.
 - Keep `B` as `minority stake / bolt-on / strategic acquisition fit`.
