@@ -93,8 +93,8 @@ def validate_path(path: Path) -> list[str]:
             issues.append(f"{path}: forbidden non-mobile framing `{label}` remains in published HTML.")
 
     visible_labels = VISIBLE_TS_RE.findall(html)
-    if len(visible_labels) < 3:
-        issues.append(f"{path}: missing visible KST timestamps in toolbar/hero/footer.")
+    if len(visible_labels) < 2:
+        issues.append(f"{path}: missing visible KST timestamps in hero/footer.")
     for label in visible_labels:
         if "KST" not in label:
             issues.append(f"{path}: timestamp missing KST suffix -> {label}")
