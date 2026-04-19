@@ -54,6 +54,10 @@ FORBIDDEN_HERO_CHIPS = (
     "영문 기사 기준",
     "영문 권위 소스 기준",
 )
+FORBIDDEN_VISIBLE_TERMS = (
+    "Samsung",
+    "삼성",
+)
 
 
 def company_names(path: Path) -> list[str]:
@@ -126,6 +130,9 @@ def validate_path(path: Path) -> list[str]:
     for label in FORBIDDEN_HERO_CHIPS:
         if label in visible_text:
             issues.append(f"{path}: forbidden hero chip `{label}` remains in published HTML.")
+    for label in FORBIDDEN_VISIBLE_TERMS:
+        if label in visible_text:
+            issues.append(f"{path}: forbidden visible term `{label}` remains in published HTML.")
 
     visible_labels = VISIBLE_TS_RE.findall(html)
     if len(visible_labels) < 2:

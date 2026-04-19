@@ -15,10 +15,14 @@ Hard rules:
 - AI/1 must publish to `1/index.html`.
 - Every visible generation timestamp must include date, weekday, time, and `KST`.
 - Existing companies remain on the page.
-- Only approved newly discovered candidates may be added or re-ordered.
+- Only approved candidates may be added or re-ordered.
 - Do not render semiconductor fabless, chip vendors, or hardware-first vendors in AI/1.
 - Replace removed fabless, chip, or hardware-first AI/1 companies with approved software, service, engine, or enabling-technology candidates.
-- Newly discovered candidate order must be identical across all downstream sections.
+- Sort the full published company set by approved total score in descending order.
+- Do not append newly added companies to the bottom of the page.
+- Re-rank the full published set from `1` through `N` after every approved score update.
+- Use a deterministic stable tie-break order.
+- Full company order must be identical across all downstream sections.
 - Keep the section index nav on the first visible line at the upper-left of the page.
 - Palette buttons and the dark-mode toggle must sit on that same first visible top row at the upper-right.
 - Do not render the section index as a second row below the toolbar.
@@ -60,6 +64,8 @@ Hard rules:
 - In `비즈니스 모델 (매출·과금 상세)`, render monthly subscription fees, pricing bands, take rates, or revenue-share ratios only when the latest authoritative source supports them.
 - Show monetization amounts or ratios with a visible `'26.x월` as-of label and nearest-source link where possible.
 - If monetization detail is unavailable, render `undisclosed` or `unverified` instead of guessing.
+- Do not render visible `Samsung` or `삼성` wording.
+- Rewrite those references into neutral wording such as `leading OEM`, `major Android OEM`, or `strategic investor`.
 - Do not invent missing fields.
 
 Write the agent JSON/MD files noted in `phase_context.md`.

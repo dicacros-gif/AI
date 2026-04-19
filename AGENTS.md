@@ -114,8 +114,10 @@
 - AI/1 must not be scored with ad-tech KPI logic or generic SaaS-growth logic alone
 
 ## Ranking And Timestamp Rules
-- Rank only newly approved new candidates
-- Rank must be contiguous from `1` through `N`
+- Every published company must be sorted by approved total score in descending order
+- Do not append newly added companies to the bottom of the page
+- Re-rank the full published set from `1` through `N` after every approved score update
+- Ties must use a deterministic stable order rather than random reshuffling
 - The same order must appear in every downstream section and ranking artifact
 - Every visible generation timestamp must include date, weekday, time, and `KST`
 
@@ -125,6 +127,11 @@
 - When the latest monetization detail is found, include the amount or ratio plus the visible `'26.x월` as-of label
 - If the amount or ratio cannot be verified, mark it `undisclosed` or `unverified`
 - Do not guess a subscription fee, take rate, or revenue-share percentage
+
+## Output Guardrails
+- Do not render visible `Samsung` or `삼성` wording in the published page copy
+- If a source references that brand, rewrite the visible prose into a neutral phrase such as `leading OEM`, `major Android OEM`, or `strategic investor`
+- Apply the same guardrail to list rows, article labels, insight boxes, partnership cards, score tables, and monitoring notes
 
 ## AI/1 Quantified Scorecard
 - `A` `20` points

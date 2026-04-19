@@ -2,10 +2,21 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import sys
 from pathlib import Path
 
 from ai_watch.html_tools import extract_order_map
+
+
+EVAL_SCORE_RE = re.compile(r"<div class='eval-company' data-co='([^']+)'>.*?<span class='ec-total' data-s='(\d+)'", re.S)
+
+
+def extract_score_order(html: str) -> list[str]:
+    pairs = [(name, int(score)) for name, score in EVAL_SCORE_RE.findall(html)]
+    indexed = list(enumerate(pairs))
+    indexed.sort(key=lambda item: (-item[1][1], item[0], item[1][0]))
+    return [name for _, (name, _) in indexed]
 
 
 def validate_page(path: Path) -> list[str]:
@@ -20,6 +31,9 @@ def validate_page(path: Path) -> list[str]:
         issues.append(f"{path}: rank sequence must start at 1 and be contiguous through N.")
     if len(list_names) != len(set(list_names)):
         issues.append(f"{path}: duplicate startup names found in main list.")
+    score_order = extract_score_order(html)
+    if score_order and list_names != score_order:
+        issues.append(f"{path}: published startup order must match descending total score order.")
 
     for section_name, pairs in order_map.items():
         section_names = [name for _, name in pairs]
@@ -51,4 +65,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
