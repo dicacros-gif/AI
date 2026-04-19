@@ -19,6 +19,7 @@ LI_RE = re.compile(r"<li>(.*?)</li>", re.S)
 LEAF_DIV_RE = re.compile(r"<div>(.*?)</div>", re.S)
 TAG_SPLIT_RE = re.compile(r"(<[^>]+>)")
 DIV_TAG_RE = re.compile(r"</?div\b[^>]*>")
+SPAN_TAG_RE = re.compile(r"</?span\b[^>]*>")
 SEC_LIST_ID = "sec-list"
 SECTION_IDS = ("sec-eval", "sec-partner", "sec-insight", "sec-market")
 BULLET_STYLE_SECTION_IDS = (SEC_LIST_ID,) + SECTION_IDS
@@ -32,6 +33,7 @@ BULLET_ENDING_REPLACEMENTS: tuple[tuple[str, str], ...] = (
     ("증명했다", "증명"),
     ("증명 했다", "증명"),
     ("증명했", "증명"),
+    ("두껍다", "두꺼움"),
     ("공개했다", "공개"),
     ("공개한다", "공개"),
     ("명확하다", "명확"),
@@ -174,10 +176,10 @@ def _section_range(html: str, section_id: str) -> tuple[int, int] | None:
     return start, end
 
 
-def _find_matching_div_end(text: str, start: int) -> int:
+def _find_matching_tag_end(text: str, start: int, tag_re: re.Pattern[str], closing_prefix: str) -> int:
     depth = 0
-    for match in DIV_TAG_RE.finditer(text, start):
-        if match.group(0).startswith("</div"):
+    for match in tag_re.finditer(text, start):
+        if match.group(0).startswith(closing_prefix):
             depth -= 1
             if depth == 0:
                 return match.end()
@@ -194,7 +196,21 @@ def _iter_div_class_blocks(text: str, class_name: str) -> list[tuple[int, int, s
         start = text.find(token, cursor)
         if start == -1:
             break
-        end = _find_matching_div_end(text, start)
+        end = _find_matching_tag_end(text, start, DIV_TAG_RE, "</div")
+        blocks.append((start, end, text[start:end]))
+        cursor = end
+    return blocks
+
+
+def _iter_span_class_blocks(text: str, class_name: str) -> list[tuple[int, int, str]]:
+    token = f"<span class='{class_name}'>"
+    blocks: list[tuple[int, int, str]] = []
+    cursor = 0
+    while True:
+        start = text.find(token, cursor)
+        if start == -1:
+            break
+        end = _find_matching_tag_end(text, start, SPAN_TAG_RE, "</span")
         blocks.append((start, end, text[start:end]))
         cursor = end
     return blocks
@@ -260,18 +276,17 @@ def _normalize_section1_fragments(section_html: str) -> str:
         section_html,
         flags=re.S,
     )
-    section_html = re.sub(
-        r"<span class='c-str'>(.*?)</span>",
-        lambda match: f"<span class='c-str'>{_normalize_last_text_node(match.group(1))}</span>",
-        section_html,
-        flags=re.S,
-    )
-    section_html = re.sub(
-        r"<span class='c-wk'>(.*?)</span>",
-        lambda match: f"<span class='c-wk'>{_normalize_last_text_node(match.group(1))}</span>",
-        section_html,
-        flags=re.S,
-    )
+    for class_name in ("c-str", "c-wk"):
+        pieces: list[str] = []
+        cursor = 0
+        for start, end, block in _iter_span_class_blocks(section_html, class_name):
+            pieces.append(section_html[cursor:start])
+            prefix = f"<span class='{class_name}'>"
+            inner = block[len(prefix) : -len("</span>")]
+            pieces.append(prefix + _normalize_last_text_node(inner) + "</span>")
+            cursor = end
+        pieces.append(section_html[cursor:])
+        section_html = "".join(pieces)
     return section_html
 
 
@@ -310,12 +325,12 @@ def find_bullet_style_issues(html: str) -> list[str]:
                 text = _visible_text(item)
                 if text and BULLET_STYLE_ISSUE_RE.search(text):
                     issues.append(f"{section_id}: {text}")
-            for pattern in (
-                re.compile(r"<div class='ins-li'>(.*?)</div>", re.S),
-                re.compile(r"<span class='c-str'>(.*?)</span>", re.S),
-                re.compile(r"<span class='c-wk'>(.*?)</span>", re.S),
-            ):
-                for item in pattern.findall(block):
+            for item in re.compile(r"<div class='ins-li'>(.*?)</div>", re.S).findall(block):
+                text = _visible_text(item)
+                if text and BULLET_STYLE_ISSUE_RE.search(text):
+                    issues.append(f"{section_id}: {text}")
+            for class_name in ("c-str", "c-wk"):
+                for _, _, item in _iter_span_class_blocks(block, class_name):
                     text = _visible_text(item)
                     if text and BULLET_STYLE_ISSUE_RE.search(text):
                         issues.append(f"{section_id}: {text}")
