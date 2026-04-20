@@ -10,6 +10,7 @@ Read:
 Goal:
 - Render AI/2 conservatively with minimal HTML diff
 - Preserve shell, palette buttons, dark-mode toggle, collapsible behavior, rank badges, and section structure
+- If same-run state contains no net-new company or company-news delta, still render validated review-driven improvements such as refreshed trend cards, stale-claim fixes, score-rationale tightening, or corrected insight copy.
 
 Hard rules:
 - Publish only to `2/index.html`

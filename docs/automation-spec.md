@@ -18,13 +18,14 @@
 
 ## Canonical Decisions
 - One scheduled workflow starts the daily run
-- The scheduled entrypoint is `04:03 KST`, not the top of the hour
+- The scheduled entrypoint is `00:05 KST`, not the top of the hour
 - Sequencing is controlled by `needs`, not by multiple fragmented cron triggers
 - Runtime timezone is `Asia/Seoul`
 - GitHub-hosted runners are the canonical production runtime
 - Runner-local state is not trusted across jobs
 - State is passed through artifacts and the `ai-watch-state` branch
 - Each phase is defined as a contract with explicit inputs, outputs, gates, retry policy, evidence contract, and fail-closed fields
+- A full daily run must never end as a silent no-op; if no fresh external delta exists, the run must still produce a validated review-driven improvement
 
 ## Canonical Page Mapping
 - `AI/1` -> `1/index.html`
@@ -32,38 +33,38 @@
 - `.htm` drift is invalid and must fail validation
 
 ## Canonical Daily Flow
-- `04:03 KST` `preflight_source_health`
-- `04:08 KST` `ai1_source_freshness_probe`
-- `04:13 KST` `ai1_update`
-- `04:25 KST` `ai1_verify`
-- `04:38 KST` `ai1_scout`
-- `04:48 KST` `ai1_entity_resolution`
-- `04:55 KST` `ai1_evidence_normalize`
-- `05:02 KST` `ai1_claim_ledger_build`
-- `05:10 KST` `ai1_candidate_verify`
-- `05:18 KST` `ai1_staleness_gate`
-- `05:28 KST` `ai1_score`
-- `05:38 KST` `ai1_render_staging`
-- `05:48 KST` `ai2_source_freshness_probe`
-- `05:55 KST` `ai2_update`
-- `06:07 KST` `ai2_verify`
-- `06:20 KST` `ai2_scout`
-- `06:30 KST` `ai2_entity_resolution`
-- `06:37 KST` `ai2_evidence_normalize`
-- `06:44 KST` `ai2_claim_ledger_build`
-- `06:52 KST` `ai2_candidate_verify`
-- `07:00 KST` `ai2_staleness_gate`
-- `07:10 KST` `ai2_score`
-- `07:20 KST` `ai2_render_staging`
-- `07:30 KST` `global_recency_recheck`
-- `07:40 KST` `global_qa`
-- `07:48 KST` `repair_retry`
-- `07:55 KST` `publish_if_changed`
-- `08:00 KST` `post_publish_smoke`
+- `00:05 KST` `preflight_source_health`
+- `00:10 KST` `ai1_source_freshness_probe`
+- `00:15 KST` `ai1_update`
+- `00:27 KST` `ai1_verify`
+- `00:40 KST` `ai1_scout`
+- `00:50 KST` `ai1_entity_resolution`
+- `00:57 KST` `ai1_evidence_normalize`
+- `01:04 KST` `ai1_claim_ledger_build`
+- `01:12 KST` `ai1_candidate_verify`
+- `01:20 KST` `ai1_staleness_gate`
+- `01:30 KST` `ai1_score`
+- `01:40 KST` `ai1_render_staging`
+- `01:50 KST` `ai2_source_freshness_probe`
+- `01:57 KST` `ai2_update`
+- `02:09 KST` `ai2_verify`
+- `02:22 KST` `ai2_scout`
+- `02:32 KST` `ai2_entity_resolution`
+- `02:39 KST` `ai2_evidence_normalize`
+- `02:46 KST` `ai2_claim_ledger_build`
+- `02:54 KST` `ai2_candidate_verify`
+- `03:02 KST` `ai2_staleness_gate`
+- `03:12 KST` `ai2_score`
+- `03:22 KST` `ai2_render_staging`
+- `03:32 KST` `global_recency_recheck`
+- `03:42 KST` `global_qa`
+- `03:50 KST` `repair_retry`
+- `03:57 KST` `publish_if_changed`
+- `04:02 KST` `post_publish_smoke`
 
 ## Why The Schedule Changed
 - GitHub scheduled workflows are not a hard real-time scheduler
-- Top-of-hour load is a known reliability risk
+- Top-of-hour load is a known reliability risk, so the midnight orchestrator still starts at `00:05 KST` instead of `00:00`
 - A single orchestrator plus `needs` is more reliable than many separate scheduled workflows
 
 ## Claim And Evidence Model
@@ -233,6 +234,7 @@
 - HQ and legal-entity claims: `30-90` days
 - Platform-policy and regulatory drift claims: `7-14` days
 - If a core claim is stale and not refreshed, fail closed
+- If no fresh external source delta exists, the run must still surface a publishable review-driven delta such as trend refresh, stale-claim repair, score correction, or logic cleanup
 
 ## Source Priority
 - `regulatory filing / registry`

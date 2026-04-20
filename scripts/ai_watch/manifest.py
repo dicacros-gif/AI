@@ -17,9 +17,9 @@ STATE_BRANCH = "ai-watch-state"
 WORKFLOW_NAME = "ai-watch-scheduler"
 
 ORCHESTRATOR_SCHEDULE = {
-    "cron": "3 4 * * *",
+    "cron": "5 0 * * *",
     "timezone": "Asia/Seoul",
-    "kst_start": "04:03 KST",
+    "kst_start": "00:05 KST",
 }
 
 KST_WEEKDAYS = ["월", "화", "수", "목", "금", "토", "일"]
@@ -106,6 +106,8 @@ NON_NEGOTIABLE_RULES = [
     "Run the recurring pipeline only on GitHub-hosted runners through GitHub Actions.",
     "Treat GitHub-hosted runners as ephemeral; never rely on runner-local state across jobs.",
     "Scheduled automation must avoid the top of the hour and use a single orchestrator workflow with needs-based sequencing.",
+    "Every full daily run must end with either a fresh external-update delta or a validated review-driven improvement; silent no-op runs are forbidden.",
+    "If no net-new article, funding event, partnership change, or candidate addition is found, the run must still refresh stale claims, trend cards, score rationale, structural corrections, or source-quality notes and publish that validated improvement.",
     "Every core fact must be representable as a claim with source_id, source_type, retrieved_at_utc, published_at, confidence, ttl_days, and verification_status.",
     "Newest-source checks must be explicit through freshness probes, TTL rules, staleness gates, and publish-time recency rechecks.",
     "Newly discovered startups must use deterministic rank order 1 -> N everywhere downstream.",
@@ -820,7 +822,7 @@ PHASE_CONTRACTS: dict[str, PhaseContract] = {
         evidence_contract=EvidenceContract(max_staleness_days=1),
         fail_closed_fields=("runtime", "secrets", "state_branch"),
         page=None,
-        kst_slot="04:03 KST",
+        kst_slot="00:05 KST",
     ),
     "ai1_source_freshness_probe": PhaseContract(
         id="ai1_source_freshness_probe",
@@ -836,13 +838,13 @@ PHASE_CONTRACTS: dict[str, PhaseContract] = {
         evidence_contract=EvidenceContract(max_staleness_days=3, freshness_fields=("retrieved_at_utc", "etag", "page_hash")),
         fail_closed_fields=("freshness_probe",),
         page="ai1",
-        kst_slot="04:08 KST",
+        kst_slot="00:10 KST",
     ),
     "ai1_update": PhaseContract(
         id="ai1_update",
         kind="update",
         domain="ai1",
-        purpose="Collect the latest official and authoritative English-language updates for already-published AI/1 companies.",
+        purpose="Collect the latest official and authoritative English-language updates for already-published AI/1 companies, and if no material news exists, generate review-driven refresh inputs from stale claims, monetization deltas, and new macro trend evidence.",
         inputs=_page_inputs("ai1"),
         outputs=PHASE_REQUIRED_OUTPUTS["update"],
         agents=(
@@ -865,13 +867,13 @@ PHASE_CONTRACTS: dict[str, PhaseContract] = {
         page="ai1",
         prompt_file=".github/codex/prompts/ai1_update.md",
         runs_codex=True,
-        kst_slot="04:13 KST",
+        kst_slot="00:15 KST",
     ),
     "ai1_verify": PhaseContract(
         id="ai1_verify",
         kind="verify",
         domain="ai1",
-        purpose="Cross-check the current AI/1 page against update outputs for factual, logical, and formatting errors.",
+        purpose="Cross-check the current AI/1 page against update outputs for factual, logical, and formatting errors, and surface publishable review corrections even on no-news days.",
         inputs=("1/index.html", ".state/runs/<date>/ai1/ai1_update"),
         outputs=PHASE_REQUIRED_OUTPUTS["verify"],
         agents=(
@@ -897,7 +899,7 @@ PHASE_CONTRACTS: dict[str, PhaseContract] = {
         page="ai1",
         prompt_file=".github/codex/prompts/ai1_verify.md",
         runs_codex=True,
-        kst_slot="04:25 KST",
+        kst_slot="00:27 KST",
     ),
     "ai1_scout": PhaseContract(
         id="ai1_scout",
@@ -945,7 +947,7 @@ PHASE_CONTRACTS: dict[str, PhaseContract] = {
         page="ai1",
         prompt_file=".github/codex/prompts/ai1_scout.md",
         runs_codex=True,
-        kst_slot="04:38 KST",
+        kst_slot="00:40 KST",
     ),
     "ai1_entity_resolution": PhaseContract(
         id="ai1_entity_resolution",
@@ -961,7 +963,7 @@ PHASE_CONTRACTS: dict[str, PhaseContract] = {
         evidence_contract=EvidenceContract(max_staleness_days=14),
         fail_closed_fields=("company_id",),
         page="ai1",
-        kst_slot="04:48 KST",
+        kst_slot="00:50 KST",
     ),
     "ai1_evidence_normalize": PhaseContract(
         id="ai1_evidence_normalize",
@@ -977,7 +979,7 @@ PHASE_CONTRACTS: dict[str, PhaseContract] = {
         evidence_contract=EvidenceContract(max_staleness_days=14, freshness_fields=("source_type", "retrieved_at_utc", "published_at")),
         fail_closed_fields=("source_type", "retrieved_at_utc"),
         page="ai1",
-        kst_slot="04:55 KST",
+        kst_slot="00:57 KST",
     ),
     "ai1_claim_ledger_build": PhaseContract(
         id="ai1_claim_ledger_build",
@@ -993,7 +995,7 @@ PHASE_CONTRACTS: dict[str, PhaseContract] = {
         evidence_contract=EvidenceContract(max_staleness_days=14),
         fail_closed_fields=("source_id", "field", "verification_status"),
         page="ai1",
-        kst_slot="05:02 KST",
+        kst_slot="01:04 KST",
     ),
     "ai1_candidate_verify": PhaseContract(
         id="ai1_candidate_verify",
@@ -1037,7 +1039,7 @@ PHASE_CONTRACTS: dict[str, PhaseContract] = {
         evidence_contract=EvidenceContract(min_sources_per_core_claim=1, min_sources_for_mutable_claim=2, max_staleness_days=14),
         fail_closed_fields=("headquarters_country", "unicorn_status", "category", "funding_amount", "valuation", "on_device_proof_level", "sdk_maturity", "privacy_architecture"),
         page="ai1",
-        kst_slot="05:10 KST",
+        kst_slot="01:12 KST",
     ),
     "ai1_staleness_gate": PhaseContract(
         id="ai1_staleness_gate",
@@ -1053,7 +1055,7 @@ PHASE_CONTRACTS: dict[str, PhaseContract] = {
         evidence_contract=EvidenceContract(max_staleness_days=14),
         fail_closed_fields=("headquarters_country", "valuation", "funding_amount", "ranking_claim"),
         page="ai1",
-        kst_slot="05:18 KST",
+        kst_slot="01:20 KST",
     ),
     "ai1_score": PhaseContract(
         id="ai1_score",
@@ -1071,7 +1073,7 @@ PHASE_CONTRACTS: dict[str, PhaseContract] = {
         page="ai1",
         prompt_file=".github/codex/prompts/ai1_score.md",
         runs_codex=True,
-        kst_slot="05:28 KST",
+        kst_slot="01:30 KST",
     ),
     "ai1_render_staging": PhaseContract(
         id="ai1_render_staging",
@@ -1089,7 +1091,7 @@ PHASE_CONTRACTS: dict[str, PhaseContract] = {
         page="ai1",
         prompt_file=".github/codex/prompts/ai1_render.md",
         runs_codex=True,
-        kst_slot="05:38 KST",
+        kst_slot="01:40 KST",
     ),
     "ai2_source_freshness_probe": PhaseContract(
         id="ai2_source_freshness_probe",
@@ -1105,13 +1107,13 @@ PHASE_CONTRACTS: dict[str, PhaseContract] = {
         evidence_contract=EvidenceContract(max_staleness_days=3, freshness_fields=("retrieved_at_utc", "etag", "page_hash")),
         fail_closed_fields=("freshness_probe",),
         page="ai2",
-        kst_slot="05:48 KST",
+        kst_slot="01:50 KST",
     ),
     "ai2_update": PhaseContract(
         id="ai2_update",
         kind="update",
         domain="ai2",
-        purpose="Collect the latest official and authoritative English-language updates for already-published AI/2 companies.",
+        purpose="Collect the latest official and authoritative English-language updates for already-published AI/2 companies, and if no material news exists, generate review-driven refresh inputs from stale claims, monetization deltas, and new macro trend evidence.",
         inputs=_page_inputs("ai2"),
         outputs=PHASE_REQUIRED_OUTPUTS["update"],
         agents=(
@@ -1134,13 +1136,13 @@ PHASE_CONTRACTS: dict[str, PhaseContract] = {
         page="ai2",
         prompt_file=".github/codex/prompts/ai2_update.md",
         runs_codex=True,
-        kst_slot="05:55 KST",
+        kst_slot="01:57 KST",
     ),
     "ai2_verify": PhaseContract(
         id="ai2_verify",
         kind="verify",
         domain="ai2",
-        purpose="Cross-check the current AI/2 page against update outputs and policy drift for factual, logical, and platform-fit errors.",
+        purpose="Cross-check the current AI/2 page against update outputs and policy drift for factual, logical, and platform-fit errors, and surface publishable review corrections even on no-news days.",
         inputs=("2/index.html", ".state/runs/<date>/ai2/ai2_update"),
         outputs=PHASE_REQUIRED_OUTPUTS["verify"],
         agents=(
@@ -1168,7 +1170,7 @@ PHASE_CONTRACTS: dict[str, PhaseContract] = {
         page="ai2",
         prompt_file=".github/codex/prompts/ai2_verify.md",
         runs_codex=True,
-        kst_slot="06:07 KST",
+        kst_slot="02:09 KST",
     ),
     "ai2_scout": PhaseContract(
         id="ai2_scout",
@@ -1216,7 +1218,7 @@ PHASE_CONTRACTS: dict[str, PhaseContract] = {
         page="ai2",
         prompt_file=".github/codex/prompts/ai2_scout.md",
         runs_codex=True,
-        kst_slot="06:20 KST",
+        kst_slot="02:22 KST",
     ),
     "ai2_entity_resolution": PhaseContract(
         id="ai2_entity_resolution",
@@ -1232,7 +1234,7 @@ PHASE_CONTRACTS: dict[str, PhaseContract] = {
         evidence_contract=EvidenceContract(max_staleness_days=14),
         fail_closed_fields=("company_id",),
         page="ai2",
-        kst_slot="06:30 KST",
+        kst_slot="02:32 KST",
     ),
     "ai2_evidence_normalize": PhaseContract(
         id="ai2_evidence_normalize",
@@ -1248,7 +1250,7 @@ PHASE_CONTRACTS: dict[str, PhaseContract] = {
         evidence_contract=EvidenceContract(max_staleness_days=14, freshness_fields=("source_type", "retrieved_at_utc", "published_at")),
         fail_closed_fields=("source_type", "retrieved_at_utc"),
         page="ai2",
-        kst_slot="06:37 KST",
+        kst_slot="02:39 KST",
     ),
     "ai2_claim_ledger_build": PhaseContract(
         id="ai2_claim_ledger_build",
@@ -1264,7 +1266,7 @@ PHASE_CONTRACTS: dict[str, PhaseContract] = {
         evidence_contract=EvidenceContract(max_staleness_days=14),
         fail_closed_fields=("source_id", "field", "verification_status"),
         page="ai2",
-        kst_slot="06:44 KST",
+        kst_slot="02:46 KST",
     ),
     "ai2_candidate_verify": PhaseContract(
         id="ai2_candidate_verify",
@@ -1321,7 +1323,7 @@ PHASE_CONTRACTS: dict[str, PhaseContract] = {
             "privacy_readiness",
         ),
         page="ai2",
-        kst_slot="06:52 KST",
+        kst_slot="02:54 KST",
     ),
     "ai2_staleness_gate": PhaseContract(
         id="ai2_staleness_gate",
@@ -1337,7 +1339,7 @@ PHASE_CONTRACTS: dict[str, PhaseContract] = {
         evidence_contract=EvidenceContract(max_staleness_days=14),
         fail_closed_fields=("headquarters_country", "valuation", "funding_amount", "policy_drift", "ranking_claim"),
         page="ai2",
-        kst_slot="07:00 KST",
+        kst_slot="03:02 KST",
     ),
     "ai2_score": PhaseContract(
         id="ai2_score",
@@ -1363,7 +1365,7 @@ PHASE_CONTRACTS: dict[str, PhaseContract] = {
         page="ai2",
         prompt_file=".github/codex/prompts/ai2_score.md",
         runs_codex=True,
-        kst_slot="07:10 KST",
+        kst_slot="03:12 KST",
     ),
     "ai2_render_staging": PhaseContract(
         id="ai2_render_staging",
@@ -1381,7 +1383,7 @@ PHASE_CONTRACTS: dict[str, PhaseContract] = {
         page="ai2",
         prompt_file=".github/codex/prompts/ai2_render.md",
         runs_codex=True,
-        kst_slot="07:20 KST",
+        kst_slot="03:22 KST",
     ),
     "global_recency_recheck": PhaseContract(
         id="global_recency_recheck",
@@ -1397,13 +1399,13 @@ PHASE_CONTRACTS: dict[str, PhaseContract] = {
         evidence_contract=EvidenceContract(max_staleness_days=3, freshness_fields=("retrieved_at_utc", "page_hash")),
         fail_closed_fields=("recency_recheck",),
         page=None,
-        kst_slot="07:30 KST",
+        kst_slot="03:32 KST",
     ),
     "global_qa": PhaseContract(
         id="global_qa",
         kind="global_qa",
         domain="global",
-        purpose="Check AI/1 and AI/2 together for duplicates, leakage, citation integrity, timestamps, ranking consistency, and shell regression.",
+        purpose="Check AI/1 and AI/2 together for duplicates, leakage, citation integrity, timestamps, ranking consistency, shell regression, and no-noop daily-run compliance.",
         inputs=("1/index.html", "2/index.html", ".state/runs/<date>/ai1", ".state/runs/<date>/ai2"),
         outputs=PHASE_REQUIRED_OUTPUTS["global_qa"],
         agents=(
@@ -1427,7 +1429,7 @@ PHASE_CONTRACTS: dict[str, PhaseContract] = {
             "deprecation_watch_agent",
             "privacy_sandbox_deprecation_guard",
         ),
-        gates=("no_duplicate_company_id", "no_category_leakage", "all_publish_blockers_clear"),
+        gates=("no_duplicate_company_id", "no_category_leakage", "all_publish_blockers_clear", "no_noop_daily_run"),
         timeout_minutes=20,
         retry_policy=RetryPolicy(max_attempts=1),
         evidence_contract=EvidenceContract(min_sources_per_core_claim=1, min_sources_for_mutable_claim=2, max_staleness_days=14),
@@ -1435,7 +1437,7 @@ PHASE_CONTRACTS: dict[str, PhaseContract] = {
         page=None,
         prompt_file=".github/codex/prompts/global_qa.md",
         runs_codex=True,
-        kst_slot="07:40 KST",
+        kst_slot="03:42 KST",
     ),
     "repair_retry": PhaseContract(
         id="repair_retry",
@@ -1451,23 +1453,23 @@ PHASE_CONTRACTS: dict[str, PhaseContract] = {
         evidence_contract=EvidenceContract(max_staleness_days=1),
         fail_closed_fields=("retry_policy",),
         page=None,
-        kst_slot="07:48 KST",
+        kst_slot="03:50 KST",
     ),
     "publish_if_changed": PhaseContract(
         id="publish_if_changed",
         kind="publish",
         domain="global",
-        purpose="Publish only if validated artifacts changed, diff is allowed, and all publish gates remain closed.",
+        purpose="Publish only if validated artifacts changed, the delta is either fresh-news-driven or review-driven, diff is allowed, and all publish gates remain closed.",
         inputs=("1/index.html", "2/index.html", ".state/runs/<date>/global/global_qa"),
         outputs=PHASE_REQUIRED_OUTPUTS["publish"],
         agents=("publish_diff_guard", "publish_path_guard", "html_regression_guard", "timestamp_format_guard", "qa_gatekeeper"),
-        gates=("validated_content_changed", "allowed_publish_diff_only", "qa_gate_passed"),
+        gates=("validated_or_review_delta_present", "allowed_publish_diff_only", "qa_gate_passed"),
         timeout_minutes=10,
         retry_policy=RetryPolicy(max_attempts=1),
         evidence_contract=EvidenceContract(max_staleness_days=3),
         fail_closed_fields=("publish_path", "html_shell", "publish_diff"),
         page=None,
-        kst_slot="07:55 KST",
+        kst_slot="03:57 KST",
     ),
     "post_publish_smoke": PhaseContract(
         id="post_publish_smoke",
@@ -1483,7 +1485,7 @@ PHASE_CONTRACTS: dict[str, PhaseContract] = {
         evidence_contract=EvidenceContract(max_staleness_days=1),
         fail_closed_fields=("publish_path", "timestamp_label", "ranking_claim"),
         page=None,
-        kst_slot="08:00 KST",
+        kst_slot="04:02 KST",
     ),
 }
 

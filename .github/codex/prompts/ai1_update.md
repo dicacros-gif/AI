@@ -10,6 +10,7 @@ Goal:
 - Find the latest English-language updates for already-published AI/1 companies only.
 - AI/1 is the personalization / on-device page.
 - Existing companies remain published; do not delete them.
+- If there is no material company-news delta today, do not leave the phase empty. Refresh stale claims, monetization details, macro trend evidence, and insight candidates for existing companies so the run still produces a publishable improvement.
 
 Hard rules:
 - Non-render phases must not edit published HTML.

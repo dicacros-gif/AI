@@ -4,6 +4,7 @@
 - This repository runs a daily GitHub Actions-only automation
 - Do not rely on local scheduler state, local terminal sessions, or persisted runner disk
 - All phase outputs must be written to the repo state tree, uploaded as artifacts, or committed to the state branch
+- Every full daily run must produce either a fresh external-update delta or a validated review-driven improvement; silent no-op runs are forbidden
 - Non-render phases must not edit published HTML
 - If unsure, downgrade to `unverified`; do not invent
 
@@ -15,37 +16,37 @@
 - Never publish mixed `.htm` and `.html` targets
 
 ## Canonical Schedule
-- GitHub Actions orchestrator starts once per day at `04:03 KST`
+- GitHub Actions orchestrator starts once per day at `00:05 KST`
 - All later phases run through `needs` sequencing, not separate cron timing assumptions
 - Daily target sequence:
-- `04:03` `preflight_source_health`
-- `04:08` `ai1_source_freshness_probe`
-- `04:13` `ai1_update`
-- `04:25` `ai1_verify`
-- `04:35` `ai1_scout`
-- `04:48` `ai1_entity_resolution`
-- `04:55` `ai1_evidence_normalize`
-- `05:03` `ai1_claim_ledger_build`
-- `05:13` `ai1_candidate_verify`
-- `05:23` `ai1_staleness_gate`
-- `05:33` `ai1_score`
-- `05:43` `ai1_render`
-- `05:53` `ai2_source_freshness_probe`
-- `05:58` `ai2_update`
-- `06:10` `ai2_verify`
-- `06:20` `ai2_scout`
-- `06:33` `ai2_entity_resolution`
-- `06:40` `ai2_evidence_normalize`
-- `06:48` `ai2_claim_ledger_build`
-- `06:58` `ai2_candidate_verify`
-- `07:08` `ai2_staleness_gate`
-- `07:18` `ai2_score`
-- `07:28` `ai2_render`
-- `07:38` `global_recency_recheck`
-- `07:48` `global_qa`
-- `07:58` `repair_retry`
-- `08:08` `publish_if_changed`
-- `08:13` `post_publish_smoke`
+- `00:05` `preflight_source_health`
+- `00:10` `ai1_source_freshness_probe`
+- `00:15` `ai1_update`
+- `00:27` `ai1_verify`
+- `00:40` `ai1_scout`
+- `00:50` `ai1_entity_resolution`
+- `00:57` `ai1_evidence_normalize`
+- `01:04` `ai1_claim_ledger_build`
+- `01:12` `ai1_candidate_verify`
+- `01:20` `ai1_staleness_gate`
+- `01:30` `ai1_score`
+- `01:40` `ai1_render`
+- `01:50` `ai2_source_freshness_probe`
+- `01:57` `ai2_update`
+- `02:09` `ai2_verify`
+- `02:22` `ai2_scout`
+- `02:32` `ai2_entity_resolution`
+- `02:39` `ai2_evidence_normalize`
+- `02:46` `ai2_claim_ledger_build`
+- `02:54` `ai2_candidate_verify`
+- `03:02` `ai2_staleness_gate`
+- `03:12` `ai2_score`
+- `03:22` `ai2_render`
+- `03:32` `global_recency_recheck`
+- `03:42` `global_qa`
+- `03:50` `repair_retry`
+- `03:57` `publish_if_changed`
+- `04:02` `post_publish_smoke`
 
 ## Source Hierarchy
 - Prefer authoritative English-language sources first
@@ -53,6 +54,7 @@
 - Tier 1 = Reuters, Bloomberg, TechCrunch, The Information, Wired, Fortune, Forbes, WSJ, Financial Times
 - Tier 2 = Crunchbase, PitchBook, CB Insights, Dealroom, Tracxn, data.ai, Sensor Tower, Similarweb, Gartner, McKinsey, IDC, Forrester, VC research, papers, patents
 - Korean-language sources may support context but cannot be decisive support for ranking, scoring, inclusion, exclusion, or numeric claims
+- If no fresh external article is found for a given day, update the publish through review-driven improvements: stale-claim cleanup, trend refresh, score corrections, or logic fixes
 
 ## Eligibility Rules
 - Newly discovered companies must not be headquartered in South Korea or China

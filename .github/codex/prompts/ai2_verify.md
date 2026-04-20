@@ -10,6 +10,7 @@ Read:
 Goal:
 - Cross-check published AI/2 content.
 - Detect factual, logical, timestamp, category, ranking, and source-integrity issues.
+- If update-state is thin, turn this into a full review pass and emit concrete corrections that can still change the publish output.
 
 Hard rules:
 - AI/2 is the ad AI / mobile advertising technology page.

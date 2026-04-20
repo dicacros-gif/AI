@@ -2,7 +2,7 @@ name: AI Watch Orchestrator
 
 on:
   schedule:
-    - cron: "3 4 * * *"
+    - cron: "5 0 * * *"
       timezone: "Asia/Seoul"
   workflow_dispatch:
     inputs:
@@ -782,8 +782,9 @@ jobs:
       - name: Commit rendered pages if changed
         run: |
           if git diff --quiet -- 1/index.html 2/index.html; then
-            echo "No page changes to commit."
-            exit 0
+            echo "Full daily run produced no publishable page delta."
+            echo "The pipeline must add either fresh authoritative updates or review-driven improvements."
+            exit 1
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"

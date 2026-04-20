@@ -10,6 +10,7 @@ Read:
 Goal:
 - Cross-check AI/1 published content against update state.
 - Detect factual, logical, formatting, ranking, category, and timestamp problems.
+- If update-state is thin, turn this into a full review pass and emit concrete corrections that can still change the publish output.
 
 Hard rules:
 - AI/1 is the personalization / on-device page.

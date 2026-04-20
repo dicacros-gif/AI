@@ -114,13 +114,24 @@ def default_json_payload(file_name: str, phase_id: str, page: str, run_date: str
     if file_name == "feed_health.json":
         return base | {"status": "ok", "feedsChecked": [], "newsroomsChecked": []}
     if file_name == "updates.json":
-        return base | {"updates": [], "notes": ["Scaffold run; merge Codex findings during repository execution."]}
+        return base | {
+            "updates": [],
+            "notes": ["Scaffold run; merge Codex findings during repository execution."],
+            "fallbackModeIfNoExternalNews": "review_existing_content_and_refresh_trends",
+            "mustProduceReviewDelta": True,
+        }
     if file_name == "contradictions.json":
         return base | {"contradictions": []}
     if file_name == "source_quality_report.json":
         return base | {"decisiveSourceLanguage": "english-first", "tierPriority": SOURCE_PRIORITY}
     if file_name == "verification.json":
-        return base | {"status": "ok", "checks": [], "legacyPolicy": "retain existing published companies by default"}
+        return base | {
+            "status": "ok",
+            "checks": [],
+            "legacyPolicy": "retain existing published companies by default",
+            "fallbackReviewRequired": True,
+            "noExternalNewsPolicy": "surface publishable logic, structure, score, or source-quality improvements",
+        }
     if file_name == "removal_candidates.json":
         return base | {"candidates": []}
     if file_name == "unsupported_claims.json":
@@ -174,13 +185,22 @@ def default_json_payload(file_name: str, phase_id: str, page: str, run_date: str
     if file_name == "recency_recheck.json":
         return base | {"status": "ok", "recheckedSources": [], "breakingChanges": []}
     if file_name == "global_qa.json":
-        return base | {"status": "ok", "warnings": [], "blockers": []}
+        return base | {
+            "status": "ok",
+            "warnings": [],
+            "blockers": [],
+            "reviewDrivenImprovementRequired": True,
+            "noNoopDailyRun": True,
+        }
     if file_name == "publish_blockers.json":
         return base | {"blockers": []}
     if file_name == "retry_report.json":
         return base | {"retryable": [], "nonRetryable": []}
     if file_name == "publish_decision.json":
-        return base | {"decision": "qa_only", "reason": "No validated render delta found."}
+        return base | {
+            "decision": "blocked_until_delta",
+            "reason": "Full daily runs must produce either a fresh-news delta or a validated review-driven improvement.",
+        }
     if file_name == "smoke_report.json":
         return base | {"status": "ok", "pages": {}, "checks": ["timestamp", "ranking", "publish_path", "anchors"]}
     return base
@@ -207,6 +227,7 @@ def default_markdown_payload(file_name: str, phase_id: str, page: str, run_date:
         f"- page: `{page or 'global'}`",
         f"- run date (KST): `{run_date}`",
         f"- purpose: {contract.purpose}",
+        "- no-news-day contract: if net-new external updates are absent, you must still deliver a review-driven improvement by refreshing stale claims, trend cards, score rationale, logic fixes, or source-quality notes",
     ]
     if file_name == "render_log.md":
         lines.extend(
@@ -422,6 +443,7 @@ def bootstrap_phase(phase_id: str, run_date: str, explicit_page: str | None = No
             "- source model: raw source -> evidence -> claim -> verify -> score -> render -> publish",
             "- fail-closed: if HQ, unicorn status, category, valuation, timestamps, or ranking claims are unsupported, stale, or contradictory, do not publish",
             "- freshness contract: use explicit TTL / recency logic instead of timestamp-only refreshes",
+            "- no-news-day policy: if external updates are absent, refresh trend evidence, stale claims, score rationale, logic issues, or source-quality notes until a validated publish delta exists",
             "- runner model: GitHub-hosted jobs are ephemeral; consume artifacts or committed state only",
             "- decisive evidence: official English / filing / registry / developer-doc sources outrank Korean-language media",
         ]

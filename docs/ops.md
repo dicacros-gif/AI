@@ -2,48 +2,49 @@
 
 ## Workflow Overview
 - `.github/workflows/ai-watch-scheduler.yml` is now a single daily orchestrator workflow.
-- The scheduler starts once per day at `04:03 KST` and then uses `needs:` to enforce phase order.
+- The scheduler starts once per day at `00:05 KST` and then uses `needs:` to enforce phase order.
 - The workflow runs only on GitHub-hosted runners.
 - Runner-local state is treated as ephemeral; every phase writes state to `.state/runs/YYYY-MM-DD/...` and uploads artifacts for cross-job restore.
 - Publish happens only after global QA, retry classification, and publish-diff checks pass.
+- If a full run finds no fresh external delta, it must still publish a validated review-driven improvement such as stale-claim repair, trend refresh, score correction, or structural cleanup.
 - Scheduled execution is approximate, not hard real-time.
 - Scheduled workflows run from the default branch and should always remain active through normal repository activity.
 
 ## Why The Schedule Changed
 - GitHub scheduled workflows can be delayed or dropped during heavy load, especially at the start of the hour.
-- The workflow therefore avoids `04:00`, `05:00`, `06:00`, and `07:00` exact top-of-hour triggers.
+- The workflow therefore avoids `00:00`, `01:00`, `02:00`, `03:00`, and `04:00` exact top-of-hour triggers.
 - The repo now uses one orchestrator entrypoint instead of many fragmented cron triggers.
 - If a scheduled run is missed or delayed, use `workflow_dispatch` to replay the target date rather than adding more fragmented cron entries.
 
 ## Daily Target Timeline
-- `04:03 KST` `preflight_source_health`
-- `04:08 KST` `ai1_source_freshness_probe`
-- `04:13 KST` `ai1_update`
-- `04:25 KST` `ai1_verify`
-- `04:38 KST` `ai1_scout`
-- `04:48 KST` `ai1_entity_resolution`
-- `04:55 KST` `ai1_evidence_normalize`
-- `05:02 KST` `ai1_claim_ledger_build`
-- `05:10 KST` `ai1_candidate_verify`
-- `05:18 KST` `ai1_staleness_gate`
-- `05:28 KST` `ai1_score`
-- `05:38 KST` `ai1_render_staging`
-- `05:48 KST` `ai2_source_freshness_probe`
-- `05:55 KST` `ai2_update`
-- `06:07 KST` `ai2_verify`
-- `06:20 KST` `ai2_scout`
-- `06:30 KST` `ai2_entity_resolution`
-- `06:37 KST` `ai2_evidence_normalize`
-- `06:44 KST` `ai2_claim_ledger_build`
-- `06:52 KST` `ai2_candidate_verify`
-- `07:00 KST` `ai2_staleness_gate`
-- `07:10 KST` `ai2_score`
-- `07:20 KST` `ai2_render_staging`
-- `07:30 KST` `global_recency_recheck`
-- `07:40 KST` `global_qa`
-- `07:48 KST` `repair_retry`
-- `07:55 KST` `publish_if_changed`
-- `08:00 KST` `post_publish_smoke`
+- `00:05 KST` `preflight_source_health`
+- `00:10 KST` `ai1_source_freshness_probe`
+- `00:15 KST` `ai1_update`
+- `00:27 KST` `ai1_verify`
+- `00:40 KST` `ai1_scout`
+- `00:50 KST` `ai1_entity_resolution`
+- `00:57 KST` `ai1_evidence_normalize`
+- `01:04 KST` `ai1_claim_ledger_build`
+- `01:12 KST` `ai1_candidate_verify`
+- `01:20 KST` `ai1_staleness_gate`
+- `01:30 KST` `ai1_score`
+- `01:40 KST` `ai1_render_staging`
+- `01:50 KST` `ai2_source_freshness_probe`
+- `01:57 KST` `ai2_update`
+- `02:09 KST` `ai2_verify`
+- `02:22 KST` `ai2_scout`
+- `02:32 KST` `ai2_entity_resolution`
+- `02:39 KST` `ai2_evidence_normalize`
+- `02:46 KST` `ai2_claim_ledger_build`
+- `02:54 KST` `ai2_candidate_verify`
+- `03:02 KST` `ai2_staleness_gate`
+- `03:12 KST` `ai2_score`
+- `03:22 KST` `ai2_render_staging`
+- `03:32 KST` `global_recency_recheck`
+- `03:42 KST` `global_qa`
+- `03:50 KST` `repair_retry`
+- `03:57 KST` `publish_if_changed`
+- `04:02 KST` `post_publish_smoke`
 
 ## Phase Contract Model
 - `source_freshness_probe`
@@ -60,6 +61,7 @@
   - re-check fast-moving official sources just before publish
 - `publish_if_changed`
   - publish only when validated content changed and the diff stays inside allowed publish surfaces
+  - reject silent no-op runs; the full daily run must contain either fresh-news updates or review-driven publish improvements
 
 ## AI/1 Score Model
 - AI/1 score uses a quantified A-G smartphone-OEM model

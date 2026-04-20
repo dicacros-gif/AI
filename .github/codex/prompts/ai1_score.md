@@ -7,8 +7,8 @@ Read:
 4. same-run `ai1_scout` outputs
 
 Goal:
-- Score only approved new AI/1 candidates
-- Keep existing published companies in place
+- Score approved new AI/1 candidates
+- Re-score existing published companies when fresh evidence, stale-claim repair, or review corrections materially change the score basis
 
 Scoring rules:
 - Unsupported claims get zero credit
@@ -49,6 +49,7 @@ Scoring rules:
 - `revenue_share_basis`
 - `monetization_as_of_month`
 - Tie-break by revenue strength, traction recency, primary-source quality, manufacturer/M&A fit, and defensibility
+- If no new candidate survives, still review whether published-company scores or rationale need correction so the full run does not become a no-op.
 
 Do not edit published HTML.
 Write the files defined in `phase_context.md`.

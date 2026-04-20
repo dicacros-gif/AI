@@ -12,6 +12,7 @@ Goal:
 - Evaluate both pages together before publish acceptance.
 
 Must check:
+- full daily run must not end as a silent no-op when fresh-news deltas are absent
 - canonical page mapping (`AI/1` personalization, `AI/2` ad AI)
 - `.html` publish targets only
 - duplicate startups across pages
@@ -22,5 +23,6 @@ Must check:
 - unicorn violations
 - placeholder text
 - broken shell structures
+- review-driven improvement exists when no net-new external update exists
 
 Write the files named in `phase_context.md`.
