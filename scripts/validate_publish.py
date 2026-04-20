@@ -81,6 +81,19 @@ FORBIDDEN_VISIBLE_TERMS = (
     "mx 사업부",
 )
 
+FORBIDDEN_BROKEN_FRAGMENTS = (
+    "버려야 한",
+    "키워야 한",
+    "내재화했",
+    "보도됐",
+    "확장했",
+    "신호를 준",
+    "두꺼워졌",
+    "다시 핵심으로 올라왔",
+    "재편됐",
+    "단단하",
+)
+
 
 def company_names(path: Path) -> list[str]:
     html = path.read_text(encoding="utf-8")
@@ -165,6 +178,10 @@ def validate_path(path: Path) -> list[str]:
     for label in FORBIDDEN_VISIBLE_TERMS:
         if label in visible_text:
             issues.append(f"{path}: forbidden visible term `{label}` remains in published HTML.")
+
+    for fragment in FORBIDDEN_BROKEN_FRAGMENTS:
+        if fragment in visible_text:
+            issues.append(f"{path}: broken clipped fragment `{fragment}` remains in published HTML.")
 
     if "??" in visible_text:
         issues.append(f"{path}: visible mojibake marker `??` remains in published HTML.")

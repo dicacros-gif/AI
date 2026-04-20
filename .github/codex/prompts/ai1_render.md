@@ -26,7 +26,7 @@ Hard rules:
 - In section `①`, collapsed rows must shrink to a real one-line summary row that shows only the company name
 - Do not keep badges, meta text, or extra summary chips in the collapsed row
 - Keep competitor-box copy slightly smaller than the main body text in section `①`
-- Normalize awkward fragment endings before publish, for example `단단하 → 단단`, `다시 핵심으로 올라왔 → 다시 핵심`, `재편됐 → 재편`, and never leave orphaned sentence-final `'다`
+- Normalize awkward fragment endings before publish, for example `단단하 → 단단`, `다시 핵심으로 올라왔 → 다시 핵심`, `재편됐 → 재편`, `신호를 준 → 신호를 줌`, `두꺼워졌 → 명확`, and never leave orphaned sentence-final `'다`
 - In section `①`, use a fixed-layout startup table with narrow widths, smaller cell padding, wrapped headers, and viewport-friendly sizing before allowing horizontal overflow
 - In section `①`, merge `기업 + 설립/본사/직원`
 - In section `①`, merge `창업자/핵심 경력 + 밸류에이션/펀딩·투자자`, and place each founder's key experience under that founder
