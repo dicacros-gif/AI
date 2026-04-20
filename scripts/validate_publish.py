@@ -47,6 +47,14 @@ FORBIDDEN_SECTION1_WIDTH_PATTERNS = {
     "legacy_section1_table_width_1860": re.compile(r"<table style='min-width:1860px'>"),
 }
 
+FORBIDDEN_LAYOUT_HINTS = (
+    "한 화면 우선 표시 · 필요 시 ← → 키 이동",
+)
+
+FORBIDDEN_PARTNERSHIP_GRID_PATTERNS = {
+    "legacy_340px_partner_grid": re.compile(r"\.pg\{display:grid;grid-template-columns:repeat\(auto-fit,minmax\(340px,1fr\)\);gap:\.6rem\}"),
+}
+
 ROW_ID_PATTERN = re.compile(r"<tr class='tr-main' data-row='([^']+)' onclick=\"toggleRow\('([^']+)',this\)\"")
 EVAL_COMPANY_START = re.compile(r"<div class='eval-company'[^>]*data-co='[^']+'")
 EVAL_COMPANY_KEY = re.compile(r"data-co='([^']+)'")
@@ -143,6 +151,10 @@ def validate_path(path: Path) -> list[str]:
     visible_text = re.sub(r"<[^>]+>", " ", html)
     issues: list[str] = []
 
+    for hint in FORBIDDEN_LAYOUT_HINTS:
+        if hint in visible_text:
+            issues.append(f"{path}: legacy section helper hint must stay removed -> {hint}")
+
     criteria_start = html.find("id='sec-criteria'")
     criteria_end = html.find("<footer", criteria_start) if criteria_start != -1 else -1
     criteria_html = html[criteria_start:criteria_end] if criteria_start != -1 and criteria_end != -1 else ""
@@ -165,6 +177,10 @@ def validate_path(path: Path) -> list[str]:
     for label, pattern in FORBIDDEN_SECTION1_WIDTH_PATTERNS.items():
         if pattern.search(html):
             issues.append(f"{path}: forbidden legacy-wide section-1 table layout `{label}` detected.")
+
+    for label, pattern in FORBIDDEN_PARTNERSHIP_GRID_PATTERNS.items():
+        if pattern.search(html):
+            issues.append(f"{path}: partnership card grid is too wide for desktop two-up layout -> `{label}`")
 
     row_pairs = ROW_ID_PATTERN.findall(html)
     row_ids = [left for left, _ in row_pairs]

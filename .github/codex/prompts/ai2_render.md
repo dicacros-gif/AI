@@ -35,6 +35,8 @@ Hard rules:
 - In section `①`, merge `창업자/핵심 경력 + 밸류에이션/펀딩·투자자`, and place each founder's key experience under that founder
 - In section `①`, merge `매출·트랙션 + 비즈니스 모델 (매출·과금 상세)`
 - In section `①`, merge `사업 상세 + 인사이트`
+- In section `①`, keep the helper strip below the title removed; do not render guidance such as `한 화면 우선 표시 · 필요 시 ← → 키 이동`
+- In section `③`, keep partnership card grids compact enough that the last two cards still fit on the same desktop row before wrapping
 - Every section `①` row must keep a unique `data-row`
 - In section `②`, each `eval-company` wrapper must contain its own `eval-company-hd` immediately followed by its own `eval-company-bd`
 - In section `③`, manufacturer partnership boxes must render open by default

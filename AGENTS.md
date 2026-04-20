@@ -97,6 +97,7 @@
 - Manufacturer partnership idea boxes must render open by default
 - Keep section `③` strictly in a smartphone and handset frame
 - Do not mention TV, CTV, FAST, broadcast, living-room, smart-display, kiosk, or signage use cases
+- Keep section `③` card grids compact enough that the last two cards still sit side-by-side on common desktop widths
 
 ## Copy Style Rules
 - Sections `①`, `②`, `③`, `④`, and `⑤` must use concise bullet-style fragments, not sentence prose
