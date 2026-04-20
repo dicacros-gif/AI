@@ -94,6 +94,18 @@ FORBIDDEN_BROKEN_FRAGMENTS = (
     "단단하",
 )
 
+COMPETITOR_BLOCK_PATTERN = re.compile(r"<td class='cmp td-d'>.*?</td>", re.S)
+COMPETITOR_LABEL_PATTERNS = (
+    "경쟁사 3사 (강점/약점 박스)",
+    "◉ 강점",
+    "◉ 약점",
+    "강점</span>",
+    "약점</span>",
+)
+COMPETITOR_STR_WEIGHT_PATTERN = re.compile(r"\.cmp-box \.c-str \{[^}]*font-weight:\s*500;", re.S)
+COMPETITOR_WK_WEIGHT_PATTERN = re.compile(r"\.cmp-box \.c-wk \{[^}]*font-weight:\s*500;", re.S)
+COMPETITOR_DIM_WEIGHT_PATTERN = re.compile(r"\.cmp-box \.c-dim \{[^}]*font-weight:\s*800;", re.S)
+
 
 def company_names(path: Path) -> list[str]:
     html = path.read_text(encoding="utf-8")
@@ -202,6 +214,21 @@ def validate_path(path: Path) -> list[str]:
         issues.append(
             f"{path}: section-1 insight/article/competitor copy and sections 2-5 must use bullet fragments without sentence-final `~다` or periods -> {bullet_style_issues[0]}"
         )
+
+    for marker in COMPETITOR_LABEL_PATTERNS:
+        if marker in html:
+            issues.append(f"{path}: competitor boxes must not render visible strength/weakness labels -> {marker}")
+
+    for block in COMPETITOR_BLOCK_PATTERN.findall(html):
+        if re.search(r"<b(?! class='h-word')", block):
+            issues.append(f"{path}: competitor boxes must reserve bold text for short high-signal keywords only.")
+            break
+
+    if not COMPETITOR_STR_WEIGHT_PATTERN.search(html) or not COMPETITOR_WK_WEIGHT_PATTERN.search(html):
+        issues.append(f"{path}: competitor box body copy must use normal-weight strength/weakness lines.")
+
+    if not COMPETITOR_DIM_WEIGHT_PATTERN.search(html):
+        issues.append(f"{path}: competitor boxes must keep only short key phrases emphasized.")
 
     if "${meta?" in html or "${badge}" in html or "${rank}" in html:
         issues.append(f"{path}: collapsed section-1 summary row must show only the company name.")

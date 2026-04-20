@@ -27,6 +27,8 @@ Hard rules:
 - In section `①`, collapsed rows must shrink to a real one-line summary row that shows only the company name
 - Do not keep badges, meta text, or extra summary chips in the collapsed row
 - Keep competitor-box copy slightly smaller than the main body text in section `①`
+- Remove visible `강점` and `약점` labels from competitor boxes
+- Keep competitor strength/weakness body lines at normal weight and bold only short high-signal keywords
 - Normalize awkward fragment endings before publish, for example `단단하 → 단단`, `다시 핵심으로 올라왔 → 다시 핵심`, `재편됐 → 재편`, `버려야 한 → 버려야 함`, `내재화했 → 내재화`, `보도됐 → 보도`, `확장했 → 확장`, and never leave orphaned sentence-final `'다`
 - In section `①`, use a fixed-layout startup table with narrow widths, smaller cell padding, wrapped headers, and viewport-friendly sizing before allowing horizontal overflow
 - In section `①`, merge `기업 + 설립/본사/직원`
@@ -53,7 +55,7 @@ Hard rules:
 - If monetization detail is unavailable, render `undisclosed` or `unverified`
 - Do not render visible `Samsung`, `삼성`, `삼성전자`, `Samsung Electronics`, `MX 사업부`, or `mx 사업부`
 - Rewrite those references into neutral wording such as `휴대폰 제조사`, `leading OEM`, `major Android OEM`, or `strategic investor`
-- Insight, article-link, and competitor strength/weakness copy must use concise bullet fragments
+- Insight, article-link, and competitor copy must use concise bullet fragments
 - Do not end bullet copy with `~다` or periods
 - Rewrite awkward endings into natural fragments instead of deleting the last character only
 
