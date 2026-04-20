@@ -14,26 +14,34 @@ Scoring rules:
 - Unsupported claims get zero credit.
 - Prefer SW/service/engine/technology leverage over pure hardware-first stories.
 - Score only from authoritative English-language evidence; Korean-language sources cannot justify points.
-- Use the quantified AI/1 smartphone-OEM scorecard below, not a generic AI SaaS scorecard.
-- `A` `20` = 12-month OEM partnership possibility
-- `A1` `6` device integration fit
-- `A2` `4` privacy and regulatory fit
-- `A3` `5` commercialization structure fit
-- `A4` `5` strategic differentiation contribution
-- `B` `20` = minority stake / bolt-on / strategic acquisition fit
-- `B1` `6` proprietary technology and IP value
-- `B2` `5` PMI integration ease
-- `B3` `5` strategic gap coverage
-- `B4` `4` deal feasibility
-- `C` `20` = device-side technical fit
-- `D` `15` = product differentiation contribution
-- `E` `10` = privacy and regulatory trust
-- `F` `10` = business stability
-- `G` `5` = execution ease
+- Use the quantified AI/1 handset-manufacturer scorecard below, not a generic AI SaaS scorecard.
+- `A` `20` = partnership possibility
+- `A1` `5` mobile app commercialization and global active-usage proof
+- `A2` `3` multi-device sync and web maturity
+- `A3` `4` mobile-native / on-device UX architecture
+- `A4` `4` OS-bundle business-model scenario fit
+- `A5` `4` verified handset-manufacturer or Tier-1 platform partnership stage
+- If `A5 = 0`, partnership is commercially on hold.
+- `B` `20` = M&A possibility
+- `B1` `5` comparable M&A exits in the vertical
+- `B2` `5` acquisition-grade intangible assets
+- `B3` `4` strategic-investor depth
+- `B4` `3` model / serving-stack independence
+- `B5` `3` survival time and org scale
+- If the company is public, force `B1 = 0`, `B2 = 0`, and `B3 = 0`.
+- If `B3 = 0` and `B4 = 0`, acquisition is on hold.
+- `C` `12` = technology and IP
+- `D` `12` = revenue and finance
+- `E` `12` = market and regulation
+- `F` `12` = team strength
+- `G` `12` = moat and lock-in
+- Respect category caps exactly; never let any section exceed its maximum.
 - For AI/1, do not let ad-tech KPI or generic SaaS growth alone inflate the score.
 - Distinguish `claimed`, `demo`, and `production` on-device proof levels.
 - Penalize cloud-first products that market themselves as on-device without production-grade evidence.
 - Score partnership fit and acquisition fit separately; a company can be strong in one and weaker in the other.
+- Use the neutral phrase `휴대폰 제조사` in rationale rather than brand or division names.
+- Do not score companies already in a public commercial partnership with the evaluated handset manufacturer as new candidates for addition.
 - Record these fields in score rationale and evidence mapping when available:
 - `last_funding_date`
 - `last_round`

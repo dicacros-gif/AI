@@ -18,6 +18,7 @@ Hard rules:
 - Only approved candidates may be added or re-ordered.
 - Do not render semiconductor fabless, chip vendors, or hardware-first vendors in AI/1.
 - Replace removed fabless, chip, or hardware-first AI/1 companies with approved software, service, engine, or enabling-technology candidates.
+- If the user explicitly asked to remove companies already in public commercial partnership with the evaluated handset manufacturer, remove them and close every rank gap.
 - Sort the full published company set by approved total score in descending order.
 - Do not append newly added companies to the bottom of the page.
 - Re-rank the full published set from `1` through `N` after every approved score update.
@@ -32,14 +33,20 @@ Hard rules:
 - In section `①`, collapsed startup rows must shrink to a real one-line summary row with reduced height.
 - In section `①`, keep the integrated startup table materially narrower than the old 3000px-wide layout.
 - Prefer tighter column widths and more natural line wrapping so more content is visible vertically without excessive horizontal scrolling.
+- In section `①`, merge `설립 / 본사 / 직원` into one column.
+- In section `①`, merge `창업자 / 핵심 경력` into one column and place each founder's key experience directly under that founder.
+- In section `①`, merge `밸류에이션 / 펀딩·투자자` into one column.
+- In section `①`, merge `매출·트랙션 / 비즈니스 모델 (매출·과금 상세)` into one column.
+- In section `①`, merge `사업 상세 / 인사이트` into one column.
 - Do not leave hidden text inside full-height table rows after collapse.
 - Every section `①` startup row must keep a unique `data-row` key and collapse state must resolve from that key even after new rows are added.
 - In section `②`, each `eval-company` wrapper must contain its own `eval-company-hd` immediately followed by its own `eval-company-bd`.
 - Never begin the next `eval-company` block before closing the current card body.
-- In section `⑥`, render the quantified AI/1 smartphone-OEM scorecard, not the older generic AI rubric.
-- Keep the full AI/1 score weights as `A20 / B20 / C20 / D15 / E10 / F10 / G5`.
-- Keep `A` as `12-month OEM partnership possibility`.
-- Keep `B` as `minority stake / bolt-on / strategic acquisition fit`.
+- In section `⑥`, render the quantified AI/1 handset-manufacturer scorecard, not the older generic AI rubric.
+- Keep the full AI/1 score weights as `A20 / B20 / C12 / D12 / E12 / F12 / G12`.
+- Keep `A` as `휴대폰 제조사와의 파트너십 가능 여부`.
+- Keep `B` as `인수(M&A) 가능 여부`.
+- Show the public-company gate: public companies force `B1·B2·B3 = 0`.
 - In section `⑥`, show operational tracking fields such as last funding date, OEM or Tier-1 evidence, on-device proof level, SDK maturity, privacy architecture, strategic fit surface, and M&A type.
 - Remove stale or misleading AI/1 wording that treats ad-tech KPI or generic SaaS momentum as direct OEM fit.
 - Section `①` insight, article-link, and competitor strength/weakness copy must use concise bullet fragments.
@@ -64,8 +71,8 @@ Hard rules:
 - In `비즈니스 모델 (매출·과금 상세)`, render monthly subscription fees, pricing bands, take rates, or revenue-share ratios only when the latest authoritative source supports them.
 - Show monetization amounts or ratios with a visible `'26.x월` as-of label and nearest-source link where possible.
 - If monetization detail is unavailable, render `undisclosed` or `unverified` instead of guessing.
-- Do not render visible `Samsung` or `삼성` wording.
-- Rewrite those references into neutral wording such as `leading OEM`, `major Android OEM`, or `strategic investor`.
+- Do not render visible `Samsung`, `삼성`, `삼성전자`, `Samsung Electronics`, `MX 사업부`, or `mx 사업부` wording.
+- Rewrite those references into neutral wording such as `휴대폰 제조사`, `leading OEM`, `major Android OEM`, or `strategic investor`.
 - Do not invent missing fields.
 
 Write the agent JSON/MD files noted in `phase_context.md`.

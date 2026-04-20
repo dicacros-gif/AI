@@ -108,6 +108,8 @@
 - Newly discovered startups need real technology differentiation
 - Newly discovered startups must be mobile-first, mobile-native, or deeply mobile-surface integrated
 - Prefer software, service, engine, and enabling-technology companies over hardware-first vendors
+- Exclude semiconductor fabless, chip-vendor, and hardware-first companies from AI/1
+- If the user explicitly requests removal of companies already in public commercial partnership with the evaluated handset manufacturer, remove them from the publish set and close ranking gaps
 - Existing published companies stay in place during recurring runs
 - Recurring automation refreshes existing facts and adds approved new candidates
 - Legacy policy violations become review candidates, not automatic deletions
@@ -129,49 +131,62 @@
 - Do not guess a subscription fee, take rate, or revenue-share percentage
 
 ## Output Guardrails
-- Do not render visible `Samsung` or `삼성` wording in the published page copy
-- If a source references that brand, rewrite the visible prose into a neutral phrase such as `leading OEM`, `major Android OEM`, or `strategic investor`
+- Do not render visible `Samsung`, `삼성`, `삼성전자`, `Samsung Electronics`, `MX 사업부`, or `mx 사업부` wording in the published page copy
+- If a source references that brand or division, rewrite the visible prose into a neutral phrase such as `휴대폰 제조사`, `leading OEM`, `major Android OEM`, or `strategic investor`
 - Apply the same guardrail to list rows, article labels, insight boxes, partnership cards, score tables, and monitoring notes
 
+## Section 1 Layout Rules
+- In `① Startups list`, merge `설립 / 본사 / 직원` into one column
+- Merge `창업자 / 핵심 경력` into one column and place each founder's key experience directly under that founder
+- Merge `밸류에이션 / 펀딩·투자자` into one column
+- Merge `매출·트랙션 / 비즈니스 모델 (매출·과금 상세)` into one column
+- Merge `사업 상세 / 인사이트` into one column
+- Keep section `①` materially narrower than the legacy wide table and prefer vertical readability over extra horizontal columns
+
 ## AI/1 Quantified Scorecard
-- `A` `20` points
-- `12-month OEM partnership possibility`
-- `A1` `6` device integration fit
-- `A2` `4` privacy and regulatory fit
-- `A3` `5` commercialization structure fit
-- `A4` `5` strategic differentiation contribution
-- `B` `20` points
-- `minority stake / bolt-on / strategic acquisition fit`
-- `B1` `6` proprietary technology and IP value
-- `B2` `5` PMI integration ease
-- `B3` `5` strategic gap coverage
-- `B4` `4` deal feasibility
-- `C` `20` points
-- `device-side technical fit`
-- `OS coverage and SDK maturity`
-- `on-device proof level`
-- `latency, battery, and memory evidence`
-- `chipset, NPU, and OEM adaptation`
-- `D` `15` points
-- `product differentiation contribution`
-- `system experience contribution`
-- `personalization data advantage`
-- `cross-device expansion value`
-- `E` `10` points
-- `privacy and regulatory trust`
-- `privacy architecture`
-- `data minimization and governance`
-- `global deployment readiness`
-- `F` `10` points
-- `business stability`
-- `funding recency and runway`
-- `customers, revenue, and repeat contracts`
-- `concentration and stability`
-- `G` `5` points
-- `execution ease`
-- `API and SDK maturity`
-- `deployment speed and support`
-- `reference customers and responsiveness`
+- `A` `20` points = 휴대폰 제조사와의 파트너십 가능 여부
+- `A1` `5` 대중 모바일 앱 상용 출시 및 글로벌 활성 사용자 트래픽
+- `A2` `3` 멀티 디바이스 동기화 및 웹 서비스 성숙도
+- `A3` `4` 모바일 네이티브 / 온디바이스 UX 아키텍처
+- `A4` `4` 제조사 OS·번들 탑재 BM 시나리오 핏
+- `A5` `4` 제조사·글로벌 1티어 플랫폼과의 실 제휴 검증
+- `Gate` `A5 = 0`이면 상용 파트너십 보류
+- `B` `20` points = 인수(M&A) 가능 여부
+- `B1` `5` 동종 버티컬 글로벌 M&A 엑시트 사례 수
+- `B2` `5` 인수 매력 핵심 무형 자산
+- `B3` `4` 전략적 투자자(SI) 뒷배 수준
+- `B4` `3` 딥러닝 스택·서빙 인프라 독립성
+- `B5` `3` 설립 경과 시간·조직 스케일
+- `Public company gate` 상장사는 `B1·B2·B3 = 0`
+- `Gate` `B3 = 0` and `B4 = 0`이면 인수 보류
+- `C` `12` points = 기술·IP
+- `C1` `3` AI 코어 IP 소유권
+- `C2` `3` 상용 출시 구동 안정성
+- `C3` `3` 외부 독립 기관 성능 검증
+- `C4` `3` 보안·규제 인증
+- `Gate` `C4 = 0`이면 상용 불가
+- `D` `12` points = 매출·재무
+- `D1` `3` 연간 실매출 규모
+- `D2` `3` 매출 성장 트랙션
+- `D3` `3` 반복 매출 구조
+- `D4` `3` BM 다각화 및 재무 건전성
+- `E` `12` points = 시장·규제
+- `E1` `3` 타겟 시장 CAGR
+- `E2` `3` 규제 완화 및 정부 보조금 성숙도
+- `E3` `3` 고객 도입 마찰
+- `E4` `3` 외부 호재·PR 모멘텀
+- `F` `12` points = 팀 전투력
+- `F1` `3` C-level 도메인 경력
+- `F2` `3` 빅테크·1티어 유니콘 출신 핵심 인력
+- `F3` `3` 과거 창업·Exit 이력
+- `F4` `3` C-level 조직 밸런스
+- `F bonus` 슈퍼 엔젤·연쇄창업자 가산점 최대 `+2`, 섹션 상한 `12`
+- `G` `12` points = 경쟁우위·Moat
+- `G1` `3` 공개 벤치마크 기반 성능 차별화
+- `G2` `3` 달러 환산 ROI 검증
+- `G3` `3` 고객 Lock-in
+- `G4` `3` 구조적 진입 해자 보유 개수
+- `Gate` `G4 = 0` and `B2 <= 1`이면 인수 대신 상업 파트너십 전환
 
 ## AI/1 Required Tracking Fields
 - `last_funding_date`

@@ -35,6 +35,8 @@ Scoring rules:
 - Do not let generic ad-growth, cookie-era retargeting, or retired ironSource-network narratives inflate AI/2 scores.
 - Treat ATT, SKAN, AdAttributionKit, Privacy Sandbox drift, fraud, brand safety, and first-party measurement readiness as first-class scoring inputs.
 - Score partnership fit and acquisition fit separately; a company can be strong in one and weaker in the other.
+- Use the neutral phrase `휴대폰 제조사` in rationale rather than brand or division names.
+- Do not score companies already in a public commercial partnership with the evaluated handset manufacturer as new candidates for addition.
 - Record these fields in score rationale and evidence mapping when available:
 - `last_funding_date`
 - `last_round`

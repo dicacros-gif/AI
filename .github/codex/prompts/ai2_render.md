@@ -16,6 +16,7 @@ Hard rules:
 - Every visible generation timestamp must include date, weekday, time, and `KST`.
 - Existing companies remain published.
 - Only approved companies may be added or re-ranked.
+- If the user explicitly asked to remove companies already in public commercial partnership with the evaluated handset manufacturer, remove them and close every rank gap.
 - Sort the full published company set by approved total score in descending order.
 - Do not append newly added companies to the bottom of the page.
 - Re-rank the full published set from `1` through `N` after every approved score update.
@@ -30,6 +31,11 @@ Hard rules:
 - In section `①`, collapsed startup rows must shrink to a real one-line summary row with reduced height.
 - In section `①`, keep the integrated startup table materially narrower than the old 3000px-wide layout.
 - Prefer tighter column widths and more natural line wrapping so more content is visible vertically without excessive horizontal scrolling.
+- In section `①`, merge `설립 / 본사 / 직원` into one column.
+- In section `①`, merge `창업자 / 핵심 경력` into one column and place each founder's key experience directly under that founder.
+- In section `①`, merge `밸류에이션 / 펀딩·투자자` into one column.
+- In section `①`, merge `매출·트랙션 / 비즈니스 모델 (매출·과금 상세)` into one column.
+- In section `①`, merge `사업 상세 / 인사이트` into one column.
 - Do not leave hidden text inside full-height table rows after collapse.
 - Every section `①` startup row must keep a unique `data-row` key and collapse state must resolve from that key even after new rows are added.
 - In section `②`, each `eval-company` wrapper must contain its own `eval-company-hd` immediately followed by its own `eval-company-bd`.
@@ -64,8 +70,8 @@ Hard rules:
 - In `비즈니스 모델 (매출·과금 상세)`, render monthly subscription fees, pricing bands, take rates, preload bounty models, or revenue-share ratios only when the latest authoritative source supports them.
 - Show monetization amounts or ratios with a visible `'26.x월` as-of label and nearest-source link where possible.
 - If monetization detail is unavailable, render `undisclosed` or `unverified` instead of guessing.
-- Do not render visible `Samsung` or `삼성` wording.
-- Rewrite those references into neutral wording such as `leading OEM`, `major Android OEM`, or `strategic investor`.
+- Do not render visible `Samsung`, `삼성`, `삼성전자`, `Samsung Electronics`, `MX 사업부`, or `mx 사업부` wording.
+- Rewrite those references into neutral wording such as `휴대폰 제조사`, `leading OEM`, `major Android OEM`, or `strategic investor`.
 - Do not invent unsupported numbers or missing fields.
 
 Write the files named in `phase_context.md`.
