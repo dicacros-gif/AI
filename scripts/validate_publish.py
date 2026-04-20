@@ -186,6 +186,9 @@ def validate_path(path: Path) -> list[str]:
             f"{path}: section-1 insight/article/competitor copy and sections 2-5 must use bullet fragments without sentence-final `~다` or periods -> {bullet_style_issues[0]}"
         )
 
+    if "${meta?" in html or "${badge}" in html or "${rank}" in html:
+        issues.append(f"{path}: collapsed section-1 summary row must show only the company name.")
+
     if criteria_html and ("??" in criteria_html or "�" in criteria_html):
         issues.append(f"{path}: section-6 criteria block contains mojibake or question-mark corruption.")
 

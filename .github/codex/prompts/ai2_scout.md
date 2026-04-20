@@ -23,5 +23,6 @@ Hard rules:
 - Do not edit published HTML.
 - Collect monetization detail when available: monthly subscription fee, SaaS pricing band, take rate, revenue-share ratio, preload bounty model, OEM split structure, and the latest visible as-of month.
 - Prefer official pricing, help-center, developer, partner, investor, or contractual disclosure pages over secondary media for pricing and R/S facts.
+- In AI/2, actively look for mobile `traffic acquisition` / `user acquisition` startups that sell DSP, OEM discovery, retargeting, or app-growth software rather than only monetization or creative tooling.
 
 Write the files listed in `phase_context.md`.
