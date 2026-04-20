@@ -102,7 +102,7 @@
 - Sections `①`, `②`, `③`, `④`, and `⑤` must use concise bullet-style fragments, not sentence prose
 - Do not end bullet copy with `~다` or periods
 - Rewrite awkward endings into natural fragments rather than deleting the last character only
-- Prefer fragment endings such as `공개`, `설명`, `명확`, `강함`, `약함`, `보임`, `빠름`, `높음`, `정리`, `소개`, `보도`, `분류`, `제시`, `전달`, `기록`, `요약`, `인수와 같음`, `나음`
+- Prefer fragment endings such as `공개`, `설명`, `명확`, `강함`, `약함`, `보임`, `빠름`, `높음`, `정리`, `소개`, `보도`, `분류`, `제시`, `전달`, `기록`, `요약`, `인수와 같음`, `나음`, `선언`, `강화`
 - In competitor boxes, remove visible `강점` and `약점` labels because the box color already carries that meaning
 - In competitor boxes, keep body sentences at normal weight and reserve bold emphasis for short high-signal keywords only
 

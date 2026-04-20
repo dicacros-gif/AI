@@ -29,7 +29,7 @@ Hard rules:
 - Keep competitor-box copy slightly smaller than the main body text in section `①`
 - Remove visible `강점` and `약점` labels from competitor boxes
 - Keep competitor strength/weakness body lines at normal weight and bold only short high-signal keywords
-- Normalize awkward fragment endings before publish, for example `단단하 → 단단`, `다시 핵심으로 올라왔 → 다시 핵심`, `재편됐 → 재편`, `버려야 한 → 버려야 함`, `내재화했 → 내재화`, `보도됐 → 보도`, `확장했 → 확장`, and never leave orphaned sentence-final `'다`
+- Normalize awkward fragment endings before publish, for example `단단하 → 단단`, `다시 핵심으로 올라왔 → 다시 핵심`, `재편됐 → 재편`, `버려야 한 → 버려야 함`, `내재화했 → 내재화`, `보도됐 → 보도`, `확장했 → 확장`, `선언했 → 선언`, `강화했 → 강화`, and never leave orphaned sentence-final `'다`
 - In section `①`, use a fixed-layout startup table with narrow widths, smaller cell padding, wrapped headers, and viewport-friendly sizing before allowing horizontal overflow
 - In section `①`, merge `기업 + 설립/본사/직원`
 - In section `①`, merge `창업자/핵심 경력 + 밸류에이션/펀딩·투자자`, and place each founder's key experience under that founder

@@ -92,6 +92,8 @@ FORBIDDEN_BROKEN_FRAGMENTS = (
     "다시 핵심으로 올라왔",
     "재편됐",
     "단단하",
+    "선언했",
+    "강화했",
 )
 
 COMPETITOR_BLOCK_PATTERN = re.compile(r"<td class='cmp td-d'>.*?</td>", re.S)
