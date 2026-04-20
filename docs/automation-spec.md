@@ -148,29 +148,30 @@
 - The prior AI/2 scoring logic was too generic for smartphone OEM decision-making
 - AI/2 now uses a smartphone-OEM adtech scorecard that separates partnership fit from acquisition fit
 - `A` `20`
-- `OEM ad-surface partnership possibility`
-- `A1` `5` OEM channel fit
-- `A2` `4` integration burden
-- `A3` `4` commercial proof
-- `A4` `4` regional and customer coverage
-- `A5` `3` brand and regulatory safety
+- `partnership possibility`
+- `A1` `5` commercial mobile app launch and active-user proof
+- `A2` `3` multi-device sync and web maturity
+- `A3` `4` mobile-native and on-device UX architecture
+- `A4` `4` OEM OS and bundle business-model fit
+- `A5` `4` verified partnership stage with OEM or Tier-1 platform
 - `B` `20`
-- `minority stake / bolt-on / strategic acquisition fit`
-- `B1` `5` strategic synergy
-- `B2` `4` deal feasibility
-- `B3` `4` integration ease
-- `B4` `4` asset scarcity
-- `B5` `3` financial case
-- `C` `15`
-- `on-device, SDK, and deployment integration ease`
-- `D` `15`
-- `data, privacy, and regulatory readiness`
-- `E` `15`
-- `ad performance and commercial proof`
-- `F` `10`
-- `strategic differentiation and defensibility`
-- `G` `5`
-- `financial stability and execution`
+- `M&A possibility`
+- `B0` `gate` public companies publish with official `B = 0`
+- `B1` `5` recent global M&A exits in the same vertical
+- `B2` `5` intangible assets attractive to large acquirers
+- `B3` `4` strategic-investor depth
+- `B4` `3` backbone and deep-learning-stack independence
+- `B5` `3` survival period and organizational scale
+- `C` `12`
+- `technology and IP`
+- `D` `12`
+- `revenue and finance`
+- `E` `12`
+- `market and regulation`
+- `F` `12`
+- `team strength`
+- `G` `12`
+- `competitive moat`
 - AI/2 candidate verification must record:
 - `oem_or_telco_partnership_evidence`
 - `supported_oem_surfaces`
@@ -178,6 +179,7 @@
 - `measurement_stack_support`
 - `privacy_readiness`
 - `public_reach_or_device_footprint`
+- `is_public_company`
 - `last_funding_date`
 - `last_round`
 - `lead_investor`

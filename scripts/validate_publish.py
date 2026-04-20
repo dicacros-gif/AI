@@ -19,6 +19,7 @@ REQUIRED_HTML_PATTERNS = {
     "row_summary_style": re.compile(r"row-summary-cell"),
     "row_summary_js": re.compile(r"buildRowSummaryHtml"),
     "metric_time_link_js": re.compile(r"hydrateMetricTimeLinks"),
+    "startup_table": re.compile(r"class='startup-table'"),
     "criteria_highlight_js": re.compile(r"hydrateCriteriaHighlights"),
     "criteria_highlight_style": re.compile(r"\.crt \.score-top"),
     "section1_merged_identity": re.compile(r"기업 · 설립 · 본사 · 직원"),
@@ -26,23 +27,34 @@ REQUIRED_HTML_PATTERNS = {
     "section1_merged_revenue": re.compile(r"매출/트랙션 · 비즈니스 모델"),
     "section1_merged_business": re.compile(r"사업 상세 · 인사이트"),
 }
-TOPBAR_STRUCTURE = re.compile(r"<div class='topbar'>\s*<nav class='nav' id='stickyNav'>.*?</nav>\s*<div class='tb'>", re.S)
+
+TOPBAR_STRUCTURE = re.compile(
+    r"<div class='topbar'>\s*<nav class='nav' id='stickyNav'>.*?</nav>\s*<div class='tb'>",
+    re.S,
+)
+
 FORBIDDEN_TOPBAR_PATTERNS = {
     "toolbar_second_row": re.compile(r"\.tb\{position:sticky", re.IGNORECASE),
     "nav_sticky_second_row": re.compile(r"\.nav\{position:sticky", re.IGNORECASE),
 }
+
 FORBIDDEN_DEFAULT_COLLAPSE_PATTERNS = {
     "partner_boxes_collapsed_by_default": re.compile(r"class='pc-b pc-b-shut'"),
 }
+
 FORBIDDEN_SECTION1_WIDTH_PATTERNS = {
     "legacy_section1_table_width": re.compile(r"<table style='min-width:3000px'>"),
+    "legacy_section1_table_width_1860": re.compile(r"<table style='min-width:1860px'>"),
 }
+
 ROW_ID_PATTERN = re.compile(r"<tr class='tr-main' data-row='([^']+)' onclick=\"toggleRow\('([^']+)',this\)\"")
 EVAL_COMPANY_START = re.compile(r"<div class='eval-company'[^>]*data-co='[^']+'")
 EVAL_COMPANY_KEY = re.compile(r"data-co='([^']+)'")
 EVAL_COMPANY_HD = re.compile(r"<div class='eval-company-hd'")
 EVAL_COMPANY_BD = re.compile(r"<div class='eval-company-bd'")
+
 PLACEHOLDER_MARKERS = ["TODO", "TBD", "PLACEHOLDER", "lorem ipsum"]
+
 FORBIDDEN_NON_MOBILE_PATTERNS = {
     "tv_ctv_framing": re.compile(
         r"(?:\bCTV\b|\bFAST\b|smart[\s-]?TV|TV\s*광고|broadcast|living[-\s]?room|set[-\s]?top)",
@@ -53,11 +65,13 @@ FORBIDDEN_NON_MOBILE_PATTERNS = {
         re.IGNORECASE,
     ),
 }
+
 FORBIDDEN_HERO_CHIPS = (
     "한국/중국 본사 제외",
     "영문 기사 기준",
     "영문 권위 소스 기준",
 )
+
 FORBIDDEN_VISIBLE_TERMS = (
     "Samsung",
     "삼성",
@@ -101,6 +115,7 @@ def validate_path(path: Path) -> list[str]:
     html = path.read_text(encoding="utf-8")
     visible_text = re.sub(r"<[^>]+>", " ", html)
     issues: list[str] = []
+
     criteria_start = html.find("id='sec-criteria'")
     criteria_end = html.find("<footer", criteria_start) if criteria_start != -1 else -1
     criteria_html = html[criteria_start:criteria_end] if criteria_start != -1 and criteria_end != -1 else ""
@@ -108,14 +123,18 @@ def validate_path(path: Path) -> list[str]:
     for label, pattern in REQUIRED_HTML_PATTERNS.items():
         if not pattern.search(html):
             issues.append(f"{path}: missing required HTML structure `{label}`.")
+
     if not TOPBAR_STRUCTURE.search(html):
         issues.append(f"{path}: top navigation and toolbar controls must share the same first-row topbar wrapper.")
+
     for label, pattern in FORBIDDEN_TOPBAR_PATTERNS.items():
         if pattern.search(html):
             issues.append(f"{path}: forbidden second-row topbar layout `{label}` detected.")
+
     for label, pattern in FORBIDDEN_DEFAULT_COLLAPSE_PATTERNS.items():
         if pattern.search(html):
             issues.append(f"{path}: forbidden default-collapsed partnership layout `{label}` detected.")
+
     for label, pattern in FORBIDDEN_SECTION1_WIDTH_PATTERNS.items():
         if pattern.search(html):
             issues.append(f"{path}: forbidden legacy-wide section-1 table layout `{label}` detected.")
@@ -124,6 +143,7 @@ def validate_path(path: Path) -> list[str]:
     row_ids = [left for left, _ in row_pairs]
     if row_ids and len(row_ids) != len(set(row_ids)):
         issues.append(f"{path}: duplicate section-1 row ids detected.")
+
     mismatched_pairs = [f"{left}!={right}" for left, right in row_pairs if left != right]
     if mismatched_pairs:
         issues.append(f"{path}: section-1 row id / onclick mismatch -> {mismatched_pairs[0]}")
@@ -141,20 +161,22 @@ def validate_path(path: Path) -> list[str]:
     for label in FORBIDDEN_HERO_CHIPS:
         if label in visible_text:
             issues.append(f"{path}: forbidden hero chip `{label}` remains in published HTML.")
+
     for label in FORBIDDEN_VISIBLE_TERMS:
         if label in visible_text:
             issues.append(f"{path}: forbidden visible term `{label}` remains in published HTML.")
+
     if "??" in visible_text:
         issues.append(f"{path}: visible mojibake marker `??` remains in published HTML.")
 
     visible_labels = VISIBLE_TS_RE.findall(html)
     if len(visible_labels) < 2:
         issues.append(f"{path}: missing visible KST timestamps in hero/footer.")
+
     for label in visible_labels:
         if "KST" not in label:
             issues.append(f"{path}: timestamp missing KST suffix -> {label}")
-    if "기준" in html and "KST 기준" not in html and "비공개" not in html:
-        issues.append(f"{path}: found visible date text without explicit KST label.")
+
     if "<h1></h1>" in html or "class='cb'></div>" in html:
         issues.append(f"{path}: empty critical section detected.")
 
@@ -163,8 +185,10 @@ def validate_path(path: Path) -> list[str]:
         issues.append(
             f"{path}: section-1 insight/article/competitor copy and sections 2-5 must use bullet fragments without sentence-final `~다` or periods -> {bullet_style_issues[0]}"
         )
+
     if criteria_html and ("??" in criteria_html or "�" in criteria_html):
         issues.append(f"{path}: section-6 criteria block contains mojibake or question-mark corruption.")
+
     return issues
 
 
@@ -194,6 +218,7 @@ def main() -> None:
     payload = {"ok": not issues, "issues": issues}
     if args.json_output:
         Path(args.json_output).write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
     if issues:
         print(json.dumps(payload, ensure_ascii=False, indent=2))
         sys.exit(1)

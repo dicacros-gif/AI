@@ -96,19 +96,21 @@
 ## AI/2 Score Model
 - AI/2 score uses a quantified A-G smartphone-OEM adtech model
 - `A 20`
-  - OEM ad-surface partnership possibility
+  - partnership possibility
 - `B 20`
-  - minority stake / bolt-on / strategic acquisition fit
-- `C 15`
-  - on-device, SDK, and deployment integration ease
-- `D 15`
-  - data, privacy, and regulatory readiness
-- `E 15`
-  - ad performance and commercial proof
-- `F 10`
-  - strategic differentiation and defensibility
-- `G 5`
-  - financial stability and execution
+  - M&A possibility
+- `B gate`
+  - if the company is publicly listed, published `B` is forced to `0`
+- `C 12`
+  - technology and IP
+- `D 12`
+  - revenue and finance
+- `E 12`
+  - market and regulation
+- `F 12`
+  - team strength
+- `G 12`
+  - competitive moat
 - AI/2 score must record and cite:
   - `oem_or_telco_partnership_evidence`
   - `supported_oem_surfaces`
@@ -116,6 +118,7 @@
   - `measurement_stack_support`
   - `privacy_readiness`
   - `public_reach_or_device_footprint`
+  - `is_public_company`
   - `last_funding_date`
   - `last_round`
   - `lead_investor`
