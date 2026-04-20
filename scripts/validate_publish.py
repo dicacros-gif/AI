@@ -21,9 +21,8 @@ REQUIRED_HTML_PATTERNS = {
     "metric_time_link_js": re.compile(r"hydrateMetricTimeLinks"),
     "criteria_highlight_js": re.compile(r"hydrateCriteriaHighlights"),
     "criteria_highlight_style": re.compile(r"\.crt \.score-top"),
-    "section1_merged_identity": re.compile(r"설립 · 본사 · 직원"),
-    "section1_merged_founders": re.compile(r"창업자 · 핵심 경력"),
-    "section1_merged_funding": re.compile(r"밸류에이션 · 펀딩/투자자"),
+    "section1_merged_identity": re.compile(r"기업 · 설립 · 본사 · 직원"),
+    "section1_merged_founders": re.compile(r"창업자 · 핵심 경력 · 밸류에이션 · 펀딩/투자자"),
     "section1_merged_revenue": re.compile(r"매출/트랙션 · 비즈니스 모델"),
     "section1_merged_business": re.compile(r"사업 상세 · 인사이트"),
 }
@@ -145,6 +144,8 @@ def validate_path(path: Path) -> list[str]:
     for label in FORBIDDEN_VISIBLE_TERMS:
         if label in visible_text:
             issues.append(f"{path}: forbidden visible term `{label}` remains in published HTML.")
+    if "??" in visible_text:
+        issues.append(f"{path}: visible mojibake marker `??` remains in published HTML.")
 
     visible_labels = VISIBLE_TS_RE.findall(html)
     if len(visible_labels) < 2:

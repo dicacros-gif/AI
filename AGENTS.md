@@ -136,9 +136,8 @@
 - Apply the same guardrail to list rows, article labels, insight boxes, partnership cards, score tables, and monitoring notes
 
 ## Section 1 Layout Rules
-- In `① Startups list`, merge `설립 / 본사 / 직원` into one column
-- Merge `창업자 / 핵심 경력` into one column and place each founder's key experience directly under that founder
-- Merge `밸류에이션 / 펀딩·투자자` into one column
+- In `① Startups list`, merge `기업` with `설립 / 본사 / 직원` into one column
+- Merge `창업자 / 핵심 경력` with `밸류에이션 / 펀딩·투자자` into one column and place each founder's key experience directly under that founder
 - Merge `매출·트랙션 / 비즈니스 모델 (매출·과금 상세)` into one column
 - Merge `사업 상세 / 인사이트` into one column
 - Keep section `①` materially narrower than the legacy wide table and prefer vertical readability over extra horizontal columns

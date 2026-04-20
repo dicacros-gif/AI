@@ -31,9 +31,8 @@ Hard rules:
 - In section `①`, collapsed startup rows must shrink to a real one-line summary row with reduced height.
 - In section `①`, keep the integrated startup table materially narrower than the old 3000px-wide layout.
 - Prefer tighter column widths and more natural line wrapping so more content is visible vertically without excessive horizontal scrolling.
-- In section `①`, merge `설립 / 본사 / 직원` into one column.
-- In section `①`, merge `창업자 / 핵심 경력` into one column and place each founder's key experience directly under that founder.
-- In section `①`, merge `밸류에이션 / 펀딩·투자자` into one column.
+- In section `①`, merge `기업` with `설립 / 본사 / 직원` into one column.
+- In section `①`, merge `창업자 / 핵심 경력` with `밸류에이션 / 펀딩·투자자` into one column and place each founder's key experience directly under that founder.
 - In section `①`, merge `매출·트랙션 / 비즈니스 모델 (매출·과금 상세)` into one column.
 - In section `①`, merge `사업 상세 / 인사이트` into one column.
 - Do not leave hidden text inside full-height table rows after collapse.
