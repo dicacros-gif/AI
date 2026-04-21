@@ -1,0 +1,56 @@
+{
+  "id": "ai1_score",
+  "kind": "score",
+  "domain": "ai1",
+  "purpose": "Compute deterministic AI/1 scores from verified evidence-backed inputs only, using the quantified A-G smartphone OEM scorecard with separate partnership and acquisition logic.",
+  "inputs": [
+    ".state/runs/<date>/ai1/ai1_candidate_verify/verified_candidates.jsonl",
+    ".state/runs/<date>/ai1/ai1_staleness_gate/fresh_claims.jsonl"
+  ],
+  "outputs": [
+    "scores.json",
+    "score_rationale.md",
+    "score_evidence_map.json",
+    "ranking_final.json"
+  ],
+  "agents": [
+    "score_evidence_judge",
+    "unsupported_number_guard",
+    "ranking_consistency_guard",
+    "chronology_checker",
+    "citation_integrity_checker",
+    "manufacturer_strategy_agent",
+    "mna_scenario_agent",
+    "revenue_model_verifier",
+    "traction_metric_checker",
+    "market_size_trend_curator"
+  ],
+  "gates": [
+    "deterministic_formula_used",
+    "unsupported_claims_zero_weight",
+    "ranking_tiebreak_applied",
+    "ai1_quantified_scorecard_applied",
+    "a_b_split_applied"
+  ],
+  "timeout_minutes": 15,
+  "retry_policy": {
+    "max_attempts": 1,
+    "backoff_seconds": []
+  },
+  "evidence_contract": {
+    "min_sources_per_core_claim": 1,
+    "min_sources_for_mutable_claim": 2,
+    "max_staleness_days": 14,
+    "freshness_fields": []
+  },
+  "fail_closed_fields": [
+    "score_input",
+    "ranking_claim",
+    "on_device_proof_level",
+    "privacy_architecture"
+  ],
+  "page": "ai1",
+  "prompt_file": ".github/codex/prompts/ai1_score.md",
+  "kst_slot": "01:30 KST",
+  "runs_codex": true
+}

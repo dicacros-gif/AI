@@ -1,0 +1,12 @@
+{
+  "phase": "ai1_claim_ledger_build",
+  "kind": "claim_ledger",
+  "domain": "ai1",
+  "page": "ai1",
+  "generatedAt": "2026-04-21T13:07:13.125515Z",
+  "runDateKst": "2026-04-21",
+  "scheduledStartKst": "00:05 KST",
+  "phaseSlotKst": "01:04 KST",
+  "stateBranch": "ai-watch-state",
+  "conflicts": []
+}

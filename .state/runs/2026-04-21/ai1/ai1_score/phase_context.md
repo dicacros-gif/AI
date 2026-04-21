@@ -1,0 +1,18 @@
+# AI Watch Phase Context
+
+- phase: `ai1_score`
+- kind: `score`
+- domain: `ai1`
+- page: `ai1`
+- run date (KST): `2026-04-21`
+- phase root: `.state/runs/2026-04-21/ai1/ai1_score`
+- publish target: `1/index.html`
+- prompt file: `.github/codex/prompts/ai1_score.md`
+- timeout: `15 minutes`
+- purpose: Compute deterministic AI/1 scores from verified evidence-backed inputs only, using the quantified A-G smartphone OEM scorecard with separate partnership and acquisition logic.
+- source model: raw source -> evidence -> claim -> verify -> score -> render -> publish
+- fail-closed: if HQ, unicorn status, category, valuation, timestamps, or ranking claims are unsupported, stale, or contradictory, do not publish
+- freshness contract: use explicit TTL / recency logic instead of timestamp-only refreshes
+- no-news-day policy: if external updates are absent, refresh trend evidence, stale claims, score rationale, logic issues, or source-quality notes until a validated publish delta exists
+- runner model: GitHub-hosted jobs are ephemeral; consume artifacts or committed state only
+- decisive evidence: official English / filing / registry / developer-doc sources outrank Korean-language media
