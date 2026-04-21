@@ -4,8 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Global AI Startup Watch (Non-Unicorn) — '26.4.15 (수)</title>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800&display=swap" rel="stylesheet">
   <style>
+    @font-face{font-family:'SOK500';src:local('\53 amsungOneKorean500'),local('\53 amsungOneKorean\000020500');font-weight:500;font-style:normal;font-display:swap}
     :root,
     [data-theme="light"][data-profile="default"] {
       --bg-page: #f0f4fb;
@@ -117,12 +118,13 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      font-family: 'Plus Jakarta Sans', 'Noto Sans KR', system-ui, sans-serif;
+      font-family: 'SOK500', 'Noto Sans KR', system-ui, sans-serif;
       background: var(--bg-page);
       color: var(--text-primary);
       line-height: 1.65;
       transition: background 0.4s, color 0.3s;
     }
+    button,input,select,textarea{font:inherit}
 
     .toolbar {
       position: sticky; top: 0; z-index: 100;

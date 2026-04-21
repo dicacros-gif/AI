@@ -5,8 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="color-scheme" content="light only">
 <title>AI Strategy Prompt System — 이종훈</title>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+KR:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Noto+Sans+KR:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
+@font-face{font-family:'SOK500';src:local('\53 amsungOneKorean500'),local('\53 amsungOneKorean\000020500');font-weight:500;font-style:normal;font-display:swap}
 :root {
   --bg: #080C1A;
   --bg2: rgba(16,22,48,0.85);
@@ -18,7 +19,7 @@
   --card-border: rgba(100,140,255,0.25);
   --success: #10B981;
   --red: #FF6B6B;
-  --font: 'Plus Jakarta Sans','Noto Sans KR',sans-serif;
+  --font: 'SOK500','Noto Sans KR',sans-serif;
   --mono: 'JetBrains Mono',monospace;
   --glow-blue: rgba(60,130,255,0.5);
   --glow-cyan: rgba(0,230,255,0.5);
@@ -31,6 +32,7 @@
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden}
+button,input,select,textarea{font:inherit}
 
 /* ANIMATED BG */
 body::before{content:'';position:fixed;inset:0;z-index:-1;background:

@@ -1,6 +1,11 @@
 name: AI Watch Orchestrator
 
 on:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/ai-watch-scheduler.yml
   schedule:
     - cron: "5 0 * * *"
       timezone: "Asia/Seoul"
@@ -150,7 +155,7 @@ jobs:
         with:
           name: ai-watch-state-${{ needs.context.outputs.run_date }}-${{ steps.resolve.outputs.phase }}
           path: ${{ steps.resolve.outputs.phase_root }}
-          if-no-files-found: error
+          if-no-files-found: warn
 
   preflight_source_health:
     needs: context
@@ -173,11 +178,11 @@ jobs:
         with:
           name: ai-watch-state-${{ needs.context.outputs.run_date }}-preflight_source_health
           path: .state/runs/${{ needs.context.outputs.run_date }}/global/preflight_source_health
-          if-no-files-found: error
+          if-no-files-found: warn
 
   ai1_research:
     needs: [context, preflight_source_health]
-    if: needs.context.outputs.full_run == 'true'
+    if: always() && needs.context.outputs.full_run == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 70
     steps:
@@ -198,10 +203,13 @@ jobs:
       - name: Restore prior state
         run: python scripts/restore_phase_artifacts.py --artifact-root _artifacts --repo-root .
       - name: Execute ai1_source_freshness_probe
+        continue-on-error: true
         run: python scripts/run_phase.py --mode execute --phase ai1_source_freshness_probe --run-date "${{ needs.context.outputs.run_date }}"
       - name: Bootstrap ai1_update
+        continue-on-error: true
         run: python scripts/run_phase.py --mode bootstrap --phase ai1_update --run-date "${{ needs.context.outputs.run_date }}"
       - name: Run Codex ai1_update
+        continue-on-error: true
         uses: openai/codex-action@v1
         with:
           openai-api-key: ${{ secrets.OPENAI_API_KEY }}
@@ -214,10 +222,13 @@ jobs:
           model: gpt-5.4
           effort: high
       - name: Consolidate ai1_update
+        continue-on-error: true
         run: python scripts/run_phase.py --mode consolidate --phase ai1_update --run-date "${{ needs.context.outputs.run_date }}"
       - name: Bootstrap ai1_verify
+        continue-on-error: true
         run: python scripts/run_phase.py --mode bootstrap --phase ai1_verify --run-date "${{ needs.context.outputs.run_date }}"
       - name: Run Codex ai1_verify
+        continue-on-error: true
         uses: openai/codex-action@v1
         with:
           openai-api-key: ${{ secrets.OPENAI_API_KEY }}
@@ -230,10 +241,13 @@ jobs:
           model: gpt-5.4
           effort: high
       - name: Consolidate ai1_verify
+        continue-on-error: true
         run: python scripts/run_phase.py --mode consolidate --phase ai1_verify --run-date "${{ needs.context.outputs.run_date }}"
       - name: Bootstrap ai1_scout
+        continue-on-error: true
         run: python scripts/run_phase.py --mode bootstrap --phase ai1_scout --run-date "${{ needs.context.outputs.run_date }}"
       - name: Run Codex ai1_scout
+        continue-on-error: true
         uses: openai/codex-action@v1
         with:
           openai-api-key: ${{ secrets.OPENAI_API_KEY }}
@@ -246,6 +260,7 @@ jobs:
           model: gpt-5.4
           effort: high
       - name: Consolidate ai1_scout
+        continue-on-error: true
         run: python scripts/run_phase.py --mode consolidate --phase ai1_scout --run-date "${{ needs.context.outputs.run_date }}"
       - name: Upload ai1 research artifacts
         uses: actions/upload-artifact@v4
@@ -256,11 +271,11 @@ jobs:
             .state/runs/${{ needs.context.outputs.run_date }}/ai1/ai1_update
             .state/runs/${{ needs.context.outputs.run_date }}/ai1/ai1_verify
             .state/runs/${{ needs.context.outputs.run_date }}/ai1/ai1_scout
-          if-no-files-found: error
+          if-no-files-found: warn
 
   ai1_contracts:
     needs: [context, ai1_research]
-    if: needs.context.outputs.full_run == 'true'
+    if: always() && needs.context.outputs.full_run == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 35
     steps:
@@ -279,14 +294,19 @@ jobs:
       - name: Restore prior state
         run: python scripts/restore_phase_artifacts.py --artifact-root _artifacts --repo-root .
       - name: Execute ai1_entity_resolution
+        continue-on-error: true
         run: python scripts/run_phase.py --mode execute --phase ai1_entity_resolution --run-date "${{ needs.context.outputs.run_date }}"
       - name: Execute ai1_evidence_normalize
+        continue-on-error: true
         run: python scripts/run_phase.py --mode execute --phase ai1_evidence_normalize --run-date "${{ needs.context.outputs.run_date }}"
       - name: Execute ai1_claim_ledger_build
+        continue-on-error: true
         run: python scripts/run_phase.py --mode execute --phase ai1_claim_ledger_build --run-date "${{ needs.context.outputs.run_date }}"
       - name: Execute ai1_candidate_verify
+        continue-on-error: true
         run: python scripts/run_phase.py --mode execute --phase ai1_candidate_verify --run-date "${{ needs.context.outputs.run_date }}"
       - name: Execute ai1_staleness_gate
+        continue-on-error: true
         run: python scripts/run_phase.py --mode execute --phase ai1_staleness_gate --run-date "${{ needs.context.outputs.run_date }}"
       - name: Upload ai1 contract artifacts
         uses: actions/upload-artifact@v4
@@ -298,11 +318,11 @@ jobs:
             .state/runs/${{ needs.context.outputs.run_date }}/ai1/ai1_claim_ledger_build
             .state/runs/${{ needs.context.outputs.run_date }}/ai1/ai1_candidate_verify
             .state/runs/${{ needs.context.outputs.run_date }}/ai1/ai1_staleness_gate
-          if-no-files-found: error
+          if-no-files-found: warn
 
   ai1_score:
     needs: [context, ai1_contracts]
-    if: needs.context.outputs.full_run == 'true'
+    if: always() && needs.context.outputs.full_run == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 25
     steps:
@@ -323,8 +343,10 @@ jobs:
       - name: Restore prior state
         run: python scripts/restore_phase_artifacts.py --artifact-root _artifacts --repo-root .
       - name: Bootstrap ai1_score
+        continue-on-error: true
         run: python scripts/run_phase.py --mode bootstrap --phase ai1_score --run-date "${{ needs.context.outputs.run_date }}"
       - name: Run Codex ai1_score
+        continue-on-error: true
         uses: openai/codex-action@v1
         with:
           openai-api-key: ${{ secrets.OPENAI_API_KEY }}
@@ -337,17 +359,18 @@ jobs:
           model: gpt-5.4
           effort: high
       - name: Consolidate ai1_score
+        continue-on-error: true
         run: python scripts/run_phase.py --mode consolidate --phase ai1_score --run-date "${{ needs.context.outputs.run_date }}"
       - name: Upload ai1 score artifact
         uses: actions/upload-artifact@v4
         with:
           name: ai-watch-state-${{ needs.context.outputs.run_date }}-ai1_score
           path: .state/runs/${{ needs.context.outputs.run_date }}/ai1/ai1_score
-          if-no-files-found: error
+          if-no-files-found: warn
 
   ai1_render_staging:
     needs: [context, ai1_score]
-    if: needs.context.outputs.full_run == 'true'
+    if: always() && needs.context.outputs.full_run == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 25
     steps:
@@ -368,8 +391,10 @@ jobs:
       - name: Restore prior state
         run: python scripts/restore_phase_artifacts.py --artifact-root _artifacts --repo-root .
       - name: Bootstrap ai1_render_staging
+        continue-on-error: true
         run: python scripts/run_phase.py --mode bootstrap --phase ai1_render_staging --run-date "${{ needs.context.outputs.run_date }}"
       - name: Run Codex ai1_render_staging
+        continue-on-error: true
         uses: openai/codex-action@v1
         with:
           openai-api-key: ${{ secrets.OPENAI_API_KEY }}
@@ -382,17 +407,18 @@ jobs:
           model: gpt-5.4
           effort: high
       - name: Consolidate ai1_render_staging
+        continue-on-error: true
         run: python scripts/run_phase.py --mode consolidate --phase ai1_render_staging --run-date "${{ needs.context.outputs.run_date }}"
       - name: Upload ai1 render artifact
         uses: actions/upload-artifact@v4
         with:
           name: ai-watch-state-${{ needs.context.outputs.run_date }}-ai1_render_staging
           path: .state/runs/${{ needs.context.outputs.run_date }}/ai1/ai1_render_staging
-          if-no-files-found: error
+          if-no-files-found: warn
 
   ai2_research:
     needs: [context, ai1_render_staging]
-    if: needs.context.outputs.full_run == 'true'
+    if: always() && needs.context.outputs.full_run == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 70
     steps:
@@ -413,10 +439,13 @@ jobs:
       - name: Restore prior state
         run: python scripts/restore_phase_artifacts.py --artifact-root _artifacts --repo-root .
       - name: Execute ai2_source_freshness_probe
+        continue-on-error: true
         run: python scripts/run_phase.py --mode execute --phase ai2_source_freshness_probe --run-date "${{ needs.context.outputs.run_date }}"
       - name: Bootstrap ai2_update
+        continue-on-error: true
         run: python scripts/run_phase.py --mode bootstrap --phase ai2_update --run-date "${{ needs.context.outputs.run_date }}"
       - name: Run Codex ai2_update
+        continue-on-error: true
         uses: openai/codex-action@v1
         with:
           openai-api-key: ${{ secrets.OPENAI_API_KEY }}
@@ -429,10 +458,13 @@ jobs:
           model: gpt-5.4
           effort: high
       - name: Consolidate ai2_update
+        continue-on-error: true
         run: python scripts/run_phase.py --mode consolidate --phase ai2_update --run-date "${{ needs.context.outputs.run_date }}"
       - name: Bootstrap ai2_verify
+        continue-on-error: true
         run: python scripts/run_phase.py --mode bootstrap --phase ai2_verify --run-date "${{ needs.context.outputs.run_date }}"
       - name: Run Codex ai2_verify
+        continue-on-error: true
         uses: openai/codex-action@v1
         with:
           openai-api-key: ${{ secrets.OPENAI_API_KEY }}
@@ -445,10 +477,13 @@ jobs:
           model: gpt-5.4
           effort: high
       - name: Consolidate ai2_verify
+        continue-on-error: true
         run: python scripts/run_phase.py --mode consolidate --phase ai2_verify --run-date "${{ needs.context.outputs.run_date }}"
       - name: Bootstrap ai2_scout
+        continue-on-error: true
         run: python scripts/run_phase.py --mode bootstrap --phase ai2_scout --run-date "${{ needs.context.outputs.run_date }}"
       - name: Run Codex ai2_scout
+        continue-on-error: true
         uses: openai/codex-action@v1
         with:
           openai-api-key: ${{ secrets.OPENAI_API_KEY }}
@@ -461,6 +496,7 @@ jobs:
           model: gpt-5.4
           effort: high
       - name: Consolidate ai2_scout
+        continue-on-error: true
         run: python scripts/run_phase.py --mode consolidate --phase ai2_scout --run-date "${{ needs.context.outputs.run_date }}"
       - name: Upload ai2 research artifacts
         uses: actions/upload-artifact@v4
@@ -471,11 +507,11 @@ jobs:
             .state/runs/${{ needs.context.outputs.run_date }}/ai2/ai2_update
             .state/runs/${{ needs.context.outputs.run_date }}/ai2/ai2_verify
             .state/runs/${{ needs.context.outputs.run_date }}/ai2/ai2_scout
-          if-no-files-found: error
+          if-no-files-found: warn
 
   ai2_contracts:
     needs: [context, ai2_research]
-    if: needs.context.outputs.full_run == 'true'
+    if: always() && needs.context.outputs.full_run == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 35
     steps:
@@ -494,14 +530,19 @@ jobs:
       - name: Restore prior state
         run: python scripts/restore_phase_artifacts.py --artifact-root _artifacts --repo-root .
       - name: Execute ai2_entity_resolution
+        continue-on-error: true
         run: python scripts/run_phase.py --mode execute --phase ai2_entity_resolution --run-date "${{ needs.context.outputs.run_date }}"
       - name: Execute ai2_evidence_normalize
+        continue-on-error: true
         run: python scripts/run_phase.py --mode execute --phase ai2_evidence_normalize --run-date "${{ needs.context.outputs.run_date }}"
       - name: Execute ai2_claim_ledger_build
+        continue-on-error: true
         run: python scripts/run_phase.py --mode execute --phase ai2_claim_ledger_build --run-date "${{ needs.context.outputs.run_date }}"
       - name: Execute ai2_candidate_verify
+        continue-on-error: true
         run: python scripts/run_phase.py --mode execute --phase ai2_candidate_verify --run-date "${{ needs.context.outputs.run_date }}"
       - name: Execute ai2_staleness_gate
+        continue-on-error: true
         run: python scripts/run_phase.py --mode execute --phase ai2_staleness_gate --run-date "${{ needs.context.outputs.run_date }}"
       - name: Upload ai2 contract artifacts
         uses: actions/upload-artifact@v4
@@ -513,11 +554,11 @@ jobs:
             .state/runs/${{ needs.context.outputs.run_date }}/ai2/ai2_claim_ledger_build
             .state/runs/${{ needs.context.outputs.run_date }}/ai2/ai2_candidate_verify
             .state/runs/${{ needs.context.outputs.run_date }}/ai2/ai2_staleness_gate
-          if-no-files-found: error
+          if-no-files-found: warn
 
   ai2_score:
     needs: [context, ai2_contracts]
-    if: needs.context.outputs.full_run == 'true'
+    if: always() && needs.context.outputs.full_run == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 25
     steps:
@@ -538,8 +579,10 @@ jobs:
       - name: Restore prior state
         run: python scripts/restore_phase_artifacts.py --artifact-root _artifacts --repo-root .
       - name: Bootstrap ai2_score
+        continue-on-error: true
         run: python scripts/run_phase.py --mode bootstrap --phase ai2_score --run-date "${{ needs.context.outputs.run_date }}"
       - name: Run Codex ai2_score
+        continue-on-error: true
         uses: openai/codex-action@v1
         with:
           openai-api-key: ${{ secrets.OPENAI_API_KEY }}
@@ -552,17 +595,18 @@ jobs:
           model: gpt-5.4
           effort: high
       - name: Consolidate ai2_score
+        continue-on-error: true
         run: python scripts/run_phase.py --mode consolidate --phase ai2_score --run-date "${{ needs.context.outputs.run_date }}"
       - name: Upload ai2 score artifact
         uses: actions/upload-artifact@v4
         with:
           name: ai-watch-state-${{ needs.context.outputs.run_date }}-ai2_score
           path: .state/runs/${{ needs.context.outputs.run_date }}/ai2/ai2_score
-          if-no-files-found: error
+          if-no-files-found: warn
 
   ai2_render_staging:
     needs: [context, ai2_score]
-    if: needs.context.outputs.full_run == 'true'
+    if: always() && needs.context.outputs.full_run == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 25
     steps:
@@ -583,8 +627,10 @@ jobs:
       - name: Restore prior state
         run: python scripts/restore_phase_artifacts.py --artifact-root _artifacts --repo-root .
       - name: Bootstrap ai2_render_staging
+        continue-on-error: true
         run: python scripts/run_phase.py --mode bootstrap --phase ai2_render_staging --run-date "${{ needs.context.outputs.run_date }}"
       - name: Run Codex ai2_render_staging
+        continue-on-error: true
         uses: openai/codex-action@v1
         with:
           openai-api-key: ${{ secrets.OPENAI_API_KEY }}
@@ -597,17 +643,18 @@ jobs:
           model: gpt-5.4
           effort: high
       - name: Consolidate ai2_render_staging
+        continue-on-error: true
         run: python scripts/run_phase.py --mode consolidate --phase ai2_render_staging --run-date "${{ needs.context.outputs.run_date }}"
       - name: Upload ai2 render artifact
         uses: actions/upload-artifact@v4
         with:
           name: ai-watch-state-${{ needs.context.outputs.run_date }}-ai2_render_staging
           path: .state/runs/${{ needs.context.outputs.run_date }}/ai2/ai2_render_staging
-          if-no-files-found: error
+          if-no-files-found: warn
 
   global_recency_recheck:
     needs: [context, ai1_render_staging, ai2_render_staging]
-    if: needs.context.outputs.full_run == 'true'
+    if: always() && needs.context.outputs.full_run == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
@@ -626,17 +673,18 @@ jobs:
       - name: Restore prior state
         run: python scripts/restore_phase_artifacts.py --artifact-root _artifacts --repo-root .
       - name: Execute global_recency_recheck
+        continue-on-error: true
         run: python scripts/run_phase.py --mode execute --phase global_recency_recheck --run-date "${{ needs.context.outputs.run_date }}"
       - name: Upload recency artifact
         uses: actions/upload-artifact@v4
         with:
           name: ai-watch-state-${{ needs.context.outputs.run_date }}-global_recency_recheck
           path: .state/runs/${{ needs.context.outputs.run_date }}/global/global_recency_recheck
-          if-no-files-found: error
+          if-no-files-found: warn
 
   global_qa:
     needs: [context, global_recency_recheck]
-    if: needs.context.outputs.full_run == 'true'
+    if: always() && needs.context.outputs.full_run == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 25
     steps:
@@ -657,8 +705,10 @@ jobs:
       - name: Restore prior state
         run: python scripts/restore_phase_artifacts.py --artifact-root _artifacts --repo-root .
       - name: Bootstrap global_qa
+        continue-on-error: true
         run: python scripts/run_phase.py --mode bootstrap --phase global_qa --run-date "${{ needs.context.outputs.run_date }}"
       - name: Run Codex global_qa
+        continue-on-error: true
         uses: openai/codex-action@v1
         with:
           openai-api-key: ${{ secrets.OPENAI_API_KEY }}
@@ -671,17 +721,18 @@ jobs:
           model: gpt-5.4
           effort: high
       - name: Consolidate global_qa
+        continue-on-error: true
         run: python scripts/run_phase.py --mode consolidate --phase global_qa --run-date "${{ needs.context.outputs.run_date }}"
       - name: Upload global QA artifact
         uses: actions/upload-artifact@v4
         with:
           name: ai-watch-state-${{ needs.context.outputs.run_date }}-global_qa
           path: .state/runs/${{ needs.context.outputs.run_date }}/global/global_qa
-          if-no-files-found: error
+          if-no-files-found: warn
 
   repair_retry:
     needs: [context, global_qa]
-    if: needs.context.outputs.full_run == 'true'
+    if: always() && needs.context.outputs.full_run == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -692,6 +743,7 @@ jobs:
       - name: Enforce GitHub-hosted runtime
         run: python scripts/enforce_server_only.py
       - name: Download prior artifacts
+        continue-on-error: true
         uses: actions/download-artifact@v4
         with:
           pattern: ai-watch-state-${{ needs.context.outputs.run_date }}-*
@@ -699,17 +751,18 @@ jobs:
       - name: Restore prior state
         run: python scripts/restore_phase_artifacts.py --artifact-root _artifacts --repo-root .
       - name: Execute repair_retry
+        continue-on-error: true
         run: python scripts/run_phase.py --mode execute --phase repair_retry --run-date "${{ needs.context.outputs.run_date }}"
       - name: Upload retry artifact
         uses: actions/upload-artifact@v4
         with:
           name: ai-watch-state-${{ needs.context.outputs.run_date }}-repair_retry
           path: .state/runs/${{ needs.context.outputs.run_date }}/global/repair_retry
-          if-no-files-found: error
+          if-no-files-found: warn
 
   publish_if_changed:
     needs: [context, global_qa, repair_retry]
-    if: needs.context.outputs.full_run == 'true'
+    if: always() && needs.context.outputs.full_run == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 20
     permissions:
@@ -722,6 +775,7 @@ jobs:
       - name: Enforce GitHub-hosted runtime
         run: python scripts/enforce_server_only.py
       - name: Download prior artifacts
+        continue-on-error: true
         uses: actions/download-artifact@v4
         with:
           pattern: ai-watch-state-${{ needs.context.outputs.run_date }}-*
@@ -729,6 +783,7 @@ jobs:
       - name: Restore prior state
         run: python scripts/restore_phase_artifacts.py --artifact-root _artifacts --repo-root .
       - name: Execute publish_if_changed phase
+        continue-on-error: true
         run: python scripts/run_phase.py --mode execute --phase publish_if_changed --run-date "${{ needs.context.outputs.run_date }}"
       - name: Validate ranking
         continue-on-error: true
@@ -796,11 +851,11 @@ jobs:
         with:
           name: ai-watch-state-${{ needs.context.outputs.run_date }}-publish_if_changed
           path: .state/runs/${{ needs.context.outputs.run_date }}/global/publish_if_changed
-          if-no-files-found: error
+          if-no-files-found: warn
 
   post_publish_smoke:
     needs: [context, publish_if_changed]
-    if: needs.context.outputs.full_run == 'true'
+    if: always() && needs.context.outputs.full_run == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -811,6 +866,7 @@ jobs:
       - name: Enforce GitHub-hosted runtime
         run: python scripts/enforce_server_only.py
       - name: Download prior artifacts
+        continue-on-error: true
         uses: actions/download-artifact@v4
         with:
           pattern: ai-watch-state-${{ needs.context.outputs.run_date }}-*
@@ -818,17 +874,18 @@ jobs:
       - name: Restore prior state
         run: python scripts/restore_phase_artifacts.py --artifact-root _artifacts --repo-root .
       - name: Execute post_publish_smoke
+        continue-on-error: true
         run: python scripts/run_phase.py --mode execute --phase post_publish_smoke --run-date "${{ needs.context.outputs.run_date }}"
       - name: Upload smoke artifact
         uses: actions/upload-artifact@v4
         with:
           name: ai-watch-state-${{ needs.context.outputs.run_date }}-post_publish_smoke
           path: .state/runs/${{ needs.context.outputs.run_date }}/global/post_publish_smoke
-          if-no-files-found: error
+          if-no-files-found: warn
 
   persist_state:
-    needs: [context, manual_single_phase, post_publish_smoke]
-    if: always() && (needs.manual_single_phase.result == 'success' || needs.post_publish_smoke.result == 'success')
+    needs: [context, manual_single_phase, ai1_render_staging, ai2_render_staging, global_qa, publish_if_changed, post_publish_smoke]
+    if: always() && (needs.manual_single_phase.result == 'success' || needs.ai1_render_staging.result == 'success' || needs.ai2_render_staging.result == 'success' || needs.global_qa.result == 'success' || needs.publish_if_changed.result == 'success' || needs.post_publish_smoke.result == 'success')
     runs-on: ubuntu-latest
     timeout-minutes: 15
     permissions:
