@@ -1,0 +1,17 @@
+{
+  "phase": "ai2_update",
+  "kind": "update",
+  "domain": "ai2",
+  "page": "ai2",
+  "generatedAt": "2026-04-21T18:19:02.116695Z",
+  "runDateKst": "2026-04-22",
+  "scheduledStartKst": "00:05 KST",
+  "phaseSlotKst": "01:57 KST",
+  "stateBranch": "ai-watch-state",
+  "updates": [],
+  "notes": [
+    "Scaffold run; merge Codex findings during repository execution."
+  ],
+  "fallbackModeIfNoExternalNews": "review_existing_content_and_refresh_trends",
+  "mustProduceReviewDelta": true
+}
