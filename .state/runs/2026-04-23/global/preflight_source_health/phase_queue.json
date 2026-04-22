@@ -1,0 +1,15 @@
+{
+  "phase": "preflight_source_health",
+  "kind": "preflight",
+  "domain": "global",
+  "page": "global",
+  "generatedAt": "2026-04-22T18:47:50.363373Z",
+  "runDateKst": "2026-04-23",
+  "scheduledStartKst": "00:05 KST",
+  "phaseSlotKst": "00:05 KST",
+  "stateBranch": "ai-watch-state",
+  "orchestrator": "needs-based",
+  "notes": [
+    "Single scheduled workflow; no time-fragmented cron fanout."
+  ]
+}

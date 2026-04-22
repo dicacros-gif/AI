@@ -1,0 +1,47 @@
+{
+  "id": "global_recency_recheck",
+  "kind": "recency",
+  "domain": "global",
+  "purpose": "Re-check the most change-prone official sources just before publish to avoid stale timestamps and missed breaking updates.",
+  "inputs": [
+    ".state/runs/<date>/ai1",
+    ".state/runs/<date>/ai2"
+  ],
+  "outputs": [
+    "recency_recheck.json",
+    "recency_recheck.md"
+  ],
+  "agents": [
+    "source_freshness_monitor",
+    "deprecation_watch_agent",
+    "no_freshness_without_fetch_guard"
+  ],
+  "gates": [
+    "recency_recheck_completed",
+    "core_sources_rechecked"
+  ],
+  "timeout_minutes": 12,
+  "retry_policy": {
+    "max_attempts": 2,
+    "backoff_seconds": [
+      60,
+      180
+    ]
+  },
+  "evidence_contract": {
+    "min_sources_per_core_claim": 1,
+    "min_sources_for_mutable_claim": 2,
+    "max_staleness_days": 3,
+    "freshness_fields": [
+      "retrieved_at_utc",
+      "page_hash"
+    ]
+  },
+  "fail_closed_fields": [
+    "recency_recheck"
+  ],
+  "page": "global",
+  "prompt_file": "",
+  "kst_slot": "03:32 KST",
+  "runs_codex": false
+}

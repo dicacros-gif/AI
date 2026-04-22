@@ -1,0 +1,17 @@
+{
+  "phase": "preflight_source_health",
+  "kind": "preflight",
+  "domain": "global",
+  "page": "global",
+  "generatedAt": "2026-04-22T18:47:50.363124Z",
+  "runDateKst": "2026-04-23",
+  "scheduledStartKst": "00:05 KST",
+  "phaseSlotKst": "00:05 KST",
+  "stateBranch": "ai-watch-state",
+  "status": "ok",
+  "checks": {
+    "githubHostedRuntime": true,
+    "defaultBranchSchedule": true,
+    "serverOnlyGuard": true
+  }
+}

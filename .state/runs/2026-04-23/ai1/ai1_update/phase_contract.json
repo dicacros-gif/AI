@@ -1,0 +1,56 @@
+{
+  "id": "ai1_update",
+  "kind": "update",
+  "domain": "ai1",
+  "purpose": "Collect the latest official and authoritative English-language updates for already-published AI/1 companies, and if no material news exists, generate review-driven refresh inputs from stale claims, monetization deltas, and new macro trend evidence.",
+  "inputs": [
+    "1/index.html",
+    "artifacts/ai1/claims.jsonl",
+    "artifacts/ai1/evidence.jsonl"
+  ],
+  "outputs": [
+    "updates.json",
+    "updates.md",
+    "contradictions.json",
+    "source_quality_report.json"
+  ],
+  "agents": [
+    "official_primary_source_researcher",
+    "official_blog_and_release_reader",
+    "english_authoritative_media_researcher",
+    "app_store_signal_checker",
+    "product_surface_checker",
+    "partnership_deal_checker",
+    "chronology_checker",
+    "citation_integrity_checker",
+    "english_source_priority_guard",
+    "korean_source_avoidance_guard"
+  ],
+  "gates": [
+    "english_sources_only_for_decisive_facts",
+    "mutable_claims_have_timestamps"
+  ],
+  "timeout_minutes": 20,
+  "retry_policy": {
+    "max_attempts": 2,
+    "backoff_seconds": [
+      60,
+      180
+    ]
+  },
+  "evidence_contract": {
+    "min_sources_per_core_claim": 1,
+    "min_sources_for_mutable_claim": 2,
+    "max_staleness_days": 7,
+    "freshness_fields": []
+  },
+  "fail_closed_fields": [
+    "partnership_claim",
+    "traction_metric",
+    "official_update"
+  ],
+  "page": "ai1",
+  "prompt_file": ".github/codex/prompts/ai1_update.md",
+  "kst_slot": "00:15 KST",
+  "runs_codex": true
+}
