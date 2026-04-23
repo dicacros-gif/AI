@@ -1,0 +1,14 @@
+{
+  "phase": "preflight_source_health",
+  "kind": "preflight",
+  "domain": "global",
+  "page": "global",
+  "generatedAt": "2026-04-23T18:45:52.912695Z",
+  "runDateKst": "2026-04-24",
+  "scheduledStartKst": "00:05 KST",
+  "phaseSlotKst": "00:05 KST",
+  "stateBranch": "ai-watch-state",
+  "status": "ok",
+  "tier0Reachability": [],
+  "tier1Reachability": []
+}
