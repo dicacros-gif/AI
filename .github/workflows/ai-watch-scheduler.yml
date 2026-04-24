@@ -6,6 +6,9 @@ on:
       - main
     paths:
       - .github/workflows/ai-watch-scheduler.yml
+      - .github/codex/prompts/**
+      - AGENTS.md
+      - scripts/**
   schedule:
     # 00:05 KST primary run. GitHub schedule cron is kept in UTC for predictable triggering.
     - cron: "5 15 * * *"
@@ -863,6 +866,7 @@ jobs:
           git commit -m "ai-watch: publish ${{ needs.context.outputs.run_date }}"
           git push
       - name: Upload publish artifact
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: ai-watch-state-${{ needs.context.outputs.run_date }}-publish_if_changed
