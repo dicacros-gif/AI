@@ -9,12 +9,15 @@ from typing import Any
 
 from ai_watch.html_tools import VISIBLE_TS_RE, ensure_canonical_page_mapping, extract_order_map
 from ai_watch.manifest import (
+    AUTHORITATIVE_NEWS_TARGETS,
     CANONICAL_PAGE_MAP,
+    DAILY_INTELLIGENCE_TRACKS,
     DOMAIN_SCORECARDS,
     NON_NEGOTIABLE_RULES,
     ORCHESTRATOR_SCHEDULE,
     PHASE_REQUIRED_OUTPUTS,
     SOURCE_PRIORITY,
+    STALE_QUANT_FIELDS,
     format_visible_kst,
     kst_date_string,
     phase_contract,
@@ -120,6 +123,27 @@ def default_json_payload(file_name: str, phase_id: str, page: str, run_date: str
             "fallbackModeIfNoExternalNews": "review_existing_content_and_refresh_trends",
             "mustProduceReviewDelta": True,
         }
+    if file_name == "daily_intel_findings.json":
+        tracks = DAILY_INTELLIGENCE_TRACKS.get(page or "", [])
+        return base | {
+            "status": "placeholder_requires_agent_update",
+            "requiredTracks": tracks,
+            "authoritativeNewsTargets": list(AUTHORITATIVE_NEWS_TARGETS),
+            "staleQuantFields": list(STALE_QUANT_FIELDS),
+            "newArticles": [],
+            "outdatedDataFixes": [],
+            "newQuantitativeData": [],
+            "monetizationUpdates": [],
+            "marketTrendUpdates": [],
+            "startupDiscoveryLeads": [],
+            "scoreRecalculationTriggers": [],
+            "reviewActions": [],
+            "minimumDailyContract": (
+                "Populate at least one publishable action from newArticles, outdatedDataFixes, "
+                "newQuantitativeData, monetizationUpdates, marketTrendUpdates, startupDiscoveryLeads, "
+                "scoreRecalculationTriggers, or reviewActions."
+            ),
+        }
     if file_name == "contradictions.json":
         return base | {"contradictions": []}
     if file_name == "source_quality_report.json":
@@ -140,6 +164,29 @@ def default_json_payload(file_name: str, phase_id: str, page: str, run_date: str
         return base | {"decisiveLanguagePolicy": "english-authoritative-first", "koreanDecisiveFacts": []}
     if file_name == "scout_candidates.json":
         return base | {"candidates": [], "candidatePool": "global-excluding-south-korea-and-china-hq"}
+    if file_name == "candidate_discovery_plan.json":
+        return base | {
+            "status": "placeholder_requires_agent_update",
+            "searchedThemes": [],
+            "searchedRegions": [
+                "North America",
+                "Europe",
+                "Israel",
+                "Japan",
+                "Singapore",
+                "India",
+                "Latin America",
+                "Australia",
+            ],
+            "queryThemes": DAILY_INTELLIGENCE_TRACKS.get(page or "", []),
+            "candidateUniverse": [],
+            "reservedBecauseUnverified": [],
+            "rejectedBecauseIneligible": [],
+            "minimumDailyContract": (
+                "Record concrete search themes and at least one candidate lead, reserve, or rejection. "
+                "Do not leave discovery empty just because no candidate was promoted."
+            ),
+        }
     if file_name == "scout_rejections.json":
         return base | {"rejections": [], "defaultBias": "prefer software/service/engine/enabling-tech over hardware-first vendors"}
     if file_name == "reserve_candidates.json":
@@ -172,6 +219,21 @@ def default_json_payload(file_name: str, phase_id: str, page: str, run_date: str
             "requiredTrackingFields": scorecard.get("required_tracking_fields", []),
             "failClosed": list(contract.fail_closed_fields),
         }
+    if file_name == "score_recalc_requirements.json":
+        scorecard = DOMAIN_SCORECARDS.get(page or "", {})
+        return base | {
+            "status": "placeholder_requires_agent_update",
+            "scorecardVersion": scorecard.get("version", "deterministic_a_g"),
+            "requiredTrackingFields": scorecard.get("required_tracking_fields", []),
+            "changedInputs": [],
+            "recalculatedCompanies": [],
+            "unchangedButReviewedCompanies": [],
+            "arithmeticChecks": [],
+            "minimumDailyContract": (
+                "List every company whose score was recalculated or explicitly reviewed because of "
+                "fresh evidence, stale data repair, pricing/BM changes, or source-quality changes."
+            ),
+        }
     if file_name == "score_evidence_map.json":
         return base | {"evidence": {}}
     if file_name == "ranking_final.json":
@@ -184,6 +246,23 @@ def default_json_payload(file_name: str, phase_id: str, page: str, run_date: str
         return base | {"status": "ok", "allowedPathsOnly": True, "blockedChanges": []}
     if file_name == "recency_recheck.json":
         return base | {"status": "ok", "recheckedSources": [], "breakingChanges": []}
+    if file_name == "recency_watchlist.json":
+        return base | {
+            "status": "placeholder_requires_agent_update",
+            "watchFields": list(STALE_QUANT_FIELDS),
+            "highVolatilitySourceTypes": [
+                "pricing_page",
+                "official_newsroom",
+                "funding_database",
+                "app_store_listing",
+                "developer_docs",
+                "platform_policy_docs",
+                "investor_portfolio",
+            ],
+            "recheckedCompanies": [],
+            "staleOrChangedClaims": [],
+            "publishTimeRisks": [],
+        }
     if file_name == "global_qa.json":
         return base | {
             "status": "ok",
@@ -191,6 +270,16 @@ def default_json_payload(file_name: str, phase_id: str, page: str, run_date: str
             "blockers": [],
             "reviewDrivenImprovementRequired": True,
             "noNoopDailyRun": True,
+        }
+    if file_name == "daily_intel_audit.json":
+        return base | {
+            "status": "placeholder_requires_agent_update",
+            "ai1": {"hasPublishableIntel": False, "evidence": []},
+            "ai2": {"hasPublishableIntel": False, "evidence": []},
+            "checkedArtifacts": [],
+            "blockers": [
+                "daily_intel_audit was not filled by global QA; publishable intelligence work is not proven."
+            ],
         }
     if file_name == "publish_blockers.json":
         return base | {"blockers": []}
@@ -362,6 +451,10 @@ def enrich_preflight_outputs(phase_root: Path, run_date: str) -> None:
 def ensure_phase_outputs(phase_root: Path, phase_id: str, page: str, run_date: str) -> None:
     for file_name in PHASE_REQUIRED_OUTPUTS[phase_suffix(phase_id)]:
         target = phase_root / file_name
+        # Codex phases may write these artifacts directly. Preserve non-empty
+        # agent output and only scaffold files that are missing or empty.
+        if target.exists() and target.stat().st_size > 0:
+            continue
         if file_name.endswith(".json"):
             write_json(target, default_json_payload(file_name, phase_id, page, run_date))
         elif file_name.endswith(".md"):
@@ -444,6 +537,9 @@ def bootstrap_phase(phase_id: str, run_date: str, explicit_page: str | None = No
             "- fail-closed: if HQ, unicorn status, category, valuation, timestamps, or ranking claims are unsupported, stale, or contradictory, do not publish",
             "- freshness contract: use explicit TTL / recency logic instead of timestamp-only refreshes",
             "- no-news-day policy: if external updates are absent, refresh trend evidence, stale claims, score rationale, logic issues, or source-quality notes until a validated publish delta exists",
+            f"- daily intelligence tracks: {json.dumps(DAILY_INTELLIGENCE_TRACKS.get(page, []), ensure_ascii=False)}",
+            f"- stale quantitative fields: {', '.join(STALE_QUANT_FIELDS)}",
+            f"- authoritative news targets: {', '.join(AUTHORITATIVE_NEWS_TARGETS)}",
             "- runner model: GitHub-hosted jobs are ephemeral; consume artifacts or committed state only",
             "- decisive evidence: official English / filing / registry / developer-doc sources outrank Korean-language media",
         ]

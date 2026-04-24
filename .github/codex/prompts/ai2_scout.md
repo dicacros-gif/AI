@@ -11,6 +11,13 @@ Goal:
 - Discover NEW AI/2 candidates only.
 - AI/2 means ad AI, mobile advertising technology/services, AdTech, SDK, DSP, retargeting, performance marketing, and video AI advertising.
 
+Daily discovery contract:
+- You must write `.state/.../ai2_scout/candidate_discovery_plan.json`.
+- Record concrete `searchedThemes`, `candidateUniverse`, `reservedBecauseUnverified`, and `rejectedBecauseIneligible`.
+- The run is not acceptable if discovery is blank; if no candidate qualifies, still record reviewed leads and why they were reserved or rejected.
+- Search themes must include: mobile traffic acquisition, user acquisition DSP, OEM discovery, app-growth SDK, mobile retargeting, incrementality/measurement, SKAN/AdAttributionKit tooling, creative AI for mobile UA, app-store optimization AI, and privacy-safe first-party ad infrastructure.
+- Actively look beyond the US: Europe, Israel, Japan, Singapore, India, Latin America, Australia, and other non-Korea/non-China HQ regions.
+
 Hard rules:
 - Exclude newly discovered South Korea and China HQ startups.
 - Exclude hardware-first vendors.

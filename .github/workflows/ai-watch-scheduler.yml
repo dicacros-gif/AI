@@ -819,6 +819,12 @@ jobs:
             ".state/runs/${{ needs.context.outputs.run_date }}/ai2/ai2_score/scores.json" \
             ".state/runs/${{ needs.context.outputs.run_date }}/global/global_qa/global_qa.json" \
             --json-output ".state/runs/${{ needs.context.outputs.run_date }}/global/publish_if_changed/validator_sources.json"
+      - name: Validate daily intelligence work
+        continue-on-error: true
+        run: |
+          python scripts/validate_daily_intel.py \
+            --run-root ".state/runs/${{ needs.context.outputs.run_date }}" \
+            --json-output ".state/runs/${{ needs.context.outputs.run_date }}/global/publish_if_changed/validator_daily_intel.json"
       - name: Summarize failures
         run: |
           python scripts/report_failures.py \
@@ -826,6 +832,7 @@ jobs:
             ".state/runs/${{ needs.context.outputs.run_date }}/global/publish_if_changed/validator_publish.json" \
             ".state/runs/${{ needs.context.outputs.run_date }}/global/publish_if_changed/validator_state.json" \
             ".state/runs/${{ needs.context.outputs.run_date }}/global/publish_if_changed/validator_sources.json" \
+            ".state/runs/${{ needs.context.outputs.run_date }}/global/publish_if_changed/validator_daily_intel.json" \
             --json-output ".state/runs/${{ needs.context.outputs.run_date }}/global/publish_if_changed/failure_summary.json"
       - name: Enforce publish gate
         run: |

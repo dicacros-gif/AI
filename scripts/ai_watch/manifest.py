@@ -127,6 +127,63 @@ NON_NEGOTIABLE_RULES = [
     "If current monetization details cannot be verified from authoritative English-language sources, mark them undisclosed or unverified instead of guessing.",
 ]
 
+DAILY_INTELLIGENCE_TRACKS = {
+    "ai1": [
+        "new_authoritative_article",
+        "outdated_quantitative_data_fix",
+        "new_quantitative_metric",
+        "pricing_or_revenue_share_refresh",
+        "market_trend_refresh",
+        "startup_candidate_discovery",
+        "score_recalculation",
+    ],
+    "ai2": [
+        "new_authoritative_article",
+        "outdated_quantitative_data_fix",
+        "new_quantitative_metric",
+        "pricing_or_take_rate_refresh",
+        "traffic_acquisition_candidate_discovery",
+        "platform_policy_or_measurement_refresh",
+        "score_recalculation",
+    ],
+}
+
+STALE_QUANT_FIELDS = (
+    "valuation",
+    "funding_amount",
+    "employee_count",
+    "ARR",
+    "revenue",
+    "GMV_or_billings",
+    "MAU_or_DAU",
+    "device_reach",
+    "pricing",
+    "take_rate",
+    "revenue_share_ratio",
+    "market_size",
+    "CAGR",
+    "score",
+)
+
+AUTHORITATIVE_NEWS_TARGETS = (
+    "official newsroom",
+    "official blog or release notes",
+    "pricing or help center",
+    "developer docs",
+    "app store listing",
+    "regulatory filing or registry",
+    "investor portfolio update",
+    "TechCrunch",
+    "Business Wire",
+    "PR Newswire",
+    "Reuters",
+    "Bloomberg",
+    "WSJ",
+    "Financial Times",
+    "Adweek",
+    "AdExchanger",
+)
+
 AI1_SCORECARD = {
     "version": "ai1_mobile_oem_v2026_04",
     "description": "Quantified smartphone-OEM scorecard for mobile AI personalization, on-device analysis, personalized AI, recommendation engines, and privacy-aware UX.",
@@ -755,18 +812,18 @@ AGENT_DEFINITIONS: dict[str, AgentDefinition] = {
 PHASE_REQUIRED_OUTPUTS: dict[str, tuple[str, ...]] = {
     "preflight": ("preflight_report.json", "source_registry_health.json", "phase_queue.json"),
     "freshness": ("source_freshness.json", "changed_sources.jsonl", "feed_health.json"),
-    "update": ("updates.json", "updates.md", "contradictions.json", "source_quality_report.json"),
+    "update": ("updates.json", "updates.md", "daily_intel_findings.json", "contradictions.json", "source_quality_report.json"),
     "verify": ("verification.json", "logic_issues.md", "removal_candidates.json", "unsupported_claims.json", "source_integrity.json"),
-    "scout": ("scout_candidates.json", "scout_rejections.json", "reserve_candidates.json", "competitor_map.json", "manufacturer_strategy.json", "ranking_proposal.json"),
+    "scout": ("scout_candidates.json", "scout_rejections.json", "reserve_candidates.json", "candidate_discovery_plan.json", "competitor_map.json", "manufacturer_strategy.json", "ranking_proposal.json"),
     "entity_resolution": ("entity_resolution.json", "canonical_entities.jsonl", "alias_map.json"),
     "evidence": ("evidence.jsonl", "evidence_index.json", "source_tiers.json"),
     "claim_ledger": ("claims.jsonl", "claim_summary.json", "claim_conflicts.json"),
     "candidate_verify": ("verified_candidates.jsonl", "rejected_candidates.jsonl", "candidate_verify_report.md"),
     "staleness": ("staleness_gate.json", "stale_claims.jsonl", "fresh_claims.jsonl"),
-    "score": ("scores.json", "score_rationale.md", "score_evidence_map.json", "ranking_final.json"),
+    "score": ("scores.json", "score_rationale.md", "score_recalc_requirements.json", "score_evidence_map.json", "ranking_final.json"),
     "render": ("render_log.md", "ranking_audit.json", "timestamp_audit.json", "publish_diff_guard.json"),
-    "recency": ("recency_recheck.json", "recency_recheck.md"),
-    "global_qa": ("global_qa.md", "global_qa.json", "publish_blockers.json"),
+    "recency": ("recency_recheck.json", "recency_watchlist.json", "recency_recheck.md"),
+    "global_qa": ("global_qa.md", "global_qa.json", "daily_intel_audit.json", "publish_blockers.json"),
     "retry": ("retry_report.json", "retry_actions.md"),
     "publish": ("publish_decision.json", "publish_diff_guard.json"),
     "smoke": ("smoke_report.json", "smoke_report.md"),

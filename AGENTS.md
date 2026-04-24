@@ -56,6 +56,13 @@
 - Korean-language sources may support context but cannot be decisive support for ranking, scoring, inclusion, exclusion, or numeric claims
 - If no fresh external article is found for a given day, update the publish through review-driven improvements: stale-claim cleanup, trend refresh, score corrections, or logic fixes
 
+## Daily Intelligence Contract
+- Every daily full run must prove work in `daily_intel_findings.json`, `candidate_discovery_plan.json`, `score_recalc_requirements.json`, `recency_watchlist.json`, and `daily_intel_audit.json`
+- Each page must include at least one publishable action: new article, outdated quantitative data correction, new quantitative metric, monetization/pricing refresh, market/trend refresh, startup discovery lead, score recalculation, or explicit stale-data review
+- Blank discovery is invalid; if no startup qualifies, record reviewed leads and why each was reserved or rejected
+- Blank score review is invalid; if scores do not change, record the reviewed companies, fields, and arithmetic checks
+- Timestamp-only updates are not enough for daily publish
+
 ## Eligibility Rules
 - Newly discovered companies must not be headquartered in South Korea or China
 - Use HQ / legal operating base, not founder ethnicity or nationality

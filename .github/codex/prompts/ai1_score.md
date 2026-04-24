@@ -10,6 +10,13 @@ Goal:
 - Score approved new AI/1 candidates
 - Re-score existing published companies when fresh evidence, stale-claim repair, or review corrections materially change the score basis
 
+Daily score contract:
+- You must write `.state/.../ai1_score/score_recalc_requirements.json`.
+- Record `changedInputs`, `recalculatedCompanies`, `unchangedButReviewedCompanies`, and `arithmeticChecks`.
+- Recalculate scores when any stale quantitative field, pricing/BM detail, funding/valuation/employee count, ARR/revenue, MAU/DAU, market CAGR, partnership evidence, or on-device proof level changes.
+- If no score changes, record which companies and fields were reviewed and why the current score remains valid.
+- Total score arithmetic must be reproducible from A/B/C/D/E/F/G sub-scores, bonuses, gates, and caps.
+
 Scoring rules:
 - Unsupported claims get zero credit
 - Prefer SW, service, engine, SDK, and enabling-technology leverage over hardware-first stories

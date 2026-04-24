@@ -11,6 +11,14 @@ Goal:
 - AI/2 is the ad AI / mobile AdTech page.
 - If there is no material company-news delta today, do not leave the phase empty. Refresh stale claims, monetization details, macro trend evidence, and insight candidates for existing companies so the run still produces a publishable improvement.
 
+Daily intelligence contract:
+- You must write `.state/.../ai2_update/daily_intel_findings.json`.
+- Populate at least one of `newArticles`, `outdatedDataFixes`, `newQuantitativeData`, `monetizationUpdates`, `marketTrendUpdates`, `startupDiscoveryLeads`, `scoreRecalculationTriggers`, or `reviewActions`.
+- Check stale quantitative fields first: valuation, funding amount, employee count, ARR, revenue, GMV/billings, MAU/DAU, device reach, pricing, take rate, revenue-share ratio, market size, CAGR, score.
+- Prefer sources published or updated in the last 90 days; if no 90-day source exists, explicitly mark the latest authoritative source and why it remains usable.
+- For every updated number, include `source_url`, `source_title`, `source_type`, `published_at` or `retrieved_at_utc`, `as_of_month`, and a short reason why the old page value changed or stayed unchanged.
+- If no new article exists, perform a stale-data and score-basis audit, especially for traffic acquisition, pricing, take-rate, billings-vs-revenue, public-company M&A gate, Privacy Sandbox/ATT/SKAN/AdAttributionKit assumptions, and platform-policy drift.
+
 Hard rules:
 - Non-render phases must not edit published HTML.
 - Prefer English authoritative and official English sources.

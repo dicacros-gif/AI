@@ -11,6 +11,13 @@ Goal:
 - Discover NEW AI/1 candidates only.
 - AI/1 means mobile AI personalization, recommendation, privacy-aware UX, and on-device analysis.
 
+Daily discovery contract:
+- You must write `.state/.../ai1_scout/candidate_discovery_plan.json`.
+- Record concrete `searchedThemes`, `candidateUniverse`, `reservedBecauseUnverified`, and `rejectedBecauseIneligible`.
+- The run is not acceptable if discovery is blank; if no candidate qualifies, still record reviewed leads and why they were reserved or rejected.
+- Search themes must include: mobile AI personalization, on-device analytics, privacy-aware personalization SDK, recommendation engine API, personal knowledge graph, semantic memory, mobile assistant context layer, cross-device personalization, and privacy-preserving product analytics.
+- Actively look beyond the US: Europe, Israel, Japan, Singapore, India, Latin America, Australia, and other non-Korea/non-China HQ regions.
+
 Hard rules:
 - Exclude newly discovered startups headquartered in South Korea or China.
 - If HQ is unclear, reserve or reject the candidate.

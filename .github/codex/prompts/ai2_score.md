@@ -10,6 +10,14 @@ Goal:
 - Score approved new AI/2 candidates
 - Re-score existing published companies when fresh evidence, stale-claim repair, or review corrections materially change the score basis
 
+Daily score contract:
+- You must write `.state/.../ai2_score/score_recalc_requirements.json`.
+- Record `changedInputs`, `recalculatedCompanies`, `unchangedButReviewedCompanies`, and `arithmeticChecks`.
+- Recalculate scores when any stale quantitative field, pricing/BM detail, take rate, revenue share, funding/valuation/employee count, ARR/revenue, GMV/billings, reach, market CAGR, policy-readiness, SDK maturity, measurement-stack, or traffic-acquisition evidence changes.
+- If no score changes, record which companies and fields were reviewed and why the current score remains valid.
+- Total score arithmetic must be reproducible from A/B/C/D/E/F/G sub-scores, bonuses, gates, and caps.
+- Public companies must publish B = 0; do not mix internal reference M&A attractiveness with official score.
+
 Scoring rules:
 - Unsupported claims earn no points
 - Software, service, engine, SDK, and enabling-tech leverage outranks hardware-first stories
