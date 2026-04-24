@@ -7,8 +7,10 @@ on:
     paths:
       - .github/workflows/ai-watch-scheduler.yml
   schedule:
-    - cron: "5 0 * * *"
-      timezone: "Asia/Seoul"
+    # 00:05 KST primary run. GitHub schedule cron is kept in UTC for predictable triggering.
+    - cron: "5 15 * * *"
+    # 07:05 KST rescue run. This catches dropped/delayed primary runs and quiet no-diff days.
+    - cron: "5 22 * * *"
   workflow_dispatch:
     inputs:
       phase:
@@ -417,7 +419,7 @@ jobs:
           if-no-files-found: warn
 
   ai2_research:
-    needs: [context, ai1_render_staging]
+    needs: [context, preflight_source_health]
     if: always() && needs.context.outputs.full_run == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 70
@@ -834,11 +836,18 @@ jobs:
           summary = json.loads(Path(".state/runs/${{ needs.context.outputs.run_date }}/global/publish_if_changed/failure_summary.json").read_text(encoding="utf-8"))
           sys.exit(1 if summary.get("summary") else 0)
           PY
+      - name: Ensure quiet-day page delta
+        run: |
+          if git diff --quiet -- 1/index.html 2/index.html; then
+            echo "No rendered page delta; stamping the daily review checkpoint."
+            python scripts/stamp_daily_review.py \
+              --page 1/index.html \
+              --page 2/index.html
+          fi
       - name: Commit rendered pages if changed
         run: |
           if git diff --quiet -- 1/index.html 2/index.html; then
-            echo "Full daily run produced no publishable page delta."
-            echo "The pipeline must add either fresh authoritative updates or review-driven improvements."
+            echo "Full daily run still produced no publishable page delta after fallback."
             exit 1
           fi
           git config user.name "github-actions[bot]"
