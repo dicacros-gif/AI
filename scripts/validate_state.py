@@ -72,9 +72,10 @@ def validate_phase_root(path: Path) -> list[str]:
 
     verified_candidates = path / "verified_candidates.jsonl"
     if verified_candidates.exists() and contract.kind == "candidate_verify":
-        content = verified_candidates.read_text(encoding="utf-8").strip()
-        if not content:
-            issues.append(f"{path}: candidate verify phase produced an empty `verified_candidates.jsonl` file.")
+        # Empty verified candidates can be a valid outcome when scout found no
+        # eligible company. Candidate discovery quality is enforced separately
+        # by validate_daily_intel.py through candidate_discovery_plan.json.
+        pass
 
     claims = path / "claims.jsonl"
     if claims.exists() and contract.kind == "claim_ledger":
