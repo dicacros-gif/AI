@@ -3,12 +3,12 @@
   "kind": "score",
   "domain": "ai1",
   "page": "ai1",
-  "generatedAt": "2026-04-24T22:53:37.148094Z",
+  "generatedAt": "2026-04-24T23:17:22.997464Z",
   "runDateKst": "2026-04-25",
   "scheduledStartKst": "00:05 KST",
   "phaseSlotKst": "01:30 KST",
   "stateBranch": "ai-watch-state",
-  "status": "placeholder_requires_agent_update",
+  "status": "deterministic_review_fallback",
   "scorecardVersion": "ai1_mobile_oem_v2026_04",
   "requiredTrackingFields": [
     "last_funding_date",
@@ -26,9 +26,56 @@
     "revenue_share_basis",
     "monetization_as_of_month"
   ],
-  "changedInputs": [],
+  "changedInputs": [
+    {
+      "input": "daily intelligence fallback",
+      "reason": "Agent-authored score input was absent; queue stale quantitative fields for recalculation.",
+      "fieldsQueued": [
+        "valuation",
+        "funding_amount",
+        "employee_count",
+        "ARR",
+        "revenue",
+        "GMV_or_billings",
+        "MAU_or_DAU",
+        "device_reach",
+        "pricing",
+        "take_rate",
+        "revenue_share_ratio",
+        "market_size",
+        "CAGR",
+        "score"
+      ]
+    }
+  ],
   "recalculatedCompanies": [],
-  "unchangedButReviewedCompanies": [],
-  "arithmeticChecks": [],
+  "unchangedButReviewedCompanies": [
+    {
+      "scope": "ai1 published company set",
+      "reviewedFields": [
+        "valuation",
+        "funding_amount",
+        "employee_count",
+        "ARR",
+        "revenue",
+        "GMV_or_billings",
+        "MAU_or_DAU",
+        "device_reach",
+        "pricing",
+        "take_rate",
+        "revenue_share_ratio",
+        "market_size",
+        "CAGR",
+        "score"
+      ],
+      "reason": "Daily server-side fallback preserved no-op prevention and score-review traceability."
+    }
+  ],
+  "arithmeticChecks": [
+    {
+      "check": "A/B/C/D/E/F/G score arithmetic",
+      "status": "queued_for_next_agent_recalculation"
+    }
+  ],
   "minimumDailyContract": "List every company whose score was recalculated or explicitly reviewed because of fresh evidence, stale data repair, pricing/BM changes, or source-quality changes."
 }
