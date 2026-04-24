@@ -9,6 +9,7 @@
   ],
   "outputs": [
     "recency_recheck.json",
+    "recency_watchlist.json",
     "recency_recheck.md"
   ],
   "agents": [

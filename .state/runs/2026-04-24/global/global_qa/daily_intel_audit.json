@@ -1,0 +1,24 @@
+{
+  "phase": "global_qa",
+  "kind": "global_qa",
+  "domain": "global",
+  "page": "global",
+  "generatedAt": "2026-04-24T13:09:33.291960Z",
+  "runDateKst": "2026-04-24",
+  "scheduledStartKst": "00:05 KST",
+  "phaseSlotKst": "03:42 KST",
+  "stateBranch": "ai-watch-state",
+  "status": "placeholder_requires_agent_update",
+  "ai1": {
+    "hasPublishableIntel": false,
+    "evidence": []
+  },
+  "ai2": {
+    "hasPublishableIntel": false,
+    "evidence": []
+  },
+  "checkedArtifacts": [],
+  "blockers": [
+    "daily_intel_audit was not filled by global QA; publishable intelligence work is not proven."
+  ]
+}

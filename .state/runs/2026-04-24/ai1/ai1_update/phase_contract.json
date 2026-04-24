@@ -11,6 +11,7 @@
   "outputs": [
     "updates.json",
     "updates.md",
+    "daily_intel_findings.json",
     "contradictions.json",
     "source_quality_report.json"
   ],

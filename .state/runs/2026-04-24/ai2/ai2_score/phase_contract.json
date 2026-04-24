@@ -10,6 +10,7 @@
   "outputs": [
     "scores.json",
     "score_rationale.md",
+    "score_recalc_requirements.json",
     "score_evidence_map.json",
     "ranking_final.json"
   ],

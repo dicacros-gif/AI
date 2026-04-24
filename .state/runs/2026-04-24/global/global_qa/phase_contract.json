@@ -12,6 +12,7 @@
   "outputs": [
     "global_qa.md",
     "global_qa.json",
+    "daily_intel_audit.json",
     "publish_blockers.json"
   ],
   "agents": [

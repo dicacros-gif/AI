@@ -12,6 +12,7 @@
     "scout_candidates.json",
     "scout_rejections.json",
     "reserve_candidates.json",
+    "candidate_discovery_plan.json",
     "competitor_map.json",
     "manufacturer_strategy.json",
     "ranking_proposal.json"
