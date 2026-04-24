@@ -1,0 +1,36 @@
+{
+  "phase": "ai2_scout",
+  "kind": "scout",
+  "domain": "ai2",
+  "page": "ai2",
+  "generatedAt": "2026-04-24T16:10:51.258062Z",
+  "runDateKst": "2026-04-25",
+  "scheduledStartKst": "00:05 KST",
+  "phaseSlotKst": "02:22 KST",
+  "stateBranch": "ai-watch-state",
+  "status": "placeholder_requires_agent_update",
+  "searchedThemes": [],
+  "searchedRegions": [
+    "North America",
+    "Europe",
+    "Israel",
+    "Japan",
+    "Singapore",
+    "India",
+    "Latin America",
+    "Australia"
+  ],
+  "queryThemes": [
+    "new_authoritative_article",
+    "outdated_quantitative_data_fix",
+    "new_quantitative_metric",
+    "pricing_or_take_rate_refresh",
+    "traffic_acquisition_candidate_discovery",
+    "platform_policy_or_measurement_refresh",
+    "score_recalculation"
+  ],
+  "candidateUniverse": [],
+  "reservedBecauseUnverified": [],
+  "rejectedBecauseIneligible": [],
+  "minimumDailyContract": "Record concrete search themes and at least one candidate lead, reserve, or rejection. Do not leave discovery empty just because no candidate was promoted."
+}

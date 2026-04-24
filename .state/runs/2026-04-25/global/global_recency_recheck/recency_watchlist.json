@@ -1,0 +1,40 @@
+{
+  "phase": "global_recency_recheck",
+  "kind": "recency",
+  "domain": "global",
+  "page": "global",
+  "generatedAt": "2026-04-24T16:12:17.206155Z",
+  "runDateKst": "2026-04-25",
+  "scheduledStartKst": "00:05 KST",
+  "phaseSlotKst": "03:32 KST",
+  "stateBranch": "ai-watch-state",
+  "status": "placeholder_requires_agent_update",
+  "watchFields": [
+    "valuation",
+    "funding_amount",
+    "employee_count",
+    "ARR",
+    "revenue",
+    "GMV_or_billings",
+    "MAU_or_DAU",
+    "device_reach",
+    "pricing",
+    "take_rate",
+    "revenue_share_ratio",
+    "market_size",
+    "CAGR",
+    "score"
+  ],
+  "highVolatilitySourceTypes": [
+    "pricing_page",
+    "official_newsroom",
+    "funding_database",
+    "app_store_listing",
+    "developer_docs",
+    "platform_policy_docs",
+    "investor_portfolio"
+  ],
+  "recheckedCompanies": [],
+  "staleOrChangedClaims": [],
+  "publishTimeRisks": []
+}
