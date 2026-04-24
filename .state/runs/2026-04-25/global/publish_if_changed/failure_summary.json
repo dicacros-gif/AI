@@ -1,16 +1,10 @@
 {
   "retryable": [],
-  "nonRetryable": [
-    ".state/runs/2026-04-25/ai1/ai1_candidate_verify: candidate verify phase produced an empty `verified_candidates.jsonl` file.",
-    ".state/runs/2026-04-25/ai2/ai2_candidate_verify: candidate verify phase produced an empty `verified_candidates.jsonl` file."
-  ],
-  "summary": [
-    ".state/runs/2026-04-25/ai1/ai1_candidate_verify: candidate verify phase produced an empty `verified_candidates.jsonl` file.",
-    ".state/runs/2026-04-25/ai2/ai2_candidate_verify: candidate verify phase produced an empty `verified_candidates.jsonl` file."
-  ],
+  "nonRetryable": [],
+  "summary": [],
   "retryPlan": {
     "retryableCount": 0,
-    "nonRetryableCount": 2,
+    "nonRetryableCount": 0,
     "policy": "Retry only bounded transient failures; fail closed on quality, policy, and evidence issues."
   }
 }
