@@ -1,0 +1,12 @@
+{
+  "phase": "ai2_scout",
+  "kind": "scout",
+  "domain": "ai2",
+  "page": "ai2",
+  "generatedAt": "2026-04-26T15:53:13.446420Z",
+  "runDateKst": "2026-04-27",
+  "scheduledStartKst": "00:05 KST",
+  "phaseSlotKst": "02:22 KST",
+  "stateBranch": "ai-watch-state",
+  "items": []
+}
