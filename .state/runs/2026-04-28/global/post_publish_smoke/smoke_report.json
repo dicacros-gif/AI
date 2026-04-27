@@ -1,0 +1,19 @@
+{
+  "phase": "post_publish_smoke",
+  "kind": "smoke",
+  "domain": "global",
+  "page": "global",
+  "generatedAt": "2026-04-27T16:52:32.369389Z",
+  "runDateKst": "2026-04-28",
+  "scheduledStartKst": "00:05 KST",
+  "phaseSlotKst": "04:02 KST",
+  "stateBranch": "ai-watch-state",
+  "status": "ok",
+  "pages": {},
+  "checks": [
+    "timestamp",
+    "ranking",
+    "publish_path",
+    "anchors"
+  ]
+}
