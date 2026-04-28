@@ -1,0 +1,21 @@
+{
+  "phase": "ai1_update",
+  "kind": "update",
+  "domain": "ai1",
+  "page": "ai1",
+  "runDate": "2026-04-29",
+  "phaseRoot": ".state/runs/2026-04-29/ai1/ai1_update",
+  "pagePath": "1/index.html",
+  "promptFile": ".github/codex/prompts/ai1_update.md",
+  "runsCodex": true,
+  "timeoutMinutes": 20,
+  "gates": [
+    "english_sources_only_for_decisive_facts",
+    "mutable_claims_have_timestamps"
+  ],
+  "failClosedFields": [
+    "partnership_claim",
+    "traction_metric",
+    "official_update"
+  ]
+}

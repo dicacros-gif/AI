@@ -1,0 +1,13 @@
+{
+  "phase": "ai2_scout",
+  "kind": "scout",
+  "domain": "ai2",
+  "page": "ai2",
+  "generatedAt": "2026-04-28T17:01:11.125763Z",
+  "runDateKst": "2026-04-29",
+  "scheduledStartKst": "00:05 KST",
+  "phaseSlotKst": "02:22 KST",
+  "stateBranch": "ai-watch-state",
+  "rejections": [],
+  "defaultBias": "prefer software/service/engine/enabling-tech over hardware-first vendors"
+}
