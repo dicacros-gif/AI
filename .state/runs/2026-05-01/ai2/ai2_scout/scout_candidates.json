@@ -1,0 +1,13 @@
+{
+  "phase": "ai2_scout",
+  "kind": "scout",
+  "domain": "ai2",
+  "page": "ai2",
+  "generatedAt": "2026-04-30T16:28:13.556358Z",
+  "runDateKst": "2026-05-01",
+  "scheduledStartKst": "00:05 KST",
+  "phaseSlotKst": "02:22 KST",
+  "stateBranch": "ai-watch-state",
+  "candidates": [],
+  "candidatePool": "global-excluding-south-korea-and-china-hq"
+}

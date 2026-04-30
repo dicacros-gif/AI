@@ -1,0 +1,26 @@
+{
+  "phase": "global_qa",
+  "kind": "global_qa",
+  "domain": "global",
+  "page": "global",
+  "runDate": "2026-05-01",
+  "phaseRoot": ".state/runs/2026-05-01/global/global_qa",
+  "pagePath": "",
+  "promptFile": ".github/codex/prompts/global_qa.md",
+  "runsCodex": true,
+  "timeoutMinutes": 20,
+  "gates": [
+    "no_duplicate_company_id",
+    "no_category_leakage",
+    "all_publish_blockers_clear",
+    "no_noop_daily_run"
+  ],
+  "failClosedFields": [
+    "headquarters_country",
+    "unicorn_status",
+    "ranking_claim",
+    "timestamp_label",
+    "publish_path",
+    "html_shell"
+  ]
+}
