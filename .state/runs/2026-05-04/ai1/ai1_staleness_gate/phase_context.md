@@ -1,0 +1,21 @@
+# AI Watch Phase Context
+
+- phase: `ai1_staleness_gate`
+- kind: `staleness`
+- domain: `ai1`
+- page: `ai1`
+- run date (KST): `2026-05-04`
+- phase root: `.state/runs/2026-05-04/ai1/ai1_staleness_gate`
+- publish target: `1/index.html`
+- prompt file: `script-only phase`
+- timeout: `8 minutes`
+- purpose: Block AI/1 publish candidates whose core claims exceeded TTL or failed freshness recheck.
+- source model: raw source -> evidence -> claim -> verify -> score -> render -> publish
+- fail-closed: if HQ, unicorn status, category, valuation, timestamps, or ranking claims are unsupported, stale, or contradictory, do not publish
+- freshness contract: use explicit TTL / recency logic instead of timestamp-only refreshes
+- no-news-day policy: if external updates are absent, refresh trend evidence, stale claims, score rationale, logic issues, or source-quality notes until a validated publish delta exists
+- daily intelligence tracks: ["new_authoritative_article", "outdated_quantitative_data_fix", "new_quantitative_metric", "pricing_or_revenue_share_refresh", "market_trend_refresh", "startup_candidate_discovery", "score_recalculation"]
+- stale quantitative fields: valuation, funding_amount, employee_count, ARR, revenue, GMV_or_billings, MAU_or_DAU, device_reach, pricing, take_rate, revenue_share_ratio, market_size, CAGR, score
+- authoritative news targets: official newsroom, official blog or release notes, pricing or help center, developer docs, app store listing, regulatory filing or registry, investor portfolio update, TechCrunch, Business Wire, PR Newswire, Reuters, Bloomberg, WSJ, Financial Times, Adweek, AdExchanger
+- runner model: GitHub-hosted jobs are ephemeral; consume artifacts or committed state only
+- decisive evidence: official English / filing / registry / developer-doc sources outrank Korean-language media
