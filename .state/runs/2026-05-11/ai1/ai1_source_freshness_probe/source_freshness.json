@@ -1,0 +1,21 @@
+{
+  "phase": "ai1_source_freshness_probe",
+  "kind": "freshness",
+  "domain": "ai1",
+  "page": "ai1",
+  "generatedAt": "2026-05-10T16:01:18.416618Z",
+  "runDateKst": "2026-05-11",
+  "scheduledStartKst": "00:05 KST",
+  "phaseSlotKst": "00:10 KST",
+  "stateBranch": "ai-watch-state",
+  "status": "ok",
+  "changedSources": [],
+  "ttlPolicy": {
+    "official_release_days": 7,
+    "app_store_days": 3,
+    "funding_days": 14,
+    "hq_days": 90,
+    "partnership_days": 7,
+    "policy_days": 14
+  }
+}
