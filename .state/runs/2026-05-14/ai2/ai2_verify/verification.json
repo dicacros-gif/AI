@@ -1,0 +1,16 @@
+{
+  "phase": "ai2_verify",
+  "kind": "verify",
+  "domain": "ai2",
+  "page": "ai2",
+  "generatedAt": "2026-05-13T17:22:25.094190Z",
+  "runDateKst": "2026-05-14",
+  "scheduledStartKst": "00:05 KST",
+  "phaseSlotKst": "02:09 KST",
+  "stateBranch": "ai-watch-state",
+  "status": "ok",
+  "checks": [],
+  "legacyPolicy": "retain existing published companies by default",
+  "fallbackReviewRequired": true,
+  "noExternalNewsPolicy": "surface publishable logic, structure, score, or source-quality improvements"
+}

@@ -1,0 +1,12 @@
+{
+  "phase": "ai1_update",
+  "kind": "update",
+  "domain": "ai1",
+  "page": "ai1",
+  "generatedAt": "2026-05-13T17:22:18.393391Z",
+  "runDateKst": "2026-05-14",
+  "scheduledStartKst": "00:05 KST",
+  "phaseSlotKst": "00:15 KST",
+  "stateBranch": "ai-watch-state",
+  "contradictions": []
+}
