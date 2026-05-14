@@ -1,0 +1,22 @@
+{
+  "phase": "publish_if_changed",
+  "kind": "publish",
+  "domain": "global",
+  "page": "global",
+  "runDate": "2026-05-15",
+  "phaseRoot": ".state/runs/2026-05-15/global/publish_if_changed",
+  "pagePath": "",
+  "promptFile": "",
+  "runsCodex": false,
+  "timeoutMinutes": 10,
+  "gates": [
+    "validated_or_review_delta_present",
+    "allowed_publish_diff_only",
+    "qa_gate_passed"
+  ],
+  "failClosedFields": [
+    "publish_path",
+    "html_shell",
+    "publish_diff"
+  ]
+}
