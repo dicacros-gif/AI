@@ -1,0 +1,28 @@
+{
+  "phase": "ai2_score",
+  "kind": "score",
+  "domain": "ai2",
+  "page": "ai2",
+  "runDate": "2026-05-16",
+  "phaseRoot": ".state/runs/2026-05-16/ai2/ai2_score",
+  "pagePath": "2/index.html",
+  "promptFile": ".github/codex/prompts/ai2_score.md",
+  "runsCodex": true,
+  "timeoutMinutes": 15,
+  "gates": [
+    "deterministic_formula_used",
+    "unsupported_claims_zero_weight",
+    "ranking_tiebreak_applied",
+    "deprecated_adtech_thesis_blocked",
+    "ai2_quantified_scorecard_applied",
+    "a_b_split_applied",
+    "current_measurement_policy_frame_applied"
+  ],
+  "failClosedFields": [
+    "score_input",
+    "ranking_claim",
+    "policy_drift",
+    "measurement_stack_support",
+    "privacy_readiness"
+  ]
+}

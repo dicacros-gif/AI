@@ -1,0 +1,12 @@
+{
+  "phase": "ai1_verify",
+  "kind": "verify",
+  "domain": "ai1",
+  "page": "ai1",
+  "generatedAt": "2026-05-15T16:57:36.654308Z",
+  "runDateKst": "2026-05-16",
+  "scheduledStartKst": "00:05 KST",
+  "phaseSlotKst": "00:27 KST",
+  "stateBranch": "ai-watch-state",
+  "candidates": []
+}
