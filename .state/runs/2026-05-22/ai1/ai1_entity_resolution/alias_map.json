@@ -1,0 +1,12 @@
+{
+  "phase": "ai1_entity_resolution",
+  "kind": "entity_resolution",
+  "domain": "ai1",
+  "page": "ai1",
+  "generatedAt": "2026-05-21T17:33:56.809623Z",
+  "runDateKst": "2026-05-22",
+  "scheduledStartKst": "00:05 KST",
+  "phaseSlotKst": "00:50 KST",
+  "stateBranch": "ai-watch-state",
+  "aliases": {}
+}
