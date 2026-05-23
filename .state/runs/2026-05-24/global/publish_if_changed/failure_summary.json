@@ -1,0 +1,14 @@
+{
+  "retryable": [],
+  "nonRetryable": [
+    "ai2: missing score recalculation requirements at .state/runs/2026-05-24/ai2/ai2_score/score_recalc_requirements.json."
+  ],
+  "summary": [
+    "ai2: missing score recalculation requirements at .state/runs/2026-05-24/ai2/ai2_score/score_recalc_requirements.json."
+  ],
+  "retryPlan": {
+    "retryableCount": 0,
+    "nonRetryableCount": 1,
+    "policy": "Retry only bounded transient failures; fail closed on quality, policy, and evidence issues."
+  }
+}

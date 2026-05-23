@@ -1,0 +1,6 @@
+{
+  "ok": false,
+  "issues": [
+    "ai2: missing score recalculation requirements at .state/runs/2026-05-24/ai2/ai2_score/score_recalc_requirements.json."
+  ]
+}
