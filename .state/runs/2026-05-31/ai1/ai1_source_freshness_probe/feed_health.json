@@ -1,0 +1,14 @@
+{
+  "phase": "ai1_source_freshness_probe",
+  "kind": "freshness",
+  "domain": "ai1",
+  "page": "ai1",
+  "generatedAt": "2026-05-30T16:11:40.293263Z",
+  "runDateKst": "2026-05-31",
+  "scheduledStartKst": "00:05 KST",
+  "phaseSlotKst": "00:10 KST",
+  "stateBranch": "ai-watch-state",
+  "status": "ok",
+  "feedsChecked": [],
+  "newsroomsChecked": []
+}
