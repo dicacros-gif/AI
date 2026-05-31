@@ -1,0 +1,22 @@
+{
+  "phase": "ai2_verify",
+  "kind": "verify",
+  "domain": "ai2",
+  "page": "ai2",
+  "runDate": "2026-06-01",
+  "phaseRoot": ".state/runs/2026-06-01/ai2/ai2_verify",
+  "pagePath": "2/index.html",
+  "promptFile": ".github/codex/prompts/ai2_verify.md",
+  "runsCodex": true,
+  "timeoutMinutes": 18,
+  "gates": [
+    "all_numbers_cited",
+    "all_dates_have_time",
+    "no_category_leakage"
+  ],
+  "failClosedFields": [
+    "unsupported_number",
+    "broken_timestamp",
+    "policy_drift"
+  ]
+}

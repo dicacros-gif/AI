@@ -1,0 +1,70 @@
+{
+  "phase": "ai2_update",
+  "kind": "update",
+  "domain": "ai2",
+  "page": "ai2",
+  "generatedAt": "2026-05-31T16:20:10.570764Z",
+  "runDateKst": "2026-06-01",
+  "scheduledStartKst": "00:05 KST",
+  "phaseSlotKst": "01:57 KST",
+  "stateBranch": "ai-watch-state",
+  "decisiveSourceLanguage": "english-first",
+  "tierPriority": {
+    "tier0": [
+      "official company english site",
+      "official company newsroom",
+      "official company blog",
+      "product docs",
+      "official pricing/help center",
+      "app store listing",
+      "regulatory filing",
+      "company registry",
+      "investor portfolio page in english",
+      "developer documentation"
+    ],
+    "tier1": [
+      "Reuters",
+      "Bloomberg",
+      "TechCrunch",
+      "The Information",
+      "Wired",
+      "Fortune",
+      "Forbes",
+      "WSJ",
+      "Financial Times"
+    ],
+    "tier2": [
+      "Crunchbase",
+      "PitchBook",
+      "CB Insights",
+      "Dealroom",
+      "Tracxn",
+      "data.ai",
+      "Sensor Tower",
+      "Similarweb",
+      "Gartner",
+      "McKinsey",
+      "IDC",
+      "Forrester",
+      "a16z",
+      "Sequoia",
+      "Accel",
+      "Lightspeed",
+      "Index",
+      "Benchmark",
+      "Greylock",
+      "YC",
+      "arXiv",
+      "patents",
+      "papers"
+    ],
+    "tier3": [
+      "Product Hunt",
+      "GitHub",
+      "Hacker News",
+      "Reddit",
+      "X",
+      "LinkedIn"
+    ]
+  }
+}
