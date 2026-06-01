@@ -1,0 +1,19 @@
+{
+  "phase": "ai2_source_freshness_probe",
+  "kind": "freshness",
+  "domain": "ai2",
+  "page": "ai2",
+  "runDate": "2026-06-02",
+  "phaseRoot": ".state/runs/2026-06-02/ai2/ai2_source_freshness_probe",
+  "pagePath": "2/index.html",
+  "promptFile": "",
+  "runsCodex": false,
+  "timeoutMinutes": 12,
+  "gates": [
+    "freshness_probe_completed",
+    "source_health_recorded"
+  ],
+  "failClosedFields": [
+    "freshness_probe"
+  ]
+}
