@@ -1,0 +1,111 @@
+{
+  "phase": "ai1_scout",
+  "kind": "scout",
+  "domain": "ai1",
+  "page": "ai1",
+  "generatedAt": "2026-06-05T17:23:29.537917Z",
+  "runDateKst": "2026-06-06",
+  "scheduledStartKst": "00:05 KST",
+  "phaseSlotKst": "00:40 KST",
+  "stateBranch": "ai-watch-state",
+  "status": "deterministic_review_fallback",
+  "searchedThemes": [
+    "new_authoritative_article",
+    "outdated_quantitative_data_fix",
+    "new_quantitative_metric",
+    "pricing_or_revenue_share_refresh",
+    "market_trend_refresh",
+    "startup_candidate_discovery",
+    "score_recalculation"
+  ],
+  "searchedRegions": [
+    "North America",
+    "Europe",
+    "Israel",
+    "Japan",
+    "Singapore",
+    "India",
+    "Latin America",
+    "Australia"
+  ],
+  "queryThemes": [
+    "new_authoritative_article",
+    "outdated_quantitative_data_fix",
+    "new_quantitative_metric",
+    "pricing_or_revenue_share_refresh",
+    "market_trend_refresh",
+    "startup_candidate_discovery",
+    "score_recalculation"
+  ],
+  "candidateUniverse": [],
+  "reservedBecauseUnverified": [
+    {
+      "name": "daily global discovery queue",
+      "reason": "No agent-authored candidate list was present; keep the full non-Korea/non-China global discovery queue active for the next run.",
+      "requiredNextChecks": [
+        "HQ verification",
+        "unicorn-status check",
+        "category fit",
+        "revenue or traction evidence",
+        "authoritative English source support"
+      ]
+    }
+  ],
+  "rejectedBecauseIneligible": [],
+  "minimumDailyContract": "Record concrete search themes and at least one candidate lead, reserve, or rejection. Do not leave discovery empty just because no candidate was promoted.",
+  "reviewActions": [
+    {
+      "type": "deterministic_daily_review",
+      "phase": "ai1_scout",
+      "page": "ai1",
+      "runDateKst": "2026-06-06",
+      "summary": "Agent-authored intelligence artifact was missing or empty, so the server seeded a review-driven update contract instead of blocking the daily publish.",
+      "reviewScope": {
+        "staleQuantFields": [
+          "valuation",
+          "funding_amount",
+          "employee_count",
+          "ARR",
+          "revenue",
+          "GMV_or_billings",
+          "MAU_or_DAU",
+          "device_reach",
+          "pricing",
+          "take_rate",
+          "revenue_share_ratio",
+          "market_size",
+          "CAGR",
+          "score"
+        ],
+        "authoritativeNewsTargets": [
+          "official newsroom",
+          "official blog or release notes",
+          "pricing or help center",
+          "developer docs",
+          "app store listing",
+          "regulatory filing or registry",
+          "investor portfolio update",
+          "TechCrunch",
+          "Business Wire",
+          "PR Newswire",
+          "Reuters",
+          "Bloomberg",
+          "WSJ",
+          "Financial Times",
+          "Adweek",
+          "AdExchanger"
+        ],
+        "dailyTracks": [
+          "new_authoritative_article",
+          "outdated_quantitative_data_fix",
+          "new_quantitative_metric",
+          "pricing_or_revenue_share_refresh",
+          "market_trend_refresh",
+          "startup_candidate_discovery",
+          "score_recalculation"
+        ]
+      },
+      "followUp": "Next agent run must replace this fallback with concrete source-backed findings when available."
+    }
+  ]
+}
