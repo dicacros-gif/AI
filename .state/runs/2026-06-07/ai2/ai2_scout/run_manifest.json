@@ -1,0 +1,23 @@
+{
+  "phase": "ai2_scout",
+  "kind": "scout",
+  "domain": "ai2",
+  "page": "ai2",
+  "runDate": "2026-06-07",
+  "phaseRoot": ".state/runs/2026-06-07/ai2/ai2_scout",
+  "pagePath": "2/index.html",
+  "promptFile": ".github/codex/prompts/ai2_scout.md",
+  "runsCodex": true,
+  "timeoutMinutes": 24,
+  "gates": [
+    "global_candidate_pool",
+    "no_korea_china_hq",
+    "no_hardware_first",
+    "adtech_mobile_fit_required"
+  ],
+  "failClosedFields": [
+    "headquarters_country",
+    "category",
+    "revenue_signal"
+  ]
+}
