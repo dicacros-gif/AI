@@ -1,0 +1,140 @@
+{
+  "phase": "ai1_update",
+  "kind": "update",
+  "domain": "ai1",
+  "page": "ai1",
+  "generatedAt": "2026-06-07T16:25:29.926180Z",
+  "runDateKst": "2026-06-08",
+  "scheduledStartKst": "00:05 KST",
+  "phaseSlotKst": "00:15 KST",
+  "stateBranch": "ai-watch-state",
+  "status": "deterministic_review_fallback",
+  "requiredTracks": [
+    "new_authoritative_article",
+    "outdated_quantitative_data_fix",
+    "new_quantitative_metric",
+    "pricing_or_revenue_share_refresh",
+    "market_trend_refresh",
+    "startup_candidate_discovery",
+    "score_recalculation"
+  ],
+  "authoritativeNewsTargets": [
+    "official newsroom",
+    "official blog or release notes",
+    "pricing or help center",
+    "developer docs",
+    "app store listing",
+    "regulatory filing or registry",
+    "investor portfolio update",
+    "TechCrunch",
+    "Business Wire",
+    "PR Newswire",
+    "Reuters",
+    "Bloomberg",
+    "WSJ",
+    "Financial Times",
+    "Adweek",
+    "AdExchanger"
+  ],
+  "staleQuantFields": [
+    "valuation",
+    "funding_amount",
+    "employee_count",
+    "ARR",
+    "revenue",
+    "GMV_or_billings",
+    "MAU_or_DAU",
+    "device_reach",
+    "pricing",
+    "take_rate",
+    "revenue_share_ratio",
+    "market_size",
+    "CAGR",
+    "score"
+  ],
+  "newArticles": [],
+  "outdatedDataFixes": [
+    {
+      "fieldGroup": "stale quantitative data",
+      "fieldsQueued": [
+        "valuation",
+        "funding_amount",
+        "employee_count",
+        "ARR",
+        "revenue",
+        "GMV_or_billings",
+        "MAU_or_DAU",
+        "device_reach",
+        "pricing",
+        "take_rate",
+        "revenue_share_ratio",
+        "market_size",
+        "CAGR",
+        "score"
+      ],
+      "action": "queued_for_authoritative_recheck",
+      "reason": "No agent-authored findings were present after the update phase."
+    }
+  ],
+  "newQuantitativeData": [],
+  "monetizationUpdates": [],
+  "marketTrendUpdates": [],
+  "startupDiscoveryLeads": [],
+  "scoreRecalculationTriggers": [],
+  "reviewActions": [
+    {
+      "type": "deterministic_daily_review",
+      "phase": "ai1_update",
+      "page": "ai1",
+      "runDateKst": "2026-06-08",
+      "summary": "Agent-authored intelligence artifact was missing or empty, so the server seeded a review-driven update contract instead of blocking the daily publish.",
+      "reviewScope": {
+        "staleQuantFields": [
+          "valuation",
+          "funding_amount",
+          "employee_count",
+          "ARR",
+          "revenue",
+          "GMV_or_billings",
+          "MAU_or_DAU",
+          "device_reach",
+          "pricing",
+          "take_rate",
+          "revenue_share_ratio",
+          "market_size",
+          "CAGR",
+          "score"
+        ],
+        "authoritativeNewsTargets": [
+          "official newsroom",
+          "official blog or release notes",
+          "pricing or help center",
+          "developer docs",
+          "app store listing",
+          "regulatory filing or registry",
+          "investor portfolio update",
+          "TechCrunch",
+          "Business Wire",
+          "PR Newswire",
+          "Reuters",
+          "Bloomberg",
+          "WSJ",
+          "Financial Times",
+          "Adweek",
+          "AdExchanger"
+        ],
+        "dailyTracks": [
+          "new_authoritative_article",
+          "outdated_quantitative_data_fix",
+          "new_quantitative_metric",
+          "pricing_or_revenue_share_refresh",
+          "market_trend_refresh",
+          "startup_candidate_discovery",
+          "score_recalculation"
+        ]
+      },
+      "followUp": "Next agent run must replace this fallback with concrete source-backed findings when available."
+    }
+  ],
+  "minimumDailyContract": "Populate at least one publishable action from newArticles, outdatedDataFixes, newQuantitativeData, monetizationUpdates, marketTrendUpdates, startupDiscoveryLeads, scoreRecalculationTriggers, or reviewActions."
+}
