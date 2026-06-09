@@ -1,0 +1,14 @@
+{
+  "phase": "global_recency_recheck",
+  "kind": "recency",
+  "domain": "global",
+  "page": "global",
+  "generatedAt": "2026-06-09T17:30:06.820922Z",
+  "runDateKst": "2026-06-10",
+  "scheduledStartKst": "00:05 KST",
+  "phaseSlotKst": "03:32 KST",
+  "stateBranch": "ai-watch-state",
+  "status": "ok",
+  "recheckedSources": [],
+  "breakingChanges": []
+}

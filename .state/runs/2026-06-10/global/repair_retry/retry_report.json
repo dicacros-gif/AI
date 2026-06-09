@@ -1,0 +1,13 @@
+{
+  "phase": "repair_retry",
+  "kind": "retry",
+  "domain": "global",
+  "page": "global",
+  "generatedAt": "2026-06-09T17:30:49.197837Z",
+  "runDateKst": "2026-06-10",
+  "scheduledStartKst": "00:05 KST",
+  "phaseSlotKst": "03:50 KST",
+  "stateBranch": "ai-watch-state",
+  "retryable": [],
+  "nonRetryable": []
+}
