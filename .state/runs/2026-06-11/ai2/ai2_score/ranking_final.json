@@ -1,0 +1,19 @@
+{
+  "phase": "ai2_score",
+  "kind": "score",
+  "domain": "ai2",
+  "page": "ai2",
+  "generatedAt": "2026-06-10T18:09:34.427438Z",
+  "runDateKst": "2026-06-11",
+  "scheduledStartKst": "00:05 KST",
+  "phaseSlotKst": "03:12 KST",
+  "stateBranch": "ai-watch-state",
+  "ranking": [],
+  "tieBreakOrder": [
+    "revenue strength",
+    "traction recency",
+    "primary-source quality",
+    "strategic fit",
+    "defensibility"
+  ]
+}
