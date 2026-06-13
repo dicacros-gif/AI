@@ -1,0 +1,21 @@
+{
+  "phase": "ai1_evidence_normalize",
+  "kind": "evidence",
+  "domain": "ai1",
+  "page": "ai1",
+  "generatedAt": "2026-06-13T16:24:22.443377Z",
+  "runDateKst": "2026-06-14",
+  "scheduledStartKst": "00:05 KST",
+  "phaseSlotKst": "00:57 KST",
+  "stateBranch": "ai-watch-state",
+  "count": 0,
+  "schema": [
+    "source_id",
+    "source_type",
+    "published_at",
+    "retrieved_at_utc",
+    "quote",
+    "confidence",
+    "ttl_days"
+  ]
+}
