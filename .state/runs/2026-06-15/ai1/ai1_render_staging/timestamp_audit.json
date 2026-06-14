@@ -1,0 +1,31 @@
+{
+  "phase": "ai1_render_staging",
+  "kind": "render",
+  "domain": "ai1",
+  "page": "ai1",
+  "generatedAt": "2026-06-14T16:45:52.602981Z",
+  "runDateKst": "2026-06-15",
+  "scheduledStartKst": "00:05 KST",
+  "phaseSlotKst": "01:40 KST",
+  "stateBranch": "ai-watch-state",
+  "pages": {
+    "ai1": {
+      "page": "/home/runner/work/AI/AI/1/index.html",
+      "visibleLabels": [
+        "'26.6.15 (월) 01:45 KST 기준",
+        "'26.6.15 (월) 01:45 KST 기준"
+      ],
+      "pass": true,
+      "issues": []
+    },
+    "ai2": {
+      "page": "/home/runner/work/AI/AI/2/index.html",
+      "visibleLabels": [
+        "'26.6.15 (월) 01:45 KST 기준",
+        "'26.6.15 (월) 01:45 KST 기준"
+      ],
+      "pass": true,
+      "issues": []
+    }
+  }
+}
