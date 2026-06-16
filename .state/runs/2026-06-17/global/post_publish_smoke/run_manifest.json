@@ -1,0 +1,23 @@
+{
+  "phase": "post_publish_smoke",
+  "kind": "smoke",
+  "domain": "global",
+  "page": "global",
+  "runDate": "2026-06-17",
+  "phaseRoot": ".state/runs/2026-06-17/global/post_publish_smoke",
+  "pagePath": "",
+  "promptFile": "",
+  "runsCodex": false,
+  "timeoutMinutes": 10,
+  "gates": [
+    "public_pages_load",
+    "timestamp_visible",
+    "ranking_consistent",
+    "publish_path_canonical"
+  ],
+  "failClosedFields": [
+    "publish_path",
+    "timestamp_label",
+    "ranking_claim"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "phase": "ai2_evidence_normalize",
+  "kind": "evidence",
+  "domain": "ai2",
+  "page": "ai2",
+  "runDate": "2026-06-17",
+  "phaseRoot": ".state/runs/2026-06-17/ai2/ai2_evidence_normalize",
+  "pagePath": "2/index.html",
+  "promptFile": "",
+  "runsCodex": false,
+  "timeoutMinutes": 10,
+  "gates": [
+    "evidence_schema_complete",
+    "source_tier_classified"
+  ],
+  "failClosedFields": [
+    "source_type",
+    "retrieved_at_utc"
+  ]
+}
