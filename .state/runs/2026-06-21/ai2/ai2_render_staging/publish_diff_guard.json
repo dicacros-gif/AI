@@ -1,0 +1,19 @@
+{
+  "phase": "ai2_render_staging",
+  "kind": "render",
+  "domain": "ai2",
+  "page": "ai2",
+  "generatedAt": "2026-06-20T16:28:45.943545Z",
+  "runDateKst": "2026-06-21",
+  "scheduledStartKst": "00:05 KST",
+  "phaseSlotKst": "03:22 KST",
+  "stateBranch": "ai-watch-state",
+  "status": "ok",
+  "allowedPathsOnly": true,
+  "blockedChanges": [],
+  "allowedPaths": [
+    "1/index.html",
+    "2/index.html",
+    ".state/runs/2026-06-21"
+  ]
+}
