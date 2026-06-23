@@ -1,0 +1,21 @@
+{
+  "phase": "ai2_claim_ledger_build",
+  "kind": "claim_ledger",
+  "domain": "ai2",
+  "page": "ai2",
+  "runDate": "2026-06-24",
+  "phaseRoot": ".state/runs/2026-06-24/ai2/ai2_claim_ledger_build",
+  "pagePath": "2/index.html",
+  "promptFile": "",
+  "runsCodex": false,
+  "timeoutMinutes": 10,
+  "gates": [
+    "every_core_claim_has_source_id",
+    "claim_ledger_schema_complete"
+  ],
+  "failClosedFields": [
+    "source_id",
+    "field",
+    "verification_status"
+  ]
+}
