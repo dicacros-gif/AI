@@ -1,0 +1,13 @@
+{
+  "phase": "ai1_scout",
+  "kind": "scout",
+  "domain": "ai1",
+  "page": "ai1",
+  "generatedAt": "2026-06-25T17:21:04.145760Z",
+  "runDateKst": "2026-06-26",
+  "scheduledStartKst": "00:05 KST",
+  "phaseSlotKst": "00:40 KST",
+  "stateBranch": "ai-watch-state",
+  "ranking": [],
+  "rule": "Only newly discovered approved candidates can be ranked 1..N."
+}
