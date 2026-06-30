@@ -1,0 +1,19 @@
+{
+  "phase": "ai1_entity_resolution",
+  "kind": "entity_resolution",
+  "domain": "ai1",
+  "page": "ai1",
+  "runDate": "2026-07-01",
+  "phaseRoot": ".state/runs/2026-07-01/ai1/ai1_entity_resolution",
+  "pagePath": "1/index.html",
+  "promptFile": "",
+  "runsCodex": false,
+  "timeoutMinutes": 10,
+  "gates": [
+    "no_duplicate_company_id",
+    "all_candidates_have_company_id"
+  ],
+  "failClosedFields": [
+    "company_id"
+  ]
+}
