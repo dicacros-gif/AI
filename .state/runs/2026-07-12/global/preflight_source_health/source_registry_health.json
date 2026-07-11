@@ -1,0 +1,36 @@
+{
+  "phase": "preflight_source_health",
+  "kind": "preflight",
+  "domain": "global",
+  "page": "global",
+  "generatedAt": "2026-07-11T16:01:24.192097Z",
+  "runDateKst": "2026-07-12",
+  "scheduledStartKst": "00:05 KST",
+  "phaseSlotKst": "00:05 KST",
+  "stateBranch": "ai-watch-state",
+  "status": "ok",
+  "tier0Reachability": [
+    "official company english site",
+    "official company newsroom",
+    "official company blog",
+    "product docs",
+    "official pricing/help center",
+    "app store listing",
+    "regulatory filing",
+    "company registry",
+    "investor portfolio page in english",
+    "developer documentation"
+  ],
+  "tier1Reachability": [
+    "Reuters",
+    "Bloomberg",
+    "TechCrunch",
+    "The Information",
+    "Wired",
+    "Fortune",
+    "Forbes",
+    "WSJ",
+    "Financial Times"
+  ],
+  "policy": "Source priority is enforced before claim verification."
+}
