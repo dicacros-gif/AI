@@ -1,0 +1,114 @@
+{
+  "phase": "preflight_source_health",
+  "kind": "preflight",
+  "domain": "global",
+  "page": "global",
+  "generatedAt": "2026-07-13T17:19:48.946016Z",
+  "runDateKst": "2026-07-14",
+  "scheduledStartKst": "00:05 KST",
+  "phaseSlotKst": "00:05 KST",
+  "stateBranch": "ai-watch-state",
+  "status": "ok",
+  "checks": {
+    "githubHostedRuntime": true,
+    "workflowPresent": true,
+    "pageTargetsPresent": true,
+    "codexPromptsPresent": true,
+    "skillsPresent": true
+  },
+  "workflowPath": ".github/workflows/ai-watch-scheduler.yml",
+  "pages": [
+    {
+      "page": "ai1",
+      "targetPath": "1/index.html",
+      "exists": true
+    },
+    {
+      "page": "ai2",
+      "targetPath": "2/index.html",
+      "exists": true
+    }
+  ],
+  "codexPrompts": [
+    {
+      "phase": "ai1_update",
+      "promptFile": ".github/codex/prompts/ai1_update.md",
+      "exists": true
+    },
+    {
+      "phase": "ai1_verify",
+      "promptFile": ".github/codex/prompts/ai1_verify.md",
+      "exists": true
+    },
+    {
+      "phase": "ai1_scout",
+      "promptFile": ".github/codex/prompts/ai1_scout.md",
+      "exists": true
+    },
+    {
+      "phase": "ai1_score",
+      "promptFile": ".github/codex/prompts/ai1_score.md",
+      "exists": true
+    },
+    {
+      "phase": "ai1_render_staging",
+      "promptFile": ".github/codex/prompts/ai1_render.md",
+      "exists": true
+    },
+    {
+      "phase": "ai2_update",
+      "promptFile": ".github/codex/prompts/ai2_update.md",
+      "exists": true
+    },
+    {
+      "phase": "ai2_verify",
+      "promptFile": ".github/codex/prompts/ai2_verify.md",
+      "exists": true
+    },
+    {
+      "phase": "ai2_scout",
+      "promptFile": ".github/codex/prompts/ai2_scout.md",
+      "exists": true
+    },
+    {
+      "phase": "ai2_score",
+      "promptFile": ".github/codex/prompts/ai2_score.md",
+      "exists": true
+    },
+    {
+      "phase": "ai2_render_staging",
+      "promptFile": ".github/codex/prompts/ai2_render.md",
+      "exists": true
+    },
+    {
+      "phase": "global_qa",
+      "promptFile": ".github/codex/prompts/global_qa.md",
+      "exists": true
+    }
+  ],
+  "skills": [
+    {
+      "path": ".agents/skills/source-freshness/SKILL.md",
+      "exists": true
+    },
+    {
+      "path": ".agents/skills/company-factcheck/SKILL.md",
+      "exists": true
+    },
+    {
+      "path": ".agents/skills/render-regression/SKILL.md",
+      "exists": true
+    }
+  ],
+  "phaseCount": 28,
+  "schedule": {
+    "cron": "5 0 * * *",
+    "timezone": "Asia/Seoul",
+    "kst_start": "00:05 KST"
+  },
+  "reliabilityNotes": [
+    "GitHub scheduled workflows are not hard real-time.",
+    "Top-of-hour triggers are intentionally avoided.",
+    "Use workflow_dispatch for replay or manual reruns."
+  ]
+}
