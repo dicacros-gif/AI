@@ -1,0 +1,34 @@
+{
+  "phase": "ai1_candidate_verify",
+  "kind": "candidate_verify",
+  "domain": "ai1",
+  "page": "ai1",
+  "runDate": "2026-07-17",
+  "phaseRoot": ".state/runs/2026-07-17/ai1/ai1_candidate_verify",
+  "pagePath": "1/index.html",
+  "promptFile": "",
+  "runsCodex": false,
+  "timeoutMinutes": 18,
+  "gates": [
+    "required_hq_source",
+    "no_korea_china_hq",
+    "no_unicorn",
+    "all_numbers_cited",
+    "no_duplicate_company_id",
+    "mobile_fit_confirmed",
+    "on_device_proof_classified",
+    "sdk_maturity_recorded",
+    "privacy_architecture_recorded",
+    "oem_partnership_evidence_classified"
+  ],
+  "failClosedFields": [
+    "headquarters_country",
+    "unicorn_status",
+    "category",
+    "funding_amount",
+    "valuation",
+    "on_device_proof_level",
+    "sdk_maturity",
+    "privacy_architecture"
+  ]
+}
