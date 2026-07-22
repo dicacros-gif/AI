@@ -3,7 +3,7 @@
   "kind": "render",
   "domain": "ai2",
   "page": "ai2",
-  "generatedAt": "2026-07-22T16:39:45.854754Z",
+  "generatedAt": "2026-07-22T23:13:22.549857Z",
   "runDateKst": "2026-07-23",
   "scheduledStartKst": "00:05 KST",
   "phaseSlotKst": "03:22 KST",
@@ -12,8 +12,8 @@
     "ai1": {
       "page": "/home/runner/work/AI/AI/1/index.html",
       "visibleLabels": [
-        "'26.7.23 (목) 01:39 KST 기준",
-        "'26.7.23 (목) 01:39 KST 기준"
+        "'26.7.23 (목) 08:13 KST 기준",
+        "'26.7.23 (목) 08:13 KST 기준"
       ],
       "pass": true,
       "issues": []
@@ -21,8 +21,8 @@
     "ai2": {
       "page": "/home/runner/work/AI/AI/2/index.html",
       "visibleLabels": [
-        "'26.7.23 (목) 01:39 KST 기준",
-        "'26.7.23 (목) 01:39 KST 기준"
+        "'26.7.23 (목) 08:13 KST 기준",
+        "'26.7.23 (목) 08:13 KST 기준"
       ],
       "pass": true,
       "issues": []
