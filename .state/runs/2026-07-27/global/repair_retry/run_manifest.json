@@ -1,0 +1,18 @@
+{
+  "phase": "repair_retry",
+  "kind": "retry",
+  "domain": "global",
+  "page": "global",
+  "runDate": "2026-07-27",
+  "phaseRoot": ".state/runs/2026-07-27/global/repair_retry",
+  "pagePath": "",
+  "promptFile": "",
+  "runsCodex": false,
+  "timeoutMinutes": 10,
+  "gates": [
+    "retry_plan_written"
+  ],
+  "failClosedFields": [
+    "retry_policy"
+  ]
+}
