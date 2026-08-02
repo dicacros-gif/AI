@@ -1,0 +1,23 @@
+{
+  "phase": "ai1_scout",
+  "kind": "scout",
+  "domain": "ai1",
+  "page": "ai1",
+  "runDate": "2026-08-03",
+  "phaseRoot": ".state/runs/2026-08-03/ai1/ai1_scout",
+  "pagePath": "1/index.html",
+  "promptFile": ".github/codex/prompts/ai1_scout.md",
+  "runsCodex": true,
+  "timeoutMinutes": 24,
+  "gates": [
+    "global_candidate_pool",
+    "no_korea_china_hq",
+    "no_hardware_first",
+    "mobile_relevance_required"
+  ],
+  "failClosedFields": [
+    "headquarters_country",
+    "category",
+    "revenue_signal"
+  ]
+}

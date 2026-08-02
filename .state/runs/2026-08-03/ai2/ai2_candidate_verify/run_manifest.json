@@ -1,0 +1,37 @@
+{
+  "phase": "ai2_candidate_verify",
+  "kind": "candidate_verify",
+  "domain": "ai2",
+  "page": "ai2",
+  "runDate": "2026-08-03",
+  "phaseRoot": ".state/runs/2026-08-03/ai2/ai2_candidate_verify",
+  "pagePath": "2/index.html",
+  "promptFile": "",
+  "runsCodex": false,
+  "timeoutMinutes": 18,
+  "gates": [
+    "required_hq_source",
+    "no_korea_china_hq",
+    "no_unicorn",
+    "all_numbers_cited",
+    "no_duplicate_company_id",
+    "mobile_adtech_fit_confirmed",
+    "oem_surface_support_recorded",
+    "sdk_maturity_recorded",
+    "measurement_stack_recorded",
+    "privacy_readiness_recorded",
+    "reach_or_device_footprint_recorded"
+  ],
+  "failClosedFields": [
+    "headquarters_country",
+    "unicorn_status",
+    "category",
+    "funding_amount",
+    "valuation",
+    "policy_drift",
+    "supported_oem_surfaces",
+    "sdk_maturity",
+    "measurement_stack_support",
+    "privacy_readiness"
+  ]
+}
