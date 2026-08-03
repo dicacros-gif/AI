@@ -1,0 +1,14 @@
+{
+  "phase": "ai1_staleness_gate",
+  "kind": "staleness",
+  "domain": "ai1",
+  "page": "ai1",
+  "generatedAt": "2026-08-03T17:15:55.459862Z",
+  "runDateKst": "2026-08-04",
+  "scheduledStartKst": "00:05 KST",
+  "phaseSlotKst": "01:20 KST",
+  "stateBranch": "ai-watch-state",
+  "status": "ok",
+  "staleClaims": 0,
+  "freshClaims": 0
+}
