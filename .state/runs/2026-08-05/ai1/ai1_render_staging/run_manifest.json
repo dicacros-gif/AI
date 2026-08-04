@@ -1,0 +1,23 @@
+{
+  "phase": "ai1_render_staging",
+  "kind": "render",
+  "domain": "ai1",
+  "page": "ai1",
+  "runDate": "2026-08-05",
+  "phaseRoot": ".state/runs/2026-08-05/ai1/ai1_render_staging",
+  "pagePath": "1/index.html",
+  "promptFile": ".github/codex/prompts/ai1_render.md",
+  "runsCodex": true,
+  "timeoutMinutes": 12,
+  "gates": [
+    "html_shell_preserved",
+    "publish_path_preserved",
+    "ranking_audit_passes",
+    "timestamp_audit_passes"
+  ],
+  "failClosedFields": [
+    "publish_path",
+    "html_shell",
+    "timestamp_label"
+  ]
+}
