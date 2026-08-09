@@ -1,0 +1,23 @@
+{
+  "phase": "preflight_source_health",
+  "kind": "preflight",
+  "domain": "global",
+  "page": "global",
+  "runDate": "2026-08-10",
+  "phaseRoot": ".state/runs/2026-08-10/global/preflight_source_health",
+  "pagePath": "",
+  "promptFile": "",
+  "runsCodex": false,
+  "timeoutMinutes": 10,
+  "gates": [
+    "github_hosted_runtime",
+    "required_secrets_present",
+    "state_branch_accessible",
+    "default_branch_context"
+  ],
+  "failClosedFields": [
+    "runtime",
+    "secrets",
+    "state_branch"
+  ]
+}
