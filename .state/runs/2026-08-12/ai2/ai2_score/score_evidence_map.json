@@ -1,0 +1,12 @@
+{
+  "phase": "ai2_score",
+  "kind": "score",
+  "domain": "ai2",
+  "page": "ai2",
+  "generatedAt": "2026-08-11T16:07:00.370886Z",
+  "runDateKst": "2026-08-12",
+  "scheduledStartKst": "00:05 KST",
+  "phaseSlotKst": "03:12 KST",
+  "stateBranch": "ai-watch-state",
+  "evidence": {}
+}
