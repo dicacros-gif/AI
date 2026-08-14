@@ -1,0 +1,13 @@
+{
+  "phase": "ai2_verify",
+  "kind": "verify",
+  "domain": "ai2",
+  "page": "ai2",
+  "generatedAt": "2026-08-14T15:58:44.642303Z",
+  "runDateKst": "2026-08-15",
+  "scheduledStartKst": "00:05 KST",
+  "phaseSlotKst": "02:09 KST",
+  "stateBranch": "ai-watch-state",
+  "decisiveLanguagePolicy": "english-authoritative-first",
+  "koreanDecisiveFacts": []
+}
