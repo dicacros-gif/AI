@@ -1,0 +1,19 @@
+{
+  "phase": "global_recency_recheck",
+  "kind": "recency",
+  "domain": "global",
+  "page": "global",
+  "runDate": "2026-08-17",
+  "phaseRoot": ".state/runs/2026-08-17/global/global_recency_recheck",
+  "pagePath": "",
+  "promptFile": "",
+  "runsCodex": false,
+  "timeoutMinutes": 12,
+  "gates": [
+    "recency_recheck_completed",
+    "core_sources_rechecked"
+  ],
+  "failClosedFields": [
+    "recency_recheck"
+  ]
+}
