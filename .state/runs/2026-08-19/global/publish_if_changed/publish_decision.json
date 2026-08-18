@@ -1,0 +1,13 @@
+{
+  "phase": "publish_if_changed",
+  "kind": "publish",
+  "domain": "global",
+  "page": "global",
+  "generatedAt": "2026-08-18T15:42:25.982108Z",
+  "runDateKst": "2026-08-19",
+  "scheduledStartKst": "00:05 KST",
+  "phaseSlotKst": "03:57 KST",
+  "stateBranch": "ai-watch-state",
+  "decision": "blocked_until_delta",
+  "reason": "Full daily runs must produce either a fresh-news delta or a validated review-driven improvement."
+}
