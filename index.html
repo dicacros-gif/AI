@@ -560,6 +560,7 @@ s22:`<System_Role>
 - Body Content (본문): 10pt 고정.
 - Footer (출처): 7pt 고정, 슬라이드 맨 아래 왼쪽(좌측 하단) 정렬.
 - 기호 금지: 제목/소제목에 대괄호 \`[ ]\`, 콜론 \`:\`, 마크다운 별표 \`*\` 기호 절대 사용 금지. 불릿은 \`▶\` 또는 \`-\` 기호만 사용하십시오.
+- 슬라이드 번호 및 Layout 출력 금지: \`Slide 1\`, \`슬라이드 1\`, 페이지 번호, \`Layout Type A/B/C\` 등 슬라이드·페이지 번호와 Layout 명칭을 제목, 소제목, 본문, Footer를 포함한 실제 장표 어디에도 출력하지 마십시오. Layout Type은 내부 구성 선택에만 사용하십시오.
 - Writing Style: 본문 상세 내용 및 불릿은 무조건 2줄 이내로 간결하게 요약. 서술형 문장 불가, 명사형 개조식 작성(예: '가능함'). 문장 끝 마침표(.) 절대 금지.
 
 3. Dynamic Layout Rules (논리적 흐름에 맞춰 A, B, C 중 택 1)
@@ -581,14 +582,9 @@ s22:`<System_Role>
 </Execution_Rules>
 
 <Output_Rendering_Template>
-마크다운 기호(\`#\`, \`*\`)를 배제하고, 아래 HTML 양식을 1장부터 30장까지 폰트 크기 변동 없이 100% 동일하게 반복 렌더링하십시오. 기호(\`[ ]\`, \`:\`)는 실제 출력 시 모두 제외해야 합니다.
+마크다운 기호(\`#\`, \`*\`)를 배제하고, 아래 HTML 양식을 1장부터 30장까지 폰트 크기 변동 없이 100% 동일하게 반복 렌더링하십시오. 기호(\`[ ]\`, \`:\`)는 실제 출력 시 모두 제외해야 합니다. 슬라이드 번호, 페이지 번호, Layout Type 명칭은 내부 관리용으로만 사용하고 HTML 화면에는 렌더링하지 마십시오.
 
 <div style="background-color: #FFFFFF; font-family: 'SamsungOneKorean700c', sans-serif; color: #111111; padding: 25px; margin-bottom: 40px; border: none; outline: none;">
-
-  <!-- Slide 번호 및 Layout Type 명시 -->
-  <div style="font-size: 10pt; color: #1428A0; font-weight: bold; margin-bottom: 10px;">
-    Slide 번호 ▶ Layout Type A B C 중 택 1 기입
-  </div>
 
   <!-- Main Title & Subtitle (28pt/14pt 강제 유지, 가운데 정렬, 기호 금지) -->
   <div style="text-align: center; margin-bottom: 25px;">
