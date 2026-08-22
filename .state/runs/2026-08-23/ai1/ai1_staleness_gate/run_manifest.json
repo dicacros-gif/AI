@@ -1,0 +1,21 @@
+{
+  "phase": "ai1_staleness_gate",
+  "kind": "staleness",
+  "domain": "ai1",
+  "page": "ai1",
+  "runDate": "2026-08-23",
+  "phaseRoot": ".state/runs/2026-08-23/ai1/ai1_staleness_gate",
+  "pagePath": "1/index.html",
+  "promptFile": "",
+  "runsCodex": false,
+  "timeoutMinutes": 8,
+  "gates": [
+    "no_stale_core_claims"
+  ],
+  "failClosedFields": [
+    "headquarters_country",
+    "valuation",
+    "funding_amount",
+    "ranking_claim"
+  ]
+}
