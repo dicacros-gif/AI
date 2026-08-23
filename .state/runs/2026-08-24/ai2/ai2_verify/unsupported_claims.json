@@ -1,0 +1,12 @@
+{
+  "phase": "ai2_verify",
+  "kind": "verify",
+  "domain": "ai2",
+  "page": "ai2",
+  "generatedAt": "2026-08-23T15:30:36.556232Z",
+  "runDateKst": "2026-08-24",
+  "scheduledStartKst": "00:05 KST",
+  "phaseSlotKst": "02:09 KST",
+  "stateBranch": "ai-watch-state",
+  "claims": []
+}
