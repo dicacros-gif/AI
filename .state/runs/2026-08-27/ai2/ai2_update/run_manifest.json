@@ -1,0 +1,21 @@
+{
+  "phase": "ai2_update",
+  "kind": "update",
+  "domain": "ai2",
+  "page": "ai2",
+  "runDate": "2026-08-27",
+  "phaseRoot": ".state/runs/2026-08-27/ai2/ai2_update",
+  "pagePath": "2/index.html",
+  "promptFile": ".github/codex/prompts/ai2_update.md",
+  "runsCodex": true,
+  "timeoutMinutes": 20,
+  "gates": [
+    "english_sources_only_for_decisive_facts",
+    "mutable_claims_have_timestamps"
+  ],
+  "failClosedFields": [
+    "platform_policy_claim",
+    "traction_metric",
+    "official_update"
+  ]
+}

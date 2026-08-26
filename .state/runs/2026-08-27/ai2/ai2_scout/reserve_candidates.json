@@ -1,0 +1,15 @@
+{
+  "phase": "ai2_scout",
+  "kind": "scout",
+  "domain": "ai2",
+  "page": "ai2",
+  "generatedAt": "2026-08-26T16:25:10.845152Z",
+  "runDateKst": "2026-08-27",
+  "scheduledStartKst": "00:05 KST",
+  "phaseSlotKst": "02:22 KST",
+  "stateBranch": "ai-watch-state",
+  "reserve": [],
+  "reasons": [
+    "Reject or reserve unclear HQ, South Korea/China HQ, unicorns, stale claims, and hardware-first candidates."
+  ]
+}
