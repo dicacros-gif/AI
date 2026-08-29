@@ -1,0 +1,10 @@
+{
+  "retryable": [],
+  "nonRetryable": [],
+  "summary": [],
+  "retryPlan": {
+    "retryableCount": 0,
+    "nonRetryableCount": 0,
+    "policy": "Retry only bounded transient failures; fail closed on quality, policy, and evidence issues."
+  }
+}
