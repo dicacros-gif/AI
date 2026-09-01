@@ -1,0 +1,16 @@
+{
+  "phase": "global_qa",
+  "kind": "global_qa",
+  "domain": "global",
+  "page": "global",
+  "generatedAt": "2026-09-01T18:24:38.136369Z",
+  "runDateKst": "2026-09-02",
+  "scheduledStartKst": "00:05 KST",
+  "phaseSlotKst": "03:42 KST",
+  "stateBranch": "ai-watch-state",
+  "status": "ok",
+  "warnings": [],
+  "blockers": [],
+  "reviewDrivenImprovementRequired": true,
+  "noNoopDailyRun": true
+}
