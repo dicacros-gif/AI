@@ -1,0 +1,14 @@
+{
+  "phase": "publish_if_changed",
+  "kind": "publish",
+  "domain": "global",
+  "page": "global",
+  "generatedAt": "2026-09-02T18:36:16.917765Z",
+  "runDateKst": "2026-09-03",
+  "scheduledStartKst": "00:05 KST",
+  "phaseSlotKst": "03:57 KST",
+  "stateBranch": "ai-watch-state",
+  "status": "ok",
+  "allowedPathsOnly": true,
+  "blockedChanges": []
+}

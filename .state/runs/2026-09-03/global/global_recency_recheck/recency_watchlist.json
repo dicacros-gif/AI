@@ -1,0 +1,66 @@
+{
+  "phase": "global_recency_recheck",
+  "kind": "recency",
+  "domain": "global",
+  "page": "global",
+  "generatedAt": "2026-09-02T18:35:29.424229Z",
+  "runDateKst": "2026-09-03",
+  "scheduledStartKst": "00:05 KST",
+  "phaseSlotKst": "03:32 KST",
+  "stateBranch": "ai-watch-state",
+  "status": "deterministic_review_fallback",
+  "watchFields": [
+    "valuation",
+    "funding_amount",
+    "employee_count",
+    "ARR",
+    "revenue",
+    "GMV_or_billings",
+    "MAU_or_DAU",
+    "device_reach",
+    "pricing",
+    "take_rate",
+    "revenue_share_ratio",
+    "market_size",
+    "CAGR",
+    "score"
+  ],
+  "highVolatilitySourceTypes": [
+    "pricing_page",
+    "official_newsroom",
+    "funding_database",
+    "app_store_listing",
+    "developer_docs",
+    "platform_policy_docs",
+    "investor_portfolio"
+  ],
+  "recheckedCompanies": [
+    "ai1 published company set",
+    "ai2 published company set"
+  ],
+  "staleOrChangedClaims": [
+    {
+      "claimScope": "all mutable quantitative fields",
+      "fieldsQueued": [
+        "valuation",
+        "funding_amount",
+        "employee_count",
+        "ARR",
+        "revenue",
+        "GMV_or_billings",
+        "MAU_or_DAU",
+        "device_reach",
+        "pricing",
+        "take_rate",
+        "revenue_share_ratio",
+        "market_size",
+        "CAGR",
+        "score"
+      ],
+      "action": "publish-time fallback watchlist seeded"
+    }
+  ],
+  "publishTimeRisks": [
+    "Agent-authored recency details were absent; fallback allows timestamped publish while retaining next-run recheck queue."
+  ]
+}
