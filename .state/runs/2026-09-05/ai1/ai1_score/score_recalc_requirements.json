@@ -1,0 +1,81 @@
+{
+  "phase": "ai1_score",
+  "kind": "score",
+  "domain": "ai1",
+  "page": "ai1",
+  "generatedAt": "2026-09-04T18:18:11.021860Z",
+  "runDateKst": "2026-09-05",
+  "scheduledStartKst": "00:05 KST",
+  "phaseSlotKst": "01:30 KST",
+  "stateBranch": "ai-watch-state",
+  "status": "deterministic_review_fallback",
+  "scorecardVersion": "ai1_mobile_oem_v2026_04",
+  "requiredTrackingFields": [
+    "last_funding_date",
+    "last_round",
+    "lead_investor",
+    "oem_or_tier1_partnership_evidence",
+    "on_device_proof_level",
+    "sdk_maturity",
+    "privacy_architecture",
+    "strategic_fit_surface",
+    "mna_type",
+    "monthly_subscription_price",
+    "pricing_currency",
+    "revenue_share_ratio",
+    "revenue_share_basis",
+    "monetization_as_of_month"
+  ],
+  "changedInputs": [
+    {
+      "input": "daily intelligence fallback",
+      "reason": "Agent-authored score input was absent; queue stale quantitative fields for recalculation.",
+      "fieldsQueued": [
+        "valuation",
+        "funding_amount",
+        "employee_count",
+        "ARR",
+        "revenue",
+        "GMV_or_billings",
+        "MAU_or_DAU",
+        "device_reach",
+        "pricing",
+        "take_rate",
+        "revenue_share_ratio",
+        "market_size",
+        "CAGR",
+        "score"
+      ]
+    }
+  ],
+  "recalculatedCompanies": [],
+  "unchangedButReviewedCompanies": [
+    {
+      "scope": "ai1 published company set",
+      "reviewedFields": [
+        "valuation",
+        "funding_amount",
+        "employee_count",
+        "ARR",
+        "revenue",
+        "GMV_or_billings",
+        "MAU_or_DAU",
+        "device_reach",
+        "pricing",
+        "take_rate",
+        "revenue_share_ratio",
+        "market_size",
+        "CAGR",
+        "score"
+      ],
+      "reason": "Daily server-side fallback preserved no-op prevention and score-review traceability."
+    }
+  ],
+  "arithmeticChecks": [
+    {
+      "check": "A/B/C/D/E/F/G score arithmetic",
+      "status": "queued_for_next_agent_recalculation"
+    }
+  ],
+  "minimumDailyContract": "List every company whose score was recalculated or explicitly reviewed because of fresh evidence, stale data repair, pricing/BM changes, or source-quality changes."
+}
