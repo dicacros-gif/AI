@@ -1,0 +1,51 @@
+{
+  "id": "ai2_evidence_normalize",
+  "kind": "evidence",
+  "domain": "ai2",
+  "purpose": "Normalize raw AI/2 sources into one evidence schema with timestamps, source types, source tiers, and policy scope.",
+  "inputs": [
+    ".state/runs/<date>/ai2/ai2_update",
+    ".state/runs/<date>/ai2/ai2_scout"
+  ],
+  "outputs": [
+    "evidence.jsonl",
+    "evidence_index.json",
+    "source_tiers.json"
+  ],
+  "agents": [
+    "evidence_normalizer",
+    "source_registry_router",
+    "source_prompt_injection_guard",
+    "deprecation_watch_agent"
+  ],
+  "gates": [
+    "evidence_schema_complete",
+    "source_tier_classified"
+  ],
+  "timeout_minutes": 10,
+  "retry_policy": {
+    "max_attempts": 2,
+    "backoff_seconds": [
+      60,
+      180
+    ]
+  },
+  "evidence_contract": {
+    "min_sources_per_core_claim": 1,
+    "min_sources_for_mutable_claim": 2,
+    "max_staleness_days": 14,
+    "freshness_fields": [
+      "source_type",
+      "retrieved_at_utc",
+      "published_at"
+    ]
+  },
+  "fail_closed_fields": [
+    "source_type",
+    "retrieved_at_utc"
+  ],
+  "page": "ai2",
+  "prompt_file": "",
+  "kst_slot": "02:39 KST",
+  "runs_codex": false
+}
