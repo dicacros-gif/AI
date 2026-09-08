@@ -1,0 +1,70 @@
+{
+  "id": "ai1_candidate_verify",
+  "kind": "candidate_verify",
+  "domain": "ai1",
+  "purpose": "Verify newly scouted AI/1 candidates before scoring, including on-device proof level, SDK maturity, privacy architecture, and OEM evidence classification.",
+  "inputs": [
+    ".state/runs/<date>/ai1/ai1_scout/scout_candidates.json",
+    ".state/runs/<date>/ai1/ai1_claim_ledger_build/claims.jsonl"
+  ],
+  "outputs": [
+    "verified_candidates.jsonl",
+    "rejected_candidates.jsonl",
+    "candidate_verify_report.md"
+  ],
+  "agents": [
+    "entity_resolution_guard",
+    "company_registry_checker",
+    "geography_exclusion_guard",
+    "korea_china_exclusion_guard",
+    "valuation_unicorn_guard",
+    "claim_ledger_builder",
+    "citation_integrity_checker",
+    "staleness_gate",
+    "source_conflict_resolver",
+    "english_source_priority_guard",
+    "korean_source_avoidance_guard",
+    "category_leakage_guard",
+    "revenue_model_verifier",
+    "mobile_first_ux_checker",
+    "on_device_architecture_checker",
+    "privacy_security_compliance_checker"
+  ],
+  "gates": [
+    "required_hq_source",
+    "no_korea_china_hq",
+    "no_unicorn",
+    "all_numbers_cited",
+    "no_duplicate_company_id",
+    "mobile_fit_confirmed",
+    "on_device_proof_classified",
+    "sdk_maturity_recorded",
+    "privacy_architecture_recorded",
+    "oem_partnership_evidence_classified"
+  ],
+  "timeout_minutes": 18,
+  "retry_policy": {
+    "max_attempts": 1,
+    "backoff_seconds": []
+  },
+  "evidence_contract": {
+    "min_sources_per_core_claim": 1,
+    "min_sources_for_mutable_claim": 2,
+    "max_staleness_days": 14,
+    "freshness_fields": []
+  },
+  "fail_closed_fields": [
+    "headquarters_country",
+    "unicorn_status",
+    "category",
+    "funding_amount",
+    "valuation",
+    "on_device_proof_level",
+    "sdk_maturity",
+    "privacy_architecture"
+  ],
+  "page": "ai1",
+  "prompt_file": "",
+  "kst_slot": "01:12 KST",
+  "runs_codex": false
+}
