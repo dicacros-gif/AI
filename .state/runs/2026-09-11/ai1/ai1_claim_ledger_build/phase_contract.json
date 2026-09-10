@@ -1,0 +1,42 @@
+{
+  "id": "ai1_claim_ledger_build",
+  "kind": "claim_ledger",
+  "domain": "ai1",
+  "purpose": "Turn AI/1 evidence into claim-level ledger rows for dates, numbers, HQ, funding, valuation, and partnership facts.",
+  "inputs": [
+    ".state/runs/<date>/ai1/ai1_evidence_normalize/evidence.jsonl"
+  ],
+  "outputs": [
+    "claims.jsonl",
+    "claim_summary.json",
+    "claim_conflicts.json"
+  ],
+  "agents": [
+    "claim_ledger_builder",
+    "citation_integrity_checker"
+  ],
+  "gates": [
+    "every_core_claim_has_source_id",
+    "claim_ledger_schema_complete"
+  ],
+  "timeout_minutes": 10,
+  "retry_policy": {
+    "max_attempts": 1,
+    "backoff_seconds": []
+  },
+  "evidence_contract": {
+    "min_sources_per_core_claim": 1,
+    "min_sources_for_mutable_claim": 2,
+    "max_staleness_days": 14,
+    "freshness_fields": []
+  },
+  "fail_closed_fields": [
+    "source_id",
+    "field",
+    "verification_status"
+  ],
+  "page": "ai1",
+  "prompt_file": "",
+  "kst_slot": "01:04 KST",
+  "runs_codex": false
+}
