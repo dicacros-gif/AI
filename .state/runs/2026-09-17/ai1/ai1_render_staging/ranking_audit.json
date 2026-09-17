@@ -3,7 +3,7 @@
   "kind": "render",
   "domain": "ai1",
   "page": "ai1",
-  "generatedAt": "2026-09-16T18:51:00.399507Z",
+  "generatedAt": "2026-09-17T00:20:07.465659Z",
   "runDateKst": "2026-09-17",
   "scheduledStartKst": "00:05 KST",
   "phaseSlotKst": "01:40 KST",
@@ -621,6 +621,6 @@
   "normalized": {
     "ai1": "/home/runner/work/AI/AI/1/index.html",
     "ai2": "/home/runner/work/AI/AI/2/index.html",
-    "visible_timestamp": "'26.9.17 (목) 03:51 KST 기준"
+    "visible_timestamp": "'26.9.17 (목) 09:20 KST 기준"
   }
 }
