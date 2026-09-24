@@ -1,0 +1,42 @@
+{
+  "id": "ai1_staleness_gate",
+  "kind": "staleness",
+  "domain": "ai1",
+  "purpose": "Block AI/1 publish candidates whose core claims exceeded TTL or failed freshness recheck.",
+  "inputs": [
+    ".state/runs/<date>/ai1/ai1_claim_ledger_build/claims.jsonl"
+  ],
+  "outputs": [
+    "staleness_gate.json",
+    "stale_claims.jsonl",
+    "fresh_claims.jsonl"
+  ],
+  "agents": [
+    "staleness_gate",
+    "no_freshness_without_fetch_guard"
+  ],
+  "gates": [
+    "no_stale_core_claims"
+  ],
+  "timeout_minutes": 8,
+  "retry_policy": {
+    "max_attempts": 1,
+    "backoff_seconds": []
+  },
+  "evidence_contract": {
+    "min_sources_per_core_claim": 1,
+    "min_sources_for_mutable_claim": 2,
+    "max_staleness_days": 14,
+    "freshness_fields": []
+  },
+  "fail_closed_fields": [
+    "headquarters_country",
+    "valuation",
+    "funding_amount",
+    "ranking_claim"
+  ],
+  "page": "ai1",
+  "prompt_file": "",
+  "kst_slot": "01:20 KST",
+  "runs_codex": false
+}
