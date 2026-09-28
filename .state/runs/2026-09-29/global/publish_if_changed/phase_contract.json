@@ -1,0 +1,47 @@
+{
+  "id": "publish_if_changed",
+  "kind": "publish",
+  "domain": "global",
+  "purpose": "Publish only if validated artifacts changed, the delta is either fresh-news-driven or review-driven, diff is allowed, and all publish gates remain closed.",
+  "inputs": [
+    "1/index.html",
+    "2/index.html",
+    ".state/runs/<date>/global/global_qa"
+  ],
+  "outputs": [
+    "publish_decision.json",
+    "publish_diff_guard.json"
+  ],
+  "agents": [
+    "publish_diff_guard",
+    "publish_path_guard",
+    "html_regression_guard",
+    "timestamp_format_guard",
+    "qa_gatekeeper"
+  ],
+  "gates": [
+    "validated_or_review_delta_present",
+    "allowed_publish_diff_only",
+    "qa_gate_passed"
+  ],
+  "timeout_minutes": 10,
+  "retry_policy": {
+    "max_attempts": 1,
+    "backoff_seconds": []
+  },
+  "evidence_contract": {
+    "min_sources_per_core_claim": 1,
+    "min_sources_for_mutable_claim": 2,
+    "max_staleness_days": 3,
+    "freshness_fields": []
+  },
+  "fail_closed_fields": [
+    "publish_path",
+    "html_shell",
+    "publish_diff"
+  ],
+  "page": "global",
+  "prompt_file": "",
+  "kst_slot": "03:57 KST",
+  "runs_codex": false
+}
