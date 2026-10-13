@@ -1,0 +1,40 @@
+{
+  "id": "ai1_entity_resolution",
+  "kind": "entity_resolution",
+  "domain": "ai1",
+  "purpose": "Resolve AI/1 company aliases, domains, legal names, and product names into canonical company identifiers.",
+  "inputs": [
+    ".state/runs/<date>/ai1/ai1_scout/scout_candidates.json"
+  ],
+  "outputs": [
+    "entity_resolution.json",
+    "canonical_entities.jsonl",
+    "alias_map.json"
+  ],
+  "agents": [
+    "entity_resolution_guard",
+    "duplicate_startup_guard"
+  ],
+  "gates": [
+    "no_duplicate_company_id",
+    "all_candidates_have_company_id"
+  ],
+  "timeout_minutes": 10,
+  "retry_policy": {
+    "max_attempts": 1,
+    "backoff_seconds": []
+  },
+  "evidence_contract": {
+    "min_sources_per_core_claim": 1,
+    "min_sources_for_mutable_claim": 2,
+    "max_staleness_days": 14,
+    "freshness_fields": []
+  },
+  "fail_closed_fields": [
+    "company_id"
+  ],
+  "page": "ai1",
+  "prompt_file": "",
+  "kst_slot": "00:50 KST",
+  "runs_codex": false
+}
