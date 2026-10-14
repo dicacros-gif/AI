@@ -1,0 +1,50 @@
+{
+  "id": "ai2_render_staging",
+  "kind": "render",
+  "domain": "ai2",
+  "purpose": "Apply validated AI/2 data to staging HTML with deterministic page normalization and minimal shell drift.",
+  "inputs": [
+    "2/index.html",
+    ".state/runs/<date>/ai2/ai2_score"
+  ],
+  "outputs": [
+    "render_log.md",
+    "ranking_audit.json",
+    "timestamp_audit.json",
+    "publish_diff_guard.json"
+  ],
+  "agents": [
+    "html_regression_guard",
+    "timestamp_format_guard",
+    "section_order_consistency_guard",
+    "ranking_consistency_guard",
+    "publish_path_guard",
+    "publish_diff_guard"
+  ],
+  "gates": [
+    "html_shell_preserved",
+    "publish_path_preserved",
+    "ranking_audit_passes",
+    "timestamp_audit_passes"
+  ],
+  "timeout_minutes": 12,
+  "retry_policy": {
+    "max_attempts": 1,
+    "backoff_seconds": []
+  },
+  "evidence_contract": {
+    "min_sources_per_core_claim": 1,
+    "min_sources_for_mutable_claim": 2,
+    "max_staleness_days": 7,
+    "freshness_fields": []
+  },
+  "fail_closed_fields": [
+    "publish_path",
+    "html_shell",
+    "timestamp_label"
+  ],
+  "page": "ai2",
+  "prompt_file": ".github/codex/prompts/ai2_render.md",
+  "kst_slot": "03:22 KST",
+  "runs_codex": true
+}
