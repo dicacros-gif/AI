@@ -1,0 +1,51 @@
+{
+  "id": "ai1_source_freshness_probe",
+  "kind": "freshness",
+  "domain": "ai1",
+  "purpose": "Check RSS, sitemap, ETag, app-store, and newsroom freshness before AI/1 fetch and scout work.",
+  "inputs": [
+    "1/index.html",
+    "artifacts/ai1/claims.jsonl",
+    "artifacts/ai1/evidence.jsonl"
+  ],
+  "outputs": [
+    "source_freshness.json",
+    "changed_sources.jsonl",
+    "feed_health.json"
+  ],
+  "agents": [
+    "source_freshness_monitor",
+    "source_registry_router",
+    "source_prompt_injection_guard",
+    "no_freshness_without_fetch_guard"
+  ],
+  "gates": [
+    "freshness_probe_completed",
+    "source_health_recorded"
+  ],
+  "timeout_minutes": 12,
+  "retry_policy": {
+    "max_attempts": 2,
+    "backoff_seconds": [
+      60,
+      180
+    ]
+  },
+  "evidence_contract": {
+    "min_sources_per_core_claim": 1,
+    "min_sources_for_mutable_claim": 2,
+    "max_staleness_days": 3,
+    "freshness_fields": [
+      "retrieved_at_utc",
+      "etag",
+      "page_hash"
+    ]
+  },
+  "fail_closed_fields": [
+    "freshness_probe"
+  ],
+  "page": "ai1",
+  "prompt_file": "",
+  "kst_slot": "00:10 KST",
+  "runs_codex": false
+}
