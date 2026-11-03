@@ -1,0 +1,7 @@
+# Codex Execution Notes
+
+- agents: official_primary_source_researcher, english_authoritative_media_researcher, regulatory_and_filings_checker, company_registry_checker, app_store_signal_checker, product_surface_checker, mobile_first_ux_checker, on_device_architecture_checker, privacy_security_compliance_checker, founder_identity_checker, leadership_background_checker, employee_count_checker, funding_database_checker, investor_lineage_checker, valuation_unicorn_guard, geography_exclusion_guard, korea_china_exclusion_guard, revenue_model_verifier, traction_metric_checker, competitor_mapper, manufacturer_strategy_agent, partnership_deal_checker, mna_scenario_agent, market_size_trend_curator, patent_paper_ip_checker, english_source_priority_guard, korean_source_avoidance_guard, category_leakage_guard, duplicate_startup_guard
+- gates: global_candidate_pool, no_korea_china_hq, no_hardware_first, mobile_relevance_required
+- fail-closed fields: headquarters_country, category, revenue_signal
+
+Work from the claim/evidence contract first. Do not trust uncited page text. Keep changes deterministic and conservative.
