@@ -1,0 +1,80 @@
+{
+  "id": "ai2_scout",
+  "kind": "scout",
+  "domain": "ai2",
+  "purpose": "Discover new AI/2 candidates from the global pool excluding South Korea and China headquarters.",
+  "inputs": [
+    "2/index.html",
+    "artifacts/ai2/claims.jsonl",
+    "artifacts/ai2/evidence.jsonl"
+  ],
+  "outputs": [
+    "scout_candidates.json",
+    "scout_rejections.json",
+    "reserve_candidates.json",
+    "candidate_discovery_plan.json",
+    "competitor_map.json",
+    "manufacturer_strategy.json",
+    "ranking_proposal.json"
+  ],
+  "agents": [
+    "official_primary_source_researcher",
+    "english_authoritative_media_researcher",
+    "regulatory_and_filings_checker",
+    "company_registry_checker",
+    "app_store_signal_checker",
+    "product_surface_checker",
+    "mobile_first_ux_checker",
+    "privacy_security_compliance_checker",
+    "founder_identity_checker",
+    "leadership_background_checker",
+    "employee_count_checker",
+    "funding_database_checker",
+    "investor_lineage_checker",
+    "valuation_unicorn_guard",
+    "geography_exclusion_guard",
+    "korea_china_exclusion_guard",
+    "revenue_model_verifier",
+    "traction_metric_checker",
+    "competitor_mapper",
+    "manufacturer_strategy_agent",
+    "partnership_deal_checker",
+    "mna_scenario_agent",
+    "market_size_trend_curator",
+    "english_source_priority_guard",
+    "korean_source_avoidance_guard",
+    "category_leakage_guard",
+    "duplicate_startup_guard",
+    "deprecation_watch_agent",
+    "privacy_sandbox_deprecation_guard"
+  ],
+  "gates": [
+    "global_candidate_pool",
+    "no_korea_china_hq",
+    "no_hardware_first",
+    "adtech_mobile_fit_required"
+  ],
+  "timeout_minutes": 24,
+  "retry_policy": {
+    "max_attempts": 2,
+    "backoff_seconds": [
+      60,
+      180
+    ]
+  },
+  "evidence_contract": {
+    "min_sources_per_core_claim": 1,
+    "min_sources_for_mutable_claim": 2,
+    "max_staleness_days": 10,
+    "freshness_fields": []
+  },
+  "fail_closed_fields": [
+    "headquarters_country",
+    "category",
+    "revenue_signal"
+  ],
+  "page": "ai2",
+  "prompt_file": ".github/codex/prompts/ai2_scout.md",
+  "kst_slot": "02:22 KST",
+  "runs_codex": true
+}
