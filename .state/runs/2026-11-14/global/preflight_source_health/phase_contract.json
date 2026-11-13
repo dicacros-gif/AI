@@ -1,0 +1,47 @@
+{
+  "id": "preflight_source_health",
+  "kind": "preflight",
+  "domain": "global",
+  "purpose": "Verify GitHub runtime, secrets, source reachability assumptions, and last-run state availability before any research phase starts.",
+  "inputs": [
+    "repository checkout",
+    "workflow environment",
+    "state branch metadata"
+  ],
+  "outputs": [
+    "preflight_report.json",
+    "source_registry_health.json",
+    "phase_queue.json"
+  ],
+  "agents": [
+    "artifact_integrity_guard",
+    "source_registry_router",
+    "no_freshness_without_fetch_guard"
+  ],
+  "gates": [
+    "github_hosted_runtime",
+    "required_secrets_present",
+    "state_branch_accessible",
+    "default_branch_context"
+  ],
+  "timeout_minutes": 10,
+  "retry_policy": {
+    "max_attempts": 1,
+    "backoff_seconds": []
+  },
+  "evidence_contract": {
+    "min_sources_per_core_claim": 1,
+    "min_sources_for_mutable_claim": 2,
+    "max_staleness_days": 1,
+    "freshness_fields": []
+  },
+  "fail_closed_fields": [
+    "runtime",
+    "secrets",
+    "state_branch"
+  ],
+  "page": "global",
+  "prompt_file": "",
+  "kst_slot": "00:05 KST",
+  "runs_codex": false
+}
