@@ -1,0 +1,57 @@
+{
+  "id": "ai1_verify",
+  "kind": "verify",
+  "domain": "ai1",
+  "purpose": "Cross-check the current AI/1 page against update outputs for factual, logical, and formatting errors, and surface publishable review corrections even on no-news days.",
+  "inputs": [
+    "1/index.html",
+    ".state/runs/<date>/ai1/ai1_update"
+  ],
+  "outputs": [
+    "verification.json",
+    "logic_issues.md",
+    "removal_candidates.json",
+    "unsupported_claims.json",
+    "source_integrity.json"
+  ],
+  "agents": [
+    "regulatory_and_filings_checker",
+    "company_registry_checker",
+    "valuation_unicorn_guard",
+    "geography_exclusion_guard",
+    "korea_china_exclusion_guard",
+    "privacy_security_compliance_checker",
+    "contradiction_checker",
+    "unsupported_number_guard",
+    "timestamp_format_guard",
+    "section_order_consistency_guard",
+    "duplicate_startup_guard",
+    "category_leakage_guard",
+    "publish_path_guard"
+  ],
+  "gates": [
+    "all_numbers_cited",
+    "all_dates_have_time",
+    "no_category_leakage"
+  ],
+  "timeout_minutes": 18,
+  "retry_policy": {
+    "max_attempts": 1,
+    "backoff_seconds": []
+  },
+  "evidence_contract": {
+    "min_sources_per_core_claim": 1,
+    "min_sources_for_mutable_claim": 2,
+    "max_staleness_days": 14,
+    "freshness_fields": []
+  },
+  "fail_closed_fields": [
+    "unsupported_number",
+    "broken_timestamp",
+    "hq_conflict"
+  ],
+  "page": "ai1",
+  "prompt_file": ".github/codex/prompts/ai1_verify.md",
+  "kst_slot": "00:27 KST",
+  "runs_codex": true
+}
