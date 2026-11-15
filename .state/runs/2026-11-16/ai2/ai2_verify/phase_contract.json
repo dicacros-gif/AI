@@ -1,0 +1,59 @@
+{
+  "id": "ai2_verify",
+  "kind": "verify",
+  "domain": "ai2",
+  "purpose": "Cross-check the current AI/2 page against update outputs and policy drift for factual, logical, and platform-fit errors, and surface publishable review corrections even on no-news days.",
+  "inputs": [
+    "2/index.html",
+    ".state/runs/<date>/ai2/ai2_update"
+  ],
+  "outputs": [
+    "verification.json",
+    "logic_issues.md",
+    "removal_candidates.json",
+    "unsupported_claims.json",
+    "source_integrity.json"
+  ],
+  "agents": [
+    "regulatory_and_filings_checker",
+    "company_registry_checker",
+    "valuation_unicorn_guard",
+    "geography_exclusion_guard",
+    "korea_china_exclusion_guard",
+    "privacy_security_compliance_checker",
+    "contradiction_checker",
+    "unsupported_number_guard",
+    "timestamp_format_guard",
+    "section_order_consistency_guard",
+    "duplicate_startup_guard",
+    "category_leakage_guard",
+    "publish_path_guard",
+    "deprecation_watch_agent",
+    "privacy_sandbox_deprecation_guard"
+  ],
+  "gates": [
+    "all_numbers_cited",
+    "all_dates_have_time",
+    "no_category_leakage"
+  ],
+  "timeout_minutes": 18,
+  "retry_policy": {
+    "max_attempts": 1,
+    "backoff_seconds": []
+  },
+  "evidence_contract": {
+    "min_sources_per_core_claim": 1,
+    "min_sources_for_mutable_claim": 2,
+    "max_staleness_days": 14,
+    "freshness_fields": []
+  },
+  "fail_closed_fields": [
+    "unsupported_number",
+    "broken_timestamp",
+    "policy_drift"
+  ],
+  "page": "ai2",
+  "prompt_file": ".github/codex/prompts/ai2_verify.md",
+  "kst_slot": "02:09 KST",
+  "runs_codex": true
+}
