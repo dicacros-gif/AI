@@ -1,0 +1,45 @@
+{
+  "id": "ai2_staleness_gate",
+  "kind": "staleness",
+  "domain": "ai2",
+  "purpose": "Block AI/2 publish candidates whose core claims exceeded TTL or whose platform-policy assumptions drifted.",
+  "inputs": [
+    ".state/runs/<date>/ai2/ai2_claim_ledger_build/claims.jsonl"
+  ],
+  "outputs": [
+    "staleness_gate.json",
+    "stale_claims.jsonl",
+    "fresh_claims.jsonl"
+  ],
+  "agents": [
+    "staleness_gate",
+    "no_freshness_without_fetch_guard",
+    "privacy_sandbox_deprecation_guard"
+  ],
+  "gates": [
+    "no_stale_core_claims",
+    "no_deprecated_policy_thesis"
+  ],
+  "timeout_minutes": 8,
+  "retry_policy": {
+    "max_attempts": 1,
+    "backoff_seconds": []
+  },
+  "evidence_contract": {
+    "min_sources_per_core_claim": 1,
+    "min_sources_for_mutable_claim": 2,
+    "max_staleness_days": 14,
+    "freshness_fields": []
+  },
+  "fail_closed_fields": [
+    "headquarters_country",
+    "valuation",
+    "funding_amount",
+    "policy_drift",
+    "ranking_claim"
+  ],
+  "page": "ai2",
+  "prompt_file": "",
+  "kst_slot": "03:02 KST",
+  "runs_codex": false
+}
