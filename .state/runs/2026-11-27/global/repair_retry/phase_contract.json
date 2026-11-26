@@ -1,0 +1,38 @@
+{
+  "id": "repair_retry",
+  "kind": "retry",
+  "domain": "global",
+  "purpose": "Classify failures into retryable and non-retryable buckets and propose only bounded safe reruns.",
+  "inputs": [
+    ".state/runs/<date>/global/global_qa"
+  ],
+  "outputs": [
+    "retry_report.json",
+    "retry_actions.md"
+  ],
+  "agents": [
+    "retry_orchestrator",
+    "qa_gatekeeper"
+  ],
+  "gates": [
+    "retry_plan_written"
+  ],
+  "timeout_minutes": 10,
+  "retry_policy": {
+    "max_attempts": 1,
+    "backoff_seconds": []
+  },
+  "evidence_contract": {
+    "min_sources_per_core_claim": 1,
+    "min_sources_for_mutable_claim": 2,
+    "max_staleness_days": 1,
+    "freshness_fields": []
+  },
+  "fail_closed_fields": [
+    "retry_policy"
+  ],
+  "page": "global",
+  "prompt_file": "",
+  "kst_slot": "03:50 KST",
+  "runs_codex": false
+}
